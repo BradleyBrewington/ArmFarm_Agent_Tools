@@ -33,6 +33,7 @@ import numpy as np
 
 ARM_JOINTS = ("shoulder_pan", "shoulder_lift", "elbow_flex", "wrist_flex", "wrist_roll")
 JOINTS = (*ARM_JOINTS, "gripper")
+HOME_JOINTS = ("shoulder_pan", "shoulder_lift", "elbow_flex", "wrist_flex")
 CLOSED_GRIPPER = 0.0  # Fully closed calibrated target, verified on this arm.
 # The three recorded poses: calibrated hardware degrees, gripper 0..100.
 POSES = [dict(zip(JOINTS, values)) for values in (
@@ -1166,11 +1167,10 @@ def write_json(path, data):
 
 
 def validate_target(target, calibration):
-    if set(target) != set(JOINTS):
-        raise ValueError("Target must contain all six joints")
+    if not isinstance(target, dict) or not target or not set(target).issubset(JOINTS):
+        raise ValueError("Target must contain one or more known joints")
     for name, value in target.items():
-        if isinstance(value, bool) or not math.isfinite(value):
-            raise ValueError(f"Invalid target for {name}")
+        value = finite_number(value, name)
         c = calibration[name]
         half = (c.range_max - c.range_min) * 180 / 4095
         low, high = (0., 100.) if name == "gripper" else (-half, half)
@@ -1179,7 +1179,7 @@ def validate_target(target, calibration):
 
 
 @contextmanager
-def connected_bus(port):
+def connected_bus(port, joints=JOINTS):
     from lerobot.motors import Motor, MotorNormMode
     from lerobot.motors.feetech import FeetechMotorsBus
     if port == "auto":
@@ -1188,13 +1188,15 @@ def connected_bus(port):
         if len(ports) != 1:
             raise ValueError(f"Specify --port: expected one local serial device, found {[p.device for p in ports]}")
         port = ports[0].device
+    if not joints or not set(joints).issubset(JOINTS):
+        raise ValueError("Specify one or more known joints")
     bus = FeetechMotorsBus(port=port, motors={
         j: Motor(i + 1, "sts3215", MotorNormMode.RANGE_0_100 if j == "gripper" else MotorNormMode.DEGREES)
-        for i, j in enumerate(JOINTS)})
+        for i, j in enumerate(JOINTS) if j in joints})
     try:
         bus.connect()
         bus.calibration = bus.read_calibration()
-        for j in JOINTS:
+        for j in joints:
             c = bus.calibration[j]
             if not 0 <= c.range_min < c.range_max <= 4095:
                 raise ValueError(f"Invalid live motor calibration for {j}")
@@ -1206,40 +1208,47 @@ def connected_bus(port):
 
 def preflight(bus, targets):
     # Validate every target before the first goal/torque write.
+    targets = list(targets)
+    if not targets:
+        raise ValueError("Specify at least one movement target")
     for target in targets:
         validate_target(target, bus.calibration)
-    for j in JOINTS:
+    joints = [j for j in JOINTS if any(j in target for target in targets)]
+    for j in joints:
         if bus.read("Operating_Mode", j, normalize=False) != 0:
             raise ValueError(f"{j} must be in position mode")
         if bus.read("Phase", j, normalize=False) & 0x10:
             raise ValueError(f"{j} must use single-turn feedback")
-    current = bus.sync_read("Present_Position", list(JOINTS))
+    current = bus.sync_read("Present_Position", joints)
     validate_target(current, bus.calibration)
     return current
 
 
-def enable_at_current_position(bus):
-    raw = bus.sync_read("Present_Position", list(JOINTS), normalize=False)
+def enable_at_current_position(bus, joints=JOINTS):
+    joints = list(joints)
+    if not joints or not set(joints).issubset(JOINTS):
+        raise ValueError("Specify one or more known joints")
+    raw = bus.sync_read("Present_Position", joints, normalize=False)
     for j, value in raw.items():
         c = bus.calibration[j]
         if not c.range_min <= value <= c.range_max:
             raise ValueError(f"{j} moved outside its calibrated range")
-    torque = bus.sync_read("Torque_Enable", list(JOINTS), normalize=False)
+    torque = bus.sync_read("Torque_Enable", joints, normalize=False)
     bus.sync_write("Goal_Position", raw, normalize=False)
-    disabled = [j for j in JOINTS if not torque[j]]
+    disabled = [j for j in joints if not torque[j]]
     if disabled:
         bus.enable_torque(disabled)
 
 
 def move(bus, target, seconds):
     validate_target(target, bus.calibration)
-    start = bus.sync_read("Present_Position", list(JOINTS))
+    start = bus.sync_read("Present_Position", list(target))
     validate_target(start, bus.calibration)
     started = time.monotonic()
     while True:
         fraction = min((time.monotonic() - started) / seconds, 1.)
         alpha = fraction * fraction * (3 - 2 * fraction)
-        command = dict(target) if fraction == 1 else {j: start[j] + alpha * (target[j] - start[j]) for j in JOINTS}
+        command = dict(target) if fraction == 1 else {j: start[j] + alpha * (target[j] - start[j]) for j in target}
         bus.sync_write("Goal_Position", command, normalize=True)
         if fraction == 1:
             break
@@ -1248,8 +1257,10 @@ def move(bus, target, seconds):
 
 def settle(bus, target, seconds):
     time.sleep(seconds)
-    measured = bus.sync_read("Present_Position", list(JOINTS))
-    for j in ARM_JOINTS:
+    measured = bus.sync_read("Present_Position", list(target))
+    for j in target:
+        if j == "gripper":
+            continue  # A held object may prevent full closure during calibration.
         if abs(measured[j] - target[j]) > 4:
             raise ValueError(f"{j} did not reach target ({measured[j]:.2f} vs {target[j]:.2f} degrees)")
 
@@ -1807,9 +1818,12 @@ def reuse_attempt(source, args, output):
 
 def load_home(path):
     data = read_json(path)
-    if data.get("coordinate_space") != "lerobot_calibrated" or data.get("units") != UNITS:
-        raise ValueError("Home must contain calibrated degrees and gripper percent")
-    return data["joints"]
+    if data.get("coordinate_space") != "lerobot_calibrated" or data.get("units") != {"arm": "degrees"}:
+        raise ValueError("Home must contain calibrated arm degrees")
+    joints = data.get("joints")
+    if not isinstance(joints, dict) or set(joints) != set(HOME_JOINTS):
+        raise ValueError("Home must constrain shoulder_pan, shoulder_lift, elbow_flex and wrist_flex only; wrist_roll and gripper are task dependent")
+    return {j: finite_number(joints[j], j) for j in HOME_JOINTS}
 
 
 def finish_at_home(bus, args, output, report, home):
@@ -1820,7 +1834,7 @@ def finish_at_home(bus, args, output, report, home):
     move(bus, home, args.duration)
     settle(bus, home, 2)
     report.update(state="complete", finished_at_utc=utc(), home_reached=True,
-                  final_joints=bus.sync_read("Present_Position", list(JOINTS)))
+                  home_joints=list(home), final_joints=bus.sync_read("Present_Position", list(home)))
     write_json(output / "report.json", report)
     print(f"Done. Camera intrinsics, 2D table map and home verified: {output}", flush=True)
     return 0
@@ -1939,12 +1953,12 @@ def run_local(args, output):
     opened = {**POSES[0], "gripper": args.gripper_open}
     try:
         live_image, _ = reader.read("top")
-        with connected_bus(args.port) as bus:
+        with connected_bus(args.port, joints=HOME_JOINTS if args.reuse_attempt else JOINTS) as bus:
             targets = [home] if args.reuse_attempt else [home, opened, *POSES, *[dict(zip(JOINTS, v)) for v in values]]
             report["initial_joints"] = preflight(bus, targets)
             if args.check:
                 report.update(state="check_passed", motor_writes=False,
-                              torque_enabled=bus.sync_read("Torque_Enable", normalize=False))
+                              torque_enabled=bus.sync_read("Torque_Enable", list(bus.motors), normalize=False))
                 write_json(output / "report.json", report)
                 print("Check passed: top-camera stream, arm and required movement targets. No motor or focus writes.", flush=True)
                 return 0
@@ -1953,7 +1967,7 @@ def run_local(args, output):
                 if saved["image_size"] != list(live_image.shape[1::-1]):
                     raise ValueError("Live top-camera resolution differs from saved calibration")
                 report.update(reuse_attempt(args.reuse_attempt, args, output))
-                enable_at_current_position(bus)
+                enable_at_current_position(bus, joints=home)
                 return finish_at_home(bus, args, output, report, home)
             enable_at_current_position(bus)
             attempt = 0
