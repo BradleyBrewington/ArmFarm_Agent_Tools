@@ -2,6 +2,7 @@
 import json,sys,time
 from pathlib import Path
 import recording
+from calibrate_workspace import clamp_target,load_home
 from episode_motion import bus_open,move,snap,state
 ROOT=Path('runs/20260918_cube_episodes');ROOT.mkdir(parents=True,exist_ok=True)
 def save(name,s):
@@ -20,5 +21,5 @@ if __name__=='__main__':
    save(name+'_grip',s)
    s=move(b,{'shoulder_lift':s['q']['shoulder_lift']-12,'elbow_flex':s['q']['elbow_flex']+5},6);save(name+'_lift',s)
   elif stage=='home':
-   h=json.load(open('home_pose.json'))['joints'];h.pop('gripper');s=move(b,h,16);save(name+'_home',s)
+   h=clamp_target(load_home(Path('home_pose.json')),b.calibration);s=move(b,h,16);save(name+'_home',s)
   else:raise ValueError(stage)
