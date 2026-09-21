@@ -1179,7 +1179,7 @@ def validate_target(target, calibration):
 
 
 def clamp_target(target, calibration):
-    """arm-002 override: clip requested commands, never measured positions."""
+    """Clip requested commands to live limits without altering measured positions."""
     if not isinstance(target, dict) or not target or not set(target).issubset(JOINTS):
         raise ValueError("Target must contain one or more known joints")
     clipped = {}
@@ -2002,7 +2002,7 @@ def run_local(args, output):
             targets = [home] if args.reuse_attempt else [home, opened, *POSES, *[dict(zip(JOINTS, v)) for v in values]]
             report["target_clamping"] = clamping_summary(targets, bus.calibration)
             if report["target_clamping"]:
-                print("arm-002: targets clipped to live calibrated limits: " + json.dumps(report["target_clamping"], sort_keys=True), flush=True)
+                print("Targets clipped to live calibrated limits: " + json.dumps(report["target_clamping"], sort_keys=True), flush=True)
             report["initial_joints"] = preflight(bus, targets)
             write_json(output / "report.json", report)
             if args.check:
