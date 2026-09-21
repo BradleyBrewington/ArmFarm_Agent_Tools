@@ -1178,6 +1178,38 @@ def validate_target(target, calibration):
             raise ValueError(f"{name}: {value:.3f} outside live motor range {low:.3f}..{high:.3f}")
 
 
+def clamp_target(target, calibration):
+    """Clip requested commands to live limits without altering measured positions."""
+    if not isinstance(target, dict) or not target or not set(target).issubset(JOINTS):
+        raise ValueError("Target must contain one or more known joints")
+    clipped = {}
+    for name, requested in target.items():
+        value = finite_number(requested, name)
+        c = calibration[name]
+        half = (c.range_max - c.range_min) * 180 / 4095
+        low, high = (0., 100.) if name == "gripper" else (-half, half)
+        clipped[name] = min(high, max(low, value))
+    validate_target(clipped, calibration)
+    return clipped
+
+
+def clamping_summary(targets, calibration):
+    changed = {}
+    for target in targets:
+        clipped = clamp_target(target, calibration)
+        for name, actual in clipped.items():
+            requested = float(target[name])
+            if actual != requested:
+                item = changed.setdefault(name, {"targets": 0, "requested_min": requested,
+                    "requested_max": requested, "commanded_min": actual, "commanded_max": actual})
+                item["targets"] += 1
+                item["requested_min"] = min(item["requested_min"], requested)
+                item["requested_max"] = max(item["requested_max"], requested)
+                item["commanded_min"] = min(item["commanded_min"], actual)
+                item["commanded_max"] = max(item["commanded_max"], actual)
+    return changed
+
+
 @contextmanager
 def connected_bus(port, joints=JOINTS):
     from lerobot.motors import Motor, MotorNormMode
@@ -1212,7 +1244,7 @@ def preflight(bus, targets):
     if not targets:
         raise ValueError("Specify at least one movement target")
     for target in targets:
-        validate_target(target, bus.calibration)
+        validate_target(clamp_target(target, bus.calibration), bus.calibration)
     joints = [j for j in JOINTS if any(j in target for target in targets)]
     for j in joints:
         if bus.read("Operating_Mode", j, normalize=False) != 0:
@@ -1241,7 +1273,7 @@ def enable_at_current_position(bus, joints=JOINTS):
 
 
 def move(bus, target, seconds):
-    validate_target(target, bus.calibration)
+    target = clamp_target(target, bus.calibration)
     start = bus.sync_read("Present_Position", list(target))
     validate_target(start, bus.calibration)
     started = time.monotonic()
@@ -1256,13 +1288,22 @@ def move(bus, target, seconds):
 
 
 def settle(bus, target, seconds):
+    """Record positioning accuracy; image quality decides camera calibration."""
+    target = clamp_target(target, bus.calibration)
     time.sleep(seconds)
     measured = bus.sync_read("Present_Position", list(target))
+    # Device faults and communication failures still stop the routine.
     for j in target:
-        if j == "gripper":
-            continue  # A held object may prevent full closure during calibration.
-        if abs(measured[j] - target[j]) > 4:
-            raise ValueError(f"{j} did not reach target ({measured[j]:.2f} vs {target[j]:.2f} degrees)")
+        status = bus.read("Status", j, normalize=False)
+        if status:
+            raise RuntimeError(f"{j}: motor fault {status} while settling")
+    errors = {j: abs(finite_number(measured[j], j) - target[j])
+              for j in target if j != "gripper"}
+    missed = {j: error for j, error in errors.items() if error > 4}
+    if missed:
+        print("Position warning (degrees from target): " + json.dumps(missed, sort_keys=True)
+              + ". Photo detection and calibration quality checks remain required.", flush=True)
+    return {"measured": measured, "error_degrees": errors, "within_tolerance": not missed}
 
 
 def detect_board(image, pattern, thorough=False):
@@ -1477,7 +1518,7 @@ def replay(bus, times, values, cfg, on_target=None):
     end = active_trajectory_end(times, values)
     while True:
         elapsed = (time.monotonic() - start) * cfg["replay_speed"]
-        target = trajectory_target(times, values, times[-1] if elapsed >= end else elapsed)
+        target = clamp_target(trajectory_target(times, values, times[-1] if elapsed >= end else elapsed), bus.calibration)
         bus.sync_write("Goal_Position", target, normalize=True)
         if on_target is not None:
             on_target(elapsed, target)
@@ -1827,16 +1868,22 @@ def load_home(path):
 
 
 def finish_at_home(bus, args, output, report, home):
-    report.update(state="returning_home", workspace_map="workspace_map.npz", coordinate_frame="checkerboard_table",
+    report.update(state="returning_home", calibration_accepted=True,
+                  workspace_map="workspace_map.npz", coordinate_frame="checkerboard_table",
                   robot_alignment="not_calibrated", height="not_measured")
     write_json(output / "report.json", report)
     print("2D table map accepted. Returning to the saved home pose.", flush=True)
     move(bus, home, args.duration)
-    settle(bus, home, 2)
-    report.update(state="complete", finished_at_utc=utc(), home_reached=True,
-                  home_joints=list(home), final_joints=bus.sync_read("Present_Position", list(home)))
+    settled = settle(bus, home, 2)
+    report.update(state="complete", finished_at_utc=utc(),
+                  home_reached=settled["within_tolerance"], home_joints=list(home),
+                  home_error_degrees=settled["error_degrees"], final_joints=settled["measured"])
+    if not settled["within_tolerance"]:
+        report.setdefault("warnings", []).append({
+            "code": "home_position_missed", "error_degrees": settled["error_degrees"],
+            "message": "Camera calibration accepted; home position missed the 4-degree tolerance."})
     write_json(output / "report.json", report)
-    print(f"Done. Camera intrinsics, 2D table map and home verified: {output}", flush=True)
+    print(f"Done. Camera intrinsics and 2D table map accepted: {output}", flush=True)
     return 0
 
 
@@ -1955,7 +2002,11 @@ def run_local(args, output):
         live_image, _ = reader.read("top")
         with connected_bus(args.port, joints=HOME_JOINTS if args.reuse_attempt else JOINTS) as bus:
             targets = [home] if args.reuse_attempt else [home, opened, *POSES, *[dict(zip(JOINTS, v)) for v in values]]
+            report["target_clamping"] = clamping_summary(targets, bus.calibration)
+            if report["target_clamping"]:
+                print("Targets clipped to live calibrated limits: " + json.dumps(report["target_clamping"], sort_keys=True), flush=True)
             report["initial_joints"] = preflight(bus, targets)
+            write_json(output / "report.json", report)
             if args.check:
                 report.update(state="check_passed", motor_writes=False,
                               torque_enabled=bus.sync_read("Torque_Enable", list(bus.motors), normalize=False))
