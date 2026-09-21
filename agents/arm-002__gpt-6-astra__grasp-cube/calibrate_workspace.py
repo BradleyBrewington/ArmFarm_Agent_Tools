@@ -1288,15 +1288,22 @@ def move(bus, target, seconds):
 
 
 def settle(bus, target, seconds):
+    """Record positioning accuracy; image quality decides camera calibration."""
     target = clamp_target(target, bus.calibration)
     time.sleep(seconds)
     measured = bus.sync_read("Present_Position", list(target))
+    # Device faults and communication failures still stop the routine.
     for j in target:
-        if j == "gripper":
-            continue  # A held object may prevent full closure during calibration.
-        if abs(measured[j] - target[j]) > 4:
-            raise ValueError(f"{j} did not reach target ({measured[j]:.2f} vs {target[j]:.2f} degrees)")
-
+        status = bus.read("Status", j, normalize=False)
+        if status:
+            raise RuntimeError(f"{j}: motor fault {status} while settling")
+    errors = {j: abs(finite_number(measured[j], j) - target[j])
+              for j in target if j != "gripper"}
+    missed = {j: error for j, error in errors.items() if error > 4}
+    if missed:
+        print("Position warning (degrees from target): " + json.dumps(missed, sort_keys=True)
+              + ". Photo detection and calibration quality checks remain required.", flush=True)
+    return {"measured": measured, "error_degrees": errors, "within_tolerance": not missed}
 
 def detect_board(image, pattern, thorough=False):
     import cv2
@@ -1860,18 +1867,23 @@ def load_home(path):
 
 
 def finish_at_home(bus, args, output, report, home):
-    report.update(state="returning_home", workspace_map="workspace_map.npz", coordinate_frame="checkerboard_table",
+    report.update(state="returning_home", calibration_accepted=True,
+                  workspace_map="workspace_map.npz", coordinate_frame="checkerboard_table",
                   robot_alignment="not_calibrated", height="not_measured")
     write_json(output / "report.json", report)
     print("2D table map accepted. Returning to the saved home pose.", flush=True)
     move(bus, home, args.duration)
-    settle(bus, home, 2)
-    report.update(state="complete", finished_at_utc=utc(), home_reached=True,
-                  home_joints=list(home), final_joints=bus.sync_read("Present_Position", list(home)))
+    settled = settle(bus, home, 2)
+    report.update(state="complete", finished_at_utc=utc(),
+                  home_reached=settled["within_tolerance"], home_joints=list(home),
+                  home_error_degrees=settled["error_degrees"], final_joints=settled["measured"])
+    if not settled["within_tolerance"]:
+        report.setdefault("warnings", []).append({
+            "code": "home_position_missed", "error_degrees": settled["error_degrees"],
+            "message": "Camera calibration accepted; home position missed the 4-degree tolerance."})
     write_json(output / "report.json", report)
-    print(f"Done. Camera intrinsics, 2D table map and home verified: {output}", flush=True)
+    print(f"Done. Camera intrinsics and 2D table map accepted: {output}", flush=True)
     return 0
-
 
 @contextmanager
 def process_lock():
