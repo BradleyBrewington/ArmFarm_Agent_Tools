@@ -1178,6 +1178,38 @@ def validate_target(target, calibration):
             raise ValueError(f"{name}: {value:.3f} outside live motor range {low:.3f}..{high:.3f}")
 
 
+def clamp_target(target, calibration):
+    """arm-002 override: clip requested commands, never measured positions."""
+    if not isinstance(target, dict) or not target or not set(target).issubset(JOINTS):
+        raise ValueError("Target must contain one or more known joints")
+    clipped = {}
+    for name, requested in target.items():
+        value = finite_number(requested, name)
+        c = calibration[name]
+        half = (c.range_max - c.range_min) * 180 / 4095
+        low, high = (0., 100.) if name == "gripper" else (-half, half)
+        clipped[name] = min(high, max(low, value))
+    validate_target(clipped, calibration)
+    return clipped
+
+
+def clamping_summary(targets, calibration):
+    changed = {}
+    for target in targets:
+        clipped = clamp_target(target, calibration)
+        for name, actual in clipped.items():
+            requested = float(target[name])
+            if actual != requested:
+                item = changed.setdefault(name, {"targets": 0, "requested_min": requested,
+                    "requested_max": requested, "commanded_min": actual, "commanded_max": actual})
+                item["targets"] += 1
+                item["requested_min"] = min(item["requested_min"], requested)
+                item["requested_max"] = max(item["requested_max"], requested)
+                item["commanded_min"] = min(item["commanded_min"], actual)
+                item["commanded_max"] = max(item["commanded_max"], actual)
+    return changed
+
+
 @contextmanager
 def connected_bus(port, joints=JOINTS):
     from lerobot.motors import Motor, MotorNormMode
@@ -1212,7 +1244,7 @@ def preflight(bus, targets):
     if not targets:
         raise ValueError("Specify at least one movement target")
     for target in targets:
-        validate_target(target, bus.calibration)
+        validate_target(clamp_target(target, bus.calibration), bus.calibration)
     joints = [j for j in JOINTS if any(j in target for target in targets)]
     for j in joints:
         if bus.read("Operating_Mode", j, normalize=False) != 0:
@@ -1241,7 +1273,7 @@ def enable_at_current_position(bus, joints=JOINTS):
 
 
 def move(bus, target, seconds):
-    validate_target(target, bus.calibration)
+    target = clamp_target(target, bus.calibration)
     start = bus.sync_read("Present_Position", list(target))
     validate_target(start, bus.calibration)
     started = time.monotonic()
@@ -1256,6 +1288,7 @@ def move(bus, target, seconds):
 
 
 def settle(bus, target, seconds):
+    target = clamp_target(target, bus.calibration)
     time.sleep(seconds)
     measured = bus.sync_read("Present_Position", list(target))
     for j in target:
@@ -1477,7 +1510,7 @@ def replay(bus, times, values, cfg, on_target=None):
     end = active_trajectory_end(times, values)
     while True:
         elapsed = (time.monotonic() - start) * cfg["replay_speed"]
-        target = trajectory_target(times, values, times[-1] if elapsed >= end else elapsed)
+        target = clamp_target(trajectory_target(times, values, times[-1] if elapsed >= end else elapsed), bus.calibration)
         bus.sync_write("Goal_Position", target, normalize=True)
         if on_target is not None:
             on_target(elapsed, target)
@@ -1955,7 +1988,11 @@ def run_local(args, output):
         live_image, _ = reader.read("top")
         with connected_bus(args.port, joints=HOME_JOINTS if args.reuse_attempt else JOINTS) as bus:
             targets = [home] if args.reuse_attempt else [home, opened, *POSES, *[dict(zip(JOINTS, v)) for v in values]]
+            report["target_clamping"] = clamping_summary(targets, bus.calibration)
+            if report["target_clamping"]:
+                print("arm-002: targets clipped to live calibrated limits: " + json.dumps(report["target_clamping"], sort_keys=True), flush=True)
             report["initial_joints"] = preflight(bus, targets)
+            write_json(output / "report.json", report)
             if args.check:
                 report.update(state="check_passed", motor_writes=False,
                               torque_enabled=bus.sync_read("Torque_Enable", list(bus.motors), normalize=False))
