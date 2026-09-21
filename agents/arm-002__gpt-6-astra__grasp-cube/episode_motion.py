@@ -3,7 +3,7 @@ import argparse
 import json
 import time
 
-from calibrate_workspace import connected_bus, preflight, validate_target
+from calibrate_workspace import JOINTS, connected_bus, preflight, validate_target
 from camd_client import read_jpeg
 from recording import serial_port
 
@@ -29,7 +29,7 @@ def move_checked(target, duration):
                 measured = bus.sync_read('Present_Position', list(target))
                 if any(abs(measured[j]-command[j])>12 for j in target if j!='gripper'):
                     raise RuntimeError('Tracking error exceeded 12 degrees')
-                if any(bus.read('Status', j, normalize=False) for j in target):
+                if any(bus.read('Status', j, normalize=False) for j in JOINTS):
                     raise RuntimeError('Motor reported a fault')
                 bus.sync_write('Goal_Position', command)
                 if fraction == 1:
