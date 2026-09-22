@@ -1,0 +1,17 @@
+{
+  "ik.py": {
+    "source": "ArmFarm_Config/deliverables/ik.py",
+    "sha256": "177c8d56045540020d8a8d91d714a083a3a2be4c6513f54d2087d7537eaed6e0",
+    "crlf_count": 92
+  },
+  "fk.py": {
+    "source": "ArmFarm_Config/deliverables/fk.py",
+    "sha256": "0293db07dc38b6d2525cc13ada4458a49bbe36dd28b96402487aebaff84da11d",
+    "crlf_count": 104
+  },
+  "calibrate_workspace.py": {
+    "source": "ArmFarm_Config/deliverables/calibrate_workspace.py",
+    "sha256": "a23f45e88e60b1535c50b262cb725d96d81091417cef5b384e3d02784b9182ff",
+    "crlf_count": 2391
+  }
+}
