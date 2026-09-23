@@ -28,7 +28,8 @@ GRASP_Z = TABLE_Z + 0.012  # fingertip height while closing on the ~4 cm cube
 HOVER_Z = 0.10
 TRANSIT_Z = 0.15
 PLACE_Z = GRASP_Z + 0.008
-SERVO_Z = TABLE_Z + 0.088   # fingertip height for wrist-camera servoing
+SERVO_Z = TABLE_Z + 0.088
+SERVO_LOW = TABLE_Z + 0.050  # final servo height: tips just above the cube top   # fingertip height for wrist-camera servoing
 ROLL_NEUTRAL = 21.4
 ROLL_RANGE = (-50., 95.)
 GRIP_OPEN = 80.
@@ -156,36 +157,40 @@ class Runner:
         arm.gripper(GRIP_OPEN, seconds=0.5)
         travel(arm, hover)
         arm.move_precise(servo_j, speed_dps=45)
-        if self.servo.J is None:
-            log("calibrating wrist-camera Jacobian")
-            J = self.servo.calibrate(arm, servo_j, SERVO_Z, roll, tilt, ik_reach, debug_dir=str(IMG_DIR))
-            log(f"Jacobian px/m: {J.round(0).tolist()}")
         cx, cy = x, y
         converged = False
-        for it in range(6):
-            time.sleep(0.35)
-            img = cp.snap("wrist", IMG_DIR / f"servo{it}.jpg")
-            c = cs.detect_cube_wrist(img, debug_path=IMG_DIR / f"servo{it}_det.jpg")
-            if not c:
-                notes.append(f"servo{it}: cube not in wrist view")
-                log("servo: cube not visible in wrist camera")
-                break
-            d, err_px = self.servo.step(servo_j, c["px"])
-            log(f"servo{it}: cube px={np.round(c['px'])} err={err_px:.0f}px move=({d[0]*1000:.0f},{d[1]*1000:.0f})mm")
-            if err_px < 20:
-                converged = True
-                break
-            cx, cy = cx + float(d[0]), cy + float(d[1])
-            try:
-                servo_j, _ = ik_reach(cx, cy, SERVO_Z, roll, tilt_start=tilt)
-            except ValueError as e:
-                notes.append(f"servo: {e}")
-                break
-            arm.move_precise(servo_j, speed_dps=30)
+        for stage, z in enumerate((SERVO_Z, SERVO_LOW)):
+            if stage > 0:
+                servo_j, _ = ik_reach(cx, cy, z, roll, tilt_start=tilt)
+                arm.move_precise(servo_j, speed_dps=30)
+            if not self.servo.has(z):
+                log(f"calibrating wrist-camera Jacobian at z={z:.3f}")
+                J = self.servo.calibrate(arm, servo_j, z, roll, tilt, ik_reach, debug_dir=str(IMG_DIR))
+                log(f"Jacobian px/m: {J.round(0).tolist()}")
+            converged = False
+            for it in range(6):
+                time.sleep(0.35)
+                img = cp.snap("wrist", IMG_DIR / f"servo{stage}_{it}.jpg")
+                c = cs.detect_cube_wrist(img, debug_path=IMG_DIR / f"servo{stage}_{it}_det.jpg")
+                if not c:
+                    notes.append(f"servo{stage}.{it}: cube not in wrist view")
+                    log("servo: cube not visible in wrist camera")
+                    break
+                d, err_px = self.servo.step(servo_j, c["px"], z)
+                log(f"servo{stage}.{it}: cube px={np.round(c['px'])} err={err_px:.0f}px move=({d[0]*1000:.0f},{d[1]*1000:.0f})mm")
+                if err_px < 20:
+                    converged = True
+                    break
+                cx, cy = cx + float(d[0]), cy + float(d[1])
+                try:
+                    servo_j, _ = ik_reach(cx, cy, z, roll, tilt_start=tilt)
+                except ValueError as e:
+                    notes.append(f"servo: {e}")
+                    break
+                arm.move_precise(servo_j, speed_dps=30)
         notes.append(f"servo_final=({cx:.3f},{cy:.3f}) converged={converged}")
         pre, _ = ik_reach(cx, cy, GRASP_Z + 0.03, roll, tilt_start=tilt)
         grasp, _ = ik_reach(cx, cy, GRASP_Z, roll, tilt_start=tilt)
-        arm.move_precise(pre, speed_dps=35)
         now = arm.move_precise(grasp, speed_dps=25)
         fk = cp.fk_xyz(now)
         notes.append(f"grasp_fk=({fk[0]:.3f},{fk[1]:.3f},{fk[2]:.3f})")

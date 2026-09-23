@@ -52,18 +52,23 @@ def detect_cube_wrist(img, dark_thresh=60, min_area=6000, max_area=400000, debug
 
 class WristServo:
     def __init__(self):
-        self.J = None           # 2x2: tool-frame displacement (m) -> pixel shift (du, dv)
+        self.J = {}             # height key -> 2x2: tool-frame displacement (m) -> pixel shift (du, dv)
         self.target = (600., 480.)
-        self.z_servo = None
         if SERVO_FILE.exists():
             d = json.loads(SERVO_FILE.read_text())
-            self.J = np.array(d["J"]) if d.get("J") else None
+            self.J = {k: np.array(v) for k, v in d.get("J", {}).items()}
             self.target = tuple(d.get("target", self.target))
-            self.z_servo = d.get("z_servo")
+
+    @staticmethod
+    def key(z):
+        return f"{z:.3f}"
+
+    def has(self, z):
+        return self.key(z) in self.J
 
     def save(self):
-        SERVO_FILE.write_text(json.dumps({"J": None if self.J is None else self.J.tolist(),
-                                          "target": list(self.target), "z_servo": self.z_servo}, indent=1))
+        SERVO_FILE.write_text(json.dumps({"J": {k: v.tolist() for k, v in self.J.items()},
+                                          "target": list(self.target)}, indent=1))
 
     @staticmethod
     def tool_axes_xy(joints):
@@ -92,15 +97,15 @@ class WristServo:
                 raise RuntimeError("cube lost during Jacobian calibration")
             cols.append([(c["px"][0] - c0["px"][0]) / step, (c["px"][1] - c0["px"][1]) / step])
             arm.move_precise(joints, speed_dps=30)
-        self.J = np.array(cols).T   # columns: tool x, tool y
-        self.z_servo = z
+        J = np.array(cols).T   # columns: tool x, tool y
+        self.J[self.key(z)] = J
         self.save()
-        return self.J
+        return J
 
-    def step(self, joints, cube_px, gain=0.8, max_step=0.03):
+    def step(self, joints, cube_px, z, gain=0.8, max_step=0.03):
         """Return (dx, dy) world displacement to move the cube toward the target spot."""
         err = np.array([self.target[0] - cube_px[0], self.target[1] - cube_px[1]])
-        d_tool = np.linalg.solve(self.J, err) * gain
+        d_tool = np.linalg.solve(self.J[self.key(z)], err) * gain
         norm = np.linalg.norm(d_tool)
         if norm > max_step:
             d_tool *= max_step / norm
