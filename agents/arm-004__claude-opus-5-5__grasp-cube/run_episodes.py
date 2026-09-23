@@ -12,7 +12,8 @@ LOG = HERE / 'episodes.jsonl'
 TASK = 'pick up the black cube and bring it to home'
 # Placement grid covering the reachable top-down zone
 # -y side (image left) is shared with the neighbouring arm: keep clear of it
-GRID = [(a, r) for r in (0.155, 0.18, 0.205) for a in (-35, -15, 5, 25, 45, 62)]
+GRID = [(a, r) for r in (0.155, 0.18, 0.205) for a in (-35, -18, 0, 17, 34, 50)]
+MAX_ANG = 55.0   # cubes beyond this heading are swept back round (grasps unreliable there)
 MIN_R = 0.115    # cubes closer than this are pushed out before an episode
 MIN_PX_X = 430   # top-image x; cubes left of this belong to the neighbour's area
 REACH = 0.215
@@ -103,6 +104,11 @@ def reachable_prep(b):
                 if math.hypot(p0[0] - SX, p0[1]) >= 0.085:
                     break
             grasp.push_line(b, p0, np.array([cx, cy]) + 0.07 * d, log=log)
+            arm.home(b); time.sleep(0.4)
+            continue
+        ang_d = math.degrees(math.atan2(cy, cx - SX))
+        if ang_d > MAX_ANG and r <= REACH + 0.02:
+            grasp.sweep_arc(b, r, ang_d + 30, ang_d - 35, log=log)
             arm.home(b); time.sleep(0.4)
             continue
         if r <= REACH:
