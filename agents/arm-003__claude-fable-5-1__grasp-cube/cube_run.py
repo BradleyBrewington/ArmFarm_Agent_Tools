@@ -31,6 +31,7 @@ PLACE_Z = GRASP_Z + 0.008
 SERVO_Z = TABLE_Z + 0.088
 LOW_GAP_PX = 12           # desired pixel gap between cube right edge and fixed jaw at SERVO_LOW
 LOW_SCALE = 1.5           # wrist-camera Jacobian magnification at SERVO_LOW relative to SERVO_Z
+MID_RIGHT = 770.          # desired cube right edge (px) at GRASP_Z+0.024, just above the cube top
 LOW_V = 400.              # desired cube centroid row at SERVO_LOW (jaw-tip depth)
 SERVO_LOW = TABLE_Z + 0.050  # final servo height: tips just above the cube top   # fingertip height for wrist-camera servoing
 ROLL_NEUTRAL = -30.       # wrist roll hard stop measured at +22 deg; free to at least -110
@@ -204,7 +205,7 @@ class Runner:
         arm.move_precise(low, speed_dps=30)
         # final alignment at the low height: cube's near edge close to the fixed jaw (u) and at jaw-tip depth (v)
         J_low = np.diag([1.0, 0.6]) @ (self.servo.J[self.servo.key(SERVO_Z)] * LOW_SCALE)
-        for it in range(4):
+        for it in range(5):
             time.sleep(0.3)
             limg = cp.snap("wrist", IMG_DIR / f"low_wrist{it}.jpg")
             lc = cs.detect_cube_wrist(limg, debug_path=IMG_DIR / f"low_wrist{it}_det.jpg")
@@ -214,9 +215,9 @@ class Runner:
             bx, by, bw, bh = lc["bbox"]
             err = np.array([(cs.JAW_U - LOW_GAP_PX) - (bx + bw), LOW_V - lc["px"][1]])
             log(f"low{it}: cube right={bx+bw} v={lc['px'][1]:.0f} err=({err[0]:.0f},{err[1]:.0f})px")
-            if abs(err[0]) < 15 and abs(err[1]) < 25:
+            if abs(err[0]) < 12 and abs(err[1]) < 25:
                 break
-            d_tool = np.linalg.solve(J_low, err) * 0.8
+            d_tool = np.linalg.solve(J_low, err) * 0.55
             n = np.linalg.norm(d_tool)
             if n > 0.025:
                 d_tool *= 0.025 / n
@@ -236,6 +237,16 @@ class Runner:
             dimg = cp.snap("wrist", IMG_DIR / f"descent{k}.jpg")
             dc = cs.detect_cube_wrist(dimg)
             log(f"descent z={zz:.3f}: cube {'px=%s right=%d' % (np.round(dc['px']), dc['bbox'][0]+dc['bbox'][2]) if dc else 'not detected'}")
+            if k == 0 and dc:
+                # just above the cube top: pull the fixed jaw up against the cube along the closing axis
+                right = dc["bbox"][0] + dc["bbox"][2]
+                if abs(right - MID_RIGHT) > 22:
+                    d_tool = float(np.clip((MID_RIGHT - right) / 3200., -0.015, 0.015))
+                    tx, _ = self.servo.tool_axes_xy(arm.read())
+                    cx, cy = cx + d_tool * tx[0], cy + d_tool * tx[1]
+                    log(f"descent fix: right={right} -> move {d_tool*1000:.0f}mm along closing axis")
+                    jz, _ = ik_reach(cx, cy, zz, roll, tilt_start=tilt)
+                    arm.move_precise(jz, speed_dps=20)
         grasp, _ = ik_reach(cx, cy, GRASP_Z, roll, tilt_start=tilt)
         now = arm.move_precise(grasp, speed_dps=25)
         fk = cp.fk_xyz(now)

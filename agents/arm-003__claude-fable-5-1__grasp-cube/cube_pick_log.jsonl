@@ -243,3 +243,8 @@
 {"t": 1790183954.7508357, "kind": "log", "msg": "after place: cube px=[526. 458.] predicted=[504. 483.] d=33px"}
 {"t": 1790183954.7515268, "kind": "log", "msg": "map updated: 7 pairs, mean residual 7.8 mm, A=[[-0.1252, 0.6573, 0.2392], [0.8381, 0.0105, -0.0235]]"}
 {"t": 1790183954.7539573, "kind": "log", "msg": "episode done success=True dur=109s  totals: 2/7 successes"}
+{"t": 1790184059.213335, "kind": "log", "msg": "cube at px=[526. 458.] robot=[ 0.304 -0.078] yaw=-93 size=[0.038 0.035]"}
+{"t": 1790184059.2262692, "kind": "log", "msg": "recording started: {'episode': '20260923T122059-21837654'}"}
+{"t": 1790184072.450009, "kind": "log", "msg": "servo0.0: cube px=[541. 375.] err=74px move=(2,-19)mm"}
+{"t": 1790184079.7486305, "kind": "log", "msg": "servo0.1: cube px=[461. 431.] err=47px move=(7,9)mm"}
+{"t": 1790184085.4591799, "kind": "log", "msg": "servo0.2: cube px=[517. 430.] err=14px move=(-0,-4)mm"}
