@@ -187,6 +187,34 @@
    "recorded": true,
    "folder": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T122552-e4764656",
    "info": {}
+  },
+  {
+   "t": 1790184570.6412008,
+   "dur": 34.10983443260193,
+   "success": false,
+   "notes": [
+    "target=(0.359,-0.140) yaw=114 roll=-36 tilt=30",
+    "servo: correction exceeded safety bounds; aborting servo",
+    "servo_final=(0.359,-0.140) converged=False",
+    "error: ValueError('unreachable (0.387,-0.164,0.024): IK failed for [0.3874, -0.1636, 0.024]: pos_err=2.2mm axis_err=2.6deg')"
+   ],
+   "recorded": true,
+   "folder": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T122932-bf60fbe4",
+   "info": {}
+  },
+  {
+   "t": 1790184604.7516959,
+   "dur": 36.58889150619507,
+   "success": false,
+   "notes": [
+    "target=(0.363,-0.156) yaw=-111 roll=-77 tilt=40",
+    "servo: correction exceeded safety bounds; aborting servo",
+    "servo_final=(0.363,-0.156) converged=False",
+    "error: ValueError('unreachable (0.388,-0.173,0.024): IK failed for [0.3876, -0.1729, 0.024]: pos_err=2.3mm axis_err=2.8deg')"
+   ],
+   "recorded": true,
+   "folder": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T123006-adbe02fc",
+   "info": {}
   }
  ],
  "place_idx": 0,
