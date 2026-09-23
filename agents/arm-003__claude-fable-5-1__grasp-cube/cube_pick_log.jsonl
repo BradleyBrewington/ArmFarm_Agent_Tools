@@ -167,3 +167,7 @@
 {"t": 1790183423.3153589, "kind": "log", "msg": "recording started: {'episode': '20260923T121023-bd085e7b'}"}
 {"t": 1790183432.736087, "kind": "log", "msg": "servo0.0: cube px=[580. 343.] err=121px move=(4,-30)mm"}
 {"t": 1790183438.4253607, "kind": "log", "msg": "servo0.1: cube px=[468. 436.] err=39px move=(5,8)mm"}
+{"t": 1790183535.4635022, "kind": "log", "msg": "cube at px=[566. 402.] robot=[ 0.27  -0.054] yaw=-84 size=[0.037 0.034]"}
+{"t": 1790183535.4742656, "kind": "log", "msg": "recording started: {'episode': '20260923T121215-c0a1abf2'}"}
+{"t": 1790183585.443801, "kind": "log", "msg": "cube at px=[566. 402.] robot=[ 0.27  -0.054] yaw=-84 size=[0.037 0.034]"}
+{"t": 1790183585.4578388, "kind": "log", "msg": "recording started: {'episode': '20260923T121305-db2782f8'}"}
