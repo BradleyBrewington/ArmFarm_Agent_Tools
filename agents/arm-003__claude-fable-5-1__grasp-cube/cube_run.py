@@ -43,6 +43,13 @@ ROLL_RANGE = (-95., 12.)
 GRIP_OPEN = 95.
 GRIP_CLOSED = 0.
 GRIP_HOLD_MIN = 6.        # gripper % above which something is between the jaws
+# Servo gains.  Jacobians in wrist_servo.json were refitted from ~300 logged steps on 2026-09-23;
+# with the old (2x too small along tool-x) Jacobian, gain 0.65 oscillated for 5-6 iterations.
+SERVO_GAIN = 0.8
+LOW_GAIN = 0.75
+MID_GAIN = 0.7
+FAST = 70.                # dps for transit moves
+SERVO_SPEED = 45.         # dps for servo correction moves
 IMG_DIR = Path("/tmp/cube_run")
 IMG_DIR.mkdir(exist_ok=True)
 
@@ -98,7 +105,7 @@ def path_min_z(a, b, n=25):
     return min(zs)
 
 
-def travel(arm, target, speed=55., precise=False):
+def travel(arm, target, speed=FAST, precise=False):
     """Joint-space move, inserting a lifted waypoint if the straight path would dip near the table."""
     cur = arm.read()
     if path_min_z(cur, target) < TABLE_Z + 0.045:
@@ -169,7 +176,7 @@ class Runner:
         notes.append(f"target=({x:.3f},{y:.3f}) yaw={pose['yaw']:.0f} roll={roll:.0f} tilt={tilt:.0f}")
         arm.gripper(GRIP_OPEN, seconds=0.5)
         travel(arm, hover)
-        arm.move_precise(servo_j, speed_dps=45)
+        arm.move_precise(servo_j, speed_dps=60)
         cx, cy = x, y
         converged = False
         for stage, z in enumerate((SERVO_Z,)):
@@ -189,7 +196,7 @@ class Runner:
                     notes.append(f"servo{stage}.{it}: cube not in wrist view")
                     log("servo: cube not visible in wrist camera")
                     break
-                d, err_px = self.servo.step(arm.read(), c["px"], z, gain=0.65)
+                d, err_px = self.servo.step(arm.read(), c["px"], z, gain=SERVO_GAIN)
                 log(f"servo{stage}.{it}: cube px={np.round(c['px'])} err={err_px:.0f}px move=({d[0]*1000:.0f},{d[1]*1000:.0f})mm")
                 if err_px < 20:
                     converged = True
@@ -206,7 +213,7 @@ class Runner:
                 except ValueError as e:
                     notes.append(f"servo: {e}")
                     break
-                arm.move_precise(servo_j, speed_dps=30)
+                arm.move_precise(servo_j, speed_dps=SERVO_SPEED)
         notes.append(f"servo_final=({cx:.3f},{cy:.3f}) converged={converged}")
         # align jaw closing direction with the cube faces using the wrist-camera rectangle angle
         def img_delta():
@@ -252,18 +259,21 @@ class Runner:
                 c = cs.detect_cube_wrist(cp.snap("wrist"))
                 if not c:
                     break
-                d, err_px = self.servo.step(arm.read(), c["px"], SERVO_Z, gain=0.65)
+                d, err_px = self.servo.step(arm.read(), c["px"], SERVO_Z, gain=SERVO_GAIN)
                 if err_px < 20:
                     break
                 cx, cy = cx + float(d[0]), cy + float(d[1])
                 servo_j, _ = ik_reach(cx, cy, SERVO_Z, roll, tilt_start=tilt)
-                arm.move_precise(servo_j, speed_dps=30)
+                arm.move_precise(servo_j, speed_dps=SERVO_SPEED)
         low, _ = ik_reach(cx, cy, SERVO_LOW, roll, tilt_start=tilt)
         pre, _ = ik_reach(cx, cy, GRASP_Z + 0.03, roll, tilt_start=tilt)
         grasp, _ = ik_reach(cx, cy, GRASP_Z, roll, tilt_start=tilt)
-        arm.move_precise(low, speed_dps=30)
+        arm.move_precise(low, speed_dps=SERVO_SPEED)
         # final alignment: align at SERVO_LOW, then verify just above the cube top and retry if off
-        J_low = np.diag([1.0, 0.6]) @ (self.servo.J[self.servo.key(SERVO_Z)] * LOW_SCALE)
+        if self.servo.J_low is not None:
+            J_low = self.servo.J_low   # fitted from logged low-loop steps (2026-09-23)
+        else:
+            J_low = np.diag([1.0, 0.6]) @ (self.servo.J[self.servo.key(SERVO_Z)] * LOW_SCALE)
         low_v = LOW_V + LOW_V_PER_TILT * tilt
         z_mid = GRASP_Z + 0.024
         ok = False
@@ -280,7 +290,7 @@ class Runner:
                 log(f"low{attempt}.{it}: cube right={bx+bw} v={lc['px'][1]:.0f} err=({err[0]:.0f},{err[1]:.0f})px")
                 if abs(err[0]) < 12 and abs(err[1]) < 25:
                     break
-                d_tool = np.linalg.solve(J_low, err) * 0.55
+                d_tool = np.linalg.solve(J_low, err) * LOW_GAIN
                 n = np.linalg.norm(d_tool)
                 if n > 0.025:
                     d_tool *= 0.025 / n
@@ -291,10 +301,10 @@ class Runner:
                     notes.append("low: correction exceeded bounds")
                     break
                 low, _ = ik_reach(cx, cy, SERVO_LOW, roll, tilt_start=tilt)
-                arm.move_precise(low, speed_dps=25)
+                arm.move_precise(low, speed_dps=40)
             # verify just above the cube top
             jz, _ = ik_reach(cx, cy, z_mid, roll, tilt_start=tilt)
-            arm.move_precise(jz, speed_dps=25)
+            arm.move_precise(jz, speed_dps=40)
             time.sleep(0.3)
             dimg = cp.snap("wrist", IMG_DIR / f"mid{attempt}.jpg")
             dc = cs.detect_cube_wrist(dimg, debug_path=IMG_DIR / f"mid{attempt}_det.jpg")
@@ -308,7 +318,7 @@ class Runner:
             if abs(err[0]) <= 28 and abs(err[1]) <= 60:
                 ok = True
                 break
-            d_tool = np.linalg.solve(J_low, err) * 0.4
+            d_tool = np.linalg.solve(J_low, err) * MID_GAIN
             n = np.linalg.norm(d_tool)
             if n > 0.02:
                 d_tool *= 0.02 / n
@@ -320,10 +330,10 @@ class Runner:
                 break
             # lift just above the cube top, shift, and re-verify (skip the low re-alignment)
             up, _ = ik_reach(cx, cy, z_mid + 0.02, roll, tilt_start=tilt)
-            arm.move_precise(up, speed_dps=25)
+            arm.move_precise(up, speed_dps=40)
         notes.append(f"mid_ok={ok}")
         grasp, _ = ik_reach(cx, cy, GRASP_Z, roll, tilt_start=tilt)
-        now = arm.move_precise(grasp, speed_dps=25)
+        now = arm.move_precise(grasp, speed_dps=35)
         fk = cp.fk_xyz(now)
         notes.append(f"grasp_fk=({fk[0]:.3f},{fk[1]:.3f},{fk[2]:.3f})")
         cp.snap("wrist", IMG_DIR / "grasp_wrist.jpg")
@@ -339,8 +349,8 @@ class Runner:
             arm.command({"gripper": max(GRIP_CLOSED, gpos - 6.)})
             time.sleep(0.2)
         cp.snap("wrist", IMG_DIR / "closed_wrist.jpg")
-        arm.move_precise(pre, speed_dps=30)
-        arm.move_arm(hover, speed_dps=45)
+        arm.move_arm(pre, speed_dps=40)
+        arm.move_arm(hover, speed_dps=FAST)
         gpos2, _ = arm.gripper_state()
         notes.append(f"grip_pos_lifted={gpos2:.1f}")
         return held and gpos2 > GRIP_HOLD_MIN, hover
@@ -428,13 +438,13 @@ class Runner:
         pre, _ = ik_reach(x, y, PLACE_Z + 0.03, roll, tilt_start=tilt)
         hover = hover_pose(x, y, roll, tilt)
         travel(arm, hover)
-        arm.move_precise(pre, speed_dps=45)
-        now = arm.move_precise(joints, speed_dps=30)
+        arm.move_arm(pre, speed_dps=60)
+        now = arm.move_precise(joints, speed_dps=40)
         fk = cp.fk_xyz(now)
         arm.gripper(GRIP_OPEN * 0.8, seconds=0.6)
-        arm.move_arm(pre, speed_dps=30)
-        arm.move_arm(hover, speed_dps=45)
-        arm.gripper(GRIP_CLOSED, seconds=0.5)
+        arm.move_arm(pre, speed_dps=50)
+        arm.move_arm(hover, speed_dps=FAST)
+        arm.gripper(GRIP_CLOSED, seconds=0.4, settle=0.2)
         arm.home()
         notes.append(f"placed_at=({fk[0]:.3f},{fk[1]:.3f})")
         # learn: where did the cube land?

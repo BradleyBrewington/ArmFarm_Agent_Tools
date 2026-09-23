@@ -68,11 +68,15 @@ class WristServo:
         self.J = {}             # height key -> 2x2: tool-frame displacement (m) -> pixel shift (du, dv)
         self.target = {}        # height key -> (u, v) where the cube should appear before descending
         self.roll_sign = 0.     # +1/-1 once learned: roll change per image-angle change
+        self.J_low = None       # 2x2 Jacobian for the low (jaw-tip) alignment loop, fitted from logs
+        self.extra = {}
         if SERVO_FILE.exists():
             d = json.loads(SERVO_FILE.read_text())
             self.J = {k: np.array(v) for k, v in d.get("J", {}).items()}
             self.target = {k: tuple(v) for k, v in d.get("target", {}).items()}
             self.roll_sign = float(d.get("roll_sign", 0.))
+            self.J_low = np.array(d["J_low"]) if "J_low" in d else None
+            self.extra = {k: v for k, v in d.items() if k not in ("J", "target", "roll_sign", "J_low")}
 
     @staticmethod
     def key(z):
@@ -82,9 +86,13 @@ class WristServo:
         return self.key(z) in self.J
 
     def save(self):
-        SERVO_FILE.write_text(json.dumps({"J": {k: v.tolist() for k, v in self.J.items()},
-                                          "target": {k: list(v) for k, v in self.target.items()},
-                                          "roll_sign": self.roll_sign}, indent=1))
+        d = dict(self.extra)
+        d.update({"J": {k: v.tolist() for k, v in self.J.items()},
+                  "target": {k: list(v) for k, v in self.target.items()},
+                  "roll_sign": self.roll_sign})
+        if self.J_low is not None:
+            d["J_low"] = np.asarray(self.J_low).tolist()
+        SERVO_FILE.write_text(json.dumps(d, indent=1))
 
     @staticmethod
     def tool_axes_xy(joints):

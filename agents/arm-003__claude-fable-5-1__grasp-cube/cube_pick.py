@@ -266,15 +266,20 @@ class Arm:
             time.sleep(0.02)
         if not wait:
             return None
-        deadline = time.monotonic() + max(settle, 0.2) + 1.5
+        deadline = time.monotonic() + max(settle, 0.2) + 1.0
+        last = None
         while True:
             time.sleep(0.05)
             now = self.bus.sync_read("Present_Position", list(target))
             err = {j: abs(now[j] - target[j]) for j in target if j != "gripper"}
-            if all(e < tol for e in err.values()) and time.monotonic() > t0 + seconds + settle:
+            # done when settled and either on target or no longer moving (steady-state sag is
+            # corrected by move_precise, not by waiting here)
+            stable = last is not None and all(abs(now[j] - last[j]) < 0.4 for j in err)
+            if time.monotonic() > t0 + seconds + settle and (stable or all(e < tol for e in err.values())):
                 return now
             if time.monotonic() > deadline:
                 return now
+            last = now
 
     def move_arm(self, joints, **kw):
         return self.move({j: joints[j] for j in ARM_JOINTS if j in joints}, **kw)
@@ -290,7 +295,7 @@ class Arm:
                 break
             cmd = {j: cmd[j] + 0.8 * err[j] for j in tgt}
             cmd = cw.clamp_target(cmd, self.bus.calibration)
-            now = self.move_arm(cmd, seconds=0.4, settle=0.35)
+            now = self.move_arm(cmd, seconds=0.3, settle=0.25)
         return now
 
     def gripper(self, percent, seconds=0.6, settle=0.4):

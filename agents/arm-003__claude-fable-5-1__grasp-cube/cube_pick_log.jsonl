@@ -2037,3 +2037,15 @@
 {"t": 1790194565.4889529, "kind": "log", "msg": "mid0: right=788 v=475 err=(-18,-35)px"}
 {"t": 1790194568.55149, "kind": "log", "msg": "gripper after close: pos=22.4 load=500"}
 {"t": 1790194728.4688597, "kind": "log", "msg": "after place: cube px=[569. 422.] predicted=[732. 337.] d=184px"}
+{"t": 1790194845.8893032, "kind": "log", "msg": "cube at px=[569. 422.] robot=[ 0.277 -0.06 ] yaw=-148 size=[0.049 0.039]"}
+{"t": 1790194851.562705, "kind": "log", "msg": "servo0.0: cube px=[636. 294.] err=195px move=(27,-6)mm"}
+{"t": 1790194853.3270826, "kind": "log", "msg": "servo0.1: cube px=[507. 412.] err=28px move=(4,2)mm"}
+{"t": 1790194855.107973, "kind": "log", "msg": "servo0.2: cube px=[504. 431.] err=9px move=(1,1)mm"}
+{"t": 1790194857.4228158, "kind": "log", "msg": "low0.0: cube right=650 v=524 err=(50,-124)px"}
+{"t": 1790194859.055539, "kind": "log", "msg": "low0.1: cube right=713 v=442 err=(-13,-42)px"}
+{"t": 1790194860.6966352, "kind": "log", "msg": "low0.2: cube right=691 v=403 err=(9,-3)px"}
+{"t": 1790194862.890445, "kind": "log", "msg": "mid0: right=743 v=488 err=(27,-48)px"}
+{"t": 1790194865.7332172, "kind": "log", "msg": "gripper after close: pos=23.1 load=500"}
+{"t": 1790194867.3904266, "kind": "log", "msg": "grasp held=True"}
+{"t": 1790194870.641924, "kind": "log", "msg": "home: grip=22.5 load=200 wrist_dark=0.89 still_on_table=False home_err={'shoulder_pan': 0.4, 'shoulder_lift': 1.1, 'elbow_flex': 0.3, 'wrist_flex': 1.7}"}
+{"t": 1790194870.6618278, "kind": "log", "msg": "placing at (0.27, -0.08)"}
