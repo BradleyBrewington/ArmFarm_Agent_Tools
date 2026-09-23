@@ -356,3 +356,12 @@
 {"t": 1790184847.01911, "kind": "log", "msg": "after rake: cube robot=[ 0.329 -0.13 ]"}
 {"t": 1790184847.0290024, "kind": "log", "msg": "recording started: {'episode': '20260923T123407-268f8841'}"}
 {"t": 1790184860.0240307, "kind": "log", "msg": "servo0.0: cube px=[585. 314.] err=148px move=(19,-24)mm"}
+{"t": 1790184864.3495343, "kind": "log", "msg": "servo0.1: cube px=[454. 431.] err=54px move=(0,10)mm"}
+{"t": 1790184871.7237477, "kind": "log", "msg": "servo0.2: cube px=[493. 462.] err=26px move=(-3,5)mm"}
+{"t": 1790184877.023102, "kind": "log", "msg": "servo0.3: cube px=[529. 439.] err=22px move=(1,-5)mm"}
+{"t": 1790184884.368329, "kind": "log", "msg": "servo0.4: cube px=[502. 430.] err=11px move=(1,0)mm"}
+{"t": 1790184890.0640159, "kind": "log", "msg": "low0.0: cube right=712 v=453 err=(-12,-3)px"}
+{"t": 1790184895.8578718, "kind": "log", "msg": "low0.1: cube right=771 v=397 err=(-71,53)px"}
+{"t": 1790184904.2153323, "kind": "log", "msg": "low0.2: cube right=642 v=474 err=(58,-24)px"}
+{"t": 1790184909.8696244, "kind": "log", "msg": "low0.3: cube right=688 v=472 err=(12,-22)px"}
+{"t": 1790184921.0979087, "kind": "log", "msg": "mid0: right=786 v=420 err=(-16,50)px"}
