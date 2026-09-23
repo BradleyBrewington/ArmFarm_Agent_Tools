@@ -1878,3 +1878,23 @@
 {"t": 1790193556.556833, "kind": "log", "msg": "low0.0: cube right=631 v=529 err=(69,-129)px"}
 {"t": 1790193561.4938214, "kind": "log", "msg": "low0.1: cube right=760 v=456 err=(-60,-56)px"}
 {"t": 1790193566.3755069, "kind": "log", "msg": "low0.2: cube right=735 v=423 err=(-35,-23)px"}
+{"t": 1790193572.0578685, "kind": "log", "msg": "low0.3: cube right=699 v=416 err=(1,-16)px"}
+{"t": 1790193573.9137392, "kind": "log", "msg": "mid0: right=711 v=467 err=(59,-27)px"}
+{"t": 1790193582.5988188, "kind": "log", "msg": "mid1: right=797 v=436 err=(-27,4)px"}
+{"t": 1790193585.7001145, "kind": "log", "msg": "gripper after close: pos=23.9 load=500"}
+{"t": 1790193593.3033705, "kind": "log", "msg": "grasp held=True"}
+{"t": 1790193595.7302375, "kind": "log", "msg": "home: grip=22.6 load=200 wrist_dark=0.88 still_on_table=False home_err={'shoulder_pan': -0.6, 'shoulder_lift': 1.1, 'elbow_flex': 0.2, 'wrist_flex': 1.7}"}
+{"t": 1790193595.8547552, "kind": "log", "msg": "recording stopped success=True: {\"episode\": \"20260923T145836-c548c7c7\", \"folder\": \"/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T145836-c548c7c7\", \"frames\": 1119, \"quality_flags\": [], \"training_ready\": true, \"success\": true, \"notes\": \"target=(0.210,0.038) yaw=-166 roll=-54 tilt=0; servo_final=(0.231,0.036) converged=True; roll_after_yaw_fix=-46; mid_ok=True; grasp_fk=(0.199,0.046,-0.013); grip_pos=23.9 load=500; "}
+{"t": 1790193595.8674543, "kind": "log", "msg": "placing at (0.19, -0.14)"}
+{"t": 1790193611.6125507, "kind": "log", "msg": "after place: cube px=[448. 283.] predicted=[436. 278.] d=12px"}
+{"t": 1790193611.615154, "kind": "log", "msg": "map updated: 78 pairs, mean residual 11.6 mm, A=[[-0.0129, 0.9326, 0.2188], [0.8251, 0.0532, -0.0279]]"}
+{"t": 1790193611.6166193, "kind": "log", "msg": "episode done success=True dur=97s  totals: 74/90 successes"}
+{"t": 1790193613.6128187, "kind": "log", "msg": "cube at px=[448. 283.] robot=[ 0.192 -0.134] yaw=-177 size=[0.042 0.056]"}
+{"t": 1790193613.6259725, "kind": "log", "msg": "recording started: {'episode': '20260923T150013-ac45b80d'}"}
+{"t": 1790193623.0319085, "kind": "log", "msg": "servo0.0: cube px=[617. 265.] err=206px move=(19,-23)mm"}
+{"t": 1790193628.451269, "kind": "log", "msg": "servo0.1: cube px=[477. 369.] err=77px move=(9,1)mm"}
+{"t": 1790193635.6914594, "kind": "log", "msg": "servo0.2: cube px=[485. 412.] err=36px move=(3,3)mm"}
+{"t": 1790193641.4157693, "kind": "log", "msg": "servo0.3: cube px=[516. 415.] err=26px move=(4,-3)mm"}
+{"t": 1790193648.6031957, "kind": "log", "msg": "servo0.4: cube px=[487. 442.] err=20px move=(-1,4)mm"}
+{"t": 1790193655.803863, "kind": "log", "msg": "servo0.5: cube px=[506. 432.] err=8px move=(1,-0)mm"}
+{"t": 1790193658.8128288, "kind": "log", "msg": "low0.0: cube right=658 v=540 err=(42,-140)px"}
