@@ -121,6 +121,23 @@
     "wrist_dark": 0.9034621212121212,
     "still_on_table": false
    }
+  },
+  {
+   "t": 1790184057.2184412,
+   "dur": 68.09878301620483,
+   "success": false,
+   "notes": [
+    "target=(0.304,-0.078) yaw=-93 roll=-73 tilt=10",
+    "servo_final=(0.312,-0.089) converged=True",
+    "low: cube not in wrist view",
+    "grasp_fk=(0.305,-0.072,-0.018)",
+    "grip_pos=0.6 load=48",
+    "grip_pos_lifted=0.5",
+    "gripper closed empty; no grasp"
+   ],
+   "recorded": true,
+   "folder": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T122059-21837654",
+   "info": {}
   }
  ],
  "place_idx": 0,
