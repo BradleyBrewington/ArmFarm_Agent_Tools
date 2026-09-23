@@ -1,0 +1,41 @@
+{
+  "timestamp": 1790203065.6467204,
+  "observation": {
+    "time": 1790203036.4065979,
+    "joints": {
+      "shoulder_pan": -18.285714285714285,
+      "shoulder_lift": 19.032967032967033,
+      "elbow_flex": 11.384615384615385,
+      "wrist_flex": 78.32967032967034,
+      "wrist_roll": 62.54945054945055,
+      "gripper": 1.8815331010452963
+    },
+    "estimated_tool_xyz": [
+      0.21458868441989254,
+      0.040723196255518804,
+      -0.010978893361034154
+    ]
+  },
+  "evidence_stem": "tools/mug_observations/1790203034414204389",
+  "recording": false,
+  "home_verified": false,
+  "telemetry_source": "tools/episode_173440_final_recorder_check.json",
+  "torque": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "fault_bits": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "agent_commanded_torque_off": false,
+  "note": "Hands absent in latest paired images; manual pose changed, jaw against mug. No movement commanded after communication loss. This does not establish autonomous grasp support."
+}

@@ -1,5 +1,5 @@
 {
-  "timestamp": 1790201922.7494512,
+  "timestamp": 1790203106.935615,
   "agent_id": "arm-002__gpt-6-astra__exp-grasp-mug-multiagent",
   "received_operator_ids": [
     "cdb9a3cb-34c9-4e71-85a4-4fc9707bdec4",
@@ -8,37 +8,27 @@
   ],
   "task_preserved": true,
   "recording": false,
-  "home_joints_measured": {
-    "shoulder_pan": 12.483516483516484,
-    "shoulder_lift": -91.20879120879121,
-    "elbow_flex": 79.86813186813187,
-    "wrist_flex": 26.813186813186814
+  "home_joints_measured": null,
+  "home_errors_degrees": null,
+  "torque": {
+    "shoulder_pan": 0,
+    "shoulder_lift": 0,
+    "elbow_flex": 0,
+    "wrist_flex": 0,
+    "wrist_roll": 0,
+    "gripper": 0
   },
-  "home_errors_degrees": {
-    "shoulder_pan": -0.5714285714285712,
-    "shoulder_lift": 1.8021978021977958,
-    "elbow_flex": -0.1318681318681314,
-    "wrist_flex": 1.582417582417584
+  "motor_fault_bits": {
+    "shoulder_pan": 0,
+    "shoulder_lift": 0,
+    "elbow_flex": 0,
+    "wrist_flex": 0,
+    "wrist_roll": 0,
+    "gripper": 0
   },
-  "torque": [
-    1,
-    1,
-    1,
-    1,
-    1,
-    1
-  ],
-  "motor_fault_bits": [
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
-  ],
   "cumulative_current_assignment": {
     "successes": 0,
-    "unsuccessful": 15,
+    "unsuccessful": 17,
     "successes_trailing_hour": 0,
     "ratio_requirement_met": false
   },
@@ -2915,12 +2905,13 @@
     "Episode164413: opposite-side approach at roll-24.835 produced projected lower-loop overlap but no supporting grasp. Closure1.8118%/load116 and measured midpoint rise13.25mm left mug on table. Shoulder lift lag reached5.45deg, requiring measured rather than target-based motion assessment.",
     "Home empty-gripper test only. First two +1-degree requests produced no measured motion; third produced0.879deg and2.626mm downward diagnostic midpoint movement. Does not establish loaded/contact behavior or explain every failed grasp. Existing absolute step path still resets requested goals; incremental path avoids that reset.",
     "Episode170552: goal-preserving shoulder increments at approach first had deadband, then measured1.670deg/7.851mm and2.022deg/9.445mm downward response. Pan probes left mug silhouette effectively unchanged; no effective wall contact or yaw established. Actual fingertip depth remains unresolved despite projected overlap.",
-    "Episode171327: rim appeared between inside/outside jaw projections after16.16mm measured midpoint descent. Closure1.8815%/load120;4.2198deg measured wrist rotation produced no visible mug following. Did not establish engagement or evaluate effective tipping. Released without larger action."
+    "Episode171327: rim appeared between inside/outside jaw projections after16.16mm measured midpoint descent. Closure1.8815%/load120;4.2198deg measured wrist rotation produced no visible mug following. Did not establish engagement or evaluate effective tipping. Released without larger action.",
+    "Episode172202: shallower viewpoint made above-lip depth separation visible. Five observed descents moved midpoint about41.62mm down and rim edge upward in wrist view. Rim strip projection during staged closure still failed mechanical engagement;4.747deg wrist rotation did not tilt mug. No force increase or larger tipping action."
   ],
-  "next_hypothesis": "Resolve fingertip-to-rim depth with a changed clear viewpoint and local tip motion before another closure. Rim approach projection alone failed; do not extend the same wrist rotation or replay historical joint poses.",
+  "next_hypothesis": "Establish operator readiness after manual intervention, then recheck fresh views and motor state before torque initialization or recovery.",
   "historical_success_reference": "03e5351425018a23b53da62aa87ca456482686359129db12f6a5690c8088777f:0",
   "peer_success_episode": "20260923T150127-191efa22",
-  "stable_boundary": true,
+  "stable_boundary": false,
   "ledger_retention_note": "First three recordings no longer locally retained; outcomes preserved from successful recorder stop responses.",
   "dashboard_cross_check": {
     "reported_at_utc": "2026-09-23T20:24:00Z",
@@ -2932,21 +2923,21 @@
   },
   "task_id": "exp-grasp-mug-multiagent",
   "ledger_policy": "Append-only outcomes by episode_id across turns. Merge exact-agent uploaded historical evidence without deleting missing local episodes or relabeling outcomes.",
-  "last_episode_id": "20260923T171327-dbc76396",
-  "last_result": "Table-supported rim-tipping hypothesis: visually aligned inside/outside rim approach, two measured shoulder descents, staged closure. Measured wrist roll change4.22deg did not produce visible mug following or tilt; engagement not established. Released without larger tipping motion; no lift/home-held success. Returned home empty, torque retained.",
-  "latest_evidence_stem": "tools/mug_observations/1790201782626831106",
-  "home_evidence_stem": "tools/mug_observations/1790201857037720992",
+  "last_episode_id": "20260923T173440-0bb9fbbe",
+  "last_result": false,
+  "latest_evidence_stem": "1790203034414204389",
+  "home_evidence_stem": null,
   "last_object_table_location": {
     "table_contact_pixel_estimate": [
       682,
       479
     ],
     "pixel_uncertainty": 20,
-    "image": "tools/mug_observations/1790201556228909110_top.jpg",
+    "image": "tools/mug_observations/1790201989987887043_top.jpg",
     "frame": "image pixels",
-    "note": "Approximate upright base footprint; not elevated rim/handle. Metric registration unresolved, no coverage credit."
+    "note": "Upright footprint estimate; metric registration unresolved; no coverage credit."
   },
-  "last_experiment": "Table-supported rim-engagement tipping probe",
+  "last_experiment": "Supported reorientation approach interrupted by communication loss and human intervention",
   "local_response_evidence": "tools/fixed_tip_local_response.json",
   "table_plane_mapping_check": {
     "path": "tools/table_plane_boundary_check.json",
@@ -2957,7 +2948,7 @@
       0.13181960592770345
     ]
   },
-  "last_experiment_evidence": "tools/rim_tip_171327_result.json",
+  "last_experiment_evidence": "tools/reorientation_173440_result.json",
   "quiet_window": "tools/supervisor_quiet_window.json",
   "quiet_window_completed": true,
   "operator_updates": {
@@ -2966,5 +2957,40 @@
     "camera_path": "Operator verified matching deployed camd source and raw MJPEG passthrough without warping/stabilization; no known nearby disturbance. Cause unresolved; fresh multiple-frame geometry remains necessary.",
     "rim_tipping_hypothesis": "Tested episode171327: no effective rim engagement, no verified tipping; full task failed. Geometry hypothesis remains unproven."
   },
-  "last_diagnostic": "tools/goal_increment_diagnostic.json"
+  "last_diagnostic": {
+    "kind": "empty_gripper_closure_baseline",
+    "evidence": "tools/empty_closure_baseline.json",
+    "result": "Residual visible gap/profile documented; thin-wall incompatibility versus missed depth unresolved."
+  },
+  "blocker": "Communication restored after human intervention; all six torque states off, goals zero in recorder telemetry, manually changed arm/mug contact geometry. No autonomous home recovery.",
+  "last_known_autonomous_joints": {
+    "shoulder_pan": -25.582417582417584,
+    "shoulder_lift": 13.582417582417582,
+    "elbow_flex": -26.153846153846153,
+    "wrist_flex": 78.76923076923077,
+    "wrist_roll": 62.637362637362635,
+    "gripper": 14.912891986062718
+  },
+  "boundary_type": "Interrupted episode complete; operator intervention boundary with torque externally off",
+  "post_intervention_observation": {
+    "time": 1790203036.4065979,
+    "joints": {
+      "shoulder_pan": -18.285714285714285,
+      "shoulder_lift": 19.032967032967033,
+      "elbow_flex": 11.384615384615385,
+      "wrist_flex": 78.32967032967034,
+      "wrist_roll": 62.54945054945055,
+      "gripper": 1.8815331010452963
+    },
+    "estimated_tool_xyz": [
+      0.21458868441989254,
+      0.040723196255518804,
+      -0.010978893361034154
+    ]
+  },
+  "operator_hold": {
+    "active": true,
+    "reason": "Awaiting operator clarification after manual intervention; no automatic resume on reconnection",
+    "evidence": "tools/intervention_hold_1790203106934813622.json"
+  }
 }
