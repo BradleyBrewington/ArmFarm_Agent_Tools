@@ -407,3 +407,11 @@
 {"t": 1790185192.9747753, "kind": "log", "msg": "low0.0: cube right=721 v=405 err=(-21,45)px"}
 {"t": 1790185201.2834327, "kind": "log", "msg": "low0.1: cube right=670 v=476 err=(30,-26)px"}
 {"t": 1790185208.703754, "kind": "log", "msg": "low0.2: cube right=689 v=462 err=(11,-12)px"}
+{"t": 1790185217.2416556, "kind": "log", "msg": "mid0: right=723 v=413 err=(47,57)px"}
+{"t": 1790185223.164456, "kind": "log", "msg": "low1.0: cube right=650 v=526 err=(50,-76)px"}
+{"t": 1790185231.263158, "kind": "log", "msg": "low1.1: cube right=756 v=400 err=(-56,50)px"}
+{"t": 1790185241.3914554, "kind": "log", "msg": "mid1: right=740 v=438 err=(30,32)px"}
+{"t": 1790185248.8037002, "kind": "log", "msg": "low2.0: cube right=692 v=496 err=(8,-46)px"}
+{"t": 1790185253.9743683, "kind": "log", "msg": "low2.1: cube right=675 v=475 err=(25,-25)px"}
+{"t": 1790185266.3743014, "kind": "log", "msg": "mid2: right=829 v=380 err=(-59,90)px"}
+{"t": 1790185277.0610342, "kind": "log", "msg": "gripper after close: pos=23.4 load=500"}
