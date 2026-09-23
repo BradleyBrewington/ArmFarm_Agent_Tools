@@ -107,7 +107,7 @@ def _cal_limits():
 
 CAL_LIMITS = _cal_limits()
 # Wrist roll: physical travel is narrower than calibration claims; stay conservative.
-ROLL_LIMITS = (-120., 120.)
+ROLL_LIMITS = (-115., 15.)   # measured: hard stop at +22 deg
 
 
 def joint_limits(j):

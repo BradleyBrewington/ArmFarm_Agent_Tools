@@ -30,8 +30,8 @@ TRANSIT_Z = 0.15
 PLACE_Z = GRASP_Z + 0.008
 SERVO_Z = TABLE_Z + 0.088
 SERVO_LOW = TABLE_Z + 0.050  # final servo height: tips just above the cube top   # fingertip height for wrist-camera servoing
-ROLL_NEUTRAL = 21.4
-ROLL_RANGE = (-50., 95.)
+ROLL_NEUTRAL = -30.       # wrist roll hard stop measured at +22 deg; free to at least -110
+ROLL_RANGE = (-95., 12.)
 GRIP_OPEN = 95.
 GRIP_CLOSED = 0.
 GRIP_HOLD_MIN = 6.        # gripper % above which something is between the jaws
@@ -176,7 +176,7 @@ class Runner:
                     notes.append(f"servo{stage}.{it}: cube not in wrist view")
                     log("servo: cube not visible in wrist camera")
                     break
-                d, err_px = self.servo.step(servo_j, c["px"], z)
+                d, err_px = self.servo.step(arm.read(), c["px"], z)
                 log(f"servo{stage}.{it}: cube px={np.round(c['px'])} err={err_px:.0f}px move=({d[0]*1000:.0f},{d[1]*1000:.0f})mm")
                 if err_px < 20:
                     converged = True
