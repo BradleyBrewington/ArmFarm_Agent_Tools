@@ -549,3 +549,5 @@
 {"t": 1790186154.1498492, "kind": "log", "msg": "grasp held=False"}
 {"t": 1790186157.1641965, "kind": "log", "msg": "recording stopped success=False: {\"episode\": \"20260923T125439-0c7c59de\", \"folder\": \"/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T125439-0c7c59de\", \"frames\": 1163, \"quality_flags\": [], \"training_ready\": true, \"success\": false, \"notes\": \"target=(0.296,0.036) yaw=-154 roll=-69 tilt=10; servo_final=(0.304,0.034) converged=True; mid_ok=True; grasp_fk=(0.291,0.050,-0.014); grip_pos=0.6 load=44; grip_pos_lifted=0.6; gri"}
 {"t": 1790186158.6992753, "kind": "log", "msg": "episode done success=False dur=81s  totals: 8/23 successes"}
+{"t": 1790186247.260643, "kind": "log", "msg": "cube at px=[741. 497.] robot=[0.322 0.031] yaw=157 size=[0.036 0.041]"}
+{"t": 1790186247.273367, "kind": "log", "msg": "recording started: {'episode': '20260923T125727-3b359a28'}"}

@@ -46,7 +46,10 @@ def detect_cube_wrist(img, dark_thresh=60, min_area=6000, max_area=400000, debug
         ring[(y - y0):(y - y0 + bh), (x - x0):(x - x0 + bw)] = 255
         if (ring > 110).mean() < 0.6:
             continue
-        cand = dict(px=(cu, cv), area=area, bbox=(x, y, bw, bh), fill=fill)
+        comp = (labels == i).astype(np.uint8)
+        cnts, _ = cv2.findContours(comp, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+        rect = cv2.minAreaRect(max(cnts, key=cv2.contourArea))
+        cand = dict(px=(cu, cv), area=area, bbox=(x, y, bw, bh), fill=fill, angle=float(rect[2]), rect=rect)
         if best is None or area > best["area"]:
             best = cand
     if debug_path:
@@ -54,6 +57,7 @@ def detect_cube_wrist(img, dark_thresh=60, min_area=6000, max_area=400000, debug
         if best:
             x, y, bw, bh = best["bbox"]
             cv2.rectangle(dbg, (x, y), (x + bw, y + bh), (0, 255, 0), 2)
+            cv2.drawContours(dbg, [cv2.boxPoints(best["rect"]).astype(int)], 0, (255, 0, 0), 2)
             cv2.circle(dbg, (int(best["px"][0]), int(best["px"][1])), 5, (0, 0, 255), -1)
         cv2.imwrite(str(debug_path), dbg)
     return best
@@ -63,10 +67,12 @@ class WristServo:
     def __init__(self):
         self.J = {}             # height key -> 2x2: tool-frame displacement (m) -> pixel shift (du, dv)
         self.target = {}        # height key -> (u, v) where the cube should appear before descending
+        self.roll_sign = 0.     # +1/-1 once learned: roll change per image-angle change
         if SERVO_FILE.exists():
             d = json.loads(SERVO_FILE.read_text())
             self.J = {k: np.array(v) for k, v in d.get("J", {}).items()}
             self.target = {k: tuple(v) for k, v in d.get("target", {}).items()}
+            self.roll_sign = float(d.get("roll_sign", 0.))
 
     @staticmethod
     def key(z):
@@ -77,7 +83,8 @@ class WristServo:
 
     def save(self):
         SERVO_FILE.write_text(json.dumps({"J": {k: v.tolist() for k, v in self.J.items()},
-                                          "target": {k: list(v) for k, v in self.target.items()}}, indent=1))
+                                          "target": {k: list(v) for k, v in self.target.items()},
+                                          "roll_sign": self.roll_sign}, indent=1))
 
     @staticmethod
     def tool_axes_xy(joints):

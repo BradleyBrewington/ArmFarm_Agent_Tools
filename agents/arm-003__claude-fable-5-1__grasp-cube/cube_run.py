@@ -202,6 +202,56 @@ class Runner:
                     break
                 arm.move_precise(servo_j, speed_dps=30)
         notes.append(f"servo_final=({cx:.3f},{cy:.3f}) converged={converged}")
+        # align jaw closing direction with the cube faces using the wrist-camera rectangle angle
+        def img_delta():
+            time.sleep(0.3)
+            c = cs.detect_cube_wrist(cp.snap("wrist"), debug_path=IMG_DIR / "yaw_det.jpg")
+            if not c:
+                return None
+            return ((c["angle"] + 45.) % 90.) - 45.
+        d0 = img_delta()
+        if d0 is not None and abs(d0) > 7.:
+            sign = self.servo.roll_sign or 1.
+            for trial in range(2):
+                cand = roll - sign * d0
+                if not (ROLL_RANGE[0] <= cand <= ROLL_RANGE[1]):
+                    cand = roll - sign * (d0 - 90. if d0 > 0 else d0 + 90.)
+                if not (ROLL_RANGE[0] <= cand <= ROLL_RANGE[1]):
+                    break
+                servo_j, _ = ik_reach(cx, cy, SERVO_Z, cand, tilt_start=tilt)
+                arm.move_precise(servo_j, speed_dps=40)
+                d1 = img_delta()
+                log(f"yaw fix: image angle delta {d0:.0f} -> roll {roll:.0f}->{cand:.0f} -> delta {d1 if d1 is None else round(d1)}")
+                if d1 is None:
+                    roll = cand
+                    break
+                if abs(d1) < abs(d0) - 3.:
+                    roll = cand
+                    if not self.servo.roll_sign:
+                        self.servo.roll_sign = sign
+                        self.servo.save()
+                    d0 = d1
+                    if abs(d1) <= 7.:
+                        break
+                else:
+                    # wrong sign: flip and retry from the original roll
+                    sign = -sign
+                    if not self.servo.roll_sign:
+                        self.servo.roll_sign = sign
+                        self.servo.save()
+            notes.append(f"roll_after_yaw_fix={roll:.0f}")
+            # re-centre after the roll change
+            for it in range(2):
+                time.sleep(0.3)
+                c = cs.detect_cube_wrist(cp.snap("wrist"))
+                if not c:
+                    break
+                d, err_px = self.servo.step(arm.read(), c["px"], SERVO_Z, gain=0.65)
+                if err_px < 20:
+                    break
+                cx, cy = cx + float(d[0]), cy + float(d[1])
+                servo_j, _ = ik_reach(cx, cy, SERVO_Z, roll, tilt_start=tilt)
+                arm.move_precise(servo_j, speed_dps=30)
         low, _ = ik_reach(cx, cy, SERVO_LOW, roll, tilt_start=tilt)
         pre, _ = ik_reach(cx, cy, GRASP_Z + 0.03, roll, tilt_start=tilt)
         grasp, _ = ik_reach(cx, cy, GRASP_Z, roll, tilt_start=tilt)
