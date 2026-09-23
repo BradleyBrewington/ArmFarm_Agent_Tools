@@ -2388,18 +2388,71 @@
     "wrist_dark": 0.8654772727272727,
     "still_on_table": false
    }
+  },
+  {
+   "t": 1790195608.3220623,
+   "dur": 38.19456195831299,
+   "success": true,
+   "notes": [
+    "target=(0.287,-0.117) yaw=-172 roll=-23 tilt=10",
+    "servo_final=(0.307,-0.128) converged=True",
+    "mid_ok=True",
+    "grasp_fk=(0.292,-0.123,-0.015)",
+    "grip_pos=22.6 load=500",
+    "grip_pos_lifted=22.5",
+    "home_err_max=1.8 grip_home=22.5 wrist_dark=0.85 cube_on_table=False",
+    "placed_at=(0.151,-0.080)"
+   ],
+   "recorded": true,
+   "folder": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T153330-1f4472ff",
+   "info": {
+    "grip": 22.477383437717467,
+    "wrist_dark": 0.8482045454545455,
+    "still_on_table": false
+   }
+  },
+  {
+   "t": 1790195646.518048,
+   "dur": 27.243075609207153,
+   "success": false,
+   "notes": [
+    "target=(0.158,-0.090) yaw=-115 roll=-44 tilt=0",
+    "servo_final=(0.171,-0.105) converged=True",
+    "mid_ok=True",
+    "grasp_fk=(0.154,-0.080,-0.013)",
+    "grip_pos=0.6 load=44",
+    "grip_pos_lifted=0.6",
+    "gripper closed empty; no grasp"
+   ],
+   "recorded": true,
+   "folder": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T153408-eb274bb6",
+   "info": {}
+  },
+  {
+   "t": 1790195673.7624276,
+   "dur": 41.82552671432495,
+   "success": true,
+   "notes": [
+    "target=(0.180,-0.117) yaw=-139 roll=-65 tilt=0",
+    "servo_final=(0.192,-0.130) converged=True",
+    "mid_ok=True",
+    "grasp_fk=(0.184,-0.100,-0.013)",
+    "grip_pos=26.6 load=500",
+    "grip_pos_lifted=26.6",
+    "home_err_max=1.7 grip_home=26.6 wrist_dark=0.80 cube_on_table=False",
+    "placed_at=(0.270,0.158)"
+   ],
+   "recorded": true,
+   "folder": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T153435-c59ab65f",
+   "info": {
+    "grip": 26.583159359777316,
+    "wrist_dark": 0.8004166666666667,
+    "still_on_table": false
+   }
   }
  ],
  "place_idx": 0,
  "order": [
-  [
-   0.15,
-   -0.08
-  ],
-  [
-   0.27,
-   0.16
-  ],
   [
    0.23,
    -0.02
