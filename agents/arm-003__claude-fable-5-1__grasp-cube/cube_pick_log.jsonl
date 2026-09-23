@@ -5,3 +5,6 @@
 {"t": 1790181508.9752533, "kind": "log", "msg": "gripper after close: pos=0.5 load=40"}
 {"t": 1790181516.5196946, "kind": "log", "msg": "grasp held=False"}
 {"t": 1790181521.3369534, "kind": "log", "msg": "episode done success=False dur=27s  totals: 0/0 successes"}
+{"t": 1790181781.1686406, "kind": "log", "msg": "travel via lifted waypoint"}
+{"t": 1790181802.4741406, "kind": "log", "msg": "travel via lifted waypoint"}
+{"t": 1790181815.8888276, "kind": "log", "msg": "travel via lifted waypoint"}
