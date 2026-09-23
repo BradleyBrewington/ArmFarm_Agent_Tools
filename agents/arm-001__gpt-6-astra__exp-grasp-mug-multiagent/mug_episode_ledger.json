@@ -1,0 +1,385 @@
+[
+  {
+    "id": "20260923T145636-1f26e417",
+    "started": 1790193396.1081755,
+    "finished": 1790193687.4626355,
+    "success": false,
+    "notes": "Rim grasp retained in short lift but slipped during home transfer; mug visible on table on its side. Home reached, no grasp at home.",
+    "quality_flags": [],
+    "training_ready": true,
+    "observations": [
+      {
+        "time": 1790193413.9431195,
+        "state": "tools/mug_observations/1790193413943119639.json",
+        "top": "tools/mug_observations/1790193413943119639_top.jpg",
+        "wrist": "tools/mug_observations/1790193413943119639_wrist.jpg"
+      },
+      {
+        "time": 1790193438.2453952,
+        "state": "tools/mug_observations/1790193438245395307.json",
+        "top": "tools/mug_observations/1790193438245395307_top.jpg",
+        "wrist": "tools/mug_observations/1790193438245395307_wrist.jpg"
+      },
+      {
+        "time": 1790193464.7088344,
+        "state": "tools/mug_observations/1790193464708834422.json",
+        "top": "tools/mug_observations/1790193464708834422_top.jpg",
+        "wrist": "tools/mug_observations/1790193464708834422_wrist.jpg"
+      },
+      {
+        "time": 1790193490.4521759,
+        "state": "tools/mug_observations/1790193490452175918.json",
+        "top": "tools/mug_observations/1790193490452175918_top.jpg",
+        "wrist": "tools/mug_observations/1790193490452175918_wrist.jpg"
+      },
+      {
+        "time": 1790193499.452631,
+        "state": "tools/mug_observations/1790193499452631037.json",
+        "top": "tools/mug_observations/1790193499452631037_top.jpg",
+        "wrist": "tools/mug_observations/1790193499452631037_wrist.jpg"
+      },
+      {
+        "time": 1790193607.8653743,
+        "state": "tools/mug_observations/1790193607865374137.json",
+        "top": "tools/mug_observations/1790193607865374137_top.jpg",
+        "wrist": "tools/mug_observations/1790193607865374137_wrist.jpg"
+      },
+      {
+        "time": 1790193635.2418125,
+        "state": "tools/mug_observations/1790193635241812376.json",
+        "top": "tools/mug_observations/1790193635241812376_top.jpg",
+        "wrist": "tools/mug_observations/1790193635241812376_wrist.jpg"
+      },
+      {
+        "time": 1790193667.3655694,
+        "state": "tools/mug_observations/1790193667365569205.json",
+        "top": "tools/mug_observations/1790193667365569205_top.jpg",
+        "wrist": "tools/mug_observations/1790193667365569205_wrist.jpg"
+      }
+    ],
+    "grasp_location_frame": "URDF base_link FK estimate, not calibrated object center",
+    "grasp_location_m": [
+      0.3513112881,
+      -0.0068900436,
+      0.0627942258
+    ],
+    "location_type": "failed rim contact",
+    "uploaded_source": {
+      "artifact_id": "933f46a8df50bf181691c9ba93fc64d04001050b3d55ea18eac3964d88853fd2",
+      "ordinal": 0,
+      "snapshot": "tools/uploaded_episode_20260923T145636.json"
+    }
+  },
+  {
+    "id": "20260923T150127-191efa22",
+    "started": 1790193687.5861497,
+    "finished": 1790194521.7872515,
+    "success": true,
+    "notes": "Handle visibly retained through short lift, inward carry, intermediate pose and saved four-joint home. Both cameras confirm mug held at home. Home errors under 2 degrees.",
+    "quality_flags": [],
+    "training_ready": true,
+    "recorder_metadata": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T150127-191efa22/episode.json",
+    "observations": [
+      {
+        "time": 1790193695.8490167,
+        "state": "tools/mug_observations/1790193695849016495.json",
+        "top": "tools/mug_observations/1790193695849016495_top.jpg",
+        "wrist": "tools/mug_observations/1790193695849016495_wrist.jpg"
+      },
+      {
+        "time": 1790193719.1191761,
+        "state": "tools/mug_observations/1790193719119176111.json",
+        "top": "tools/mug_observations/1790193719119176111_top.jpg",
+        "wrist": "tools/mug_observations/1790193719119176111_wrist.jpg"
+      },
+      {
+        "time": 1790193748.0416934,
+        "state": "tools/mug_observations/1790193748041693451.json",
+        "top": "tools/mug_observations/1790193748041693451_top.jpg",
+        "wrist": "tools/mug_observations/1790193748041693451_wrist.jpg"
+      },
+      {
+        "time": 1790193772.6660037,
+        "state": "tools/mug_observations/1790193772666003611.json",
+        "top": "tools/mug_observations/1790193772666003611_top.jpg",
+        "wrist": "tools/mug_observations/1790193772666003611_wrist.jpg"
+      },
+      {
+        "time": 1790193842.1346202,
+        "state": "tools/mug_observations/1790193842134620279.json",
+        "top": "tools/mug_observations/1790193842134620279_top.jpg",
+        "wrist": "tools/mug_observations/1790193842134620279_wrist.jpg"
+      },
+      {
+        "time": 1790193851.1520922,
+        "state": "tools/mug_observations/1790193851152092036.json",
+        "top": "tools/mug_observations/1790193851152092036_top.jpg",
+        "wrist": "tools/mug_observations/1790193851152092036_wrist.jpg"
+      },
+      {
+        "time": 1790193921.4497976,
+        "state": "tools/mug_observations/1790193921449797541.json",
+        "top": "tools/mug_observations/1790193921449797541_top.jpg",
+        "wrist": "tools/mug_observations/1790193921449797541_wrist.jpg"
+      },
+      {
+        "time": 1790193930.4902275,
+        "state": "tools/mug_observations/1790193930490227341.json",
+        "top": "tools/mug_observations/1790193930490227341_top.jpg",
+        "wrist": "tools/mug_observations/1790193930490227341_wrist.jpg"
+      },
+      {
+        "time": 1790193953.9154632,
+        "state": "tools/mug_observations/1790193953915463134.json",
+        "top": "tools/mug_observations/1790193953915463134_top.jpg",
+        "wrist": "tools/mug_observations/1790193953915463134_wrist.jpg"
+      },
+      {
+        "time": 1790194015.2477095,
+        "state": "tools/mug_observations/1790194015247709464.json",
+        "top": "tools/mug_observations/1790194015247709464_top.jpg",
+        "wrist": "tools/mug_observations/1790194015247709464_wrist.jpg"
+      },
+      {
+        "time": 1790194034.501683,
+        "state": "tools/mug_observations/1790194034501683069.json",
+        "top": "tools/mug_observations/1790194034501683069_top.jpg",
+        "wrist": "tools/mug_observations/1790194034501683069_wrist.jpg"
+      },
+      {
+        "time": 1790194064.667234,
+        "state": "tools/mug_observations/1790194064667234128.json",
+        "top": "tools/mug_observations/1790194064667234128_top.jpg",
+        "wrist": "tools/mug_observations/1790194064667234128_wrist.jpg"
+      },
+      {
+        "time": 1790194073.5746927,
+        "state": "tools/mug_observations/1790194073574692717.json",
+        "top": "tools/mug_observations/1790194073574692717_top.jpg",
+        "wrist": "tools/mug_observations/1790194073574692717_wrist.jpg"
+      },
+      {
+        "time": 1790194130.0016484,
+        "state": "tools/mug_observations/1790194130001648394.json",
+        "top": "tools/mug_observations/1790194130001648394_top.jpg",
+        "wrist": "tools/mug_observations/1790194130001648394_wrist.jpg"
+      },
+      {
+        "time": 1790194138.9211924,
+        "state": "tools/mug_observations/1790194138921192543.json",
+        "top": "tools/mug_observations/1790194138921192543_top.jpg",
+        "wrist": "tools/mug_observations/1790194138921192543_wrist.jpg"
+      },
+      {
+        "time": 1790194184.2774558,
+        "state": "tools/mug_observations/1790194184277455945.json",
+        "top": "tools/mug_observations/1790194184277455945_top.jpg",
+        "wrist": "tools/mug_observations/1790194184277455945_wrist.jpg"
+      },
+      {
+        "time": 1790194193.1910768,
+        "state": "tools/mug_observations/1790194193191076751.json",
+        "top": "tools/mug_observations/1790194193191076751_top.jpg",
+        "wrist": "tools/mug_observations/1790194193191076751_wrist.jpg"
+      },
+      {
+        "time": 1790194217.953209,
+        "state": "tools/mug_observations/1790194217953208859.json",
+        "top": "tools/mug_observations/1790194217953208859_top.jpg",
+        "wrist": "tools/mug_observations/1790194217953208859_wrist.jpg"
+      },
+      {
+        "time": 1790194232.011965,
+        "state": "tools/mug_observations/1790194232011964944.json",
+        "top": "tools/mug_observations/1790194232011964944_top.jpg",
+        "wrist": "tools/mug_observations/1790194232011964944_wrist.jpg"
+      },
+      {
+        "time": 1790194249.648861,
+        "state": "tools/mug_observations/1790194249648860838.json",
+        "top": "tools/mug_observations/1790194249648860838_top.jpg",
+        "wrist": "tools/mug_observations/1790194249648860838_wrist.jpg"
+      },
+      {
+        "time": 1790194277.4783957,
+        "state": "tools/mug_observations/1790194277478395530.json",
+        "top": "tools/mug_observations/1790194277478395530_top.jpg",
+        "wrist": "tools/mug_observations/1790194277478395530_wrist.jpg"
+      },
+      {
+        "time": 1790194347.9719858,
+        "state": "tools/mug_observations/1790194347971985994.json",
+        "top": "tools/mug_observations/1790194347971985994_top.jpg",
+        "wrist": "tools/mug_observations/1790194347971985994_wrist.jpg"
+      },
+      {
+        "time": 1790194356.873442,
+        "state": "tools/mug_observations/1790194356873441986.json",
+        "top": "tools/mug_observations/1790194356873441986_top.jpg",
+        "wrist": "tools/mug_observations/1790194356873441986_wrist.jpg"
+      },
+      {
+        "time": 1790194398.8865962,
+        "state": "tools/mug_observations/1790194398886596021.json",
+        "top": "tools/mug_observations/1790194398886596021_top.jpg",
+        "wrist": "tools/mug_observations/1790194398886596021_wrist.jpg"
+      },
+      {
+        "time": 1790194429.783246,
+        "state": "tools/mug_observations/1790194429783246002.json",
+        "top": "tools/mug_observations/1790194429783246002_top.jpg",
+        "wrist": "tools/mug_observations/1790194429783246002_wrist.jpg"
+      },
+      {
+        "time": 1790194458.4986842,
+        "state": "tools/mug_observations/1790194458498684105.json",
+        "top": "tools/mug_observations/1790194458498684105_top.jpg",
+        "wrist": "tools/mug_observations/1790194458498684105_wrist.jpg"
+      },
+      {
+        "time": 1790194488.24907,
+        "state": "tools/mug_observations/1790194488249069867.json",
+        "top": "tools/mug_observations/1790194488249069867_top.jpg",
+        "wrist": "tools/mug_observations/1790194488249069867_wrist.jpg"
+      }
+    ],
+    "grasp_location_frame": "URDF base_link FK estimate, not calibrated object center",
+    "grasp_location_m": [
+      0.3448741787,
+      0.008673585,
+      0.0202351365
+    ],
+    "location_type": "successful handle contact",
+    "measured_grasp_joints": {
+      "shoulder_pan": -1.010989010989011,
+      "shoulder_lift": 61.62637362637363,
+      "elbow_flex": -72.65934065934066,
+      "wrist_flex": 86.9010989010989,
+      "wrist_roll": -24.65934065934066,
+      "gripper": 3.98110661268556
+    },
+    "initial_grip_goal": 2.322537112010841,
+    "initial_grip_load": 112,
+    "final_grip_goal": 0.2771929824561402,
+    "home_evidence": [
+      "tools/mug_observations/1790194488249069867.json",
+      "tools/mug_observations/1790194488249069867_top.jpg",
+      "tools/mug_observations/1790194488249069867_wrist.jpg"
+    ],
+    "pregrasp_evidence": [
+      "tools/mug_observations/1790194356873441986.json",
+      "tools/mug_observations/1790194356873441986_top.jpg",
+      "tools/mug_observations/1790194356873441986_wrist.jpg"
+    ],
+    "verification": "Both camera images inspected: mug held by handle at saved home; all four home joints within 2 degrees. Grip tightened only after measured relaxation during staged lifts."
+  },
+  {
+    "id": "20260923T151738-2934b2ce",
+    "started": 1790194658.8651567,
+    "finished": 1790195057.7661276,
+    "success": false,
+    "notes": "Right-side reset pickup unsuccessful: handle alignment repeatedly displaced mug; jaw closure reached empty-gripper endpoint, no sustained grasp or home retention. Ended at supervisor-requested experiment boundary.",
+    "quality_flags": [],
+    "training_ready": true,
+    "recorder_metadata": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T151738-2934b2ce/episode.json",
+    "observations": [
+      {
+        "time": 1790194680.2903411,
+        "state": "tools/mug_observations/1790194680290341174.json",
+        "top": "tools/mug_observations/1790194680290341174_top.jpg",
+        "wrist": "tools/mug_observations/1790194680290341174_wrist.jpg"
+      },
+      {
+        "time": 1790194697.4731164,
+        "state": "tools/mug_observations/1790194697473116329.json",
+        "top": "tools/mug_observations/1790194697473116329_top.jpg",
+        "wrist": "tools/mug_observations/1790194697473116329_wrist.jpg"
+      },
+      {
+        "time": 1790194744.5844274,
+        "state": "tools/mug_observations/1790194744584427328.json",
+        "top": "tools/mug_observations/1790194744584427328_top.jpg",
+        "wrist": "tools/mug_observations/1790194744584427328_wrist.jpg"
+      },
+      {
+        "time": 1790194753.6349168,
+        "state": "tools/mug_observations/1790194753634916989.json",
+        "top": "tools/mug_observations/1790194753634916989_top.jpg",
+        "wrist": "tools/mug_observations/1790194753634916989_wrist.jpg"
+      },
+      {
+        "time": 1790194774.3138654,
+        "state": "tools/mug_observations/1790194774313865599.json",
+        "top": "tools/mug_observations/1790194774313865599_top.jpg",
+        "wrist": "tools/mug_observations/1790194774313865599_wrist.jpg"
+      },
+      {
+        "time": 1790194784.285354,
+        "state": "tools/mug_observations/1790194784285353965.json",
+        "top": "tools/mug_observations/1790194784285353965_top.jpg",
+        "wrist": "tools/mug_observations/1790194784285353965_wrist.jpg"
+      },
+      {
+        "time": 1790194807.234462,
+        "state": "tools/mug_observations/1790194807234461825.json",
+        "top": "tools/mug_observations/1790194807234461825_top.jpg",
+        "wrist": "tools/mug_observations/1790194807234461825_wrist.jpg"
+      },
+      {
+        "time": 1790194848.353481,
+        "state": "tools/mug_observations/1790194848353480941.json",
+        "top": "tools/mug_observations/1790194848353480941_top.jpg",
+        "wrist": "tools/mug_observations/1790194848353480941_wrist.jpg"
+      },
+      {
+        "time": 1790194865.3673868,
+        "state": "tools/mug_observations/1790194865367386875.json",
+        "top": "tools/mug_observations/1790194865367386875_top.jpg",
+        "wrist": "tools/mug_observations/1790194865367386875_wrist.jpg"
+      },
+      {
+        "time": 1790194896.905911,
+        "state": "tools/mug_observations/1790194896905911146.json",
+        "top": "tools/mug_observations/1790194896905911146_top.jpg",
+        "wrist": "tools/mug_observations/1790194896905911146_wrist.jpg"
+      },
+      {
+        "time": 1790194922.2091546,
+        "state": "tools/mug_observations/1790194922209154434.json",
+        "top": "tools/mug_observations/1790194922209154434_top.jpg",
+        "wrist": "tools/mug_observations/1790194922209154434_wrist.jpg"
+      },
+      {
+        "time": 1790194932.375685,
+        "state": "tools/mug_observations/1790194932375684946.json",
+        "top": "tools/mug_observations/1790194932375684946_top.jpg",
+        "wrist": "tools/mug_observations/1790194932375684946_wrist.jpg"
+      },
+      {
+        "time": 1790194977.9309065,
+        "state": "tools/mug_observations/1790194977930906692.json",
+        "top": "tools/mug_observations/1790194977930906692_top.jpg",
+        "wrist": "tools/mug_observations/1790194977930906692_wrist.jpg"
+      },
+      {
+        "time": 1790194988.0054362,
+        "state": "tools/mug_observations/1790194988005436061.json",
+        "top": "tools/mug_observations/1790194988005436061_top.jpg",
+        "wrist": "tools/mug_observations/1790194988005436061_wrist.jpg"
+      }
+    ],
+    "grasp_location_frame": "URDF base_link FK estimate, not calibrated object center",
+    "grasp_location_m": null,
+    "location_type": "no retained grasp",
+    "last_attempt_fk_m": [
+      0.2771562316,
+      0.0418578383,
+      0.0139232392
+    ],
+    "initial_attempt_fk_m": [
+      0.3098591339,
+      0.1285792431,
+      0.0143084088
+    ]
+  }
+]

@@ -1,0 +1,70 @@
+{
+  "updated_utc": "2026-09-23T20:26:02.449335+00:00",
+  "agent_id": "arm-001__gpt-6-astra__exp-grasp-mug-multiagent",
+  "task": "exp-grasp-mug-multiagent",
+  "received_instruction_ids": [
+    {
+      "id": "e252366d-5cb5-48d7-a607-55bbc40e3934",
+      "created": 1790194360.9894388
+    },
+    {
+      "id": "e9280ec6-0d63-4e48-a04c-4c01f45aef5e",
+      "created": 1790194491.404674
+    }
+  ],
+  "episode_ledger": "tools/mug_episode_ledger.json",
+  "grid_ledger": "tools/mug_grid.json",
+  "successes": 1,
+  "unsuccessful_episodes": 2,
+  "success_to_failure_ratio": 0.5,
+  "verified_successes_trailing_hour": 1,
+  "coverage_complete": false,
+  "calibration": {
+    "source": "calibration/ready.json",
+    "robot_alignment": "not_calibrated",
+    "height": "not_measured",
+    "consequence": "2D table grid is available without robot registration. Need pre-lift footprint localization and height/parallax uncertainty; current FK contact estimates are not mug table-contact locations.",
+    "historical_local_contact_fk_extent_m": {
+      "x": [
+        0.0589509645,
+        0.3166617889
+      ],
+      "y": [
+        -0.202533442,
+        0.1983361962
+      ]
+    },
+    "current_session_observed_fk_contact_x_max_m": 0.3844547702
+  },
+  "coverage_proposal": {
+    "survey_bounds_m": {
+      "x": [
+        0,
+        0.45
+      ],
+      "y": [
+        -0.4,
+        0.4
+      ]
+    },
+    "cell_size_m": 0.05,
+    "candidate_cells": 144,
+    "accepted_usable_bounds": null,
+    "basis": "Broad envelope for surveying the visible tabletop and arm reach, encompassing historical local measured contact positions and current mug approach extent, with lateral extent expanded for the arm reach. NOT a calibrated usable rectangle. Must register table to robot and evaluate visibility/reachability across the envelope before adopting a usable-cell mask; expand if valid visible workspace lies beyond it. Do not discard cells for failed grasps.",
+    "untested_or_uncertified_cells": "All 144 candidate cells listed individually in tools/mug_grid.json. Successful contact nominally falls in x06_y08, but cell certification is withheld until camera/table registration and object-center measurement.",
+    "verified_cells": [],
+    "status": "Prior URDF survey envelope superseded for grid coordinates; define actual table-plane grid from 2D calibration in next continuation. No coverage claimed."
+  },
+  "transferable_discovery": "A side-lying mug handle was retained through short lift, inward carry, intermediate joint pose and saved home with wrist_roll about -25 degrees. Initial measured contact at FK (.344874,.008674,.020235); exact local q and evidence in ledger. These joint targets are not portable to another arm.",
+  "blocker": "Repeat pickup is not yet reliable: fixed jaw contacts outer handle or body during descent and displaces/tilts mug. Several camera projections looked aligned but closure reached empty endpoint (~1.417 measured gripper) and no retained grasp. Large shoulder approach-direction error (up to ~6.5 degrees) makes commanded XYZ unreliable.",
+  "next_hypothesis": "Use the verified local handle geometry; obtain fresh table/robot registration and explicit opposing jaw contact. Clear mug vertically before lateral corrections. Test 1-2 cm retention and inspect relative motion before staged transfer. Preserve honest failed episodes.",
+  "tools": [
+    "tools/mug_motion.py",
+    "tools/mug_grip.py",
+    "tools/episode_motion.py"
+  ],
+  "safety_note": "Motion enforces camera liveness, calibrated target clamp and 8-degree tracking error stop. Optional settle tolerance up to 7 degrees used on Cartesian moves due measured shoulder undershoot; home uses original 4-degree tolerance. Wrist roll observed safe from +56 through -25 only. No torque disabled.",
+  "turn_boundary": "Stable: recorder stopped, arm at saved four-joint home, gripper open, mug visible resting on table, torque retained.",
+  "operator_correction": "Table-plane homography can define grid before robot registration. Use pre-lift table-contact footprint with uncertainty; never flat-project elevated handle. Ledger must retain uploaded episodes append-only by episode_id. Dashboard crosscheck 2026-09-23T20:24Z: arm-001 3 completed, 1 success.",
+  "history_reconciliation": "All 3 current-assignment episodes preserved by episode_id; removed first failure reconciled against shared database artifact 933f46a8df50bf181691c9ba93fc64d04001050b3d55ea18eac3964d88853fd2 ordinal 0. Matches dashboard 3 completed / 1 success."
+}
