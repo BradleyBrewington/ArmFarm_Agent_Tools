@@ -5022,13 +5022,170 @@
     "wrist_dark": 0.8758333333333334,
     "still_on_table": false
    }
+  },
+  {
+   "t": 1790200685.0376673,
+   "dur": 39.2090265750885,
+   "success": true,
+   "notes": [
+    "target=(0.156,-0.094) yaw=-125 roll=-52 tilt=0",
+    "servo_final=(0.171,-0.109) converged=True",
+    "roll_after_yaw_fix=-45",
+    "mid_ok=True",
+    "grasp_fk=(0.151,-0.082,-0.013)",
+    "grip_pos=24.8 load=500",
+    "grip_pos_lifted=22.6",
+    "home_err_max=1.9 grip_home=22.6 wrist_dark=0.87 cube_on_table=False",
+    "placed_at=(0.231,0.039)"
+   ],
+   "recorded": true,
+   "folder": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T165807-fd7956ef",
+   "info": {
+    "grip": 22.616562282533053,
+    "wrist_dark": 0.8733712121212122,
+    "still_on_table": false
+   }
+  },
+  {
+   "t": 1790200724.2492094,
+   "dur": 34.81704521179199,
+   "success": true,
+   "notes": [
+    "target=(0.225,0.046) yaw=130 roll=-30 tilt=0",
+    "servo_final=(0.245,0.051) converged=True",
+    "mid_ok=True",
+    "grasp_fk=(0.218,0.044,-0.014)",
+    "grip_pos=23.8 load=500",
+    "grip_pos_lifted=22.4",
+    "home_err_max=1.8 grip_home=22.4 wrist_dark=0.88 cube_on_table=False",
+    "placed_at=(0.310,0.037)"
+   ],
+   "recorded": true,
+   "folder": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T165846-1d79d04d",
+   "info": {
+    "grip": 22.407794015309673,
+    "wrist_dark": 0.8844318181818182,
+    "still_on_table": false
+   }
   }
  ],
  "place_idx": 0,
  "order": [
   [
+   0.31,
+   0.1
+  ],
+  [
+   0.19,
+   0.16
+  ],
+  [
+   0.19,
+   0.1
+  ],
+  [
+   0.23,
+   -0.02
+  ],
+  [
+   0.15,
+   -0.14
+  ],
+  [
+   0.31,
+   -0.08
+  ],
+  [
+   0.23,
+   -0.08
+  ],
+  [
+   0.27,
+   0.04
+  ],
+  [
+   0.27,
+   -0.02
+  ],
+  [
+   0.23,
+   -0.14
+  ],
+  [
    0.23,
    0.04
+  ],
+  [
+   0.27,
+   -0.14
+  ],
+  [
+   0.15,
+   0.16
+  ],
+  [
+   0.19,
+   0.04
+  ],
+  [
+   0.19,
+   -0.14
+  ],
+  [
+   0.15,
+   0.1
+  ],
+  [
+   0.19,
+   -0.02
+  ],
+  [
+   0.23,
+   0.16
+  ],
+  [
+   0.31,
+   -0.02
+  ],
+  [
+   0.31,
+   0.16
+  ],
+  [
+   0.31,
+   -0.14
+  ],
+  [
+   0.19,
+   -0.08
+  ],
+  [
+   0.27,
+   0.16
+  ],
+  [
+   0.15,
+   -0.02
+  ],
+  [
+   0.23,
+   0.1
+  ],
+  [
+   0.15,
+   0.04
+  ],
+  [
+   0.27,
+   0.1
+  ],
+  [
+   0.27,
+   -0.08
+  ],
+  [
+   0.15,
+   -0.08
   ]
  ]
 }
