@@ -213,5 +213,102 @@
       }
     ],
     "verified_grasp_locations": []
+  },
+  {
+    "episode_id": "20260923T153620-ace55ee6",
+    "started": 1790195780.3532128,
+    "finished": 1790196091.2805107,
+    "success": false,
+    "notes": "Shallow upright-handle approach with lateral correction. No verified finger-through-loop support. Two measured lift increments totaled 0.0183 m diagnostic tool rise; mug remained on table. No home-held mug. Wrist view lost handle below frame at shallow pitch. Failed outcome preserved.",
+    "quality_flags": [],
+    "source": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T153620-ace55ee6",
+    "closure_attempts": [
+      {
+        "measured_joints": {
+          "shoulder_pan": -21.274725274725274,
+          "shoulder_lift": 28.175824175824175,
+          "elbow_flex": 32.65934065934066,
+          "wrist_flex": -57.23076923076923,
+          "wrist_roll": -24.835164835164836,
+          "gripper": 1.8118466898954706
+        },
+        "estimated_tool_xyz_base_m": [
+          0.3637526136478212,
+          0.10342766399776365,
+          0.06178320086226077
+        ],
+        "verified_grasp": false,
+        "evidence_stem": "tools/mug_observations/1790195999704429115"
+      },
+      {
+        "measured_joints": {
+          "shoulder_pan": -18.725274725274726,
+          "shoulder_lift": 28.52747252747253,
+          "elbow_flex": 32.65934065934066,
+          "wrist_flex": -57.23076923076923,
+          "wrist_roll": -24.835164835164836,
+          "gripper": 1.8118466898954706
+        },
+        "estimated_tool_xyz_base_m": [
+          0.3677074896130227,
+          0.08876256540185254,
+          0.05988220038065797
+        ],
+        "verified_grasp": false,
+        "evidence_stem": "tools/mug_observations/1790196044136907119"
+      }
+    ],
+    "retention_test": [
+      {
+        "measured_joints": {
+          "shoulder_pan": -18.197802197802197,
+          "shoulder_lift": 27.208791208791208,
+          "elbow_flex": 32.57142857142857,
+          "wrist_flex": -57.23076923076923,
+          "wrist_roll": -24.835164835164836,
+          "gripper": 1.8118466898954706
+        },
+        "estimated_tool_xyz_base_m": [
+          0.3698720708346178,
+          0.08617873304436158,
+          0.06738106267371546
+        ],
+        "verified_grasp": false,
+        "evidence_stem": "tools/mug_observations/1790196059237801737"
+      },
+      {
+        "measured_joints": {
+          "shoulder_pan": -18.197802197802197,
+          "shoulder_lift": 25.274725274725274,
+          "elbow_flex": 32.57142857142857,
+          "wrist_flex": -57.31868131868132,
+          "wrist_roll": -24.835164835164836,
+          "gripper": 1.6724738675958188
+        },
+        "estimated_tool_xyz_base_m": [
+          0.37130653142500386,
+          0.0866502801849535,
+          0.07815492894167637
+        ],
+        "verified_grasp": false,
+        "evidence_stem": "tools/mug_observations/1790196073509372584"
+      }
+    ],
+    "verified_grasp_locations": [],
+    "object_table_location": {
+      "pixel_estimate": [
+        680,
+        540
+      ],
+      "table_xy_m": [
+        0.12692466820031906,
+        0.049419573651696136
+      ],
+      "uncertainty_m": 0.025,
+      "coordinate_frame": "20260921 checkerboard metric table plane",
+      "source": "calibration/20260921T152058_891355289/workspace_map.json",
+      "image": "tools/mug_observations/1790196030563028959_top.jpg",
+      "note": "Approximate table-contact footprint center inferred from lower body before lift; partially occluded. Not elevated handle projection. No coverage credit."
+    }
   }
 ]
