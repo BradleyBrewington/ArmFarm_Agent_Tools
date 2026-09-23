@@ -183,5 +183,35 @@
       }
     ],
     "verified_grasp_locations": []
+  },
+  {
+    "episode_id": "20260923T152704-67d46d98",
+    "started": 1790195224.0996904,
+    "finished": 1790195634.9005954,
+    "success": false,
+    "notes": "Handle insertion and opposing contacts could not be verified after small image-guided corrections. Closure reached near empty-jaw aperture. No retained lift or home-held success. Opened and withdrew; unsuccessful episode preserved.",
+    "quality_flags": [],
+    "source": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T152704-67d46d98",
+    "closure_attempts": [
+      {
+        "measured_joints": {
+          "shoulder_pan": -21.36263736263736,
+          "shoulder_lift": 12.175824175824175,
+          "elbow_flex": -0.6593406593406593,
+          "wrist_flex": 40.35164835164835,
+          "wrist_roll": -24.835164835164836,
+          "gripper": 1.8118466898954706
+        },
+        "estimated_tool_xyz_base_m": [
+          0.3291894580053381,
+          0.09046889442916524,
+          0.061148848623095574
+        ],
+        "verified_grasp": false,
+        "evidence_stem": "tools/mug_observations/1790195571902856116",
+        "note": "Measured tool estimate, not mug base or verified contact. Opposing handle contacts unconfirmed."
+      }
+    ],
+    "verified_grasp_locations": []
   }
 ]

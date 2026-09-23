@@ -1,5 +1,5 @@
 {
-  "timestamp": 1790195065.1337488,
+  "timestamp": 1790195719.8534644,
   "agent_id": "arm-002__gpt-6-astra__exp-grasp-mug-multiagent",
   "received_operator_ids": [
     "cdb9a3cb-34c9-4e71-85a4-4fc9707bdec4",
@@ -10,15 +10,15 @@
   "recording": false,
   "home_joints_measured": {
     "shoulder_pan": 12.483516483516484,
-    "shoulder_lift": -91.20879120879121,
-    "elbow_flex": 80.21978021978022,
-    "wrist_flex": 24.87912087912088
+    "shoulder_lift": -90.85714285714286,
+    "elbow_flex": 79.86813186813187,
+    "wrist_flex": 26.813186813186814
   },
   "home_errors_degrees": {
     "shoulder_pan": -0.5714285714285712,
-    "shoulder_lift": 1.4505494505494454,
-    "elbow_flex": 0.219780219780219,
-    "wrist_flex": -0.3516483516483504
+    "shoulder_lift": 1.8021978021977958,
+    "elbow_flex": -0.1318681318681314,
+    "wrist_flex": 1.582417582417584
   },
   "torque": [
     1,
@@ -38,7 +38,7 @@
   ],
   "cumulative_current_assignment": {
     "successes": 0,
-    "unsuccessful": 4,
+    "unsuccessful": 5,
     "successes_trailing_hour": 0,
     "ratio_requirement_met": false
   },
@@ -2900,9 +2900,10 @@
     "IK now uses live measured wrist roll instead of fixed +63 degrees.",
     "Wrist -25 degrees makes jaw opening visible transversely in top view; no verified grasp follows from this alone.",
     "Repeated closures reached near empty-jaw aperture and failed lift checks; some moved mug.",
-    "Home uses only four saved joints; wrist and gripper preserved."
+    "Home uses only four saved joints; wrist and gripper preserved.",
+    "Current upright mug handle was approached from above; empty-like closure (~1.81 percent) and occluded opening did not establish support. Historical verified local success had a side-lying mug; handle-plane/insertion geometry must be reidentified."
   ],
-  "next_hypothesis": "Inspect historical c_home_held evidence and successful handle approach source; compare freshly verified peer handle opposing-contact sequence. Retract and re-localize before insertion. Verify opposing contacts, 1-2 cm lift, stable hold, staged carry, then home; do not replay old joint poses blindly.",
+  "next_hypothesis": "Identify upright handle opening plane and its local normal in both cameras independently of jaw closing orientation. Approach through opening toward inside/below arc. Combine both views, aperture relative to empty closure and stable contact/load evidence for a short observed retention test; occlusion alone is not failure. Any table-supported pose change must be separately observed within next recorded episode. No increased force limits or copied side-lying joint poses.",
   "historical_success_reference": "03e5351425018a23b53da62aa87ca456482686359129db12f6a5690c8088777f:0",
   "peer_success_episode": "20260923T150127-191efa22",
   "stable_boundary": true,
@@ -2916,5 +2917,9 @@
     "matches_preserved_ledger": true
   },
   "task_id": "exp-grasp-mug-multiagent",
-  "ledger_policy": "Append-only outcomes by episode_id across turns. Merge exact-agent uploaded historical evidence without deleting missing local episodes or relabeling outcomes."
+  "ledger_policy": "Append-only outcomes by episode_id across turns. Merge exact-agent uploaded historical evidence without deleting missing local episodes or relabeling outcomes.",
+  "last_episode_id": "20260923T152704-67d46d98",
+  "last_result": "Unsuccessful; finger-through-loop support unverified; no retained lift or home-held mug.",
+  "latest_evidence_stem": "tools/mug_observations/1790195571902856116",
+  "home_evidence_stem": "tools/mug_observations/1790195697171010099"
 }
