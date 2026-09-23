@@ -1,0 +1,98 @@
+[
+  {
+    "episode_id": "20260923T151600-90257d61",
+    "started": 1790194560.1738365,
+    "finished": 1790194970.221402,
+    "success": false,
+    "notes": "Transverse wrist body and wall approaches did not retain mug; closure displaced mug on table. Ended experiment for operator guidance; no home-held success.",
+    "quality_flags": [],
+    "source": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T151600-90257d61",
+    "closure_attempts": [
+      {
+        "frame_index": 1290,
+        "t_wall": 1790194654.2560027,
+        "measured_joints": {
+          "shoulder_pan": -16.615384615384617,
+          "shoulder_lift": -9.45054945054945,
+          "elbow_flex": 12.87912087912088,
+          "wrist_flex": 61.53846153846154,
+          "wrist_roll": -24.835164835164836,
+          "gripper": 31.010452961672474
+        },
+        "estimated_tool_xyz_base_m": [
+          0.26500747615311343,
+          0.04503893298233487,
+          0.0751151132590224
+        ],
+        "verified_grasp": false,
+        "note": "Closure candidate, not a verified grasp; diagnostic FK alignment.",
+        "top_evidence": "/var/lib/armfarm/stations/armfarm/workspace/tools/mug_evidence/20260923T151600-90257d61_1290_top.jpg",
+        "wrist_evidence": "/var/lib/armfarm/stations/armfarm/workspace/tools/mug_evidence/20260923T151600-90257d61_1290_wrist.jpg"
+      },
+      {
+        "frame_index": 1451,
+        "t_wall": 1790194682.189436,
+        "measured_joints": {
+          "shoulder_pan": -16.615384615384617,
+          "shoulder_lift": -9.45054945054945,
+          "elbow_flex": 12.87912087912088,
+          "wrist_flex": 61.53846153846154,
+          "wrist_roll": -24.835164835164836,
+          "gripper": 1.8118466898954704
+        },
+        "estimated_tool_xyz_base_m": [
+          0.26500747615311343,
+          0.04503893298233487,
+          0.0751151132590224
+        ],
+        "verified_grasp": false,
+        "note": "Closure candidate, not a verified grasp; diagnostic FK alignment.",
+        "top_evidence": "/var/lib/armfarm/stations/armfarm/workspace/tools/mug_evidence/20260923T151600-90257d61_1451_top.jpg",
+        "wrist_evidence": "/var/lib/armfarm/stations/armfarm/workspace/tools/mug_evidence/20260923T151600-90257d61_1451_wrist.jpg"
+      },
+      {
+        "frame_index": 3001,
+        "t_wall": 1790194841.723167,
+        "measured_joints": {
+          "shoulder_pan": -15.824175824175825,
+          "shoulder_lift": -29.846153846153847,
+          "elbow_flex": 77.31868131868131,
+          "wrist_flex": -21.45054945054945,
+          "wrist_roll": -24.835164835164836,
+          "gripper": 31.0801393728223
+        },
+        "estimated_tool_xyz_base_m": [
+          0.2693445985156263,
+          0.042970679910334236,
+          0.04694393254722838
+        ],
+        "verified_grasp": false,
+        "note": "Closure candidate, not a verified grasp; diagnostic FK alignment.",
+        "top_evidence": "/var/lib/armfarm/stations/armfarm/workspace/tools/mug_evidence/20260923T151600-90257d61_3001_top.jpg",
+        "wrist_evidence": "/var/lib/armfarm/stations/armfarm/workspace/tools/mug_evidence/20260923T151600-90257d61_3001_wrist.jpg"
+      },
+      {
+        "frame_index": 3826,
+        "t_wall": 1790194904.6896777,
+        "measured_joints": {
+          "shoulder_pan": -15.824175824175825,
+          "shoulder_lift": 13.758241758241759,
+          "elbow_flex": 74.06593406593407,
+          "wrist_flex": -63.64835164835165,
+          "wrist_roll": -24.835164835164836,
+          "gripper": 26.062717770034844
+        },
+        "estimated_tool_xyz_base_m": [
+          0.272887863748954,
+          0.04397507634164846,
+          0.0038944056649548933
+        ],
+        "verified_grasp": false,
+        "note": "Closure candidate, not a verified grasp; diagnostic FK alignment.",
+        "top_evidence": "/var/lib/armfarm/stations/armfarm/workspace/tools/mug_evidence/20260923T151600-90257d61_3826_top.jpg",
+        "wrist_evidence": "/var/lib/armfarm/stations/armfarm/workspace/tools/mug_evidence/20260923T151600-90257d61_3826_wrist.jpg"
+      }
+    ],
+    "verified_grasp_locations": []
+  }
+]
