@@ -1090,6 +1090,28 @@
     "wrist_dark": 0.8758181818181818,
     "still_on_table": false
    }
+  },
+  {
+   "t": 1790189698.699338,
+   "dur": 98.09459066390991,
+   "success": true,
+   "notes": [
+    "target=(0.273,0.102) yaw=146 roll=-24 tilt=10",
+    "servo_final=(0.294,0.115) converged=True",
+    "mid_ok=True",
+    "grasp_fk=(0.274,0.108,-0.015)",
+    "grip_pos=22.6 load=500",
+    "grip_pos_lifted=22.5",
+    "home_err_max=1.7 grip_home=22.5 wrist_dark=0.87 cube_on_table=False",
+    "placed_at=(0.151,-0.081)"
+   ],
+   "recorded": true,
+   "folder": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T135500-7679c6f7",
+   "info": {
+    "grip": 22.477383437717467,
+    "wrist_dark": 0.8659545454545454,
+    "still_on_table": false
+   }
   }
  ],
  "place_idx": 0,
