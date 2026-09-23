@@ -1736,3 +1736,21 @@
 {"t": 1790192783.1217065, "kind": "log", "msg": "low0.1: cube right=741 v=481 err=(-41,-81)px"}
 {"t": 1790192784.9576132, "kind": "log", "msg": "low0.2: cube right=759 v=419 err=(-59,-19)px"}
 {"t": 1790192787.558815, "kind": "log", "msg": "low0.3: cube right=688 v=410 err=(12,-10)px"}
+{"t": 1790192790.9351048, "kind": "log", "msg": "mid0: right=726 v=452 err=(44,-12)px"}
+{"t": 1790192799.6474743, "kind": "log", "msg": "mid1: right=790 v=432 err=(-20,8)px"}
+{"t": 1790192802.8493264, "kind": "log", "msg": "gripper after close: pos=24.5 load=500"}
+{"t": 1790192810.4397955, "kind": "log", "msg": "grasp held=True"}
+{"t": 1790192812.6979208, "kind": "log", "msg": "home: grip=22.7 load=200 wrist_dark=0.88 still_on_table=False home_err={'shoulder_pan': -0.5, 'shoulder_lift': 1.1, 'elbow_flex': -0.1, 'wrist_flex': 1.9}"}
+{"t": 1790192812.8047452, "kind": "log", "msg": "recording stopped success=True: {\"episode\": \"20260923T144548-6806bccf\", \"folder\": \"/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T144548-6806bccf\", \"frames\": 1075, \"quality_flags\": [], \"training_ready\": true, \"success\": true, \"notes\": \"target=(0.167,0.044) yaw=-162 roll=-57 tilt=0; servo_final=(0.181,0.044) converged=True; roll_after_yaw_fix=-44; mid_ok=True; grasp_fk=(0.153,0.048,-0.013); grip_pos=24.5 load=500; "}
+{"t": 1790192812.952393, "kind": "log", "msg": "placing at (0.31, 0.1)"}
+{"t": 1790192832.676337, "kind": "log", "msg": "after place: cube px=[868. 494.] predicted=[880. 485.] d=15px"}
+{"t": 1790192832.6780894, "kind": "log", "msg": "map updated: 71 pairs, mean residual 11.7 mm, A=[[-0.0154, 0.9388, 0.2203], [0.8402, 0.0435, -0.029]]"}
+{"t": 1790192832.6799686, "kind": "log", "msg": "episode done success=True dur=86s  totals: 67/83 successes"}
+{"t": 1790192834.6670356, "kind": "log", "msg": "cube at px=[868. 494.] robot=[0.314 0.096] yaw=120 size=[0.042 0.046]"}
+{"t": 1790192834.6802986, "kind": "log", "msg": "recording started: {'episode': '20260923T144714-6eab5177'}"}
+{"t": 1790192847.6315038, "kind": "log", "msg": "servo0.0: cube px=[522. 319.] err=122px move=(21,-3)mm"}
+{"t": 1790192853.4758596, "kind": "log", "msg": "servo0.1: cube px=[443. 425.] err=66px move=(-5,11)mm"}
+{"t": 1790192860.848262, "kind": "log", "msg": "servo0.2: cube px=[519. 444.] err=13px move=(1,-2)mm"}
+{"t": 1790192866.7165189, "kind": "log", "msg": "low0.0: cube right=652 v=487 err=(48,-62)px"}
+{"t": 1790192875.0421238, "kind": "log", "msg": "low0.1: cube right=760 v=409 err=(-60,16)px"}
+{"t": 1790192880.7136834, "kind": "log", "msg": "low0.2: cube right=679 v=418 err=(21,7)px"}
