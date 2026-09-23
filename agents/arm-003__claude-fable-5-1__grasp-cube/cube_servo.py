@@ -33,9 +33,19 @@ def detect_cube_wrist(img, dark_thresh=60, min_area=6000, max_area=400000, debug
         if x <= 2 and bh > 250:  # left edge tall blob -> moving jaw
             continue
         fill = area / float(bw * bh)
-        if fill < 0.4:
+        if fill < 0.45 or max(bw, bh) > 2.0 * min(bw, bh):
             continue
-        cand = dict(px=(float(cents[i][0]), float(cents[i][1])), area=area, bbox=(x, y, bw, bh), fill=fill)
+        cu, cv = float(cents[i][0]), float(cents[i][1])
+        if not (120 <= cu <= 1000 and 60 <= cv <= 700):   # central ROI: the table, not the floor beyond its edge
+            continue
+        # the cube sits on the white table: a ring around the bbox must be mostly bright
+        x0, y0 = max(0, x - 40), max(0, y - 40)
+        x1, y1 = min(w, x + bw + 40), min(h, y + bh + 40)
+        ring = gray[y0:y1, x0:x1].copy()
+        ring[(y - y0):(y - y0 + bh), (x - x0):(x - x0 + bw)] = 255
+        if (ring > 110).mean() < 0.6:
+            continue
+        cand = dict(px=(cu, cv), area=area, bbox=(x, y, bw, bh), fill=fill)
         if best is None or area > best["area"]:
             best = cand
     if debug_path:

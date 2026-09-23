@@ -63,3 +63,10 @@
 {"t": 1790182661.4906986, "kind": "log", "msg": "servo0.5: cube px=[1074.  317.] err=602px move=(3,-30)mm"}
 {"t": 1790182662.5442204, "kind": "log", "msg": "episode error: ValueError('unreachable (0.342,-0.255,0.024): IK failed for [0.3418, -0.2551, 0.024]: pos_err=5.6mm axis_err=6.2deg')\nTraceback (most recent call last):\n  File \"/var/lib/armfarm/stations/armfarm/workspace/tools/cube_run.py\", line 306, in episode\n    held, hover = self.pick(pose, notes)\n                  ~~~~~~~~~^^^^^^^^^^^^^\n  File \"/var/lib/armfarm/stations/armfarm/workspace/tools/cube_run.py\", line 192, in pick\n    low, _ = ik_reach(cx, cy, SERVO_LOW, roll, tilt_start=tilt)\n             ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/var/lib/armfarm/stations/armfarm/workspace/tools/cube_run.py\", line 59, in ik_reach\n    raise ValueError(f\"unreachable ({x:.3f},{y:.3f},{z:.3f}): {last}\")\nValueError: unreachable (0.342,-0.255,0.024): IK failed for [0.3418, -0.2551, 0.024]: pos_err=5.6mm axis_err=6.2deg\n"}
 {"t": 1790182666.8220787, "kind": "log", "msg": "episode done success=False dur=47s  totals: 0/0 successes"}
+{"t": 1790182711.4435616, "kind": "log", "msg": "cube at px=[467. 413.] robot=[ 0.279 -0.098] yaw=-140 size=[0.044 0.039]"}
+{"t": 1790182720.2652717, "kind": "log", "msg": "servo0.0: cube px=[702. 337.] err=267px move=(18,-24)mm"}
+{"t": 1790182726.2095788, "kind": "log", "msg": "servo0.1: cube px=[543. 417.] err=108px move=(20,-17)mm"}
+{"t": 1790182732.4677896, "kind": "log", "msg": "servo0.2: cube px=[438. 544.] err=73px move=(-8,20)mm"}
+{"t": 1790182738.3420775, "kind": "log", "msg": "servo0.3: cube px=[537. 513.] err=31px move=(3,-8)mm"}
+{"t": 1790182745.6653128, "kind": "log", "msg": "servo0.4: cube px=[488. 527.] err=21px move=(-3,5)mm"}
+{"t": 1790182750.6953845, "kind": "log", "msg": "servo0.5: cube px=[520. 509.] err=16px move=(3,-4)mm"}

@@ -182,6 +182,12 @@ class Runner:
                     converged = True
                     break
                 cx, cy = cx + float(d[0]), cy + float(d[1])
+                if math.hypot(cx - x, cy - y) > 0.07 or not (0.10 <= cx <= 0.37 and -0.17 <= cy <= 0.27):
+                    notes.append("servo: correction exceeded safety bounds; aborting servo")
+                    log("servo: correction exceeded safety bounds; aborting")
+                    converged = False
+                    cx, cy = x, y
+                    break
                 try:
                     servo_j, _ = ik_reach(cx, cy, z, roll, tilt_start=tilt)
                 except ValueError as e:
