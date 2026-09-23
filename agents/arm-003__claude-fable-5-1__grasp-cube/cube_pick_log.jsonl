@@ -1107,3 +1107,15 @@
 {"t": 1790189361.51545, "kind": "log", "msg": "after place: cube px=[786. 295.] predicted=[767. 289.] d=20px"}
 {"t": 1790189361.5169685, "kind": "log", "msg": "map updated: 39 pairs, mean residual 12.6 mm, A=[[-0.0035, 0.9427, 0.2232], [0.8591, 0.0271, -0.0301]]"}
 {"t": 1790189361.519001, "kind": "log", "msg": "episode done success=True dur=108s  totals: 35/50 successes"}
+{"t": 1790189388.7639742, "kind": "log", "msg": "cube at px=[786. 295.] robot=[0.194 0.051] yaw=144 size=[0.043 0.056]"}
+{"t": 1790189388.7740815, "kind": "log", "msg": "recording started: {'episode': '20260923T134948-6e8c5640'}"}
+{"t": 1790189395.7647405, "kind": "log", "msg": "servo0.0: cube px=[573. 325.] err=132px move=(29,1)mm"}
+{"t": 1790189400.8491998, "kind": "log", "msg": "servo0.1: cube px=[445. 418.] err=66px move=(-8,8)mm"}
+{"t": 1790189408.057369, "kind": "log", "msg": "servo0.2: cube px=[517. 418.] err=24px move=(5,0)mm"}
+{"t": 1790189412.981908, "kind": "log", "msg": "servo0.3: cube px=[497. 435.] err=11px move=(-1,1)mm"}
+{"t": 1790189415.2992678, "kind": "log", "msg": "low0.0: cube right=617 v=547 err=(83,-147)px"}
+{"t": 1790189420.3453593, "kind": "log", "msg": "low0.1: cube right=735 v=458 err=(-35,-58)px"}
+{"t": 1790189425.2223032, "kind": "log", "msg": "low0.2: cube right=723 v=423 err=(-23,-23)px"}
+{"t": 1790189430.850162, "kind": "log", "msg": "low0.3: cube right=696 v=410 err=(4,-10)px"}
+{"t": 1790189431.927316, "kind": "log", "msg": "mid0: right=720 v=447 err=(50,-7)px"}
+{"t": 1790189440.601069, "kind": "log", "msg": "mid1: right=751 v=453 err=(19,-13)px"}
