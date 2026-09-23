@@ -12,6 +12,7 @@ import cube_pick as cp
 HERE = Path(__file__).resolve().parent
 SERVO_FILE = HERE / "wrist_servo.json"
 JAW_POLY = [(712, 470), (800, 470), (1120, 720), (690, 720)]
+JAW_U = 712  # image column of the fixed jaw's left edge near its tip
 
 
 def detect_cube_wrist(img, dark_thresh=60, min_area=6000, max_area=400000, debug_path=None):

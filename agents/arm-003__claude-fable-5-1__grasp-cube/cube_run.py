@@ -29,6 +29,8 @@ HOVER_Z = 0.10
 TRANSIT_Z = 0.15
 PLACE_Z = GRASP_Z + 0.008
 SERVO_Z = TABLE_Z + 0.088
+LOW_GAP_PX = 12           # desired pixel gap between cube right edge and fixed jaw at SERVO_LOW
+LOW_PX_PER_M = 2900.      # approx image px per metre of tool-x motion at SERVO_LOW
 SERVO_LOW = TABLE_Z + 0.050  # final servo height: tips just above the cube top   # fingertip height for wrist-camera servoing
 ROLL_NEUTRAL = -30.       # wrist roll hard stop measured at +22 deg; free to at least -110
 ROLL_RANGE = (-95., 12.)
@@ -199,8 +201,29 @@ class Runner:
         pre, _ = ik_reach(cx, cy, GRASP_Z + 0.03, roll, tilt_start=tilt)
         grasp, _ = ik_reach(cx, cy, GRASP_Z, roll, tilt_start=tilt)
         arm.move_precise(low, speed_dps=30)
-        time.sleep(0.3)
-        cp.snap("wrist", IMG_DIR / "low_wrist.jpg")
+        # final alignment at the low height: bring the cube's near edge close to the fixed jaw
+        for it in range(2):
+            time.sleep(0.3)
+            limg = cp.snap("wrist", IMG_DIR / f"low_wrist{it}.jpg")
+            lc = cs.detect_cube_wrist(limg, debug_path=IMG_DIR / f"low_wrist{it}_det.jpg")
+            if not lc:
+                notes.append("low: cube not in wrist view")
+                break
+            bx, by, bw, bh = lc["bbox"]
+            gap = cs.JAW_U - (bx + bw)
+            excess = gap - LOW_GAP_PX
+            log(f"low{it}: cube bbox right={bx+bw} gap={gap}px excess={excess}px")
+            if abs(excess) < 18:
+                break
+            d_tool = float(np.clip(excess / LOW_PX_PER_M, -0.03, 0.03))
+            tx, _ = self.servo.tool_axes_xy(arm.read())
+            cx, cy = cx + d_tool * tx[0], cy + d_tool * tx[1]
+            if math.hypot(cx - x, cy - y) > 0.08:
+                notes.append("low: correction exceeded bounds")
+                break
+            low, _ = ik_reach(cx, cy, SERVO_LOW, roll, tilt_start=tilt)
+            arm.move_precise(low, speed_dps=25)
+        grasp, _ = ik_reach(cx, cy, GRASP_Z, roll, tilt_start=tilt)
         now = arm.move_precise(grasp, speed_dps=25)
         fk = cp.fk_xyz(now)
         notes.append(f"grasp_fk=({fk[0]:.3f},{fk[1]:.3f},{fk[2]:.3f})")
