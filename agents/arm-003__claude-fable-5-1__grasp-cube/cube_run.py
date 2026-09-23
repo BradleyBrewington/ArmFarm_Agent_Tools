@@ -30,7 +30,8 @@ TRANSIT_Z = 0.15
 PLACE_Z = GRASP_Z + 0.008
 SERVO_Z = TABLE_Z + 0.088
 LOW_GAP_PX = 12           # desired pixel gap between cube right edge and fixed jaw at SERVO_LOW
-LOW_PX_PER_M = 2900.      # approx image px per metre of tool-x motion at SERVO_LOW
+LOW_SCALE = 1.5           # wrist-camera Jacobian magnification at SERVO_LOW relative to SERVO_Z
+LOW_V = 500.              # desired cube centroid row at SERVO_LOW (jaw-tip depth)
 SERVO_LOW = TABLE_Z + 0.050  # final servo height: tips just above the cube top   # fingertip height for wrist-camera servoing
 ROLL_NEUTRAL = -30.       # wrist roll hard stop measured at +22 deg; free to at least -110
 ROLL_RANGE = (-95., 12.)
@@ -201,8 +202,9 @@ class Runner:
         pre, _ = ik_reach(cx, cy, GRASP_Z + 0.03, roll, tilt_start=tilt)
         grasp, _ = ik_reach(cx, cy, GRASP_Z, roll, tilt_start=tilt)
         arm.move_precise(low, speed_dps=30)
-        # final alignment at the low height: bring the cube's near edge close to the fixed jaw
-        for it in range(2):
+        # final alignment at the low height: cube's near edge close to the fixed jaw (u) and at jaw-tip depth (v)
+        J_low = self.servo.J[self.servo.key(SERVO_Z)] * LOW_SCALE
+        for it in range(3):
             time.sleep(0.3)
             limg = cp.snap("wrist", IMG_DIR / f"low_wrist{it}.jpg")
             lc = cs.detect_cube_wrist(limg, debug_path=IMG_DIR / f"low_wrist{it}_det.jpg")
@@ -210,14 +212,17 @@ class Runner:
                 notes.append("low: cube not in wrist view")
                 break
             bx, by, bw, bh = lc["bbox"]
-            gap = cs.JAW_U - (bx + bw)
-            excess = gap - LOW_GAP_PX
-            log(f"low{it}: cube bbox right={bx+bw} gap={gap}px excess={excess}px")
-            if abs(excess) < 18:
+            err = np.array([(cs.JAW_U - LOW_GAP_PX) - (bx + bw), LOW_V - lc["px"][1]])
+            log(f"low{it}: cube right={bx+bw} v={lc['px'][1]:.0f} err=({err[0]:.0f},{err[1]:.0f})px")
+            if abs(err[0]) < 15 and abs(err[1]) < 25:
                 break
-            d_tool = float(np.clip(excess / LOW_PX_PER_M, -0.03, 0.03))
-            tx, _ = self.servo.tool_axes_xy(arm.read())
-            cx, cy = cx + d_tool * tx[0], cy + d_tool * tx[1]
+            d_tool = np.linalg.solve(J_low, err) * 0.8
+            n = np.linalg.norm(d_tool)
+            if n > 0.025:
+                d_tool *= 0.025 / n
+            tx, ty = self.servo.tool_axes_xy(arm.read())
+            d = d_tool[0] * tx + d_tool[1] * ty
+            cx, cy = cx + float(d[0]), cy + float(d[1])
             if math.hypot(cx - x, cy - y) > 0.08:
                 notes.append("low: correction exceeded bounds")
                 break

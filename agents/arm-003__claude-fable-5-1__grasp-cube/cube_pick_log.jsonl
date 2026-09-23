@@ -119,3 +119,15 @@
 {"t": 1790183015.8576572, "kind": "log", "msg": "gripper after close: pos=0.5 load=40"}
 {"t": 1790183019.9476705, "kind": "log", "msg": "grasp held=False"}
 {"t": 1790183023.109942, "kind": "log", "msg": "episode done success=False dur=31s  totals: 0/3 successes"}
+{"t": 1790183079.8451138, "kind": "log", "msg": "cube not detected at start; opening gripper in case it is held"}
+{"t": 1790183081.7165995, "kind": "log", "msg": "cube at px=[639. 220.] robot=[ 0.182 -0.028] yaw=-100 size=[0.056 0.042]"}
+{"t": 1790183088.019936, "kind": "log", "msg": "servo0.0: cube px=[462. 445.] err=86px move=(3,11)mm"}
+{"t": 1790183090.6760433, "kind": "log", "msg": "servo0.1: cube px=[483. 486.] err=41px move=(0,6)mm"}
+{"t": 1790183093.3421206, "kind": "log", "msg": "servo0.2: cube px=[491. 506.] err=20px move=(-1,3)mm"}
+{"t": 1790183096.0192702, "kind": "log", "msg": "servo0.3: cube px=[511. 511.] err=9px move=(2,0)mm"}
+{"t": 1790183097.2580569, "kind": "log", "msg": "low0: cube right=617 v=599 err=(83,-99)px"}
+{"t": 1790183099.2063806, "kind": "log", "msg": "low1: cube right=703 v=563 err=(-3,-63)px"}
+{"t": 1790183101.0373242, "kind": "log", "msg": "low2: cube right=707 v=543 err=(-7,-43)px"}
+{"t": 1790183105.286065, "kind": "log", "msg": "gripper after close: pos=0.5 load=40"}
+{"t": 1790183109.6143525, "kind": "log", "msg": "grasp held=False"}
+{"t": 1790183112.7764008, "kind": "log", "msg": "episode done success=False dur=35s  totals: 0/3 successes"}
