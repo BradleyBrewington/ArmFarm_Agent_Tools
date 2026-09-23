@@ -145,3 +145,18 @@
 {"t": 1790183273.1254916, "kind": "log", "msg": "gripper after close: pos=0.6 load=48"}
 {"t": 1790183277.424704, "kind": "log", "msg": "grasp held=False"}
 {"t": 1790183280.6067953, "kind": "log", "msg": "episode done success=False dur=41s  totals: 0/3 successes"}
+{"t": 1790183336.6763864, "kind": "log", "msg": "cube not detected at home; swinging arm aside to look, and opening gripper in case it is held"}
+{"t": 1790183343.2408235, "kind": "log", "msg": "cube at px=[599. 195.] robot=[ 0.175 -0.052] yaw=159 size=[0.042 0.042]"}
+{"t": 1790183350.1731353, "kind": "log", "msg": "servo0.0: cube px=[458. 484.] err=66px move=(-18,7)mm"}
+{"t": 1790183352.05721, "kind": "log", "msg": "servo0.1: cube px=[532. 444.] err=25px move=(4,-4)mm"}
+{"t": 1790183356.2314088, "kind": "log", "msg": "servo0.2: cube px=[509. 445.] err=6px move=(-1,-1)mm"}
+{"t": 1790183357.486531, "kind": "log", "msg": "low0: cube right=655 v=555 err=(45,-155)px"}
+{"t": 1790183359.4472153, "kind": "log", "msg": "low1: cube right=704 v=480 err=(-4,-80)px"}
+{"t": 1790183361.2979443, "kind": "log", "msg": "low2: cube right=712 v=440 err=(-12,-40)px"}
+{"t": 1790183363.1361175, "kind": "log", "msg": "low3: cube right=703 v=403 err=(-3,-3)px"}
+{"t": 1790183364.1384716, "kind": "log", "msg": "descent z=0.010: cube px=[532. 442.] right=717"}
+{"t": 1790183365.1425488, "kind": "log", "msg": "descent z=-0.002: cube px=[516. 500.] right=725"}
+{"t": 1790183368.1903396, "kind": "log", "msg": "gripper after close: pos=23.5 load=500"}
+{"t": 1790183375.8387127, "kind": "log", "msg": "grasp held=True"}
+{"t": 1790183378.0638518, "kind": "log", "msg": "home: grip=23.4 load=200 wrist_dark=0.89 still_on_table=False home_err={'shoulder_pan': 0.4, 'shoulder_lift': 1.1, 'elbow_flex': 0.4, 'wrist_flex': 1.6}"}
+{"t": 1790183378.06581, "kind": "log", "msg": "placing at (0.27, -0.06)"}

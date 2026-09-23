@@ -31,7 +31,7 @@ PLACE_Z = GRASP_Z + 0.008
 SERVO_Z = TABLE_Z + 0.088
 LOW_GAP_PX = 12           # desired pixel gap between cube right edge and fixed jaw at SERVO_LOW
 LOW_SCALE = 1.5           # wrist-camera Jacobian magnification at SERVO_LOW relative to SERVO_Z
-LOW_V = 500.              # desired cube centroid row at SERVO_LOW (jaw-tip depth)
+LOW_V = 400.              # desired cube centroid row at SERVO_LOW (jaw-tip depth)
 SERVO_LOW = TABLE_Z + 0.050  # final servo height: tips just above the cube top   # fingertip height for wrist-camera servoing
 ROLL_NEUTRAL = -30.       # wrist roll hard stop measured at +22 deg; free to at least -110
 ROLL_RANGE = (-95., 12.)
@@ -203,8 +203,8 @@ class Runner:
         grasp, _ = ik_reach(cx, cy, GRASP_Z, roll, tilt_start=tilt)
         arm.move_precise(low, speed_dps=30)
         # final alignment at the low height: cube's near edge close to the fixed jaw (u) and at jaw-tip depth (v)
-        J_low = self.servo.J[self.servo.key(SERVO_Z)] * LOW_SCALE
-        for it in range(3):
+        J_low = np.diag([1.0, 0.6]) @ (self.servo.J[self.servo.key(SERVO_Z)] * LOW_SCALE)
+        for it in range(4):
             time.sleep(0.3)
             limg = cp.snap("wrist", IMG_DIR / f"low_wrist{it}.jpg")
             lc = cs.detect_cube_wrist(limg, debug_path=IMG_DIR / f"low_wrist{it}_det.jpg")
