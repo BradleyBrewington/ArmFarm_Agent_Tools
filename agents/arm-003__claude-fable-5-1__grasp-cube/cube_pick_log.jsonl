@@ -48,3 +48,9 @@
 {"t": 1790182316.869755, "kind": "log", "msg": "servo1.0: cube px=[552. 610.] err=73px move=(-0,-30)mm"}
 {"t": 1790182324.8929603, "kind": "log", "msg": "servo1.1: cube px=[531. 581.] err=38px move=(-2,-30)mm"}
 {"t": 1790182332.9301956, "kind": "log", "msg": "servo1.2: cube px=[441. 550.] err=60px move=(0,30)mm"}
+{"t": 1790182340.9532413, "kind": "log", "msg": "servo1.3: cube px=[403. 599.] err=104px move=(-13,27)mm"}
+{"t": 1790182348.864637, "kind": "log", "msg": "servo1.4: cube px=[559. 620.] err=85px move=(-2,-30)mm"}
+{"t": 1790182357.1211102, "kind": "log", "msg": "servo1.5: cube px=[456. 582.] err=49px move=(-10,17)mm"}
+{"t": 1790182373.968746, "kind": "log", "msg": "gripper after close: pos=0.5 load=40"}
+{"t": 1790182384.0491388, "kind": "log", "msg": "grasp held=False"}
+{"t": 1790182388.4842386, "kind": "log", "msg": "episode done success=False dur=160s  totals: 0/0 successes"}
