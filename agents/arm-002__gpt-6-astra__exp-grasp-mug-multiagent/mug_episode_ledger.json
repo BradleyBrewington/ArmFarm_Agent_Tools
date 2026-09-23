@@ -310,5 +310,100 @@
       "image": "tools/mug_observations/1790196030563028959_top.jpg",
       "note": "Approximate table-contact footprint center inferred from lower body before lift; partially occluded. Not elevated handle projection. No coverage credit."
     }
+  },
+  {
+    "episode_id": "20260923T154409-dbb0900c",
+    "started": 1790196249.5786743,
+    "finished": 1790196572.1424787,
+    "success": false,
+    "notes": "Recorded table-supported pose-change test. Upper-wall contact slid/rotated and briefly changed mug angle, then released; mug settled upright. No side-lying pose, finger-through-handle support, retained lift, or held-home success. No force limits increased.",
+    "quality_flags": [],
+    "source": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T154409-dbb0900c",
+    "closure_attempts": [
+      {
+        "measured_joints": {
+          "shoulder_pan": -17.934065934065934,
+          "shoulder_lift": -12.967032967032967,
+          "elbow_flex": 34.417582417582416,
+          "wrist_flex": 27.956043956043956,
+          "wrist_roll": 62.81318681318681,
+          "gripper": 1.8118466898954706
+        },
+        "estimated_tool_xyz_base_m": [
+          0.31189709581745884,
+          0.07115797718435295,
+          0.07772374557673742
+        ],
+        "verified_grasp": false,
+        "evidence_stem": "tools/mug_observations/1790196422805180863",
+        "note": "Table-supported pose-change contact, not successful grasp."
+      }
+    ],
+    "pose_change_evidence": [
+      {
+        "measured_joints": {
+          "shoulder_pan": -18.98901098901099,
+          "shoulder_lift": -14.989010989010989,
+          "elbow_flex": 41.89010989010989,
+          "wrist_flex": 19.252747252747252,
+          "wrist_roll": 62.81318681318681,
+          "gripper": 1.8118466898954706
+        },
+        "estimated_tool_xyz_base_m": [
+          0.30786472196314796,
+          0.07525247078761724,
+          0.07290752552587201
+        ],
+        "verified_grasp": false,
+        "evidence_stem": "tools/mug_observations/1790196473695834109",
+        "note": "Table-supported pose-change contact, not successful grasp."
+      },
+      {
+        "measured_joints": {
+          "shoulder_pan": -19.164835164835164,
+          "shoulder_lift": -19.384615384615383,
+          "elbow_flex": 48.65934065934066,
+          "wrist_flex": 19.252747252747252,
+          "wrist_roll": 62.81318681318681,
+          "gripper": 1.6724738675958188
+        },
+        "estimated_tool_xyz_base_m": [
+          0.29279225901707306,
+          0.07091989412828506,
+          0.06216846178102271
+        ],
+        "verified_grasp": false,
+        "evidence_stem": "tools/mug_observations/1790196506301846192",
+        "note": "Table-supported pose-change contact, not successful grasp."
+      },
+      {
+        "measured_joints": {
+          "shoulder_pan": -20.395604395604394,
+          "shoulder_lift": -27.12087912087912,
+          "elbow_flex": 55.252747252747255,
+          "wrist_flex": 19.78021978021978,
+          "wrist_roll": 62.9010989010989,
+          "gripper": 1.6027874564459932
+        },
+        "estimated_tool_xyz_base_m": [
+          0.2789505946208501,
+          0.07183386109759617,
+          0.06340255154112256
+        ],
+        "verified_grasp": false,
+        "evidence_stem": "tools/mug_observations/1790196539739803880",
+        "note": "Table-supported pose-change contact, not successful grasp."
+      }
+    ],
+    "verified_grasp_locations": [],
+    "object_location": {
+      "table_contact_pixel_estimate": [
+        667,
+        540
+      ],
+      "pixel_uncertainty": 20,
+      "image": "tools/mug_observations/1790196539739803880_top.jpg",
+      "note": "Upright settled footprint estimate; no lift or coverage credit."
+    }
   }
 ]
