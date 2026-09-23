@@ -331,3 +331,11 @@
 {"t": 1790184641.3411179, "kind": "log", "msg": "episode done success=False dur=37s  totals: 2/13 successes"}
 {"t": 1790184643.3511214, "kind": "log", "msg": "cube at px=[364. 567.] robot=[ 0.362 -0.155] yaw=-108 size=[0.038 0.032]"}
 {"t": 1790184643.3646007, "kind": "log", "msg": "recording started: {'episode': '20260923T123043-6654f380'}"}
+{"t": 1790184654.7693539, "kind": "log", "msg": "servo0.0: cube px=[580. 402.] err=83px move=(-9,-18)mm"}
+{"t": 1790184654.7695735, "kind": "log", "msg": "servo: correction exceeded safety bounds; aborting"}
+{"t": 1790184659.0120752, "kind": "log", "msg": "low0.0: cube right=648 v=323 err=(52,177)px"}
+{"t": 1790184666.9636948, "kind": "log", "msg": "low0.1: cube right=582 v=447 err=(118,53)px"}
+{"t": 1790184674.488841, "kind": "log", "msg": "low0.2: cube right=633 v=456 err=(67,44)px"}
+{"t": 1790184674.6140966, "kind": "log", "msg": "episode error: ValueError('unreachable (0.390,-0.174,0.024): IK failed for [0.3897, -0.1737, 0.024]: pos_err=3.0mm axis_err=3.5deg')\nTraceback (most recent call last):\n  File \"/var/lib/armfarm/stations/armfarm/workspace/tools/cube_run.py\", line 385, in episode\n    held, hover = self.pick(pose, notes)\n                  ~~~~~~~~~^^^^^^^^^^^^^\n  File \"/var/lib/armfarm/stations/armfarm/workspace/tools/cube_run.py\", line 236, in pick\n    low, _ = ik_reach(cx, cy, SERVO_LOW, roll, tilt_start=tilt)\n             ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/var/lib/armfarm/stations/armfarm/workspace/tools/cube_run.py\", line 65, in ik_reach\n    raise ValueError(f\"unreachable ({x:.3f},{y:.3f},{z:.3f}): {last}\")\nValueError: unreachable (0.390,-0.174,0.024): IK failed for [0.3897, -0.1737, 0.024]: pos_err=3.0mm axis_err=3.5deg\n"}
+{"t": 1790184674.859587, "kind": "log", "msg": "recording stopped success=False: {\"episode\": \"20260923T123043-6654f380\", \"folder\": \"/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T123043-6654f380\", \"frames\": 498, \"quality_flags\": [], \"training_ready\": true, \"success\": false, \"notes\": \"target=(0.362,-0.155) yaw=-108 roll=-75 tilt=40; servo: correction exceeded safety bounds; aborting servo; servo_final=(0.362,-0.155) converged=False; error: ValueError('unreachable"}
+{"t": 1790184679.3007696, "kind": "log", "msg": "episode done success=False dur=38s  totals: 2/14 successes"}
