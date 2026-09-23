@@ -29,3 +29,11 @@
 {"t": 1790182042.8757076, "kind": "log", "msg": "grasp held=False"}
 {"t": 1790182047.3547697, "kind": "log", "msg": "episode done success=False dur=63s  totals: 0/0 successes"}
 {"t": 1790182123.6033857, "kind": "log", "msg": "cube at px=[494. 489.] robot=[ 0.32  -0.082] yaw=-163 size=[0.044 0.035]"}
+{"t": 1790182137.6981907, "kind": "log", "msg": "servo0.0: cube px=[609. 348.] err=160px move=(27,14)mm"}
+{"t": 1790182145.940589, "kind": "log", "msg": "servo0.1: cube px=[550. 486.] err=16px move=(4,1)mm"}
+{"t": 1790182153.3028865, "kind": "log", "msg": "calibrating wrist-camera Jacobian at z=0.024"}
+{"t": 1790182153.829028, "kind": "log", "msg": "episode error: RuntimeError('cube not visible in wrist camera for Jacobian calibration')\nTraceback (most recent call last):\n  File \"/var/lib/armfarm/stations/armfarm/workspace/tools/cube_run.py\", line 302, in episode\n    held, hover = self.pick(pose, notes)\n                  ~~~~~~~~~^^^^^^^^^^^^^\n  File \"/var/lib/armfarm/stations/armfarm/workspace/tools/cube_run.py\", line 168, in pick\n    J = self.servo.calibrate(arm, servo_j, z, roll, tilt, ik_reach, debug_dir=str(IMG_DIR))\n  File \"/var/lib/armfarm/stations/armfarm/workspace/tools/cube_servo.py\", line 88, in calibrate\n    raise RuntimeError(\"cube not visible in wrist camera for Jacobian calibration\")\nRuntimeError: cube not visible in wrist camera for Jacobian calibration\n"}
+{"t": 1790182153.831017, "kind": "log", "msg": "placing at (0.21, -0.03)"}
+{"t": 1790182154.155068, "kind": "log", "msg": "travel via lifted waypoint"}
+{"t": 1790182182.4306428, "kind": "log", "msg": "after place: cube px=[491. 474.] predicted=[615. 308.] d=208px"}
+{"t": 1790182182.4308586, "kind": "log", "msg": "episode done success=False dur=61s  totals: 0/0 successes"}

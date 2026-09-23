@@ -317,7 +317,7 @@ class Runner:
         # post-episode: place cube at a new position (or release if failed but holding)
         try:
             gpos, _ = arm.gripper_state()
-            if success or gpos > GRIP_HOLD_MIN:
+            if success or (GRIP_HOLD_MIN < gpos < GRIP_OPEN - 15):
                 xy = self.next_place()
                 log(f"placing at {xy}")
                 self.place(xy, notes)
