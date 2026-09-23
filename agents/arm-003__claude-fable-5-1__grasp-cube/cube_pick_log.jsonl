@@ -1913,3 +1913,18 @@
 {"t": 1790193719.866825, "kind": "log", "msg": "episode done success=True dur=108s  totals: 75/91 successes"}
 {"t": 1790193745.9451342, "kind": "log", "msg": "cube at px=[541. 361.] robot=[ 0.24  -0.078] yaw=-171 size=[0.053 0.036]"}
 {"t": 1790193745.9581618, "kind": "log", "msg": "recording started: {'episode': '20260923T150225-110312df'}"}
+{"t": 1790193756.5165002, "kind": "log", "msg": "servo0.0: cube px=[602. 289.] err=178px move=(21,-21)mm"}
+{"t": 1790193761.8087347, "kind": "log", "msg": "servo0.1: cube px=[449. 401.] err=70px move=(3,9)mm"}
+{"t": 1790193767.5152936, "kind": "log", "msg": "servo0.2: cube px=[520. 407.] err=35px move=(6,-5)mm"}
+{"t": 1790193774.751674, "kind": "log", "msg": "servo0.3: cube px=[480. 443.] err=27px move=(-2,6)mm"}
+{"t": 1790193781.9568894, "kind": "log", "msg": "servo0.4: cube px=[514. 431.] err=11px move=(2,-2)mm"}
+{"t": 1790193784.97383, "kind": "log", "msg": "low0.0: cube right=666 v=523 err=(34,-123)px"}
+{"t": 1790193790.2319229, "kind": "log", "msg": "low0.1: cube right=739 v=450 err=(-39,-50)px"}
+{"t": 1790193797.413645, "kind": "log", "msg": "low0.2: cube right=718 v=430 err=(-18,-30)px"}
+{"t": 1790193804.5565906, "kind": "log", "msg": "low0.3: cube right=698 v=423 err=(2,-23)px"}
+{"t": 1790193807.171743, "kind": "log", "msg": "mid0: right=745 v=474 err=(25,-34)px"}
+{"t": 1790193810.2260244, "kind": "log", "msg": "gripper after close: pos=23.6 load=500"}
+{"t": 1790193820.4915981, "kind": "log", "msg": "grasp held=True"}
+{"t": 1790193823.3872046, "kind": "log", "msg": "home: grip=22.6 load=200 wrist_dark=0.87 still_on_table=False home_err={'shoulder_pan': 0.4, 'shoulder_lift': 1.1, 'elbow_flex': 0.2, 'wrist_flex': 1.7}"}
+{"t": 1790193823.644405, "kind": "log", "msg": "recording stopped success=True: {\"episode\": \"20260923T150225-110312df\", \"folder\": \"/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T150225-110312df\", \"frames\": 1066, \"quality_flags\": [], \"training_ready\": true, \"success\": true, \"notes\": \"target=(0.240,-0.078) yaw=-171 roll=-26 tilt=0; servo_final=(0.268,-0.088) converged=True; mid_ok=True; grasp_fk=(0.242,-0.081,-0.013); grip_pos=23.6 load=500; grip_pos_lifted=22.6;"}
+{"t": 1790193823.6667824, "kind": "log", "msg": "placing at (0.27, -0.14)"}
