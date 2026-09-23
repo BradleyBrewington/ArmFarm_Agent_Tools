@@ -20,6 +20,7 @@ import numpy as np
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 import cube_pick as cp  # noqa: E402
+import cube_servo as cs  # noqa: E402
 import recording  # noqa: E402
 
 TABLE_Z = -0.013          # measured by contact at (0.21, 0.0)
@@ -27,6 +28,7 @@ GRASP_Z = TABLE_Z + 0.016  # fingertip height while closing on the ~4 cm cube
 HOVER_Z = 0.10
 TRANSIT_Z = 0.15
 PLACE_Z = GRASP_Z + 0.006
+SERVO_Z = TABLE_Z + 0.075   # fingertip height for wrist-camera servoing
 ROLL_NEUTRAL = 21.4
 ROLL_RANGE = (-50., 95.)
 GRIP_OPEN = 80.
@@ -129,6 +131,7 @@ class Runner:
     def __init__(self, arm):
         self.arm = arm
         self.tmap = cp.TableMap()
+        self.servo = cs.WristServo()
         self.state = json.loads(STATE_FILE.read_text()) if STATE_FILE.exists() else {"episodes": [], "place_idx": 0, "order": []}
 
     def save_state(self):
@@ -145,26 +148,56 @@ class Runner:
     def pick(self, pose, notes):
         arm = self.arm
         x, y = pose["robot"]
-        joints_g, tilt = ik_reach(x, y, GRASP_Z, ROLL_NEUTRAL)
+        _, tilt = ik_reach(x, y, GRASP_Z, ROLL_NEUTRAL)
         roll = choose_roll(x, y, GRASP_Z, pose["yaw"], tilt)
-        grasp, tilt = ik_reach(x, y, GRASP_Z, roll, tilt_start=tilt)
-        pre, _ = ik_reach(x, y, GRASP_Z + 0.035, roll, tilt_start=tilt)
+        servo_j, tilt = ik_reach(x, y, SERVO_Z, roll, tilt_start=tilt)
         hover = hover_pose(x, y, roll, tilt)
         notes.append(f"target=({x:.3f},{y:.3f}) yaw={pose['yaw']:.0f} roll={roll:.0f} tilt={tilt:.0f}")
         arm.gripper(GRIP_OPEN, seconds=0.5)
         travel(arm, hover)
-        arm.move_precise(pre, speed_dps=45)
-        now = arm.move_precise(grasp, speed_dps=30)
+        arm.move_precise(servo_j, speed_dps=45)
+        if self.servo.J is None:
+            log("calibrating wrist-camera Jacobian")
+            J = self.servo.calibrate(arm, servo_j, SERVO_Z, roll, tilt, ik_reach, debug_dir=str(IMG_DIR))
+            log(f"Jacobian px/m: {J.round(0).tolist()}")
+        cx, cy = x, y
+        converged = False
+        for it in range(6):
+            time.sleep(0.35)
+            img = cp.snap("wrist", IMG_DIR / f"servo{it}.jpg")
+            c = cs.detect_cube_wrist(img, debug_path=IMG_DIR / f"servo{it}_det.jpg")
+            if not c:
+                notes.append(f"servo{it}: cube not in wrist view")
+                log("servo: cube not visible in wrist camera")
+                break
+            d, err_px = self.servo.step(servo_j, c["px"])
+            log(f"servo{it}: cube px={np.round(c['px'])} err={err_px:.0f}px move=({d[0]*1000:.0f},{d[1]*1000:.0f})mm")
+            if err_px < 14:
+                converged = True
+                break
+            cx, cy = cx + float(d[0]), cy + float(d[1])
+            try:
+                servo_j, _ = ik_reach(cx, cy, SERVO_Z, roll, tilt_start=tilt)
+            except ValueError as e:
+                notes.append(f"servo: {e}")
+                break
+            arm.move_precise(servo_j, speed_dps=30)
+        notes.append(f"servo_final=({cx:.3f},{cy:.3f}) converged={converged}")
+        pre, _ = ik_reach(cx, cy, GRASP_Z + 0.03, roll, tilt_start=tilt)
+        grasp, _ = ik_reach(cx, cy, GRASP_Z, roll, tilt_start=tilt)
+        arm.move_precise(pre, speed_dps=35)
+        now = arm.move_precise(grasp, speed_dps=25)
         fk = cp.fk_xyz(now)
         notes.append(f"grasp_fk=({fk[0]:.3f},{fk[1]:.3f},{fk[2]:.3f})")
         cp.snap("wrist", IMG_DIR / "grasp_wrist.jpg")
+        cp.snap("top", IMG_DIR / "grasp_top.jpg")
         arm.gripper(GRIP_CLOSED, seconds=0.7, settle=0.5)
         time.sleep(0.3)
         gpos, gload = arm.gripper_state()
         notes.append(f"grip_pos={gpos:.1f} load={gload}")
         log(f"gripper after close: pos={gpos:.1f} load={gload}")
         held = gpos > GRIP_HOLD_MIN
-        # lift
+        cp.snap("wrist", IMG_DIR / "closed_wrist.jpg")
         arm.move_precise(pre, speed_dps=30)
         arm.move_arm(hover, speed_dps=45)
         gpos2, _ = arm.gripper_state()
