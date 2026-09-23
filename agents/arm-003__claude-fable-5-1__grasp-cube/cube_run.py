@@ -46,14 +46,24 @@ def log(msg, **data):
     cp.log_event("log", msg=msg, **data)
 
 
-def ik_reach(x, y, z, roll):
+def ik_reach(x, y, z, roll, tilt_start=0.):
     last = None
-    for tilt in (0., 10., 20., 30.):
+    for tilt in (t for t in (0., 10., 20., 30., 40.) if t >= tilt_start):
         try:
             return cp.solve_ik(x, y, z, roll=roll, tilt_deg=tilt), tilt
         except ValueError as e:
             last = e
     raise ValueError(f"unreachable ({x:.3f},{y:.3f},{z:.3f}): {last}")
+
+
+def hover_pose(x, y, roll, tilt):
+    last = None
+    for z in (HOVER_Z, 0.08, 0.06, 0.05):
+        try:
+            return ik_reach(x, y, z, roll, tilt_start=tilt)[0]
+        except ValueError as e:
+            last = e
+    raise last
 
 
 def choose_roll(x, y, z, yaw_deg, tilt):
@@ -137,9 +147,9 @@ class Runner:
         x, y = pose["robot"]
         joints_g, tilt = ik_reach(x, y, GRASP_Z, ROLL_NEUTRAL)
         roll = choose_roll(x, y, GRASP_Z, pose["yaw"], tilt)
-        grasp = cp.solve_ik(x, y, GRASP_Z, roll=roll, tilt_deg=tilt)
-        hover = cp.solve_ik(x, y, HOVER_Z, roll=roll, tilt_deg=tilt)
-        pre = cp.solve_ik(x, y, GRASP_Z + 0.035, roll=roll, tilt_deg=tilt)
+        grasp, tilt = ik_reach(x, y, GRASP_Z, roll, tilt_start=tilt)
+        pre, _ = ik_reach(x, y, GRASP_Z + 0.035, roll, tilt_start=tilt)
+        hover = hover_pose(x, y, roll, tilt)
         notes.append(f"target=({x:.3f},{y:.3f}) yaw={pose['yaw']:.0f} roll={roll:.0f} tilt={tilt:.0f}")
         arm.gripper(GRIP_OPEN, seconds=0.5)
         travel(arm, hover)
@@ -203,8 +213,8 @@ class Runner:
         x, y = xy
         roll = ROLL_NEUTRAL + random.uniform(-35, 35)
         joints, tilt = ik_reach(x, y, PLACE_Z, roll)
-        hover = cp.solve_ik(x, y, HOVER_Z, roll=roll, tilt_deg=tilt)
-        pre = cp.solve_ik(x, y, PLACE_Z + 0.03, roll=roll, tilt_deg=tilt)
+        pre, _ = ik_reach(x, y, PLACE_Z + 0.03, roll, tilt_start=tilt)
+        hover = hover_pose(x, y, roll, tilt)
         travel(arm, hover)
         arm.move_precise(pre, speed_dps=45)
         now = arm.move_precise(joints, speed_dps=30)
@@ -284,8 +294,9 @@ class Runner:
             arm.gripper(GRIP_CLOSED, seconds=0.4)
         ep = dict(t=t0, dur=time.time() - t0, success=bool(success), notes=notes, recorded=record,
                   folder=(result or {}).get("folder") if isinstance(result, dict) else None, info=info)
-        self.state["episodes"].append(ep)
-        self.save_state()
+        if record:
+            self.state["episodes"].append(ep)
+            self.save_state()
         n = len(self.state["episodes"]); s = sum(1 for e in self.state["episodes"] if e["success"])
         log(f"episode done success={success} dur={ep['dur']:.0f}s  totals: {s}/{n} successes")
         return success

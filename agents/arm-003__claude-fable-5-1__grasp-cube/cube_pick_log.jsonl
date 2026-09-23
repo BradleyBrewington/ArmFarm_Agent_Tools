@@ -1,3 +1,7 @@
 {"t": 1790181468.2443898, "kind": "log", "msg": "cube at px=[559. 518.] robot=[ 0.331 -0.05 ] yaw=-169 size=[0.042 0.034]"}
 {"t": 1790181469.4626057, "kind": "log", "msg": "episode error: ValueError('IK failed for [0.3313, -0.0503, 0.1]: pos_err=6.6mm axis_err=10.2deg')\nTraceback (most recent call last):\n  File \"/var/lib/armfarm/stations/armfarm/workspace/tools/cube_run.py\", line 254, in episode\n    held, hover = self.pick(pose, notes)\n                  ~~~~~~~~~^^^^^^^^^^^^^\n  File \"/var/lib/armfarm/stations/armfarm/workspace/tools/cube_run.py\", line 141, in pick\n    hover = cp.solve_ik(x, y, HOVER_Z, roll=roll, tilt_deg=tilt)\n  File \"/var/lib/armfarm/stations/armfarm/workspace/tools/cube_pick.py\", line 159, in solve_ik\n    raise ValueError(f\"IK failed for {target.round(4).tolist()}: pos_err={pos_err*1000:.1f}mm axis_err={math.degrees(ax_err):.1f}deg\")\nValueError: IK failed for [0.3313, -0.0503, 0.1]: pos_err=6.6mm axis_err=10.2deg\n"}
 {"t": 1790181470.9990108, "kind": "log", "msg": "episode done success=False dur=6s  totals: 0/1 successes"}
+{"t": 1790181496.1252573, "kind": "log", "msg": "cube at px=[559. 518.] robot=[ 0.331 -0.05 ] yaw=-169 size=[0.042 0.034]"}
+{"t": 1790181508.9752533, "kind": "log", "msg": "gripper after close: pos=0.5 load=40"}
+{"t": 1790181516.5196946, "kind": "log", "msg": "grasp held=False"}
+{"t": 1790181521.3369534, "kind": "log", "msg": "episode done success=False dur=27s  totals: 0/0 successes"}

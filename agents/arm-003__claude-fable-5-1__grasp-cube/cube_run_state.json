@@ -1,17 +1,1 @@
-{
- "episodes": [
-  {
-   "t": 1790181464.7057278,
-   "dur": 6.293045282363892,
-   "success": false,
-   "notes": [
-    "error: ValueError('IK failed for [0.3313, -0.0503, 0.1]: pos_err=6.6mm axis_err=10.2deg')"
-   ],
-   "recorded": false,
-   "folder": null,
-   "info": {}
-  }
- ],
- "place_idx": 0,
- "order": []
-}
+{"episodes": [], "place_idx": 0, "order": []}
