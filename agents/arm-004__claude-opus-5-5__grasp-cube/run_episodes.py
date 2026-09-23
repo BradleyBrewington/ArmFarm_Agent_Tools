@@ -23,6 +23,9 @@ class Interrupted(BaseException):
 
 
 def _on_term(signum, frame):
+    import signal
+    for sig in (signal.SIGTERM, signal.SIGHUP):
+        signal.signal(sig, signal.SIG_IGN)   # let the cleanup finish
     raise Interrupted(f'signal {signum}')
 
 
