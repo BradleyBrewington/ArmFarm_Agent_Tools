@@ -310,7 +310,7 @@ class Runner:
         x, y = pose["robot"]
         ang = math.atan2(y, x - 0.0388)
         r = math.hypot(x - 0.0388, y)
-        r_far = min(r + 0.045, 0.42)
+        r_far = min(r + 0.035, 0.40)
         z_drag = TABLE_Z + 0.022
         roll = ROLL_NEUTRAL
         far = (0.0388 + r_far * math.cos(ang), r_far * math.sin(ang))
@@ -318,7 +318,7 @@ class Runner:
         log(f"rake: cube r={r:.3f} -> drag from r={r_far:.3f} to 0.24 along {math.degrees(ang):.0f} deg")
         arm.gripper(GRIP_CLOSED, seconds=0.4)
         j_hi = tilt = None
-        for dz in (0.07, 0.05, 0.035):
+        for dz in (0.07, 0.05, 0.035, 0.02, 0.01):
             try:
                 j_hi, tilt = ik_reach(far[0], far[1], z_drag + dz, roll, tilt_start=30.)
                 break

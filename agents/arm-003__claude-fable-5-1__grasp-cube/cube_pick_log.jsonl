@@ -347,3 +347,12 @@
 {"t": 1790184767.4057493, "kind": "log", "msg": "cube radius 0.360 beyond graspable 0.335; raking (unrecorded)"}
 {"t": 1790184767.4058383, "kind": "log", "msg": "rake: cube r=0.360 -> drag from r=0.405 to 0.24 along -25 deg"}
 {"t": 1790184770.298132, "kind": "log", "msg": "fatal episode error: RuntimeError('rake approach pose unreachable')\nTraceback (most recent call last):\n  File \"/var/lib/armfarm/stations/armfarm/workspace/tools/cube_run.py\", line 485, in main\n    r.episode(record=True)\n    ~~~~~~~~~^^^^^^^^^^^^^\n  File \"/var/lib/armfarm/stations/armfarm/workspace/tools/cube_run.py\", line 420, in episode\n    self.rake(pose, notes)\n    ~~~~~~~~~^^^^^^^^^^^^^\n  File \"/var/lib/armfarm/stations/armfarm/workspace/tools/cube_run.py\", line 328, in rake\n    raise RuntimeError(\"rake approach pose unreachable\")\nRuntimeError: rake approach pose unreachable\n"}
+{"t": 1790184800.2504401, "kind": "log", "msg": "cube at px=[364. 572.] robot=[ 0.364 -0.154] yaw=-116 size=[0.037 0.033]"}
+{"t": 1790184800.2507946, "kind": "log", "msg": "cube radius 0.360 beyond graspable 0.335; raking (unrecorded)"}
+{"t": 1790184800.2509294, "kind": "log", "msg": "rake: cube r=0.360 -> drag from r=0.395 to 0.24 along -25 deg"}
+{"t": 1790184823.7849503, "kind": "log", "msg": "after rake: cube robot=[ 0.347 -0.141]"}
+{"t": 1790184823.7851305, "kind": "log", "msg": "cube radius 0.339 beyond graspable 0.335; raking (unrecorded)"}
+{"t": 1790184823.7852266, "kind": "log", "msg": "rake: cube r=0.339 -> drag from r=0.374 to 0.24 along -25 deg"}
+{"t": 1790184847.01911, "kind": "log", "msg": "after rake: cube robot=[ 0.329 -0.13 ]"}
+{"t": 1790184847.0290024, "kind": "log", "msg": "recording started: {'episode': '20260923T123407-268f8841'}"}
+{"t": 1790184860.0240307, "kind": "log", "msg": "servo0.0: cube px=[585. 314.] err=148px move=(19,-24)mm"}
