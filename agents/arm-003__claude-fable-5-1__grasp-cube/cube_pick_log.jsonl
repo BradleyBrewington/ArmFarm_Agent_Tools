@@ -1671,3 +1671,17 @@
 {"t": 1790192390.7736638, "kind": "log", "msg": "episode done success=True dur=113s  totals: 63/79 successes"}
 {"t": 1790192410.752157, "kind": "log", "msg": "cube at px=[986. 315.] robot=[0.197 0.166] yaw=154 size=[0.04  0.059]"}
 {"t": 1790192410.765441, "kind": "log", "msg": "recording started: {'episode': '20260923T144010-e6aaef62'}"}
+{"t": 1790192421.3954608, "kind": "log", "msg": "servo0.0: cube px=[550. 273.] err=173px move=(28,11)mm"}
+{"t": 1790192425.6567159, "kind": "log", "msg": "servo0.1: cube px=[430. 425.] err=78px move=(-13,7)mm"}
+{"t": 1790192433.0902257, "kind": "log", "msg": "servo0.2: cube px=[524. 403.] err=41px move=(8,2)mm"}
+{"t": 1790192440.4158356, "kind": "log", "msg": "servo0.3: cube px=[494. 452.] err=18px move=(-4,-0)mm"}
+{"t": 1790192448.2376876, "kind": "log", "msg": "low0.0: cube right=623 v=520 err=(77,-120)px"}
+{"t": 1790192453.770846, "kind": "log", "msg": "low0.1: cube right=761 v=413 err=(-61,-13)px"}
+{"t": 1790192457.9035563, "kind": "log", "msg": "low0.2: cube right=708 v=422 err=(-8,-22)px"}
+{"t": 1790192463.5779295, "kind": "log", "msg": "mid0: right=732 v=477 err=(38,-37)px"}
+{"t": 1790192473.0436873, "kind": "log", "msg": "mid1: right=787 v=440 err=(-17,0)px"}
+{"t": 1790192476.1234024, "kind": "log", "msg": "gripper after close: pos=23.3 load=500"}
+{"t": 1790192486.6350343, "kind": "log", "msg": "grasp held=True"}
+{"t": 1790192489.732078, "kind": "log", "msg": "home: grip=22.5 load=200 wrist_dark=0.88 still_on_table=False home_err={'shoulder_pan': -0.6, 'shoulder_lift': 1.1, 'elbow_flex': 0.2, 'wrist_flex': 1.7}"}
+{"t": 1790192489.8540585, "kind": "log", "msg": "recording stopped success=True: {\"episode\": \"20260923T144010-e6aaef62\", \"folder\": \"/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T144010-e6aaef62\", \"frames\": 1141, \"quality_flags\": [], \"training_ready\": true, \"success\": true, \"notes\": \"target=(0.197,0.166) yaw=154 roll=-39 tilt=0; servo_final=(0.220,0.186) converged=True; mid_ok=True; grasp_fk=(0.196,0.175,-0.014); grip_pos=23.3 load=500; grip_pos_lifted=22.5; hom"}
+{"t": 1790192490.1378033, "kind": "log", "msg": "placing at (0.31, 0.16)"}
