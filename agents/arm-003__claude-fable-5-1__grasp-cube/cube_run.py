@@ -467,6 +467,12 @@ class Runner:
         global IMG_DIR
         IMG_DIR = Path("/tmp/cube_run") / time.strftime("%H%M%S")
         IMG_DIR.mkdir(parents=True, exist_ok=True)
+        # /tmp is a 1 GB tmpfs: keep only the last few episodes' debug images (it filled up after ~440 episodes)
+        old = sorted(p for p in IMG_DIR.parent.iterdir() if p.is_dir() and p.name.isdigit())
+        for p in old[:-8]:
+            for f in p.iterdir():
+                f.unlink()
+            p.rmdir()
         arm = self.arm
         notes = []
         t0 = time.time()
