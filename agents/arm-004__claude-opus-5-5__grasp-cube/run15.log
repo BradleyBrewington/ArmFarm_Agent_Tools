@@ -68,3 +68,11 @@
 15:01:56 stats {'succ': 11, 'fail': 0}
 15:01:56 episode 11: cube at (0.214,0.122) yaw=65
 15:02:03 grasp cube=(0.214,0.122) yaw=64.6 roll=39.4 tool=(0.204,0.094)
+15:02:11 low at [0.2048, 0.0938, -0.0081]
+15:02:19 pull_in from r=0.221 ang=31.7
+15:03:01 grasp cube=(0.185,0.064) yaw=11.8 roll=83.4 tool=(0.192,0.035)
+15:03:08 low at [0.1915, 0.0346, -0.0077]
+15:03:16 episode 11: success=True (80s) ['attempt 1: grip=0.8', 'attempt 2: grip=23.7', 'at home gripper=23.7 wrist_dark=0.98']
+15:03:16 place cube=(0.219,0.000) tool=(0.214,-0.030) roll=83.4
+15:03:27 stats {'succ': 12, 'fail': 0}
+15:03:27 time budget reached: stopping between episodes
