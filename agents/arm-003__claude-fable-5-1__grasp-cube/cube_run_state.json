@@ -2198,22 +2198,78 @@
     "wrist_dark": 0.8920984848484849,
     "still_on_table": false
    }
+  },
+  {
+   "t": 1790195198.6436222,
+   "dur": 57.41871690750122,
+   "success": true,
+   "notes": [
+    "target=(0.307,-0.135) yaw=176 roll=-34 tilt=20",
+    "servo_final=(0.329,-0.150) converged=False",
+    "mid_ok=False",
+    "grasp_fk=(0.315,-0.136,-0.018)",
+    "grip_pos=22.3 load=500",
+    "grip_pos_lifted=22.3",
+    "home_err_max=1.7 grip_home=22.3 wrist_dark=0.87 cube_on_table=False",
+    "placed_at=(0.154,-0.083)"
+   ],
+   "recorded": true,
+   "folder": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T152640-a1add675",
+   "info": {
+    "grip": 22.338204592901878,
+    "wrist_dark": 0.8735530303030303,
+    "still_on_table": false
+   }
+  },
+  {
+   "t": 1790195256.0637462,
+   "dur": 40.36781930923462,
+   "success": true,
+   "notes": [
+    "target=(0.160,-0.091) yaw=-178 roll=-17 tilt=0",
+    "servo_final=(0.188,-0.099) converged=True",
+    "roll_after_yaw_fix=-24",
+    "mid_ok=True",
+    "grasp_fk=(0.156,-0.082,-0.013)",
+    "grip_pos=23.9 load=500",
+    "grip_pos_lifted=22.6",
+    "home_err_max=1.8 grip_home=22.6 wrist_dark=0.89 cube_on_table=False",
+    "placed_at=(0.152,-0.140)"
+   ],
+   "recorded": true,
+   "folder": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T152738-239a2d47",
+   "info": {
+    "grip": 22.616562282533053,
+    "wrist_dark": 0.885560606060606,
+    "still_on_table": false
+   }
+  },
+  {
+   "t": 1790195296.4331028,
+   "dur": 36.24485230445862,
+   "success": true,
+   "notes": [
+    "target=(0.142,-0.157) yaw=-153 roll=-63 tilt=0",
+    "servo: correction exceeded safety bounds; aborting servo",
+    "servo_final=(0.142,-0.157) converged=False",
+    "mid_ok=True",
+    "grasp_fk=(0.154,-0.141,-0.013)",
+    "grip_pos=23.8 load=500",
+    "grip_pos_lifted=22.6",
+    "home_err_max=1.7 grip_home=22.6 wrist_dark=0.86 cube_on_table=False",
+    "placed_at=(0.190,-0.079)"
+   ],
+   "recorded": true,
+   "folder": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T152818-1080a42b",
+   "info": {
+    "grip": 22.616562282533053,
+    "wrist_dark": 0.8641742424242425,
+    "still_on_table": false
+   }
   }
  ],
  "place_idx": 0,
  "order": [
-  [
-   0.15,
-   -0.08
-  ],
-  [
-   0.15,
-   -0.14
-  ],
-  [
-   0.19,
-   -0.08
-  ],
   [
    0.27,
    0.16
