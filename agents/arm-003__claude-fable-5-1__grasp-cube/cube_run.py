@@ -32,6 +32,7 @@ SERVO_Z = TABLE_Z + 0.088
 LOW_GAP_PX = 12           # desired pixel gap between cube right edge and fixed jaw at SERVO_LOW
 LOW_SCALE = 1.5           # wrist-camera Jacobian magnification at SERVO_LOW relative to SERVO_Z
 MID_RIGHT = 770.          # desired cube right edge (px) at GRASP_Z+0.024, just above the cube top
+YAW_ROLL_OFFSET = 30.     # empirical bias between top-camera yaw and jaw alignment
 MAX_GRASP_R = 0.335       # max radius from the pan axis for a recorded grasp attempt
 MID_V = 440.              # desired cube centroid row at GRASP_Z+0.024
 LOW_V_PER_TILT = 2.5      # px of extra LOW_V per degree of approach tilt
@@ -158,6 +159,11 @@ class Runner:
         x, y = pose["robot"]
         _, tilt = ik_reach(x, y, GRASP_Z, ROLL_NEUTRAL)
         roll = choose_roll(x, y, GRASP_Z, pose["yaw"], tilt)
+        # the top-camera yaw estimate is systematically ~30 deg off (wrist-camera fix always adds ~+30)
+        for cand in (roll + YAW_ROLL_OFFSET, roll + YAW_ROLL_OFFSET - 90., roll + YAW_ROLL_OFFSET + 90.):
+            if ROLL_RANGE[0] <= cand <= ROLL_RANGE[1]:
+                roll = cand
+                break
         servo_j, tilt = ik_reach(x, y, SERVO_Z, roll, tilt_start=tilt)
         hover = hover_pose(x, y, roll, tilt)
         notes.append(f"target=({x:.3f},{y:.3f}) yaw={pose['yaw']:.0f} roll={roll:.0f} tilt={tilt:.0f}")

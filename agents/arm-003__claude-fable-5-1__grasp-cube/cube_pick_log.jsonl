@@ -664,3 +664,12 @@
 {"t": 1790186978.3337717, "kind": "log", "msg": "after place: cube px=[1045.  353.] predicted=[1103.  349.] d=58px"}
 {"t": 1790186978.33461, "kind": "log", "msg": "map updated: 18 pairs, mean residual 13.0 mm, A=[[-0.0174, 0.8342, 0.2325], [0.8579, 0.0542, -0.0314]]"}
 {"t": 1790186978.3369315, "kind": "log", "msg": "episode done success=True dur=113s  totals: 14/29 successes"}
+{"t": 1790187035.8012466, "kind": "log", "msg": "cube at px=[1045.  353.] robot=[0.23  0.205] yaw=153 size=[0.046 0.053]"}
+{"t": 1790187035.8137968, "kind": "log", "msg": "recording started: {'episode': '20260923T131035-b9b91137'}"}
+{"t": 1790187047.837621, "kind": "log", "msg": "servo0.0: cube px=[476. 298.] err=146px move=(13,14)mm"}
+{"t": 1790187053.1027205, "kind": "log", "msg": "servo0.1: cube px=[453. 431.] err=55px move=(-9,5)mm"}
+{"t": 1790187060.375808, "kind": "log", "msg": "servo0.2: cube px=[519. 437.] err=12px move=(3,-1)mm"}
+{"t": 1790187066.436212, "kind": "log", "msg": "yaw fix: image angle delta -11 -> roll -41->-30 -> delta -1"}
+{"t": 1790187081.7483616, "kind": "log", "msg": "low0.0: cube right=674 v=467 err=(26,-42)px"}
+{"t": 1790187088.9417505, "kind": "log", "msg": "low0.1: cube right=717 v=430 err=(-17,-5)px"}
+{"t": 1790187094.5975568, "kind": "log", "msg": "low0.2: cube right=728 v=433 err=(-28,-8)px"}
