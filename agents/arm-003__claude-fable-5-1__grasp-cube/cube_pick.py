@@ -255,6 +255,20 @@ class Arm:
     def move_arm(self, joints, **kw):
         return self.move({j: joints[j] for j in ARM_JOINTS if j in joints}, **kw)
 
+    def move_precise(self, joints, iters=2, tol=0.8, **kw):
+        """move_arm plus closed-loop correction of steady-state joint offsets (elbow sag)."""
+        tgt = {j: joints[j] for j in ARM_JOINTS if j in joints}
+        cmd = dict(tgt)
+        now = self.move_arm(cmd, **kw)
+        for _ in range(iters):
+            err = {j: tgt[j] - now[j] for j in tgt}
+            if max(abs(e) for e in err.values()) < tol:
+                break
+            cmd = {j: cmd[j] + 0.8 * err[j] for j in tgt}
+            cmd = cw.clamp_target(cmd, self.bus.calibration)
+            now = self.move_arm(cmd, seconds=0.4, settle=0.35)
+        return now
+
     def gripper(self, percent, seconds=0.6, settle=0.4):
         return self.move({"gripper": float(percent)}, seconds=seconds, settle=settle)
 
@@ -426,11 +440,15 @@ class TableMap:
         self.save()
 
     def fit(self):
-        n = len(self.pairs)
+        # Prefer cube-placement correspondences (same centroid bias as detection) once enough exist.
+        place = [p for p in self.pairs if str(p[4]).startswith("place")]
+        use = place if len(place) >= 4 else self.pairs
+        use = use[-40:]
+        n = len(use)
         if n == 0:
             return self.A
-        P = np.array([[p[0], p[1]] for p in self.pairs])
-        R = np.array([[p[2], p[3]] for p in self.pairs])
+        P = np.array([[p[0], p[1]] for p in use])
+        R = np.array([[p[2], p[3]] for p in use])
         if n >= 3:
             X = np.hstack([P, np.ones((n, 1))])
             sol, *_ = np.linalg.lstsq(X, R, rcond=None)
