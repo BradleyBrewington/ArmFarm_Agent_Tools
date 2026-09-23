@@ -615,3 +615,16 @@
 {"t": 1790186658.987962, "kind": "log", "msg": "low0.0: cube right=641 v=521 err=(59,-121)px"}
 {"t": 1790186666.7847407, "kind": "log", "msg": "low0.1: cube right=779 v=411 err=(-79,-11)px"}
 {"t": 1790186670.9367416, "kind": "log", "msg": "low0.2: cube right=689 v=431 err=(11,-31)px"}
+{"t": 1790186678.1294947, "kind": "log", "msg": "low0.3: cube right=719 v=383 err=(-19,17)px"}
+{"t": 1790186689.0990865, "kind": "log", "msg": "mid0: right=716 v=477 err=(54,-37)px"}
+{"t": 1790186698.5325747, "kind": "log", "msg": "mid1: right=798 v=432 err=(-28,8)px"}
+{"t": 1790186701.602088, "kind": "log", "msg": "gripper after close: pos=24.1 load=500"}
+{"t": 1790186712.3545218, "kind": "log", "msg": "grasp held=True"}
+{"t": 1790186715.6639678, "kind": "log", "msg": "home: grip=22.8 load=200 wrist_dark=0.89 still_on_table=False home_err={'shoulder_pan': -0.7, 'shoulder_lift': 1.1, 'elbow_flex': -0.1, 'wrist_flex': 1.7}"}
+{"t": 1790186715.7469473, "kind": "log", "msg": "recording stopped success=True: {\"episode\": \"20260923T130337-4aad2a04\", \"folder\": \"/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T130337-4aad2a04\", \"frames\": 1354, \"quality_flags\": [], \"training_ready\": true, \"success\": true, \"notes\": \"target=(0.276,0.092) yaw=124 roll=-74 tilt=0; servo_final=(0.283,0.093) converged=True; roll_after_yaw_fix=-44; mid_ok=True; grasp_fk=(0.263,0.100,-0.014); grip_pos=24.1 load=500; g"}
+{"t": 1790186715.7703729, "kind": "log", "msg": "placing at (0.27, -0.14)"}
+{"t": 1790186738.5930462, "kind": "log", "msg": "after place: cube px=[419. 403.] predicted=[424. 386.] d=18px"}
+{"t": 1790186738.5941422, "kind": "log", "msg": "map updated: 16 pairs, mean residual 12.8 mm, A=[[-0.0125, 0.808, 0.2326], [0.8384, 0.1014, -0.0325]]"}
+{"t": 1790186738.5964086, "kind": "log", "msg": "episode done success=True dur=123s  totals: 12/27 successes"}
+{"t": 1790186740.5926213, "kind": "log", "msg": "cube at px=[419. 403.] robot=[ 0.277 -0.141] yaw=-111 size=[0.044 0.041]"}
+{"t": 1790186740.6024659, "kind": "log", "msg": "recording started: {'episode': '20260923T130540-fb6f6a60'}"}
