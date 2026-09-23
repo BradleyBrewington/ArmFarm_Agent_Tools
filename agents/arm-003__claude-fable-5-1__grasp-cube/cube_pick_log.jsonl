@@ -863,3 +863,10 @@
 {"t": 1790188120.8009908, "kind": "log", "msg": "servo0.0: cube px=[560. 291.] err=158px move=(25,16)mm"}
 {"t": 1790188128.1312904, "kind": "log", "msg": "servo0.1: cube px=[434. 440.] err=73px move=(-15,2)mm"}
 {"t": 1790188135.431883, "kind": "log", "msg": "servo0.2: cube px=[535. 427.] err=30px move=(7,1)mm"}
+{"t": 1790188142.7026436, "kind": "log", "msg": "servo0.3: cube px=[488. 438.] err=19px move=(-4,1)mm"}
+{"t": 1790188148.8322458, "kind": "log", "msg": "yaw fix: image angle delta -18 -> roll -42->-24 -> delta -2"}
+{"t": 1790188170.5829442, "kind": "log", "msg": "low0.0: cube right=661 v=495 err=(39,-95)px"}
+{"t": 1790188178.0980508, "kind": "log", "msg": "low0.1: cube right=758 v=417 err=(-58,-17)px"}
+{"t": 1790188185.2725008, "kind": "log", "msg": "low0.2: cube right=698 v=414 err=(2,-14)px"}
+{"t": 1790188192.4378831, "kind": "log", "msg": "mid0: right=709 v=459 err=(61,-19)px"}
+{"t": 1790188203.409408, "kind": "log", "msg": "mid1: right=807 v=443 err=(-37,-3)px"}
