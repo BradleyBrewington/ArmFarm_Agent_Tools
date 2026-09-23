@@ -781,3 +781,13 @@
 {"t": 1790187718.1539128, "kind": "log", "msg": "episode done success=True dur=78s  totals: 19/34 successes"}
 {"t": 1790187720.1640704, "kind": "log", "msg": "cube at px=[976. 298.] robot=[0.189 0.165] yaw=159 size=[0.042 0.061]"}
 {"t": 1790187720.177272, "kind": "log", "msg": "recording started: {'episode': '20260923T132200-e38208fb'}"}
+{"t": 1790187729.7768662, "kind": "log", "msg": "servo0.0: cube px=[552. 302.] err=145px move=(26,11)mm"}
+{"t": 1790187737.249079, "kind": "log", "msg": "servo0.1: cube px=[444. 421.] err=66px move=(-10,6)mm"}
+{"t": 1790187744.4314504, "kind": "log", "msg": "servo0.2: cube px=[512. 418.] err=22px move=(4,2)mm"}
+{"t": 1790187748.7024245, "kind": "log", "msg": "servo0.3: cube px=[500. 432.] err=11px move=(-0,1)mm"}
+{"t": 1790187754.7369978, "kind": "log", "msg": "yaw fix: image angle delta -9 -> roll -35->-26 -> delta -2"}
+{"t": 1790187768.261114, "kind": "log", "msg": "low0.0: cube right=679 v=502 err=(21,-102)px"}
+{"t": 1790187775.7377653, "kind": "log", "msg": "low0.1: cube right=738 v=439 err=(-38,-39)px"}
+{"t": 1790187782.9047117, "kind": "log", "msg": "low0.2: cube right=711 v=420 err=(-11,-20)px"}
+{"t": 1790187785.546186, "kind": "log", "msg": "mid0: right=753 v=466 err=(17,-26)px"}
+{"t": 1790187788.6188338, "kind": "log", "msg": "gripper after close: pos=24.4 load=500"}
