@@ -70,3 +70,10 @@
 {"t": 1790182738.3420775, "kind": "log", "msg": "servo0.3: cube px=[537. 513.] err=31px move=(3,-8)mm"}
 {"t": 1790182745.6653128, "kind": "log", "msg": "servo0.4: cube px=[488. 527.] err=21px move=(-3,5)mm"}
 {"t": 1790182750.6953845, "kind": "log", "msg": "servo0.5: cube px=[520. 509.] err=16px move=(3,-4)mm"}
+{"t": 1790182765.849657, "kind": "log", "msg": "gripper after close: pos=22.0 load=500"}
+{"t": 1790182775.6571872, "kind": "log", "msg": "grasp held=True"}
+{"t": 1790182779.0487778, "kind": "log", "msg": "home: grip=22.0 load=200 wrist_dark=0.30 still_on_table=False home_err={'shoulder_pan': 0.4, 'shoulder_lift': 1.1, 'elbow_flex': 0.4, 'wrist_flex': 1.6}"}
+{"t": 1790182779.0510666, "kind": "log", "msg": "placing at (0.21, -0.03)"}
+{"t": 1790182793.5221353, "kind": "log", "msg": "after place: cube px=[630. 266.] predicted=[610. 313.] d=51px"}
+{"t": 1790182793.5228913, "kind": "log", "msg": "map updated: 4 pairs, mean residual 6.2 mm, A=[[-0.167, 0.6056, 0.2316], [0.8136, 0.0805, -0.0188]]"}
+{"t": 1790182793.5230176, "kind": "log", "msg": "episode done success=True dur=84s  totals: 0/0 successes"}

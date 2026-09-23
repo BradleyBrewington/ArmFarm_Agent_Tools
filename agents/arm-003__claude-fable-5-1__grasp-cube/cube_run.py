@@ -212,6 +212,10 @@ class Runner:
         notes.append(f"grip_pos={gpos:.1f} load={gload}")
         log(f"gripper after close: pos={gpos:.1f} load={gload}")
         held = gpos > GRIP_HOLD_MIN
+        if held:
+            # hold with a goal just inside the measured width instead of straining at full torque
+            arm.command({"gripper": max(GRIP_CLOSED, gpos - 6.)})
+            time.sleep(0.2)
         cp.snap("wrist", IMG_DIR / "closed_wrist.jpg")
         arm.move_precise(pre, speed_dps=30)
         arm.move_arm(hover, speed_dps=45)
