@@ -32,8 +32,8 @@ import cv2
 import numpy as np
 
 ARM_JOINTS = ("shoulder_pan", "shoulder_lift", "elbow_flex", "wrist_flex", "wrist_roll")
-JOINTS = (*ARM_JOINTS, "gripper")
 HOME_JOINTS = ("shoulder_pan", "shoulder_lift", "elbow_flex", "wrist_flex")
+JOINTS = (*ARM_JOINTS, "gripper")
 CLOSED_GRIPPER = 0.0  # Fully closed calibrated target, verified on this arm.
 # The three recorded poses: calibrated hardware degrees, gripper 0..100.
 POSES = [dict(zip(JOINTS, values)) for values in (
@@ -1238,6 +1238,127 @@ def connected_bus(port, joints=JOINTS):
             bus.disconnect(disable_torque=False)
 
 
+# Physical stops: a commanded pose is a goal, not a requirement. A joint that
+# cannot reach it moves right up to the obstruction, holds there and the run
+# continues; the stop is remembered for the rest of the session.
+STALL_DISTANCE = 8.       # degrees short of the command before a joint may count as stalled
+STALL_SECONDS = .5        # seconds without motion at that distance before it is a stop
+STALL_PROGRESS = .3       # degrees of motion that reset the stall timer
+STOP_BACKOFF = .5         # degrees to ease off a discovered stop so the motor stops straining
+OVERLOAD = 32             # Feetech status bit
+RANGE_RECOVERY_FRACTION = .25  # excursions beyond this share of the range mean bad calibration, not drift
+
+
+def read_register(bus, name, joint):
+    """Read one register without the driver raising on the motor's own fault bits.
+
+    Returns (value, fault_bits). Communication failures still raise.
+    """
+    motor = bus.motors[joint]
+    addr, length = bus.model_ctrl_table[motor.model][name]
+    value, comm, error = bus._read(addr, length, motor.id, num_retry=2, raise_on_error=False)
+    if not bus._is_comm_success(comm):
+        raise ConnectionError(f"{joint}: could not read {name}: {bus.packet_handler.getTxRxResult(comm)}")
+    return value, error
+
+
+def write_register(bus, name, joint, value):
+    """Write one register even while the motor reports a fault. Returns the fault bits."""
+    motor = bus.motors[joint]
+    addr, length = bus.model_ctrl_table[motor.model][name]
+    comm, error = bus._write(addr, length, motor.id, int(value), num_retry=2, raise_on_error=False)
+    if not bus._is_comm_success(comm):
+        raise ConnectionError(f"{joint}: could not write {name}: {bus.packet_handler.getTxRxResult(comm)}")
+    return error
+
+
+def fault_bits(bus, joint):
+    value, error = read_register(bus, "Status", joint)
+    return value | error
+
+
+def stops(bus):
+    """Physical stops found this session, per joint, as (low, high) calibrated units."""
+    if not isinstance(getattr(bus, "physical_stops", None), dict):
+        bus.physical_stops = {}
+    return bus.physical_stops
+
+
+def within_stops(target, bus):
+    limits = stops(bus)
+    return {j: min(limits.get(j, (-math.inf, math.inf))[1], max(limits.get(j, (-math.inf, math.inf))[0], v))
+            for j, v in target.items()}
+
+
+def command_goal(bus, target):
+    """Clip to live calibration and known physical stops, then command. Returns the goal sent."""
+    goal = within_stops(clamp_target(target, bus.calibration), bus)
+    bus.sync_write("Goal_Position", goal, normalize=True)
+    return goal
+
+
+def recover_overload(bus, joint):
+    """Clear overload protection once the goal no longer pushes past the stop."""
+    if not fault_bits(bus, joint) & OVERLOAD:
+        return True
+    write_register(bus, "Torque_Enable", joint, 0)
+    time.sleep(.05)
+    write_register(bus, "Torque_Enable", joint, 1)
+    time.sleep(.05)
+    cleared = not fault_bits(bus, joint) & OVERLOAD
+    print(f"[stop] {joint}: overload protection {'cleared' if cleared else 'still reported'}", flush=True)
+    return cleared
+
+
+def hold_at_stop(bus, joint, present, direction):
+    """Freeze a joint at the obstruction it reached and remember that limit."""
+    low, high = stops(bus).get(joint, (-math.inf, math.inf))
+    held = present - direction * STOP_BACKOFF
+    if direction > 0:
+        high = min(high, held)
+    else:
+        low = max(low, held)
+    stops(bus)[joint] = (low, high)
+    bus.sync_write("Goal_Position", {joint: held}, normalize=True)
+    recover_overload(bus, joint)
+    side = "above" if direction > 0 else "below"
+    print(f"[stop] {joint}: physical stop at {present:.2f}; holding {held:.2f} and treating "
+          f"{side} as unreachable for this run.", flush=True)
+    return held
+
+
+class StallGuard:
+    """Notice arm joints that stop short of their command and hold them there.
+
+    The gripper is excluded: it stalls on purpose when it grips the checkerboard.
+    """
+
+    def __init__(self, bus, joints):
+        self.bus = bus
+        self.joints = [j for j in joints if j != "gripper"]
+        self.anchor, self.since = {}, {}
+
+    def observe(self, command, present, now=None):
+        now = time.monotonic() if now is None else now
+        stalled = []
+        for j in self.joints:
+            gap = command[j] - present[j]
+            if abs(gap) < STALL_DISTANCE:
+                self.anchor.pop(j, None)
+                self.since.pop(j, None)
+                continue
+            if j not in self.anchor or abs(present[j] - self.anchor[j]) > STALL_PROGRESS:
+                self.anchor[j], self.since[j] = present[j], now
+                continue
+            if now - self.since[j] >= STALL_SECONDS:
+                hold_at_stop(self.bus, j, present[j], 1 if gap > 0 else -1)
+                self.anchor.pop(j)
+                self.since.pop(j)
+                stalled.append(j)
+        return stalled
+
+
+
 def preflight(bus, targets):
     # Validate every target before the first goal/torque write.
     targets = list(targets)
@@ -1247,55 +1368,90 @@ def preflight(bus, targets):
         validate_target(clamp_target(target, bus.calibration), bus.calibration)
     joints = [j for j in JOINTS if any(j in target for target in targets)]
     for j in joints:
-        if bus.read("Operating_Mode", j, normalize=False) != 0:
+        mode, faults = read_register(bus, "Operating_Mode", j)
+        if mode != 0:
             raise ValueError(f"{j} must be in position mode")
-        if bus.read("Phase", j, normalize=False) & 0x10:
+        if read_register(bus, "Phase", j)[0] & 0x10:
             raise ValueError(f"{j} must use single-turn feedback")
-    current = bus.sync_read("Present_Position", joints)
-    validate_target(current, bus.calibration)
-    return current
+        if faults:
+            print(f"[fault] {j}: status bits {faults} before enabling torque; recovery is attempted when torque is enabled.", flush=True)
+    raw = bus.sync_read("Present_Position", joints, normalize=False)
+    outside = {j: value for j, value in raw.items()
+               if not bus.calibration[j].range_min <= value <= bus.calibration[j].range_max}
+    if outside:
+        print("Joints outside their calibrated range will be moved back inside before the routine: "
+              + json.dumps(outside, sort_keys=True), flush=True)
+    return bus.sync_read("Present_Position", joints)
 
 
 def enable_at_current_position(bus, joints=JOINTS):
+    """Hold position under torque; a joint resting just past its range is eased back inside."""
     joints = list(joints)
     if not joints or not set(joints).issubset(JOINTS):
         raise ValueError("Specify one or more known joints")
     raw = bus.sync_read("Present_Position", joints, normalize=False)
+    goal = {}
     for j, value in raw.items():
         c = bus.calibration[j]
-        if not c.range_min <= value <= c.range_max:
-            raise ValueError(f"{j} moved outside its calibrated range")
+        inside = min(c.range_max, max(c.range_min, value))
+        if inside != value:
+            if abs(value - inside) > (c.range_max - c.range_min) * RANGE_RECOVERY_FRACTION:
+                raise ValueError(f"{j} is far outside its calibrated range ({value} vs {c.range_min}..{c.range_max}); "
+                                 "check the motor calibration before moving")
+            print(f"[range] {j}: {value} is outside {c.range_min}..{c.range_max}; moving it back inside.", flush=True)
+        goal[j] = inside
     torque = bus.sync_read("Torque_Enable", joints, normalize=False)
-    bus.sync_write("Goal_Position", raw, normalize=False)
-    disabled = [j for j in joints if not torque[j]]
-    if disabled:
-        bus.enable_torque(disabled)
+    bus.sync_write("Goal_Position", goal, normalize=False)
+    for j in joints:
+        if not torque[j]:
+            write_register(bus, "Torque_Enable", j, 1)
+        recover_overload(bus, j)
+    moved = [j for j in joints if goal[j] != raw[j]]
+    if moved:
+        deadline = time.monotonic() + 2.
+        while True:
+            now = bus.sync_read("Present_Position", moved, normalize=False)
+            if all(bus.calibration[j].range_min <= now[j] <= bus.calibration[j].range_max for j in moved):
+                break
+            if time.monotonic() >= deadline:
+                raise ValueError(f"{', '.join(moved)}: could not move back into the calibrated range")
+            time.sleep(.05)
 
 
 def move(bus, target, seconds):
     target = clamp_target(target, bus.calibration)
-    start = bus.sync_read("Present_Position", list(target))
-    validate_target(start, bus.calibration)
+    start = clamp_target(bus.sync_read("Present_Position", list(target)), bus.calibration)
+    guard = StallGuard(bus, target)
     started = time.monotonic()
     while True:
         fraction = min((time.monotonic() - started) / seconds, 1.)
         alpha = fraction * fraction * (3 - 2 * fraction)
         command = dict(target) if fraction == 1 else {j: start[j] + alpha * (target[j] - start[j]) for j in target}
-        bus.sync_write("Goal_Position", command, normalize=True)
+        goal = command_goal(bus, command)
         if fraction == 1:
             break
         time.sleep(.02)
+        guard.observe(goal, bus.sync_read("Present_Position", list(target)))
 
 
 def settle(bus, target, seconds):
     """Record positioning accuracy; image quality decides camera calibration."""
     target = clamp_target(target, bus.calibration)
-    time.sleep(seconds)
-    measured = bus.sync_read("Present_Position", list(target))
-    # Device faults and communication failures still stop the routine.
+    guard = StallGuard(bus, target)
+    deadline = time.monotonic() + seconds
+    while True:
+        time.sleep(min(.1, max(0., deadline - time.monotonic())))
+        measured = bus.sync_read("Present_Position", list(target))
+        guard.observe(within_stops(target, bus), measured)
+        if time.monotonic() >= deadline:
+            break
+    # Device faults and communication failures still stop the routine. An arm
+    # joint straining against a physical stop is held there instead.
     for j in target:
-        status = bus.read("Status", j, normalize=False)
-        if status:
+        status = fault_bits(bus, j)
+        if status == OVERLOAD and j != "gripper":
+            hold_at_stop(bus, j, measured[j], 1 if target[j] >= measured[j] else -1)
+        elif status:
             raise RuntimeError(f"{j}: motor fault {status} while settling")
     errors = {j: abs(finite_number(measured[j], j) - target[j])
               for j in target if j != "gripper"}
@@ -1303,7 +1459,9 @@ def settle(bus, target, seconds):
     if missed:
         print("Position warning (degrees from target): " + json.dumps(missed, sort_keys=True)
               + ". Photo detection and calibration quality checks remain required.", flush=True)
-    return {"measured": measured, "error_degrees": errors, "within_tolerance": not missed}
+    return {"measured": measured, "error_degrees": errors, "within_tolerance": not missed,
+            "physical_stops": {j: list(limits) for j, limits in stops(bus).items()}}
+
 
 def detect_board(image, pattern, thorough=False):
     import cv2
@@ -1515,15 +1673,16 @@ def active_trajectory_end(times, values):
 def replay(bus, times, values, cfg, on_target=None):
     start = time.monotonic()
     end = active_trajectory_end(times, values)
+    guard = StallGuard(bus, JOINTS)
     while True:
         elapsed = (time.monotonic() - start) * cfg["replay_speed"]
-        target = clamp_target(trajectory_target(times, values, times[-1] if elapsed >= end else elapsed), bus.calibration)
-        bus.sync_write("Goal_Position", target, normalize=True)
+        target = command_goal(bus, trajectory_target(times, values, times[-1] if elapsed >= end else elapsed))
         if on_target is not None:
             on_target(elapsed, target)
         if elapsed >= end:
             return target
         time.sleep(1 / cfg["command_hz"])
+        guard.observe(target, bus.sync_read("Present_Position", list(JOINTS)))
 
 
 class FrameReader:
@@ -1876,7 +2035,8 @@ def finish_at_home(bus, args, output, report, home):
     settled = settle(bus, home, 2)
     report.update(state="complete", finished_at_utc=utc(),
                   home_reached=settled["within_tolerance"], home_joints=list(home),
-                  home_error_degrees=settled["error_degrees"], final_joints=settled["measured"])
+                  home_error_degrees=settled["error_degrees"], final_joints=settled["measured"],
+                  physical_stops=settled.get("physical_stops", {}))
     if not settled["within_tolerance"]:
         report.setdefault("warnings", []).append({
             "code": "home_position_missed", "error_degrees": settled["error_degrees"],
@@ -1884,6 +2044,7 @@ def finish_at_home(bus, args, output, report, home):
     write_json(output / "report.json", report)
     print(f"Done. Camera intrinsics and 2D table map accepted: {output}", flush=True)
     return 0
+
 
 @contextmanager
 def process_lock():
