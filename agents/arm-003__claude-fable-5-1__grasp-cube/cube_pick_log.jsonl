@@ -54,3 +54,12 @@
 {"t": 1790182373.968746, "kind": "log", "msg": "gripper after close: pos=0.5 load=40"}
 {"t": 1790182384.0491388, "kind": "log", "msg": "grasp held=False"}
 {"t": 1790182388.4842386, "kind": "log", "msg": "episode done success=False dur=160s  totals: 0/0 successes"}
+{"t": 1790182622.084384, "kind": "log", "msg": "cube at px=[467. 413.] robot=[ 0.279 -0.098] yaw=-140 size=[0.044 0.039]"}
+{"t": 1790182628.7589412, "kind": "log", "msg": "servo0.0: cube px=[689. 342.] err=254px move=(19,-23)mm"}
+{"t": 1790182633.6832466, "kind": "log", "msg": "servo0.1: cube px=[542. 418.] err=106px move=(20,-17)mm"}
+{"t": 1790182639.5295956, "kind": "log", "msg": "servo0.2: cube px=[1209.  362.] err=720px move=(10,-28)mm"}
+{"t": 1790182645.1748369, "kind": "log", "msg": "servo0.3: cube px=[1154.  340.] err=671px move=(7,-29)mm"}
+{"t": 1790182652.9961874, "kind": "log", "msg": "servo0.4: cube px=[1104.  337.] err=625px move=(4,-30)mm"}
+{"t": 1790182661.4906986, "kind": "log", "msg": "servo0.5: cube px=[1074.  317.] err=602px move=(3,-30)mm"}
+{"t": 1790182662.5442204, "kind": "log", "msg": "episode error: ValueError('unreachable (0.342,-0.255,0.024): IK failed for [0.3418, -0.2551, 0.024]: pos_err=5.6mm axis_err=6.2deg')\nTraceback (most recent call last):\n  File \"/var/lib/armfarm/stations/armfarm/workspace/tools/cube_run.py\", line 306, in episode\n    held, hover = self.pick(pose, notes)\n                  ~~~~~~~~~^^^^^^^^^^^^^\n  File \"/var/lib/armfarm/stations/armfarm/workspace/tools/cube_run.py\", line 192, in pick\n    low, _ = ik_reach(cx, cy, SERVO_LOW, roll, tilt_start=tilt)\n             ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/var/lib/armfarm/stations/armfarm/workspace/tools/cube_run.py\", line 59, in ik_reach\n    raise ValueError(f\"unreachable ({x:.3f},{y:.3f},{z:.3f}): {last}\")\nValueError: unreachable (0.342,-0.255,0.024): IK failed for [0.3418, -0.2551, 0.024]: pos_err=5.6mm axis_err=6.2deg\n"}
+{"t": 1790182666.8220787, "kind": "log", "msg": "episode done success=False dur=47s  totals: 0/0 successes"}
