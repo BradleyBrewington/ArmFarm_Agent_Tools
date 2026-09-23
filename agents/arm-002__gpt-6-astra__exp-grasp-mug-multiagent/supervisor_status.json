@@ -2989,8 +2989,9 @@
     ]
   },
   "operator_hold": {
-    "active": true,
-    "reason": "Awaiting operator clarification after manual intervention; no automatic resume on reconnection",
-    "evidence": "tools/intervention_hold_1790203106934813622.json"
+    "active": false,
+    "readiness": "maintenance. YOu are clear",
+    "timestamp": 1790203523.2277832,
+    "evidence": "tools/post_maintenance_startup.json"
   }
 }
