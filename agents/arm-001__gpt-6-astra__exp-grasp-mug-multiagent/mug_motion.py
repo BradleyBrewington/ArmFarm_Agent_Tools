@@ -15,7 +15,7 @@ with bus_open() as b:
   sol=solve(xyz,q,roll=q['wrist_roll'],direction=direction)
   if sol['error']>.008:raise RuntimeError(sol)
   print(json.dumps(sol),flush=True)
-  s=move(b,{j:v for j,v in sol['q'].items() if j!='wrist_roll'},5)
+  s=move(b,{j:v for j,v in sol['q'].items() if j!='wrist_roll'},5,settle_tolerance=7)
  elif mode=='home':s=move(b,load_home(Path('home_pose.json')),16)
  elif mode=='joint':s=move(b,json.loads(sys.argv[2]),5)
  else:s=state(b)

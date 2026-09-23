@@ -21,7 +21,8 @@ def bus_open():
   if b.is_connected:b.disconnect(disable_torque=False)
 def state(b):
  q=b.sync_read('Present_Position');return {'q':q,'xyz':fk.forward(q),'load':b.sync_read('Present_Load'),'temperature':b.sync_read('Present_Temperature')}
-def move(b,changes,seconds=3):
+def move(b,changes,seconds=3,settle_tolerance=4):
+ if not 0<settle_tolerance<=7:raise ValueError("Invalid settle tolerance")
  if not camd_client.alive():raise RuntimeError('Camera unavailable')
  changes=clamp_target(changes,b.calibration)
  present=b.sync_read('Present_Position')
@@ -47,7 +48,7 @@ def move(b,changes,seconds=3):
  except BaseException:
   q=b.sync_read('Present_Position');b.sync_write('Goal_Position',{j:q[j] for j in target});raise
  q=b.sync_read('Present_Position')
- if any(abs(q[j]-target[j])>4 for j in target if j!='gripper'):raise RuntimeError('Arm did not settle')
+ if any(abs(q[j]-target[j])>settle_tolerance for j in target if j!='gripper'):raise RuntimeError('Arm did not settle')
  return state(b)
 def snap(prefix):
  for role in ('top','wrist'):
