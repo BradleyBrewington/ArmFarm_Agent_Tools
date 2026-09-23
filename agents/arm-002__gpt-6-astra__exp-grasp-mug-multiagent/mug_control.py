@@ -19,7 +19,9 @@ def step(target,secs=5):
  with connected_bus(serial_port()) as b:
   target=clamp_target(target,b.calibration);preflight(b,[target]);enable_at_current_position(b,list(target))
  move_checked(target,secs);snap()
-def ik(xyz,pitch=90,roll=63):
+def ik(xyz,pitch=90,roll=None):
+ if roll is None:
+  with connected_bus(serial_port()) as b:roll=b.read("Present_Position","wrist_roll")
  def f(q):
   j=dict(zip(JOINTS[:4],q));j['wrist_roll']=roll
   return np.r_[((arm_transform(j)@OFFSET)[:3]-xyz)*100,(sum(q[1:])-pitch)*.1]
