@@ -154,6 +154,23 @@
    "recorded": true,
    "folder": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T122207-6031d538",
    "info": {}
+  },
+  {
+   "t": 1790184248.2992861,
+   "dur": 102.07080292701721,
+   "success": false,
+   "notes": [
+    "target=(0.336,-0.120) yaw=-116 roll=1 tilt=30",
+    "servo: correction exceeded safety bounds; aborting servo",
+    "servo_final=(0.336,-0.120) converged=False",
+    "grasp_fk=(0.352,-0.135,-0.027)",
+    "grip_pos=0.6 load=40",
+    "grip_pos_lifted=0.4",
+    "gripper closed empty; no grasp"
+   ],
+   "recorded": true,
+   "folder": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T122410-77950b7b",
+   "info": {}
   }
  ],
  "place_idx": 0,
