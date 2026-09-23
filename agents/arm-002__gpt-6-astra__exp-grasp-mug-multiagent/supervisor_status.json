@@ -1,5 +1,5 @@
 {
-  "timestamp": 1790196630.8054104,
+  "timestamp": 1790201010.9787195,
   "agent_id": "arm-002__gpt-6-astra__exp-grasp-mug-multiagent",
   "received_operator_ids": [
     "cdb9a3cb-34c9-4e71-85a4-4fc9707bdec4",
@@ -12,13 +12,13 @@
     "shoulder_pan": 12.483516483516484,
     "shoulder_lift": -90.85714285714286,
     "elbow_flex": 79.86813186813187,
-    "wrist_flex": 24.87912087912088
+    "wrist_flex": 26.813186813186814
   },
   "home_errors_degrees": {
     "shoulder_pan": -0.5714285714285712,
     "shoulder_lift": 1.8021978021977958,
     "elbow_flex": -0.1318681318681314,
-    "wrist_flex": -0.3516483516483504
+    "wrist_flex": 1.582417582417584
   },
   "torque": [
     1,
@@ -38,12 +38,12 @@
   ],
   "cumulative_current_assignment": {
     "successes": 0,
-    "unsuccessful": 7,
+    "unsuccessful": 13,
     "successes_trailing_hour": 0,
     "ratio_requirement_met": false
   },
   "episode_ledger": "/var/lib/armfarm/stations/armfarm/workspace/tools/mug_episode_ledger.json",
-  "grasp_location_caveat": "No successful grasp this run. Measured closure poses and paired images are in ledger. These are not asserted object centers; failed contacts displaced mug. No cells credited.",
+  "grasp_location_caveat": "No successful grasp. Prior old-homography metric location for episode153620 is unvalidated due camera-view mismatch; appended correction linked in coverage. Pixel footprint evidence retained; no cells credited.",
   "coverage": {
     "cell_size_m": 0.05,
     "coordinate_frame": "diagnostic base_link estimate",
@@ -2893,7 +2893,8 @@
       "10:16"
     ],
     "location_policy": "Credit pre-lift mug table-contact footprint in calibrated metric table coordinates with image evidence and uncertainty; never treat elevated handle ray intersection as mug base.",
-    "candidate_only": true
+    "candidate_only": true,
+    "evidence_correction": "tools/table_location_evidence_correction.json"
   },
   "tool": "tools/mug_control.py",
   "discoveries": [
@@ -2903,9 +2904,18 @@
     "Home uses only four saved joints; wrist and gripper preserved.",
     "Current upright mug handle was approached from above; empty-like closure (~1.81 percent) and occluded opening did not establish support. Historical verified local success had a side-lying mug; handle-plane/insertion geometry must be reidentified.",
     "Shallow pitch=0 approach with lateral correction did not capture upright handle. Empty-like aperture 1.81 percent and 1.83 cm measured diagnostic rise left mug on table. Wrist camera handle visibility worsened at shallow pitch. Source historical passages 45-46 confirm side-lying successful home carry, not transferable joint targets.",
-    "Inspected all four supervisor_evidence arm001 success images. Verified topology reference is fixed finger inside lower loop, moving finger outside; current pose-change contact did not reproduce it. Peer successful home aperture1.754/load100 vs failed1.417/load96 shows aperture/load alone is weak and nonportable."
+    "Inspected all four supervisor_evidence arm001 success images. Verified topology reference is fixed finger inside lower loop, moving finger outside; current pose-change contact did not reproduce it. Peer successful home aperture1.754/load100 vs failed1.417/load96 shows aperture/load alone is weak and nonportable.",
+    "Clear empty-gripper aperture test: fixed tip stationary, moving tip changed60px when aperture24.11 to5.85%. Calibrated midpoint is not fixed-finger point. Accepted calibration unchanged; saved-image candidate offset not adopted.",
+    "Apparent bar-between-jaws wrist projection at pitch45 did not establish support: mug remained fixed during19.73mm measured midpoint rise. Need view resolving loop depth rather than another top-view point match.",
+    "Positive-y lateral view at measured pan -35.956, lift19.912, elbow-56.308, wrist94.593, roll-24.835 exposes a handle gap; central/negative-y views hide it. Noncontact geometry evidence only.",
+    "Episode160817: lowering beside upright handle then 5mm lateral adjustment did not establish support; 10.26mm diagnostic rise left mug on table. Lateral image exposed only upper opening; body occluded lower loop. Operator suggests bounded upright yaw reorientation as distinct next experiment.",
+    "Yaw experiment161521: mug silhouette unchanged after near-handle sideways sweep (correlation0.99947; apparent rotation-0.044deg, translation<0.2px). This does not falsify supported yaw; effective contact was not established.",
+    "Episode162058 established broad-wall contact, then separate1.055deg pan change rotated and translated upright mug. Net projected handle direction change~31deg +/-10deg, silhouette centroid+4.5,-32.5px. Round-body ECC rotation rejected as handle yaw measure. Mug settled upright after retraction; no full grasp success.",
+    "Episode162837 further projected handle rotation~17deg +/-10deg with silhouette translation+7.9,-31.7px; later same-side contact mainly translated. No closure because outer opening remained blocked.",
+    "Episode164413: opposite-side approach at roll-24.835 produced projected lower-loop overlap but no supporting grasp. Closure1.8118%/load116 and measured midpoint rise13.25mm left mug on table. Shoulder lift lag reached5.45deg, requiring measured rather than target-based motion assessment.",
+    "Home empty-gripper test only. First two +1-degree requests produced no measured motion; third produced0.879deg and2.626mm downward diagnostic midpoint movement. Does not establish loaded/contact behavior or explain every failed grasp. Existing absolute step path still resets requested goals; incremental path avoids that reset."
   ],
-  "next_hypothesis": "Resolve fingertip-to-rim/handle height with local two-camera observations before another wall-contact or loop-entry attempt. At roll63 pitch45, intended upper-wall pull released over rim. Pose change did not create side-lying access. Near-closed aperture cannot rule out thin-handle support; decide using topology and bounded observed retention, not transferred thresholds.",
+  "next_hypothesis": "Resume fresh handle opening-plane/depth investigation; use goal-preserving shoulder increments for small adjustments. Home diagnostic preserved goals and showed finite deadband; no inference of loaded accuracy.",
   "historical_success_reference": "03e5351425018a23b53da62aa87ca456482686359129db12f6a5690c8088777f:0",
   "peer_success_episode": "20260923T150127-191efa22",
   "stable_boundary": true,
@@ -2920,17 +2930,38 @@
   },
   "task_id": "exp-grasp-mug-multiagent",
   "ledger_policy": "Append-only outcomes by episode_id across turns. Merge exact-agent uploaded historical evidence without deleting missing local episodes or relabeling outcomes.",
-  "last_episode_id": "20260923T154409-dbb0900c",
-  "last_result": "Unsuccessful table-supported pose-change test. Mug slid/rotated and changed angle, contact released, settled upright. No handle capture or retained lift; home empty.",
-  "latest_evidence_stem": "tools/mug_observations/1790196539739803880",
-  "home_evidence_stem": "tools/mug_observations/1790196608571423589",
+  "last_episode_id": "20260923T164413-4f7d058f",
+  "last_result": "Opposite-side upright handle approach after yaw reorientation. Projected handle/jaw overlap did not establish through-loop support. Staged closure then measured diagnostic midpoint rise 13.25 mm left mug on table; no held-home success. Opened, retracted, returned four joints home; torque retained. Failed outcome preserved.",
+  "latest_evidence_stem": "tools/mug_observations/1790200977784271257",
+  "home_evidence_stem": "tools/mug_observations/1790200977784271257",
   "last_object_table_location": {
     "table_contact_pixel_estimate": [
-      667,
-      540
+      682,
+      479
     ],
     "pixel_uncertainty": 20,
-    "image": "tools/mug_observations/1790196539739803880_top.jpg",
-    "note": "Upright settled footprint estimate; no lift or coverage credit."
-  }
+    "image": "tools/mug_observations/1790199508521157747_top.jpg",
+    "frame": "image pixels",
+    "note": "Pre-approach upright footprint estimate, partially occluded base. Not elevated handle projection; metric registration pending; no coverage credit."
+  },
+  "last_experiment": "Opposite-side upright handle insertion and measured retention test",
+  "local_response_evidence": "tools/fixed_tip_local_response.json",
+  "table_plane_mapping_check": {
+    "path": "tools/table_plane_boundary_check.json",
+    "frame": "20260922_live_checkerboard",
+    "status": "provisional; no coverage credit",
+    "footprint_xy_m": [
+      0.07832216613532952,
+      0.13181960592770345
+    ]
+  },
+  "last_experiment_evidence": "tools/episode_164413_source_metadata.json",
+  "quiet_window": "tools/supervisor_quiet_window.json",
+  "quiet_window_completed": true,
+  "operator_updates": {
+    "instruction_history": "Routine SQLite rereads withdrawn; historical rows left intact; new guidance arrives in conversation.",
+    "quiet_window_result": "Operator reports peer mug motion persisted during completed unchanged-goal interval. No repeat requested.",
+    "camera_path": "Operator verified matching deployed camd source and raw MJPEG passthrough without warping/stabilization; no known nearby disturbance. Cause unresolved; fresh multiple-frame geometry remains necessary."
+  },
+  "last_diagnostic": "tools/goal_increment_diagnostic.json"
 }

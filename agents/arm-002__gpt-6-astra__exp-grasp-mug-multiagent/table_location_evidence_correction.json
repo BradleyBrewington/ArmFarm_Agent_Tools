@@ -1,0 +1,10 @@
+{
+  "timestamp": 1790196781.0586102,
+  "affected_episode_ids": [
+    "20260923T153620-ace55ee6"
+  ],
+  "finding": "Live-alignment README states old saved workspace view differs from live view. Table xy computed using 20260921 homography is therefore unvalidated for current image and must not be used for grid credit. Pixel footprint annotation remains image evidence.",
+  "source": "calibration_checks/live-alignment-20260922/README.md",
+  "outcomes_changed": false,
+  "coverage_credit": false
+}

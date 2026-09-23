@@ -1,0 +1,47 @@
+{
+  "timestamp": 1790197654.6975453,
+  "type": "noncontact_viewpoint_experiment",
+  "episode_id": null,
+  "outcome": "Opening gap visible from positive-y lateral viewpoint; no contact or lift attempted. Mug remained upright and stationary.",
+  "evidence_stems": [
+    "1790197509837533010",
+    "1790197547204642544",
+    "1790197571579875193",
+    "1790197592704092092"
+  ],
+  "best_view": {
+    "time": 1790197592.8071084,
+    "joints": {
+      "shoulder_pan": -35.956043956043956,
+      "shoulder_lift": 19.912087912087912,
+      "elbow_flex": -56.30769230769231,
+      "wrist_flex": 94.5934065934066,
+      "wrist_roll": -24.835164835164836,
+      "gripper": 14.146341463414632
+    },
+    "estimated_tool_xyz": [
+      0.27282825860462195,
+      0.143153181040848,
+      0.15045656979674213
+    ]
+  },
+  "image_annotation": {
+    "wrist_opening_gap_approx_pixel": [
+      1007,
+      446
+    ],
+    "caution": "Elevated handle feature, not table footprint. Opening normal and insertion depth not calibrated."
+  },
+  "rejected_pose": {
+    "xyz": [
+      0.34,
+      -0.04,
+      0.17
+    ],
+    "pitch": 65,
+    "reason": "IK unreachable before motion"
+  },
+  "tool": "tools/mug_control.py",
+  "home_observation": "1790197628504200901",
+  "no_episode_count_change": true
+}

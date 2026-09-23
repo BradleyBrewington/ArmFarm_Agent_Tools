@@ -1,0 +1,249 @@
+{
+  "schema": 1,
+  "id": "20260923T162837-20ed646c",
+  "started": 1790198917.5127628,
+  "started_mono": 413524.533325839,
+  "fps": 30,
+  "joint_names": [
+    "shoulder_pan",
+    "shoulder_lift",
+    "elbow_flex",
+    "wrist_flex",
+    "wrist_roll",
+    "gripper"
+  ],
+  "units": [
+    "degrees",
+    "degrees",
+    "degrees",
+    "degrees",
+    "degrees",
+    "percent"
+  ],
+  "calibration_sha256": "1a5f19671c4293f8cefa914eaacb09c3933211e77ed6a6805b5ca1f0f9fe6901",
+  "task": "exp-grasp-mug-multiagent",
+  "config": {
+    "device": "/dev/serial/by-id/usb-1a86_USB_Single_Serial_5B91043555-if00",
+    "baudrate": 1000000,
+    "fps": 30,
+    "motion_ticks": 2,
+    "settle_s": 0.2,
+    "preroll_s": 0.2,
+    "camera_max_age": 0.15,
+    "image_size": [
+      640,
+      360
+    ],
+    "transaction_timeout_s": 0.025,
+    "cameras": "/dev/shm/so101_camd",
+    "runtime": "/run/armfarm-recording-armfarm",
+    "episodes": "/var/lib/armfarm/stations/armfarm/episodes",
+    "station_settings": "/var/lib/armfarm/stations/armfarm/settings.json",
+    "agent_id": "arm-002__gpt-6-astra__grasp-mug",
+    "designation": "arm-002",
+    "identity_version": 2,
+    "task_id": "grasp-mug",
+    "task_version": 5,
+    "task_sha256": "741ea2bad26eedd1a5fa1ef90246db33db371cf11e2ba7ebb626da36fff4fdc5"
+  },
+  "agent_id": "arm-002__gpt-6-astra__exp-grasp-mug-multiagent",
+  "task_id": "exp-grasp-mug-multiagent",
+  "task_version": 6,
+  "task_sha256": "da84841a86e2bacfa19d8d6ec61d7a933f74c59569b6e1ed32154cb945f96406",
+  "designation": "arm-002",
+  "provider": "codex",
+  "model": "gpt-6-astra",
+  "task_definition": {
+    "id": "exp-grasp-mug-multiagent",
+    "version": 6,
+    "description": "Start episode, pickup the black mug, bring black mug to home position, confirm successful grasp, stop episode, return object to new position, return to home position, repeat.  If the target object is visible, successful grasp is possible. This is an axiom of this environment. ",
+    "success_criteria": [
+      "successful episode coverage across the entire workspace",
+      "2:1 ratio of successful episodes to unsuccessful episodes",
+      "achieve at least 6 successful episodes an hour"
+    ]
+  },
+  "run_id": "20260923T162732-11abffeb",
+  "session_id": "01a0cfd6-2d45-7a33-afda-96ea4eb5989b",
+  "tools_sha256": "af768b99c018545d946fdf79137c960a18dd295e2ecf9e7c8825912300d1e441",
+  "initial_telemetry": {
+    "state_raw": [
+      2211,
+      1030,
+      2894,
+      2383,
+      2764,
+      1936
+    ],
+    "action_raw": [
+      2217,
+      1009,
+      2895,
+      2365,
+      2764,
+      1946
+    ],
+    "velocity_raw": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "mode": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "torque": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "torque_limit_raw": [
+      1000,
+      1000,
+      1000,
+      1000,
+      1000,
+      500
+    ],
+    "goal_velocity_raw": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "goal_time_raw": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "acceleration_raw": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "pid_raw": [
+      [
+        16,
+        32,
+        0
+      ],
+      [
+        16,
+        32,
+        0
+      ],
+      [
+        16,
+        32,
+        0
+      ],
+      [
+        16,
+        32,
+        0
+      ],
+      [
+        16,
+        32,
+        0
+      ],
+      [
+        16,
+        32,
+        0
+      ]
+    ],
+    "fault_bits": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "calibration": {
+      "shoulder_pan": {
+        "id": 1,
+        "drive_mode": 0,
+        "homing_offset": -1828,
+        "range_min": 820,
+        "range_max": 3318
+      },
+      "shoulder_lift": {
+        "id": 2,
+        "drive_mode": 0,
+        "homing_offset": -1086,
+        "range_min": 784,
+        "range_max": 3343
+      },
+      "elbow_flex": {
+        "id": 3,
+        "drive_mode": 0,
+        "homing_offset": 1952,
+        "range_min": 932,
+        "range_max": 3039
+      },
+      "wrist_flex": {
+        "id": 4,
+        "drive_mode": 0,
+        "homing_offset": -1288,
+        "range_min": 855,
+        "range_max": 3301
+      },
+      "wrist_roll": {
+        "id": 5,
+        "drive_mode": 0,
+        "homing_offset": 9,
+        "range_min": 0,
+        "range_max": 4095
+      },
+      "gripper": {
+        "id": 6,
+        "drive_mode": 0,
+        "homing_offset": 1686,
+        "range_min": 1731,
+        "range_max": 3166
+      }
+    },
+    "t_mono": 413524.506952591,
+    "t_wall": 1790198917.4884574,
+    "read_started": 413524.504886095,
+    "elapsed_s": 0.004130046989303082,
+    "missing_ids": [],
+    "stale_bytes": 0
+  },
+  "finished": 1790199167.3878279,
+  "success": false,
+  "notes": "Continued upright wall-contact reorientation. Handle remained body-occluded from approach; no closure or lift. Observed further rotation and translation, later tangential increments mostly translated mug. Returned home empty. Full-task unsuccessful; reorientation evidence saved.",
+  "frames": 1609,
+  "command_events": 8667,
+  "quality_flags": [],
+  "recording_error": null,
+  "training_ready": true,
+  "max_writer_lag_s": 0.24094315996626392,
+  "files_sha256": {
+    "top.mjpg": "3017bcf60fe8c8581ab79728956086cc30c47ac74fc46139614b4619cc6af120",
+    "wrist.mjpg": "685e87615b9ed864d3ce307913f736e22e4f75ba07dd7ccc639b202d967754be",
+    "frames.jsonl": "f5418086606520c7a23693c46a1fff7734d1f44ea9582807a3e2cdef6ad8f88d",
+    "commands.jsonl": "0ac3a41d178d93c81f21f622ab476de67e0bde80e0b30adb77f85662c47966d5",
+    "calibration.json": "1a5f19671c4293f8cefa914eaacb09c3933211e77ed6a6805b5ca1f0f9fe6901"
+  }
+}

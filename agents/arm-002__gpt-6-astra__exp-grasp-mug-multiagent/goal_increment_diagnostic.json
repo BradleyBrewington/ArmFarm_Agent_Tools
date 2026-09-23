@@ -1,0 +1,58 @@
+{
+  "timestamp": 1790201010.9770362,
+  "experiment": "Clear empty-gripper home shoulder goal-preserving increments",
+  "episode_id": null,
+  "grasp_success_claim": false,
+  "reports": [
+    "tools/goal_increment_1790200883042362007.json",
+    "tools/goal_increment_1790200919608764553.json",
+    "tools/goal_increment_1790200939091337260.json",
+    "tools/goal_increment_1790200953416839208.json",
+    "tools/goal_increment_1790200972900230359.json"
+  ],
+  "raw_shoulder_goals": [
+    1009,
+    1020,
+    1031,
+    1042,
+    1020,
+    1009
+  ],
+  "measured_shoulder_deltas_deg": [
+    0.0,
+    0.0,
+    0.8791208791208902,
+    -0.4395604395604522,
+    -0.439560439560438
+  ],
+  "diagnostic_z_deltas_m": [
+    0.0,
+    0.0,
+    -0.0026260028359197524,
+    0.0013129010665810653,
+    0.001313101769338687
+  ],
+  "all_original_raw_goals_restored": true,
+  "original_measured_pose_restored": true,
+  "other_goals_unchanged": true,
+  "torque": {
+    "shoulder_pan": 1,
+    "shoulder_lift": 1,
+    "elbow_flex": 1,
+    "wrist_flex": 1,
+    "wrist_roll": 1,
+    "gripper": 1
+  },
+  "faults": {
+    "shoulder_pan": 0,
+    "shoulder_lift": 0,
+    "elbow_flex": 0,
+    "wrist_flex": 0,
+    "wrist_roll": 0,
+    "gripper": 0
+  },
+  "tool": "tools/goal_increment.py",
+  "invocation": "tools/mug_control.py increment DELTA_DEGREES",
+  "limitation": "Home empty-gripper test only. First two +1-degree requests produced no measured motion; third produced0.879deg and2.626mm downward diagnostic midpoint movement. Does not establish loaded/contact behavior or explain every failed grasp. Existing absolute step path still resets requested goals; incremental path avoids that reset.",
+  "next": "Use this separately tested small increment path for observed shoulder adjustments while resolving handle insertion geometry; retain measured-motion verification."
+}

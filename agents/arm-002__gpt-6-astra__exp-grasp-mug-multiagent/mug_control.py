@@ -33,6 +33,9 @@ def ik(xyz,pitch=90,roll=None):
  return dict(zip(JOINTS[:4],fit.x))
 if __name__=='__main__':
  if sys.argv[1]=='snap':snap()
+ elif sys.argv[1]=='increment':
+  from goal_increment import increment
+  increment(float(sys.argv[2]));snap()
  elif sys.argv[1]=='home':step(load_home(Path('home_pose.json')),15)
  elif sys.argv[1]=='xyz':step(ik(json.loads(sys.argv[2]),float(sys.argv[3]) if len(sys.argv)>3 else 90),8)
  else:step(json.loads(sys.argv[1]),float(sys.argv[2]) if len(sys.argv)>2 else 5)

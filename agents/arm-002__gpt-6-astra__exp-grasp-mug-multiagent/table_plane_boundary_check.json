@@ -1,0 +1,79 @@
+{
+  "source": "/var/lib/armfarm/stations/armfarm/workspace/calibration_checks/live-table-20260922/table.json",
+  "frame": "20260922_live_checkerboard",
+  "square_m": 0.02,
+  "grid_cell_m": 0.05,
+  "fit_view": 0,
+  "other_views": "Temporal repeat checks of the same board, not full-workspace validation",
+  "reprojection_rms_px": [
+    0.27466706849487577,
+    0.2773992558825897,
+    0.2821992211253138,
+    0.27870180414772294,
+    0.2835264131369645
+  ],
+  "robot_alignment_used": false,
+  "accepted_calibration_modified": false,
+  "caution": "Table-plane points only; elevated features have parallax. Confirm current camera/table alignment. This does not define the usable workspace or credit any cell.",
+  "timestamp": 1790197445.7593842,
+  "episode_id": "20260923T155623-5348ee4b",
+  "evidence_image": "tools/mug_observations/1790197009339666421_top.jpg",
+  "raw_pixels": [
+    [
+      668.0,
+      541.0
+    ],
+    [
+      648.0,
+      521.0
+    ],
+    [
+      648.0,
+      561.0
+    ],
+    [
+      688.0,
+      521.0
+    ],
+    [
+      688.0,
+      561.0
+    ]
+  ],
+  "table_xy_m": [
+    [
+      0.07832216613532952,
+      0.13181960592770345
+    ],
+    [
+      0.07615933389784504,
+      0.11530702700717048
+    ],
+    [
+      0.062116392952520215,
+      0.1344972274979572
+    ],
+    [
+      0.09466897030227533,
+      0.1291809665169251
+    ],
+    [
+      0.08041392163524472,
+      0.148201360323327
+    ]
+  ],
+  "annotation_envelope_xy_m": [
+    [
+      0.062116392952520215,
+      0.11530702700717048
+    ],
+    [
+      0.09466897030227533,
+      0.148201360323327
+    ]
+  ],
+  "current_view_validation": "Saved Sept22 top_0 and episode image visually have consistent table edges; no quantitative current landmark registration. Provisional only.",
+  "uncertainty": "20 px footprint annotation box propagated; additional camera registration, occluded contact and plane error are unquantified. Not a certified metric bound.",
+  "coverage_credit": false,
+  "usable_mask_finalized": false
+}
