@@ -1,1 +1,14 @@
 14:32:08 episode 0: cube at (0.148,-0.053) yaw=60
+14:32:14 grasp cube=(0.148,-0.053) yaw=60.1 roll=109.5 tool=(0.143,-0.083)
+14:32:21 low at [0.1437, -0.0829, -0.0071]
+14:32:29 episode 0: success=True (21s) ['attempt 1: grip=23.4', 'at home gripper=23.4 wrist_dark=1.00']
+14:32:29 place cube=(0.112,0.137) tool=(0.141,0.131) roll=109.5
+14:32:41 stats {'succ': 1, 'fail': 0}
+14:32:41 episode 1: cube at (0.110,0.149) yaw=55
+14:32:47 grasp cube=(0.110,0.149) yaw=55.2 roll=91.0 tool=(0.137,0.135)
+14:32:53 low at [0.1363, 0.1338, -0.0076]
+14:33:01 episode 1: success=True (21s) ['attempt 1: grip=23.6', 'at home gripper=23.6 wrist_dark=0.98']
+14:33:02 place cube=(0.179,0.066) tool=(0.191,0.038) roll=91.0
+14:33:13 stats {'succ': 2, 'fail': 0}
+14:33:13 episode 2: cube at (0.185,0.064) yaw=11
+14:33:17 grasp cube=(0.185,0.064) yaw=11.5 roll=83.4 tool=(0.193,0.035)
