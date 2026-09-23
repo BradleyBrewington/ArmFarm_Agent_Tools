@@ -1,4 +1,4 @@
-import sys; sys.path.insert(0,'work'); sys.path.insert(0,'tools'); import arm, time, cv2, numpy as np
+import sys; sys.path.insert(0,'tools'); sys.path.insert(0,'tools'); import arm, time, cv2, numpy as np
 from camd_client import read_frame
 x,y,roll,z=map(float,sys.argv[1:5])
 ims=[]
