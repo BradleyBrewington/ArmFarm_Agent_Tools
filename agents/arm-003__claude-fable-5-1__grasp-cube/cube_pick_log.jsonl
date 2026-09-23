@@ -8,3 +8,12 @@
 {"t": 1790181781.1686406, "kind": "log", "msg": "travel via lifted waypoint"}
 {"t": 1790181802.4741406, "kind": "log", "msg": "travel via lifted waypoint"}
 {"t": 1790181815.8888276, "kind": "log", "msg": "travel via lifted waypoint"}
+{"t": 1790181834.7934477, "kind": "log", "msg": "cube at px=[555. 546.] robot=[ 0.346 -0.051] yaw=173 size=[0.034 0.042]"}
+{"t": 1790181845.8994625, "kind": "log", "msg": "calibrating wrist-camera Jacobian"}
+{"t": 1790181869.4852104, "kind": "log", "msg": "Jacobian px/m: [[1918.0, -3338.0], [-2029.0, -4727.0]]"}
+{"t": 1790181869.867817, "kind": "log", "msg": "servo0: cube px=[654. 310.] err=212px move=(30,1)mm"}
+{"t": 1790181874.2210522, "kind": "log", "msg": "servo1: cube px=[532. 442.] err=65px move=(4,8)mm"}
+{"t": 1790181881.5640821, "kind": "log", "msg": "servo2: cube px=[484. 475.] err=80px move=(-13,12)mm"}
+{"t": 1790181887.1865768, "kind": "log", "msg": "servo3: cube px=[566. 487.] err=14px move=(4,0)mm"}
+{"t": 1790181894.536243, "kind": "log", "msg": "servo: cube not visible in wrist camera"}
+{"t": 1790181905.7531114, "kind": "log", "msg": "gripper after close: pos=0.5 load=40"}
