@@ -534,7 +534,18 @@ class Runner:
         return success
 
 
+def _on_term(signum, frame):
+    try:
+        st = recording.request("status")
+        if st.get("recording"):
+            recording.stop_recording(False, "aborted: process terminated mid-episode")
+    finally:
+        os._exit(1)
+
+
 def main():
+    import signal
+    signal.signal(signal.SIGTERM, _on_term)
     cmd = sys.argv[1] if len(sys.argv) > 1 else "run"
     n = int(sys.argv[2]) if len(sys.argv) > 2 else 1
     with cp.Arm() as arm:
