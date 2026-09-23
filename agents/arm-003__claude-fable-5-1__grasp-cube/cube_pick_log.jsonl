@@ -791,3 +791,15 @@
 {"t": 1790187782.9047117, "kind": "log", "msg": "low0.2: cube right=711 v=420 err=(-11,-20)px"}
 {"t": 1790187785.546186, "kind": "log", "msg": "mid0: right=753 v=466 err=(17,-26)px"}
 {"t": 1790187788.6188338, "kind": "log", "msg": "gripper after close: pos=24.4 load=500"}
+{"t": 1790187798.6065574, "kind": "log", "msg": "grasp held=True"}
+{"t": 1790187801.5919898, "kind": "log", "msg": "home: grip=22.9 load=200 wrist_dark=0.77 still_on_table=False home_err={'shoulder_pan': -0.6, 'shoulder_lift': 1.1, 'elbow_flex': 0.2, 'wrist_flex': 1.7}"}
+{"t": 1790187801.8245423, "kind": "log", "msg": "recording stopped success=True: {\"episode\": \"20260923T132200-e38208fb\", \"folder\": \"/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T132200-e38208fb\", \"frames\": 1106, \"quality_flags\": [], \"training_ready\": true, \"success\": true, \"notes\": \"target=(0.189,0.165) yaw=159 roll=-35 tilt=0; servo_final=(0.209,0.184) converged=True; roll_after_yaw_fix=-26; mid_ok=True; grasp_fk=(0.193,0.172,-0.013); grip_pos=24.4 load=500; g"}
+{"t": 1790187801.8422935, "kind": "log", "msg": "placing at (0.19, -0.14)"}
+{"t": 1790187817.4513009, "kind": "log", "msg": "after place: cube px=[434. 260.] predicted=[435. 275.] d=15px"}
+{"t": 1790187817.4522557, "kind": "log", "msg": "map updated: 24 pairs, mean residual 12.8 mm, A=[[-0.009, 0.9255, 0.2252], [0.8441, 0.0086, -0.027]]"}
+{"t": 1790187817.4527342, "kind": "log", "msg": "episode done success=True dur=99s  totals: 20/35 successes"}
+{"t": 1790187838.305822, "kind": "log", "msg": "cube at px=[434. 260.] robot=[ 0.183 -0.143] yaw=-145 size=[0.056 0.042]"}
+{"t": 1790187838.3185072, "kind": "log", "msg": "recording started: {'episode': '20260923T132358-75107f56'}"}
+{"t": 1790187848.6376724, "kind": "log", "msg": "servo0.0: cube px=[513. 341.] err=100px move=(0,-17)mm"}
+{"t": 1790187853.5660667, "kind": "log", "msg": "servo0.1: cube px=[468. 428.] err=41px move=(7,3)mm"}
+{"t": 1790187859.2481987, "kind": "log", "msg": "servo0.2: cube px=[503. 421.] err=19px move=(1,-2)mm"}
