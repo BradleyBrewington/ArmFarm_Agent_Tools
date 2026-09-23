@@ -38,7 +38,7 @@
   ],
   "cumulative_current_assignment": {
     "successes": 0,
-    "unsuccessful": 1,
+    "unsuccessful": 4,
     "successes_trailing_hour": 0,
     "ratio_requirement_met": false
   },
@@ -2891,7 +2891,9 @@
       "10:14",
       "10:15",
       "10:16"
-    ]
+    ],
+    "location_policy": "Credit pre-lift mug table-contact footprint in calibrated metric table coordinates with image evidence and uncertainty; never treat elevated handle ray intersection as mug base.",
+    "candidate_only": true
   },
   "tool": "tools/mug_control.py",
   "discoveries": [
@@ -2903,5 +2905,16 @@
   "next_hypothesis": "Inspect historical c_home_held evidence and successful handle approach source; compare freshly verified peer handle opposing-contact sequence. Retract and re-localize before insertion. Verify opposing contacts, 1-2 cm lift, stable hold, staged carry, then home; do not replay old joint poses blindly.",
   "historical_success_reference": "03e5351425018a23b53da62aa87ca456482686359129db12f6a5690c8088777f:0",
   "peer_success_episode": "20260923T150127-191efa22",
-  "stable_boundary": true
+  "stable_boundary": true,
+  "ledger_retention_note": "First three recordings no longer locally retained; outcomes preserved from successful recorder stop responses.",
+  "dashboard_cross_check": {
+    "reported_at_utc": "2026-09-23T20:24:00Z",
+    "arm_002": {
+      "completed": 4,
+      "successes": 0
+    },
+    "matches_preserved_ledger": true
+  },
+  "task_id": "exp-grasp-mug-multiagent",
+  "ledger_policy": "Append-only outcomes by episode_id across turns. Merge exact-agent uploaded historical evidence without deleting missing local episodes or relabeling outcomes."
 }

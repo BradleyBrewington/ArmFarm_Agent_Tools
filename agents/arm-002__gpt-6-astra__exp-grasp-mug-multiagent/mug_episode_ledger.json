@@ -1,5 +1,94 @@
 [
   {
+    "episode_id": "20260923T145720-51ce461c",
+    "started": 1790193440.8785243,
+    "finished": 1790193649.1273947,
+    "success": false,
+    "notes": "Mug displaced on closure and remained on table during lift check; no retained grasp.",
+    "quality_flags": [
+      "target_outside_calibration",
+      "torque_disabled"
+    ],
+    "source": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T145720-51ce461c",
+    "source_availability": "Committed uploaded record read and outcome cross-checked; paired camera packages retrievable from fleet archive.",
+    "closure_attempts": [
+      {
+        "estimated_tool_xyz_base_m": [
+          0.279611,
+          0.052984,
+          0.045652
+        ],
+        "verified_grasp": false,
+        "evidence": "Live measured FK and paired camera checks in this turn transcript; representative closure, not all attempts.",
+        "note": "Diagnostic estimate of measured tool location, not a verified grasp or exact mug center."
+      }
+    ],
+    "verified_grasp_locations": [],
+    "uploaded_evidence": {
+      "artifact_id": "91e33662cffd827dea3531ff1597acd51609073ff4bb4b7e21f3c3ba8841b98e",
+      "ordinal": 0,
+      "agent_id": "arm-002__gpt-6-astra__exp-grasp-mug-multiagent"
+    }
+  },
+  {
+    "episode_id": "20260923T150117-bf807a86",
+    "started": 1790193677.873912,
+    "finished": 1790193938.6220372,
+    "success": false,
+    "notes": "Vertical rim and deeper wall attempts displaced or tilted mug but failed sustained lift; mug upright on table.",
+    "quality_flags": [
+      "torque_disabled"
+    ],
+    "source": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T150117-bf807a86",
+    "source_availability": "Committed uploaded record read and outcome cross-checked; paired camera packages retrievable from fleet archive.",
+    "closure_attempts": [
+      {
+        "estimated_tool_xyz_base_m": [
+          0.285022,
+          0.052815,
+          0.05168
+        ],
+        "verified_grasp": false,
+        "evidence": "Live measured FK and paired camera checks in this turn transcript; representative closure, not all attempts.",
+        "note": "Diagnostic estimate of measured tool location, not a verified grasp or exact mug center."
+      }
+    ],
+    "verified_grasp_locations": [],
+    "uploaded_evidence": {
+      "artifact_id": "044eda41904cc2d93ed8da6550bc9cb1193417c94f9dac128e75357d2d750872",
+      "ordinal": 0,
+      "agent_id": "arm-002__gpt-6-astra__exp-grasp-mug-multiagent"
+    }
+  },
+  {
+    "episode_id": "20260923T150610-cec48c14",
+    "started": 1790193970.869328,
+    "finished": 1790194479.4528258,
+    "success": false,
+    "notes": "Handle attempts did not retain mug. Open jaw swept mug toward base; retreated clear to change wrist orientation.",
+    "quality_flags": [],
+    "source": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T150610-cec48c14",
+    "source_availability": "Committed uploaded record read and outcome cross-checked; paired camera packages retrievable from fleet archive.",
+    "closure_attempts": [
+      {
+        "estimated_tool_xyz_base_m": [
+          0.324912,
+          0.093983,
+          0.049991
+        ],
+        "verified_grasp": false,
+        "evidence": "Live measured FK and paired camera checks in this turn transcript; representative closure, not all attempts.",
+        "note": "Diagnostic estimate of measured tool location, not a verified grasp or exact mug center."
+      }
+    ],
+    "verified_grasp_locations": [],
+    "uploaded_evidence": {
+      "artifact_id": "11177f49dbfe05f4140975cb9fbd845ce7205687d7d6cee13d88bf910765ee3a",
+      "ordinal": 0,
+      "agent_id": "arm-002__gpt-6-astra__exp-grasp-mug-multiagent"
+    }
+  },
+  {
     "episode_id": "20260923T151600-90257d61",
     "started": 1790194560.1738365,
     "finished": 1790194970.221402,

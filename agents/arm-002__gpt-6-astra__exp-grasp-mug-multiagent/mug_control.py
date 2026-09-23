@@ -10,10 +10,13 @@ from check_saved_alignment import arm_transform
 ROOT=Path(__file__).resolve().parent
 OFFSET=np.array([-.004200149,-.025801957,.003846939,1])
 def snap():
+ stamp=str(time.time_ns()); obs=ROOT/'mug_observations';obs.mkdir(exist_ok=True)
  with connected_bus(serial_port()) as b:
   j=b.sync_read('Present_Position',list(JOINTS));print(json.dumps({'joints':j,'xyz':(arm_transform(j)@OFFSET)[:3].tolist(),'load':b.sync_read('Present_Load',list(JOINTS))}),flush=True)
+ (obs/(stamp+'.json')).write_text(json.dumps({'time':time.time(),'joints':j,'estimated_tool_xyz':(arm_transform(j)@OFFSET)[:3].tolist()},indent=2))
  for c in ('top','wrist'):
-  im,m=read_jpeg(c);(ROOT/('current_'+c+'.jpg')).write_bytes(im)
+  im,m=read_jpeg(c);(ROOT/('current_'+c+'.jpg')).write_bytes(im);(obs/(stamp+'_'+c+'.jpg')).write_bytes(im)
+ print('observation_stem='+str(obs/stamp),flush=True)
 def step(target,secs=5):
  for c in ('top','wrist'):read_jpeg(c)
  with connected_bus(serial_port()) as b:
