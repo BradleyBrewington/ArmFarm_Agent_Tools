@@ -32,6 +32,7 @@ SERVO_Z = TABLE_Z + 0.088
 LOW_GAP_PX = 12           # desired pixel gap between cube right edge and fixed jaw at SERVO_LOW
 LOW_SCALE = 1.5           # wrist-camera Jacobian magnification at SERVO_LOW relative to SERVO_Z
 MID_RIGHT = 770.          # desired cube right edge (px) at GRASP_Z+0.024, just above the cube top
+MAX_GRASP_R = 0.335       # max radius from the pan axis for a recorded grasp attempt
 MID_V = 470.              # desired cube centroid row at GRASP_Z+0.024
 LOW_V_PER_TILT = 2.5      # px of extra LOW_V per degree of approach tilt
 LOW_V = 400.              # desired cube centroid row at SERVO_LOW (jaw-tip depth)
@@ -57,7 +58,7 @@ def log(msg, **data):
 
 def ik_reach(x, y, z, roll, tilt_start=0.):
     last = None
-    for tilt in (t for t in (0., 10., 20., 30., 40.) if t >= tilt_start):
+    for tilt in (t for t in (0., 10., 20., 30., 40., 50.) if t >= tilt_start):
         try:
             return cp.solve_ik(x, y, z, roll=roll, tilt_deg=tilt), tilt
         except ValueError as e:
@@ -303,6 +304,42 @@ class Runner:
         log(f"home: grip={gpos:.1f} load={gload} wrist_dark={frac:.2f} still_on_table={still_on_table} home_err={ {k: round(v,1) for k,v in err.items()} }")
         return held and not still_on_table, dict(grip=gpos, wrist_dark=frac, still_on_table=still_on_table)
 
+    def rake(self, pose, notes):
+        """Unrecorded recovery: drag a too-far cube toward the base with the closed gripper."""
+        arm = self.arm
+        x, y = pose["robot"]
+        ang = math.atan2(y, x - 0.0388)
+        r = math.hypot(x - 0.0388, y)
+        r_far = min(r + 0.045, 0.42)
+        z_drag = TABLE_Z + 0.022
+        roll = ROLL_NEUTRAL
+        far = (0.0388 + r_far * math.cos(ang), r_far * math.sin(ang))
+        near = (0.0388 + 0.24 * math.cos(ang), 0.24 * math.sin(ang))
+        log(f"rake: cube r={r:.3f} -> drag from r={r_far:.3f} to 0.24 along {math.degrees(ang):.0f} deg")
+        arm.gripper(GRIP_CLOSED, seconds=0.4)
+        j_hi = tilt = None
+        for dz in (0.07, 0.05, 0.035):
+            try:
+                j_hi, tilt = ik_reach(far[0], far[1], z_drag + dz, roll, tilt_start=30.)
+                break
+            except ValueError:
+                continue
+        if j_hi is None:
+            raise RuntimeError("rake approach pose unreachable")
+        travel(arm, j_hi)
+        j_lo, _ = ik_reach(far[0], far[1], z_drag, roll, tilt_start=tilt)
+        arm.move_precise(j_lo, speed_dps=25)
+        steps = 6
+        for i in range(1, steps + 1):
+            f = i / steps
+            px_, py_ = far[0] + f * (near[0] - far[0]), far[1] + f * (near[1] - far[1])
+            j, _ = ik_reach(px_, py_, z_drag, roll)
+            arm.move_arm(j, speed_dps=20)
+        j_up, _ = ik_reach(near[0], near[1], z_drag + 0.08, roll)
+        arm.move_arm(j_up, speed_dps=40)
+        arm.home()
+        notes.append("raked cube closer")
+
     def next_place(self):
         n_done = len(self.state["episodes"])
         if n_done < len(CENTRAL):
@@ -375,6 +412,18 @@ class Runner:
             if not pose:
                 raise RuntimeError("cube not found on table")
         log(f"cube at px={np.round(pose['px'])} robot={np.round(pose['robot'],3)} yaw={pose['yaw']:.0f} size={np.round(pose['size'],3)}")
+        for _ in range(2):
+            r = math.hypot(pose["robot"][0] - 0.0388, pose["robot"][1])
+            if r <= MAX_GRASP_R:
+                break
+            log(f"cube radius {r:.3f} beyond graspable {MAX_GRASP_R}; raking (unrecorded)")
+            self.rake(pose, notes)
+            pose, _ = self.observe("after_rake")
+            if not pose:
+                raise RuntimeError("cube lost after rake")
+            log(f"after rake: cube robot={np.round(pose['robot'],3)}")
+        if math.hypot(pose["robot"][0] - 0.0388, pose["robot"][1]) > MAX_GRASP_R:
+            raise RuntimeError("cube still out of reach after raking")
         rec = None
         success = False
         info = {}
