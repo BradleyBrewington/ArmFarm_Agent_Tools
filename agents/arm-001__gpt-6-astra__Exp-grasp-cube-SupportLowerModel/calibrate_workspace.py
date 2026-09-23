@@ -1460,7 +1460,7 @@ def settle(bus, target, seconds):
         print("Position warning (degrees from target): " + json.dumps(missed, sort_keys=True)
               + ". Photo detection and calibration quality checks remain required.", flush=True)
     return {"measured": measured, "error_degrees": errors, "within_tolerance": not missed,
-            "physical_stops": {j: list(limits) for j, limits in stops(bus).items()}}
+            "physical_stops": {j: [None if math.isinf(v) else v for v in limits] for j, limits in stops(bus).items()}}
 
 
 def detect_board(image, pattern, thorough=False):
