@@ -431,18 +431,19 @@ class TableMap:
             return self.A
         P = np.array([[p[0], p[1]] for p in self.pairs])
         R = np.array([[p[2], p[3]] for p in self.pairs])
-        if n >= 4:
+        if n >= 3:
             X = np.hstack([P, np.ones((n, 1))])
             sol, *_ = np.linalg.lstsq(X, R, rcond=None)
             self.A = sol.T
-        elif n >= 2:
-            # similarity: [a -b tx; b a ty]
+        elif n == 2:
+            # similarity with reflection (image/table frame is mirrored w.r.t. robot XY):
+            # [x; y] = s*[[cos, sin],[sin, -cos]] [tx; ty] + t  ->  unknowns a=s cos, b=s sin, tx, ty
             rows, rhs = [], []
             for (px, py), (rx, ry) in zip(P, R):
-                rows.append([px, -py, 1, 0]); rhs.append(rx)
-                rows.append([py, px, 0, 1]); rhs.append(ry)
+                rows.append([px, py, 1, 0]); rhs.append(rx)
+                rows.append([py, -px, 0, 1]); rhs.append(ry)
             a, b, tx, ty = np.linalg.lstsq(np.array(rows), np.array(rhs), rcond=None)[0]
-            self.A = np.array([[a, -b, tx], [b, a, ty]])
+            self.A = np.array([[a, b, tx], [b, -a, ty]])
         elif self.A is not None:
             # translation-only correction of the existing map
             pred = self.apply(P[0])
