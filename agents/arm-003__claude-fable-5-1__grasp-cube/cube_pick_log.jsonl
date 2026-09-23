@@ -1449,3 +1449,18 @@
 {"t": 1790191165.526321, "kind": "log", "msg": "low0.0: cube right=639 v=508 err=(61,-83)px"}
 {"t": 1790191172.8416138, "kind": "log", "msg": "low0.1: cube right=738 v=431 err=(-38,-6)px"}
 {"t": 1790191178.5133588, "kind": "log", "msg": "low0.2: cube right=716 v=471 err=(-16,-46)px"}
+{"t": 1790191183.3908594, "kind": "log", "msg": "low0.3: cube right=705 v=407 err=(-5,18)px"}
+{"t": 1790191185.99124, "kind": "log", "msg": "mid0: right=735 v=465 err=(35,-25)px"}
+{"t": 1790191194.6466486, "kind": "log", "msg": "mid1: right=773 v=436 err=(-3,4)px"}
+{"t": 1790191197.708753, "kind": "log", "msg": "gripper after close: pos=22.0 load=500"}
+{"t": 1790191207.595311, "kind": "log", "msg": "grasp held=True"}
+{"t": 1790191210.7664478, "kind": "log", "msg": "home: grip=21.9 load=200 wrist_dark=0.88 still_on_table=False home_err={'shoulder_pan': -0.6, 'shoulder_lift': 1.1, 'elbow_flex': 0.3, 'wrist_flex': 1.7}"}
+{"t": 1790191211.0323863, "kind": "log", "msg": "recording stopped success=True: {\"episode\": \"20260923T141849-65ba83a6\", \"folder\": \"/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T141849-65ba83a6\", \"frames\": 1150, \"quality_flags\": [], \"training_ready\": true, \"success\": true, \"notes\": \"target=(0.306,-0.024) yaw=-177 roll=-48 tilt=10; servo_final=(0.316,-0.028) converged=True; mid_ok=True; grasp_fk=(0.295,-0.013,-0.014); grip_pos=22.0 load=500; grip_pos_lifted=21.9"}
+{"t": 1790191211.0689766, "kind": "log", "msg": "placing at (0.27, 0.16)"}
+{"t": 1790191230.482261, "kind": "log", "msg": "after place: cube px=[979. 411.] predicted=[991. 417.] d=13px"}
+{"t": 1790191230.4841607, "kind": "log", "msg": "map updated: 57 pairs, mean residual 12.0 mm, A=[[-0.0021, 0.9567, 0.2215], [0.8486, 0.0184, -0.0285]]"}
+{"t": 1790191230.4859304, "kind": "log", "msg": "episode done success=True dur=103s  totals: 53/68 successes"}
+{"t": 1790191232.4973645, "kind": "log", "msg": "cube at px=[979. 411.] robot=[0.265 0.16 ] yaw=155 size=[0.043 0.055]"}
+{"t": 1790191232.5139668, "kind": "log", "msg": "recording started: {'episode': '20260923T142032-a0e999b8'}"}
+{"t": 1790191242.7287238, "kind": "log", "msg": "servo0.0: cube px=[533. 288.] err=155px move=(25,12)mm"}
+{"t": 1790191250.1153526, "kind": "log", "msg": "servo0.1: cube px=[434. 445.] err=74px move=(-15,5)mm"}
