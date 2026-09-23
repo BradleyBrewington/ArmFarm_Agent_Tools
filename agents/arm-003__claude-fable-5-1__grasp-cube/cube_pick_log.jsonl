@@ -649,3 +649,12 @@
 {"t": 1790186867.007424, "kind": "log", "msg": "recording started: {'episode': '20260923T130746-2af7d2bf'}"}
 {"t": 1790186874.7681508, "kind": "log", "msg": "servo0.0: cube px=[531. 373.] err=71px move=(10,-10)mm"}
 {"t": 1790186881.9836621, "kind": "log", "msg": "servo0.1: cube px=[472. 426.] err=37px move=(1,6)mm"}
+{"t": 1790186887.7030907, "kind": "log", "msg": "servo0.2: cube px=[501. 435.] err=8px move=(1,1)mm"}
+{"t": 1790186895.6232965, "kind": "log", "msg": "yaw fix: image angle delta -33 -> roll -53->-20 -> delta -1"}
+{"t": 1790186913.8975017, "kind": "log", "msg": "low0.0: cube right=672 v=515 err=(28,-90)px"}
+{"t": 1790186919.0384035, "kind": "log", "msg": "low0.1: cube right=728 v=440 err=(-28,-15)px"}
+{"t": 1790186924.7172346, "kind": "log", "msg": "low0.2: cube right=747 v=434 err=(-47,-9)px"}
+{"t": 1790186931.8840733, "kind": "log", "msg": "low0.3: cube right=669 v=437 err=(31,-12)px"}
+{"t": 1790186941.3235652, "kind": "log", "msg": "mid0: right=751 v=466 err=(19,-26)px"}
+{"t": 1790186944.3848784, "kind": "log", "msg": "gripper after close: pos=22.9 load=500"}
+{"t": 1790186954.3350968, "kind": "log", "msg": "grasp held=True"}
