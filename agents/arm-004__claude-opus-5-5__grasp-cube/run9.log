@@ -1,0 +1,58 @@
+14:04:35 episode 0: cube at (0.186,0.056) yaw=11
+14:04:42 grasp cube=(0.186,0.056) yaw=10.5 roll=93.9 tool=(0.197,0.028)
+14:04:49 low at [0.1989, 0.0288, -0.0056]
+14:04:57 episode 0: success=True (22s) ['attempt 1: grip=23.9', 'at home gripper=23.9 wrist_dark=0.97']
+14:04:57 place cube=(0.119,0.150) tool=(0.145,0.137) roll=93.9
+14:05:09 stats {'succ': 1, 'fail': 0}
+14:05:09 episode 1: cube at (0.118,0.152) yaw=44
+14:05:13 grasp cube=(0.118,0.152) yaw=43.6 roll=83.4 tool=(0.142,0.134)
+14:05:19 low at [0.1425, 0.1349, -0.0063]
+14:05:27 episode 1: success=True (18s) ['attempt 1: grip=23.9', 'at home gripper=23.9 wrist_dark=0.94']
+14:05:27 place cube=(0.178,-0.098) tool=(0.157,-0.119) roll=83.4
+14:05:39 stats {'succ': 2, 'fail': 0}
+14:05:39 episode 2: cube at (0.173,-0.095) yaw=33
+14:05:45 grasp cube=(0.173,-0.095) yaw=33.1 roll=78.1 tool=(0.150,-0.114)
+Traceback (most recent call last):
+  File "/var/lib/armfarm/stations/armfarm/workspace/work/run_episodes.py", line 126, in episode
+    g = grasp.grasp(b, cx, cy, yaw, log=log)
+  File "/var/lib/armfarm/stations/armfarm/workspace/work/grasp.py", line 89, in grasp
+    arm.goto(b, x, y, GRASP_Z, roll=roll, speed=22, correct=3)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/lib/armfarm/stations/armfarm/workspace/work/arm.py", line 75, in goto
+    move(b, q, speed if it == 0 else 30.0, min_s=0.6 if it == 0 else 0.3)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/lib/armfarm/stations/armfarm/workspace/work/arm.py", line 52, in move
+    cw.move(b, target, max(min_s, d / speed))
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/calibrate_workspace.py", line 1433, in move
+    time.sleep(.02)
+    ~~~~~~~~~~^^^^^
+  File "/var/lib/armfarm/stations/armfarm/workspace/work/run_episodes.py", line 25, in _on_term
+    def _on_term(signum, frame):
+    
+  File "/var/lib/armfarm/stations/armfarm/workspace/work/run_episodes.py", line 26, in _on_term
+    raise Interrupted(f'signal {signum}')
+Interrupted: signal 15
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/var/lib/armfarm/stations/armfarm/workspace/work/run_episodes.py", line 191, in <module>
+    main()
+    ~~~~^^
+  File "/var/lib/armfarm/stations/armfarm/workspace/work/run_episodes.py", line 181, in main
+    r = episode(b, i, stats, done_counts)
+  File "/var/lib/armfarm/stations/armfarm/workspace/work/run_episodes.py", line 146, in episode
+    recording.stop_recording(False, '; '.join(notes))
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/recording.py", line 30, in stop_recording
+    return request('stop_recording', success=success, notes=notes)
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/recording.py", line 14, in request
+    with client.makefile('rb') as stream: response = json.loads(stream.readline())
+                                                                ~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/socket.py", line 719, in readinto
+    return self._sock.recv_into(b)
+           ~~~~~~~~~~~~~~~~~~~~^^^
+  File "/var/lib/armfarm/stations/armfarm/workspace/work/run_episodes.py", line 26, in _on_term
+    raise Interrupted(f'signal {signum}')
+Interrupted: signal 15
