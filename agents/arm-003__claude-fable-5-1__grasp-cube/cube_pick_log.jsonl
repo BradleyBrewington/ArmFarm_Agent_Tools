@@ -579,3 +579,17 @@
 {"t": 1790186449.3764515, "kind": "log", "msg": "low0.1: cube right=775 v=423 err=(-75,-23)px"}
 {"t": 1790186453.5133042, "kind": "log", "msg": "low0.2: cube right=705 v=416 err=(-5,-16)px"}
 {"t": 1790186457.6391454, "kind": "log", "msg": "mid0: right=744 v=476 err=(26,-36)px"}
+{"t": 1790186460.6937037, "kind": "log", "msg": "gripper after close: pos=22.8 load=500"}
+{"t": 1790186470.7910254, "kind": "log", "msg": "grasp held=True"}
+{"t": 1790186473.9664476, "kind": "log", "msg": "home: grip=22.5 load=200 wrist_dark=0.87 still_on_table=False home_err={'shoulder_pan': -0.7, 'shoulder_lift': 1.1, 'elbow_flex': 0.2, 'wrist_flex': 1.7}"}
+{"t": 1790186474.167236, "kind": "log", "msg": "recording stopped success=True: {\"episode\": \"20260923T125950-1ea748b5\", \"folder\": \"/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T125950-1ea748b5\", \"frames\": 1171, \"quality_flags\": [], \"training_ready\": true, \"success\": true, \"notes\": \"target=(0.279,-0.022) yaw=-163 roll=-64 tilt=0; servo_final=(0.285,-0.027) converged=True; roll_after_yaw_fix=-32; mid_ok=True; grasp_fk=(0.270,-0.023,-0.014); grip_pos=22.8 load=50"}
+{"t": 1790186474.18033, "kind": "log", "msg": "placing at (0.23, 0.1)"}
+{"t": 1790186490.809228, "kind": "log", "msg": "after place: cube px=[873. 340.] predicted=[890. 340.] d=17px"}
+{"t": 1790186490.8105175, "kind": "log", "msg": "map updated: 14 pairs, mean residual 13.5 mm, A=[[-0.0192, 0.8242, 0.2336], [0.8358, 0.0932, -0.0328]]"}
+{"t": 1790186490.8127787, "kind": "log", "msg": "episode done success=True dur=102s  totals: 10/25 successes"}
+{"t": 1790186492.7984226, "kind": "log", "msg": "cube at px=[873. 340.] robot=[0.23  0.094] yaw=146 size=[0.04  0.049]"}
+{"t": 1790186492.811535, "kind": "log", "msg": "recording started: {'episode': '20260923T130132-104dd6ba'}"}
+{"t": 1790186502.2486029, "kind": "log", "msg": "servo0.0: cube px=[458. 370.] err=86px move=(6,8)mm"}
+{"t": 1790186506.2918065, "kind": "log", "msg": "servo0.1: cube px=[496. 417.] err=26px move=(2,2)mm"}
+{"t": 1790186513.4760478, "kind": "log", "msg": "servo0.2: cube px=[496. 434.] err=12px move=(-0,2)mm"}
+{"t": 1790186519.1227708, "kind": "log", "msg": "yaw fix: image angle delta -33 -> roll -56->-23 -> delta 4"}
