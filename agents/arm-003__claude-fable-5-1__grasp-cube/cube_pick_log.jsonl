@@ -160,3 +160,10 @@
 {"t": 1790183375.8387127, "kind": "log", "msg": "grasp held=True"}
 {"t": 1790183378.0638518, "kind": "log", "msg": "home: grip=23.4 load=200 wrist_dark=0.89 still_on_table=False home_err={'shoulder_pan': 0.4, 'shoulder_lift': 1.1, 'elbow_flex': 0.4, 'wrist_flex': 1.6}"}
 {"t": 1790183378.06581, "kind": "log", "msg": "placing at (0.27, -0.06)"}
+{"t": 1790183393.731218, "kind": "log", "msg": "after place: cube px=[566. 402.] predicted=[549. 404.] d=17px"}
+{"t": 1790183393.731967, "kind": "log", "msg": "map updated: 5 pairs, mean residual 6.3 mm, A=[[-0.1707, 0.6143, 0.2321], [0.8243, 0.0551, -0.0202]]"}
+{"t": 1790183393.73209, "kind": "log", "msg": "episode done success=True dur=59s  totals: 0/3 successes"}
+{"t": 1790183423.3028786, "kind": "log", "msg": "cube at px=[566. 402.] robot=[ 0.27  -0.054] yaw=-85 size=[0.037 0.034]"}
+{"t": 1790183423.3153589, "kind": "log", "msg": "recording started: {'episode': '20260923T121023-bd085e7b'}"}
+{"t": 1790183432.736087, "kind": "log", "msg": "servo0.0: cube px=[580. 343.] err=121px move=(4,-30)mm"}
+{"t": 1790183438.4253607, "kind": "log", "msg": "servo0.1: cube px=[468. 436.] err=39px move=(5,8)mm"}
