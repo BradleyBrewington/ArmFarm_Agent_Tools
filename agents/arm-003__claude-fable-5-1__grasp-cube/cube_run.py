@@ -33,7 +33,7 @@ LOW_GAP_PX = 12           # desired pixel gap between cube right edge and fixed 
 LOW_SCALE = 1.5           # wrist-camera Jacobian magnification at SERVO_LOW relative to SERVO_Z
 MID_RIGHT = 770.          # desired cube right edge (px) at GRASP_Z+0.024, just above the cube top
 MAX_GRASP_R = 0.335       # max radius from the pan axis for a recorded grasp attempt
-MID_V = 470.              # desired cube centroid row at GRASP_Z+0.024
+MID_V = 440.              # desired cube centroid row at GRASP_Z+0.024
 LOW_V_PER_TILT = 2.5      # px of extra LOW_V per degree of approach tilt
 LOW_V = 400.              # desired cube centroid row at SERVO_LOW (jaw-tip depth)
 SERVO_LOW = TABLE_Z + 0.050  # final servo height: tips just above the cube top   # fingertip height for wrist-camera servoing
@@ -212,7 +212,7 @@ class Runner:
         z_mid = GRASP_Z + 0.024
         ok = False
         for attempt in range(3):
-            for it in range(4 if attempt == 0 else 2):
+            for it in range(4 if attempt == 0 else 0):
                 time.sleep(0.3)
                 limg = cp.snap("wrist", IMG_DIR / f"low_wrist{attempt}_{it}.jpg")
                 lc = cs.detect_cube_wrist(limg, debug_path=IMG_DIR / f"low_wrist{attempt}_{it}_det.jpg")
@@ -249,7 +249,7 @@ class Runner:
             right = dc["bbox"][0] + dc["bbox"][2]
             err = np.array([MID_RIGHT - right, MID_V - dc["px"][1]])
             log(f"mid{attempt}: right={right} v={dc['px'][1]:.0f} err=({err[0]:.0f},{err[1]:.0f})px")
-            if abs(err[0]) <= 28 and abs(err[1]) <= 50:
+            if abs(err[0]) <= 28 and abs(err[1]) <= 60:
                 ok = True
                 break
             d_tool = np.linalg.solve(J_low, err) * 0.7
@@ -262,8 +262,9 @@ class Runner:
             if math.hypot(cx - x, cy - y) > 0.09:
                 notes.append("mid: correction exceeded bounds")
                 break
-            low, _ = ik_reach(cx, cy, SERVO_LOW, roll, tilt_start=tilt)
-            arm.move_precise(low, speed_dps=25)
+            # lift just above the cube top, shift, and re-verify (skip the low re-alignment)
+            up, _ = ik_reach(cx, cy, z_mid + 0.02, roll, tilt_start=tilt)
+            arm.move_precise(up, speed_dps=25)
         notes.append(f"mid_ok={ok}")
         grasp, _ = ik_reach(cx, cy, GRASP_Z, roll, tilt_start=tilt)
         now = arm.move_precise(grasp, speed_dps=25)
