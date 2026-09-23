@@ -35,3 +35,22 @@
 15:06:58 place cube=(0.171,0.157) tool=(0.201,0.155) roll=129.8
 15:07:10 stats {'succ': 6, 'fail': 0}
 15:07:10 episode 6: cube at (0.164,0.168) yaw=68
+15:07:17 grasp cube=(0.164,0.168) yaw=68.2 roll=25.4 tool=(0.157,0.139)
+15:07:25 low at [0.1576, 0.1391, -0.008]
+15:07:40 grasp cube=(0.166,0.166) yaw=67.3 roll=26.4 tool=(0.159,0.137)
+15:07:48 low at [0.1593, 0.1378, -0.008]
+15:08:03 grasp cube=(0.166,0.158) yaw=68.1 roll=27.4 tool=(0.158,0.128)
+15:08:10 low at [0.1588, 0.1287, -0.0082]
+15:08:20 episode 6: success=False (70s) ['attempt 1: grip=0.8', 'attempt 2: grip=0.8', 'attempt 3: grip=0.8']
+15:08:20 stats {'succ': 6, 'fail': 1}
+15:08:20 episode 7: cube at (0.172,0.156) yaw=67
+15:08:27 grasp cube=(0.172,0.156) yaw=67.4 roll=29.6 tool=(0.165,0.127)
+15:08:35 low at [0.1653, 0.1265, -0.0082]
+15:08:50 grasp cube=(0.179,0.153) yaw=67.3 roll=30.7 tool=(0.172,0.124)
+15:08:57 low at [0.1713, 0.123, -0.0086]
+15:09:12 grasp cube=(0.184,0.146) yaw=68.3 roll=33.7 tool=(0.176,0.117)
+15:09:20 low at [0.176, 0.1159, -0.0087]
+15:09:30 episode 7: success=False (70s) ['attempt 1: grip=0.8', 'attempt 2: grip=0.8', 'attempt 3: grip=0.8']
+15:09:30 stats {'succ': 6, 'fail': 2}
+15:09:30 episode 8: cube at (0.193,0.140) yaw=70
+15:09:37 grasp cube=(0.193,0.140) yaw=70.4 roll=38.7 tool=(0.186,0.110)
