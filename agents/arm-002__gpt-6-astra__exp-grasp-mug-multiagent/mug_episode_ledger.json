@@ -939,5 +939,73 @@
     },
     "measurement": "tools/wall_probe_170552_result.json",
     "home_evidence_stem": "tools/mug_observations/1790201429435432583"
+  },
+  {
+    "episode_id": "20260923T171327-dbc76396",
+    "agent_id": "arm-002__gpt-6-astra__exp-grasp-mug-multiagent",
+    "task_id": "exp-grasp-mug-multiagent",
+    "started": 1790201607.9694355,
+    "finished": 1790201872.5752242,
+    "success": false,
+    "notes": "Table-supported rim-tipping hypothesis: visually aligned inside/outside rim approach, two measured shoulder descents, staged closure. Measured wrist roll change4.22deg did not produce visible mug following or tilt; engagement not established. Released without larger tipping motion; no lift/home-held success. Returned home empty, torque retained.",
+    "quality_flags": [],
+    "source": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T171327-dbc76396",
+    "source_metadata": "tools/episode_171327_source_metadata.json",
+    "experiment_type": "Table-supported rim-engagement tipping probe",
+    "closure_attempts": [
+      {
+        "time": 1790201754.9922054,
+        "joints": {
+          "shoulder_pan": -24.703296703296704,
+          "shoulder_lift": 28.87912087912088,
+          "elbow_flex": -55.252747252747255,
+          "wrist_flex": 94.68131868131869,
+          "wrist_roll": -24.483516483516482,
+          "gripper": 1.8815331010452963
+        },
+        "estimated_tool_xyz": [
+          0.2967682208260836,
+          0.09486903065722496,
+          0.1090847075896299
+        ],
+        "evidence_stem": "tools/mug_observations/1790201754907707576"
+      }
+    ],
+    "rotation_test": [
+      {
+        "time": 1790201782.6997647,
+        "joints": {
+          "shoulder_pan": -24.703296703296704,
+          "shoulder_lift": 28.87912087912088,
+          "elbow_flex": -55.252747252747255,
+          "wrist_flex": 94.68131868131869,
+          "wrist_roll": -20.263736263736263,
+          "gripper": 1.8118466898954706
+        },
+        "estimated_tool_xyz": [
+          0.2985777810975447,
+          0.09453336165959325,
+          0.10968286224732182
+        ],
+        "evidence_stem": "tools/mug_observations/1790201782626831106"
+      }
+    ],
+    "verified_grasp": false,
+    "contact_established": false,
+    "verified_grasp_locations": [],
+    "prelift_object_location": {
+      "table_contact_pixel_estimate": [
+        682,
+        479
+      ],
+      "pixel_uncertainty": 20,
+      "image": "tools/mug_observations/1790201556228909110_top.jpg",
+      "frame": "image pixels",
+      "note": "Approximate upright base footprint; not elevated rim/handle. Metric registration unresolved, no coverage credit."
+    },
+    "pose_caveat": "Diagnostic nearly-closed midpoint FK, not independently calibrated fixed-tip contact point.",
+    "measurement": "tools/rim_tip_171327_result.json",
+    "home_evidence_stem": "tools/mug_observations/1790201857037720992",
+    "tool": "tools/mug_control.py; tools/goal_increment.py"
   }
 ]

@@ -1,5 +1,5 @@
 {
-  "timestamp": 1790201501.2921085,
+  "timestamp": 1790201922.7494512,
   "agent_id": "arm-002__gpt-6-astra__exp-grasp-mug-multiagent",
   "received_operator_ids": [
     "cdb9a3cb-34c9-4e71-85a4-4fc9707bdec4",
@@ -38,7 +38,7 @@
   ],
   "cumulative_current_assignment": {
     "successes": 0,
-    "unsuccessful": 14,
+    "unsuccessful": 15,
     "successes_trailing_hour": 0,
     "ratio_requirement_met": false
   },
@@ -2914,9 +2914,10 @@
     "Episode162837 further projected handle rotation~17deg +/-10deg with silhouette translation+7.9,-31.7px; later same-side contact mainly translated. No closure because outer opening remained blocked.",
     "Episode164413: opposite-side approach at roll-24.835 produced projected lower-loop overlap but no supporting grasp. Closure1.8118%/load116 and measured midpoint rise13.25mm left mug on table. Shoulder lift lag reached5.45deg, requiring measured rather than target-based motion assessment.",
     "Home empty-gripper test only. First two +1-degree requests produced no measured motion; third produced0.879deg and2.626mm downward diagnostic midpoint movement. Does not establish loaded/contact behavior or explain every failed grasp. Existing absolute step path still resets requested goals; incremental path avoids that reset.",
-    "Episode170552: goal-preserving shoulder increments at approach first had deadband, then measured1.670deg/7.851mm and2.022deg/9.445mm downward response. Pan probes left mug silhouette effectively unchanged; no effective wall contact or yaw established. Actual fingertip depth remains unresolved despite projected overlap."
+    "Episode170552: goal-preserving shoulder increments at approach first had deadband, then measured1.670deg/7.851mm and2.022deg/9.445mm downward response. Pan probes left mug silhouette effectively unchanged; no effective wall contact or yaw established. Actual fingertip depth remains unresolved despite projected overlap.",
+    "Episode171327: rim appeared between inside/outside jaw projections after16.16mm measured midpoint descent. Closure1.8815%/load120;4.2198deg measured wrist rotation produced no visible mug following. Did not establish engagement or evaluate effective tipping. Released without larger action."
   ],
-  "next_hypothesis": "Operator proposes a distinct table-supported rim-engagement tipping experiment: inspect accessible near/lateral rim, resolve gentle inside/outside wall engagement, then small measured observed tilt while table-supported. Release, retract, and relocalize only if a stable handle-accessible pose results. Abandon unresolved depth or pure slip/translation; no transport on weak rim contact, no force/calibration changes, no transfer of torque-disabled historical settings.",
+  "next_hypothesis": "Resolve fingertip-to-rim depth with a changed clear viewpoint and local tip motion before another closure. Rim approach projection alone failed; do not extend the same wrist rotation or replay historical joint poses.",
   "historical_success_reference": "03e5351425018a23b53da62aa87ca456482686359129db12f6a5690c8088777f:0",
   "peer_success_episode": "20260923T150127-191efa22",
   "stable_boundary": true,
@@ -2931,21 +2932,21 @@
   },
   "task_id": "exp-grasp-mug-multiagent",
   "ledger_policy": "Append-only outcomes by episode_id across turns. Merge exact-agent uploaded historical evidence without deleting missing local episodes or relabeling outcomes.",
-  "last_episode_id": "20260923T170552-be6692d0",
-  "last_result": "Observed broad-wall contact search after lateral handle view remained occluded. Goal-preserving shoulder steps produced measured descent but pan probes did not visibly move mug. Effective contact and yaw change not established. No closure, lift, or held-home delivery; retracted and returned home empty, torque retained.",
-  "latest_evidence_stem": "tools/mug_observations/1790201375994937730",
-  "home_evidence_stem": "tools/mug_observations/1790201429435432583",
+  "last_episode_id": "20260923T171327-dbc76396",
+  "last_result": "Table-supported rim-tipping hypothesis: visually aligned inside/outside rim approach, two measured shoulder descents, staged closure. Measured wrist roll change4.22deg did not produce visible mug following or tilt; engagement not established. Released without larger tipping motion; no lift/home-held success. Returned home empty, torque retained.",
+  "latest_evidence_stem": "tools/mug_observations/1790201782626831106",
+  "home_evidence_stem": "tools/mug_observations/1790201857037720992",
   "last_object_table_location": {
     "table_contact_pixel_estimate": [
       682,
       479
     ],
     "pixel_uncertainty": 20,
-    "image": "tools/mug_observations/1790201045823900411_top.jpg",
+    "image": "tools/mug_observations/1790201556228909110_top.jpg",
     "frame": "image pixels",
-    "note": "Upright base footprint estimate; metric registration and occlusion uncertainty unresolved; no coverage credit."
+    "note": "Approximate upright base footprint; not elevated rim/handle. Metric registration unresolved, no coverage credit."
   },
-  "last_experiment": "Broad-wall contact search with goal-preserving shoulder descent",
+  "last_experiment": "Table-supported rim-engagement tipping probe",
   "local_response_evidence": "tools/fixed_tip_local_response.json",
   "table_plane_mapping_check": {
     "path": "tools/table_plane_boundary_check.json",
@@ -2956,14 +2957,14 @@
       0.13181960592770345
     ]
   },
-  "last_experiment_evidence": "tools/wall_probe_170552_result.json",
+  "last_experiment_evidence": "tools/rim_tip_171327_result.json",
   "quiet_window": "tools/supervisor_quiet_window.json",
   "quiet_window_completed": true,
   "operator_updates": {
     "instruction_history": "Routine SQLite rereads withdrawn; historical rows left intact; new guidance arrives in conversation.",
     "quiet_window_result": "Operator reports peer mug motion persisted during completed unchanged-goal interval. No repeat requested.",
     "camera_path": "Operator verified matching deployed camd source and raw MJPEG passthrough without warping/stabilization; no known nearby disturbance. Cause unresolved; fresh multiple-frame geometry remains necessary.",
-    "rim_tipping_hypothesis": "Received after completed recovery for episode170552; not yet tested. Repositioning alone cannot be labeled full-task success."
+    "rim_tipping_hypothesis": "Tested episode171327: no effective rim engagement, no verified tipping; full task failed. Geometry hypothesis remains unproven."
   },
   "last_diagnostic": "tools/goal_increment_diagnostic.json"
 }
