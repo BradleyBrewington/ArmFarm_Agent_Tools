@@ -73,3 +73,5 @@
 14:55:06 low at [0.1953, 0.1382, -0.0045]
 14:55:14 episode 11: success=True (21s) ['attempt 1: grip=23.7', 'at home gripper=23.7 wrist_dark=0.97']
 14:55:14 place cube=(0.194,0.000) tool=(0.195,-0.030) roll=95.1
+14:55:26 stats {'succ': 12, 'fail': 0}
+14:55:26 time budget reached: stopping between episodes
