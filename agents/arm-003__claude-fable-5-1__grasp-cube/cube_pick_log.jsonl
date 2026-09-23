@@ -17,3 +17,5 @@
 {"t": 1790181887.1865768, "kind": "log", "msg": "servo3: cube px=[566. 487.] err=14px move=(4,0)mm"}
 {"t": 1790181894.536243, "kind": "log", "msg": "servo: cube not visible in wrist camera"}
 {"t": 1790181905.7531114, "kind": "log", "msg": "gripper after close: pos=0.5 load=40"}
+{"t": 1790181913.4615796, "kind": "log", "msg": "grasp held=False"}
+{"t": 1790181917.854762, "kind": "log", "msg": "episode done success=False dur=85s  totals: 0/0 successes"}
