@@ -32,6 +32,8 @@ SERVO_Z = TABLE_Z + 0.088
 LOW_GAP_PX = 12           # desired pixel gap between cube right edge and fixed jaw at SERVO_LOW
 LOW_SCALE = 1.5           # wrist-camera Jacobian magnification at SERVO_LOW relative to SERVO_Z
 MID_RIGHT = 770.          # desired cube right edge (px) at GRASP_Z+0.024, just above the cube top
+MID_V = 470.              # desired cube centroid row at GRASP_Z+0.024
+LOW_V_PER_TILT = 2.5      # px of extra LOW_V per degree of approach tilt
 LOW_V = 400.              # desired cube centroid row at SERVO_LOW (jaw-tip depth)
 SERVO_LOW = TABLE_Z + 0.050  # final servo height: tips just above the cube top   # fingertip height for wrist-camera servoing
 ROLL_NEUTRAL = -30.       # wrist roll hard stop measured at +22 deg; free to at least -110
@@ -180,7 +182,7 @@ class Runner:
                     notes.append(f"servo{stage}.{it}: cube not in wrist view")
                     log("servo: cube not visible in wrist camera")
                     break
-                d, err_px = self.servo.step(arm.read(), c["px"], z)
+                d, err_px = self.servo.step(arm.read(), c["px"], z, gain=0.65)
                 log(f"servo{stage}.{it}: cube px={np.round(c['px'])} err={err_px:.0f}px move=({d[0]*1000:.0f},{d[1]*1000:.0f})mm")
                 if err_px < 20:
                     converged = True
@@ -203,50 +205,65 @@ class Runner:
         pre, _ = ik_reach(cx, cy, GRASP_Z + 0.03, roll, tilt_start=tilt)
         grasp, _ = ik_reach(cx, cy, GRASP_Z, roll, tilt_start=tilt)
         arm.move_precise(low, speed_dps=30)
-        # final alignment at the low height: cube's near edge close to the fixed jaw (u) and at jaw-tip depth (v)
+        # final alignment: align at SERVO_LOW, then verify just above the cube top and retry if off
         J_low = np.diag([1.0, 0.6]) @ (self.servo.J[self.servo.key(SERVO_Z)] * LOW_SCALE)
-        for it in range(5):
+        low_v = LOW_V + LOW_V_PER_TILT * tilt
+        z_mid = GRASP_Z + 0.024
+        ok = False
+        for attempt in range(3):
+            for it in range(4 if attempt == 0 else 2):
+                time.sleep(0.3)
+                limg = cp.snap("wrist", IMG_DIR / f"low_wrist{attempt}_{it}.jpg")
+                lc = cs.detect_cube_wrist(limg, debug_path=IMG_DIR / f"low_wrist{attempt}_{it}_det.jpg")
+                if not lc:
+                    notes.append("low: cube not in wrist view")
+                    break
+                bx, by, bw, bh = lc["bbox"]
+                err = np.array([(cs.JAW_U - LOW_GAP_PX) - (bx + bw), low_v - lc["px"][1]])
+                log(f"low{attempt}.{it}: cube right={bx+bw} v={lc['px'][1]:.0f} err=({err[0]:.0f},{err[1]:.0f})px")
+                if abs(err[0]) < 12 and abs(err[1]) < 25:
+                    break
+                d_tool = np.linalg.solve(J_low, err) * 0.55
+                n = np.linalg.norm(d_tool)
+                if n > 0.025:
+                    d_tool *= 0.025 / n
+                tx, ty = self.servo.tool_axes_xy(arm.read())
+                d = d_tool[0] * tx + d_tool[1] * ty
+                cx, cy = cx + float(d[0]), cy + float(d[1])
+                if math.hypot(cx - x, cy - y) > 0.08:
+                    notes.append("low: correction exceeded bounds")
+                    break
+                low, _ = ik_reach(cx, cy, SERVO_LOW, roll, tilt_start=tilt)
+                arm.move_precise(low, speed_dps=25)
+            # verify just above the cube top
+            jz, _ = ik_reach(cx, cy, z_mid, roll, tilt_start=tilt)
+            arm.move_precise(jz, speed_dps=25)
             time.sleep(0.3)
-            limg = cp.snap("wrist", IMG_DIR / f"low_wrist{it}.jpg")
-            lc = cs.detect_cube_wrist(limg, debug_path=IMG_DIR / f"low_wrist{it}_det.jpg")
-            if not lc:
-                notes.append("low: cube not in wrist view")
+            dimg = cp.snap("wrist", IMG_DIR / f"mid{attempt}.jpg")
+            dc = cs.detect_cube_wrist(dimg, debug_path=IMG_DIR / f"mid{attempt}_det.jpg")
+            if not dc:
+                log(f"mid{attempt}: cube not detected; proceeding")
+                notes.append(f"mid{attempt}: not detected")
                 break
-            bx, by, bw, bh = lc["bbox"]
-            err = np.array([(cs.JAW_U - LOW_GAP_PX) - (bx + bw), LOW_V - lc["px"][1]])
-            log(f"low{it}: cube right={bx+bw} v={lc['px'][1]:.0f} err=({err[0]:.0f},{err[1]:.0f})px")
-            if abs(err[0]) < 12 and abs(err[1]) < 25:
+            right = dc["bbox"][0] + dc["bbox"][2]
+            err = np.array([MID_RIGHT - right, MID_V - dc["px"][1]])
+            log(f"mid{attempt}: right={right} v={dc['px'][1]:.0f} err=({err[0]:.0f},{err[1]:.0f})px")
+            if abs(err[0]) <= 28 and abs(err[1]) <= 50:
+                ok = True
                 break
-            d_tool = np.linalg.solve(J_low, err) * 0.55
+            d_tool = np.linalg.solve(J_low, err) * 0.7
             n = np.linalg.norm(d_tool)
-            if n > 0.025:
-                d_tool *= 0.025 / n
+            if n > 0.02:
+                d_tool *= 0.02 / n
             tx, ty = self.servo.tool_axes_xy(arm.read())
             d = d_tool[0] * tx + d_tool[1] * ty
             cx, cy = cx + float(d[0]), cy + float(d[1])
-            if math.hypot(cx - x, cy - y) > 0.08:
-                notes.append("low: correction exceeded bounds")
+            if math.hypot(cx - x, cy - y) > 0.09:
+                notes.append("mid: correction exceeded bounds")
                 break
             low, _ = ik_reach(cx, cy, SERVO_LOW, roll, tilt_start=tilt)
             arm.move_precise(low, speed_dps=25)
-        # stepped descent with wrist snapshots (diagnostic: FK drift vs. cube being pushed)
-        for k, zz in enumerate((GRASP_Z + 0.024, GRASP_Z + 0.012)):
-            jz, _ = ik_reach(cx, cy, zz, roll, tilt_start=tilt)
-            arm.move_precise(jz, speed_dps=25)
-            time.sleep(0.25)
-            dimg = cp.snap("wrist", IMG_DIR / f"descent{k}.jpg")
-            dc = cs.detect_cube_wrist(dimg)
-            log(f"descent z={zz:.3f}: cube {'px=%s right=%d' % (np.round(dc['px']), dc['bbox'][0]+dc['bbox'][2]) if dc else 'not detected'}")
-            if k == 0 and dc:
-                # just above the cube top: pull the fixed jaw up against the cube along the closing axis
-                right = dc["bbox"][0] + dc["bbox"][2]
-                if abs(right - MID_RIGHT) > 22:
-                    d_tool = float(np.clip((MID_RIGHT - right) / 3200., -0.015, 0.015))
-                    tx, _ = self.servo.tool_axes_xy(arm.read())
-                    cx, cy = cx + d_tool * tx[0], cy + d_tool * tx[1]
-                    log(f"descent fix: right={right} -> move {d_tool*1000:.0f}mm along closing axis")
-                    jz, _ = ik_reach(cx, cy, zz, roll, tilt_start=tilt)
-                    arm.move_precise(jz, speed_dps=20)
+        notes.append(f"mid_ok={ok}")
         grasp, _ = ik_reach(cx, cy, GRASP_Z, roll, tilt_start=tilt)
         now = arm.move_precise(grasp, speed_dps=25)
         fk = cp.fk_xyz(now)
