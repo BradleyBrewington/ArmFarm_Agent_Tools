@@ -1659,3 +1659,15 @@
 {"t": 1790192327.2986271, "kind": "log", "msg": "low0.0: cube right=659 v=502 err=(41,-102)px"}
 {"t": 1790192332.6760948, "kind": "log", "msg": "low0.1: cube right=769 v=434 err=(-69,-34)px"}
 {"t": 1790192339.8431692, "kind": "log", "msg": "low0.2: cube right=699 v=431 err=(1,-31)px"}
+{"t": 1790192347.0244088, "kind": "log", "msg": "low0.3: cube right=726 v=434 err=(-26,-34)px"}
+{"t": 1790192356.4719594, "kind": "log", "msg": "mid0: right=745 v=466 err=(25,-26)px"}
+{"t": 1790192359.5220475, "kind": "log", "msg": "gripper after close: pos=22.8 load=500"}
+{"t": 1790192370.353725, "kind": "log", "msg": "grasp held=True"}
+{"t": 1790192373.6389503, "kind": "log", "msg": "home: grip=22.3 load=200 wrist_dark=0.90 still_on_table=False home_err={'shoulder_pan': 0.4, 'shoulder_lift': 1.1, 'elbow_flex': 0.2, 'wrist_flex': 1.7}"}
+{"t": 1790192374.0225964, "kind": "log", "msg": "recording stopped success=True: {\"episode\": \"20260923T143800-dfbb0953\", \"folder\": \"/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T143800-dfbb0953\", \"frames\": 1238, \"quality_flags\": [], \"training_ready\": true, \"success\": true, \"notes\": \"target=(0.272,-0.084) yaw=178 roll=-38 tilt=0; servo_final=(0.292,-0.091) converged=True; mid_ok=True; grasp_fk=(0.268,-0.082,-0.013); grip_pos=22.8 load=500; grip_pos_lifted=22.3; "}
+{"t": 1790192374.0356114, "kind": "log", "msg": "placing at (0.19, 0.16)"}
+{"t": 1790192390.7697768, "kind": "log", "msg": "after place: cube px=[986. 315.] predicted=[986. 299.] d=16px"}
+{"t": 1790192390.7721941, "kind": "log", "msg": "map updated: 67 pairs, mean residual 11.8 mm, A=[[-0.0136, 0.9186, 0.2213], [0.8395, 0.0371, -0.0294]]"}
+{"t": 1790192390.7736638, "kind": "log", "msg": "episode done success=True dur=113s  totals: 63/79 successes"}
+{"t": 1790192410.752157, "kind": "log", "msg": "cube at px=[986. 315.] robot=[0.197 0.166] yaw=154 size=[0.04  0.059]"}
+{"t": 1790192410.765441, "kind": "log", "msg": "recording started: {'episode': '20260923T144010-e6aaef62'}"}
