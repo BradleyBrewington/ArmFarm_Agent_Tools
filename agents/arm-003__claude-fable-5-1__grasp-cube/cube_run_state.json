@@ -138,6 +138,22 @@
    "recorded": true,
    "folder": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T122059-21837654",
    "info": {}
+  },
+  {
+   "t": 1790184125.3178632,
+   "dur": 122.98094058036804,
+   "success": false,
+   "notes": [
+    "target=(0.319,-0.101) yaw=114 roll=-42 tilt=20",
+    "servo_final=(0.337,-0.110) converged=False",
+    "grasp_fk=(0.324,-0.106,-0.023)",
+    "grip_pos=0.6 load=48",
+    "grip_pos_lifted=0.5",
+    "gripper closed empty; no grasp"
+   ],
+   "recorded": true,
+   "folder": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T122207-6031d538",
+   "info": {}
   }
  ],
  "place_idx": 0,
