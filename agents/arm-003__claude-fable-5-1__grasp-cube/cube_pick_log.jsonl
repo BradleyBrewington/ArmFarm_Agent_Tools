@@ -1340,3 +1340,18 @@
 {"t": 1790190507.6257246, "kind": "log", "msg": "episode done success=True dur=106s  totals: 47/62 successes"}
 {"t": 1790190530.725209, "kind": "log", "msg": "cube at px=[421. 222.] robot=[ 0.149 -0.156] yaw=-134 size=[0.056 0.05 ]"}
 {"t": 1790190530.7388515, "kind": "log", "msg": "recording started: {'episode': '20260923T140850-d3dd56a7'}"}
+{"t": 1790190541.7959754, "kind": "log", "msg": "servo0.0: cube px=[474. 313.] err=131px move=(10,-14)mm"}
+{"t": 1790190546.7232153, "kind": "log", "msg": "servo0.1: cube px=[464. 386.] err=68px move=(8,-1)mm"}
+{"t": 1790190546.7233937, "kind": "log", "msg": "servo: correction exceeded safety bounds; aborting"}
+{"t": 1790190551.90338, "kind": "log", "msg": "yaw fix: image angle delta -11 -> roll -45->-34 -> delta -2"}
+{"t": 1790190562.2333198, "kind": "log", "msg": "low0.0: cube right=622 v=501 err=(78,-101)px"}
+{"t": 1790190567.2578974, "kind": "log", "msg": "low0.1: cube right=759 v=442 err=(-59,-42)px"}
+{"t": 1790190572.9035006, "kind": "log", "msg": "low0.2: cube right=705 v=432 err=(-5,-32)px"}
+{"t": 1790190580.072078, "kind": "log", "msg": "low0.3: cube right=718 v=404 err=(-18,-4)px"}
+{"t": 1790190584.9392343, "kind": "log", "msg": "mid0: right=714 v=456 err=(56,-16)px"}
+{"t": 1790190592.815014, "kind": "log", "msg": "mid1: right=784 v=428 err=(-14,12)px"}
+{"t": 1790190595.9014428, "kind": "log", "msg": "gripper after close: pos=23.7 load=500"}
+{"t": 1790190603.5808887, "kind": "log", "msg": "grasp held=True"}
+{"t": 1790190606.1916373, "kind": "log", "msg": "home: grip=22.6 load=200 wrist_dark=0.88 still_on_table=False home_err={'shoulder_pan': 0.4, 'shoulder_lift': 1.1, 'elbow_flex': 0.3, 'wrist_flex': 1.7}"}
+{"t": 1790190606.3970442, "kind": "log", "msg": "recording stopped success=True: {\"episode\": \"20260923T140850-d3dd56a7\", \"folder\": \"/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T140850-d3dd56a7\", \"frames\": 1064, \"quality_flags\": [], \"training_ready\": true, \"success\": true, \"notes\": \"target=(0.149,-0.156) yaw=-134 roll=-45 tilt=0; servo: correction exceeded safety bounds; aborting servo; servo_final=(0.149,-0.156) converged=False; roll_after_yaw_fix=-34; mid_ok="}
+{"t": 1790190606.4146695, "kind": "log", "msg": "placing at (0.19, 0.16)"}
