@@ -29,14 +29,16 @@ HOVER_Z = 0.10
 TRANSIT_Z = 0.15
 PLACE_Z = GRASP_Z + 0.008
 SERVO_Z = TABLE_Z + 0.088
-LOW_GAP_PX = 12           # desired pixel gap between cube right edge and fixed jaw at SERVO_LOW
+LOW_GAP_PX = -25          # cube right edge minus fixed-jaw column at SERVO_LOW (negative: past the jaw column;
+                          # biased so the mid check lands near MID_RIGHT first time; mid0 was ~+40 px left)
 LOW_SCALE = 1.5           # wrist-camera Jacobian magnification at SERVO_LOW relative to SERVO_Z
 MID_RIGHT = 770.          # desired cube right edge (px) at GRASP_Z+0.024, just above the cube top
 YAW_ROLL_OFFSET = 30.     # empirical bias between top-camera yaw and jaw alignment
 MAX_GRASP_R = 0.335       # max radius from the pan axis for a recorded grasp attempt
 MID_V = 440.              # desired cube centroid row at GRASP_Z+0.024
+MID_V_TOL = 30.           # 3/4 failures on 2026-09-23 had mid v < 412 with the old +-60 tolerance
 LOW_V_PER_TILT = 2.5      # px of extra LOW_V per degree of approach tilt
-LOW_V = 400.              # desired cube centroid row at SERVO_LOW (jaw-tip depth)
+LOW_V = 385.              # desired cube centroid row at SERVO_LOW (mid0 was ~+20 px too far along v)
 SERVO_LOW = TABLE_Z + 0.050  # final servo height: tips just above the cube top   # fingertip height for wrist-camera servoing
 ROLL_NEUTRAL = -30.       # wrist roll hard stop measured at +22 deg; free to at least -110
 ROLL_RANGE = (-95., 12.)
@@ -315,7 +317,7 @@ class Runner:
             right = dc["bbox"][0] + dc["bbox"][2]
             err = np.array([MID_RIGHT - right, MID_V - dc["px"][1]])
             log(f"mid{attempt}: right={right} v={dc['px'][1]:.0f} err=({err[0]:.0f},{err[1]:.0f})px")
-            if abs(err[0]) <= 28 and abs(err[1]) <= 60:
+            if abs(err[0]) <= 28 and abs(err[1]) <= MID_V_TOL:
                 ok = True
                 break
             d_tool = np.linalg.solve(J_low, err) * MID_GAIN
