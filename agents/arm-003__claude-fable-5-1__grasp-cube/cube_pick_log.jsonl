@@ -1381,3 +1381,8 @@
 {"t": 1790190732.8145056, "kind": "log", "msg": "recording started: {'episode': '20260923T141212-3d66589b'}"}
 {"t": 1790190745.237123, "kind": "log", "msg": "servo0.0: cube px=[581. 308.] err=151px move=(21,-22)mm"}
 {"t": 1790190751.0944996, "kind": "log", "msg": "servo0.1: cube px=[440. 451.] err=68px move=(-4,15)mm"}
+{"t": 1790190756.2679555, "kind": "log", "msg": "servo0.2: cube px=[521. 423.] err=22px move=(3,-4)mm"}
+{"t": 1790190801.7474272, "kind": "log", "msg": "cube at px=[453. 424.] robot=[ 0.285 -0.123] yaw=-174 size=[0.038 0.052]"}
+{"t": 1790190801.7579472, "kind": "log", "msg": "recording started: {'episode': '20260923T141321-69f6b5a6'}"}
+{"t": 1790190815.1700873, "kind": "log", "msg": "servo0.0: cube px=[577. 305.] err=152px move=(21,-21)mm"}
+{"t": 1790190821.0233486, "kind": "log", "msg": "servo0.1: cube px=[441. 450.] err=67px move=(-4,14)mm"}
