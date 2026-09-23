@@ -260,3 +260,13 @@
 {"t": 1790184138.1636353, "kind": "log", "msg": "servo0.0: cube px=[569. 345.] err=113px move=(14,-26)mm"}
 {"t": 1790184146.1832683, "kind": "log", "msg": "servo0.1: cube px=[423. 439.] err=84px move=(2,22)mm"}
 {"t": 1790184153.4003084, "kind": "log", "msg": "servo0.2: cube px=[552. 421.] err=49px move=(3,-14)mm"}
+{"t": 1790184159.4418519, "kind": "log", "msg": "servo0.3: cube px=[478. 494.] err=61px move=(-7,14)mm"}
+{"t": 1790184167.4225256, "kind": "log", "msg": "servo0.4: cube px=[547. 402.] err=55px move=(6,-15)mm"}
+{"t": 1790184174.6262076, "kind": "log", "msg": "servo0.5: cube px=[470. 440.] err=37px move=(0,10)mm"}
+{"t": 1790184189.0973234, "kind": "log", "msg": "low0: cube right=711 v=467 err=(-11,-67)px"}
+{"t": 1790184194.1554213, "kind": "log", "msg": "low1: cube right=738 v=411 err=(-38,-11)px"}
+{"t": 1790184199.7739794, "kind": "log", "msg": "low2: cube right=732 v=374 err=(-32,26)px"}
+{"t": 1790184206.9403696, "kind": "log", "msg": "low3: cube right=658 v=423 err=(42,-23)px"}
+{"t": 1790184211.8079479, "kind": "log", "msg": "low4: cube right=715 v=411 err=(-15,-11)px"}
+{"t": 1790184222.715035, "kind": "log", "msg": "descent z=0.010: cube px=[546. 398.] right=769"}
+{"t": 1790184228.3067021, "kind": "log", "msg": "descent z=-0.002: cube px=[561. 406.] right=796"}
