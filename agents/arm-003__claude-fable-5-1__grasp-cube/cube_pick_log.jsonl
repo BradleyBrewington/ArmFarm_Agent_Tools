@@ -5213,3 +5213,31 @@
 {"t": 1790202479.3118832, "kind": "log", "msg": "low0.2: cube right=754 v=374 err=(-17,11)px"}
 {"t": 1790202481.5134387, "kind": "log", "msg": "low0.3: cube right=730 v=386 err=(7,-1)px"}
 {"t": 1790202483.7420733, "kind": "log", "msg": "mid0: right=758 v=442 err=(12,-2)px"}
+{"t": 1790202486.6188116, "kind": "log", "msg": "gripper after close: pos=0.6 load=44"}
+{"t": 1790202488.560195, "kind": "log", "msg": "grasp held=False"}
+{"t": 1790202491.880917, "kind": "log", "msg": "recording stopped success=False: {\"episode\": \"20260923T172745-f9d7fef3\", \"folder\": \"/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T172745-f9d7fef3\", \"frames\": 725, \"quality_flags\": [], \"training_ready\": true, \"success\": false, \"notes\": \"target=(0.231,0.150) yaw=140 roll=-44 tilt=0; servo_final=(0.248,0.164) converged=True; mid_ok=True; grasp_fk=(0.232,0.157,-0.014); grip_pos=0.6 load=44; grip_pos_lifted=0.6; grippe"}
+{"t": 1790202493.4214768, "kind": "log", "msg": "episode done success=False dur=30s  totals: 252/275 successes"}
+{"t": 1790202495.429207, "kind": "log", "msg": "cube at px=[983. 402.] robot=[0.259 0.164] yaw=121 size=[0.044 0.053]"}
+{"t": 1790202495.442308, "kind": "log", "msg": "recording started: {'episode': '20260923T172815-61a0d7f0'}"}
+{"t": 1790202500.7992523, "kind": "log", "msg": "servo0.0: cube px=[479. 359.] err=86px move=(11,10)mm"}
+{"t": 1790202503.0911024, "kind": "log", "msg": "servo0.1: cube px=[497. 423.] err=19px move=(2,3)mm"}
+{"t": 1790202505.6378617, "kind": "log", "msg": "low0.0: cube right=627 v=498 err=(110,-88)px"}
+{"t": 1790202507.2774634, "kind": "log", "msg": "low0.1: cube right=738 v=416 err=(-1,-6)px"}
+{"t": 1790202509.5312624, "kind": "log", "msg": "mid0: right=765 v=448 err=(5,-8)px"}
+{"t": 1790202512.4372857, "kind": "log", "msg": "gripper after close: pos=26.0 load=500"}
+{"t": 1790202514.2320151, "kind": "log", "msg": "grasp held=True"}
+{"t": 1790202517.4758556, "kind": "log", "msg": "home: grip=26.0 load=200 wrist_dark=0.84 still_on_table=False home_err={'shoulder_pan': -0.6, 'shoulder_lift': 1.1, 'elbow_flex': 0.3, 'wrist_flex': 1.9}"}
+{"t": 1790202517.8631225, "kind": "log", "msg": "recording stopped success=True: {\"episode\": \"20260923T172815-61a0d7f0\", \"folder\": \"/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T172815-61a0d7f0\", \"frames\": 580, \"quality_flags\": [], \"training_ready\": true, \"success\": true, \"notes\": \"target=(0.259,0.164) yaw=121 roll=-62 tilt=10; servo_final=(0.270,0.174) converged=True; mid_ok=True; grasp_fk=(0.253,0.179,-0.014); grip_pos=26.0 load=500; grip_pos_lifted=26.0; hom"}
+{"t": 1790202517.8790216, "kind": "log", "msg": "placing at (0.23, -0.14)"}
+{"t": 1790202527.94399, "kind": "log", "msg": "after place: cube px=[424. 330.] predicted=[433. 337.] d=12px"}
+{"t": 1790202527.948327, "kind": "log", "msg": "map updated: 258 pairs, mean residual 11.1 mm, A=[[-0.0087, 0.9607, 0.2221], [0.8499, 0.0299, -0.0279]]"}
+{"t": 1790202527.9508574, "kind": "log", "msg": "episode done success=True dur=35s  totals: 253/276 successes"}
+{"t": 1790202529.9433696, "kind": "log", "msg": "cube at px=[424. 330.] robot=[ 0.227 -0.145] yaw=-129 size=[0.051 0.047]"}
+{"t": 1790202529.9561162, "kind": "log", "msg": "recording started: {'episode': '20260923T172849-11952a90'}"}
+{"t": 1790202535.1149042, "kind": "log", "msg": "servo0.0: cube px=[505. 324.] err=116px move=(14,-13)mm"}
+{"t": 1790202536.8819425, "kind": "log", "msg": "servo0.1: cube px=[529. 452.] err=25px move=(-4,-1)mm"}
+{"t": 1790202539.1980598, "kind": "log", "msg": "servo0.2: cube px=[485. 412.] err=36px move=(6,-1)mm"}
+{"t": 1790202540.965122, "kind": "log", "msg": "servo0.3: cube px=[518. 462.] err=24px move=(-4,2)mm"}
+{"t": 1790202543.2885308, "kind": "log", "msg": "servo0.4: cube px=[498. 422.] err=20px move=(3,-1)mm"}
+{"t": 1790202545.0684772, "kind": "log", "msg": "servo0.5: cube px=[519. 462.] err=25px move=(-4,1)mm"}
+{"t": 1790202549.6253633, "kind": "log", "msg": "yaw fix: image angle delta -13 -> roll -58->-45 -> delta 0"}
