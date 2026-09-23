@@ -7460,3 +7460,31 @@
 {"t": 1790207816.353797, "kind": "log", "msg": "home: grip=22.4 load=200 wrist_dark=0.90 still_on_table=False home_err={'shoulder_pan': -0.7, 'shoulder_lift': 1.1, 'elbow_flex': 0.3, 'wrist_flex': 1.9}"}
 {"t": 1790207816.804818, "kind": "log", "msg": "recording stopped success=True: {\"episode\": \"20260923T185630-5ed9f928\", \"folder\": \"/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T185630-5ed9f928\", \"frames\": 704, \"quality_flags\": [], \"training_ready\": true, \"success\": true, \"notes\": \"target=(0.240,0.100) yaw=135 roll=-37 tilt=0; servo_final=(0.260,0.109) converged=True; mid_ok=True; grasp_fk=(0.234,0.098,-0.012); grip_pos=24.1 load=500; grip_pos_lifted=22.4; home"}
 {"t": 1790207816.8279197, "kind": "log", "msg": "placing at (0.27, -0.14)"}
+{"t": 1790207827.4704113, "kind": "log", "msg": "after place: cube px=[425. 394.] predicted=[426. 398.] d=4px"}
+{"t": 1790207827.4761586, "kind": "log", "msg": "map updated: 382 pairs, mean residual 11.1 mm, A=[[-0.0099, 0.93, 0.2233], [0.8628, 0.0708, -0.0296]]"}
+{"t": 1790207827.47946, "kind": "log", "msg": "episode done success=True dur=39s  totals: 377/404 successes"}
+{"t": 1790207829.4885163, "kind": "log", "msg": "cube at px=[425. 394.] robot=[ 0.269 -0.141] yaw=176 size=[0.044 0.05 ]"}
+{"t": 1790207829.5011318, "kind": "log", "msg": "recording started: {'episode': '20260923T185709-8999c180'}"}
+{"t": 1790207834.8321607, "kind": "log", "msg": "servo0.0: cube px=[572. 306.] err=149px move=(19,-12)mm"}
+{"t": 1790207836.6220875, "kind": "log", "msg": "servo0.1: cube px=[510. 453.] err=13px move=(-2,-0)mm"}
+{"t": 1790207839.3787122, "kind": "log", "msg": "low0.0: cube right=685 v=509 err=(52,-99)px"}
+{"t": 1790207841.349156, "kind": "log", "msg": "low0.1: cube right=736 v=407 err=(1,3)px"}
+{"t": 1790207843.5414276, "kind": "log", "msg": "mid0: right=811 v=429 err=(-41,11)px"}
+{"t": 1790207847.6417127, "kind": "log", "msg": "mid1: right=755 v=454 err=(15,-14)px"}
+{"t": 1790207850.48642, "kind": "log", "msg": "gripper after close: pos=23.6 load=500"}
+{"t": 1790207852.5895393, "kind": "log", "msg": "grasp held=True"}
+{"t": 1790207855.7932448, "kind": "log", "msg": "home: grip=22.6 load=200 wrist_dark=0.87 still_on_table=False home_err={'shoulder_pan': 0.4, 'shoulder_lift': 1.1, 'elbow_flex': 0.3, 'wrist_flex': 1.9}"}
+{"t": 1790207856.2827015, "kind": "log", "msg": "recording stopped success=True: {\"episode\": \"20260923T185709-8999c180\", \"folder\": \"/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T185709-8999c180\", \"frames\": 703, \"quality_flags\": [], \"training_ready\": true, \"success\": true, \"notes\": \"target=(0.269,-0.141) yaw=176 roll=-29 tilt=10; servo_final=(0.287,-0.152) converged=True; mid_ok=True; grasp_fk=(0.273,-0.146,-0.014); grip_pos=23.6 load=500; grip_pos_lifted=22.6; "}
+{"t": 1790207856.3310866, "kind": "log", "msg": "placing at (0.31, -0.02)"}
+{"t": 1790207867.1570508, "kind": "log", "msg": "after place: cube px=[652. 464.] predicted=[638. 475.] d=17px"}
+{"t": 1790207867.165778, "kind": "log", "msg": "map updated: 383 pairs, mean residual 11.1 mm, A=[[-0.0106, 0.9352, 0.2233], [0.8638, 0.065, -0.0296]]"}
+{"t": 1790207867.1706092, "kind": "log", "msg": "episode done success=True dur=40s  totals: 378/405 successes"}
+{"t": 1790207869.1611683, "kind": "log", "msg": "cube at px=[652. 464.] robot=[ 0.304 -0.016] yaw=-172 size=[0.05  0.037]"}
+{"t": 1790207869.1711483, "kind": "log", "msg": "recording started: {'episode': '20260923T185749-58b14890'}"}
+{"t": 1790207874.414189, "kind": "log", "msg": "servo0.0: cube px=[546. 360.] err=89px move=(12,-5)mm"}
+{"t": 1790207876.781404, "kind": "log", "msg": "servo0.1: cube px=[516. 423.] err=20px move=(3,-1)mm"}
+{"t": 1790207878.8943384, "kind": "log", "msg": "low0.0: cube right=656 v=504 err=(81,-94)px"}
+{"t": 1790207881.1139967, "kind": "log", "msg": "low0.1: cube right=746 v=403 err=(-9,7)px"}
+{"t": 1790207883.3474128, "kind": "log", "msg": "mid0: right=785 v=429 err=(-15,11)px"}
+{"t": 1790207886.2313895, "kind": "log", "msg": "gripper after close: pos=24.2 load=500"}
+{"t": 1790207888.0167267, "kind": "log", "msg": "grasp held=True"}
