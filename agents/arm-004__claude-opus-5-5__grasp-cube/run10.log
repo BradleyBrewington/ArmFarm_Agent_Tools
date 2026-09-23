@@ -82,3 +82,31 @@
 14:23:35 low at [0.2079, -0.0228, -0.0062]
 14:23:43 episode 12: success=True (20s) ['attempt 1: grip=23.5', 'at home gripper=23.5 wrist_dark=0.98']
 14:23:43 place cube=(0.193,0.072) tool=(0.204,0.044) roll=90.5
+14:23:54 stats {'succ': 13, 'fail': 0}
+14:23:54 episode 13: cube at (0.194,0.070) yaw=7
+14:23:58 grasp cube=(0.194,0.070) yaw=6.6 roll=83.4 tool=(0.201,0.041)
+14:24:05 low at [0.2013, 0.0411, -0.007]
+14:24:10 episode 13: interrupted, recording closed as failure
+Traceback (most recent call last):
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/run_episodes.py", line 194, in <module>
+    main()
+    ~~~~^^
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/run_episodes.py", line 184, in main
+    r = episode(b, i, stats, done_counts)
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/run_episodes.py", line 129, in episode
+    g = grasp.grasp(b, cx, cy, yaw, log=log)
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/../tools/grasp.py", line 107, in grasp
+    arm.goto(b, x, y, 0.10, roll=roll, speed=30, correct=1)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/arm.py", line 75, in goto
+    move(b, q, speed if it == 0 else 30.0, min_s=0.6 if it == 0 else 0.3)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/arm.py", line 52, in move
+    cw.move(b, target, max(min_s, d / speed))
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/calibrate_workspace.py", line 1433, in move
+    time.sleep(.02)
+    ~~~~~~~~~~^^^^^
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/run_episodes.py", line 29, in _on_term
+    raise Interrupted(f'signal {signum}')
+Interrupted: signal 15

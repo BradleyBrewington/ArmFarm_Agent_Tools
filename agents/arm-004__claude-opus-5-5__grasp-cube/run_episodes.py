@@ -174,13 +174,17 @@ def main():
     import signal
     signal.signal(signal.SIGTERM, _on_term)
     signal.signal(signal.SIGHUP, _on_term)
-    ap = argparse.ArgumentParser(); ap.add_argument('--n', type=int, default=5); a = ap.parse_args()
+    ap = argparse.ArgumentParser(); ap.add_argument('--n', type=int, default=5)
+    ap.add_argument('--budget', type=float, default=1e9, help='seconds; no new episode starts after budget-100s')
+    a = ap.parse_args(); t_start = time.time()
     stats = {'succ': 0, 'fail': 0}
     done_counts = {}
     with arm.bus() as b:
         lift_clear(b); arm.home(b); time.sleep(0.4)
         streak = 0
         for i in range(a.n):
+            if time.time() - t_start > a.budget - 100:
+                log('time budget reached: stopping between episodes'); break
             r = episode(b, i, stats, done_counts)
             if r is None:
                 break
