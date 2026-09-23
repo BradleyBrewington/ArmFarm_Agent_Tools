@@ -21,3 +21,8 @@
 14:27:17 low at [0.2029, 0.0446, -0.0105]
 14:27:25 episode 3: success=True (20s) ['attempt 1: grip=24.7', 'at home gripper=24.7 wrist_dark=0.97']
 14:27:25 place cube=(0.174,-0.036) tool=(0.153,-0.058) roll=63.4
+14:27:36 stats {'succ': 4, 'fail': 0}
+14:27:36 push [0.148, -0.005] -> [0.209, -0.091]
+14:27:57 push [0.147, -0.007] -> [0.207, -0.094]
+14:28:17 push [0.146, -0.008] -> [0.204, -0.096]
+14:28:39 cube not visible from home; skipping episode start
