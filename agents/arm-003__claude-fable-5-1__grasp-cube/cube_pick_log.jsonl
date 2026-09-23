@@ -483,3 +483,8 @@
 {"t": 1790185693.4741602, "kind": "log", "msg": "cube at px=[1083.  487.] robot=[0.305 0.223] yaw=98 size=[0.041 0.051]"}
 {"t": 1790185693.4745038, "kind": "log", "msg": "cube radius 0.347 beyond graspable 0.335; raking (unrecorded)"}
 {"t": 1790185693.4746265, "kind": "log", "msg": "rake: cube r=0.347 -> drag from r=0.382 to 0.24 along 40 deg"}
+{"t": 1790185724.8488073, "kind": "log", "msg": "after rake: cube robot=[0.305 0.223]"}
+{"t": 1790185724.8490133, "kind": "log", "msg": "cube radius 0.347 beyond graspable 0.335; raking (unrecorded)"}
+{"t": 1790185724.8491147, "kind": "log", "msg": "rake: cube r=0.347 -> drag from r=0.382 to 0.24 along 40 deg"}
+{"t": 1790185753.804057, "kind": "log", "msg": "after rake: cube robot=[0.305 0.224]"}
+{"t": 1790185753.8053877, "kind": "log", "msg": "fatal episode error: RuntimeError('cube still out of reach after raking')\nTraceback (most recent call last):\n  File \"/var/lib/armfarm/stations/armfarm/workspace/tools/cube_run.py\", line 489, in main\n    r.episode(record=True)\n    ~~~~~~~~~^^^^^^^^^^^^^\n  File \"/var/lib/armfarm/stations/armfarm/workspace/tools/cube_run.py\", line 430, in episode\n    raise RuntimeError(\"cube still out of reach after raking\")\nRuntimeError: cube still out of reach after raking\n"}
