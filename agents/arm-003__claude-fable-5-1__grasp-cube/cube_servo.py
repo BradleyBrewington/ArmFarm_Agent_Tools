@@ -30,8 +30,6 @@ def detect_cube_wrist(img, dark_thresh=60, min_area=6000, max_area=400000, debug
         if not (min_area <= area <= max_area):
             continue
         x, y, bw, bh = (int(stats[i, k]) for k in (cv2.CC_STAT_LEFT, cv2.CC_STAT_TOP, cv2.CC_STAT_WIDTH, cv2.CC_STAT_HEIGHT))
-        if y + bh >= h - 3:      # touches bottom edge -> jaw
-            continue
         if x <= 2 and bh > 250:  # left edge tall blob -> moving jaw
             continue
         fill = area / float(bw * bh)
@@ -53,11 +51,11 @@ def detect_cube_wrist(img, dark_thresh=60, min_area=6000, max_area=400000, debug
 class WristServo:
     def __init__(self):
         self.J = {}             # height key -> 2x2: tool-frame displacement (m) -> pixel shift (du, dv)
-        self.target = (600., 480.)
+        self.target = {}        # height key -> (u, v) where the cube should appear before descending
         if SERVO_FILE.exists():
             d = json.loads(SERVO_FILE.read_text())
             self.J = {k: np.array(v) for k, v in d.get("J", {}).items()}
-            self.target = tuple(d.get("target", self.target))
+            self.target = {k: tuple(v) for k, v in d.get("target", {}).items()}
 
     @staticmethod
     def key(z):
@@ -68,7 +66,7 @@ class WristServo:
 
     def save(self):
         SERVO_FILE.write_text(json.dumps({"J": {k: v.tolist() for k, v in self.J.items()},
-                                          "target": list(self.target)}, indent=1))
+                                          "target": {k: list(v) for k, v in self.target.items()}}, indent=1))
 
     @staticmethod
     def tool_axes_xy(joints):
@@ -104,7 +102,8 @@ class WristServo:
 
     def step(self, joints, cube_px, z, gain=0.8, max_step=0.03):
         """Return (dx, dy) world displacement to move the cube toward the target spot."""
-        err = np.array([self.target[0] - cube_px[0], self.target[1] - cube_px[1]])
+        tgt = self.target[self.key(z)]
+        err = np.array([tgt[0] - cube_px[0], tgt[1] - cube_px[1]])
         d_tool = np.linalg.solve(self.J[self.key(z)], err) * gain
         norm = np.linalg.norm(d_tool)
         if norm > max_step:

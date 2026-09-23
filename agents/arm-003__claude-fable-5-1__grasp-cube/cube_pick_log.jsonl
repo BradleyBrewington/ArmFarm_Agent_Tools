@@ -37,3 +37,8 @@
 {"t": 1790182154.155068, "kind": "log", "msg": "travel via lifted waypoint"}
 {"t": 1790182182.4306428, "kind": "log", "msg": "after place: cube px=[491. 474.] predicted=[615. 308.] d=208px"}
 {"t": 1790182182.4308586, "kind": "log", "msg": "episode done success=False dur=61s  totals: 0/0 successes"}
+{"t": 1790182230.8347592, "kind": "log", "msg": "cube at px=[491. 474.] robot=[ 0.312 -0.084] yaw=-143 size=[0.042 0.037]"}
+{"t": 1790182244.7194538, "kind": "log", "msg": "servo0.0: cube px=[688. 376.] err=191px move=(25,16)mm"}
+{"t": 1790182252.7217712, "kind": "log", "msg": "servo0.1: cube px=[543. 509.] err=21px move=(1,-3)mm"}
+{"t": 1790182260.7521813, "kind": "log", "msg": "servo0.2: cube px=[565. 512.] err=38px move=(6,-1)mm"}
+{"t": 1790182268.7944028, "kind": "log", "msg": "servo0.3: cube px=[545. 517.] err=29px move=(1,-4)mm"}
