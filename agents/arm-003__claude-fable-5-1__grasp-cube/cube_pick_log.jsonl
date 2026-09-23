@@ -1754,3 +1754,16 @@
 {"t": 1790192866.7165189, "kind": "log", "msg": "low0.0: cube right=652 v=487 err=(48,-62)px"}
 {"t": 1790192875.0421238, "kind": "log", "msg": "low0.1: cube right=760 v=409 err=(-60,16)px"}
 {"t": 1790192880.7136834, "kind": "log", "msg": "low0.2: cube right=679 v=418 err=(21,7)px"}
+{"t": 1790192887.889599, "kind": "log", "msg": "low0.3: cube right=695 v=426 err=(5,-1)px"}
+{"t": 1790192892.042104, "kind": "log", "msg": "mid0: right=739 v=474 err=(31,-34)px"}
+{"t": 1790192903.0525343, "kind": "log", "msg": "mid1: right=776 v=449 err=(-6,-9)px"}
+{"t": 1790192908.648643, "kind": "log", "msg": "gripper after close: pos=22.3 load=500"}
+{"t": 1790192918.7022514, "kind": "log", "msg": "grasp held=True"}
+{"t": 1790192922.3893502, "kind": "log", "msg": "home: grip=22.3 load=200 wrist_dark=0.87 still_on_table=False home_err={'shoulder_pan': -0.7, 'shoulder_lift': 1.1, 'elbow_flex': 0.4, 'wrist_flex': 1.7}"}
+{"t": 1790192922.6992881, "kind": "log", "msg": "recording stopped success=True: {\"episode\": \"20260923T144714-6eab5177\", \"folder\": \"/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T144714-6eab5177\", \"frames\": 1256, \"quality_flags\": [], \"training_ready\": true, \"success\": true, \"notes\": \"target=(0.314,0.096) yaw=120 roll=-46 tilt=10; servo_final=(0.330,0.104) converged=True; mid_ok=True; grasp_fk=(0.316,0.106,-0.019); grip_pos=22.3 load=500; grip_pos_lifted=22.3; ho"}
+{"t": 1790192922.7114596, "kind": "log", "msg": "placing at (0.23, 0.04)"}
+{"t": 1790192938.2153895, "kind": "log", "msg": "after place: cube px=[765. 375.] predicted=[767. 356.] d=19px"}
+{"t": 1790192938.2171273, "kind": "log", "msg": "map updated: 72 pairs, mean residual 11.8 mm, A=[[-0.0179, 0.9371, 0.2199], [0.8372, 0.0435, -0.0291]]"}
+{"t": 1790192938.2190278, "kind": "log", "msg": "episode done success=True dur=106s  totals: 68/84 successes"}
+{"t": 1790192940.2104473, "kind": "log", "msg": "cube at px=[765. 375.] robot=[0.243 0.039] yaw=-158 size=[0.049 0.045]"}
+{"t": 1790192940.220921, "kind": "log", "msg": "recording started: {'episode': '20260923T144900-b05212c3'}"}
