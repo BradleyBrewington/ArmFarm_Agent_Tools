@@ -11,12 +11,15 @@ import cube_pick as cp
 
 HERE = Path(__file__).resolve().parent
 SERVO_FILE = HERE / "wrist_servo.json"
+JAW_POLY = [(712, 470), (800, 470), (1120, 720), (690, 720)]
 
 
 def detect_cube_wrist(img, dark_thresh=60, min_area=6000, max_area=400000, debug_path=None):
     """Largest dark compact blob in the wrist image that does not touch the bottom edge (jaws)."""
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     gray = cv2.GaussianBlur(gray, (7, 7), 0)
+    # mask the fixed jaw (bottom-right wedge) so the cube blob never merges with it
+    cv2.fillPoly(gray, [np.array(JAW_POLY, np.int32)], 255)
     dark = (gray < dark_thresh).astype(np.uint8)
     dark = cv2.morphologyEx(dark, cv2.MORPH_OPEN, np.ones((7, 7), np.uint8))
     n, labels, stats, cents = cv2.connectedComponentsWithStats(dark, connectivity=8)

@@ -23,12 +23,12 @@ import cube_pick as cp  # noqa: E402
 import cube_servo as cs  # noqa: E402
 import recording  # noqa: E402
 
-TABLE_Z = -0.013          # measured by contact at (0.21, 0.0)
-GRASP_Z = TABLE_Z + 0.016  # fingertip height while closing on the ~4 cm cube
+TABLE_Z = -0.026          # contact probes (6 mm lag criterion) at 4 points: -0.024..-0.030
+GRASP_Z = TABLE_Z + 0.012  # fingertip height while closing on the ~4 cm cube
 HOVER_Z = 0.10
 TRANSIT_Z = 0.15
-PLACE_Z = GRASP_Z + 0.006
-SERVO_Z = TABLE_Z + 0.075   # fingertip height for wrist-camera servoing
+PLACE_Z = GRASP_Z + 0.008
+SERVO_Z = TABLE_Z + 0.088   # fingertip height for wrist-camera servoing
 ROLL_NEUTRAL = 21.4
 ROLL_RANGE = (-50., 95.)
 GRIP_OPEN = 80.
@@ -172,7 +172,7 @@ class Runner:
                 break
             d, err_px = self.servo.step(servo_j, c["px"])
             log(f"servo{it}: cube px={np.round(c['px'])} err={err_px:.0f}px move=({d[0]*1000:.0f},{d[1]*1000:.0f})mm")
-            if err_px < 14:
+            if err_px < 20:
                 converged = True
                 break
             cx, cy = cx + float(d[0]), cy + float(d[1])
