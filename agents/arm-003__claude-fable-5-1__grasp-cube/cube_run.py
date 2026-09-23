@@ -408,7 +408,7 @@ class Runner:
         while self.state["order"]:
             x, y = self.state["order"].pop(0)
             try:
-                if math.hypot(x - 0.0388, y) > 0.30:
+                if math.hypot(x - 0.0388, y) > 0.325:
                     raise ValueError("too far")
                 ik_reach(x, y, PLACE_Z, ROLL_NEUTRAL)
                 px = self.tmap.robot_to_pixel((x, y))
