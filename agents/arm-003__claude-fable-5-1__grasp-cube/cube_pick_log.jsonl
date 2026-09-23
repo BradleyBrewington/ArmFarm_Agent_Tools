@@ -1302,3 +1302,16 @@
 {"t": 1790190313.092089, "kind": "log", "msg": "recording started: {'episode': '20260923T140513-78aca7a0'}"}
 {"t": 1790190322.3949175, "kind": "log", "msg": "servo0.0: cube px=[525. 314.] err=127px move=(22,5)mm"}
 {"t": 1790190327.3421857, "kind": "log", "msg": "servo0.1: cube px=[456. 416.] err=56px move=(-5,7)mm"}
+{"t": 1790190334.560595, "kind": "log", "msg": "servo0.2: cube px=[502. 420.] err=21px move=(2,2)mm"}
+{"t": 1790190340.2581606, "kind": "log", "msg": "servo0.3: cube px=[502. 435.] err=7px move=(-0,1)mm"}
+{"t": 1790190343.3413002, "kind": "log", "msg": "low0.0: cube right=626 v=535 err=(74,-135)px"}
+{"t": 1790190348.2802515, "kind": "log", "msg": "low0.1: cube right=759 v=440 err=(-59,-40)px"}
+{"t": 1790190355.4124932, "kind": "log", "msg": "low0.2: cube right=731 v=425 err=(-31,-25)px"}
+{"t": 1790190361.0830061, "kind": "log", "msg": "low0.3: cube right=709 v=403 err=(-9,-3)px"}
+{"t": 1790190362.9179723, "kind": "log", "msg": "mid0: right=734 v=457 err=(36,-17)px"}
+{"t": 1790190369.288004, "kind": "log", "msg": "mid1: right=766 v=435 err=(4,5)px"}
+{"t": 1790190372.3511765, "kind": "log", "msg": "gripper after close: pos=24.2 load=500"}
+{"t": 1790190379.906611, "kind": "log", "msg": "grasp held=True"}
+{"t": 1790190382.6115186, "kind": "log", "msg": "home: grip=22.8 load=200 wrist_dark=0.87 still_on_table=False home_err={'shoulder_pan': -0.6, 'shoulder_lift': 1.1, 'elbow_flex': 0.3, 'wrist_flex': 1.7}"}
+{"t": 1790190382.7305603, "kind": "log", "msg": "recording stopped success=True: {\"episode\": \"20260923T140513-78aca7a0\", \"folder\": \"/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T140513-78aca7a0\", \"frames\": 1015, \"quality_flags\": [], \"training_ready\": true, \"success\": true, \"notes\": \"target=(0.159,0.161) yaw=141 roll=-59 tilt=0; servo_final=(0.178,0.175) converged=True; mid_ok=True; grasp_fk=(0.151,0.167,-0.012); grip_pos=24.2 load=500; grip_pos_lifted=22.8; hom"}
+{"t": 1790190382.748591, "kind": "log", "msg": "placing at (0.23, 0.16)"}
