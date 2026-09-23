@@ -212,3 +212,19 @@
 {"t": 1790183792.7827232, "kind": "log", "msg": "servo0.1: cube px=[449. 433.] err=59px move=(-2,14)mm"}
 {"t": 1790183800.000382, "kind": "log", "msg": "servo0.2: cube px=[530. 435.] err=23px move=(3,-6)mm"}
 {"t": 1790183805.709621, "kind": "log", "msg": "servo0.3: cube px=[500. 434.] err=9px move=(1,1)mm"}
+{"t": 1790183806.9196684, "kind": "log", "msg": "low0: cube right=642 v=530 err=(58,-130)px"}
+{"t": 1790183811.782696, "kind": "log", "msg": "low1: cube right=787 v=419 err=(-87,-19)px"}
+{"t": 1790183816.6577694, "kind": "log", "msg": "low2: cube right=675 v=427 err=(25,-27)px"}
+{"t": 1790183822.271067, "kind": "log", "msg": "low3: cube right=748 v=379 err=(-48,21)px"}
+{"t": 1790183830.1604505, "kind": "log", "msg": "descent z=0.010: cube px=[434. 494.] right=638"}
+{"t": 1790183831.1775086, "kind": "log", "msg": "descent z=-0.002: cube px=[434. 525.] right=645"}
+{"t": 1790183834.2354434, "kind": "log", "msg": "gripper after close: pos=0.5 load=40"}
+{"t": 1790183841.4248712, "kind": "log", "msg": "grasp held=False"}
+{"t": 1790183843.9088824, "kind": "log", "msg": "recording stopped success=False: {\"episode\": \"20260923T121616-8bc3a8e9\", \"folder\": \"/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T121616-8bc3a8e9\", \"frames\": 1004, \"quality_flags\": [], \"training_ready\": true, \"success\": false, \"notes\": \"target=(0.215,0.120) yaw=133 roll=-77 tilt=0; servo_final=(0.239,0.116) converged=True; grasp_fk=(0.221,0.114,-0.014); grip_pos=0.5 load=40; grip_pos_lifted=0.5; gripper closed emp"}
+{"t": 1790183845.4523394, "kind": "log", "msg": "episode done success=False dur=71s  totals: 1/6 successes"}
+{"t": 1790183847.4465628, "kind": "log", "msg": "cube at px=[880. 405.] robot=[0.242 0.109] yaw=120 size=[0.032 0.047]"}
+{"t": 1790183847.4595435, "kind": "log", "msg": "recording started: {'episode': '20260923T121727-596d1b89'}"}
+{"t": 1790183859.4555583, "kind": "log", "msg": "servo0.0: cube px=[752. 293.] err=286px move=(28,12)mm"}
+{"t": 1790183865.2927833, "kind": "log", "msg": "servo0.1: cube px=[571. 376.] err=91px move=(23,13)mm"}
+{"t": 1790183873.2749527, "kind": "log", "msg": "servo0.2: cube px=[447. 461.] err=64px move=(-18,-5)mm"}
+{"t": 1790183878.6342602, "kind": "log", "msg": "servo0.3: cube px=[537. 413.] err=40px move=(10,6)mm"}
