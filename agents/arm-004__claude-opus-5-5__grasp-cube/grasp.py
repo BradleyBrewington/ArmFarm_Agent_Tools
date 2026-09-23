@@ -53,7 +53,10 @@ def wrist_roll(b, cx, cy, roll0=83.4, log=print):
     return roll
 
 
-PREFERRED_JAW_YAW = -100.0   # all verified grasps had FK tool_x yaw in -90..-115 deg
+# Jaw axis yaw measured relative to the arm heading: grasps with (jaw yaw - heading) in
+# -120..-60 succeed ~95%; -180..-150 fail almost always (run10-19 logs, 2026-09-23).
+# A fixed world yaw of -100 pushed high +y headings into the bad band.
+PREFERRED_JAW_REL = -95.0
 
 
 def prefer_roll(cx, cy, roll, off=None):
@@ -61,6 +64,7 @@ def prefer_roll(cx, cy, roll, off=None):
     jaw axis yaw is closest to the verified-good direction, keeping the tool clear of the base."""
     off = JAW_OFFSET if off is None else off
     best = None
+    want = math.degrees(math.atan2(cy, cx - 0.0388)) + PREFERRED_JAW_REL
     for k in (-2, -1, 0, 1, 2):
         r = roll + 90.0 * k
         if not 10.0 <= r <= 160.0:
@@ -69,7 +73,7 @@ def prefer_roll(cx, cy, roll, off=None):
         if math.hypot(cx - off * tx[0] - 0.0388, cy - off * tx[1]) < 0.12:
             continue
         yaw = math.degrees(math.atan2(tx[1], tx[0]))
-        d = abs((yaw - PREFERRED_JAW_YAW + 180) % 360 - 180)
+        d = abs((yaw - want + 180) % 360 - 180)
         if best is None or d < best[0]:
             best = (d, r)
     return best[1] if best else roll
