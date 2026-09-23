@@ -1838,3 +1838,15 @@
 {"t": 1790193317.2179985, "kind": "log", "msg": "mid0: right=733 v=462 err=(37,-22)px"}
 {"t": 1790193325.8801606, "kind": "log", "msg": "mid1: right=791 v=436 err=(-21,4)px"}
 {"t": 1790193328.941263, "kind": "log", "msg": "gripper after close: pos=23.5 load=500"}
+{"t": 1790193336.649711, "kind": "log", "msg": "grasp held=True"}
+{"t": 1790193339.3684037, "kind": "log", "msg": "home: grip=22.5 load=200 wrist_dark=0.89 still_on_table=False home_err={'shoulder_pan': -0.6, 'shoulder_lift': 1.1, 'elbow_flex': 0.2, 'wrist_flex': 1.7}"}
+{"t": 1790193340.002775, "kind": "log", "msg": "recording stopped success=True: {\"episode\": \"20260923T145434-e2660f8f\", \"folder\": \"/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T145434-e2660f8f\", \"frames\": 952, \"quality_flags\": [], \"training_ready\": true, \"success\": true, \"notes\": \"target=(0.239,-0.019) yaw=-166 roll=-36 tilt=0; servo_final=(0.260,-0.023) converged=True; mid_ok=True; grasp_fk=(0.230,-0.011,-0.013); grip_pos=23.5 load=500; grip_pos_lifted=22.5; "}
+{"t": 1790193340.0351982, "kind": "log", "msg": "placing at (0.31, -0.02)"}
+{"t": 1790193362.8659124, "kind": "log", "msg": "after place: cube px=[637. 485.] predicted=[645. 479.] d=10px"}
+{"t": 1790193362.8684099, "kind": "log", "msg": "map updated: 76 pairs, mean residual 11.5 mm, A=[[-0.0157, 0.9306, 0.2198], [0.8312, 0.0495, -0.029]]"}
+{"t": 1790193362.8698523, "kind": "log", "msg": "episode done success=True dur=90s  totals: 72/88 successes"}
+{"t": 1790193381.7593782, "kind": "log", "msg": "cube at px=[637. 485.] robot=[ 0.313 -0.023] yaw=-175 size=[0.034 0.048]"}
+{"t": 1790193381.7723112, "kind": "log", "msg": "recording started: {'episode': '20260923T145621-78b210c5'}"}
+{"t": 1790193395.1378434, "kind": "log", "msg": "servo0.0: cube px=[538. 341.] err=103px move=(15,-13)mm"}
+{"t": 1790193402.6360478, "kind": "log", "msg": "servo0.1: cube px=[464. 425.] err=45px move=(1,8)mm"}
+{"t": 1790193408.3903692, "kind": "log", "msg": "servo0.2: cube px=[515. 416.] err=25px move=(4,-3)mm"}
