@@ -109,3 +109,13 @@
 {"t": 1790182931.827969, "kind": "log", "msg": "servo0.0: cube px=[618. 510.] err=112px move=(-6,-29)mm"}
 {"t": 1790182935.993185, "kind": "log", "msg": "servo0.1: cube px=[506. 554.] err=35px move=(-3,6)mm"}
 {"t": 1790182937.8672874, "kind": "log", "msg": "servo0.2: cube px=[523. 531.] err=20px move=(-3,-2)mm"}
+{"t": 1790182995.274434, "kind": "log", "msg": "cube at px=[642. 242.] robot=[ 0.192 -0.024] yaw=-169 size=[0.034 0.039]"}
+{"t": 1790183002.1947017, "kind": "log", "msg": "servo0.0: cube px=[618. 512.] err=111px move=(-6,-29)mm"}
+{"t": 1790183004.8487906, "kind": "log", "msg": "servo0.1: cube px=[503. 545.] err=27px move=(-2,5)mm"}
+{"t": 1790183006.730798, "kind": "log", "msg": "servo0.2: cube px=[523. 537.] err=24px move=(-3,-1)mm"}
+{"t": 1790183008.6162744, "kind": "log", "msg": "servo0.3: cube px=[510. 525.] err=7px move=(-1,0)mm"}
+{"t": 1790183010.6213677, "kind": "log", "msg": "low0: cube bbox right=638 gap=74px excess=62px"}
+{"t": 1790183012.4427187, "kind": "log", "msg": "low1: cube bbox right=707 gap=5px excess=-7px"}
+{"t": 1790183015.8576572, "kind": "log", "msg": "gripper after close: pos=0.5 load=40"}
+{"t": 1790183019.9476705, "kind": "log", "msg": "grasp held=False"}
+{"t": 1790183023.109942, "kind": "log", "msg": "episode done success=False dur=31s  totals: 0/3 successes"}
