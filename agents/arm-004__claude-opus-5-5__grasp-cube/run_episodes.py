@@ -12,8 +12,8 @@ LOG = HERE / 'episodes.jsonl'
 TASK = 'pick up the black cube and bring it to home'
 # Placement grid covering the reachable top-down zone
 # -y side (image left) is shared with the neighbouring arm: keep clear of it
-GRID = [(a, r) for r in (0.14, 0.17, 0.20) for a in (-35, -15, 5, 25, 45, 62)]
-MIN_R = 0.135    # cubes closer than this are pushed out before an episode
+GRID = [(a, r) for r in (0.155, 0.18, 0.205) for a in (-35, -15, 5, 25, 45, 62)]
+MIN_R = 0.115    # cubes closer than this are pushed out before an episode
 MIN_PX_X = 430   # top-image x; cubes left of this belong to the neighbour's area
 REACH = 0.215
 
@@ -33,7 +33,21 @@ def log(msg):
     print(time.strftime('%H:%M:%S'), msg, flush=True)
 
 
-def find_cube():
+CLEAR_POSE = (0.10, 0.20, 0.20)   # arm parked high on the +y side, clear of the view
+
+
+def find_cube(b=None):
+    """Detect the cube from home; if the arm hides it, look again from a clear pose."""
+    found = _find_cube()
+    if found is None and b is not None:
+        arm.goto(b, *CLEAR_POSE, speed=45, correct=0)
+        time.sleep(0.4)
+        found = _find_cube()
+        arm.home(b)
+    return found
+
+
+def _find_cube():
     for _ in range(3):
         t, _ = read_frame('top')
         c = [d for d in vision.top_cube(t) if d['cx'] > MIN_PX_X]
@@ -74,7 +88,7 @@ def next_target(done_counts, cube_xy):
 def reachable_prep(b):
     """Make sure the cube is visible and within vertical grasp reach (reset action, outside episodes)."""
     for _ in range(4):
-        found = find_cube()
+        found = find_cube(b)
         if found is None:
             return None
         cx, cy = found[0], found[1]
@@ -85,7 +99,7 @@ def reachable_prep(b):
             for tilt in (-40, 40, -60, 60):
                 a = ang + math.radians(tilt)
                 d = np.array([math.cos(a), math.sin(a)])
-                p0 = np.array([cx, cy]) - 0.035 * d
+                p0 = np.array([cx, cy]) - 0.045 * d
                 if math.hypot(p0[0] - SX, p0[1]) >= 0.085:
                     break
             grasp.push_line(b, p0, np.array([cx, cy]) + 0.07 * d, log=log)
@@ -95,7 +109,7 @@ def reachable_prep(b):
             return found
         grasp.pull_in(b, cx, cy, log=log)
         arm.home(b); time.sleep(0.4)
-    found = find_cube()
+    found = find_cube(b)
     if found and MIN_R <= math.hypot(found[0] - SX, found[1]) <= REACH:
         return found
     return None   # could not make the cube graspable: stop rather than record a doomed episode
