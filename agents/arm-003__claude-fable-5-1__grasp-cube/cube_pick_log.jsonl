@@ -42,3 +42,9 @@
 {"t": 1790182252.7217712, "kind": "log", "msg": "servo0.1: cube px=[543. 509.] err=21px move=(1,-3)mm"}
 {"t": 1790182260.7521813, "kind": "log", "msg": "servo0.2: cube px=[565. 512.] err=38px move=(6,-1)mm"}
 {"t": 1790182268.7944028, "kind": "log", "msg": "servo0.3: cube px=[545. 517.] err=29px move=(1,-4)mm"}
+{"t": 1790182276.887746, "kind": "log", "msg": "servo0.4: cube px=[517. 489.] err=18px move=(-4,-1)mm"}
+{"t": 1790182284.5653381, "kind": "log", "msg": "calibrating wrist-camera Jacobian at z=0.024"}
+{"t": 1790182316.488872, "kind": "log", "msg": "Jacobian px/m: [[1313.0, -1871.0], [-1833.0, 1012.0]]"}
+{"t": 1790182316.869755, "kind": "log", "msg": "servo1.0: cube px=[552. 610.] err=73px move=(-0,-30)mm"}
+{"t": 1790182324.8929603, "kind": "log", "msg": "servo1.1: cube px=[531. 581.] err=38px move=(-2,-30)mm"}
+{"t": 1790182332.9301956, "kind": "log", "msg": "servo1.2: cube px=[441. 550.] err=60px move=(0,30)mm"}
