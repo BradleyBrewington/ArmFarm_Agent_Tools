@@ -228,6 +228,14 @@ class Runner:
                 break
             low, _ = ik_reach(cx, cy, SERVO_LOW, roll, tilt_start=tilt)
             arm.move_precise(low, speed_dps=25)
+        # stepped descent with wrist snapshots (diagnostic: FK drift vs. cube being pushed)
+        for k, zz in enumerate((GRASP_Z + 0.024, GRASP_Z + 0.012)):
+            jz, _ = ik_reach(cx, cy, zz, roll, tilt_start=tilt)
+            arm.move_precise(jz, speed_dps=25)
+            time.sleep(0.25)
+            dimg = cp.snap("wrist", IMG_DIR / f"descent{k}.jpg")
+            dc = cs.detect_cube_wrist(dimg)
+            log(f"descent z={zz:.3f}: cube {'px=%s right=%d' % (np.round(dc['px']), dc['bbox'][0]+dc['bbox'][2]) if dc else 'not detected'}")
         grasp, _ = ik_reach(cx, cy, GRASP_Z, roll, tilt_start=tilt)
         now = arm.move_precise(grasp, speed_dps=25)
         fk = cp.fk_xyz(now)
@@ -327,10 +335,15 @@ class Runner:
         arm.home()
         pose, _ = self.observe("start")
         if not pose:
-            log("cube not detected at start; opening gripper in case it is held")
+            log("cube not detected at home; swinging arm aside to look, and opening gripper in case it is held")
             arm.gripper(GRIP_OPEN, seconds=0.5)
-            time.sleep(0.5)
+            park = dict(cp.cw.load_home(cp.WORKSPACE / "home_pose.json"))
+            park["shoulder_pan"] = -70.
+            arm.move(park, speed_dps=50)
+            time.sleep(0.4)
             pose, _ = self.observe("start2")
+            arm.gripper(GRIP_CLOSED, seconds=0.4)
+            arm.home()
             if not pose:
                 raise RuntimeError("cube not found on table")
         log(f"cube at px={np.round(pose['px'])} robot={np.round(pose['robot'],3)} yaw={pose['yaw']:.0f} size={np.round(pose['size'],3)}")
