@@ -32,7 +32,7 @@ SERVO_Z = TABLE_Z + 0.088
 SERVO_LOW = TABLE_Z + 0.050  # final servo height: tips just above the cube top   # fingertip height for wrist-camera servoing
 ROLL_NEUTRAL = 21.4
 ROLL_RANGE = (-50., 95.)
-GRIP_OPEN = 80.
+GRIP_OPEN = 95.
 GRIP_CLOSED = 0.
 GRIP_HOLD_MIN = 6.        # gripper % above which something is between the jaws
 IMG_DIR = Path("/tmp/cube_run")
@@ -159,7 +159,7 @@ class Runner:
         arm.move_precise(servo_j, speed_dps=45)
         cx, cy = x, y
         converged = False
-        for stage, z in enumerate((SERVO_Z, SERVO_LOW)):
+        for stage, z in enumerate((SERVO_Z,)):
             if stage > 0:
                 servo_j, _ = ik_reach(cx, cy, z, roll, tilt_start=tilt)
                 arm.move_precise(servo_j, speed_dps=30)
@@ -189,8 +189,12 @@ class Runner:
                     break
                 arm.move_precise(servo_j, speed_dps=30)
         notes.append(f"servo_final=({cx:.3f},{cy:.3f}) converged={converged}")
+        low, _ = ik_reach(cx, cy, SERVO_LOW, roll, tilt_start=tilt)
         pre, _ = ik_reach(cx, cy, GRASP_Z + 0.03, roll, tilt_start=tilt)
         grasp, _ = ik_reach(cx, cy, GRASP_Z, roll, tilt_start=tilt)
+        arm.move_precise(low, speed_dps=30)
+        time.sleep(0.3)
+        cp.snap("wrist", IMG_DIR / "low_wrist.jpg")
         now = arm.move_precise(grasp, speed_dps=25)
         fk = cp.fk_xyz(now)
         notes.append(f"grasp_fk=({fk[0]:.3f},{fk[1]:.3f},{fk[2]:.3f})")
