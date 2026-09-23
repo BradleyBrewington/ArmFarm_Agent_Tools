@@ -252,7 +252,7 @@ class Runner:
             if abs(err[0]) <= 28 and abs(err[1]) <= 60:
                 ok = True
                 break
-            d_tool = np.linalg.solve(J_low, err) * 0.7
+            d_tool = np.linalg.solve(J_low, err) * 0.4
             n = np.linalg.norm(d_tool)
             if n > 0.02:
                 d_tool *= 0.02 / n
@@ -394,6 +394,9 @@ class Runner:
 
     # ------------------------------------------------------------ episode
     def episode(self, record=True):
+        global IMG_DIR
+        IMG_DIR = Path("/tmp/cube_run") / time.strftime("%H%M%S")
+        IMG_DIR.mkdir(parents=True, exist_ok=True)
         arm = self.arm
         notes = []
         t0 = time.time()
