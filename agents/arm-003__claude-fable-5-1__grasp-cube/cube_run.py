@@ -46,7 +46,7 @@ IMG_DIR = Path("/tmp/cube_run")
 IMG_DIR.mkdir(exist_ok=True)
 
 PLACE_X = [0.15, 0.19, 0.23, 0.27, 0.31]
-PLACE_Y = [-0.14, -0.08, -0.02, 0.04, 0.10, 0.16, 0.22]
+PLACE_Y = [-0.14, -0.08, -0.02, 0.04, 0.10, 0.16]
 CENTRAL = [(0.21, -0.03), (0.25, 0.06), (0.18, 0.08), (0.27, -0.06), (0.22, 0.12), (0.16, -0.05)]
 STATE_FILE = HERE / "cube_run_state.json"
 
@@ -305,14 +305,14 @@ class Runner:
         log(f"home: grip={gpos:.1f} load={gload} wrist_dark={frac:.2f} still_on_table={still_on_table} home_err={ {k: round(v,1) for k,v in err.items()} }")
         return held and not still_on_table, dict(grip=gpos, wrist_dark=frac, still_on_table=still_on_table)
 
-    def rake(self, pose, notes):
+    def rake(self, pose, notes, variant=0):
         """Unrecorded recovery: drag a too-far cube toward the base with the closed gripper."""
         arm = self.arm
         x, y = pose["robot"]
-        ang = math.atan2(y, x - 0.0388)
+        ang = math.atan2(y, x - 0.0388) + math.radians((0, 6, -6)[variant % 3])
         r = math.hypot(x - 0.0388, y)
-        r_far = min(r + 0.035, 0.40)
-        z_drag = TABLE_Z + 0.022
+        r_far = min(r + 0.035 + 0.02 * variant, 0.41)
+        z_drag = TABLE_Z + 0.022 - 0.005 * variant
         roll = ROLL_NEUTRAL
         far = (0.0388 + r_far * math.cos(ang), r_far * math.sin(ang))
         near = (0.0388 + 0.24 * math.cos(ang), 0.24 * math.sin(ang))
@@ -352,6 +352,8 @@ class Runner:
         while self.state["order"]:
             x, y = self.state["order"].pop(0)
             try:
+                if math.hypot(x - 0.0388, y) > 0.30:
+                    raise ValueError("too far")
                 ik_reach(x, y, PLACE_Z, ROLL_NEUTRAL)
                 px = self.tmap.robot_to_pixel((x, y))
                 if 260 < px[0] < 1240 and 60 < px[1] < 690:
@@ -416,12 +418,12 @@ class Runner:
             if not pose:
                 raise RuntimeError("cube not found on table")
         log(f"cube at px={np.round(pose['px'])} robot={np.round(pose['robot'],3)} yaw={pose['yaw']:.0f} size={np.round(pose['size'],3)}")
-        for _ in range(2):
+        for variant in range(3):
             r = math.hypot(pose["robot"][0] - 0.0388, pose["robot"][1])
             if r <= MAX_GRASP_R:
                 break
-            log(f"cube radius {r:.3f} beyond graspable {MAX_GRASP_R}; raking (unrecorded)")
-            self.rake(pose, notes)
+            log(f"cube radius {r:.3f} beyond graspable {MAX_GRASP_R}; raking (unrecorded, variant {variant})")
+            self.rake(pose, notes, variant=variant)
             pose, _ = self.observe("after_rake")
             if not pose:
                 raise RuntimeError("cube lost after rake")
