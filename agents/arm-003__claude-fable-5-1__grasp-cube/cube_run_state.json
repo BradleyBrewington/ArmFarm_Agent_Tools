@@ -2327,18 +2327,71 @@
    "recorded": true,
    "folder": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T153017-2f843e5a",
    "info": {}
+  },
+  {
+   "t": 1790195488.5647056,
+   "dur": 36.72501850128174,
+   "success": false,
+   "notes": [
+    "target=(0.290,0.039) yaw=-173 roll=-58 tilt=0",
+    "servo_final=(0.307,0.037) converged=True",
+    "mid_ok=True",
+    "grasp_fk=(0.277,0.046,-0.013)",
+    "grip_pos=0.6 load=44",
+    "grip_pos_lifted=0.6",
+    "gripper closed empty; no grasp"
+   ],
+   "recorded": true,
+   "folder": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T153130-2575d38a",
+   "info": {}
+  },
+  {
+   "t": 1790195525.2911487,
+   "dur": 43.18267321586609,
+   "success": true,
+   "notes": [
+    "target=(0.315,0.025) yaw=167 roll=-75 tilt=10",
+    "servo_final=(0.325,0.020) converged=True",
+    "mid_ok=True",
+    "grasp_fk=(0.317,0.041,-0.014)",
+    "grip_pos=22.0 load=500",
+    "grip_pos_lifted=22.0",
+    "home_err_max=1.9 grip_home=22.0 wrist_dark=0.87 cube_on_table=False",
+    "placed_at=(0.232,0.039)"
+   ],
+   "recorded": true,
+   "folder": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T153207-2ee8c4e4",
+   "info": {
+    "grip": 21.99025748086291,
+    "wrist_dark": 0.8707803030303031,
+    "still_on_table": false
+   }
+  },
+  {
+   "t": 1790195568.4753067,
+   "dur": 39.84519910812378,
+   "success": true,
+   "notes": [
+    "target=(0.218,0.047) yaw=140 roll=-21 tilt=0",
+    "servo_final=(0.246,0.056) converged=True",
+    "mid_ok=True",
+    "grasp_fk=(0.221,0.044,-0.013)",
+    "grip_pos=23.4 load=500",
+    "grip_pos_lifted=22.3",
+    "home_err_max=1.7 grip_home=22.3 wrist_dark=0.87 cube_on_table=False",
+    "placed_at=(0.309,-0.137)"
+   ],
+   "recorded": true,
+   "folder": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T153250-9d549146",
+   "info": {
+    "grip": 22.338204592901878,
+    "wrist_dark": 0.8654772727272727,
+    "still_on_table": false
+   }
   }
  ],
  "place_idx": 0,
  "order": [
-  [
-   0.23,
-   0.04
-  ],
-  [
-   0.31,
-   -0.14
-  ],
   [
    0.15,
    -0.08
