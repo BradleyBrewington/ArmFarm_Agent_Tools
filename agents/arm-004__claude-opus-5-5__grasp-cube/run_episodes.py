@@ -12,7 +12,10 @@ LOG = HERE / 'episodes.jsonl'
 TASK = 'pick up the black cube and bring it to home'
 # Placement grid covering the reachable top-down zone
 # -y side (image left) is shared with the neighbouring arm: keep clear of it
-GRID = [(a, r) for r in (0.155, 0.18, 0.205) for a in (-35, -18, 0, 17, 34, 50)]
+GRID = [(a, r) for r in (0.155, 0.18, 0.205) for a in (-35, -18, 0, 17)]
+# high +y headings: grasps miss beyond r~0.2 (failures at ang>=42, r>=0.205), so stay closer in
+GRID += [(a, r) for r in (0.14, 0.165, 0.19) for a in (34, 50)]
+CORNER_ANG, CORNER_R = 38.0, 0.195   # cubes out here are pulled in before an episode
 MAX_ANG = 55.0   # cubes beyond this heading are swept back round (grasps unreliable there)
 MIN_R = 0.115    # cubes closer than this are pushed out before an episode
 MIN_PX_X = 430   # top-image x; cubes left of this belong to the neighbour's area
@@ -111,12 +114,17 @@ def reachable_prep(b):
             grasp.sweep_arc(b, r, ang_d + 30, ang_d - 35, log=log)
             arm.home(b); time.sleep(0.4)
             continue
+        if ang_d > CORNER_ANG and r > CORNER_R:
+            grasp.pull_in(b, cx, cy, r_end=0.16, log=log)
+            arm.home(b); time.sleep(0.4)
+            continue
         if r <= REACH:
             return found
         grasp.pull_in(b, cx, cy, log=log)
         arm.home(b); time.sleep(0.4)
     found = find_cube(b)
     if found and MIN_R <= math.hypot(found[0] - SX, found[1]) <= REACH:
+        # the pull/sweep loop ran out: attempt anyway rather than stall the whole run
         return found
     return None   # could not make the cube graspable: stop rather than record a doomed episode
 
