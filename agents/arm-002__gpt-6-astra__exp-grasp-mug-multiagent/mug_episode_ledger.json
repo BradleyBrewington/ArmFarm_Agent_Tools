@@ -822,5 +822,122 @@
     },
     "home_evidence_stem": "tools/mug_observations/1790200703702814222",
     "tool": "tools/mug_control.py"
+  },
+  {
+    "episode_id": "20260923T170552-be6692d0",
+    "agent_id": "arm-002__gpt-6-astra__exp-grasp-mug-multiagent",
+    "task_id": "exp-grasp-mug-multiagent",
+    "started": 1790201152.9967723,
+    "finished": 1790201444.833847,
+    "success": false,
+    "notes": "Observed broad-wall contact search after lateral handle view remained occluded. Goal-preserving shoulder steps produced measured descent but pan probes did not visibly move mug. Effective contact and yaw change not established. No closure, lift, or held-home delivery; retracted and returned home empty, torque retained.",
+    "quality_flags": [],
+    "source": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T170552-be6692d0",
+    "source_metadata": "tools/episode_170552_source_metadata.json",
+    "experiment_type": "Broad-wall contact search with goal-preserving shoulder descent",
+    "verified_grasp": false,
+    "contact_established": false,
+    "closure_attempts": [],
+    "verified_grasp_locations": [],
+    "near_contact_poses": [
+      {
+        "time": 1790201175.0180871,
+        "joints": {
+          "shoulder_pan": -24.703296703296704,
+          "shoulder_lift": 12.0,
+          "elbow_flex": -7.34065934065934,
+          "wrist_flex": 61.53846153846154,
+          "wrist_roll": 62.81318681318681,
+          "gripper": 13.170731707317074
+        },
+        "estimated_tool_xyz": [
+          0.31896571068831653,
+          0.11083378855389253,
+          0.07426072464126098
+        ],
+        "evidence_stem": "tools/mug_observations/1790201174943102858"
+      },
+      {
+        "time": 1790201275.2658496,
+        "joints": {
+          "shoulder_pan": -23.296703296703296,
+          "shoulder_lift": 13.934065934065934,
+          "elbow_flex": -7.252747252747253,
+          "wrist_flex": 61.53846153846154,
+          "wrist_roll": 62.81318681318681,
+          "gripper": 13.170731707317074
+        },
+        "estimated_tool_xyz": [
+          0.3199308481942633,
+          0.1032043995043993,
+          0.06482948620786208
+        ],
+        "evidence_stem": "tools/mug_observations/1790201275170145797"
+      },
+      {
+        "time": 1790201323.000248,
+        "joints": {
+          "shoulder_pan": -20.307692307692307,
+          "shoulder_lift": 13.934065934065934,
+          "elbow_flex": -7.252747252747253,
+          "wrist_flex": 61.53846153846154,
+          "wrist_roll": 62.81318681318681,
+          "gripper": 13.170731707317074
+        },
+        "estimated_tool_xyz": [
+          0.324929967657418,
+          0.08840643011771342,
+          0.06482944694008631
+        ],
+        "evidence_stem": "tools/mug_observations/1790201322928306961"
+      },
+      {
+        "time": 1790201350.547508,
+        "joints": {
+          "shoulder_pan": -20.21978021978022,
+          "shoulder_lift": 15.956043956043956,
+          "elbow_flex": -7.252747252747253,
+          "wrist_flex": 61.53846153846154,
+          "wrist_roll": 62.81318681318681,
+          "gripper": 13.170731707317074
+        },
+        "estimated_tool_xyz": [
+          0.32319429889770424,
+          0.08727824732106894,
+          0.055384883464877604
+        ],
+        "evidence_stem": "tools/mug_observations/1790201350466719966"
+      },
+      {
+        "time": 1790201376.0847645,
+        "joints": {
+          "shoulder_pan": -19.252747252747252,
+          "shoulder_lift": 16.043956043956044,
+          "elbow_flex": -7.252747252747253,
+          "wrist_flex": 61.53846153846154,
+          "wrist_roll": 62.81318681318681,
+          "gripper": 13.170731707317074
+        },
+        "estimated_tool_xyz": [
+          0.3245378331484155,
+          0.08243558513891303,
+          0.054975882028851876
+        ],
+        "evidence_stem": "tools/mug_observations/1790201375994937730"
+      }
+    ],
+    "pose_caveat": "Estimated tool XYZ is diagnostic midpoint, not calibrated fixed-finger contact point.",
+    "prelift_object_location": {
+      "table_contact_pixel_estimate": [
+        682,
+        479
+      ],
+      "pixel_uncertainty": 20,
+      "image": "tools/mug_observations/1790201045823900411_top.jpg",
+      "frame": "image pixels",
+      "note": "Upright base footprint estimate; metric registration and occlusion uncertainty unresolved; no coverage credit."
+    },
+    "measurement": "tools/wall_probe_170552_result.json",
+    "home_evidence_stem": "tools/mug_observations/1790201429435432583"
   }
 ]

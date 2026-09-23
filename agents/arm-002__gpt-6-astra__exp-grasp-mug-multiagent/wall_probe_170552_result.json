@@ -1,0 +1,23 @@
+{
+  "episode_id": "20260923T170552-be6692d0",
+  "before_stem": "tools/mug_observations/1790201045823900411",
+  "after_stem": "tools/mug_observations/1790201429435432583",
+  "silhouette_centers_px": [
+    [
+      678.582791586998,
+      416.98291905672403
+    ],
+    [
+      679.050557857826,
+      416.940006375518
+    ]
+  ],
+  "centroid_delta_px": [
+    0.4677662708279513,
+    -0.04291268120601899
+  ],
+  "method": "Largest dark component below65 within top ROI x600:760,y330:515; silhouette center, not table footprint or physical yaw.",
+  "result": "No visually established contact or rotation; handle remained at same projected direction. No closure or lift.",
+  "measurement_uncertainty_px": 2,
+  "motion_tool": "tools/mug_control.py with goal_increment.py for small shoulder changes"
+}
