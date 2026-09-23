@@ -197,8 +197,32 @@ class Arm:
         self.bus = None
 
     def __enter__(self):
-        self._cm = cw.connected_bus(self.port)
-        self.bus = self._cm.__enter__()
+        try:
+            self._cm = cw.connected_bus(self.port)
+            self.bus = self._cm.__enter__()
+        except RuntimeError as e:
+            if "Missing motor IDs" not in str(e):
+                raise
+            # a motor in overload fault drops out of the handshake: connect blind and clear it
+            from lerobot.motors import Motor, MotorNormMode
+            from lerobot.motors.feetech import FeetechMotorsBus
+            bus = FeetechMotorsBus(port=self.port, motors={
+                j: Motor(i + 1, "sts3215", MotorNormMode.RANGE_0_100 if j == "gripper" else MotorNormMode.DEGREES)
+                for i, j in enumerate(JOINTS)})
+            bus.connect(handshake=False)
+            for j in JOINTS:
+                pos, _ = cw.read_register(bus, "Present_Position", j)
+                if cw.fault_bits(bus, j):
+                    cw.write_register(bus, "Goal_Position", j, pos)
+                    time.sleep(0.05)
+                    cw.write_register(bus, "Torque_Enable", j, 0)
+                    time.sleep(0.3)
+                    cw.write_register(bus, "Torque_Enable", j, 1)
+                    print(f"[fault] {j}: cleared, status now {cw.fault_bits(bus, j)}", flush=True)
+            bus.disconnect(disable_torque=False)
+            time.sleep(0.3)
+            self._cm = cw.connected_bus(self.port)
+            self.bus = self._cm.__enter__()
         cw.enable_at_current_position(self.bus)
         return self
 
