@@ -7676,3 +7676,31 @@
 {"t": 1790264686.5212717, "kind": "log", "msg": "servo0.0: cube px=[549. 396.] err=61px move=(7,-5)mm"}
 {"t": 1790264688.772324, "kind": "log", "msg": "servo0.1: cube px=[501. 416.] err=25px move=(4,1)mm"}
 {"t": 1790264691.0135112, "kind": "log", "msg": "servo0.2: cube px=[500. 442.] err=7px move=(-0,1)mm"}
+{"t": 1790264693.0323188, "kind": "log", "msg": "low0.0: cube right=650 v=483 err=(87,-48)px"}
+{"t": 1790264694.6561615, "kind": "log", "msg": "low0.1: cube right=719 v=436 err=(18,-1)px"}
+{"t": 1790264696.8563406, "kind": "log", "msg": "low0.2: cube right=749 v=412 err=(-12,23)px"}
+{"t": 1790264699.0516686, "kind": "log", "msg": "low0.3: cube right=721 v=455 err=(16,-20)px"}
+{"t": 1790264702.5503924, "kind": "log", "msg": "mid0: right=768 v=446 err=(2,-6)px"}
+{"t": 1790264705.402812, "kind": "log", "msg": "gripper after close: pos=23.2 load=500"}
+{"t": 1790264707.2369277, "kind": "log", "msg": "grasp held=True"}
+{"t": 1790264710.9879513, "kind": "log", "msg": "home: grip=22.5 load=200 wrist_dark=0.87 still_on_table=False home_err={'shoulder_pan': -0.7, 'shoulder_lift': 1.1, 'elbow_flex': 0.3, 'wrist_flex': 1.8}"}
+{"t": 1790264711.620109, "kind": "log", "msg": "recording stopped success=True: {\"episode\": \"20260924T104441-e99346af\", \"folder\": \"/var/lib/armfarm/stations/armfarm/episodes/completed/20260924T104441-e99346af\", \"frames\": 825, \"quality_flags\": [], \"training_ready\": true, \"success\": true, \"notes\": \"target=(0.332,0.037) yaw=-165 roll=-48 tilt=20; servo_final=(0.343,0.034) converged=True; mid_ok=True; grasp_fk=(0.333,0.042,-0.016); grip_pos=23.2 load=500; grip_pos_lifted=22.5; ho"}
+{"t": 1790264711.6331651, "kind": "log", "msg": "placing at (0.13, 0.14)"}
+{"t": 1790264720.9343166, "kind": "log", "msg": "after place: cube px=[950. 215.] predicted=[945. 221.] d=8px"}
+{"t": 1790264720.9403381, "kind": "log", "msg": "map updated: 395 pairs, mean residual 11.6 mm, A=[[-0.0066, 0.9561, 0.2215], [0.8798, 0.0797, -0.0319]]"}
+{"t": 1790264720.9439201, "kind": "log", "msg": "episode done success=True dur=42s  totals: 389/416 successes"}
+{"t": 1790264722.9313223, "kind": "log", "msg": "cube at px=[950. 215.] robot=[0.124 0.151] yaw=171 size=[0.053 0.066]"}
+{"t": 1790264722.9412286, "kind": "log", "msg": "recording started: {'episode': '20260924T104522-b7e31693'}"}
+{"t": 1790264727.617622, "kind": "log", "msg": "servo0.0: cube px=[611. 296.] err=178px move=(19,17)mm"}
+{"t": 1790264729.2917027, "kind": "log", "msg": "servo0.1: cube px=[523. 408.] err=36px move=(3,4)mm"}
+{"t": 1790264730.958798, "kind": "log", "msg": "servo0.2: cube px=[516. 428.] err=15px move=(2,1)mm"}
+{"t": 1790264733.4736898, "kind": "log", "msg": "yaw fix: image angle delta -7 -> roll -35->-28 -> delta 0"}
+{"t": 1790264738.1862073, "kind": "log", "msg": "low0.0: cube right=639 v=532 err=(98,-147)px"}
+{"t": 1790264739.805647, "kind": "log", "msg": "low0.1: cube right=739 v=415 err=(-2,-30)px"}
+{"t": 1790264742.0048888, "kind": "log", "msg": "low0.2: cube right=728 v=396 err=(9,-11)px"}
+{"t": 1790264743.6240644, "kind": "log", "msg": "mid0: right=759 v=441 err=(11,-1)px"}
+{"t": 1790264746.4641922, "kind": "log", "msg": "gripper after close: pos=24.4 load=500"}
+{"t": 1790264748.4043438, "kind": "log", "msg": "grasp held=True"}
+{"t": 1790264750.8527908, "kind": "log", "msg": "home: grip=22.6 load=200 wrist_dark=0.84 still_on_table=False home_err={'shoulder_pan': -0.7, 'shoulder_lift': 1.1, 'elbow_flex': 0.3, 'wrist_flex': 1.9}"}
+{"t": 1790264751.3016634, "kind": "log", "msg": "recording stopped success=True: {\"episode\": \"20260924T104522-b7e31693\", \"folder\": \"/var/lib/armfarm/stations/armfarm/episodes/completed/20260924T104522-b7e31693\", \"frames\": 738, \"quality_flags\": [], \"training_ready\": true, \"success\": true, \"notes\": \"target=(0.124,0.151) yaw=171 roll=-35 tilt=0; servo_final=(0.146,0.172) converged=True; roll_after_yaw_fix=-28; mid_ok=True; grasp_fk=(0.132,0.151,-0.013); grip_pos=24.4 load=500; gr"}
+{"t": 1790264751.3174376, "kind": "log", "msg": "placing at (0.13, -0.01)"}
