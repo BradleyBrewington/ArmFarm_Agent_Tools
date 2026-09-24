@@ -9152,18 +9152,76 @@
     "wrist_dark": 0.7716590909090909,
     "still_on_table": false
    }
+  },
+  {
+   "t": 1790264797.1449547,
+   "dur": 36.0989670753479,
+   "success": true,
+   "notes": [
+    "target=(0.277,-0.053) yaw=-152 roll=-16 tilt=0",
+    "servo_final=(0.298,-0.055) converged=True",
+    "mid_ok=True",
+    "grasp_fk=(0.271,-0.055,-0.013)",
+    "grip_pos=24.0 load=500",
+    "grip_pos_lifted=22.6",
+    "home_err_max=1.7 grip_home=22.6 wrist_dark=0.89 cube_on_table=False",
+    "placed_at=(0.211,0.039)"
+   ],
+   "recorded": true,
+   "folder": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260924T104639-eea470ba",
+   "info": {
+    "grip": 22.616562282533053,
+    "wrist_dark": 0.8895,
+    "still_on_table": false
+   }
+  },
+  {
+   "t": 1790264833.2477634,
+   "dur": 35.7539803981781,
+   "success": true,
+   "notes": [
+    "target=(0.219,0.042) yaw=125 roll=-34 tilt=0",
+    "servo_final=(0.236,0.045) converged=True",
+    "mid_ok=True",
+    "grasp_fk=(0.210,0.042,-0.014)",
+    "grip_pos=24.7 load=500",
+    "grip_pos_lifted=23.9",
+    "home_err_max=1.9 grip_home=23.9 wrist_dark=0.85 cube_on_table=False",
+    "placed_at=(0.211,-0.011)"
+   ],
+   "recorded": true,
+   "folder": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260924T104715-278feb0f",
+   "info": {
+    "grip": 23.869171885873346,
+    "wrist_dark": 0.8513333333333334,
+    "still_on_table": false
+   }
+  },
+  {
+   "t": 1790264869.005781,
+   "dur": 35.12734818458557,
+   "success": true,
+   "notes": [
+    "target=(0.217,-0.019) yaw=-175 roll=-45 tilt=0",
+    "servo_final=(0.232,-0.020) converged=True",
+    "mid_ok=True",
+    "grasp_fk=(0.205,-0.012,-0.014)",
+    "grip_pos=24.8 load=500",
+    "grip_pos_lifted=22.6",
+    "home_err_max=1.9 grip_home=22.6 wrist_dark=0.87 cube_on_table=False",
+    "placed_at=(0.172,0.189)"
+   ],
+   "recorded": true,
+   "folder": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260924T104751-f48e649a",
+   "info": {
+    "grip": 22.616562282533053,
+    "wrist_dark": 0.8675757575757576,
+    "still_on_table": false
+   }
   }
  ],
  "place_idx": 0,
  "order": [
-  [
-   0.21,
-   -0.01
-  ],
-  [
-   0.17,
-   0.19
-  ],
   [
    0.33,
    0.19
