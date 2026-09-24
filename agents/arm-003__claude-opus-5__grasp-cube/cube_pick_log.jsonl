@@ -10273,3 +10273,22 @@
 {"t": 1790270895.7464497, "kind": "log", "msg": "after place: cube px=[950. 559.] predicted=[953. 517.] d=43px"}
 {"t": 1790270895.7552187, "kind": "log", "msg": "map updated: 535 pairs, mean residual 11.4 mm, A=[[-0.0194, 0.9272, 0.2244], [0.8425, 0.0297, -0.0279]]"}
 {"t": 1790270895.7601285, "kind": "log", "msg": "episode done success=True dur=38s  totals: 533/562 successes"}
+{"t": 1790270897.7515962, "kind": "log", "msg": "cube at px=[950. 559.] robot=[0.353 0.14 ] yaw=130 size=[0.038 0.047]"}
+{"t": 1790270897.7517672, "kind": "log", "msg": "cube radius 0.344 beyond graspable 0.335; raking (unrecorded, variant 0)"}
+{"t": 1790270897.7518446, "kind": "log", "msg": "rake: cube r=0.344 -> drag from r=0.379 to 0.24 along 24 deg"}
+{"t": 1790270917.828555, "kind": "log", "msg": "after rake: cube robot=[0.346 0.153]"}
+{"t": 1790270917.8287756, "kind": "log", "msg": "cube radius 0.343 beyond graspable 0.335; raking (unrecorded, variant 1)"}
+{"t": 1790270917.8288968, "kind": "log", "msg": "rake: cube r=0.343 -> drag from r=0.398 to 0.24 along 32 deg"}
+{"t": 1790270936.0579953, "kind": "log", "msg": "after rake: cube robot=[0.322 0.139]"}
+{"t": 1790270936.0721126, "kind": "log", "msg": "recording started: {'episode': '20260924T122856-ba29eb66'}"}
+{"t": 1790270941.939631, "kind": "log", "msg": "servo0.0: cube px=[471. 355.] err=93px move=(13,8)mm"}
+{"t": 1790270944.1257687, "kind": "log", "msg": "servo0.1: cube px=[524. 492.] err=54px move=(-8,-4)mm"}
+{"t": 1790270946.757928, "kind": "log", "msg": "servo0.2: cube px=[482. 391.] err=55px move=(8,5)mm"}
+{"t": 1790270948.942069, "kind": "log", "msg": "servo0.3: cube px=[529. 486.] err=51px move=(-7,-5)mm"}
+{"t": 1790270951.57444, "kind": "log", "msg": "servo0.4: cube px=[481. 393.] err=54px move=(7,5)mm"}
+{"t": 1790270953.7652862, "kind": "log", "msg": "servo0.5: cube px=[537. 486.] err=55px move=(-7,-6)mm"}
+{"t": 1790270958.0514245, "kind": "log", "msg": "low0.0: cube right=621 v=420 err=(116,15)px"}
+{"t": 1790270960.356331, "kind": "log", "msg": "low0.1: cube right=648 v=441 err=(89,-6)px"}
+{"t": 1790270962.5992792, "kind": "log", "msg": "low0.2: cube right=725 v=443 err=(12,-8)px"}
+{"t": 1790270964.8066695, "kind": "log", "msg": "low0.3: cube right=728 v=434 err=(9,1)px"}
+{"t": 1790270967.0110257, "kind": "log", "msg": "mid0: right=741 v=461 err=(29,-21)px"}
