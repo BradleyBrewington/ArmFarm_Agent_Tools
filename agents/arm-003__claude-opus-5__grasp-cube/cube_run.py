@@ -516,8 +516,23 @@ class Runner:
             if held:
                 success, info = self.go_home_and_confirm(pose, notes)
             else:
-                notes.append("gripper closed empty; no grasp")
+                # An empty close leaves the cube on the table and the arm undamaged, so re-observe from
+                # home (same state as the start of the episode) and retry the pick once before giving up.
+                notes.append("gripper closed empty; retrying once")
                 arm.home()
+                pose2, _ = self.observe("retry")
+                if pose2 and math.hypot(pose2["robot"][0] - 0.0388, pose2["robot"][1]) <= MAX_GRASP_R:
+                    pose = pose2
+                    log(f"retry: cube at px={np.round(pose['px'])} robot={np.round(pose['robot'],3)}")
+                    held, hover = self.pick(pose, notes)
+                    log(f"retry grasp held={held}")
+                else:
+                    notes.append("retry: cube not re-detected in reach")
+                if held:
+                    success, info = self.go_home_and_confirm(pose, notes)
+                else:
+                    notes.append("gripper closed empty; no grasp")
+                    arm.home()
         except Exception as e:
             notes.append(f"error: {e!r}")
             log(f"episode error: {e!r}\n{traceback.format_exc()}")
