@@ -10652,18 +10652,54 @@
     "wrist_dark": 0.8981439393939394,
     "still_on_table": false
    }
+  },
+  {
+   "t": 1790267618.5707314,
+   "dur": 38.94538593292236,
+   "success": true,
+   "notes": [
+    "target=(0.242,0.078) yaw=157 roll=-10 tilt=0",
+    "servo_final=(0.262,0.087) converged=True",
+    "mid_ok=True",
+    "grasp_fk=(0.240,0.069,-0.013)",
+    "grip_pos=23.2 load=500",
+    "grip_pos_lifted=22.1",
+    "home_err_max=1.9 grip_home=22.1 wrist_dark=0.89 cube_on_table=False",
+    "placed_at=(0.292,0.188)"
+   ],
+   "recorded": true,
+   "folder": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260924T113341-933b49fb",
+   "info": {
+    "grip": 22.059846903270703,
+    "wrist_dark": 0.8866515151515152,
+    "still_on_table": false
+   }
+  },
+  {
+   "t": 1790267657.5227697,
+   "dur": 37.9931583404541,
+   "success": true,
+   "notes": [
+    "target=(0.274,0.182) yaw=147 roll=-37 tilt=20",
+    "servo_final=(0.287,0.199) converged=True",
+    "mid_ok=True",
+    "grasp_fk=(0.272,0.196,-0.016)",
+    "grip_pos=23.2 load=500",
+    "grip_pos_lifted=22.7",
+    "home_err_max=1.9 grip_home=22.7 wrist_dark=0.83 cube_on_table=False",
+    "placed_at=(0.171,-0.011)"
+   ],
+   "recorded": true,
+   "folder": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260924T113419-9e7b2e8d",
+   "info": {
+    "grip": 22.686151704940848,
+    "wrist_dark": 0.8261969696969697,
+    "still_on_table": false
+   }
   }
  ],
  "place_idx": 0,
  "order": [
-  [
-   0.29,
-   0.19
-  ],
-  [
-   0.17,
-   -0.01
-  ],
   [
    0.33,
    0.19
