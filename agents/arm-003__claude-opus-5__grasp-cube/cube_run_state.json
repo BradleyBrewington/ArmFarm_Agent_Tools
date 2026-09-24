@@ -10280,18 +10280,34 @@
     "wrist_dark": 0.8973106060606061,
     "still_on_table": false
    }
+  },
+  {
+   "t": 1790266793.0396352,
+   "dur": 39.51661777496338,
+   "success": true,
+   "notes": [
+    "target=(0.131,-0.177) yaw=-135 roll=-39 tilt=0",
+    "servo: correction exceeded safety bounds; aborting servo",
+    "servo_final=(0.131,-0.177) converged=False",
+    "roll_after_yaw_fix=-26",
+    "mid_ok=True",
+    "grasp_fk=(0.133,-0.168,-0.013)",
+    "grip_pos=23.8 load=500",
+    "grip_pos_lifted=22.3",
+    "home_err_max=1.9 grip_home=22.3 wrist_dark=0.89 cube_on_table=False",
+    "placed_at=(0.291,0.138)"
+   ],
+   "recorded": true,
+   "folder": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260924T111955-71fe22e6",
+   "info": {
+    "grip": 22.338204592901878,
+    "wrist_dark": 0.8945984848484848,
+    "still_on_table": false
+   }
   }
  ],
  "place_idx": 0,
  "order": [
-  [
-   0.29,
-   0.14
-  ],
-  [
-   0.25,
-   0.09
-  ],
   [
    0.21,
    0.09
