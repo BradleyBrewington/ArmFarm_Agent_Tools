@@ -9001,3 +9001,15 @@
 {"t": 1790267840.886768, "kind": "log", "msg": "low0.3: cube right=738 v=371 err=(-1,14)px"}
 {"t": 1790267842.5090115, "kind": "log", "msg": "mid0: right=777 v=410 err=(-7,30)px"}
 {"t": 1790267846.0376518, "kind": "log", "msg": "mid1: right=739 v=435 err=(31,5)px"}
+{"t": 1790267849.5282476, "kind": "log", "msg": "mid2: right=764 v=439 err=(6,1)px"}
+{"t": 1790267894.394964, "kind": "log", "msg": "cube not detected at home; swinging arm aside to look, and opening gripper in case it is held"}
+{"t": 1790267900.9457245, "kind": "log", "msg": "cube at px=[536. 280.] robot=[ 0.193 -0.089] yaw=-178 size=[0.039 0.058]"}
+{"t": 1790267900.9620147, "kind": "log", "msg": "recording started: {'episode': '20260924T113820-edf65d1a'}"}
+{"t": 1790267906.7411401, "kind": "log", "msg": "servo0.0: cube px=[547. 326.] err=121px move=(17,-6)mm"}
+{"t": 1790267908.4365542, "kind": "log", "msg": "servo0.1: cube px=[511. 412.] err=28px move=(4,-1)mm"}
+{"t": 1790267910.7305336, "kind": "log", "msg": "servo0.2: cube px=[513. 432.] err=10px move=(1,-1)mm"}
+{"t": 1790267913.2870083, "kind": "log", "msg": "low0.0: cube right=662 v=541 err=(75,-156)px"}
+{"t": 1790267914.9082346, "kind": "log", "msg": "low0.1: cube right=707 v=452 err=(30,-67)px"}
+{"t": 1790267916.5326204, "kind": "log", "msg": "low0.2: cube right=757 v=380 err=(-20,5)px"}
+{"t": 1790267918.7250032, "kind": "log", "msg": "low0.3: cube right=723 v=375 err=(14,10)px"}
+{"t": 1790267922.2305841, "kind": "log", "msg": "mid0: right=753 v=462 err=(17,-22)px"}
