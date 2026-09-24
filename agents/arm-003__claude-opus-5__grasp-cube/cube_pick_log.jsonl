@@ -9765,3 +9765,22 @@
 {"t": 1790269655.3369513, "kind": "log", "msg": "low0.2: cube right=765 v=420 err=(-28,-35)px"}
 {"t": 1790269656.9649498, "kind": "log", "msg": "low0.3: cube right=729 v=383 err=(8,2)px"}
 {"t": 1790269658.594434, "kind": "log", "msg": "mid0: right=754 v=450 err=(16,-10)px"}
+{"t": 1790269661.423406, "kind": "log", "msg": "gripper after close: pos=24.1 load=500"}
+{"t": 1790269663.3203018, "kind": "log", "msg": "grasp held=True"}
+{"t": 1790269665.8305876, "kind": "log", "msg": "home: grip=22.3 load=200 wrist_dark=0.90 still_on_table=False home_err={'shoulder_pan': 0.4, 'shoulder_lift': 1.1, 'elbow_flex': 0.3, 'wrist_flex': 1.9}"}
+{"t": 1790269666.2412493, "kind": "log", "msg": "recording stopped success=True: {\"episode\": \"20260924T120723-c2af22cd\", \"folder\": \"/var/lib/armfarm/stations/armfarm/episodes/completed/20260924T120723-c2af22cd\", \"frames\": 595, \"quality_flags\": [], \"training_ready\": true, \"success\": true, \"notes\": \"target=(0.210,-0.054) yaw=-177 roll=-36 tilt=0; servo_final=(0.224,-0.060) converged=True; mid_ok=True; grasp_fk=(0.189,-0.049,-0.013); grip_pos=24.1 load=500; grip_pos_lifted=22.3; "}
+{"t": 1790269666.4992216, "kind": "log", "msg": "placing at (0.33, 0.14)"}
+{"t": 1790269678.6903043, "kind": "log", "msg": "after place: cube px=[941. 546.] predicted=[963. 507.] d=44px"}
+{"t": 1790269678.7038355, "kind": "log", "msg": "map updated: 507 pairs, mean residual 11.6 mm, A=[[-0.0138, 0.9573, 0.224], [0.8435, 0.0029, -0.0287]]"}
+{"t": 1790269678.7099712, "kind": "log", "msg": "episode done success=True dur=37s  totals: 504/533 successes"}
+{"t": 1790269680.695321, "kind": "log", "msg": "cube at px=[941. 546.] robot=[0.351 0.131] yaw=124 size=[0.038 0.049]"}
+{"t": 1790269680.6955183, "kind": "log", "msg": "cube radius 0.338 beyond graspable 0.335; raking (unrecorded, variant 0)"}
+{"t": 1790269680.6956167, "kind": "log", "msg": "rake: cube r=0.338 -> drag from r=0.373 to 0.24 along 23 deg"}
+{"t": 1790269699.8315132, "kind": "log", "msg": "after rake: cube robot=[0.345 0.14 ]"}
+{"t": 1790269699.8316872, "kind": "log", "msg": "cube radius 0.337 beyond graspable 0.335; raking (unrecorded, variant 1)"}
+{"t": 1790269699.8317766, "kind": "log", "msg": "rake: cube r=0.337 -> drag from r=0.392 to 0.24 along 30 deg"}
+{"t": 1790269717.5880644, "kind": "log", "msg": "after rake: cube robot=[0.279 0.067]"}
+{"t": 1790269717.6057322, "kind": "log", "msg": "recording started: {'episode': '20260924T120837-e623cd7a'}"}
+{"t": 1790269722.894338, "kind": "log", "msg": "servo0.0: cube px=[486. 375.] err=69px move=(11,4)mm"}
+{"t": 1790269724.6556644, "kind": "log", "msg": "servo0.1: cube px=[518. 451.] err=15px move=(-2,-2)mm"}
+{"t": 1790269727.2365172, "kind": "log", "msg": "yaw fix: image angle delta -9 -> roll -62->-53 -> delta 0"}
