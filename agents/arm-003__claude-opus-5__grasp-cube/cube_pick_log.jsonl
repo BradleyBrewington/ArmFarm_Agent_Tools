@@ -12507,3 +12507,4 @@
 {"t": 1790276314.5823739, "kind": "log", "msg": "episode done success=False dur=33s  totals: 656/686 successes"}
 {"t": 1790276316.5862625, "kind": "log", "msg": "cube not detected at home; swinging arm aside to look, and opening gripper in case it is held"}
 {"t": 1790276323.1429985, "kind": "log", "msg": "fatal episode error: RuntimeError('cube not found on table')\nTraceback (most recent call last):\n  File \"/var/lib/armfarm/stations/armfarm/workspace/tools/cube_run.py\", line 591, in main\n    r.episode(record=True)\n    ~~~~~~~~~^^^^^^^^^^^^^\n  File \"/var/lib/armfarm/stations/armfarm/workspace/tools/cube_run.py\", line 493, in episode\n    raise RuntimeError(\"cube not found on table\")\nRuntimeError: cube not found on table\n"}
+{"t": 1790276577.4973507, "kind": "log", "msg": "rake: cube r=0.378 -> drag from r=0.410 to 0.24 along 60 deg"}

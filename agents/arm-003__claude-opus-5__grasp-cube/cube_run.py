@@ -379,22 +379,32 @@ class Runner:
         x, y = pose["robot"]
         ang = math.atan2(y, x - 0.0388) + math.radians((0, 6, -6)[variant % 3])
         r = math.hypot(x - 0.0388, y)
-        r_far = min(r + 0.035 + 0.02 * variant, 0.41)
         z_drag = TABLE_Z + 0.022 - 0.005 * variant
         roll = ROLL_NEUTRAL
-        far = (0.0388 + r_far * math.cos(ang), r_far * math.sin(ang))
         near = (0.0388 + 0.24 * math.cos(ang), 0.24 * math.sin(ang))
-        log(f"rake: cube r={r:.3f} -> drag from r={r_far:.3f} to 0.24 along {math.degrees(ang):.0f} deg")
         arm.gripper(GRIP_CLOSED, seconds=0.4)
-        j_hi = tilt = None
-        for dz in (0.07, 0.05, 0.035, 0.02, 0.01):
-            try:
-                j_hi, tilt = ik_reach(far[0], far[1], z_drag + dz, roll, tilt_start=30.)
+        # The jaw has to land behind the cube, but for a cube already near the reach limit the preferred
+        # offset can be unreachable, so give up radius before giving up: anything past the cube centre
+        # still drags it in. Reach runs out around r=0.40 at drag height.
+        r_pref = min(r + 0.035 + 0.02 * variant, 0.41)
+        j_hi = tilt = r_far = None
+        for cand in [r_pref - 0.005 * k for k in range(9)]:
+            if cand <= r + 0.010:
                 break
-            except ValueError:
-                continue
+            for dz in (0.07, 0.05, 0.035, 0.02, 0.01):
+                try:
+                    far = (0.0388 + cand * math.cos(ang), cand * math.sin(ang))
+                    j_hi, tilt = ik_reach(far[0], far[1], z_drag + dz, roll, tilt_start=30.)
+                    r_far = cand
+                    break
+                except ValueError:
+                    continue
+            if r_far is not None:
+                break
         if j_hi is None:
             raise RuntimeError("rake approach pose unreachable")
+        far = (0.0388 + r_far * math.cos(ang), r_far * math.sin(ang))
+        log(f"rake: cube r={r:.3f} -> drag from r={r_far:.3f} to 0.24 along {math.degrees(ang):.0f} deg")
         travel(arm, j_hi)
         j_lo, _ = ik_reach(far[0], far[1], z_drag, roll, tilt_start=tilt)
         arm.move_precise(j_lo, speed_dps=25)
