@@ -12316,18 +12316,77 @@
     "wrist_dark": 0.8526969696969697,
     "still_on_table": false
    }
+  },
+  {
+   "t": 1790270792.173086,
+   "dur": 34.515567779541016,
+   "success": true,
+   "notes": [
+    "target=(0.182,-0.020) yaw=176 roll=-52 tilt=0",
+    "servo_final=(0.190,-0.024) converged=True",
+    "mid_ok=True",
+    "grasp_fk=(0.166,-0.010,-0.013)",
+    "grip_pos=25.3 load=500",
+    "grip_pos_lifted=25.3",
+    "home_err_max=1.9 grip_home=25.3 wrist_dark=0.85 cube_on_table=False",
+    "placed_at=(0.132,0.189)"
+   ],
+   "recorded": true,
+   "folder": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260924T122634-3899c911",
+   "info": {
+    "grip": 25.33054975643702,
+    "wrist_dark": 0.8501287878787879,
+    "still_on_table": false
+   }
+  },
+  {
+   "t": 1790270826.6958644,
+   "dur": 30.91133213043213,
+   "success": true,
+   "notes": [
+    "target=(0.134,0.185) yaw=150 roll=-59 tilt=0",
+    "servo_final=(0.149,0.201) converged=True",
+    "mid_ok=True",
+    "grasp_fk=(0.129,0.190,-0.013)",
+    "grip_pos=25.4 load=500",
+    "grip_pos_lifted=25.4",
+    "home_err_max=1.9 grip_home=25.4 wrist_dark=0.83 cube_on_table=False",
+    "placed_at=(0.209,-0.011)"
+   ],
+   "recorded": true,
+   "folder": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260924T122708-5c07b795",
+   "info": {
+    "grip": 25.400139178844817,
+    "wrist_dark": 0.8288484848484848,
+    "still_on_table": false
+   }
+  },
+  {
+   "t": 1790270857.6145763,
+   "dur": 38.14076375961304,
+   "success": true,
+   "notes": [
+    "target=(0.210,-0.009) yaw=-164 roll=-37 tilt=0",
+    "servo_final=(0.225,-0.012) converged=True",
+    "roll_after_yaw_fix=-28",
+    "mid_ok=True",
+    "grasp_fk=(0.198,-0.009,-0.013)",
+    "grip_pos=23.6 load=500",
+    "grip_pos_lifted=22.0",
+    "home_err_max=1.9 grip_home=22.0 wrist_dark=0.88 cube_on_table=False",
+    "placed_at=(0.330,0.137)"
+   ],
+   "recorded": true,
+   "folder": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260924T122739-a294308b",
+   "info": {
+    "grip": 21.99025748086291,
+    "wrist_dark": 0.8799545454545454,
+    "still_on_table": false
+   }
   }
  ],
  "place_idx": 0,
  "order": [
-  [
-   0.21,
-   -0.01
-  ],
-  [
-   0.33,
-   0.14
-  ],
   [
    0.25,
    -0.06
