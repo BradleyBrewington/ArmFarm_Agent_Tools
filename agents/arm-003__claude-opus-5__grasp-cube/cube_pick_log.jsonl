@@ -8353,3 +8353,32 @@
 {"t": 1790266241.0069597, "kind": "log", "msg": "servo: correction exceeded safety bounds; aborting"}
 {"t": 1790266242.9419305, "kind": "log", "msg": "yaw fix: image angle delta 15 -> roll -1->-16 -> delta -3"}
 {"t": 1790266248.3962893, "kind": "log", "msg": "low0.0: cube right=640 v=535 err=(97,-150)px"}
+{"t": 1790266250.0157137, "kind": "log", "msg": "low0.1: cube right=704 v=460 err=(33,-75)px"}
+{"t": 1790266251.635663, "kind": "log", "msg": "low0.2: cube right=733 v=377 err=(4,8)px"}
+{"t": 1790266253.2754614, "kind": "log", "msg": "mid0: right=757 v=440 err=(13,0)px"}
+{"t": 1790266256.1121871, "kind": "log", "msg": "gripper after close: pos=23.6 load=500"}
+{"t": 1790266258.0662735, "kind": "log", "msg": "grasp held=True"}
+{"t": 1790266260.5406857, "kind": "log", "msg": "home: grip=22.2 load=200 wrist_dark=0.90 still_on_table=False home_err={'shoulder_pan': 0.4, 'shoulder_lift': 1.1, 'elbow_flex': 0.3, 'wrist_flex': 1.9}"}
+{"t": 1790266261.011314, "kind": "log", "msg": "recording stopped success=True: {\"episode\": \"20260924T111034-b37391ff\", \"folder\": \"/var/lib/armfarm/stations/armfarm/episodes/completed/20260924T111034-b37391ff\", \"frames\": 690, \"quality_flags\": [], \"training_ready\": true, \"success\": true, \"notes\": \"target=(0.123,-0.157) yaw=173 roll=-1 tilt=0; servo: correction exceeded safety bounds; aborting servo; servo_final=(0.123,-0.157) converged=False; roll_after_yaw_fix=-16; mid_ok=Tru"}
+{"t": 1790266261.0267122, "kind": "log", "msg": "placing at (0.17, -0.16)"}
+{"t": 1790266270.399784, "kind": "log", "msg": "after place: cube px=[392. 236.] predicted=[414. 247.] d=24px"}
+{"t": 1790266270.4082148, "kind": "log", "msg": "map updated: 432 pairs, mean residual 11.2 mm, A=[[-0.0027, 0.9453, 0.2237], [0.8544, 0.0307, -0.028]]"}
+{"t": 1790266270.4135454, "kind": "log", "msg": "episode done success=True dur=38s  totals: 427/455 successes"}
+{"t": 1790266272.4311497, "kind": "log", "msg": "cube at px=[392. 236.] robot=[ 0.163 -0.173] yaw=-148 size=[0.059 0.038]"}
+{"t": 1790266272.4818814, "kind": "log", "msg": "recording started: {'episode': '20260924T111112-f671af37'}"}
+{"t": 1790266277.4219003, "kind": "log", "msg": "servo0.0: cube px=[470. 339.] err=107px move=(13,-13)mm"}
+{"t": 1790266277.4220676, "kind": "log", "msg": "servo: correction exceeded safety bounds; aborting"}
+{"t": 1790266279.935452, "kind": "log", "msg": "yaw fix: image angle delta -11 -> roll -60->-49 -> delta 0"}
+{"t": 1790266286.569477, "kind": "log", "msg": "low0.0: cube right=649 v=531 err=(88,-146)px"}
+{"t": 1790266288.2648785, "kind": "log", "msg": "low0.1: cube right=766 v=434 err=(-29,-49)px"}
+{"t": 1790266289.8848114, "kind": "log", "msg": "low0.2: cube right=769 v=370 err=(-32,15)px"}
+{"t": 1790266292.0710418, "kind": "log", "msg": "low0.3: cube right=716 v=393 err=(21,-8)px"}
+{"t": 1790266295.5708263, "kind": "log", "msg": "mid0: right=763 v=439 err=(7,1)px"}
+{"t": 1790266298.450586, "kind": "log", "msg": "gripper after close: pos=24.4 load=500"}
+{"t": 1790266300.4677024, "kind": "log", "msg": "grasp held=True"}
+{"t": 1790266303.2940445, "kind": "log", "msg": "home: grip=22.3 load=200 wrist_dark=0.88 still_on_table=False home_err={'shoulder_pan': 0.4, 'shoulder_lift': 1.1, 'elbow_flex': 0.3, 'wrist_flex': 1.9}"}
+{"t": 1790266303.6735055, "kind": "log", "msg": "recording stopped success=True: {\"episode\": \"20260924T111112-f671af37\", \"folder\": \"/var/lib/armfarm/stations/armfarm/episodes/completed/20260924T111112-f671af37\", \"frames\": 829, \"quality_flags\": [], \"training_ready\": true, \"success\": true, \"notes\": \"target=(0.163,-0.173) yaw=-148 roll=-60 tilt=0; servo: correction exceeded safety bounds; aborting servo; servo_final=(0.163,-0.173) converged=False; roll_after_yaw_fix=-49; mid_ok=T"}
+{"t": 1790266303.6970587, "kind": "log", "msg": "placing at (0.13, 0.19)"}
+{"t": 1790266313.26899, "kind": "log", "msg": "after place: cube px=[1009.  204.] predicted=[1022.  216.] d=18px"}
+{"t": 1790266313.278895, "kind": "log", "msg": "map updated: 433 pairs, mean residual 11.2 mm, A=[[0.0021, 0.9362, 0.2238], [0.8535, 0.0339, -0.0282]]"}
+{"t": 1790266313.2842515, "kind": "log", "msg": "episode done success=True dur=43s  totals: 428/456 successes"}

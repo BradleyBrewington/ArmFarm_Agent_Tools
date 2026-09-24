@@ -9948,12 +9948,244 @@
     "wrist_dark": 0.8552651515151515,
     "still_on_table": false
    }
+  },
+  {
+   "t": 1790266232.624918,
+   "dur": 37.78433036804199,
+   "success": true,
+   "notes": [
+    "target=(0.123,-0.157) yaw=173 roll=-1 tilt=0",
+    "servo: correction exceeded safety bounds; aborting servo",
+    "servo_final=(0.123,-0.157) converged=False",
+    "roll_after_yaw_fix=-16",
+    "mid_ok=True",
+    "grasp_fk=(0.124,-0.144,-0.013)",
+    "grip_pos=23.6 load=500",
+    "grip_pos_lifted=22.2",
+    "home_err_max=1.9 grip_home=22.2 wrist_dark=0.90 cube_on_table=False",
+    "placed_at=(0.171,-0.159)"
+   ],
+   "recorded": true,
+   "folder": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260924T111034-b37391ff",
+   "info": {
+    "grip": 22.19902574808629,
+    "wrist_dark": 0.8981363636363636,
+    "still_on_table": false
+   }
+  },
+  {
+   "t": 1790266270.4140851,
+   "dur": 42.864970445632935,
+   "success": true,
+   "notes": [
+    "target=(0.163,-0.173) yaw=-148 roll=-60 tilt=0",
+    "servo: correction exceeded safety bounds; aborting servo",
+    "servo_final=(0.163,-0.173) converged=False",
+    "roll_after_yaw_fix=-49",
+    "mid_ok=True",
+    "grasp_fk=(0.167,-0.162,-0.014)",
+    "grip_pos=24.4 load=500",
+    "grip_pos_lifted=22.3",
+    "home_err_max=1.9 grip_home=22.3 wrist_dark=0.88 cube_on_table=False",
+    "placed_at=(0.132,0.189)"
+   ],
+   "recorded": true,
+   "folder": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260924T111112-f671af37",
+   "info": {
+    "grip": 22.268615170494087,
+    "wrist_dark": 0.8841363636363636,
+    "still_on_table": false
+   }
   }
  ],
  "place_idx": 0,
  "order": [
   [
    0.17,
+   0.14
+  ],
+  [
+   0.13,
+   -0.01
+  ],
+  [
+   0.13,
+   0.04
+  ],
+  [
+   0.21,
+   0.19
+  ],
+  [
+   0.17,
+   -0.11
+  ],
+  [
+   0.17,
+   -0.06
+  ],
+  [
+   0.21,
+   -0.01
+  ],
+  [
+   0.13,
+   -0.11
+  ],
+  [
+   0.29,
+   -0.11
+  ],
+  [
+   0.25,
+   0.19
+  ],
+  [
+   0.29,
+   -0.01
+  ],
+  [
+   0.13,
+   -0.16
+  ],
+  [
+   0.29,
+   0.14
+  ],
+  [
+   0.25,
+   0.09
+  ],
+  [
+   0.21,
+   0.09
+  ],
+  [
+   0.17,
+   0.09
+  ],
+  [
+   0.21,
+   -0.16
+  ],
+  [
+   0.33,
+   0.04
+  ],
+  [
+   0.21,
+   0.14
+  ],
+  [
+   0.33,
+   -0.11
+  ],
+  [
+   0.13,
+   0.09
+  ],
+  [
+   0.29,
+   0.04
+  ],
+  [
+   0.17,
+   0.04
+  ],
+  [
+   0.33,
+   0.09
+  ],
+  [
+   0.25,
+   -0.11
+  ],
+  [
+   0.25,
+   -0.16
+  ],
+  [
+   0.17,
+   -0.16
+  ],
+  [
+   0.33,
+   0.14
+  ],
+  [
+   0.29,
+   0.19
+  ],
+  [
+   0.17,
+   -0.01
+  ],
+  [
+   0.33,
+   0.19
+  ],
+  [
+   0.25,
+   0.14
+  ],
+  [
+   0.29,
+   -0.06
+  ],
+  [
+   0.13,
+   0.14
+  ],
+  [
+   0.25,
+   -0.06
+  ],
+  [
+   0.17,
+   0.19
+  ],
+  [
+   0.29,
+   0.09
+  ],
+  [
+   0.33,
+   -0.06
+  ],
+  [
+   0.21,
+   0.04
+  ],
+  [
+   0.29,
+   -0.16
+  ],
+  [
+   0.13,
+   -0.06
+  ],
+  [
+   0.33,
+   -0.01
+  ],
+  [
+   0.21,
+   -0.11
+  ],
+  [
+   0.21,
+   -0.06
+  ],
+  [
+   0.25,
+   -0.01
+  ],
+  [
+   0.25,
+   0.04
+  ],
+  [
+   0.33,
    -0.16
   ]
  ]
