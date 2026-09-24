@@ -7961,3 +7961,33 @@
 {"t": 1790265319.066225, "kind": "log", "msg": "mid0: right=795 v=438 err=(-25,2)px"}
 {"t": 1790265321.9264061, "kind": "log", "msg": "gripper after close: pos=23.9 load=500"}
 {"t": 1790265324.088495, "kind": "log", "msg": "grasp held=True"}
+{"t": 1790265327.1521215, "kind": "log", "msg": "home: grip=22.3 load=200 wrist_dark=0.89 still_on_table=False home_err={'shoulder_pan': 0.4, 'shoulder_lift': 1.1, 'elbow_flex': 0.3, 'wrist_flex': 1.8}"}
+{"t": 1790265327.568227, "kind": "log", "msg": "recording stopped success=True: {\"episode\": \"20260924T105503-d8d483f3\", \"folder\": \"/var/lib/armfarm/stations/armfarm/episodes/completed/20260924T105503-d8d483f3\", \"frames\": 605, \"quality_flags\": [], \"training_ready\": true, \"success\": true, \"notes\": \"target=(0.246,-0.104) yaw=-172 roll=-22 tilt=0; servo_final=(0.268,-0.110) converged=True; mid_ok=True; grasp_fk=(0.241,-0.102,-0.012); grip_pos=23.9 load=500; grip_pos_lifted=22.3; "}
+{"t": 1790265327.7625597, "kind": "log", "msg": "placing at (0.29, -0.16)"}
+{"t": 1790265339.433461, "kind": "log", "msg": "after place: cube px=[383. 433.] predicted=[392. 429.] d=10px"}
+{"t": 1790265339.4400954, "kind": "log", "msg": "map updated: 411 pairs, mean residual 11.3 mm, A=[[0.004, 0.9774, 0.2214], [0.8709, 0.0583, -0.0307]]"}
+{"t": 1790265339.443706, "kind": "log", "msg": "episode done success=True dur=38s  totals: 405/432 successes"}
+{"t": 1790265341.468536, "kind": "log", "msg": "cube at px=[383. 433.] robot=[ 0.293 -0.162] yaw=-115 size=[0.048 0.047]"}
+{"t": 1790265341.4791815, "kind": "log", "msg": "recording started: {'episode': '20260924T105541-33682d3e'}"}
+{"t": 1790265346.8592448, "kind": "log", "msg": "servo0.0: cube px=[540. 347.] err=98px move=(10,-11)mm"}
+{"t": 1790265346.8594186, "kind": "log", "msg": "servo: correction exceeded safety bounds; aborting"}
+{"t": 1790265349.3680294, "kind": "log", "msg": "yaw fix: image angle delta -9 -> roll -49->-39 -> delta 0"}
+{"t": 1790265356.7835767, "kind": "log", "msg": "low0.0: cube right=662 v=471 err=(75,-36)px"}
+{"t": 1790265358.5342433, "kind": "log", "msg": "low0.1: cube right=710 v=455 err=(27,-20)px"}
+{"t": 1790265360.156414, "kind": "log", "msg": "low0.2: cube right=730 v=446 err=(7,-11)px"}
+{"t": 1790265362.3511994, "kind": "log", "msg": "mid0: right=798 v=443 err=(-28,-3)px"}
+{"t": 1790265365.7728267, "kind": "log", "msg": "gripper after close: pos=23.9 load=500"}
+{"t": 1790265367.991282, "kind": "log", "msg": "grasp held=True"}
+{"t": 1790265371.877018, "kind": "log", "msg": "home: grip=22.7 load=200 wrist_dark=0.87 still_on_table=False home_err={'shoulder_pan': 0.4, 'shoulder_lift': 1.1, 'elbow_flex': 0.3, 'wrist_flex': 1.9}"}
+{"t": 1790265372.545169, "kind": "log", "msg": "recording stopped success=True: {\"episode\": \"20260924T105541-33682d3e\", \"folder\": \"/var/lib/armfarm/stations/armfarm/episodes/completed/20260924T105541-33682d3e\", \"frames\": 808, \"quality_flags\": [], \"training_ready\": true, \"success\": true, \"notes\": \"target=(0.293,-0.162) yaw=-115 roll=-49 tilt=20; servo: correction exceeded safety bounds; aborting servo; servo_final=(0.293,-0.162) converged=False; roll_after_yaw_fix=-39; mid_ok="}
+{"t": 1790265372.5642161, "kind": "log", "msg": "placing at (0.29, 0.04)"}
+{"t": 1790265383.0045865, "kind": "log", "msg": "after place: cube px=[769. 430.] predicted=[759. 442.] d=16px"}
+{"t": 1790265383.0134428, "kind": "log", "msg": "map updated: 412 pairs, mean residual 11.3 mm, A=[[0.0049, 0.9812, 0.2216], [0.8705, 0.0559, -0.0307]]"}
+{"t": 1790265383.01835, "kind": "log", "msg": "episode done success=True dur=44s  totals: 406/433 successes"}
+{"t": 1790265385.0419862, "kind": "log", "msg": "cube at px=[769. 430.] robot=[0.284 0.044] yaw=137 size=[0.045 0.049]"}
+{"t": 1790265385.055052, "kind": "log", "msg": "recording started: {'episode': '20260924T105625-8b62f125'}"}
+{"t": 1790265390.379906, "kind": "log", "msg": "servo0.0: cube px=[572. 325.] err=132px move=(19,5)mm"}
+{"t": 1790265392.7279377, "kind": "log", "msg": "servo0.1: cube px=[500. 436.] err=8px move=(-0,1)mm"}
+{"t": 1790265395.3494685, "kind": "log", "msg": "low0.0: cube right=693 v=520 err=(44,-135)px"}
+{"t": 1790265397.3552613, "kind": "log", "msg": "low0.1: cube right=709 v=398 err=(28,-13)px"}
+{"t": 1790265399.5606747, "kind": "log", "msg": "low0.2: cube right=727 v=386 err=(10,-1)px"}
