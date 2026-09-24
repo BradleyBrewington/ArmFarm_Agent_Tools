@@ -382,6 +382,19 @@ class Runner:
         z_drag = TABLE_Z + 0.022 - 0.005 * variant
         roll = ROLL_NEUTRAL
         near = (0.0388 + 0.24 * math.cos(ang), 0.24 * math.sin(ang))
+        # Raking needs the jaw to land *behind* the cube. If that approach point is off the table, the jaw
+        # comes down past the edge and tends to flick the cube onto the floor instead of dragging it in
+        # (this happened to a cube at r=0.378 on 2026-09-24). Refuse, and let a human reposition it.
+        gray = cv2.cvtColor(cp.snap("top"), cv2.COLOR_BGR2GRAY)
+        mask = cp.table_mask(gray)
+        probe = (0.0388 + (r + 0.035) * math.cos(ang), (r + 0.035) * math.sin(ang))
+        ppx = self.tmap.robot_to_pixel(probe)
+        h, w = mask.shape[:2]
+        pu, pv = int(round(ppx[0])), int(round(ppx[1]))
+        if not (0 <= pu < w and 0 <= pv < h and mask[pv, pu]):
+            raise RuntimeError(
+                f"rake approach {np.round(probe,3)} is off the table; cube at r={r:.3f} needs a human"
+            )
         arm.gripper(GRIP_CLOSED, seconds=0.4)
         # The jaw has to land behind the cube, but for a cube already near the reach limit the preferred
         # offset can be unreachable, so give up radius before giving up: anything past the cube centre
