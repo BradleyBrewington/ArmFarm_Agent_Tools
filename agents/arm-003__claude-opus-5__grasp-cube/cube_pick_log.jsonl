@@ -10352,3 +10352,30 @@
 {"t": 1790271106.8471503, "kind": "log", "msg": "mid0: right=775 v=450 err=(-5,-10)px"}
 {"t": 1790271109.6987557, "kind": "log", "msg": "gripper after close: pos=23.5 load=500"}
 {"t": 1790271111.9829257, "kind": "log", "msg": "grasp held=True"}
+{"t": 1790271115.0946789, "kind": "log", "msg": "home: grip=22.1 load=200 wrist_dark=0.89 still_on_table=False home_err={'shoulder_pan': 0.4, 'shoulder_lift': 1.1, 'elbow_flex': 0.3, 'wrist_flex': 1.9}"}
+{"t": 1790271115.6272228, "kind": "log", "msg": "recording stopped success=True: {\"episode\": \"20260924T123125-603bbc09\", \"folder\": \"/var/lib/armfarm/stations/armfarm/episodes/completed/20260924T123125-603bbc09\", \"frames\": 793, \"quality_flags\": [], \"training_ready\": true, \"success\": true, \"notes\": \"target=(0.210,-0.163) yaw=-124 roll=-47 tilt=0; servo: correction exceeded safety bounds; aborting servo; servo_final=(0.210,-0.163) converged=False; roll_after_yaw_fix=-37; mid_ok=T"}
+{"t": 1790271115.641025, "kind": "log", "msg": "placing at (0.17, -0.06)"}
+{"t": 1790271124.1623297, "kind": "log", "msg": "after place: cube px=[566. 271.] predicted=[589. 250.] d=32px"}
+{"t": 1790271124.1719718, "kind": "log", "msg": "map updated: 539 pairs, mean residual 11.4 mm, A=[[-0.0103, 0.93, 0.2233], [0.8428, 0.0179, -0.0282]]"}
+{"t": 1790271124.1766374, "kind": "log", "msg": "episode done success=True dur=41s  totals: 537/566 successes"}
+{"t": 1790271126.1630633, "kind": "log", "msg": "cube at px=[566. 271.] robot=[ 0.185 -0.071] yaw=174 size=[0.04  0.057]"}
+{"t": 1790271126.1739817, "kind": "log", "msg": "recording started: {'episode': '20260924T123206-f941366a'}"}
+{"t": 1790271130.1474586, "kind": "log", "msg": "servo0.0: cube px=[544. 336.] err=110px move=(15,-8)mm"}
+{"t": 1790271131.8263583, "kind": "log", "msg": "servo0.1: cube px=[515. 415.] err=27px move=(4,-2)mm"}
+{"t": 1790271133.5077605, "kind": "log", "msg": "servo0.2: cube px=[505. 431.] err=10px move=(2,0)mm"}
+{"t": 1790271135.4637294, "kind": "log", "msg": "low0.0: cube right=636 v=534 err=(101,-149)px"}
+{"t": 1790271137.07488, "kind": "log", "msg": "low0.1: cube right=733 v=445 err=(4,-60)px"}
+{"t": 1790271138.698398, "kind": "log", "msg": "low0.2: cube right=762 v=379 err=(-25,6)px"}
+{"t": 1790271139.7665904, "kind": "log", "msg": "low0.3: cube right=757 v=377 err=(-20,8)px"}
+{"t": 1790271143.2645764, "kind": "log", "msg": "mid0: right=726 v=465 err=(44,-25)px"}
+{"t": 1790271146.1836221, "kind": "log", "msg": "mid1: right=768 v=432 err=(2,8)px"}
+{"t": 1790271149.023386, "kind": "log", "msg": "gripper after close: pos=23.8 load=500"}
+{"t": 1790271150.901281, "kind": "log", "msg": "grasp held=True"}
+{"t": 1790271153.201937, "kind": "log", "msg": "home: grip=22.3 load=200 wrist_dark=0.87 still_on_table=False home_err={'shoulder_pan': 0.5, 'shoulder_lift': 1.1, 'elbow_flex': 0.3, 'wrist_flex': 1.9}"}
+{"t": 1790271153.5261827, "kind": "log", "msg": "recording stopped success=True: {\"episode\": \"20260924T123206-f941366a\", \"folder\": \"/var/lib/armfarm/stations/armfarm/episodes/completed/20260924T123206-f941366a\", \"frames\": 706, \"quality_flags\": [], \"training_ready\": true, \"success\": true, \"notes\": \"target=(0.185,-0.071) yaw=174 roll=-36 tilt=0; servo_final=(0.204,-0.080) converged=True; mid_ok=True; grasp_fk=(0.174,-0.062,-0.013); grip_pos=23.8 load=500; grip_pos_lifted=22.3; h"}
+{"t": 1790271153.6749625, "kind": "log", "msg": "placing at (0.33, -0.06)"}
+{"t": 1790271165.209321, "kind": "log", "msg": "after place: cube px=[566. 494.] predicted=[566. 503.] d=9px"}
+{"t": 1790271165.2195387, "kind": "log", "msg": "map updated: 540 pairs, mean residual 11.4 mm, A=[[-0.0111, 0.9296, 0.2233], [0.8429, 0.0186, -0.0282]]"}
+{"t": 1790271165.2250066, "kind": "log", "msg": "episode done success=True dur=41s  totals: 538/567 successes"}
+{"t": 1790271204.1123793, "kind": "log", "msg": "cube at px=[566. 494.] robot=[ 0.324 -0.061] yaw=-173 size=[0.048 0.036]"}
+{"t": 1790271204.1248503, "kind": "log", "msg": "recording started: {'episode': '20260924T123324-5a3c9af8'}"}
