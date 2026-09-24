@@ -10598,18 +10598,64 @@
     "wrist_dark": 0.9077954545454545,
     "still_on_table": false
    }
+  },
+  {
+   "t": 1790267449.5386012,
+   "dur": 73.24927592277527,
+   "success": true,
+   "notes": [
+    "target=(0.260,-0.155) yaw=-178 roll=-19 tilt=10",
+    "servo: correction exceeded safety bounds; aborting servo",
+    "servo_final=(0.260,-0.155) converged=False",
+    "mid_ok=True",
+    "grasp_fk=(0.261,-0.182,-0.016)",
+    "grip_pos=0.6 load=44",
+    "grip_pos_lifted=0.6",
+    "gripper closed empty; retrying once",
+    "target=(0.278,-0.185) yaw=-132 roll=-60 tilt=20",
+    "servo: correction exceeded safety bounds; aborting servo",
+    "servo_final=(0.278,-0.185) converged=False",
+    "mid_ok=True",
+    "grasp_fk=(0.289,-0.185,-0.015)",
+    "grip_pos=23.3 load=500",
+    "grip_pos_lifted=22.3",
+    "home_err_max=1.9 grip_home=22.3 wrist_dark=0.90 cube_on_table=False",
+    "placed_at=(0.171,-0.158)"
+   ],
+   "recorded": true,
+   "folder": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260924T113051-f909cc81",
+   "info": {
+    "grip": 22.268615170494087,
+    "wrist_dark": 0.9022045454545454,
+    "still_on_table": false
+   }
+  },
+  {
+   "t": 1790267522.7931664,
+   "dur": 34.674585580825806,
+   "success": true,
+   "notes": [
+    "target=(0.179,-0.159) yaw=-180 roll=-7 tilt=0",
+    "servo: correction exceeded safety bounds; aborting servo",
+    "servo_final=(0.179,-0.159) converged=False",
+    "mid_ok=True",
+    "grasp_fk=(0.169,-0.152,-0.013)",
+    "grip_pos=22.4 load=500",
+    "grip_pos_lifted=21.9",
+    "home_err_max=1.9 grip_home=21.9 wrist_dark=0.90 cube_on_table=False",
+    "placed_at=(0.328,0.137)"
+   ],
+   "recorded": true,
+   "folder": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260924T113204-36e046e0",
+   "info": {
+    "grip": 21.920668058455114,
+    "wrist_dark": 0.8981439393939394,
+    "still_on_table": false
+   }
   }
  ],
  "place_idx": 0,
  "order": [
-  [
-   0.17,
-   -0.16
-  ],
-  [
-   0.33,
-   0.14
-  ],
   [
    0.29,
    0.19
