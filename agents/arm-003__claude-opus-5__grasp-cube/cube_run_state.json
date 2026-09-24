@@ -15136,14 +15136,52 @@
     "wrist_dark": 0.8955909090909091,
     "still_on_table": false
    }
+  },
+  {
+   "t": 1790276244.4836104,
+   "dur": 37.421262979507446,
+   "success": true,
+   "notes": [
+    "target=(0.172,0.094) yaw=141 roll=-40 tilt=0",
+    "servo_final=(0.193,0.102) converged=True",
+    "mid_ok=True",
+    "grasp_fk=(0.168,0.087,-0.013)",
+    "grip_pos=24.7 load=500",
+    "grip_pos_lifted=24.3",
+    "home_err_max=1.9 grip_home=24.3 wrist_dark=0.88 cube_on_table=False",
+    "placed_at=(0.329,0.137)"
+   ],
+   "recorded": true,
+   "folder": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260924T135726-d59e7c21",
+   "info": {
+    "grip": 24.28670842032011,
+    "wrist_dark": 0.8842727272727273,
+    "still_on_table": false
+   }
+  },
+  {
+   "t": 1790276281.9120085,
+   "dur": 32.66283416748047,
+   "success": false,
+   "notes": [
+    "target=(0.333,0.127) yaw=110 roll=-58 tilt=20",
+    "servo_final=(0.344,0.134) converged=True",
+    "mid0: not detected",
+    "mid_ok=False",
+    "grasp_fk=(0.338,0.144,-0.016)",
+    "grip_pos=0.4 load=36",
+    "grip_pos_lifted=0.4",
+    "gripper closed empty; retrying once",
+    "retry: cube not re-detected in reach",
+    "gripper closed empty; no grasp"
+   ],
+   "recorded": true,
+   "folder": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260924T135803-70d99eb6",
+   "info": {}
   }
  ],
  "place_idx": 0,
  "order": [
-  [
-   0.33,
-   0.14
-  ],
   [
    0.21,
    0.14
