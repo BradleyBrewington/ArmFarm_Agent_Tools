@@ -420,7 +420,9 @@ class Runner:
         while self.state["order"]:
             x, y = self.state["order"].pop(0)
             try:
-                if math.hypot(x - 0.0388, y) > 0.325:
+                # Keep placements a margin inside the graspable radius: a missed grasp out at r~0.32 can
+                # shove the cube past the rake's reach (~0.41), where nothing on the arm can recover it.
+                if math.hypot(x - 0.0388, y) > 0.305:
                     raise ValueError("too far")
                 ik_reach(x, y, PLACE_Z, ROLL_NEUTRAL)
                 px = self.tmap.robot_to_pixel((x, y))
