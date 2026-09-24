@@ -12840,18 +12840,63 @@
     "wrist_dark": 0.8888636363636364,
     "still_on_table": false
    }
+  },
+  {
+   "t": 1790271877.0056176,
+   "dur": 78.45621657371521,
+   "success": true,
+   "notes": [
+    "target=(0.263,0.085) yaw=-168 roll=-65 tilt=0",
+    "servo_final=(0.277,0.090) converged=True",
+    "mid_ok=True",
+    "grasp_fk=(0.254,0.099,-0.013)",
+    "grip_pos=0.6 load=44",
+    "grip_pos_lifted=0.4",
+    "gripper closed empty; retrying once",
+    "target=(0.293,0.084) yaw=165 roll=-0 tilt=10",
+    "servo_final=(0.314,0.103) converged=True",
+    "roll_after_yaw_fix=7",
+    "mid_ok=True",
+    "grasp_fk=(0.297,0.086,-0.015)",
+    "grip_pos=22.1 load=500",
+    "grip_pos_lifted=21.8",
+    "home_err_max=1.9 grip_home=21.8 wrist_dark=0.91 cube_on_table=False",
+    "placed_at=(0.172,-0.159)"
+   ],
+   "recorded": true,
+   "folder": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260924T124438-9f1d2597",
+   "info": {
+    "grip": 21.781489213639528,
+    "wrist_dark": 0.9140681818181818,
+    "still_on_table": false
+   }
+  },
+  {
+   "t": 1790271955.4678795,
+   "dur": 29.047245502471924,
+   "success": true,
+   "notes": [
+    "target=(0.169,-0.162) yaw=159 roll=-26 tilt=0",
+    "servo: correction exceeded safety bounds; aborting servo",
+    "servo_final=(0.169,-0.162) converged=False",
+    "mid_ok=True",
+    "grasp_fk=(0.169,-0.162,-0.014)",
+    "grip_pos=23.7 load=500",
+    "grip_pos_lifted=22.1",
+    "home_err_max=1.9 grip_home=22.1 wrist_dark=0.89 cube_on_table=False",
+    "placed_at=(0.328,-0.012)"
+   ],
+   "recorded": true,
+   "folder": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260924T124557-43846661",
+   "info": {
+    "grip": 22.129436325678498,
+    "wrist_dark": 0.8893409090909091,
+    "still_on_table": false
+   }
   }
  ],
  "place_idx": 0,
  "order": [
-  [
-   0.17,
-   -0.16
-  ],
-  [
-   0.33,
-   -0.01
-  ],
   [
    0.29,
    0.04
