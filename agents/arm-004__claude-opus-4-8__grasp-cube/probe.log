@@ -1,0 +1,16 @@
+map 0.08 0.14 px 988.683281613654 116.19084561675717
+[stop] shoulder_lift: physical stop at 34.33; holding 33.83 and treating above as unreachable for this run.
+-0.03 -0.03 -0.0576 
+[stop] elbow_flex: physical stop at 84.79; holding 84.29 and treating above as unreachable for this run.
+-0.03 -0.015 -0.0679 
+[stop] shoulder_lift: physical stop at 24.84; holding 24.34 and treating above as unreachable for this run.
+[stop] wrist_flex: physical stop at -14.99; holding -15.49 and treating above as unreachable for this run.
+-0.03 0.0 -0.0699 
+[stop] elbow_flex: physical stop at 72.84; holding 72.34 and treating above as unreachable for this run.
+Traceback (most recent call last):
+  File "/var/lib/armfarm/stations/armfarm/workspace/work/t_probe.py", line 12, in <module>
+    arm.goto(b,x,y,-0.015,roll=83.4,speed=15,correct=0); time.sleep(0.3)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/lib/armfarm/stations/armfarm/workspace/work/arm.py", line 69, in goto
+    raise ValueError(f"IK miss {err*1000:.1f} mm at {tuple(aim)}")
+ValueError: IK miss 9.5 mm at (np.float64(0.05), np.float64(0.15500000000000003), np.float64(-0.015))

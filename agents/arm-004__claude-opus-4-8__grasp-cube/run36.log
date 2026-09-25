@@ -1,0 +1,100 @@
+21:15:33 episode 0: cube at (0.144,0.111) yaw=62
+21:15:41 grasp cube=(0.144,0.111) yaw=62.3 roll=114.8 tool=(0.172,0.100)
+21:15:48 low at [0.1737, 0.1006, -0.0067]
+21:15:56 episode 0: success=True (22s) ['attempt 1: grip=23.8', 'at home gripper=23.8 wrist_dark=0.99']
+21:15:56 place cube=(0.244,0.000) tool=(0.255,-0.028) roll=114.8
+21:16:08 stats {'succ': 1, 'fail': 0}
+21:16:08 episode 1: cube at (0.250,-0.002) yaw=14
+21:16:15 grasp cube=(0.250,-0.002) yaw=14.4 roll=115.4 tool=(0.261,-0.030)
+21:16:21 low at [0.2559, -0.0293, -0.0112]
+21:16:29 episode 1: success=True (21s) ['attempt 1: grip=25.7', 'at home gripper=25.7 wrist_dark=0.96']
+21:16:29 place cube=(0.211,0.053) tool=(0.230,0.030) roll=115.4
+21:16:41 stats {'succ': 2, 'fail': 0}
+21:16:41 episode 2: cube at (0.222,0.046) yaw=28
+21:16:48 grasp cube=(0.222,0.046) yaw=27.7 roll=116.8 tool=(0.240,0.022)
+21:16:54 low at [0.2382, 0.0214, -0.0093]
+21:17:03 episode 2: success=True (21s) ['attempt 1: grip=25.2', 'at home gripper=25.2 wrist_dark=0.98']
+21:17:03 place cube=(0.161,0.146) tool=(0.190,0.137) roll=116.8
+21:17:15 stats {'succ': 3, 'fail': 0}
+21:17:15 pull_in from r=0.196 ang=48.9
+21:17:43 episode 3: cube at (0.163,0.128) yaw=33
+21:17:50 grasp cube=(0.163,0.128) yaw=32.6 roll=91.3 tool=(0.184,0.106)
+21:17:56 low at [0.1838, 0.1066, -0.0083]
+21:18:04 episode 3: success=True (21s) ['attempt 1: grip=23.4', 'at home gripper=23.4 wrist_dark=0.95']
+21:18:04 place cube=(0.234,-0.063) tool=(0.224,-0.092) roll=91.3
+21:18:16 stats {'succ': 4, 'fail': 0}
+21:18:16 episode 4: cube at (0.229,-0.064) yaw=62
+21:18:22 grasp cube=(0.229,-0.064) yaw=62.0 roll=94.6 tool=(0.220,-0.092)
+21:18:28 low at [0.2211, -0.0929, -0.0077]
+21:18:37 episode 4: success=True (21s) ['attempt 1: grip=23.4', 'at home gripper=23.4 wrist_dark=0.98']
+21:18:37 place cube=(0.176,0.092) tool=(0.193,0.068) roll=94.6
+21:18:48 stats {'succ': 5, 'fail': 0}
+21:18:48 episode 5: cube at (0.181,0.087) yaw=22
+21:18:54 grasp cube=(0.181,0.087) yaw=22.0 roll=94.1 tool=(0.197,0.062)
+21:19:01 low at [0.1987, 0.0622, -0.0074]
+21:19:09 episode 5: success=True (21s) ['attempt 1: grip=23.3', 'at home gripper=23.3 wrist_dark=0.97']
+21:19:09 place cube=(0.235,0.060) tool=(0.244,0.031) roll=94.1
+21:19:21 stats {'succ': 6, 'fail': 0}
+21:19:21 episode 6: cube at (0.233,0.052) yaw=10
+21:19:28 grasp cube=(0.233,0.052) yaw=10.1 roll=92.6 tool=(0.241,0.023)
+21:19:34 low at [0.2419, 0.0231, -0.0068]
+21:19:42 episode 6: success=True (21s) ['attempt 1: grip=23.3', 'at home gripper=23.3 wrist_dark=0.96']
+21:19:43 place cube=(0.186,-0.103) tool=(0.169,-0.128) roll=92.6
+21:19:53 stats {'succ': 7, 'fail': 0}
+21:19:54 episode 7: cube at (0.184,-0.106) yaw=45
+21:20:00 grasp cube=(0.184,-0.106) yaw=45.3 roll=90.9 tool=(0.165,-0.130)
+21:20:06 low at [0.1643, -0.1297, -0.0082]
+21:20:14 episode 7: success=True (21s) ['attempt 1: grip=23.4', 'at home gripper=23.4 wrist_dark=0.99']
+21:20:15 place cube=(0.129,0.107) tool=(0.151,0.087) roll=90.9
+21:20:26 stats {'succ': 8, 'fail': 0}
+21:20:26 episode 8: cube at (0.135,0.109) yaw=26
+21:20:30 grasp cube=(0.135,0.109) yaw=26.2 roll=83.4 tool=(0.154,0.086)
+21:20:36 low at [0.1508, 0.0828, -0.0105]
+21:20:44 episode 8: success=True (18s) ['attempt 1: grip=23.6', 'at home gripper=23.6 wrist_dark=0.96']
+21:20:44 place cube=(0.187,0.045) tool=(0.191,0.016) roll=83.4
+21:20:55 stats {'succ': 9, 'fail': 0}
+21:20:55 episode 9: cube at (0.189,0.036) yaw=87
+21:20:59 grasp cube=(0.189,0.036) yaw=87.4 roll=83.4 tool=(0.191,0.006)
+21:21:06 low at [0.1879, 0.0054, -0.0091]
+21:21:14 episode 9: success=True (18s) ['attempt 1: grip=23.7', 'at home gripper=23.7 wrist_dark=0.98']
+21:21:14 place cube=(0.196,0.106) tool=(0.209,0.079) roll=83.4
+21:21:26 stats {'succ': 10, 'fail': 0}
+21:21:26 episode 10: cube at (0.193,0.103) yaw=9
+21:21:31 error during episode: ConnectionError("Failed to sync read 'Present_Position' on ids=[1, 2, 3, 4, 5] after 1 tries. [TxRxResult] There is no status packet!")
+21:21:31 episode 10: success=False (5s) ['error: ConnectionError("Failed to sync read \'Present_Position\' on ids=[1, 2, 3, 4, 5] after 1 tries. [TxRxResult] There is no status packet!")']
+21:21:31 stats {'succ': 10, 'fail': 1}
+21:21:31 episode 11: cube at (0.193,0.103) yaw=9
+21:21:36 grasp cube=(0.193,0.103) yaw=9.3 roll=76.3 tool=(0.202,0.074)
+21:21:40 low at [0.2049, 0.0747, -0.008]
+21:21:46 error during episode: ConnectionError("Failed to sync read 'Present_Position' on ids=[1, 2, 3, 4] after 1 tries. [TxRxResult] There is no status packet!")
+21:21:48 episode 11: success=False (17s) ['attempt 1: grip=23.4', 'error: ConnectionError("Failed to sync read \'Present_Position\' on ids=[1, 2, 3, 4] after 1 tries. [TxRxResult] There is no status packet!")']
+21:21:48 place cube=(0.186,-0.048) tool=(0.169,-0.073) roll=76.3
+21:21:58 stats {'succ': 10, 'fail': 2}
+21:21:58 episode 12: cube at (0.180,-0.051) yaw=43
+21:22:04 grasp cube=(0.180,-0.051) yaw=42.9 roll=76.5 tool=(0.162,-0.076)
+21:22:11 low at [0.158, -0.0744, -0.0106]
+21:22:19 episode 12: success=True (21s) ['attempt 1: grip=23.9', 'at home gripper=23.9 wrist_dark=0.99']
+21:22:19 place cube=(0.155,0.078) tool=(0.164,0.050) roll=76.5
+21:22:30 stats {'succ': 11, 'fail': 2}
+21:22:30 episode 13: cube at (0.158,0.079) yaw=3
+21:22:31 episode 13: interrupted, recording closed as failure
+Traceback (most recent call last):
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/run_episodes.py", line 228, in <module>
+    main()
+    ~~~~^^
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/run_episodes.py", line 218, in main
+    r = episode(b, i, stats, done_counts)
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/run_episodes.py", line 159, in episode
+    g = grasp.grasp(b, cx, cy, yaw, log=log)
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/../tools/grasp.py", line 83, in grasp
+    arm.gripper(b, OPEN)
+    ~~~~~~~~~~~^^^^^^^^^
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/arm.py", line 84, in gripper
+    q, err, ang = kin.ik_down(*aim, pitch_deg=pitch)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/calibrate_workspace.py", line 1433, in move
+    time.sleep(.02)
+    ~~~~~~~~~~^^^^^
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/run_episodes.py", line 35, in _on_term
+    raise Interrupted(f'signal {signum}')
+Interrupted: signal 15

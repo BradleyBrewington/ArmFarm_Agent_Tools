@@ -1,0 +1,59 @@
+12:44:41 episode 0: cube at (0.227,0.020) yaw=43
+12:44:50 grasp cube=(0.227,0.020) yaw=42.6 roll=46.7 tool=(0.207,-0.003)
+12:44:58 low at [0.2061, -0.0039, -0.0086]
+12:45:12 grasp cube=(0.230,0.008) yaw=73.5 roll=78.0 tool=(0.224,-0.021)
+12:45:17 low at [0.2234, -0.0217, -0.01]
+12:45:31 grasp cube=(0.213,-0.010) yaw=78.2 roll=90.3 tool=(0.210,-0.039)
+12:45:36 low at [0.2103, -0.0406, -0.0102]
+12:45:45 episode 0: success=True (64s) ['attempt 1: grip=0.8', 'attempt 2: grip=0.8', 'attempt 3: grip=23.5', 'at home gripper=23.5 wrist_dark=0.98']
+12:45:45 place cube=(0.166,-0.089) tool=(0.148,-0.113) roll=90.3
+12:45:57 stats {'succ': 1, 'fail': 0}
+12:46:03 episode 1: cube at (0.164,-0.093) yaw=42
+12:46:07 grasp cube=(0.164,-0.093) yaw=41.5 roll=83.4 tool=(0.142,-0.114)
+12:46:12 low at [0.1416, -0.1157, -0.0093]
+12:46:20 episode 1: success=True (17s) ['attempt 1: grip=23.6', 'at home gripper=23.6 wrist_dark=1.00']
+12:46:21 place cube=(0.235,0.060) tool=(0.239,0.030) roll=83.4
+12:46:33 stats {'succ': 2, 'fail': 0}
+12:46:33 episode 2: cube at (0.227,0.058) yaw=88
+12:46:39 grasp cube=(0.227,0.058) yaw=88.5 roll=77.4 tool=(0.228,0.028)
+12:46:44 low at [0.2283, 0.0265, -0.01]
+12:46:58 grasp cube=(0.210,0.033) yaw=20.4 roll=105.6 tool=(0.222,0.006)
+12:47:04 low at [0.2229, 0.0053, -0.0101]
+12:47:13 episode 2: success=True (40s) ['attempt 1: grip=0.8', 'attempt 2: grip=23.7', 'at home gripper=23.7 wrist_dark=0.99']
+12:47:13 place cube=(0.161,0.146) tool=(0.188,0.132) roll=105.6
+12:47:25 stats {'succ': 3, 'fail': 0}
+12:47:25 episode 3: cube at (0.165,0.144) yaw=50
+12:47:31 grasp cube=(0.165,0.144) yaw=50.2 roll=101.6 tool=(0.190,0.128)
+12:47:36 low at [0.1916, 0.1284, -0.0105]
+12:47:44 episode 3: success=False (19s) ['attempt 1: grip=23.4', 'at home gripper=23.4 wrist_dark=0.30']
+12:47:44 place cube=(0.216,-0.102) tool=(0.206,-0.130) roll=101.6
+12:47:56 stats {'succ': 3, 'fail': 1}
+12:47:56 pull_in from r=0.243 ang=63.2
+12:48:35 pull_in from r=0.243 ang=63.2
+12:49:15 pull_in from r=0.242 ang=63.1
+Traceback (most recent call last):
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/run_episodes.py", line 228, in <module>
+    main()
+    ~~~~^^
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/run_episodes.py", line 218, in main
+    r = episode(b, i, stats, done_counts)
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/run_episodes.py", line 146, in episode
+    found = reachable_prep(b)
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/run_episodes.py", line 120, in reachable_prep
+    grasp.pull_in(b, cx, cy, r_end=0.16, log=log)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/../tools/grasp.py", line 144, in pull_in
+    x, y = xy(r); arm.goto(b, x, y, -0.012, pitch=pitch(r), speed=25, correct=1)
+                  ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/arm.py", line 92, in goto
+    move(b, q, speed if it == 0 else 30.0, min_s=0.6 if it == 0 else 0.3)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/arm.py", line 69, in move
+    cw.move(b, target, max(min_s, d / speed))
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/calibrate_workspace.py", line 1433, in move
+    time.sleep(.02)
+    ~~~~~~~~~~^^^^^
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/run_episodes.py", line 35, in _on_term
+    raise Interrupted(f'signal {signum}')
+Interrupted: signal 15

@@ -1,0 +1,28 @@
+13:33:01 push [0.144, 0.047] -> [0.212, 0.078]
+13:33:19 push [0.144, 0.046] -> [0.213, 0.077]
+13:33:37 push [0.144, 0.046] -> [0.213, 0.076]
+13:33:54 push [0.144, 0.046] -> [0.213, 0.076]
+13:34:12 episode 0: cube at (0.144,0.046) yaw=81
+13:34:17 grasp cube=(0.144,0.046) yaw=81.3 roll=72.9 tool=(0.146,0.016)
+13:34:18 error during episode: ValueError('refusing low target near the base: (np.float64(0.14561556490496003), np.float64(0.016001595867727123), 0.06)')
+13:34:19 episode 0: success=False (7s) ["error: ValueError('refusing low target near the base: (np.float64(0.14561556490496003), np.float64(0.016001595867727123), 0.06)')"]
+13:34:19 stats {'succ': 0, 'fail': 1}
+13:34:19 push [0.144, 0.046] -> [0.213, 0.077]
+13:34:35 push [0.144, 0.046] -> [0.213, 0.076]
+13:34:53 push [0.144, 0.046] -> [0.213, 0.076]
+13:35:10 push [0.144, 0.046] -> [0.213, 0.076]
+13:35:28 episode 1: cube at (0.144,0.046) yaw=81
+13:35:34 grasp cube=(0.144,0.046) yaw=81.4 roll=73.2 tool=(0.146,0.016)
+13:35:34 error during episode: ValueError('refusing low target near the base: (np.float64(0.14601126439661624), np.float64(0.016059726519947883), 0.06)')
+13:35:35 episode 1: success=False (7s) ["error: ValueError('refusing low target near the base: (np.float64(0.14601126439661624), np.float64(0.016059726519947883), 0.06)')"]
+13:35:35 stats {'succ': 0, 'fail': 2}
+13:35:35 push [0.144, 0.047] -> [0.213, 0.077]
+13:35:51 push [0.144, 0.046] -> [0.213, 0.076]
+13:36:09 push [0.144, 0.046] -> [0.213, 0.076]
+13:36:26 push [0.144, 0.046] -> [0.213, 0.076]
+13:36:44 episode 2: cube at (0.144,0.046) yaw=81
+13:36:50 grasp cube=(0.144,0.046) yaw=81.1 roll=73.2 tool=(0.146,0.016)
+13:36:50 error during episode: ValueError('refusing low target near the base: (np.float64(0.1458383202901449), np.float64(0.01603799248481649), 0.06)')
+13:36:51 episode 2: success=False (7s) ["error: ValueError('refusing low target near the base: (np.float64(0.1458383202901449), np.float64(0.01603799248481649), 0.06)')"]
+13:36:51 stats {'succ': 0, 'fail': 3}
+13:36:51 3 consecutive failures: stopping for inspection

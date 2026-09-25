@@ -1,0 +1,276 @@
+13:26:20 episode 0: cube at (0.146,0.049) yaw=67
+13:26:27 grasp cube=(0.146,0.049) yaw=67.2 roll=52.2 tool=(0.138,0.020)
+13:26:28 error during episode: ValueError('refusing low target near the base: (np.float64(0.1375893484367524), np.float64(0.01972116686344031), 0.06)')
+13:26:28 episode 0: success=False (8s) ["error: ValueError('refusing low target near the base: (np.float64(0.1375893484367524), np.float64(0.01972116686344031), 0.06)')"]
+13:26:28 stats {'succ': 0, 'fail': 1}
+13:26:28 episode 1: cube at (0.146,0.050) yaw=67
+13:26:34 grasp cube=(0.146,0.050) yaw=67.2 roll=52.2 tool=(0.138,0.021)
+13:26:34 error during episode: ValueError('refusing low target near the base: (np.float64(0.13797878078770823), np.float64(0.020907837450228742), 0.06)')
+13:26:35 episode 1: success=False (6s) ["error: ValueError('refusing low target near the base: (np.float64(0.13797878078770823), np.float64(0.020907837450228742), 0.06)')"]
+13:26:35 stats {'succ': 0, 'fail': 2}
+13:26:35 episode 2: cube at (0.146,0.050) yaw=67
+13:26:40 grasp cube=(0.146,0.050) yaw=67.4 roll=51.7 tool=(0.138,0.021)
+13:26:40 error during episode: ValueError('refusing low target near the base: (np.float64(0.13766790410962507), np.float64(0.0210251403534324), 0.06)')
+13:26:41 episode 2: success=False (6s) ["error: ValueError('refusing low target near the base: (np.float64(0.13766790410962507), np.float64(0.0210251403534324), 0.06)')"]
+13:26:41 stats {'succ': 0, 'fail': 3}
+13:26:41 episode 3: cube at (0.146,0.050) yaw=67
+13:26:46 grasp cube=(0.146,0.050) yaw=67.4 roll=52.7 tool=(0.138,0.021)
+13:26:47 error during episode: ValueError('refusing low target near the base: (np.float64(0.13824743859339472), np.float64(0.020887718290909206), 0.06)')
+13:26:47 episode 3: success=False (6s) ["error: ValueError('refusing low target near the base: (np.float64(0.13824743859339472), np.float64(0.020887718290909206), 0.06)')"]
+13:26:47 stats {'succ': 0, 'fail': 4}
+13:26:47 episode 4: cube at (0.146,0.050) yaw=67
+13:26:52 grasp cube=(0.146,0.050) yaw=67.4 roll=52.7 tool=(0.138,0.021)
+13:26:53 error during episode: ValueError('refusing low target near the base: (np.float64(0.1382599016030216), np.float64(0.020881990769417477), 0.06)')
+13:26:53 episode 4: success=False (6s) ["error: ValueError('refusing low target near the base: (np.float64(0.1382599016030216), np.float64(0.020881990769417477), 0.06)')"]
+13:26:53 stats {'succ': 0, 'fail': 5}
+13:26:53 episode 5: cube at (0.146,0.050) yaw=67
+13:26:58 grasp cube=(0.146,0.050) yaw=67.4 roll=51.7 tool=(0.138,0.021)
+13:26:59 error during episode: ValueError('refusing low target near the base: (np.float64(0.1377331028558226), np.float64(0.021034885169402294), 0.06)')
+13:26:59 episode 5: success=False (6s) ["error: ValueError('refusing low target near the base: (np.float64(0.1377331028558226), np.float64(0.021034885169402294), 0.06)')"]
+13:26:59 stats {'succ': 0, 'fail': 6}
+13:26:59 episode 6: cube at (0.146,0.050) yaw=67
+13:27:04 grasp cube=(0.146,0.050) yaw=67.4 roll=52.5 tool=(0.138,0.021)
+13:27:05 error during episode: ValueError('refusing low target near the base: (np.float64(0.1381009859729485), np.float64(0.020875633564698907), 0.06)')
+13:27:05 episode 6: success=False (6s) ["error: ValueError('refusing low target near the base: (np.float64(0.1381009859729485), np.float64(0.020875633564698907), 0.06)')"]
+13:27:05 stats {'succ': 0, 'fail': 7}
+13:27:05 episode 7: cube at (0.146,0.050) yaw=67
+13:27:10 grasp cube=(0.146,0.050) yaw=67.4 roll=51.9 tool=(0.138,0.021)
+13:27:11 error during episode: ValueError('refusing low target near the base: (np.float64(0.13783836172989294), np.float64(0.020985664650364014), 0.06)')
+13:27:11 episode 7: success=False (6s) ["error: ValueError('refusing low target near the base: (np.float64(0.13783836172989294), np.float64(0.020985664650364014), 0.06)')"]
+13:27:11 stats {'succ': 0, 'fail': 8}
+13:27:11 episode 8: cube at (0.146,0.050) yaw=67
+13:27:16 grasp cube=(0.146,0.050) yaw=67.2 roll=51.9 tool=(0.138,0.021)
+13:27:17 error during episode: ValueError('refusing low target near the base: (np.float64(0.1378281625745538), np.float64(0.02098717876015258), 0.06)')
+13:27:18 episode 8: success=False (6s) ["error: ValueError('refusing low target near the base: (np.float64(0.1378281625745538), np.float64(0.02098717876015258), 0.06)')"]
+13:27:18 stats {'succ': 0, 'fail': 9}
+13:27:18 episode 9: cube at (0.146,0.050) yaw=67
+13:27:23 grasp cube=(0.146,0.050) yaw=67.4 roll=50.9 tool=(0.137,0.021)
+13:27:23 error during episode: ValueError('refusing low target near the base: (np.float64(0.13730451531582052), np.float64(0.021144064419084067), 0.06)')
+13:27:24 episode 9: success=False (6s) ["error: ValueError('refusing low target near the base: (np.float64(0.13730451531582052), np.float64(0.021144064419084067), 0.06)')"]
+13:27:24 stats {'succ': 0, 'fail': 10}
+13:27:24 episode 10: cube at (0.146,0.050) yaw=67
+13:27:29 grasp cube=(0.146,0.050) yaw=67.2 roll=51.7 tool=(0.138,0.021)
+13:27:30 error during episode: ValueError('refusing low target near the base: (np.float64(0.13769991861383846), np.float64(0.02100559969184336), 0.06)')
+13:27:30 episode 10: success=False (6s) ["error: ValueError('refusing low target near the base: (np.float64(0.13769991861383846), np.float64(0.02100559969184336), 0.06)')"]
+13:27:30 stats {'succ': 0, 'fail': 11}
+13:27:30 episode 11: cube at (0.146,0.050) yaw=67
+13:27:35 grasp cube=(0.146,0.050) yaw=67.4 roll=52.7 tool=(0.138,0.021)
+13:27:36 error during episode: ValueError('refusing low target near the base: (np.float64(0.13831331042485168), np.float64(0.020879697432320533), 0.06)')
+13:27:36 episode 11: success=False (6s) ["error: ValueError('refusing low target near the base: (np.float64(0.13831331042485168), np.float64(0.020879697432320533), 0.06)')"]
+13:27:36 stats {'succ': 0, 'fail': 12}
+13:27:36 episode 12: cube at (0.146,0.050) yaw=67
+13:27:41 grasp cube=(0.146,0.050) yaw=67.4 roll=51.4 tool=(0.138,0.021)
+13:27:42 error during episode: ValueError('refusing low target near the base: (np.float64(0.13761335807256903), np.float64(0.021044023202023796), 0.06)')
+13:27:42 episode 12: success=False (6s) ["error: ValueError('refusing low target near the base: (np.float64(0.13761335807256903), np.float64(0.021044023202023796), 0.06)')"]
+13:27:42 stats {'succ': 0, 'fail': 13}
+13:27:42 episode 13: cube at (0.146,0.050) yaw=68
+13:27:47 grasp cube=(0.146,0.050) yaw=67.7 roll=52.5 tool=(0.138,0.021)
+13:27:48 error during episode: ValueError('refusing low target near the base: (np.float64(0.13811899422264742), np.float64(0.020898242479820826), 0.06)')
+13:27:48 episode 13: success=False (6s) ["error: ValueError('refusing low target near the base: (np.float64(0.13811899422264742), np.float64(0.020898242479820826), 0.06)')"]
+13:27:48 stats {'succ': 0, 'fail': 14}
+13:27:48 episode 14: cube at (0.146,0.050) yaw=67
+13:27:53 grasp cube=(0.146,0.050) yaw=67.4 roll=52.1 tool=(0.138,0.021)
+13:27:54 error during episode: ValueError('refusing low target near the base: (np.float64(0.1378770788738397), np.float64(0.020934362701631896), 0.06)')
+13:27:54 episode 14: success=False (6s) ["error: ValueError('refusing low target near the base: (np.float64(0.1378770788738397), np.float64(0.020934362701631896), 0.06)')"]
+13:27:54 stats {'succ': 0, 'fail': 15}
+13:27:54 episode 15: cube at (0.146,0.050) yaw=67
+13:27:59 grasp cube=(0.146,0.050) yaw=67.4 roll=51.7 tool=(0.138,0.021)
+13:28:00 error during episode: ValueError('refusing low target near the base: (np.float64(0.13762568303777956), np.float64(0.020992377932783156), 0.06)')
+13:28:00 episode 15: success=False (6s) ["error: ValueError('refusing low target near the base: (np.float64(0.13762568303777956), np.float64(0.020992377932783156), 0.06)')"]
+13:28:00 stats {'succ': 0, 'fail': 16}
+13:28:00 episode 16: cube at (0.146,0.050) yaw=67
+13:28:06 grasp cube=(0.146,0.050) yaw=67.2 roll=52.1 tool=(0.138,0.021)
+13:28:06 error during episode: ValueError('refusing low target near the base: (np.float64(0.1379483783356219), np.float64(0.020947459298648562), 0.06)')
+13:28:07 episode 16: success=False (6s) ["error: ValueError('refusing low target near the base: (np.float64(0.1379483783356219), np.float64(0.020947459298648562), 0.06)')"]
+13:28:07 stats {'succ': 0, 'fail': 17}
+13:28:07 episode 17: cube at (0.146,0.050) yaw=67
+13:28:12 grasp cube=(0.146,0.050) yaw=67.2 roll=51.7 tool=(0.138,0.021)
+13:28:12 error during episode: ValueError('refusing low target near the base: (np.float64(0.13763291608753533), np.float64(0.021006408106349947), 0.06)')
+13:28:13 episode 17: success=False (6s) ["error: ValueError('refusing low target near the base: (np.float64(0.13763291608753533), np.float64(0.021006408106349947), 0.06)')"]
+13:28:13 stats {'succ': 0, 'fail': 18}
+13:28:13 episode 18: cube at (0.146,0.050) yaw=67
+13:28:18 grasp cube=(0.146,0.050) yaw=67.2 roll=51.6 tool=(0.138,0.021)
+13:28:19 error during episode: ValueError('refusing low target near the base: (np.float64(0.13769472716112663), np.float64(0.021024091035494227), 0.06)')
+13:28:19 episode 18: success=False (6s) ["error: ValueError('refusing low target near the base: (np.float64(0.13769472716112663), np.float64(0.021024091035494227), 0.06)')"]
+13:28:19 stats {'succ': 0, 'fail': 19}
+13:28:19 episode 19: cube at (0.146,0.050) yaw=67
+13:28:24 grasp cube=(0.146,0.050) yaw=67.4 roll=52.2 tool=(0.138,0.021)
+13:28:25 error during episode: ValueError('refusing low target near the base: (np.float64(0.13795644744113422), np.float64(0.020925470653556218), 0.06)')
+13:28:25 episode 19: success=False (6s) ["error: ValueError('refusing low target near the base: (np.float64(0.13795644744113422), np.float64(0.020925470653556218), 0.06)')"]
+13:28:25 stats {'succ': 0, 'fail': 20}
+13:28:25 episode 20: cube at (0.146,0.050) yaw=67
+13:28:30 grasp cube=(0.146,0.050) yaw=67.2 roll=51.7 tool=(0.138,0.021)
+13:28:31 error during episode: ValueError('refusing low target near the base: (np.float64(0.13766121821072547), np.float64(0.021033512104813898), 0.06)')
+13:28:31 episode 20: success=False (6s) ["error: ValueError('refusing low target near the base: (np.float64(0.13766121821072547), np.float64(0.021033512104813898), 0.06)')"]
+13:28:31 stats {'succ': 0, 'fail': 21}
+13:28:31 episode 21: cube at (0.146,0.050) yaw=67
+13:28:36 grasp cube=(0.146,0.050) yaw=67.4 roll=52.1 tool=(0.138,0.021)
+13:28:37 error during episode: ValueError('refusing low target near the base: (np.float64(0.1378933786393373), np.float64(0.020930927463786688), 0.06)')
+13:28:37 episode 21: success=False (6s) ["error: ValueError('refusing low target near the base: (np.float64(0.1378933786393373), np.float64(0.020930927463786688), 0.06)')"]
+13:28:37 stats {'succ': 0, 'fail': 22}
+13:28:37 episode 22: cube at (0.146,0.050) yaw=68
+13:28:42 grasp cube=(0.146,0.050) yaw=67.7 roll=51.7 tool=(0.138,0.021)
+13:28:43 error during episode: ValueError('refusing low target near the base: (np.float64(0.13765405140680192), np.float64(0.02100937948252614), 0.06)')
+13:28:43 episode 22: success=False (6s) ["error: ValueError('refusing low target near the base: (np.float64(0.13765405140680192), np.float64(0.02100937948252614), 0.06)')"]
+13:28:43 stats {'succ': 0, 'fail': 23}
+13:28:44 episode 23: cube at (0.146,0.050) yaw=67
+13:28:49 grasp cube=(0.146,0.050) yaw=67.4 roll=51.7 tool=(0.138,0.021)
+13:28:49 error during episode: ValueError('refusing low target near the base: (np.float64(0.13770992866954304), np.float64(0.021025558494063023), 0.06)')
+13:28:50 episode 23: success=False (6s) ["error: ValueError('refusing low target near the base: (np.float64(0.13770992866954304), np.float64(0.021025558494063023), 0.06)')"]
+13:28:50 stats {'succ': 0, 'fail': 24}
+13:28:50 episode 24: cube at (0.146,0.050) yaw=67
+13:28:55 grasp cube=(0.146,0.050) yaw=67.4 roll=52.5 tool=(0.138,0.021)
+13:28:55 error during episode: ValueError('refusing low target near the base: (np.float64(0.13814094097047025), np.float64(0.02091284595721444), 0.06)')
+13:28:56 episode 24: success=False (6s) ["error: ValueError('refusing low target near the base: (np.float64(0.13814094097047025), np.float64(0.02091284595721444), 0.06)')"]
+13:28:56 stats {'succ': 0, 'fail': 25}
+13:28:56 episode 25: cube at (0.146,0.050) yaw=67
+13:29:01 grasp cube=(0.146,0.050) yaw=67.4 roll=52.0 tool=(0.138,0.021)
+13:29:02 error during episode: ValueError('refusing low target near the base: (np.float64(0.13782338779959816), np.float64(0.02094980999275609), 0.06)')
+13:29:02 episode 25: success=False (6s) ["error: ValueError('refusing low target near the base: (np.float64(0.13782338779959816), np.float64(0.02094980999275609), 0.06)')"]
+13:29:02 stats {'succ': 0, 'fail': 26}
+13:29:02 episode 26: cube at (0.146,0.050) yaw=67
+13:29:07 grasp cube=(0.146,0.050) yaw=67.2 roll=52.2 tool=(0.138,0.021)
+13:29:08 error during episode: ValueError('refusing low target near the base: (np.float64(0.13799246287976277), np.float64(0.020944453260586502), 0.06)')
+13:29:08 episode 26: success=False (6s) ["error: ValueError('refusing low target near the base: (np.float64(0.13799246287976277), np.float64(0.020944453260586502), 0.06)')"]
+13:29:08 stats {'succ': 0, 'fail': 27}
+13:29:08 episode 27: cube at (0.146,0.050) yaw=67
+13:29:13 grasp cube=(0.146,0.050) yaw=67.4 roll=52.0 tool=(0.138,0.021)
+13:29:14 error during episode: ValueError('refusing low target near the base: (np.float64(0.1377967655049584), np.float64(0.020992695418379552), 0.06)')
+13:29:14 episode 27: success=False (6s) ["error: ValueError('refusing low target near the base: (np.float64(0.1377967655049584), np.float64(0.020992695418379552), 0.06)')"]
+13:29:14 stats {'succ': 0, 'fail': 28}
+13:29:14 episode 28: cube at (0.146,0.050) yaw=67
+13:29:19 grasp cube=(0.146,0.050) yaw=67.4 roll=52.2 tool=(0.138,0.021)
+13:29:20 error during episode: ValueError('refusing low target near the base: (np.float64(0.13801307231199889), np.float64(0.020915620653685945), 0.06)')
+13:29:20 episode 28: success=False (6s) ["error: ValueError('refusing low target near the base: (np.float64(0.13801307231199889), np.float64(0.020915620653685945), 0.06)')"]
+13:29:20 stats {'succ': 0, 'fail': 29}
+13:29:20 episode 29: cube at (0.146,0.050) yaw=68
+13:29:25 grasp cube=(0.146,0.050) yaw=67.8 roll=51.7 tool=(0.138,0.021)
+13:29:26 error during episode: ValueError('refusing low target near the base: (np.float64(0.13769602523798166), np.float64(0.021013963910280643), 0.06)')
+13:29:26 episode 29: success=False (6s) ["error: ValueError('refusing low target near the base: (np.float64(0.13769602523798166), np.float64(0.021013963910280643), 0.06)')"]
+13:29:26 stats {'succ': 0, 'fail': 30}
+13:29:26 episode 30: cube at (0.146,0.050) yaw=67
+13:29:31 grasp cube=(0.146,0.050) yaw=67.2 roll=52.2 tool=(0.138,0.021)
+13:29:32 error during episode: ValueError('refusing low target near the base: (np.float64(0.13799423440270878), np.float64(0.020972966673127206), 0.06)')
+13:29:33 episode 30: success=False (6s) ["error: ValueError('refusing low target near the base: (np.float64(0.13799423440270878), np.float64(0.020972966673127206), 0.06)')"]
+13:29:33 stats {'succ': 0, 'fail': 31}
+13:29:33 episode 31: cube at (0.146,0.050) yaw=67
+13:29:38 grasp cube=(0.146,0.050) yaw=67.4 roll=52.0 tool=(0.138,0.021)
+13:29:38 error during episode: ValueError('refusing low target near the base: (np.float64(0.13787314744692275), np.float64(0.020970883511753913), 0.06)')
+13:29:39 episode 31: success=False (6s) ["error: ValueError('refusing low target near the base: (np.float64(0.13787314744692275), np.float64(0.020970883511753913), 0.06)')"]
+13:29:39 stats {'succ': 0, 'fail': 32}
+13:29:39 episode 32: cube at (0.146,0.050) yaw=67
+13:29:44 grasp cube=(0.146,0.050) yaw=67.4 roll=52.1 tool=(0.138,0.021)
+13:29:45 error during episode: ValueError('refusing low target near the base: (np.float64(0.1379613826814265), np.float64(0.020957849710001267), 0.06)')
+13:29:45 episode 32: success=False (6s) ["error: ValueError('refusing low target near the base: (np.float64(0.1379613826814265), np.float64(0.020957849710001267), 0.06)')"]
+13:29:45 stats {'succ': 0, 'fail': 33}
+13:29:45 episode 33: cube at (0.146,0.050) yaw=67
+13:29:50 grasp cube=(0.146,0.050) yaw=67.2 roll=53.0 tool=(0.138,0.021)
+13:29:51 error during episode: ValueError('refusing low target near the base: (np.float64(0.1383835457247806), np.float64(0.02081749404037945), 0.06)')
+13:29:51 episode 33: success=False (6s) ["error: ValueError('refusing low target near the base: (np.float64(0.1383835457247806), np.float64(0.02081749404037945), 0.06)')"]
+13:29:51 stats {'succ': 0, 'fail': 34}
+13:29:51 episode 34: cube at (0.146,0.050) yaw=67
+13:29:56 grasp cube=(0.146,0.050) yaw=67.4 roll=51.9 tool=(0.138,0.021)
+13:29:57 error during episode: ValueError('refusing low target near the base: (np.float64(0.13783480744298535), np.float64(0.020987017647870615), 0.06)')
+13:29:57 episode 34: success=False (6s) ["error: ValueError('refusing low target near the base: (np.float64(0.13783480744298535), np.float64(0.020987017647870615), 0.06)')"]
+13:29:57 stats {'succ': 0, 'fail': 35}
+13:29:57 episode 35: cube at (0.146,0.050) yaw=67
+13:30:02 grasp cube=(0.146,0.050) yaw=67.2 roll=52.1 tool=(0.138,0.021)
+13:30:03 error during episode: ValueError('refusing low target near the base: (np.float64(0.13795848819292797), np.float64(0.020968283944821642), 0.06)')
+13:30:03 episode 35: success=False (6s) ["error: ValueError('refusing low target near the base: (np.float64(0.13795848819292797), np.float64(0.020968283944821642), 0.06)')"]
+13:30:03 stats {'succ': 0, 'fail': 36}
+13:30:03 episode 36: cube at (0.146,0.050) yaw=67
+13:30:08 grasp cube=(0.146,0.050) yaw=67.4 roll=51.7 tool=(0.138,0.021)
+13:30:09 error during episode: ValueError('refusing low target near the base: (np.float64(0.13762639420963493), np.float64(0.0210151096764102), 0.06)')
+13:30:09 episode 36: success=False (6s) ["error: ValueError('refusing low target near the base: (np.float64(0.13762639420963493), np.float64(0.0210151096764102), 0.06)')"]
+13:30:09 stats {'succ': 0, 'fail': 37}
+13:30:09 episode 37: cube at (0.146,0.050) yaw=67
+13:30:14 grasp cube=(0.146,0.050) yaw=67.4 roll=51.9 tool=(0.138,0.021)
+13:30:15 error during episode: ValueError('refusing low target near the base: (np.float64(0.13784593563835332), np.float64(0.020986406834357426), 0.06)')
+13:30:15 episode 37: success=False (6s) ["error: ValueError('refusing low target near the base: (np.float64(0.13784593563835332), np.float64(0.020986406834357426), 0.06)')"]
+13:30:15 stats {'succ': 0, 'fail': 38}
+13:30:15 episode 38: cube at (0.146,0.050) yaw=67
+13:30:20 grasp cube=(0.146,0.050) yaw=67.4 roll=51.9 tool=(0.138,0.021)
+13:30:21 error during episode: ValueError('refusing low target near the base: (np.float64(0.13782001096080995), np.float64(0.02097419035744002), 0.06)')
+13:30:21 episode 38: success=False (6s) ["error: ValueError('refusing low target near the base: (np.float64(0.13782001096080995), np.float64(0.02097419035744002), 0.06)')"]
+13:30:21 stats {'succ': 0, 'fail': 39}
+13:30:22 episode 39: cube at (0.146,0.050) yaw=67
+13:30:27 grasp cube=(0.146,0.050) yaw=67.4 roll=52.1 tool=(0.138,0.021)
+13:30:27 error during episode: ValueError('refusing low target near the base: (np.float64(0.13798966961934342), np.float64(0.02095712073228806), 0.06)')
+13:30:28 episode 39: success=False (6s) ["error: ValueError('refusing low target near the base: (np.float64(0.13798966961934342), np.float64(0.02095712073228806), 0.06)')"]
+13:30:28 stats {'succ': 0, 'fail': 40}
+13:30:28 episode 40: cube at (0.146,0.050) yaw=67
+13:30:33 grasp cube=(0.146,0.050) yaw=67.4 roll=52.1 tool=(0.138,0.021)
+13:30:33 error during episode: ValueError('refusing low target near the base: (np.float64(0.13796665095342417), np.float64(0.020941145135719423), 0.06)')
+13:30:34 episode 40: success=False (6s) ["error: ValueError('refusing low target near the base: (np.float64(0.13796665095342417), np.float64(0.020941145135719423), 0.06)')"]
+13:30:34 stats {'succ': 0, 'fail': 41}
+13:30:34 episode 41: cube at (0.146,0.050) yaw=67
+13:30:39 grasp cube=(0.146,0.050) yaw=67.2 roll=52.2 tool=(0.138,0.021)
+13:30:40 error during episode: ValueError('refusing low target near the base: (np.float64(0.13799987437877945), np.float64(0.02093881400954531), 0.06)')
+13:30:40 episode 41: success=False (6s) ["error: ValueError('refusing low target near the base: (np.float64(0.13799987437877945), np.float64(0.02093881400954531), 0.06)')"]
+13:30:40 stats {'succ': 0, 'fail': 42}
+13:30:40 episode 42: cube at (0.146,0.050) yaw=67
+13:30:45 grasp cube=(0.146,0.050) yaw=67.2 roll=52.5 tool=(0.138,0.021)
+13:30:46 error during episode: ValueError('refusing low target near the base: (np.float64(0.13813246596262826), np.float64(0.020914837821856217), 0.06)')
+13:30:46 episode 42: success=False (6s) ["error: ValueError('refusing low target near the base: (np.float64(0.13813246596262826), np.float64(0.020914837821856217), 0.06)')"]
+13:30:46 stats {'succ': 0, 'fail': 43}
+13:30:46 episode 43: cube at (0.146,0.050) yaw=67
+13:30:51 grasp cube=(0.146,0.050) yaw=67.4 roll=52.2 tool=(0.138,0.021)
+13:30:52 error during episode: ValueError('refusing low target near the base: (np.float64(0.1379220369744383), np.float64(0.02096056620429414), 0.06)')
+13:30:52 episode 43: success=False (6s) ["error: ValueError('refusing low target near the base: (np.float64(0.1379220369744383), np.float64(0.02096056620429414), 0.06)')"]
+13:30:52 stats {'succ': 0, 'fail': 44}
+13:30:52 episode 44: cube at (0.146,0.050) yaw=67
+13:30:57 grasp cube=(0.146,0.050) yaw=67.4 roll=51.6 tool=(0.138,0.021)
+13:30:58 error during episode: ValueError('refusing low target near the base: (np.float64(0.1376033582601785), np.float64(0.021021354717359598), 0.06)')
+13:30:58 episode 44: success=False (6s) ["error: ValueError('refusing low target near the base: (np.float64(0.1376033582601785), np.float64(0.021021354717359598), 0.06)')"]
+13:30:58 stats {'succ': 0, 'fail': 45}
+13:30:58 episode 45: cube at (0.146,0.050) yaw=67
+13:31:03 grasp cube=(0.146,0.050) yaw=67.2 roll=52.8 tool=(0.138,0.021)
+13:31:04 error during episode: ValueError('refusing low target near the base: (np.float64(0.13828605593986726), np.float64(0.02087138898400229), 0.06)')
+13:31:04 episode 45: success=False (6s) ["error: ValueError('refusing low target near the base: (np.float64(0.13828605593986726), np.float64(0.02087138898400229), 0.06)')"]
+13:31:04 stats {'succ': 0, 'fail': 46}
+13:31:04 episode 46: cube at (0.146,0.050) yaw=67
+13:31:09 grasp cube=(0.146,0.050) yaw=67.4 roll=51.6 tool=(0.138,0.021)
+13:31:10 error during episode: ValueError('refusing low target near the base: (np.float64(0.13773007694083372), np.float64(0.021042983780050917), 0.06)')
+13:31:10 episode 46: success=False (6s) ["error: ValueError('refusing low target near the base: (np.float64(0.13773007694083372), np.float64(0.021042983780050917), 0.06)')"]
+13:31:10 stats {'succ': 0, 'fail': 47}
+13:31:10 episode 47: cube at (0.146,0.050) yaw=67
+13:31:15 grasp cube=(0.146,0.050) yaw=67.4 roll=52.7 tool=(0.138,0.021)
+13:31:16 error during episode: ValueError('refusing low target near the base: (np.float64(0.13827302745976944), np.float64(0.020883518770242412), 0.06)')
+13:31:16 episode 47: success=False (6s) ["error: ValueError('refusing low target near the base: (np.float64(0.13827302745976944), np.float64(0.020883518770242412), 0.06)')"]
+13:31:16 stats {'succ': 0, 'fail': 48}
+13:31:16 episode 48: cube at (0.146,0.050) yaw=67
+13:31:21 grasp cube=(0.146,0.050) yaw=67.4 roll=52.0 tool=(0.138,0.021)
+13:31:22 error during episode: ValueError('refusing low target near the base: (np.float64(0.13787653116577536), np.float64(0.02096769015913906), 0.06)')
+13:31:23 episode 48: success=False (6s) ["error: ValueError('refusing low target near the base: (np.float64(0.13787653116577536), np.float64(0.02096769015913906), 0.06)')"]
+13:31:23 stats {'succ': 0, 'fail': 49}
+13:31:23 episode 49: cube at (0.146,0.050) yaw=67
+13:31:28 grasp cube=(0.146,0.050) yaw=67.4 roll=52.0 tool=(0.138,0.021)
+13:31:28 error during episode: ValueError('refusing low target near the base: (np.float64(0.13792703914571627), np.float64(0.02099360305113745), 0.06)')
+13:31:29 episode 49: success=False (6s) ["error: ValueError('refusing low target near the base: (np.float64(0.13792703914571627), np.float64(0.02099360305113745), 0.06)')"]
+13:31:29 stats {'succ': 0, 'fail': 50}
+13:31:29 episode 50: cube at (0.146,0.050) yaw=67
+13:31:34 grasp cube=(0.146,0.050) yaw=67.2 roll=52.2 tool=(0.138,0.021)
+13:31:35 error during episode: ValueError('refusing low target near the base: (np.float64(0.13803720250007176), np.float64(0.020946121829136546), 0.06)')
+13:31:35 episode 50: success=False (6s) ["error: ValueError('refusing low target near the base: (np.float64(0.13803720250007176), np.float64(0.020946121829136546), 0.06)')"]
+13:31:35 stats {'succ': 0, 'fail': 51}
+13:31:35 episode 51: cube at (0.146,0.050) yaw=67
+13:31:40 grasp cube=(0.146,0.050) yaw=67.4 roll=52.2 tool=(0.138,0.021)
+13:31:41 error during episode: ValueError('refusing low target near the base: (np.float64(0.13797649368057532), np.float64(0.02096356690501065), 0.06)')
+13:31:41 episode 51: success=False (6s) ["error: ValueError('refusing low target near the base: (np.float64(0.13797649368057532), np.float64(0.02096356690501065), 0.06)')"]
+13:31:41 stats {'succ': 0, 'fail': 52}
+13:31:41 episode 52: cube at (0.146,0.050) yaw=67
+13:31:46 grasp cube=(0.146,0.050) yaw=67.2 roll=51.7 tool=(0.138,0.021)
+13:31:47 error during episode: ValueError('refusing low target near the base: (np.float64(0.13772953536142424), np.float64(0.021019041984298065), 0.06)')
+13:31:47 episode 52: success=False (6s) ["error: ValueError('refusing low target near the base: (np.float64(0.13772953536142424), np.float64(0.021019041984298065), 0.06)')"]
+13:31:47 stats {'succ': 0, 'fail': 53}
+13:31:47 episode 53: cube at (0.146,0.050) yaw=67
+13:31:52 grasp cube=(0.146,0.050) yaw=67.4 roll=52.5 tool=(0.138,0.021)
+13:31:53 error during episode: ValueError('refusing low target near the base: (np.float64(0.13813106934685487), np.float64(0.020898162829001497), 0.06)')
+13:31:53 episode 53: success=False (6s) ["error: ValueError('refusing low target near the base: (np.float64(0.13813106934685487), np.float64(0.020898162829001497), 0.06)')"]
+13:31:53 stats {'succ': 0, 'fail': 54}
+13:31:53 episode 54: cube at (0.146,0.050) yaw=67
+13:31:58 grasp cube=(0.146,0.050) yaw=67.4 roll=51.4 tool=(0.138,0.021)
+13:31:59 error during episode: ValueError('refusing low target near the base: (np.float64(0.13762940599014326), np.float64(0.021049109366522146), 0.06)')
+13:31:59 episode 54: success=False (6s) ["error: ValueError('refusing low target near the base: (np.float64(0.13762940599014326), np.float64(0.021049109366522146), 0.06)')"]
+13:31:59 stats {'succ': 0, 'fail': 55}
+13:31:59 episode 55: cube at (0.146,0.050) yaw=67

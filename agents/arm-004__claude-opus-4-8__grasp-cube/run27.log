@@ -1,0 +1,43 @@
+18:15:01 episode 0: cube at (0.168,0.143) yaw=50
+18:15:09 grasp cube=(0.168,0.143) yaw=49.8 roll=103.5 tool=(0.194,0.128)
+18:15:15 low at [0.1947, 0.128, -0.0072]
+18:15:23 episode 0: success=True (23s) ['attempt 1: grip=24.4', 'at home gripper=24.3 wrist_dark=0.97']
+18:15:23 place cube=(0.155,0.078) tool=(0.176,0.057) roll=103.5
+18:15:34 stats {'succ': 1, 'fail': 0}
+18:15:34 episode 1: cube at (0.171,0.075) yaw=27
+18:15:40 grasp cube=(0.171,0.075) yaw=26.8 roll=102.1 tool=(0.190,0.052)
+18:15:47 low at [0.1883, 0.0498, -0.0091]
+18:15:55 episode 1: success=True (20s) ['attempt 1: grip=25.2', 'at home gripper=25.2 wrist_dark=0.99']
+18:15:55 place cube=(0.186,-0.048) tool=(0.182,-0.078) roll=102.1
+18:16:06 stats {'succ': 2, 'fail': 0}
+18:16:06 episode 2: cube at (0.192,-0.053) yaw=63
+18:16:12 grasp cube=(0.192,-0.053) yaw=62.6 roll=97.3 tool=(0.185,-0.082)
+18:16:19 low at [0.183, -0.0831, -0.0085]
+18:16:27 episode 2: success=True (21s) ['attempt 1: grip=24.9', 'at home gripper=24.9 wrist_dark=1.00']
+18:16:27 place cube=(0.129,0.107) tool=(0.153,0.090) roll=97.3
+18:16:38 stats {'succ': 3, 'fail': 0}
+18:16:38 episode 3: cube at (0.137,0.114) yaw=37
+18:16:44 grasp cube=(0.137,0.114) yaw=36.8 roll=88.9 tool=(0.158,0.092)
+18:16:51 low at [0.1566, 0.0896, -0.0093]
+18:16:58 episode 3: success=True (20s) ['attempt 1: grip=25.2', 'at home gripper=25.2 wrist_dark=0.97']
+18:16:59 place cube=(0.235,0.060) tool=(0.242,0.031) roll=88.9
+Traceback (most recent call last):
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/run_episodes.py", line 226, in <module>
+    main()
+    ~~~~^^
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/run_episodes.py", line 216, in main
+    r = episode(b, i, stats, done_counts)
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/run_episodes.py", line 196, in episode
+    arm.home(b); time.sleep(0.4)
+    ~~~~~~~~^^^
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/arm.py", line 90, in home
+    return move(b, dict(HOME), speed)
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/arm.py", line 52, in move
+    cw.move(b, target, max(min_s, d / speed))
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/calibrate_workspace.py", line 1433, in move
+    time.sleep(.02)
+    ~~~~~~~~~~^^^^^
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/run_episodes.py", line 33, in _on_term
+    raise Interrupted(f'signal {signum}')
+Interrupted: signal 15

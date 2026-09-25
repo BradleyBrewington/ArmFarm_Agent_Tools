@@ -1,0 +1,26 @@
+15:12:41 episode 0: cube at (0.186,-0.048) yaw=41
+15:12:49 grasp cube=(0.186,-0.048) yaw=40.6 roll=70.6 tool=(0.167,-0.071)
+15:12:53 episode 0: interrupted, recording closed as failure
+Traceback (most recent call last):
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/run_episodes.py", line 218, in <module>
+    main()
+    ~~~~^^
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/run_episodes.py", line 208, in main
+    r = episode(b, i, stats, done_counts)
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/run_episodes.py", line 149, in episode
+    g = grasp.grasp(b, cx, cy, yaw, log=log)
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/../tools/grasp.py", line 89, in grasp
+    arm.goto(b, x, y, GRASP_Z, roll=roll, speed=22, correct=3)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/arm.py", line 75, in goto
+    move(b, q, speed if it == 0 else 30.0, min_s=0.6 if it == 0 else 0.3)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/arm.py", line 52, in move
+    cw.move(b, target, max(min_s, d / speed))
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/calibrate_workspace.py", line 1433, in move
+    time.sleep(.02)
+    ~~~~~~~~~~^^^^^
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/run_episodes.py", line 30, in _on_term
+    raise Interrupted(f'signal {signum}')
+Interrupted: signal 15

@@ -1,0 +1,30 @@
+13:42:16 episode 0: cube at (0.239,-0.029) yaw=38
+13:42:24 grasp cube=(0.239,-0.029) yaw=37.7 roll=66.9 tool=(0.222,-0.054)
+13:42:30 low at [0.2208, -0.0533, -0.0079]
+13:42:44 grasp cube=(0.213,-0.044) yaw=67.7 roll=103.0 tool=(0.211,-0.074)
+13:42:50 low at [0.2128, -0.0748, -0.0049]
+13:42:58 episode 0: success=True (42s) ['attempt 1: grip=0.8', 'attempt 2: grip=23.6', 'at home gripper=23.6 wrist_dark=0.55']
+13:42:58 place cube=(0.133,0.177) tool=(0.161,0.167) roll=103.0
+13:43:10 stats {'succ': 1, 'fail': 0}
+13:43:10 episode 1: cube at (0.138,0.173) yaw=59
+13:43:17 grasp cube=(0.138,0.173) yaw=59.4 roll=15.1 tool=(0.129,0.144)
+13:43:25 low at [0.1285, 0.1433, -0.0085]
+13:43:33 pull_in from r=0.223 ang=59.8
+13:44:14 error during episode: CamdStale('wrist frame is 37830 ms old (camd dead or camera wedged)')
+13:44:14 episode 1: success=False (64s) ['attempt 1: grip=0.8', "error: CamdStale('wrist frame is 37830 ms old (camd dead or camera wedged)')"]
+13:44:14 stats {'succ': 1, 'fail': 1}
+13:44:14 episode 2: cube at (0.104,0.120) yaw=65
+Traceback (most recent call last):
+  File "/var/lib/armfarm/stations/armfarm/workspace/work/run_episodes.py", line 175, in <module>
+    main()
+    ~~~~^^
+  File "/var/lib/armfarm/stations/armfarm/workspace/work/run_episodes.py", line 165, in main
+    r = episode(b, i, stats, done_counts)
+  File "/var/lib/armfarm/stations/armfarm/workspace/work/run_episodes.py", line 112, in episode
+    rec = recording.start_recording(TASK)
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/recording.py", line 26, in start_recording
+    return request('start_recording', task=task, context=context)
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/recording.py", line 15, in request
+    if not response.pop('ok'): raise RuntimeError(response['error'])
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: ValueError: wrist: stale or invalid image

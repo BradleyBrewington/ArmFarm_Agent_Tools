@@ -1,0 +1,36 @@
+17:15:16 episode 0: cube at (0.232,-0.057) yaw=42
+17:15:24 grasp cube=(0.232,-0.057) yaw=41.6 roll=66.9 tool=(0.211,-0.079)
+17:15:29 low at [0.21, -0.0806, -0.0099]
+17:15:38 episode 0: success=True (21s) ['attempt 1: grip=23.8', 'at home gripper=23.8 wrist_dark=0.98']
+17:15:38 place cube=(0.186,-0.103) tool=(0.160,-0.118) roll=66.9
+17:15:48 stats {'succ': 1, 'fail': 0}
+17:15:48 episode 1: cube at (0.184,-0.097) yaw=17
+17:15:55 grasp cube=(0.184,-0.097) yaw=16.7 roll=53.5 tool=(0.156,-0.106)
+17:15:59 low at [0.1546, -0.1082, -0.0075]
+17:16:11 episode 1: success=True (22s) ['attempt 1: grip=23.5', 'at home gripper=23.5 wrist_dark=0.97']
+17:16:11 place cube=(0.145,0.126) tool=(0.150,0.097) roll=53.5
+17:16:22 stats {'succ': 2, 'fail': 0}
+17:16:22 episode 2: cube at (0.138,0.125) yaw=88
+17:16:29 grasp cube=(0.138,0.125) yaw=88.4 roll=43.4 tool=(0.139,0.095)
+17:16:33 low at [0.1401, 0.0944, -0.0072]
+17:16:42 episode 2: success=True (20s) ['attempt 1: grip=23.4', 'at home gripper=23.4 wrist_dark=0.96']
+17:16:42 place cube=(0.211,0.053) tool=(0.195,0.027) roll=43.4
+17:16:53 stats {'succ': 3, 'fail': 0}
+17:16:53 episode 3: cube at (0.198,0.054) yaw=43
+17:16:57 episode 3: interrupted, recording closed as failure
+Traceback (most recent call last):
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/run_episodes.py", line 226, in <module>
+    main()
+    ~~~~^^
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/run_episodes.py", line 216, in main
+    r = episode(b, i, stats, done_counts)
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/run_episodes.py", line 157, in episode
+    g = grasp.grasp(b, cx, cy, yaw, log=log)
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/../tools/grasp.py", line 84, in grasp
+    roll = wrist_roll(b, cx, cy, log=log)
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/../tools/grasp.py", line 43, in wrist_roll
+    time.sleep(0.25)
+    ~~~~~~~~~~^^^^^^
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/run_episodes.py", line 33, in _on_term
+    raise Interrupted(f'signal {signum}')
+Interrupted: signal 15

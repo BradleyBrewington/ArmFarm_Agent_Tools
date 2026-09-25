@@ -1,0 +1,53 @@
+12:38:58 episode 0: cube at (0.229,-0.037) yaw=49
+12:39:06 grasp cube=(0.229,-0.037) yaw=49.0 roll=67.6 tool=(0.211,-0.062)
+12:39:11 low at [0.2112, -0.0622, -0.009]
+12:39:32 grasp cube=(0.159,-0.072) yaw=77.0 roll=125.2 tool=(0.160,-0.102)
+12:39:38 low at [0.1602, -0.1031, -0.0104]
+12:39:46 episode 0: success=True (48s) ['attempt 1: grip=0.8', 'attempt 2: grip=25.4', 'at home gripper=25.4 wrist_dark=1.00']
+12:39:46 place cube=(0.235,0.060) tool=(0.258,0.040) roll=125.2
+12:39:58 stats {'succ': 1, 'fail': 0}
+12:39:58 episode 1: cube at (0.236,0.070) yaw=31
+12:40:05 grasp cube=(0.236,0.070) yaw=31.0 roll=110.5 tool=(0.254,0.046)
+12:40:10 low at [0.2548, 0.0453, -0.0107]
+12:40:26 grasp cube=(0.259,0.056) yaw=58.3 roll=51.2 tool=(0.245,0.030)
+12:40:32 low at [0.2465, 0.0293, -0.0082]
+12:40:47 grasp cube=(0.271,0.051) yaw=52.9 roll=47.3 tool=(0.254,0.025)
+12:40:53 low at [0.2561, 0.0248, -0.0082]
+12:41:09 grasp cube=(0.278,0.045) yaw=45.3 roll=46.3 tool=(0.260,0.021)
+12:41:16 low at [0.2614, 0.0197, -0.0091]
+12:41:32 grasp cube=(0.284,0.041) yaw=43.7 roll=44.7 tool=(0.265,0.018)
+12:41:40 low at [0.2656, 0.0161, -0.0085]
+12:41:50 episode 1: success=False (112s) ['attempt 1: grip=0.8', 'cube lost']
+12:41:50 stats {'succ': 1, 'fail': 1}
+12:41:58 grasp cube=(0.279,0.034) yaw=43.8 roll=45.4 tool=(0.261,0.011)
+12:42:05 low at [0.2626, 0.0099, -0.0087]
+12:42:21 wrist: cube not seen for roll alignment
+12:42:21 grasp cube=(0.278,0.027) yaw=43.2 roll=129.5 tool=(0.298,0.005)
+12:42:29 low at [0.2973, 0.0041, -0.0095]
+12:42:35 place cube=(0.208,0.019) tool=(0.228,-0.003) roll=129.5
+Traceback (most recent call last):
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/run_episodes.py", line 242, in <module>
+    main()
+    ~~~~^^
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/run_episodes.py", line 232, in main
+    r = episode(b, i, stats, done_counts)
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/run_episodes.py", line 160, in episode
+    found = reachable_prep(b)
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/run_episodes.py", line 134, in reachable_prep
+    grasp.place(b, SX + 0.17 * math.cos(a2), 0.17 * math.sin(a2), gg['roll'], log=log)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/../tools/grasp.py", line 124, in place
+    arm.goto(b, x, y, z, roll=roll, speed=20, correct=2)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/arm.py", line 92, in goto
+    move(b, q, speed if it == 0 else 30.0, min_s=0.6 if it == 0 else 0.3)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/arm.py", line 69, in move
+    cw.move(b, target, max(min_s, d / speed))
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/calibrate_workspace.py", line 1433, in move
+    time.sleep(.02)
+    ~~~~~~~~~~^^^^^
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/run_episodes.py", line 35, in _on_term
+    raise Interrupted(f'signal {signum}')
+Interrupted: signal 15
