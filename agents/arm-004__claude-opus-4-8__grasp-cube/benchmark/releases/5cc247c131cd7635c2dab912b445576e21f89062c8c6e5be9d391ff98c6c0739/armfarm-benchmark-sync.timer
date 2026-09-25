@@ -1,0 +1,9 @@
+[Unit]
+Description=Keep the ArmFarm benchmark synchronized from GitHub
+
+[Timer]
+OnBootSec=30
+OnUnitInactiveSec=60
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,8 @@
+{
+  "defaults": {"arm-003": "arm003-act-100k", "arm-004": "arm004-act-100k"},
+  "models": {
+    "arm003-act-100k": {"sha256": "2c4a452a9c152555361b96666b5b45e6c03cb0236ce05daa08c0cbfa1e62fd02", "selection_id": "sel-830011ce0542"},
+    "arm004-act-100k": {"sha256": "b6ea3b87ec6b6774cfbe7d257274cb1814507174afec0a6ecb64e469a0eaf3de", "selection_id": "sel-a6be4472d50c"},
+    "combined-act-100k": {"sha256": "d437eb885a30e85619fd3059cb4dff82e1ae7debd7be81bee40f20659430fb6c"}
+  }
+}

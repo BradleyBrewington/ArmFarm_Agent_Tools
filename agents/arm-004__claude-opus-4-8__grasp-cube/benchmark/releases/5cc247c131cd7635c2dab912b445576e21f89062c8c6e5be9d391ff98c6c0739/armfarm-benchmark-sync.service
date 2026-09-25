@@ -1,0 +1,10 @@
+[Unit]
+Description=Sync the canonical ArmFarm policy benchmark
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=armfarm
+ExecStart=/opt/armfarm/venv/bin/python /var/lib/armfarm/stations/armfarm/workspace/tools/sync_act_benchmark.py
+TimeoutStartSec=240

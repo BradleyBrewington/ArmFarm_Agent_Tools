@@ -1,0 +1,19 @@
+{
+  "git_commit": "f094dec715537767f5647660646990714de381cf",
+  "bundle_sha256": "5cc247c131cd7635c2dab912b445576e21f89062c8c6e5be9d391ff98c6c0739",
+  "files": {
+    "README.md": "25db003ba4a97b09b5d2c173082ec3664a21e244406d0537a232b30dc2b912bf",
+    "act_runtime.py": "2a8f417fab84189e1da9fb93196b5f557e49e445eaeda5783d99f497da9167fa",
+    "armfarm-benchmark-sync.service": "2119d7195d35f03ae64606250e1157dc8e9da780c8e0d4660e1a05f711506d3a",
+    "armfarm-benchmark-sync.timer": "3fef6e5dd81d54b5535a9cf8180ffba9d98fe18ba65c26eefa3bc722c1b0e2c9",
+    "launch_policy.py": "80de67c4a259159cb81142eef0fc6970138e634d489ae4fd29e2f42e52698591",
+    "motor_bus.py": "b5443a32a258390c65d187df1383eaaefdc575608cb46e875a60e3126a028ac3",
+    "policies.json": "74d5e8361c48d01fcd2aaa53c61f45de212306a06b6c0bdcc9a39a4c72bd134d",
+    "provenance.py": "7dd59b7c2874a2882ebd24f7b3380bfb0468a7317a6b979efdefc2cb9fd10cf1",
+    "run_act_loop.sh": "295c5f6d7b4ffd8ef606a410197cc504ea41e362475ffa93da54461af9844e96",
+    "run_act_policy.py": "5c432389ff9bf4f45d7823924d08abd0dcc04af6a13d4890c9edc88571915ac3",
+    "sync_benchmark.py": "41b79c0b28c13b514d71b0f3984c3f62e965d95981c0ea422859d3d5e8727cfe",
+    "test_benchmark.py": "4d87d02632bff854c9e25c29a021d0a045fd757ad57dba328c7520e2b3a2b5c8"
+  },
+  "remote": "https://github.com/BradleyBrewington/ArmFarm_Agent_Tools.git"
+}
