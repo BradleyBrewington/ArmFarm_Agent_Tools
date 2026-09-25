@@ -1,0 +1,15 @@
+{
+  "episode": "20260923T173440-0bb9fbbe",
+  "folder": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T173440-0bb9fbbe",
+  "frames": 679,
+  "quality_flags": [
+    "agent_read_timeout",
+    "feedback_gap",
+    "feedback_timeout",
+    "target_outside_calibration",
+    "torque_disabled"
+  ],
+  "training_ready": false,
+  "success": false,
+  "notes": "Approach for supported reorientation; one goal-preserving +2deg shoulder increment measured1.758deg /8.053mm diagnostic descent, no verified contact or object movement. Then all six motor IDs became unreachable and fresh paired cameras showed a person handling gripper/mug. No further motion or torque commands; recovery/home cannot be verified. Human intervention; no autonomous grasp, lift, or held-home success."
+}

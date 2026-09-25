@@ -1,0 +1,2997 @@
+{
+  "timestamp": 1790203106.935615,
+  "agent_id": "arm-002__gpt-6-astra__exp-grasp-mug-multiagent",
+  "received_operator_ids": [
+    "cdb9a3cb-34c9-4e71-85a4-4fc9707bdec4",
+    "948f1d8b-ff43-4815-bdb1-5596afd5ec95",
+    "c8907cae-3513-4bf5-adb9-1e93676347c2"
+  ],
+  "task_preserved": true,
+  "recording": false,
+  "home_joints_measured": null,
+  "home_errors_degrees": null,
+  "torque": {
+    "shoulder_pan": 0,
+    "shoulder_lift": 0,
+    "elbow_flex": 0,
+    "wrist_flex": 0,
+    "wrist_roll": 0,
+    "gripper": 0
+  },
+  "motor_fault_bits": {
+    "shoulder_pan": 0,
+    "shoulder_lift": 0,
+    "elbow_flex": 0,
+    "wrist_flex": 0,
+    "wrist_roll": 0,
+    "gripper": 0
+  },
+  "cumulative_current_assignment": {
+    "successes": 0,
+    "unsuccessful": 17,
+    "successes_trailing_hour": 0,
+    "ratio_requirement_met": false
+  },
+  "episode_ledger": "/var/lib/armfarm/stations/armfarm/workspace/tools/mug_episode_ledger.json",
+  "grasp_location_caveat": "No successful grasp. Prior old-homography metric location for episode153620 is unvalidated due camera-view mismatch; appended correction linked in coverage. Pixel footprint evidence retained; no cells credited.",
+  "coverage": {
+    "cell_size_m": 0.05,
+    "coordinate_frame": "diagnostic base_link estimate",
+    "proposed_envelope_x_m": [
+      -0.05,
+      0.5
+    ],
+    "proposed_envelope_y_m": [
+      -0.45,
+      0.4
+    ],
+    "visible_table_polygon_xy_m": [
+      [
+        -0.008,
+        -0.433
+      ],
+      [
+        0.005,
+        0.367
+      ],
+      [
+        0.47,
+        0.302
+      ],
+      [
+        0.427,
+        -0.315
+      ]
+    ],
+    "sources": [
+      "calibration/20260921T152058_891355289/intrinsics.json",
+      "calibration_checks/live-table-20260922/table.json",
+      "tools/current_top.jpg"
+    ],
+    "bounds_rationale": "Outward-rounded 5 cm envelope of visible tabletop transformed using saved intrinsics and diagnostic live table alignment; not chosen from successful locations. Actual usable mask must intersect tabletop, object footprint clearance, kinematic reach, robot base and obstacles. Alignment and boundary reach still require validation.",
+    "usable_workspace_finalized": false,
+    "coverage_complete": false,
+    "candidate_cells": [
+      {
+        "id": "0:0",
+        "bounds_x": [
+          -0.05,
+          0.0
+        ],
+        "bounds_y": [
+          -0.45,
+          -0.4
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "0:1",
+        "bounds_x": [
+          -0.05,
+          0.0
+        ],
+        "bounds_y": [
+          -0.4,
+          -0.35
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "0:2",
+        "bounds_x": [
+          -0.05,
+          0.0
+        ],
+        "bounds_y": [
+          -0.35,
+          -0.3
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "0:3",
+        "bounds_x": [
+          -0.05,
+          0.0
+        ],
+        "bounds_y": [
+          -0.3,
+          -0.25
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "0:4",
+        "bounds_x": [
+          -0.05,
+          0.0
+        ],
+        "bounds_y": [
+          -0.25,
+          -0.2
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "0:5",
+        "bounds_x": [
+          -0.05,
+          0.0
+        ],
+        "bounds_y": [
+          -0.2,
+          -0.15
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "0:6",
+        "bounds_x": [
+          -0.05,
+          0.0
+        ],
+        "bounds_y": [
+          -0.15,
+          -0.1
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "0:7",
+        "bounds_x": [
+          -0.05,
+          0.0
+        ],
+        "bounds_y": [
+          -0.1,
+          -0.05
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "0:8",
+        "bounds_x": [
+          -0.05,
+          0.0
+        ],
+        "bounds_y": [
+          -0.05,
+          0.0
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "0:9",
+        "bounds_x": [
+          -0.05,
+          0.0
+        ],
+        "bounds_y": [
+          0.0,
+          0.05
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "0:10",
+        "bounds_x": [
+          -0.05,
+          0.0
+        ],
+        "bounds_y": [
+          0.05,
+          0.1
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "0:11",
+        "bounds_x": [
+          -0.05,
+          0.0
+        ],
+        "bounds_y": [
+          0.1,
+          0.15
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "0:12",
+        "bounds_x": [
+          -0.05,
+          0.0
+        ],
+        "bounds_y": [
+          0.15,
+          0.2
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "0:13",
+        "bounds_x": [
+          -0.05,
+          0.0
+        ],
+        "bounds_y": [
+          0.2,
+          0.25
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "0:14",
+        "bounds_x": [
+          -0.05,
+          0.0
+        ],
+        "bounds_y": [
+          0.25,
+          0.3
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "0:15",
+        "bounds_x": [
+          -0.05,
+          0.0
+        ],
+        "bounds_y": [
+          0.3,
+          0.35
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "0:16",
+        "bounds_x": [
+          -0.05,
+          0.0
+        ],
+        "bounds_y": [
+          0.35,
+          0.4
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "1:0",
+        "bounds_x": [
+          0.0,
+          0.05
+        ],
+        "bounds_y": [
+          -0.45,
+          -0.4
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "1:1",
+        "bounds_x": [
+          0.0,
+          0.05
+        ],
+        "bounds_y": [
+          -0.4,
+          -0.35
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "1:2",
+        "bounds_x": [
+          0.0,
+          0.05
+        ],
+        "bounds_y": [
+          -0.35,
+          -0.3
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "1:3",
+        "bounds_x": [
+          0.0,
+          0.05
+        ],
+        "bounds_y": [
+          -0.3,
+          -0.25
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "1:4",
+        "bounds_x": [
+          0.0,
+          0.05
+        ],
+        "bounds_y": [
+          -0.25,
+          -0.2
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "1:5",
+        "bounds_x": [
+          0.0,
+          0.05
+        ],
+        "bounds_y": [
+          -0.2,
+          -0.15
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "1:6",
+        "bounds_x": [
+          0.0,
+          0.05
+        ],
+        "bounds_y": [
+          -0.15,
+          -0.1
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "1:7",
+        "bounds_x": [
+          0.0,
+          0.05
+        ],
+        "bounds_y": [
+          -0.1,
+          -0.05
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "1:8",
+        "bounds_x": [
+          0.0,
+          0.05
+        ],
+        "bounds_y": [
+          -0.05,
+          0.0
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "1:9",
+        "bounds_x": [
+          0.0,
+          0.05
+        ],
+        "bounds_y": [
+          0.0,
+          0.05
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "1:10",
+        "bounds_x": [
+          0.0,
+          0.05
+        ],
+        "bounds_y": [
+          0.05,
+          0.1
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "1:11",
+        "bounds_x": [
+          0.0,
+          0.05
+        ],
+        "bounds_y": [
+          0.1,
+          0.15
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "1:12",
+        "bounds_x": [
+          0.0,
+          0.05
+        ],
+        "bounds_y": [
+          0.15,
+          0.2
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "1:13",
+        "bounds_x": [
+          0.0,
+          0.05
+        ],
+        "bounds_y": [
+          0.2,
+          0.25
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "1:14",
+        "bounds_x": [
+          0.0,
+          0.05
+        ],
+        "bounds_y": [
+          0.25,
+          0.3
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "1:15",
+        "bounds_x": [
+          0.0,
+          0.05
+        ],
+        "bounds_y": [
+          0.3,
+          0.35
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "1:16",
+        "bounds_x": [
+          0.0,
+          0.05
+        ],
+        "bounds_y": [
+          0.35,
+          0.4
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "2:0",
+        "bounds_x": [
+          0.05,
+          0.1
+        ],
+        "bounds_y": [
+          -0.45,
+          -0.4
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "2:1",
+        "bounds_x": [
+          0.05,
+          0.1
+        ],
+        "bounds_y": [
+          -0.4,
+          -0.35
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "2:2",
+        "bounds_x": [
+          0.05,
+          0.1
+        ],
+        "bounds_y": [
+          -0.35,
+          -0.3
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "2:3",
+        "bounds_x": [
+          0.05,
+          0.1
+        ],
+        "bounds_y": [
+          -0.3,
+          -0.25
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "2:4",
+        "bounds_x": [
+          0.05,
+          0.1
+        ],
+        "bounds_y": [
+          -0.25,
+          -0.2
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "2:5",
+        "bounds_x": [
+          0.05,
+          0.1
+        ],
+        "bounds_y": [
+          -0.2,
+          -0.15
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "2:6",
+        "bounds_x": [
+          0.05,
+          0.1
+        ],
+        "bounds_y": [
+          -0.15,
+          -0.1
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "2:7",
+        "bounds_x": [
+          0.05,
+          0.1
+        ],
+        "bounds_y": [
+          -0.1,
+          -0.05
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "2:8",
+        "bounds_x": [
+          0.05,
+          0.1
+        ],
+        "bounds_y": [
+          -0.05,
+          0.0
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "2:9",
+        "bounds_x": [
+          0.05,
+          0.1
+        ],
+        "bounds_y": [
+          0.0,
+          0.05
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "2:10",
+        "bounds_x": [
+          0.05,
+          0.1
+        ],
+        "bounds_y": [
+          0.05,
+          0.1
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "2:11",
+        "bounds_x": [
+          0.05,
+          0.1
+        ],
+        "bounds_y": [
+          0.1,
+          0.15
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "2:12",
+        "bounds_x": [
+          0.05,
+          0.1
+        ],
+        "bounds_y": [
+          0.15,
+          0.2
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "2:13",
+        "bounds_x": [
+          0.05,
+          0.1
+        ],
+        "bounds_y": [
+          0.2,
+          0.25
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "2:14",
+        "bounds_x": [
+          0.05,
+          0.1
+        ],
+        "bounds_y": [
+          0.25,
+          0.3
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "2:15",
+        "bounds_x": [
+          0.05,
+          0.1
+        ],
+        "bounds_y": [
+          0.3,
+          0.35
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "2:16",
+        "bounds_x": [
+          0.05,
+          0.1
+        ],
+        "bounds_y": [
+          0.35,
+          0.4
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "3:0",
+        "bounds_x": [
+          0.1,
+          0.15
+        ],
+        "bounds_y": [
+          -0.45,
+          -0.4
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "3:1",
+        "bounds_x": [
+          0.1,
+          0.15
+        ],
+        "bounds_y": [
+          -0.4,
+          -0.35
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "3:2",
+        "bounds_x": [
+          0.1,
+          0.15
+        ],
+        "bounds_y": [
+          -0.35,
+          -0.3
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "3:3",
+        "bounds_x": [
+          0.1,
+          0.15
+        ],
+        "bounds_y": [
+          -0.3,
+          -0.25
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "3:4",
+        "bounds_x": [
+          0.1,
+          0.15
+        ],
+        "bounds_y": [
+          -0.25,
+          -0.2
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "3:5",
+        "bounds_x": [
+          0.1,
+          0.15
+        ],
+        "bounds_y": [
+          -0.2,
+          -0.15
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "3:6",
+        "bounds_x": [
+          0.1,
+          0.15
+        ],
+        "bounds_y": [
+          -0.15,
+          -0.1
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "3:7",
+        "bounds_x": [
+          0.1,
+          0.15
+        ],
+        "bounds_y": [
+          -0.1,
+          -0.05
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "3:8",
+        "bounds_x": [
+          0.1,
+          0.15
+        ],
+        "bounds_y": [
+          -0.05,
+          0.0
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "3:9",
+        "bounds_x": [
+          0.1,
+          0.15
+        ],
+        "bounds_y": [
+          0.0,
+          0.05
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "3:10",
+        "bounds_x": [
+          0.1,
+          0.15
+        ],
+        "bounds_y": [
+          0.05,
+          0.1
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "3:11",
+        "bounds_x": [
+          0.1,
+          0.15
+        ],
+        "bounds_y": [
+          0.1,
+          0.15
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "3:12",
+        "bounds_x": [
+          0.1,
+          0.15
+        ],
+        "bounds_y": [
+          0.15,
+          0.2
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "3:13",
+        "bounds_x": [
+          0.1,
+          0.15
+        ],
+        "bounds_y": [
+          0.2,
+          0.25
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "3:14",
+        "bounds_x": [
+          0.1,
+          0.15
+        ],
+        "bounds_y": [
+          0.25,
+          0.3
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "3:15",
+        "bounds_x": [
+          0.1,
+          0.15
+        ],
+        "bounds_y": [
+          0.3,
+          0.35
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "3:16",
+        "bounds_x": [
+          0.1,
+          0.15
+        ],
+        "bounds_y": [
+          0.35,
+          0.4
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "4:0",
+        "bounds_x": [
+          0.15,
+          0.2
+        ],
+        "bounds_y": [
+          -0.45,
+          -0.4
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "4:1",
+        "bounds_x": [
+          0.15,
+          0.2
+        ],
+        "bounds_y": [
+          -0.4,
+          -0.35
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "4:2",
+        "bounds_x": [
+          0.15,
+          0.2
+        ],
+        "bounds_y": [
+          -0.35,
+          -0.3
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "4:3",
+        "bounds_x": [
+          0.15,
+          0.2
+        ],
+        "bounds_y": [
+          -0.3,
+          -0.25
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "4:4",
+        "bounds_x": [
+          0.15,
+          0.2
+        ],
+        "bounds_y": [
+          -0.25,
+          -0.2
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "4:5",
+        "bounds_x": [
+          0.15,
+          0.2
+        ],
+        "bounds_y": [
+          -0.2,
+          -0.15
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "4:6",
+        "bounds_x": [
+          0.15,
+          0.2
+        ],
+        "bounds_y": [
+          -0.15,
+          -0.1
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "4:7",
+        "bounds_x": [
+          0.15,
+          0.2
+        ],
+        "bounds_y": [
+          -0.1,
+          -0.05
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "4:8",
+        "bounds_x": [
+          0.15,
+          0.2
+        ],
+        "bounds_y": [
+          -0.05,
+          0.0
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "4:9",
+        "bounds_x": [
+          0.15,
+          0.2
+        ],
+        "bounds_y": [
+          0.0,
+          0.05
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "4:10",
+        "bounds_x": [
+          0.15,
+          0.2
+        ],
+        "bounds_y": [
+          0.05,
+          0.1
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "4:11",
+        "bounds_x": [
+          0.15,
+          0.2
+        ],
+        "bounds_y": [
+          0.1,
+          0.15
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "4:12",
+        "bounds_x": [
+          0.15,
+          0.2
+        ],
+        "bounds_y": [
+          0.15,
+          0.2
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "4:13",
+        "bounds_x": [
+          0.15,
+          0.2
+        ],
+        "bounds_y": [
+          0.2,
+          0.25
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "4:14",
+        "bounds_x": [
+          0.15,
+          0.2
+        ],
+        "bounds_y": [
+          0.25,
+          0.3
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "4:15",
+        "bounds_x": [
+          0.15,
+          0.2
+        ],
+        "bounds_y": [
+          0.3,
+          0.35
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "4:16",
+        "bounds_x": [
+          0.15,
+          0.2
+        ],
+        "bounds_y": [
+          0.35,
+          0.4
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "5:0",
+        "bounds_x": [
+          0.2,
+          0.25
+        ],
+        "bounds_y": [
+          -0.45,
+          -0.4
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "5:1",
+        "bounds_x": [
+          0.2,
+          0.25
+        ],
+        "bounds_y": [
+          -0.4,
+          -0.35
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "5:2",
+        "bounds_x": [
+          0.2,
+          0.25
+        ],
+        "bounds_y": [
+          -0.35,
+          -0.3
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "5:3",
+        "bounds_x": [
+          0.2,
+          0.25
+        ],
+        "bounds_y": [
+          -0.3,
+          -0.25
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "5:4",
+        "bounds_x": [
+          0.2,
+          0.25
+        ],
+        "bounds_y": [
+          -0.25,
+          -0.2
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "5:5",
+        "bounds_x": [
+          0.2,
+          0.25
+        ],
+        "bounds_y": [
+          -0.2,
+          -0.15
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "5:6",
+        "bounds_x": [
+          0.2,
+          0.25
+        ],
+        "bounds_y": [
+          -0.15,
+          -0.1
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "5:7",
+        "bounds_x": [
+          0.2,
+          0.25
+        ],
+        "bounds_y": [
+          -0.1,
+          -0.05
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "5:8",
+        "bounds_x": [
+          0.2,
+          0.25
+        ],
+        "bounds_y": [
+          -0.05,
+          0.0
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "5:9",
+        "bounds_x": [
+          0.2,
+          0.25
+        ],
+        "bounds_y": [
+          0.0,
+          0.05
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "5:10",
+        "bounds_x": [
+          0.2,
+          0.25
+        ],
+        "bounds_y": [
+          0.05,
+          0.1
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "5:11",
+        "bounds_x": [
+          0.2,
+          0.25
+        ],
+        "bounds_y": [
+          0.1,
+          0.15
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "5:12",
+        "bounds_x": [
+          0.2,
+          0.25
+        ],
+        "bounds_y": [
+          0.15,
+          0.2
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "5:13",
+        "bounds_x": [
+          0.2,
+          0.25
+        ],
+        "bounds_y": [
+          0.2,
+          0.25
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "5:14",
+        "bounds_x": [
+          0.2,
+          0.25
+        ],
+        "bounds_y": [
+          0.25,
+          0.3
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "5:15",
+        "bounds_x": [
+          0.2,
+          0.25
+        ],
+        "bounds_y": [
+          0.3,
+          0.35
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "5:16",
+        "bounds_x": [
+          0.2,
+          0.25
+        ],
+        "bounds_y": [
+          0.35,
+          0.4
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "6:0",
+        "bounds_x": [
+          0.25,
+          0.3
+        ],
+        "bounds_y": [
+          -0.45,
+          -0.4
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "6:1",
+        "bounds_x": [
+          0.25,
+          0.3
+        ],
+        "bounds_y": [
+          -0.4,
+          -0.35
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "6:2",
+        "bounds_x": [
+          0.25,
+          0.3
+        ],
+        "bounds_y": [
+          -0.35,
+          -0.3
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "6:3",
+        "bounds_x": [
+          0.25,
+          0.3
+        ],
+        "bounds_y": [
+          -0.3,
+          -0.25
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "6:4",
+        "bounds_x": [
+          0.25,
+          0.3
+        ],
+        "bounds_y": [
+          -0.25,
+          -0.2
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "6:5",
+        "bounds_x": [
+          0.25,
+          0.3
+        ],
+        "bounds_y": [
+          -0.2,
+          -0.15
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "6:6",
+        "bounds_x": [
+          0.25,
+          0.3
+        ],
+        "bounds_y": [
+          -0.15,
+          -0.1
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "6:7",
+        "bounds_x": [
+          0.25,
+          0.3
+        ],
+        "bounds_y": [
+          -0.1,
+          -0.05
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "6:8",
+        "bounds_x": [
+          0.25,
+          0.3
+        ],
+        "bounds_y": [
+          -0.05,
+          0.0
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "6:9",
+        "bounds_x": [
+          0.25,
+          0.3
+        ],
+        "bounds_y": [
+          0.0,
+          0.05
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "6:10",
+        "bounds_x": [
+          0.25,
+          0.3
+        ],
+        "bounds_y": [
+          0.05,
+          0.1
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "6:11",
+        "bounds_x": [
+          0.25,
+          0.3
+        ],
+        "bounds_y": [
+          0.1,
+          0.15
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "6:12",
+        "bounds_x": [
+          0.25,
+          0.3
+        ],
+        "bounds_y": [
+          0.15,
+          0.2
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "6:13",
+        "bounds_x": [
+          0.25,
+          0.3
+        ],
+        "bounds_y": [
+          0.2,
+          0.25
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "6:14",
+        "bounds_x": [
+          0.25,
+          0.3
+        ],
+        "bounds_y": [
+          0.25,
+          0.3
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "6:15",
+        "bounds_x": [
+          0.25,
+          0.3
+        ],
+        "bounds_y": [
+          0.3,
+          0.35
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "6:16",
+        "bounds_x": [
+          0.25,
+          0.3
+        ],
+        "bounds_y": [
+          0.35,
+          0.4
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "7:0",
+        "bounds_x": [
+          0.3,
+          0.35
+        ],
+        "bounds_y": [
+          -0.45,
+          -0.4
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "7:1",
+        "bounds_x": [
+          0.3,
+          0.35
+        ],
+        "bounds_y": [
+          -0.4,
+          -0.35
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "7:2",
+        "bounds_x": [
+          0.3,
+          0.35
+        ],
+        "bounds_y": [
+          -0.35,
+          -0.3
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "7:3",
+        "bounds_x": [
+          0.3,
+          0.35
+        ],
+        "bounds_y": [
+          -0.3,
+          -0.25
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "7:4",
+        "bounds_x": [
+          0.3,
+          0.35
+        ],
+        "bounds_y": [
+          -0.25,
+          -0.2
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "7:5",
+        "bounds_x": [
+          0.3,
+          0.35
+        ],
+        "bounds_y": [
+          -0.2,
+          -0.15
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "7:6",
+        "bounds_x": [
+          0.3,
+          0.35
+        ],
+        "bounds_y": [
+          -0.15,
+          -0.1
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "7:7",
+        "bounds_x": [
+          0.3,
+          0.35
+        ],
+        "bounds_y": [
+          -0.1,
+          -0.05
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "7:8",
+        "bounds_x": [
+          0.3,
+          0.35
+        ],
+        "bounds_y": [
+          -0.05,
+          0.0
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "7:9",
+        "bounds_x": [
+          0.3,
+          0.35
+        ],
+        "bounds_y": [
+          0.0,
+          0.05
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "7:10",
+        "bounds_x": [
+          0.3,
+          0.35
+        ],
+        "bounds_y": [
+          0.05,
+          0.1
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "7:11",
+        "bounds_x": [
+          0.3,
+          0.35
+        ],
+        "bounds_y": [
+          0.1,
+          0.15
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "7:12",
+        "bounds_x": [
+          0.3,
+          0.35
+        ],
+        "bounds_y": [
+          0.15,
+          0.2
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "7:13",
+        "bounds_x": [
+          0.3,
+          0.35
+        ],
+        "bounds_y": [
+          0.2,
+          0.25
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "7:14",
+        "bounds_x": [
+          0.3,
+          0.35
+        ],
+        "bounds_y": [
+          0.25,
+          0.3
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "7:15",
+        "bounds_x": [
+          0.3,
+          0.35
+        ],
+        "bounds_y": [
+          0.3,
+          0.35
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "7:16",
+        "bounds_x": [
+          0.3,
+          0.35
+        ],
+        "bounds_y": [
+          0.35,
+          0.4
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "8:0",
+        "bounds_x": [
+          0.35,
+          0.4
+        ],
+        "bounds_y": [
+          -0.45,
+          -0.4
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "8:1",
+        "bounds_x": [
+          0.35,
+          0.4
+        ],
+        "bounds_y": [
+          -0.4,
+          -0.35
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "8:2",
+        "bounds_x": [
+          0.35,
+          0.4
+        ],
+        "bounds_y": [
+          -0.35,
+          -0.3
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "8:3",
+        "bounds_x": [
+          0.35,
+          0.4
+        ],
+        "bounds_y": [
+          -0.3,
+          -0.25
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "8:4",
+        "bounds_x": [
+          0.35,
+          0.4
+        ],
+        "bounds_y": [
+          -0.25,
+          -0.2
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "8:5",
+        "bounds_x": [
+          0.35,
+          0.4
+        ],
+        "bounds_y": [
+          -0.2,
+          -0.15
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "8:6",
+        "bounds_x": [
+          0.35,
+          0.4
+        ],
+        "bounds_y": [
+          -0.15,
+          -0.1
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "8:7",
+        "bounds_x": [
+          0.35,
+          0.4
+        ],
+        "bounds_y": [
+          -0.1,
+          -0.05
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "8:8",
+        "bounds_x": [
+          0.35,
+          0.4
+        ],
+        "bounds_y": [
+          -0.05,
+          0.0
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "8:9",
+        "bounds_x": [
+          0.35,
+          0.4
+        ],
+        "bounds_y": [
+          0.0,
+          0.05
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "8:10",
+        "bounds_x": [
+          0.35,
+          0.4
+        ],
+        "bounds_y": [
+          0.05,
+          0.1
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "8:11",
+        "bounds_x": [
+          0.35,
+          0.4
+        ],
+        "bounds_y": [
+          0.1,
+          0.15
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "8:12",
+        "bounds_x": [
+          0.35,
+          0.4
+        ],
+        "bounds_y": [
+          0.15,
+          0.2
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "8:13",
+        "bounds_x": [
+          0.35,
+          0.4
+        ],
+        "bounds_y": [
+          0.2,
+          0.25
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "8:14",
+        "bounds_x": [
+          0.35,
+          0.4
+        ],
+        "bounds_y": [
+          0.25,
+          0.3
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "8:15",
+        "bounds_x": [
+          0.35,
+          0.4
+        ],
+        "bounds_y": [
+          0.3,
+          0.35
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "8:16",
+        "bounds_x": [
+          0.35,
+          0.4
+        ],
+        "bounds_y": [
+          0.35,
+          0.4
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "9:0",
+        "bounds_x": [
+          0.4,
+          0.45
+        ],
+        "bounds_y": [
+          -0.45,
+          -0.4
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "9:1",
+        "bounds_x": [
+          0.4,
+          0.45
+        ],
+        "bounds_y": [
+          -0.4,
+          -0.35
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "9:2",
+        "bounds_x": [
+          0.4,
+          0.45
+        ],
+        "bounds_y": [
+          -0.35,
+          -0.3
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "9:3",
+        "bounds_x": [
+          0.4,
+          0.45
+        ],
+        "bounds_y": [
+          -0.3,
+          -0.25
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "9:4",
+        "bounds_x": [
+          0.4,
+          0.45
+        ],
+        "bounds_y": [
+          -0.25,
+          -0.2
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "9:5",
+        "bounds_x": [
+          0.4,
+          0.45
+        ],
+        "bounds_y": [
+          -0.2,
+          -0.15
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "9:6",
+        "bounds_x": [
+          0.4,
+          0.45
+        ],
+        "bounds_y": [
+          -0.15,
+          -0.1
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "9:7",
+        "bounds_x": [
+          0.4,
+          0.45
+        ],
+        "bounds_y": [
+          -0.1,
+          -0.05
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "9:8",
+        "bounds_x": [
+          0.4,
+          0.45
+        ],
+        "bounds_y": [
+          -0.05,
+          0.0
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "9:9",
+        "bounds_x": [
+          0.4,
+          0.45
+        ],
+        "bounds_y": [
+          0.0,
+          0.05
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "9:10",
+        "bounds_x": [
+          0.4,
+          0.45
+        ],
+        "bounds_y": [
+          0.05,
+          0.1
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "9:11",
+        "bounds_x": [
+          0.4,
+          0.45
+        ],
+        "bounds_y": [
+          0.1,
+          0.15
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "9:12",
+        "bounds_x": [
+          0.4,
+          0.45
+        ],
+        "bounds_y": [
+          0.15,
+          0.2
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "9:13",
+        "bounds_x": [
+          0.4,
+          0.45
+        ],
+        "bounds_y": [
+          0.2,
+          0.25
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "9:14",
+        "bounds_x": [
+          0.4,
+          0.45
+        ],
+        "bounds_y": [
+          0.25,
+          0.3
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "9:15",
+        "bounds_x": [
+          0.4,
+          0.45
+        ],
+        "bounds_y": [
+          0.3,
+          0.35
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "9:16",
+        "bounds_x": [
+          0.4,
+          0.45
+        ],
+        "bounds_y": [
+          0.35,
+          0.4
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "10:0",
+        "bounds_x": [
+          0.45,
+          0.5
+        ],
+        "bounds_y": [
+          -0.45,
+          -0.4
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "10:1",
+        "bounds_x": [
+          0.45,
+          0.5
+        ],
+        "bounds_y": [
+          -0.4,
+          -0.35
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "10:2",
+        "bounds_x": [
+          0.45,
+          0.5
+        ],
+        "bounds_y": [
+          -0.35,
+          -0.3
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "10:3",
+        "bounds_x": [
+          0.45,
+          0.5
+        ],
+        "bounds_y": [
+          -0.3,
+          -0.25
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "10:4",
+        "bounds_x": [
+          0.45,
+          0.5
+        ],
+        "bounds_y": [
+          -0.25,
+          -0.2
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "10:5",
+        "bounds_x": [
+          0.45,
+          0.5
+        ],
+        "bounds_y": [
+          -0.2,
+          -0.15
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "10:6",
+        "bounds_x": [
+          0.45,
+          0.5
+        ],
+        "bounds_y": [
+          -0.15,
+          -0.1
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "10:7",
+        "bounds_x": [
+          0.45,
+          0.5
+        ],
+        "bounds_y": [
+          -0.1,
+          -0.05
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "10:8",
+        "bounds_x": [
+          0.45,
+          0.5
+        ],
+        "bounds_y": [
+          -0.05,
+          0.0
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "10:9",
+        "bounds_x": [
+          0.45,
+          0.5
+        ],
+        "bounds_y": [
+          0.0,
+          0.05
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "10:10",
+        "bounds_x": [
+          0.45,
+          0.5
+        ],
+        "bounds_y": [
+          0.05,
+          0.1
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "10:11",
+        "bounds_x": [
+          0.45,
+          0.5
+        ],
+        "bounds_y": [
+          0.1,
+          0.15
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "10:12",
+        "bounds_x": [
+          0.45,
+          0.5
+        ],
+        "bounds_y": [
+          0.15,
+          0.2
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "10:13",
+        "bounds_x": [
+          0.45,
+          0.5
+        ],
+        "bounds_y": [
+          0.2,
+          0.25
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "10:14",
+        "bounds_x": [
+          0.45,
+          0.5
+        ],
+        "bounds_y": [
+          0.25,
+          0.3
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "10:15",
+        "bounds_x": [
+          0.45,
+          0.5
+        ],
+        "bounds_y": [
+          0.3,
+          0.35
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      },
+      {
+        "id": "10:16",
+        "bounds_x": [
+          0.45,
+          0.5
+        ],
+        "bounds_y": [
+          0.35,
+          0.4
+        ],
+        "usability": "pending_table_polygon_reach_and_obstacle_validation",
+        "verified_successes": 0
+      }
+    ],
+    "cells_without_verified_success": [
+      "0:0",
+      "0:1",
+      "0:2",
+      "0:3",
+      "0:4",
+      "0:5",
+      "0:6",
+      "0:7",
+      "0:8",
+      "0:9",
+      "0:10",
+      "0:11",
+      "0:12",
+      "0:13",
+      "0:14",
+      "0:15",
+      "0:16",
+      "1:0",
+      "1:1",
+      "1:2",
+      "1:3",
+      "1:4",
+      "1:5",
+      "1:6",
+      "1:7",
+      "1:8",
+      "1:9",
+      "1:10",
+      "1:11",
+      "1:12",
+      "1:13",
+      "1:14",
+      "1:15",
+      "1:16",
+      "2:0",
+      "2:1",
+      "2:2",
+      "2:3",
+      "2:4",
+      "2:5",
+      "2:6",
+      "2:7",
+      "2:8",
+      "2:9",
+      "2:10",
+      "2:11",
+      "2:12",
+      "2:13",
+      "2:14",
+      "2:15",
+      "2:16",
+      "3:0",
+      "3:1",
+      "3:2",
+      "3:3",
+      "3:4",
+      "3:5",
+      "3:6",
+      "3:7",
+      "3:8",
+      "3:9",
+      "3:10",
+      "3:11",
+      "3:12",
+      "3:13",
+      "3:14",
+      "3:15",
+      "3:16",
+      "4:0",
+      "4:1",
+      "4:2",
+      "4:3",
+      "4:4",
+      "4:5",
+      "4:6",
+      "4:7",
+      "4:8",
+      "4:9",
+      "4:10",
+      "4:11",
+      "4:12",
+      "4:13",
+      "4:14",
+      "4:15",
+      "4:16",
+      "5:0",
+      "5:1",
+      "5:2",
+      "5:3",
+      "5:4",
+      "5:5",
+      "5:6",
+      "5:7",
+      "5:8",
+      "5:9",
+      "5:10",
+      "5:11",
+      "5:12",
+      "5:13",
+      "5:14",
+      "5:15",
+      "5:16",
+      "6:0",
+      "6:1",
+      "6:2",
+      "6:3",
+      "6:4",
+      "6:5",
+      "6:6",
+      "6:7",
+      "6:8",
+      "6:9",
+      "6:10",
+      "6:11",
+      "6:12",
+      "6:13",
+      "6:14",
+      "6:15",
+      "6:16",
+      "7:0",
+      "7:1",
+      "7:2",
+      "7:3",
+      "7:4",
+      "7:5",
+      "7:6",
+      "7:7",
+      "7:8",
+      "7:9",
+      "7:10",
+      "7:11",
+      "7:12",
+      "7:13",
+      "7:14",
+      "7:15",
+      "7:16",
+      "8:0",
+      "8:1",
+      "8:2",
+      "8:3",
+      "8:4",
+      "8:5",
+      "8:6",
+      "8:7",
+      "8:8",
+      "8:9",
+      "8:10",
+      "8:11",
+      "8:12",
+      "8:13",
+      "8:14",
+      "8:15",
+      "8:16",
+      "9:0",
+      "9:1",
+      "9:2",
+      "9:3",
+      "9:4",
+      "9:5",
+      "9:6",
+      "9:7",
+      "9:8",
+      "9:9",
+      "9:10",
+      "9:11",
+      "9:12",
+      "9:13",
+      "9:14",
+      "9:15",
+      "9:16",
+      "10:0",
+      "10:1",
+      "10:2",
+      "10:3",
+      "10:4",
+      "10:5",
+      "10:6",
+      "10:7",
+      "10:8",
+      "10:9",
+      "10:10",
+      "10:11",
+      "10:12",
+      "10:13",
+      "10:14",
+      "10:15",
+      "10:16"
+    ],
+    "untested_usability_cells": [
+      "0:0",
+      "0:1",
+      "0:2",
+      "0:3",
+      "0:4",
+      "0:5",
+      "0:6",
+      "0:7",
+      "0:8",
+      "0:9",
+      "0:10",
+      "0:11",
+      "0:12",
+      "0:13",
+      "0:14",
+      "0:15",
+      "0:16",
+      "1:0",
+      "1:1",
+      "1:2",
+      "1:3",
+      "1:4",
+      "1:5",
+      "1:6",
+      "1:7",
+      "1:8",
+      "1:9",
+      "1:10",
+      "1:11",
+      "1:12",
+      "1:13",
+      "1:14",
+      "1:15",
+      "1:16",
+      "2:0",
+      "2:1",
+      "2:2",
+      "2:3",
+      "2:4",
+      "2:5",
+      "2:6",
+      "2:7",
+      "2:8",
+      "2:9",
+      "2:10",
+      "2:11",
+      "2:12",
+      "2:13",
+      "2:14",
+      "2:15",
+      "2:16",
+      "3:0",
+      "3:1",
+      "3:2",
+      "3:3",
+      "3:4",
+      "3:5",
+      "3:6",
+      "3:7",
+      "3:8",
+      "3:9",
+      "3:10",
+      "3:11",
+      "3:12",
+      "3:13",
+      "3:14",
+      "3:15",
+      "3:16",
+      "4:0",
+      "4:1",
+      "4:2",
+      "4:3",
+      "4:4",
+      "4:5",
+      "4:6",
+      "4:7",
+      "4:8",
+      "4:9",
+      "4:10",
+      "4:11",
+      "4:12",
+      "4:13",
+      "4:14",
+      "4:15",
+      "4:16",
+      "5:0",
+      "5:1",
+      "5:2",
+      "5:3",
+      "5:4",
+      "5:5",
+      "5:6",
+      "5:7",
+      "5:8",
+      "5:9",
+      "5:10",
+      "5:11",
+      "5:12",
+      "5:13",
+      "5:14",
+      "5:15",
+      "5:16",
+      "6:0",
+      "6:1",
+      "6:2",
+      "6:3",
+      "6:4",
+      "6:5",
+      "6:6",
+      "6:7",
+      "6:8",
+      "6:9",
+      "6:10",
+      "6:11",
+      "6:12",
+      "6:13",
+      "6:14",
+      "6:15",
+      "6:16",
+      "7:0",
+      "7:1",
+      "7:2",
+      "7:3",
+      "7:4",
+      "7:5",
+      "7:6",
+      "7:7",
+      "7:8",
+      "7:9",
+      "7:10",
+      "7:11",
+      "7:12",
+      "7:13",
+      "7:14",
+      "7:15",
+      "7:16",
+      "8:0",
+      "8:1",
+      "8:2",
+      "8:3",
+      "8:4",
+      "8:5",
+      "8:6",
+      "8:7",
+      "8:8",
+      "8:9",
+      "8:10",
+      "8:11",
+      "8:12",
+      "8:13",
+      "8:14",
+      "8:15",
+      "8:16",
+      "9:0",
+      "9:1",
+      "9:2",
+      "9:3",
+      "9:4",
+      "9:5",
+      "9:6",
+      "9:7",
+      "9:8",
+      "9:9",
+      "9:10",
+      "9:11",
+      "9:12",
+      "9:13",
+      "9:14",
+      "9:15",
+      "9:16",
+      "10:0",
+      "10:1",
+      "10:2",
+      "10:3",
+      "10:4",
+      "10:5",
+      "10:6",
+      "10:7",
+      "10:8",
+      "10:9",
+      "10:10",
+      "10:11",
+      "10:12",
+      "10:13",
+      "10:14",
+      "10:15",
+      "10:16"
+    ],
+    "location_policy": "Credit pre-lift mug table-contact footprint in calibrated metric table coordinates with image evidence and uncertainty; never treat elevated handle ray intersection as mug base.",
+    "candidate_only": true,
+    "evidence_correction": "tools/table_location_evidence_correction.json"
+  },
+  "tool": "tools/mug_control.py",
+  "discoveries": [
+    "IK now uses live measured wrist roll instead of fixed +63 degrees.",
+    "Wrist -25 degrees makes jaw opening visible transversely in top view; no verified grasp follows from this alone.",
+    "Repeated closures reached near empty-jaw aperture and failed lift checks; some moved mug.",
+    "Home uses only four saved joints; wrist and gripper preserved.",
+    "Current upright mug handle was approached from above; empty-like closure (~1.81 percent) and occluded opening did not establish support. Historical verified local success had a side-lying mug; handle-plane/insertion geometry must be reidentified.",
+    "Shallow pitch=0 approach with lateral correction did not capture upright handle. Empty-like aperture 1.81 percent and 1.83 cm measured diagnostic rise left mug on table. Wrist camera handle visibility worsened at shallow pitch. Source historical passages 45-46 confirm side-lying successful home carry, not transferable joint targets.",
+    "Inspected all four supervisor_evidence arm001 success images. Verified topology reference is fixed finger inside lower loop, moving finger outside; current pose-change contact did not reproduce it. Peer successful home aperture1.754/load100 vs failed1.417/load96 shows aperture/load alone is weak and nonportable.",
+    "Clear empty-gripper aperture test: fixed tip stationary, moving tip changed60px when aperture24.11 to5.85%. Calibrated midpoint is not fixed-finger point. Accepted calibration unchanged; saved-image candidate offset not adopted.",
+    "Apparent bar-between-jaws wrist projection at pitch45 did not establish support: mug remained fixed during19.73mm measured midpoint rise. Need view resolving loop depth rather than another top-view point match.",
+    "Positive-y lateral view at measured pan -35.956, lift19.912, elbow-56.308, wrist94.593, roll-24.835 exposes a handle gap; central/negative-y views hide it. Noncontact geometry evidence only.",
+    "Episode160817: lowering beside upright handle then 5mm lateral adjustment did not establish support; 10.26mm diagnostic rise left mug on table. Lateral image exposed only upper opening; body occluded lower loop. Operator suggests bounded upright yaw reorientation as distinct next experiment.",
+    "Yaw experiment161521: mug silhouette unchanged after near-handle sideways sweep (correlation0.99947; apparent rotation-0.044deg, translation<0.2px). This does not falsify supported yaw; effective contact was not established.",
+    "Episode162058 established broad-wall contact, then separate1.055deg pan change rotated and translated upright mug. Net projected handle direction change~31deg +/-10deg, silhouette centroid+4.5,-32.5px. Round-body ECC rotation rejected as handle yaw measure. Mug settled upright after retraction; no full grasp success.",
+    "Episode162837 further projected handle rotation~17deg +/-10deg with silhouette translation+7.9,-31.7px; later same-side contact mainly translated. No closure because outer opening remained blocked.",
+    "Episode164413: opposite-side approach at roll-24.835 produced projected lower-loop overlap but no supporting grasp. Closure1.8118%/load116 and measured midpoint rise13.25mm left mug on table. Shoulder lift lag reached5.45deg, requiring measured rather than target-based motion assessment.",
+    "Home empty-gripper test only. First two +1-degree requests produced no measured motion; third produced0.879deg and2.626mm downward diagnostic midpoint movement. Does not establish loaded/contact behavior or explain every failed grasp. Existing absolute step path still resets requested goals; incremental path avoids that reset.",
+    "Episode170552: goal-preserving shoulder increments at approach first had deadband, then measured1.670deg/7.851mm and2.022deg/9.445mm downward response. Pan probes left mug silhouette effectively unchanged; no effective wall contact or yaw established. Actual fingertip depth remains unresolved despite projected overlap.",
+    "Episode171327: rim appeared between inside/outside jaw projections after16.16mm measured midpoint descent. Closure1.8815%/load120;4.2198deg measured wrist rotation produced no visible mug following. Did not establish engagement or evaluate effective tipping. Released without larger action.",
+    "Episode172202: shallower viewpoint made above-lip depth separation visible. Five observed descents moved midpoint about41.62mm down and rim edge upward in wrist view. Rim strip projection during staged closure still failed mechanical engagement;4.747deg wrist rotation did not tilt mug. No force increase or larger tipping action."
+  ],
+  "next_hypothesis": "Establish operator readiness after manual intervention, then recheck fresh views and motor state before torque initialization or recovery.",
+  "historical_success_reference": "03e5351425018a23b53da62aa87ca456482686359129db12f6a5690c8088777f:0",
+  "peer_success_episode": "20260923T150127-191efa22",
+  "stable_boundary": false,
+  "ledger_retention_note": "First three recordings no longer locally retained; outcomes preserved from successful recorder stop responses.",
+  "dashboard_cross_check": {
+    "reported_at_utc": "2026-09-23T20:24:00Z",
+    "arm_002": {
+      "completed": 4,
+      "successes": 0
+    },
+    "matches_preserved_ledger": true
+  },
+  "task_id": "exp-grasp-mug-multiagent",
+  "ledger_policy": "Append-only outcomes by episode_id across turns. Merge exact-agent uploaded historical evidence without deleting missing local episodes or relabeling outcomes.",
+  "last_episode_id": "20260923T173440-0bb9fbbe",
+  "last_result": false,
+  "latest_evidence_stem": "1790203034414204389",
+  "home_evidence_stem": null,
+  "last_object_table_location": {
+    "table_contact_pixel_estimate": [
+      682,
+      479
+    ],
+    "pixel_uncertainty": 20,
+    "image": "tools/mug_observations/1790201989987887043_top.jpg",
+    "frame": "image pixels",
+    "note": "Upright footprint estimate; metric registration unresolved; no coverage credit."
+  },
+  "last_experiment": "Supported reorientation approach interrupted by communication loss and human intervention",
+  "local_response_evidence": "tools/fixed_tip_local_response.json",
+  "table_plane_mapping_check": {
+    "path": "tools/table_plane_boundary_check.json",
+    "frame": "20260922_live_checkerboard",
+    "status": "provisional; no coverage credit",
+    "footprint_xy_m": [
+      0.07832216613532952,
+      0.13181960592770345
+    ]
+  },
+  "last_experiment_evidence": "tools/reorientation_173440_result.json",
+  "quiet_window": "tools/supervisor_quiet_window.json",
+  "quiet_window_completed": true,
+  "operator_updates": {
+    "instruction_history": "Routine SQLite rereads withdrawn; historical rows left intact; new guidance arrives in conversation.",
+    "quiet_window_result": "Operator reports peer mug motion persisted during completed unchanged-goal interval. No repeat requested.",
+    "camera_path": "Operator verified matching deployed camd source and raw MJPEG passthrough without warping/stabilization; no known nearby disturbance. Cause unresolved; fresh multiple-frame geometry remains necessary.",
+    "rim_tipping_hypothesis": "Tested episode171327: no effective rim engagement, no verified tipping; full task failed. Geometry hypothesis remains unproven."
+  },
+  "last_diagnostic": {
+    "kind": "empty_gripper_closure_baseline",
+    "evidence": "tools/empty_closure_baseline.json",
+    "result": "Residual visible gap/profile documented; thin-wall incompatibility versus missed depth unresolved."
+  },
+  "blocker": "Communication restored after human intervention; all six torque states off, goals zero in recorder telemetry, manually changed arm/mug contact geometry. No autonomous home recovery.",
+  "last_known_autonomous_joints": {
+    "shoulder_pan": -25.582417582417584,
+    "shoulder_lift": 13.582417582417582,
+    "elbow_flex": -26.153846153846153,
+    "wrist_flex": 78.76923076923077,
+    "wrist_roll": 62.637362637362635,
+    "gripper": 14.912891986062718
+  },
+  "boundary_type": "Interrupted episode complete; operator intervention boundary with torque externally off",
+  "post_intervention_observation": {
+    "time": 1790203036.4065979,
+    "joints": {
+      "shoulder_pan": -18.285714285714285,
+      "shoulder_lift": 19.032967032967033,
+      "elbow_flex": 11.384615384615385,
+      "wrist_flex": 78.32967032967034,
+      "wrist_roll": 62.54945054945055,
+      "gripper": 1.8815331010452963
+    },
+    "estimated_tool_xyz": [
+      0.21458868441989254,
+      0.040723196255518804,
+      -0.010978893361034154
+    ]
+  },
+  "operator_hold": {
+    "active": false,
+    "readiness": "maintenance. YOu are clear",
+    "timestamp": 1790203523.2277832,
+    "evidence": "tools/post_maintenance_startup.json"
+  }
+}

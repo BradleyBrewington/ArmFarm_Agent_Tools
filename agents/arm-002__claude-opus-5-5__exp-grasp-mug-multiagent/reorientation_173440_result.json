@@ -1,0 +1,67 @@
+{
+  "episode_id": "20260923T173440-0bb9fbbe",
+  "agent_id": "arm-002__gpt-6-astra__exp-grasp-mug-multiagent",
+  "task_id": "exp-grasp-mug-multiagent",
+  "started": 1790202880.0204651,
+  "finished": 1790202989.7631614,
+  "success": false,
+  "notes": "Approach for supported reorientation; one goal-preserving +2deg shoulder increment measured1.758deg /8.053mm diagnostic descent, no verified contact or object movement. Then all six motor IDs became unreachable and fresh paired cameras showed a person handling gripper/mug. No further motion or torque commands; recovery/home cannot be verified. Human intervention; no autonomous grasp, lift, or held-home success.",
+  "quality_flags": [
+    "agent_read_timeout",
+    "feedback_gap",
+    "feedback_timeout",
+    "target_outside_calibration",
+    "torque_disabled"
+  ],
+  "source": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T173440-0bb9fbbe",
+  "source_metadata": "tools/episode_173440_source_metadata.json",
+  "experiment_type": "Supported reorientation approach interrupted by communication loss and human intervention",
+  "closure_attempts": [],
+  "verified_grasp_locations": [],
+  "last_verified_autonomous_pose": {
+    "time": 1790202943.2463524,
+    "joints": {
+      "shoulder_pan": -25.582417582417584,
+      "shoulder_lift": 13.582417582417582,
+      "elbow_flex": -26.153846153846153,
+      "wrist_flex": 78.76923076923077,
+      "wrist_roll": 62.637362637362635,
+      "gripper": 14.912891986062718
+    },
+    "estimated_tool_xyz": [
+      0.3158817487227551,
+      0.11440181793804524,
+      0.11301070686759303
+    ]
+  },
+  "pose_reference": "Diagnostic closed-midpoint FK; not an individual fingertip or table contact position",
+  "evidence_stems": [
+    "1790202895841766087",
+    "1790202927139511177",
+    "1790202943170528132"
+  ],
+  "motion_report": "tools/goal_increment_1790202936706639992.json",
+  "human_intervention_images": [
+    "tools/episode_173440_human_intervention_top.jpg",
+    "tools/episode_173440_human_intervention_wrist.jpg"
+  ],
+  "table_location_before": {
+    "rim_center_px": [
+      680,
+      402
+    ],
+    "handle_px": [
+      643,
+      485
+    ],
+    "approx_table_footprint_px": [
+      682,
+      479
+    ],
+    "uncertainty_px": 20,
+    "metric_frame": null,
+    "usable_cell_credit": false
+  },
+  "home_verified": false,
+  "limitations": "Human moved arm/object after motor communication loss; no autonomous contact/reorientation or retained lift established. Quality flags preserved; causes not assigned from stale telemetry."
+}

@@ -1,0 +1,346 @@
+{
+  "timestamp": 1790203523.2277832,
+  "joints": {
+    "shoulder_pan": -18.285714285714285,
+    "shoulder_lift": 19.032967032967033,
+    "elbow_flex": 11.384615384615385,
+    "wrist_flex": 78.32967032967034,
+    "wrist_roll": 62.54945054945055,
+    "gripper": 1.8815331010452963
+  },
+  "goals": {
+    "shoulder_pan": -181.8901098901099,
+    "shoulder_lift": -181.4065934065934,
+    "elbow_flex": -174.54945054945054,
+    "wrist_flex": -182.6813186813187,
+    "wrist_roll": -180.0,
+    "gripper": 0.0
+  },
+  "torque": {
+    "shoulder_pan": 0,
+    "shoulder_lift": 0,
+    "elbow_flex": 0,
+    "wrist_flex": 0,
+    "wrist_roll": 0,
+    "gripper": 0
+  },
+  "faults": {
+    "shoulder_pan": 0,
+    "shoulder_lift": 0,
+    "elbow_flex": 0,
+    "wrist_flex": 0,
+    "wrist_roll": 0,
+    "gripper": 0
+  },
+  "readiness": "maintenance. YOu are clear",
+  "evidence_stem": "1790203503082968831",
+  "recorder": {
+    "episode": null,
+    "recording": false,
+    "frames": 0,
+    "latest": {
+      "state_raw": [
+        1861,
+        2280,
+        2115,
+        2969,
+        2759,
+        1758
+      ],
+      "action_raw": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "velocity_raw": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "mode": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "torque": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "torque_limit_raw": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        500
+      ],
+      "goal_velocity_raw": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "goal_time_raw": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "acceleration_raw": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "pid_raw": [
+        [
+          16,
+          32,
+          0
+        ],
+        [
+          16,
+          32,
+          0
+        ],
+        [
+          16,
+          32,
+          0
+        ],
+        [
+          16,
+          32,
+          0
+        ],
+        [
+          16,
+          32,
+          0
+        ],
+        [
+          16,
+          32,
+          0
+        ]
+      ],
+      "fault_bits": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "calibration": {
+        "shoulder_pan": {
+          "id": 1,
+          "drive_mode": 0,
+          "homing_offset": -1828,
+          "range_min": 820,
+          "range_max": 3318
+        },
+        "shoulder_lift": {
+          "id": 2,
+          "drive_mode": 0,
+          "homing_offset": -1086,
+          "range_min": 784,
+          "range_max": 3343
+        },
+        "elbow_flex": {
+          "id": 3,
+          "drive_mode": 0,
+          "homing_offset": 1952,
+          "range_min": 932,
+          "range_max": 3039
+        },
+        "wrist_flex": {
+          "id": 4,
+          "drive_mode": 0,
+          "homing_offset": -1288,
+          "range_min": 855,
+          "range_max": 3301
+        },
+        "wrist_roll": {
+          "id": 5,
+          "drive_mode": 0,
+          "homing_offset": 9,
+          "range_min": 0,
+          "range_max": 4095
+        },
+        "gripper": {
+          "id": 6,
+          "drive_mode": 0,
+          "homing_offset": 1686,
+          "range_min": 1731,
+          "range_max": 3166
+        }
+      },
+      "t_mono": 418130.2393269815,
+      "t_wall": 1790203523.2208085,
+      "read_started": 418130.237283303,
+      "elapsed_s": 0.004085802007466555,
+      "missing_ids": [],
+      "stale_bytes": 0
+    },
+    "failure": null,
+    "dropped_events": 0,
+    "last_episode": {
+      "episode": "20260923T173440-0bb9fbbe",
+      "folder": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T173440-0bb9fbbe",
+      "frames": 679,
+      "quality_flags": [
+        "agent_read_timeout",
+        "feedback_gap",
+        "feedback_timeout",
+        "target_outside_calibration",
+        "torque_disabled"
+      ],
+      "training_ready": false,
+      "success": false,
+      "notes": "Approach for supported reorientation; one goal-preserving +2deg shoulder increment measured1.758deg /8.053mm diagnostic descent, no verified contact or object movement. Then all six motor IDs became unreachable and fresh paired cameras showed a person handling gripper/mug. No further motion or torque commands; recovery/home cannot be verified. Human intervention; no autonomous grasp, lift, or held-home success."
+    },
+    "polls": 736011,
+    "poll_errors": 545,
+    "poll_retries": 1092,
+    "max_poll_s": 0.05624971596989781,
+    "transactions": 249922,
+    "port": "/run/armfarm-recording-armfarm/serial",
+    "motor_health": {
+      "version": 1,
+      "since": 1790100042.6467297,
+      "window_seconds": 300,
+      "age_seconds": 0.025,
+      "motors": [
+        {
+          "id": 1,
+          "name": "shoulder_pan",
+          "last_seen_at": 1790203523.235734,
+          "missing_since": null,
+          "status_bits": 0,
+          "missed_responses": 1638,
+          "dropouts": 2,
+          "fault_events": 0,
+          "last_missing_at": 1790202987.0778427,
+          "last_recovered_at": 1790202987.082596,
+          "age_seconds": 0.01,
+          "connected": true,
+          "faults": [],
+          "last_faults": [],
+          "recent_faults": [],
+          "recent_dropout": false
+        },
+        {
+          "id": 2,
+          "name": "shoulder_lift",
+          "last_seen_at": 1790203523.2377129,
+          "missing_since": null,
+          "status_bits": 0,
+          "missed_responses": 1637,
+          "dropouts": 3,
+          "fault_events": 0,
+          "last_missing_at": 1790202987.0521708,
+          "last_recovered_at": 1790202987.0778427,
+          "age_seconds": 0.008,
+          "connected": true,
+          "faults": [],
+          "last_faults": [],
+          "recent_faults": [],
+          "recent_dropout": false
+        },
+        {
+          "id": 3,
+          "name": "elbow_flex",
+          "last_seen_at": 1790203523.2397263,
+          "missing_since": null,
+          "status_bits": 0,
+          "missed_responses": 1636,
+          "dropouts": 2,
+          "fault_events": 0,
+          "last_missing_at": 1790202987.0521708,
+          "last_recovered_at": 1790202987.0778427,
+          "age_seconds": 0.006,
+          "connected": true,
+          "faults": [],
+          "last_faults": [],
+          "recent_faults": [],
+          "recent_dropout": false
+        },
+        {
+          "id": 4,
+          "name": "wrist_flex",
+          "last_seen_at": 1790203523.241713,
+          "missing_since": null,
+          "status_bits": 0,
+          "missed_responses": 1637,
+          "dropouts": 2,
+          "fault_events": 0,
+          "last_missing_at": 1790202987.0521708,
+          "last_recovered_at": 1790202987.0778427,
+          "age_seconds": 0.004,
+          "connected": true,
+          "faults": [],
+          "last_faults": [],
+          "recent_faults": [],
+          "recent_dropout": false
+        },
+        {
+          "id": 5,
+          "name": "wrist_roll",
+          "last_seen_at": 1790203523.243715,
+          "missing_since": null,
+          "status_bits": 0,
+          "missed_responses": 1636,
+          "dropouts": 2,
+          "fault_events": 0,
+          "last_missing_at": 1790202987.0521708,
+          "last_recovered_at": 1790202987.0778427,
+          "age_seconds": 0.002,
+          "connected": true,
+          "faults": [],
+          "last_faults": [],
+          "recent_faults": [],
+          "recent_dropout": false
+        },
+        {
+          "id": 6,
+          "name": "gripper",
+          "last_seen_at": 1790203523.2457156,
+          "missing_since": null,
+          "status_bits": 0,
+          "missed_responses": 1636,
+          "dropouts": 2,
+          "fault_events": 0,
+          "last_missing_at": 1790202987.0521708,
+          "last_recovered_at": 1790202987.0778427,
+          "age_seconds": 0.0,
+          "connected": true,
+          "faults": [],
+          "last_faults": [],
+          "recent_faults": [],
+          "recent_dropout": false
+        }
+      ],
+      "storage_error": null
+    }
+  }
+}

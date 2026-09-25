@@ -1,0 +1,47 @@
+{
+  "episode_id": "20260923T162837-20ed646c",
+  "before": "1790198887128281751",
+  "after": "1790199152315759228",
+  "silhouette_centers_px": [
+    [
+      670.5324037706206,
+      448.4880204241948
+    ],
+    [
+      678.4301575006455,
+      416.77594887683966
+    ]
+  ],
+  "centroid_shift_px": [
+    7.897753730024874,
+    -31.71207154735515
+  ],
+  "method": "Dark silhouette centroid; not table-contact footprint. Handle landmarks needed for yaw.",
+  "contact_observations": [
+    "1790199044702641514",
+    "1790199067914904933",
+    "1790199099907810439"
+  ],
+  "result": "Further upright rotation with translation, latter increments mostly translation; no accessible insertion path confirmed.",
+  "handle_landmarks": {
+    "before_rim_center_px": [
+      671,
+      438
+    ],
+    "before_handle_px": [
+      660,
+      526
+    ],
+    "after_rim_center_px": [
+      680,
+      402
+    ],
+    "after_handle_px": [
+      643,
+      485
+    ],
+    "projected_rotation_deg": 16.901490229777398,
+    "estimated_uncertainty_deg": 10,
+    "note": "Projected direction estimate, not calibrated physical yaw."
+  }
+}

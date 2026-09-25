@@ -1,0 +1,28 @@
+{
+  "before": "1790198100020257264",
+  "after": "1790198304300672060",
+  "method": "Euclidean registration of largest dark mug silhouette within fixed top-image ROI; image-plane rotation only, not calibrated physical yaw",
+  "correlation": 0.9994723940799908,
+  "warp": [
+    [
+      0.9999997019767761,
+      0.0007713116938248277,
+      -0.12592005729675293
+    ],
+    [
+      -0.0007713116938248277,
+      0.9999997019767761,
+      0.10543730109930038
+    ]
+  ],
+  "image_rotation_deg": -0.044192906469106674,
+  "roi_origin": [
+    580,
+    390
+  ],
+  "image_translation_px": [
+    -0.12592005729675293,
+    0.10543730109930038
+  ],
+  "uncertainty": "Thresholding, lighting and perspective unquantified; changes below a few pixels/degrees not established. No verified useful yaw or translation."
+}

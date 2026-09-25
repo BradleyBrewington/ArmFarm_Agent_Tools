@@ -1,0 +1,9 @@
+{
+  "episode": "20260923T162837-20ed646c",
+  "folder": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T162837-20ed646c",
+  "frames": 1609,
+  "quality_flags": [],
+  "training_ready": true,
+  "success": false,
+  "notes": "Continued upright wall-contact reorientation. Handle remained body-occluded from approach; no closure or lift. Observed further rotation and translation, later tangential increments mostly translated mug. Returned home empty. Full-task unsuccessful; reorientation evidence saved."
+}

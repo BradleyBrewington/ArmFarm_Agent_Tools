@@ -1,0 +1,9 @@
+{
+  "episode": "20260923T164413-4f7d058f",
+  "folder": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T164413-4f7d058f",
+  "frames": 1760,
+  "quality_flags": [],
+  "training_ready": true,
+  "success": false,
+  "notes": "Opposite-side upright handle approach after yaw reorientation. Projected handle/jaw overlap did not establish through-loop support. Staged closure then measured diagnostic midpoint rise 13.25 mm left mug on table; no held-home success. Opened, retracted, returned four joints home; torque retained. Failed outcome preserved."
+}

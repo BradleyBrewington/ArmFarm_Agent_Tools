@@ -1,0 +1,106 @@
+[
+  {
+    "artifact_id": "11177f49dbfe05f4140975cb9fbd845ce7205687d7d6cee13d88bf910765ee3a",
+    "source_id": "20260923T150610-cec48c14",
+    "metadata": {
+      "model": "gpt-6-astra",
+      "notes": "Handle attempts did not retain mug. Open jaw swept mug toward base; retreating clear to change wrist orientation before retry.",
+      "frames": 4186,
+      "run_id": "20260923T145514-50ca2c02",
+      "started": 1790193970.869328,
+      "success": false,
+      "task_id": "exp-grasp-mug-multiagent",
+      "agent_id": "arm-002__gpt-6-astra__exp-grasp-mug-multiagent",
+      "finished": 1790194479.4528258,
+      "provider": "codex",
+      "session_id": "01a0cfd6-2d45-7a33-afda-96ea4eb5989b",
+      "designation": "arm-002",
+      "task_sha256": "da84841a86e2bacfa19d8d6ec61d7a933f74c59569b6e1ed32154cb945f96406",
+      "task_version": 6,
+      "tools_sha256": "df2e51237995effe675c550977decea81746ae4951946bc7ba1c567d499779e1",
+      "quality_flags": [],
+      "training_ready": true,
+      "task_definition": {
+        "id": "exp-grasp-mug-multiagent",
+        "version": 6,
+        "description": "Start episode, pickup the black mug, bring black mug to home position, confirm successful grasp, stop episode, return object to new position, return to home position, repeat.  If the target object is visible, successful grasp is possible. This is an axiom of this environment. ",
+        "success_criteria": [
+          "successful episode coverage across the entire workspace",
+          "2:1 ratio of successful episodes to unsuccessful episodes",
+          "achieve at least 6 successful episodes an hour"
+        ]
+      }
+    }
+  },
+  {
+    "artifact_id": "044eda41904cc2d93ed8da6550bc9cb1193417c94f9dac128e75357d2d750872",
+    "source_id": "20260923T150117-bf807a86",
+    "metadata": {
+      "model": "gpt-6-astra",
+      "notes": "Vertical rim and deeper wall attempts displaced or tilted mug but failed sustained lift; mug upright on table.",
+      "frames": 2512,
+      "run_id": "20260923T145514-50ca2c02",
+      "started": 1790193677.873912,
+      "success": false,
+      "task_id": "exp-grasp-mug-multiagent",
+      "agent_id": "arm-002__gpt-6-astra__exp-grasp-mug-multiagent",
+      "finished": 1790193938.6220372,
+      "provider": "codex",
+      "session_id": "01a0cfd6-2d45-7a33-afda-96ea4eb5989b",
+      "designation": "arm-002",
+      "task_sha256": "da84841a86e2bacfa19d8d6ec61d7a933f74c59569b6e1ed32154cb945f96406",
+      "task_version": 6,
+      "tools_sha256": "df2e51237995effe675c550977decea81746ae4951946bc7ba1c567d499779e1",
+      "quality_flags": [
+        "torque_disabled"
+      ],
+      "training_ready": false,
+      "task_definition": {
+        "id": "exp-grasp-mug-multiagent",
+        "version": 6,
+        "description": "Start episode, pickup the black mug, bring black mug to home position, confirm successful grasp, stop episode, return object to new position, return to home position, repeat.  If the target object is visible, successful grasp is possible. This is an axiom of this environment. ",
+        "success_criteria": [
+          "successful episode coverage across the entire workspace",
+          "2:1 ratio of successful episodes to unsuccessful episodes",
+          "achieve at least 6 successful episodes an hour"
+        ]
+      }
+    }
+  },
+  {
+    "artifact_id": "91e33662cffd827dea3531ff1597acd51609073ff4bb4b7e21f3c3ba8841b98e",
+    "source_id": "20260923T145720-51ce461c",
+    "metadata": {
+      "model": "gpt-6-astra",
+      "notes": "Mug displaced on closure and remained on table during lift check; no retained grasp.",
+      "frames": 2251,
+      "run_id": "20260923T145514-50ca2c02",
+      "started": 1790193440.8785243,
+      "success": false,
+      "task_id": "exp-grasp-mug-multiagent",
+      "agent_id": "arm-002__gpt-6-astra__exp-grasp-mug-multiagent",
+      "finished": 1790193649.1273947,
+      "provider": "codex",
+      "session_id": "01a0cfd6-2d45-7a33-afda-96ea4eb5989b",
+      "designation": "arm-002",
+      "task_sha256": "da84841a86e2bacfa19d8d6ec61d7a933f74c59569b6e1ed32154cb945f96406",
+      "task_version": 6,
+      "tools_sha256": "df2e51237995effe675c550977decea81746ae4951946bc7ba1c567d499779e1",
+      "quality_flags": [
+        "target_outside_calibration",
+        "torque_disabled"
+      ],
+      "training_ready": false,
+      "task_definition": {
+        "id": "exp-grasp-mug-multiagent",
+        "version": 6,
+        "description": "Start episode, pickup the black mug, bring black mug to home position, confirm successful grasp, stop episode, return object to new position, return to home position, repeat.  If the target object is visible, successful grasp is possible. This is an axiom of this environment. ",
+        "success_criteria": [
+          "successful episode coverage across the entire workspace",
+          "2:1 ratio of successful episodes to unsuccessful episodes",
+          "achieve at least 6 successful episodes an hour"
+        ]
+      }
+    }
+  }
+]

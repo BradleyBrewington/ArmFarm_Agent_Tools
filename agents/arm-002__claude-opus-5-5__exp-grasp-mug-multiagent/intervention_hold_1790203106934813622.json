@@ -1,0 +1,188 @@
+{
+  "timestamp": 1790203106.935615,
+  "hold_reason": "Awaiting operator clarification after manual intervention; no automatic resume on reconnection",
+  "motion_commands_issued": false,
+  "torque_commands_issued": false,
+  "recording": false,
+  "episode": null,
+  "telemetry_time": 1790203106.922411,
+  "torque": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "fault_bits": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "state_raw": [
+    1861,
+    2280,
+    2115,
+    2969,
+    2759,
+    1758
+  ],
+  "action_raw": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "motor_health": {
+    "version": 1,
+    "since": 1790100042.6467297,
+    "window_seconds": 300,
+    "age_seconds": 0.013,
+    "motors": [
+      {
+        "id": 1,
+        "name": "shoulder_pan",
+        "last_seen_at": 1790203106.9222908,
+        "missing_since": null,
+        "status_bits": 0,
+        "missed_responses": 1638,
+        "dropouts": 2,
+        "fault_events": 0,
+        "last_missing_at": 1790202987.0778427,
+        "last_recovered_at": 1790202987.082596,
+        "age_seconds": 0.013,
+        "connected": true,
+        "faults": [],
+        "last_faults": [],
+        "recent_faults": [],
+        "recent_dropout": true
+      },
+      {
+        "id": 2,
+        "name": "shoulder_lift",
+        "last_seen_at": 1790203106.9222908,
+        "missing_since": null,
+        "status_bits": 0,
+        "missed_responses": 1637,
+        "dropouts": 3,
+        "fault_events": 0,
+        "last_missing_at": 1790202987.0521708,
+        "last_recovered_at": 1790202987.0778427,
+        "age_seconds": 0.013,
+        "connected": true,
+        "faults": [],
+        "last_faults": [],
+        "recent_faults": [],
+        "recent_dropout": true
+      },
+      {
+        "id": 3,
+        "name": "elbow_flex",
+        "last_seen_at": 1790203106.9222908,
+        "missing_since": null,
+        "status_bits": 0,
+        "missed_responses": 1636,
+        "dropouts": 2,
+        "fault_events": 0,
+        "last_missing_at": 1790202987.0521708,
+        "last_recovered_at": 1790202987.0778427,
+        "age_seconds": 0.013,
+        "connected": true,
+        "faults": [],
+        "last_faults": [],
+        "recent_faults": [],
+        "recent_dropout": true
+      },
+      {
+        "id": 4,
+        "name": "wrist_flex",
+        "last_seen_at": 1790203106.9222908,
+        "missing_since": null,
+        "status_bits": 0,
+        "missed_responses": 1637,
+        "dropouts": 2,
+        "fault_events": 0,
+        "last_missing_at": 1790202987.0521708,
+        "last_recovered_at": 1790202987.0778427,
+        "age_seconds": 0.013,
+        "connected": true,
+        "faults": [],
+        "last_faults": [],
+        "recent_faults": [],
+        "recent_dropout": true
+      },
+      {
+        "id": 5,
+        "name": "wrist_roll",
+        "last_seen_at": 1790203106.9222908,
+        "missing_since": null,
+        "status_bits": 0,
+        "missed_responses": 1636,
+        "dropouts": 2,
+        "fault_events": 0,
+        "last_missing_at": 1790202987.0521708,
+        "last_recovered_at": 1790202987.0778427,
+        "age_seconds": 0.013,
+        "connected": true,
+        "faults": [],
+        "last_faults": [],
+        "recent_faults": [],
+        "recent_dropout": true
+      },
+      {
+        "id": 6,
+        "name": "gripper",
+        "last_seen_at": 1790203106.9222908,
+        "missing_since": null,
+        "status_bits": 0,
+        "missed_responses": 1636,
+        "dropouts": 2,
+        "fault_events": 0,
+        "last_missing_at": 1790202987.0521708,
+        "last_recovered_at": 1790202987.0778427,
+        "age_seconds": 0.013,
+        "connected": true,
+        "faults": [],
+        "last_faults": [],
+        "recent_faults": [],
+        "recent_dropout": true
+      }
+    ],
+    "storage_error": null
+  },
+  "images": {
+    "top": {
+      "path": "tools/intervention_hold_1790203106934813622_top.jpg",
+      "metadata": {
+        "cam": "top",
+        "seq": 799291,
+        "t_wall": 1790203106.90421,
+        "t_mono": 417713.924772988,
+        "w": 1280,
+        "h": 720,
+        "fps": 27.2,
+        "raw": true,
+        "age": 0.031578640977386385
+      }
+    },
+    "wrist": {
+      "path": "tools/intervention_hold_1790203106934813622_wrist.jpg",
+      "metadata": {
+        "cam": "wrist",
+        "seq": 866196,
+        "t_wall": 1790203106.9139042,
+        "t_mono": 417713.934466955,
+        "w": 1280,
+        "h": 720,
+        "fps": 29.5,
+        "raw": true,
+        "age": 0.022186819987837225
+      }
+    }
+  }
+}

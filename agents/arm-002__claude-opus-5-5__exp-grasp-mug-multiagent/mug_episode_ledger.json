@@ -1,0 +1,1253 @@
+[
+  {
+    "episode_id": "20260923T145720-51ce461c",
+    "started": 1790193440.8785243,
+    "finished": 1790193649.1273947,
+    "success": false,
+    "notes": "Mug displaced on closure and remained on table during lift check; no retained grasp.",
+    "quality_flags": [
+      "target_outside_calibration",
+      "torque_disabled"
+    ],
+    "source": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T145720-51ce461c",
+    "source_availability": "Committed uploaded record read and outcome cross-checked; paired camera packages retrievable from fleet archive.",
+    "closure_attempts": [
+      {
+        "estimated_tool_xyz_base_m": [
+          0.279611,
+          0.052984,
+          0.045652
+        ],
+        "verified_grasp": false,
+        "evidence": "Live measured FK and paired camera checks in this turn transcript; representative closure, not all attempts.",
+        "note": "Diagnostic estimate of measured tool location, not a verified grasp or exact mug center."
+      }
+    ],
+    "verified_grasp_locations": [],
+    "uploaded_evidence": {
+      "artifact_id": "91e33662cffd827dea3531ff1597acd51609073ff4bb4b7e21f3c3ba8841b98e",
+      "ordinal": 0,
+      "agent_id": "arm-002__gpt-6-astra__exp-grasp-mug-multiagent"
+    }
+  },
+  {
+    "episode_id": "20260923T150117-bf807a86",
+    "started": 1790193677.873912,
+    "finished": 1790193938.6220372,
+    "success": false,
+    "notes": "Vertical rim and deeper wall attempts displaced or tilted mug but failed sustained lift; mug upright on table.",
+    "quality_flags": [
+      "torque_disabled"
+    ],
+    "source": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T150117-bf807a86",
+    "source_availability": "Committed uploaded record read and outcome cross-checked; paired camera packages retrievable from fleet archive.",
+    "closure_attempts": [
+      {
+        "estimated_tool_xyz_base_m": [
+          0.285022,
+          0.052815,
+          0.05168
+        ],
+        "verified_grasp": false,
+        "evidence": "Live measured FK and paired camera checks in this turn transcript; representative closure, not all attempts.",
+        "note": "Diagnostic estimate of measured tool location, not a verified grasp or exact mug center."
+      }
+    ],
+    "verified_grasp_locations": [],
+    "uploaded_evidence": {
+      "artifact_id": "044eda41904cc2d93ed8da6550bc9cb1193417c94f9dac128e75357d2d750872",
+      "ordinal": 0,
+      "agent_id": "arm-002__gpt-6-astra__exp-grasp-mug-multiagent"
+    }
+  },
+  {
+    "episode_id": "20260923T150610-cec48c14",
+    "started": 1790193970.869328,
+    "finished": 1790194479.4528258,
+    "success": false,
+    "notes": "Handle attempts did not retain mug. Open jaw swept mug toward base; retreated clear to change wrist orientation.",
+    "quality_flags": [],
+    "source": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T150610-cec48c14",
+    "source_availability": "Committed uploaded record read and outcome cross-checked; paired camera packages retrievable from fleet archive.",
+    "closure_attempts": [
+      {
+        "estimated_tool_xyz_base_m": [
+          0.324912,
+          0.093983,
+          0.049991
+        ],
+        "verified_grasp": false,
+        "evidence": "Live measured FK and paired camera checks in this turn transcript; representative closure, not all attempts.",
+        "note": "Diagnostic estimate of measured tool location, not a verified grasp or exact mug center."
+      }
+    ],
+    "verified_grasp_locations": [],
+    "uploaded_evidence": {
+      "artifact_id": "11177f49dbfe05f4140975cb9fbd845ce7205687d7d6cee13d88bf910765ee3a",
+      "ordinal": 0,
+      "agent_id": "arm-002__gpt-6-astra__exp-grasp-mug-multiagent"
+    }
+  },
+  {
+    "episode_id": "20260923T151600-90257d61",
+    "started": 1790194560.1738365,
+    "finished": 1790194970.221402,
+    "success": false,
+    "notes": "Transverse wrist body and wall approaches did not retain mug; closure displaced mug on table. Ended experiment for operator guidance; no home-held success.",
+    "quality_flags": [],
+    "source": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T151600-90257d61",
+    "closure_attempts": [
+      {
+        "frame_index": 1290,
+        "t_wall": 1790194654.2560027,
+        "measured_joints": {
+          "shoulder_pan": -16.615384615384617,
+          "shoulder_lift": -9.45054945054945,
+          "elbow_flex": 12.87912087912088,
+          "wrist_flex": 61.53846153846154,
+          "wrist_roll": -24.835164835164836,
+          "gripper": 31.010452961672474
+        },
+        "estimated_tool_xyz_base_m": [
+          0.26500747615311343,
+          0.04503893298233487,
+          0.0751151132590224
+        ],
+        "verified_grasp": false,
+        "note": "Closure candidate, not a verified grasp; diagnostic FK alignment.",
+        "top_evidence": "/var/lib/armfarm/stations/armfarm/workspace/tools/mug_evidence/20260923T151600-90257d61_1290_top.jpg",
+        "wrist_evidence": "/var/lib/armfarm/stations/armfarm/workspace/tools/mug_evidence/20260923T151600-90257d61_1290_wrist.jpg"
+      },
+      {
+        "frame_index": 1451,
+        "t_wall": 1790194682.189436,
+        "measured_joints": {
+          "shoulder_pan": -16.615384615384617,
+          "shoulder_lift": -9.45054945054945,
+          "elbow_flex": 12.87912087912088,
+          "wrist_flex": 61.53846153846154,
+          "wrist_roll": -24.835164835164836,
+          "gripper": 1.8118466898954704
+        },
+        "estimated_tool_xyz_base_m": [
+          0.26500747615311343,
+          0.04503893298233487,
+          0.0751151132590224
+        ],
+        "verified_grasp": false,
+        "note": "Closure candidate, not a verified grasp; diagnostic FK alignment.",
+        "top_evidence": "/var/lib/armfarm/stations/armfarm/workspace/tools/mug_evidence/20260923T151600-90257d61_1451_top.jpg",
+        "wrist_evidence": "/var/lib/armfarm/stations/armfarm/workspace/tools/mug_evidence/20260923T151600-90257d61_1451_wrist.jpg"
+      },
+      {
+        "frame_index": 3001,
+        "t_wall": 1790194841.723167,
+        "measured_joints": {
+          "shoulder_pan": -15.824175824175825,
+          "shoulder_lift": -29.846153846153847,
+          "elbow_flex": 77.31868131868131,
+          "wrist_flex": -21.45054945054945,
+          "wrist_roll": -24.835164835164836,
+          "gripper": 31.0801393728223
+        },
+        "estimated_tool_xyz_base_m": [
+          0.2693445985156263,
+          0.042970679910334236,
+          0.04694393254722838
+        ],
+        "verified_grasp": false,
+        "note": "Closure candidate, not a verified grasp; diagnostic FK alignment.",
+        "top_evidence": "/var/lib/armfarm/stations/armfarm/workspace/tools/mug_evidence/20260923T151600-90257d61_3001_top.jpg",
+        "wrist_evidence": "/var/lib/armfarm/stations/armfarm/workspace/tools/mug_evidence/20260923T151600-90257d61_3001_wrist.jpg"
+      },
+      {
+        "frame_index": 3826,
+        "t_wall": 1790194904.6896777,
+        "measured_joints": {
+          "shoulder_pan": -15.824175824175825,
+          "shoulder_lift": 13.758241758241759,
+          "elbow_flex": 74.06593406593407,
+          "wrist_flex": -63.64835164835165,
+          "wrist_roll": -24.835164835164836,
+          "gripper": 26.062717770034844
+        },
+        "estimated_tool_xyz_base_m": [
+          0.272887863748954,
+          0.04397507634164846,
+          0.0038944056649548933
+        ],
+        "verified_grasp": false,
+        "note": "Closure candidate, not a verified grasp; diagnostic FK alignment.",
+        "top_evidence": "/var/lib/armfarm/stations/armfarm/workspace/tools/mug_evidence/20260923T151600-90257d61_3826_top.jpg",
+        "wrist_evidence": "/var/lib/armfarm/stations/armfarm/workspace/tools/mug_evidence/20260923T151600-90257d61_3826_wrist.jpg"
+      }
+    ],
+    "verified_grasp_locations": []
+  },
+  {
+    "episode_id": "20260923T152704-67d46d98",
+    "started": 1790195224.0996904,
+    "finished": 1790195634.9005954,
+    "success": false,
+    "notes": "Handle insertion and opposing contacts could not be verified after small image-guided corrections. Closure reached near empty-jaw aperture. No retained lift or home-held success. Opened and withdrew; unsuccessful episode preserved.",
+    "quality_flags": [],
+    "source": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T152704-67d46d98",
+    "closure_attempts": [
+      {
+        "measured_joints": {
+          "shoulder_pan": -21.36263736263736,
+          "shoulder_lift": 12.175824175824175,
+          "elbow_flex": -0.6593406593406593,
+          "wrist_flex": 40.35164835164835,
+          "wrist_roll": -24.835164835164836,
+          "gripper": 1.8118466898954706
+        },
+        "estimated_tool_xyz_base_m": [
+          0.3291894580053381,
+          0.09046889442916524,
+          0.061148848623095574
+        ],
+        "verified_grasp": false,
+        "evidence_stem": "tools/mug_observations/1790195571902856116",
+        "note": "Measured tool estimate, not mug base or verified contact. Opposing handle contacts unconfirmed."
+      }
+    ],
+    "verified_grasp_locations": []
+  },
+  {
+    "episode_id": "20260923T153620-ace55ee6",
+    "started": 1790195780.3532128,
+    "finished": 1790196091.2805107,
+    "success": false,
+    "notes": "Shallow upright-handle approach with lateral correction. No verified finger-through-loop support. Two measured lift increments totaled 0.0183 m diagnostic tool rise; mug remained on table. No home-held mug. Wrist view lost handle below frame at shallow pitch. Failed outcome preserved.",
+    "quality_flags": [],
+    "source": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T153620-ace55ee6",
+    "closure_attempts": [
+      {
+        "measured_joints": {
+          "shoulder_pan": -21.274725274725274,
+          "shoulder_lift": 28.175824175824175,
+          "elbow_flex": 32.65934065934066,
+          "wrist_flex": -57.23076923076923,
+          "wrist_roll": -24.835164835164836,
+          "gripper": 1.8118466898954706
+        },
+        "estimated_tool_xyz_base_m": [
+          0.3637526136478212,
+          0.10342766399776365,
+          0.06178320086226077
+        ],
+        "verified_grasp": false,
+        "evidence_stem": "tools/mug_observations/1790195999704429115"
+      },
+      {
+        "measured_joints": {
+          "shoulder_pan": -18.725274725274726,
+          "shoulder_lift": 28.52747252747253,
+          "elbow_flex": 32.65934065934066,
+          "wrist_flex": -57.23076923076923,
+          "wrist_roll": -24.835164835164836,
+          "gripper": 1.8118466898954706
+        },
+        "estimated_tool_xyz_base_m": [
+          0.3677074896130227,
+          0.08876256540185254,
+          0.05988220038065797
+        ],
+        "verified_grasp": false,
+        "evidence_stem": "tools/mug_observations/1790196044136907119"
+      }
+    ],
+    "retention_test": [
+      {
+        "measured_joints": {
+          "shoulder_pan": -18.197802197802197,
+          "shoulder_lift": 27.208791208791208,
+          "elbow_flex": 32.57142857142857,
+          "wrist_flex": -57.23076923076923,
+          "wrist_roll": -24.835164835164836,
+          "gripper": 1.8118466898954706
+        },
+        "estimated_tool_xyz_base_m": [
+          0.3698720708346178,
+          0.08617873304436158,
+          0.06738106267371546
+        ],
+        "verified_grasp": false,
+        "evidence_stem": "tools/mug_observations/1790196059237801737"
+      },
+      {
+        "measured_joints": {
+          "shoulder_pan": -18.197802197802197,
+          "shoulder_lift": 25.274725274725274,
+          "elbow_flex": 32.57142857142857,
+          "wrist_flex": -57.31868131868132,
+          "wrist_roll": -24.835164835164836,
+          "gripper": 1.6724738675958188
+        },
+        "estimated_tool_xyz_base_m": [
+          0.37130653142500386,
+          0.0866502801849535,
+          0.07815492894167637
+        ],
+        "verified_grasp": false,
+        "evidence_stem": "tools/mug_observations/1790196073509372584"
+      }
+    ],
+    "verified_grasp_locations": [],
+    "object_table_location": {
+      "pixel_estimate": [
+        680,
+        540
+      ],
+      "table_xy_m": [
+        0.12692466820031906,
+        0.049419573651696136
+      ],
+      "uncertainty_m": 0.025,
+      "coordinate_frame": "20260921 checkerboard metric table plane",
+      "source": "calibration/20260921T152058_891355289/workspace_map.json",
+      "image": "tools/mug_observations/1790196030563028959_top.jpg",
+      "note": "Approximate table-contact footprint center inferred from lower body before lift; partially occluded. Not elevated handle projection. No coverage credit."
+    }
+  },
+  {
+    "episode_id": "20260923T154409-dbb0900c",
+    "started": 1790196249.5786743,
+    "finished": 1790196572.1424787,
+    "success": false,
+    "notes": "Recorded table-supported pose-change test. Upper-wall contact slid/rotated and briefly changed mug angle, then released; mug settled upright. No side-lying pose, finger-through-handle support, retained lift, or held-home success. No force limits increased.",
+    "quality_flags": [],
+    "source": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T154409-dbb0900c",
+    "closure_attempts": [
+      {
+        "measured_joints": {
+          "shoulder_pan": -17.934065934065934,
+          "shoulder_lift": -12.967032967032967,
+          "elbow_flex": 34.417582417582416,
+          "wrist_flex": 27.956043956043956,
+          "wrist_roll": 62.81318681318681,
+          "gripper": 1.8118466898954706
+        },
+        "estimated_tool_xyz_base_m": [
+          0.31189709581745884,
+          0.07115797718435295,
+          0.07772374557673742
+        ],
+        "verified_grasp": false,
+        "evidence_stem": "tools/mug_observations/1790196422805180863",
+        "note": "Table-supported pose-change contact, not successful grasp."
+      }
+    ],
+    "pose_change_evidence": [
+      {
+        "measured_joints": {
+          "shoulder_pan": -18.98901098901099,
+          "shoulder_lift": -14.989010989010989,
+          "elbow_flex": 41.89010989010989,
+          "wrist_flex": 19.252747252747252,
+          "wrist_roll": 62.81318681318681,
+          "gripper": 1.8118466898954706
+        },
+        "estimated_tool_xyz_base_m": [
+          0.30786472196314796,
+          0.07525247078761724,
+          0.07290752552587201
+        ],
+        "verified_grasp": false,
+        "evidence_stem": "tools/mug_observations/1790196473695834109",
+        "note": "Table-supported pose-change contact, not successful grasp."
+      },
+      {
+        "measured_joints": {
+          "shoulder_pan": -19.164835164835164,
+          "shoulder_lift": -19.384615384615383,
+          "elbow_flex": 48.65934065934066,
+          "wrist_flex": 19.252747252747252,
+          "wrist_roll": 62.81318681318681,
+          "gripper": 1.6724738675958188
+        },
+        "estimated_tool_xyz_base_m": [
+          0.29279225901707306,
+          0.07091989412828506,
+          0.06216846178102271
+        ],
+        "verified_grasp": false,
+        "evidence_stem": "tools/mug_observations/1790196506301846192",
+        "note": "Table-supported pose-change contact, not successful grasp."
+      },
+      {
+        "measured_joints": {
+          "shoulder_pan": -20.395604395604394,
+          "shoulder_lift": -27.12087912087912,
+          "elbow_flex": 55.252747252747255,
+          "wrist_flex": 19.78021978021978,
+          "wrist_roll": 62.9010989010989,
+          "gripper": 1.6027874564459932
+        },
+        "estimated_tool_xyz_base_m": [
+          0.2789505946208501,
+          0.07183386109759617,
+          0.06340255154112256
+        ],
+        "verified_grasp": false,
+        "evidence_stem": "tools/mug_observations/1790196539739803880",
+        "note": "Table-supported pose-change contact, not successful grasp."
+      }
+    ],
+    "verified_grasp_locations": [],
+    "object_location": {
+      "table_contact_pixel_estimate": [
+        667,
+        540
+      ],
+      "pixel_uncertainty": 20,
+      "image": "tools/mug_observations/1790196539739803880_top.jpg",
+      "note": "Upright settled footprint estimate; no lift or coverage credit."
+    }
+  },
+  {
+    "episode_id": "20260923T155623-5348ee4b",
+    "started": 1790196983.5435667,
+    "finished": 1790197173.5507684,
+    "success": false,
+    "notes": "Fixed-finger visual approach placed handle bar between projected jaw features but no verified through-loop support. Measured diagnostic tool rise 0.01973 m in two observed stages; mug remained on table, handle moved down relative to jaws. No retained lift or held-home success.",
+    "quality_flags": [],
+    "source": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T155623-5348ee4b",
+    "closure_attempts": [
+      {
+        "measured_joints": {
+          "shoulder_pan": -18.10989010989011,
+          "shoulder_lift": 21.934065934065934,
+          "elbow_flex": -25.0989010989011,
+          "wrist_flex": 54.857142857142854,
+          "wrist_roll": -24.835164835164836,
+          "gripper": 1.8118466898954706
+        },
+        "estimated_tool_xyz_base_m": [
+          0.35145480742946783,
+          0.07960419980397074,
+          0.08572892947495872
+        ],
+        "verified_grasp": false,
+        "evidence_stem": "tools/mug_observations/1790197109466103612",
+        "note": "Diagnostic calibrated midpoint FK, not individually calibrated fixed fingertip."
+      }
+    ],
+    "retention_test": [
+      {
+        "measured_joints": {
+          "shoulder_pan": -18.10989010989011,
+          "shoulder_lift": 20.087912087912088,
+          "elbow_flex": -25.0989010989011,
+          "wrist_flex": 54.857142857142854,
+          "wrist_roll": -24.835164835164836,
+          "gripper": 1.8118466898954706
+        },
+        "estimated_tool_xyz_base_m": [
+          0.3522562822933167,
+          0.07986629595694737,
+          0.0951351754613123
+        ],
+        "verified_grasp": false,
+        "evidence_stem": "tools/mug_observations/1790197129201181722",
+        "note": "Diagnostic calibrated midpoint FK, not individually calibrated fixed fingertip."
+      },
+      {
+        "measured_joints": {
+          "shoulder_pan": -18.10989010989011,
+          "shoulder_lift": 18.065934065934066,
+          "elbow_flex": -25.0989010989011,
+          "wrist_flex": 54.857142857142854,
+          "wrist_roll": -24.835164835164836,
+          "gripper": 1.8118466898954706
+        },
+        "estimated_tool_xyz_base_m": [
+          0.3528031187426397,
+          0.08004511056668387,
+          0.10546246570320246
+        ],
+        "verified_grasp": false,
+        "evidence_stem": "tools/mug_observations/1790197146996405720",
+        "note": "Diagnostic calibrated midpoint FK, not individually calibrated fixed fingertip."
+      }
+    ],
+    "verified_grasp_locations": [],
+    "object_location": {
+      "table_contact_pixel_estimate": [
+        668,
+        541
+      ],
+      "pixel_uncertainty": 20,
+      "image": "tools/mug_observations/1790197009339666421_top.jpg",
+      "note": "Pre-lift table-contact footprint estimate; not handle projection. Metric transform pending validation; no coverage credit."
+    }
+  },
+  {
+    "episode_id": "20260923T160817-370fe24d",
+    "started": 1790197697,
+    "finished": 1790197998.2148802,
+    "success": false,
+    "notes": "Lateral upright-handle approach; fixed finger approached from positive-y side after lowering clear of mug. Closure did not establish support: measured diagnostic midpoint rose 10.26mm, mug remained on table in both views. No through-loop support or home-held outcome. No increased force limits.",
+    "quality_flags": [],
+    "source": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T160817-370fe24d",
+    "closure_attempts": [
+      {
+        "measured_joints": {
+          "shoulder_pan": -19.252747252747252,
+          "shoulder_lift": 24.21978021978022,
+          "elbow_flex": -16.395604395604394,
+          "wrist_flex": 46.065934065934066,
+          "wrist_roll": -24.835164835164836,
+          "gripper": 1.8118466898954706
+        },
+        "estimated_tool_xyz_base_m": [
+          0.34820061206636355,
+          0.08526340223086336,
+          0.053774882647044366
+        ],
+        "verified_grasp": false,
+        "evidence_stem": "tools/mug_observations/1790197920017285892",
+        "note": "Diagnostic nearly-closed midpoint, not calibrated fixed-tip contact location."
+      }
+    ],
+    "retention_evidence": [
+      "tools/mug_observations/1790197942480696964"
+    ],
+    "prelift_object_location": {
+      "table_contact_pixel_estimate": [
+        668,
+        541
+      ],
+      "pixel_uncertainty": 20,
+      "image": "tools/mug_observations/1790197719612215919_top.jpg",
+      "frame": "image pixels",
+      "provisional_table_frame": "20260922_live_checkerboard",
+      "provisional_table_xy_m": [
+        0.07832,
+        0.13182
+      ],
+      "mapping_evidence": "tools/table_plane_boundary_check.json",
+      "note": "Mug stationary relative prior mapping; current registration and contact occlusion uncertainty unverified. No coverage credit."
+    }
+  },
+  {
+    "episode_id": "20260923T161521-30c2b4a5",
+    "started": 1790198121.4201617,
+    "finished": 1790198376.4245315,
+    "success": false,
+    "notes": "Bounded upright-yaw pregrasp experiment: lateral approach then 2.55deg measured pan increment near outside handle; no effective contact or useful mug rotation/translation verified. Before/after silhouette correlation0.99947, apparent image rotation-0.044deg and shift under0.2px, below uncertainty. No grasp/lift/home-held success. Returned home empty.",
+    "quality_flags": [],
+    "source": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T161521-30c2b4a5",
+    "experiment_type": "bounded upright yaw pregrasp",
+    "measured_near_contact_pose": {
+      "time": 1790198243.8862405,
+      "joints": {
+        "shoulder_pan": -16.703296703296704,
+        "shoulder_lift": 34.24175824175824,
+        "elbow_flex": -38.989010989010985,
+        "wrist_flex": 55.2967032967033,
+        "wrist_roll": -24.835164835164836,
+        "gripper": 14.146341463414632
+      },
+      "estimated_tool_xyz": [
+        0.3732272404661209,
+        0.07788174613598921,
+        0.07457992886206431
+      ]
+    },
+    "verified_grasp": false,
+    "evidence_stems": [
+      "1790198100020257264",
+      "1790198190204283294",
+      "1790198215571844745",
+      "1790198243805437517",
+      "1790198304300672060",
+      "1790198334900571746"
+    ],
+    "motion_measurement": "tools/yaw_contact_measurement.json",
+    "prelift_object_location": {
+      "table_contact_pixel_estimate": [
+        668,
+        541
+      ],
+      "pixel_uncertainty": 20,
+      "image": "tools/mug_observations/1790198100020257264_top.jpg",
+      "frame": "image pixels",
+      "note": "No lift. Same stationary footprint; provisional checkerboard mapping remains unvalidated. No coverage credit."
+    }
+  },
+  {
+    "episode_id": "20260923T162058-b2066e4a",
+    "started": 1790198458.923763,
+    "finished": 1790198836.2872572,
+    "success": false,
+    "notes": "Broad upper-wall contact established by observed mug motion after small pan change. Separate 1.055deg measured pan increment caused additional upright rotation and translation. After retraction mug settled upright: projected handle direction changed about31deg (about10deg uncertainty); silhouette centroid shifted +4.5,-32.5px. No grasp/lift/home-held success. Useful pregrasp result, unsuccessful full task episode.",
+    "quality_flags": [],
+    "source": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T162058-b2066e4a",
+    "experiment_type": "broad-wall contact and separate tangential upright yaw",
+    "verified_grasp": false,
+    "contact_poses": [
+      {
+        "time": 1790198675.7961707,
+        "joints": {
+          "shoulder_pan": -20.65934065934066,
+          "shoulder_lift": 21.934065934065934,
+          "elbow_flex": -18.065934065934066,
+          "wrist_flex": 66.46153846153847,
+          "wrist_roll": 62.72527472527472,
+          "gripper": 14.285714285714285
+        },
+        "estimated_tool_xyz": [
+          0.33255587994696606,
+          0.09320882735817988,
+          0.060049286614503254
+        ]
+      },
+      {
+        "time": 1790198694.0522718,
+        "joints": {
+          "shoulder_pan": -20.65934065934066,
+          "shoulder_lift": 21.934065934065934,
+          "elbow_flex": -18.065934065934066,
+          "wrist_flex": 66.46153846153847,
+          "wrist_roll": 62.72527472527472,
+          "gripper": 14.285714285714285
+        },
+        "estimated_tool_xyz": [
+          0.33255587994696606,
+          0.09320882735817988,
+          0.060049286614503254
+        ]
+      },
+      {
+        "time": 1790198715.1093657,
+        "joints": {
+          "shoulder_pan": -21.714285714285715,
+          "shoulder_lift": 21.934065934065934,
+          "elbow_flex": -18.065934065934066,
+          "wrist_flex": 66.46153846153847,
+          "wrist_roll": 62.637362637362635,
+          "gripper": 14.285714285714285
+        },
+        "estimated_tool_xyz": [
+          0.33077991384336886,
+          0.09856265451591179,
+          0.060040906233843845
+        ]
+      }
+    ],
+    "measurement": "tools/yaw_wall_contact_result.json",
+    "prelift_object_location": {
+      "table_contact_pixel_estimate": [
+        675,
+        510
+      ],
+      "pixel_uncertainty": 20,
+      "image": "tools/mug_observations/1790198778036871173_top.jpg",
+      "frame": "image pixels",
+      "note": "Post-reorientation table-contact footprint, no lift. Metric uncertainty not validated; no coverage credit."
+    }
+  },
+  {
+    "episode_id": "20260923T162837-20ed646c",
+    "started": 1790198917.5127628,
+    "finished": 1790199167.3878279,
+    "success": false,
+    "notes": "Continued upright wall-contact reorientation. Handle remained body-occluded from approach; no closure or lift. Observed further rotation and translation, later tangential increments mostly translated mug. Returned home empty. Full-task unsuccessful; reorientation evidence saved.",
+    "quality_flags": [],
+    "source": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T162837-20ed646c",
+    "experiment_type": "continued upright reorientation",
+    "verified_grasp": false,
+    "contact_poses": [
+      {
+        "time": 1790199044.791835,
+        "joints": {
+          "shoulder_pan": -22.593406593406595,
+          "shoulder_lift": 23.076923076923077,
+          "elbow_flex": -16.043956043956044,
+          "wrist_flex": 67.42857142857143,
+          "wrist_roll": 62.72527472527472,
+          "gripper": 14.285714285714285
+        },
+        "estimated_tool_xyz": [
+          0.32064047809780666,
+          0.0994889526009358,
+          0.046253542083334334
+        ]
+      },
+      {
+        "time": 1790199067.991889,
+        "joints": {
+          "shoulder_pan": -23.64835164835165,
+          "shoulder_lift": 23.076923076923077,
+          "elbow_flex": -16.043956043956044,
+          "wrist_flex": 67.51648351648352,
+          "wrist_roll": 62.637362637362635,
+          "gripper": 14.285714285714285
+        },
+        "estimated_tool_xyz": [
+          0.3185385812324576,
+          0.10452847535818652,
+          0.046149509986119136
+        ]
+      },
+      {
+        "time": 1790199099.9807837,
+        "joints": {
+          "shoulder_pan": -23.736263736263737,
+          "shoulder_lift": 23.076923076923077,
+          "elbow_flex": -16.395604395604394,
+          "wrist_flex": 69.27472527472527,
+          "wrist_roll": 62.637362637362635,
+          "gripper": 14.285714285714285
+        },
+        "estimated_tool_xyz": [
+          0.3150134915645201,
+          0.10347809425975697,
+          0.0454662156816852
+        ]
+      }
+    ],
+    "measurement": "tools/yaw_followup_result.json",
+    "prelift_object_location": {
+      "table_contact_pixel_estimate": [
+        682,
+        479
+      ],
+      "pixel_uncertainty": 20,
+      "image": "tools/mug_observations/1790199152315759228_top.jpg",
+      "frame": "image pixels",
+      "note": "Post-reorientation footprint estimate; no lift or coverage credit."
+    }
+  },
+  {
+    "episode_id": "20260923T164413-4f7d058f",
+    "agent_id": "arm-002__gpt-6-astra__exp-grasp-mug-multiagent",
+    "task_id": "exp-grasp-mug-multiagent",
+    "started": 1790199853.56655,
+    "finished": 1790200716.0607262,
+    "success": false,
+    "notes": "Opposite-side upright handle approach after yaw reorientation. Projected handle/jaw overlap did not establish through-loop support. Staged closure then measured diagnostic midpoint rise 13.25 mm left mug on table; no held-home success. Opened, retracted, returned four joints home; torque retained. Failed outcome preserved.",
+    "quality_flags": [],
+    "source": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T164413-4f7d058f",
+    "source_metadata": "tools/episode_164413_source_metadata.json",
+    "closure_attempts": [
+      {
+        "time": 1790200538.4121683,
+        "joints": {
+          "shoulder_pan": -16.35164835164835,
+          "shoulder_lift": 18.505494505494507,
+          "elbow_flex": -30.63736263736264,
+          "wrist_flex": 77.8021978021978,
+          "wrist_roll": -24.835164835164836,
+          "gripper": 1.8118466898954706
+        },
+        "estimated_tool_xyz": [
+          0.3103807882751345,
+          0.05725000861723301,
+          0.09298489253724938
+        ],
+        "evidence_stem": "tools/mug_observations/1790200538333112019"
+      }
+    ],
+    "retention_test": [
+      {
+        "time": 1790200561.4255352,
+        "joints": {
+          "shoulder_pan": -16.35164835164835,
+          "shoulder_lift": 19.208791208791208,
+          "elbow_flex": -30.63736263736264,
+          "wrist_flex": 77.8021978021978,
+          "wrist_roll": -24.835164835164836,
+          "gripper": 1.8118466898954706
+        },
+        "estimated_tool_xyz": [
+          0.31008484397467756,
+          0.057163184768556904,
+          0.08996369347832245
+        ],
+        "evidence_stem": "tools/mug_observations/1790200561341057669"
+      },
+      {
+        "time": 1790200587.548029,
+        "joints": {
+          "shoulder_pan": -16.52747252747253,
+          "shoulder_lift": 17.45054945054945,
+          "elbow_flex": -30.63736263736264,
+          "wrist_flex": 77.8021978021978,
+          "wrist_roll": -24.835164835164836,
+          "gripper": 1.8118466898954706
+        },
+        "estimated_tool_xyz": [
+          0.310580627243527,
+          0.058194833032583194,
+          0.09752322234071706
+        ],
+        "evidence_stem": "tools/mug_observations/1790200587468990154"
+      },
+      {
+        "time": 1790200611.8524513,
+        "joints": {
+          "shoulder_pan": -16.52747252747253,
+          "shoulder_lift": 15.428571428571429,
+          "elbow_flex": -30.63736263736264,
+          "wrist_flex": 77.8021978021978,
+          "wrist_roll": -24.835164835164836,
+          "gripper": 1.8118466898954706
+        },
+        "estimated_tool_xyz": [
+          0.31107866363159714,
+          0.05834259822507075,
+          0.10623844404360586
+        ],
+        "evidence_stem": "tools/mug_observations/1790200611767388938"
+      }
+    ],
+    "diagnostic_midpoint_rise_m": 0.013253551506356473,
+    "pose_caveat": "Diagnostic nearly-closed midpoint FK, not independently calibrated fixed-tip contact point.",
+    "finger_through_loop_support": "not established",
+    "mug_followed_lift": false,
+    "held_home": false,
+    "verified_grasp_locations": [],
+    "prelift_object_location": {
+      "table_contact_pixel_estimate": [
+        682,
+        479
+      ],
+      "pixel_uncertainty": 20,
+      "image": "tools/mug_observations/1790199508521157747_top.jpg",
+      "frame": "image pixels",
+      "note": "Pre-approach upright footprint estimate, partially occluded base. Not elevated handle projection; metric registration pending; no coverage credit."
+    },
+    "home_evidence_stem": "tools/mug_observations/1790200703702814222",
+    "tool": "tools/mug_control.py"
+  },
+  {
+    "episode_id": "20260923T170552-be6692d0",
+    "agent_id": "arm-002__gpt-6-astra__exp-grasp-mug-multiagent",
+    "task_id": "exp-grasp-mug-multiagent",
+    "started": 1790201152.9967723,
+    "finished": 1790201444.833847,
+    "success": false,
+    "notes": "Observed broad-wall contact search after lateral handle view remained occluded. Goal-preserving shoulder steps produced measured descent but pan probes did not visibly move mug. Effective contact and yaw change not established. No closure, lift, or held-home delivery; retracted and returned home empty, torque retained.",
+    "quality_flags": [],
+    "source": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T170552-be6692d0",
+    "source_metadata": "tools/episode_170552_source_metadata.json",
+    "experiment_type": "Broad-wall contact search with goal-preserving shoulder descent",
+    "verified_grasp": false,
+    "contact_established": false,
+    "closure_attempts": [],
+    "verified_grasp_locations": [],
+    "near_contact_poses": [
+      {
+        "time": 1790201175.0180871,
+        "joints": {
+          "shoulder_pan": -24.703296703296704,
+          "shoulder_lift": 12.0,
+          "elbow_flex": -7.34065934065934,
+          "wrist_flex": 61.53846153846154,
+          "wrist_roll": 62.81318681318681,
+          "gripper": 13.170731707317074
+        },
+        "estimated_tool_xyz": [
+          0.31896571068831653,
+          0.11083378855389253,
+          0.07426072464126098
+        ],
+        "evidence_stem": "tools/mug_observations/1790201174943102858"
+      },
+      {
+        "time": 1790201275.2658496,
+        "joints": {
+          "shoulder_pan": -23.296703296703296,
+          "shoulder_lift": 13.934065934065934,
+          "elbow_flex": -7.252747252747253,
+          "wrist_flex": 61.53846153846154,
+          "wrist_roll": 62.81318681318681,
+          "gripper": 13.170731707317074
+        },
+        "estimated_tool_xyz": [
+          0.3199308481942633,
+          0.1032043995043993,
+          0.06482948620786208
+        ],
+        "evidence_stem": "tools/mug_observations/1790201275170145797"
+      },
+      {
+        "time": 1790201323.000248,
+        "joints": {
+          "shoulder_pan": -20.307692307692307,
+          "shoulder_lift": 13.934065934065934,
+          "elbow_flex": -7.252747252747253,
+          "wrist_flex": 61.53846153846154,
+          "wrist_roll": 62.81318681318681,
+          "gripper": 13.170731707317074
+        },
+        "estimated_tool_xyz": [
+          0.324929967657418,
+          0.08840643011771342,
+          0.06482944694008631
+        ],
+        "evidence_stem": "tools/mug_observations/1790201322928306961"
+      },
+      {
+        "time": 1790201350.547508,
+        "joints": {
+          "shoulder_pan": -20.21978021978022,
+          "shoulder_lift": 15.956043956043956,
+          "elbow_flex": -7.252747252747253,
+          "wrist_flex": 61.53846153846154,
+          "wrist_roll": 62.81318681318681,
+          "gripper": 13.170731707317074
+        },
+        "estimated_tool_xyz": [
+          0.32319429889770424,
+          0.08727824732106894,
+          0.055384883464877604
+        ],
+        "evidence_stem": "tools/mug_observations/1790201350466719966"
+      },
+      {
+        "time": 1790201376.0847645,
+        "joints": {
+          "shoulder_pan": -19.252747252747252,
+          "shoulder_lift": 16.043956043956044,
+          "elbow_flex": -7.252747252747253,
+          "wrist_flex": 61.53846153846154,
+          "wrist_roll": 62.81318681318681,
+          "gripper": 13.170731707317074
+        },
+        "estimated_tool_xyz": [
+          0.3245378331484155,
+          0.08243558513891303,
+          0.054975882028851876
+        ],
+        "evidence_stem": "tools/mug_observations/1790201375994937730"
+      }
+    ],
+    "pose_caveat": "Estimated tool XYZ is diagnostic midpoint, not calibrated fixed-finger contact point.",
+    "prelift_object_location": {
+      "table_contact_pixel_estimate": [
+        682,
+        479
+      ],
+      "pixel_uncertainty": 20,
+      "image": "tools/mug_observations/1790201045823900411_top.jpg",
+      "frame": "image pixels",
+      "note": "Upright base footprint estimate; metric registration and occlusion uncertainty unresolved; no coverage credit."
+    },
+    "measurement": "tools/wall_probe_170552_result.json",
+    "home_evidence_stem": "tools/mug_observations/1790201429435432583"
+  },
+  {
+    "episode_id": "20260923T171327-dbc76396",
+    "agent_id": "arm-002__gpt-6-astra__exp-grasp-mug-multiagent",
+    "task_id": "exp-grasp-mug-multiagent",
+    "started": 1790201607.9694355,
+    "finished": 1790201872.5752242,
+    "success": false,
+    "notes": "Table-supported rim-tipping hypothesis: visually aligned inside/outside rim approach, two measured shoulder descents, staged closure. Measured wrist roll change4.22deg did not produce visible mug following or tilt; engagement not established. Released without larger tipping motion; no lift/home-held success. Returned home empty, torque retained.",
+    "quality_flags": [],
+    "source": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T171327-dbc76396",
+    "source_metadata": "tools/episode_171327_source_metadata.json",
+    "experiment_type": "Table-supported rim-engagement tipping probe",
+    "closure_attempts": [
+      {
+        "time": 1790201754.9922054,
+        "joints": {
+          "shoulder_pan": -24.703296703296704,
+          "shoulder_lift": 28.87912087912088,
+          "elbow_flex": -55.252747252747255,
+          "wrist_flex": 94.68131868131869,
+          "wrist_roll": -24.483516483516482,
+          "gripper": 1.8815331010452963
+        },
+        "estimated_tool_xyz": [
+          0.2967682208260836,
+          0.09486903065722496,
+          0.1090847075896299
+        ],
+        "evidence_stem": "tools/mug_observations/1790201754907707576"
+      }
+    ],
+    "rotation_test": [
+      {
+        "time": 1790201782.6997647,
+        "joints": {
+          "shoulder_pan": -24.703296703296704,
+          "shoulder_lift": 28.87912087912088,
+          "elbow_flex": -55.252747252747255,
+          "wrist_flex": 94.68131868131869,
+          "wrist_roll": -20.263736263736263,
+          "gripper": 1.8118466898954706
+        },
+        "estimated_tool_xyz": [
+          0.2985777810975447,
+          0.09453336165959325,
+          0.10968286224732182
+        ],
+        "evidence_stem": "tools/mug_observations/1790201782626831106"
+      }
+    ],
+    "verified_grasp": false,
+    "contact_established": false,
+    "verified_grasp_locations": [],
+    "prelift_object_location": {
+      "table_contact_pixel_estimate": [
+        682,
+        479
+      ],
+      "pixel_uncertainty": 20,
+      "image": "tools/mug_observations/1790201556228909110_top.jpg",
+      "frame": "image pixels",
+      "note": "Approximate upright base footprint; not elevated rim/handle. Metric registration unresolved, no coverage credit."
+    },
+    "pose_caveat": "Diagnostic nearly-closed midpoint FK, not independently calibrated fixed-tip contact point.",
+    "measurement": "tools/rim_tip_171327_result.json",
+    "home_evidence_stem": "tools/mug_observations/1790201857037720992",
+    "tool": "tools/mug_control.py; tools/goal_increment.py"
+  },
+  {
+    "episode_id": "20260923T172202-9060b004",
+    "agent_id": "arm-002__gpt-6-astra__exp-grasp-mug-multiagent",
+    "task_id": "exp-grasp-mug-multiagent",
+    "started": 1790202122.4904778,
+    "finished": 1790202436.9937506,
+    "success": false,
+    "notes": "Changed shallow rim viewpoint; observed five bounded goal-preserving descents totaling about41.62mm diagnostic midpoint movement, staged closure with rim-edge projection visible. Small measured4.75deg wrist rotation produced no verified mug following or tilt. Effective engagement not established. Released, retracted, returned home empty; no lift or held-home success.",
+    "quality_flags": [],
+    "source": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T172202-9060b004",
+    "source_metadata": "tools/episode_172202_source_metadata.json",
+    "experiment_type": "Shallow-view rim edge approach and supported rotation probe",
+    "closure_attempts": [
+      {
+        "time": 1790202313.8164482,
+        "joints": {
+          "shoulder_pan": -24.175824175824175,
+          "shoulder_lift": 1.098901098901099,
+          "elbow_flex": 1.89010989010989,
+          "wrist_flex": 52.13186813186813,
+          "wrist_roll": -20.087912087912088,
+          "gripper": 1.8815331010452963
+        },
+        "estimated_tool_xyz": [
+          0.3014798948859129,
+          0.09300969294634578,
+          0.08525816641197966
+        ],
+        "evidence_stem": "tools/mug_observations/1790202313737628960"
+      }
+    ],
+    "rotation_test": [
+      {
+        "time": 1790202340.9520397,
+        "joints": {
+          "shoulder_pan": -24.175824175824175,
+          "shoulder_lift": 1.098901098901099,
+          "elbow_flex": 1.89010989010989,
+          "wrist_flex": 52.13186813186813,
+          "wrist_roll": -15.340659340659341,
+          "gripper": 1.8118466898954706
+        },
+        "estimated_tool_xyz": [
+          0.303337129349001,
+          0.0927012945921031,
+          0.08635120368393331
+        ],
+        "evidence_stem": "tools/mug_observations/1790202340877157851"
+      }
+    ],
+    "approach_observations": [
+      {
+        "time": 1790202103.640993,
+        "joints": {
+          "shoulder_pan": -24.175824175824175,
+          "shoulder_lift": -8.571428571428571,
+          "elbow_flex": 1.978021978021978,
+          "wrist_flex": 52.13186813186813,
+          "wrist_roll": -20.087912087912088,
+          "gripper": 23.205574912891986
+        },
+        "estimated_tool_xyz": [
+          0.3029301342799967,
+          0.09366062157138189,
+          0.12687953483288608
+        ],
+        "evidence_stem": "tools/mug_observations/1790202103538024476"
+      },
+      {
+        "time": 1790202130.7454333,
+        "joints": {
+          "shoulder_pan": -24.175824175824175,
+          "shoulder_lift": -6.549450549450549,
+          "elbow_flex": 1.89010989010989,
+          "wrist_flex": 52.13186813186813,
+          "wrist_roll": -20.087912087912088,
+          "gripper": 23.205574912891986
+        },
+        "estimated_tool_xyz": [
+          0.3032783069133178,
+          0.09381694502012031,
+          0.11845093565586819
+        ],
+        "evidence_stem": "tools/mug_observations/1790202130650893996"
+      },
+      {
+        "time": 1790202158.3309667,
+        "joints": {
+          "shoulder_pan": -24.175824175824175,
+          "shoulder_lift": -4.615384615384615,
+          "elbow_flex": 1.89010989010989,
+          "wrist_flex": 52.13186813186813,
+          "wrist_roll": -20.087912087912088,
+          "gripper": 23.205574912891986
+        },
+        "estimated_tool_xyz": [
+          0.3032057396570191,
+          0.09378439057418984,
+          0.11003710185232758
+        ],
+        "evidence_stem": "tools/mug_observations/1790202158251257849"
+      },
+      {
+        "time": 1790202182.3842516,
+        "joints": {
+          "shoulder_pan": -24.175824175824175,
+          "shoulder_lift": -2.769230769230769,
+          "elbow_flex": 1.89010989010989,
+          "wrist_flex": 52.13186813186813,
+          "wrist_roll": -20.087912087912088,
+          "gripper": 23.205574912891986
+        },
+        "estimated_tool_xyz": [
+          0.3028948447698249,
+          0.09364484544930735,
+          0.10201255490764506
+        ],
+        "evidence_stem": "tools/mug_observations/1790202182298859396"
+      },
+      {
+        "time": 1790202212.4398947,
+        "joints": {
+          "shoulder_pan": -24.175824175824175,
+          "shoulder_lift": -0.8351648351648352,
+          "elbow_flex": 1.89010989010989,
+          "wrist_flex": 52.13186813186813,
+          "wrist_roll": -20.087912087912088,
+          "gripper": 23.205574912891986
+        },
+        "estimated_tool_xyz": [
+          0.3023163703713985,
+          0.09338517994323972,
+          0.09362227086790224
+        ],
+        "evidence_stem": "tools/mug_observations/1790202212365257417"
+      },
+      {
+        "time": 1790202239.4954622,
+        "joints": {
+          "shoulder_pan": -24.175824175824175,
+          "shoulder_lift": 1.098901098901099,
+          "elbow_flex": 1.89010989010989,
+          "wrist_flex": 52.13186813186813,
+          "wrist_roll": -20.087912087912088,
+          "gripper": 23.205574912891986
+        },
+        "estimated_tool_xyz": [
+          0.3014798948859129,
+          0.09300969294634578,
+          0.08525816641197966
+        ],
+        "evidence_stem": "tools/mug_observations/1790202239406629984"
+      }
+    ],
+    "staged_closure_evidence": [
+      "tools/mug_observations/1790202261138721720",
+      "tools/mug_observations/1790202285771081674"
+    ],
+    "verified_grasp": false,
+    "contact_established": false,
+    "verified_grasp_locations": [],
+    "prelift_object_location": {
+      "table_contact_pixel_estimate": [
+        682,
+        479
+      ],
+      "pixel_uncertainty": 20,
+      "image": "tools/mug_observations/1790201989987887043_top.jpg",
+      "frame": "image pixels",
+      "note": "Upright footprint estimate; metric registration unresolved; no coverage credit."
+    },
+    "pose_caveat": "Diagnostic midpoint FK, not independently calibrated fixed fingertip. Visible edge projection did not establish mechanical engagement.",
+    "home_evidence_stem": "tools/mug_observations/1790202413011738228",
+    "tool": "tools/mug_control.py; tools/goal_increment.py"
+  },
+  {
+    "episode_id": "20260923T173440-0bb9fbbe",
+    "agent_id": "arm-002__gpt-6-astra__exp-grasp-mug-multiagent",
+    "task_id": "exp-grasp-mug-multiagent",
+    "started": 1790202880.0204651,
+    "finished": 1790202989.7631614,
+    "success": false,
+    "notes": "Approach for supported reorientation; one goal-preserving +2deg shoulder increment measured1.758deg /8.053mm diagnostic descent, no verified contact or object movement. Then all six motor IDs became unreachable and fresh paired cameras showed a person handling gripper/mug. No further motion or torque commands; recovery/home cannot be verified. Human intervention; no autonomous grasp, lift, or held-home success.",
+    "quality_flags": [
+      "agent_read_timeout",
+      "feedback_gap",
+      "feedback_timeout",
+      "target_outside_calibration",
+      "torque_disabled"
+    ],
+    "source": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T173440-0bb9fbbe",
+    "source_metadata": "tools/episode_173440_source_metadata.json",
+    "experiment_type": "Supported reorientation approach interrupted by communication loss and human intervention",
+    "closure_attempts": [],
+    "verified_grasp_locations": [],
+    "last_verified_autonomous_pose": {
+      "time": 1790202943.2463524,
+      "joints": {
+        "shoulder_pan": -25.582417582417584,
+        "shoulder_lift": 13.582417582417582,
+        "elbow_flex": -26.153846153846153,
+        "wrist_flex": 78.76923076923077,
+        "wrist_roll": 62.637362637362635,
+        "gripper": 14.912891986062718
+      },
+      "estimated_tool_xyz": [
+        0.3158817487227551,
+        0.11440181793804524,
+        0.11301070686759303
+      ]
+    },
+    "pose_reference": "Diagnostic closed-midpoint FK; not an individual fingertip or table contact position",
+    "evidence_stems": [
+      "1790202895841766087",
+      "1790202927139511177",
+      "1790202943170528132"
+    ],
+    "motion_report": "tools/goal_increment_1790202936706639992.json",
+    "human_intervention_images": [
+      "tools/episode_173440_human_intervention_top.jpg",
+      "tools/episode_173440_human_intervention_wrist.jpg"
+    ],
+    "table_location_before": {
+      "rim_center_px": [
+        680,
+        402
+      ],
+      "handle_px": [
+        643,
+        485
+      ],
+      "approx_table_footprint_px": [
+        682,
+        479
+      ],
+      "uncertainty_px": 20,
+      "metric_frame": null,
+      "usable_cell_credit": false
+    },
+    "home_verified": false,
+    "limitations": "Human moved arm/object after motor communication loss; no autonomous contact/reorientation or retained lift established. Quality flags preserved; causes not assigned from stale telemetry."
+  }
+]

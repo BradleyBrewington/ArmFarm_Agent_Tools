@@ -1,0 +1,137 @@
+{
+  "reference": "Fixed fingertip distal tip manually identified from top image at roll~-25; wrist fixed finger is right, moving finger left.",
+  "candidate_offset": [
+    -0.023935759629339335,
+    -0.021610117630452383,
+    0.01160338160695502
+  ],
+  "original_midpoint_offset": [
+    -0.004200149453653138,
+    -0.0258019572420892,
+    0.003846938939700111
+  ],
+  "training_rms_px": 3.735060262690251,
+  "samples": [
+    {
+      "stem": "1790195792546453841",
+      "fixed_tip_px": [
+        780,
+        337
+      ],
+      "predicted": [
+        777.7796492658047,
+        338.70011789972733
+      ],
+      "error_px": 2.7964903460972357,
+      "held_out": false
+    },
+    {
+      "stem": "1790195817511762893",
+      "fixed_tip_px": [
+        750,
+        414
+      ],
+      "predicted": [
+        747.6918211593403,
+        413.9261230428788
+      ],
+      "error_px": 2.3093608131391403,
+      "held_out": false
+    },
+    {
+      "stem": "1790195843405510262",
+      "fixed_tip_px": [
+        750,
+        472
+      ],
+      "predicted": [
+        751.1916159848454,
+        471.01470206373676
+      ],
+      "error_px": 1.5462084848246143,
+      "held_out": false
+    },
+    {
+      "stem": "1790195869971917509",
+      "fixed_tip_px": [
+        748,
+        497
+      ],
+      "predicted": [
+        747.1007559069984,
+        496.7673777874682
+      ],
+      "error_px": 0.9288449992121558,
+      "held_out": false
+    },
+    {
+      "stem": "1790195915611854702",
+      "fixed_tip_px": [
+        757,
+        499
+      ],
+      "predicted": [
+        759.9818131664572,
+        496.10286100226807
+      ],
+      "error_px": 4.1574780975774965,
+      "held_out": true
+    },
+    {
+      "stem": "1790195939506835459",
+      "fixed_tip_px": [
+        779,
+        527
+      ],
+      "predicted": [
+        780.4682412551157,
+        522.1574951365589
+      ],
+      "error_px": 5.06019621513582,
+      "held_out": false
+    },
+    {
+      "stem": "1790195962961146620",
+      "fixed_tip_px": [
+        747,
+        539
+      ],
+      "predicted": [
+        747.4908209782551,
+        533.3758118215177
+      ],
+      "error_px": 5.645564444736726,
+      "held_out": false
+    },
+    {
+      "stem": "1790196030563028959",
+      "fixed_tip_px": [
+        730,
+        558
+      ],
+      "predicted": [
+        716.4062878334622,
+        545.4469664386961
+      ],
+      "error_px": 18.5031797823482,
+      "held_out": true
+    },
+    {
+      "stem": "1790196142505385493",
+      "fixed_tip_px": [
+        375,
+        270
+      ],
+      "predicted": [
+        371.02105141582507,
+        280.2758171217645
+      ],
+      "error_px": 11.019276262779496,
+      "held_out": false
+    }
+  ],
+  "annotation_uncertainty_px": 5,
+  "accepted_calibration_modified": false,
+  "motor_writes": false,
+  "caveat": "Local diagnostic only, tip vs pad distinct. Saved camera alignment uncertainty remains; no contact-depth certification or roll63 validation."
+}

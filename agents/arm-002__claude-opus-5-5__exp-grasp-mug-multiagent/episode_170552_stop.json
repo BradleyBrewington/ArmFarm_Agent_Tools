@@ -1,0 +1,9 @@
+{
+  "episode": "20260923T170552-be6692d0",
+  "folder": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T170552-be6692d0",
+  "frames": 1288,
+  "quality_flags": [],
+  "training_ready": true,
+  "success": false,
+  "notes": "Observed broad-wall contact search after lateral handle view remained occluded. Goal-preserving shoulder steps produced measured descent but pan probes did not visibly move mug. Effective contact and yaw change not established. No closure, lift, or held-home delivery; retracted and returned home empty, torque retained."
+}

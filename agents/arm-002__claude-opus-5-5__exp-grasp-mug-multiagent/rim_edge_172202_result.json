@@ -1,0 +1,175 @@
+{
+  "episode_id": "20260923T172202-9060b004",
+  "agent_id": "arm-002__gpt-6-astra__exp-grasp-mug-multiagent",
+  "task_id": "exp-grasp-mug-multiagent",
+  "started": 1790202122.4904778,
+  "finished": 1790202436.9937506,
+  "success": false,
+  "notes": "Changed shallow rim viewpoint; observed five bounded goal-preserving descents totaling about41.62mm diagnostic midpoint movement, staged closure with rim-edge projection visible. Small measured4.75deg wrist rotation produced no verified mug following or tilt. Effective engagement not established. Released, retracted, returned home empty; no lift or held-home success.",
+  "quality_flags": [],
+  "source": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T172202-9060b004",
+  "source_metadata": "tools/episode_172202_source_metadata.json",
+  "experiment_type": "Shallow-view rim edge approach and supported rotation probe",
+  "closure_attempts": [
+    {
+      "time": 1790202313.8164482,
+      "joints": {
+        "shoulder_pan": -24.175824175824175,
+        "shoulder_lift": 1.098901098901099,
+        "elbow_flex": 1.89010989010989,
+        "wrist_flex": 52.13186813186813,
+        "wrist_roll": -20.087912087912088,
+        "gripper": 1.8815331010452963
+      },
+      "estimated_tool_xyz": [
+        0.3014798948859129,
+        0.09300969294634578,
+        0.08525816641197966
+      ],
+      "evidence_stem": "tools/mug_observations/1790202313737628960"
+    }
+  ],
+  "rotation_test": [
+    {
+      "time": 1790202340.9520397,
+      "joints": {
+        "shoulder_pan": -24.175824175824175,
+        "shoulder_lift": 1.098901098901099,
+        "elbow_flex": 1.89010989010989,
+        "wrist_flex": 52.13186813186813,
+        "wrist_roll": -15.340659340659341,
+        "gripper": 1.8118466898954706
+      },
+      "estimated_tool_xyz": [
+        0.303337129349001,
+        0.0927012945921031,
+        0.08635120368393331
+      ],
+      "evidence_stem": "tools/mug_observations/1790202340877157851"
+    }
+  ],
+  "approach_observations": [
+    {
+      "time": 1790202103.640993,
+      "joints": {
+        "shoulder_pan": -24.175824175824175,
+        "shoulder_lift": -8.571428571428571,
+        "elbow_flex": 1.978021978021978,
+        "wrist_flex": 52.13186813186813,
+        "wrist_roll": -20.087912087912088,
+        "gripper": 23.205574912891986
+      },
+      "estimated_tool_xyz": [
+        0.3029301342799967,
+        0.09366062157138189,
+        0.12687953483288608
+      ],
+      "evidence_stem": "tools/mug_observations/1790202103538024476"
+    },
+    {
+      "time": 1790202130.7454333,
+      "joints": {
+        "shoulder_pan": -24.175824175824175,
+        "shoulder_lift": -6.549450549450549,
+        "elbow_flex": 1.89010989010989,
+        "wrist_flex": 52.13186813186813,
+        "wrist_roll": -20.087912087912088,
+        "gripper": 23.205574912891986
+      },
+      "estimated_tool_xyz": [
+        0.3032783069133178,
+        0.09381694502012031,
+        0.11845093565586819
+      ],
+      "evidence_stem": "tools/mug_observations/1790202130650893996"
+    },
+    {
+      "time": 1790202158.3309667,
+      "joints": {
+        "shoulder_pan": -24.175824175824175,
+        "shoulder_lift": -4.615384615384615,
+        "elbow_flex": 1.89010989010989,
+        "wrist_flex": 52.13186813186813,
+        "wrist_roll": -20.087912087912088,
+        "gripper": 23.205574912891986
+      },
+      "estimated_tool_xyz": [
+        0.3032057396570191,
+        0.09378439057418984,
+        0.11003710185232758
+      ],
+      "evidence_stem": "tools/mug_observations/1790202158251257849"
+    },
+    {
+      "time": 1790202182.3842516,
+      "joints": {
+        "shoulder_pan": -24.175824175824175,
+        "shoulder_lift": -2.769230769230769,
+        "elbow_flex": 1.89010989010989,
+        "wrist_flex": 52.13186813186813,
+        "wrist_roll": -20.087912087912088,
+        "gripper": 23.205574912891986
+      },
+      "estimated_tool_xyz": [
+        0.3028948447698249,
+        0.09364484544930735,
+        0.10201255490764506
+      ],
+      "evidence_stem": "tools/mug_observations/1790202182298859396"
+    },
+    {
+      "time": 1790202212.4398947,
+      "joints": {
+        "shoulder_pan": -24.175824175824175,
+        "shoulder_lift": -0.8351648351648352,
+        "elbow_flex": 1.89010989010989,
+        "wrist_flex": 52.13186813186813,
+        "wrist_roll": -20.087912087912088,
+        "gripper": 23.205574912891986
+      },
+      "estimated_tool_xyz": [
+        0.3023163703713985,
+        0.09338517994323972,
+        0.09362227086790224
+      ],
+      "evidence_stem": "tools/mug_observations/1790202212365257417"
+    },
+    {
+      "time": 1790202239.4954622,
+      "joints": {
+        "shoulder_pan": -24.175824175824175,
+        "shoulder_lift": 1.098901098901099,
+        "elbow_flex": 1.89010989010989,
+        "wrist_flex": 52.13186813186813,
+        "wrist_roll": -20.087912087912088,
+        "gripper": 23.205574912891986
+      },
+      "estimated_tool_xyz": [
+        0.3014798948859129,
+        0.09300969294634578,
+        0.08525816641197966
+      ],
+      "evidence_stem": "tools/mug_observations/1790202239406629984"
+    }
+  ],
+  "staged_closure_evidence": [
+    "tools/mug_observations/1790202261138721720",
+    "tools/mug_observations/1790202285771081674"
+  ],
+  "verified_grasp": false,
+  "contact_established": false,
+  "verified_grasp_locations": [],
+  "prelift_object_location": {
+    "table_contact_pixel_estimate": [
+      682,
+      479
+    ],
+    "pixel_uncertainty": 20,
+    "image": "tools/mug_observations/1790201989987887043_top.jpg",
+    "frame": "image pixels",
+    "note": "Upright footprint estimate; metric registration unresolved; no coverage credit."
+  },
+  "pose_caveat": "Diagnostic midpoint FK, not independently calibrated fixed fingertip. Visible edge projection did not establish mechanical engagement.",
+  "home_evidence_stem": "tools/mug_observations/1790202413011738228",
+  "tool": "tools/mug_control.py; tools/goal_increment.py"
+}
