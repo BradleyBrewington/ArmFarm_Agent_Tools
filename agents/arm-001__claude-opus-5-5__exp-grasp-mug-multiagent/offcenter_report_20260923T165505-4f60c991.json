@@ -1,0 +1,93 @@
+{
+  "success": false,
+  "notes": "Off-center rim-end wall contact experiment: final measured lateral step 7.81 mm coincided with rim displacement. Clear before/after views show mostly translation and only small projected direction changes within manual uncertainty; no improved handle insertion path established. No closure or held lift. Recovered home open with torque retained and zero motor fault bits.",
+  "episode_details": {
+    "hypothesis": "Off-center broad-wall contact near rim end followed by motion across body axis can improve handle access.",
+    "grasp_location_m": null,
+    "contact_probe_tool_location_m": {
+      "x": 0.2933621327940546,
+      "y": 0.002230188930546638,
+      "z": 0.04466750770135214
+    },
+    "grasp_location_frame": "Measured base_link diagnostic tool FK; not mug table-contact location. No grasp attempted.",
+    "table_contact_location": {
+      "status": "uncertified, no coverage credit",
+      "evidence": "tools/mug_observations/1790200494236819717_top.jpg"
+    },
+    "contact_evidence": [
+      "tools/mug_observations/1790200667725575711_wrist.jpg",
+      "tools/mug_observations/1790200688423807664_wrist.jpg",
+      "tools/mug_observations/1790200688423807664_top.jpg"
+    ],
+    "before_landmarks_px": {
+      "base_end": [
+        608,
+        295
+      ],
+      "rim_center": [
+        580,
+        422
+      ],
+      "outer_handle": [
+        668,
+        383
+      ]
+    },
+    "after_landmarks_px": {
+      "base_end": [
+        610,
+        282
+      ],
+      "rim_center": [
+        594,
+        410
+      ],
+      "outer_handle": [
+        675,
+        368
+      ]
+    },
+    "manual_landmark_uncertainty_px": 8,
+    "projected_angles": {
+      "body_axis": {
+        "before_deg": 102.43323518809565,
+        "after_deg": 97.1250163489018,
+        "change_deg": -5.308218839193856
+      },
+      "handle_direction": {
+        "before_deg": -23.902050411010848,
+        "after_deg": -27.407575437818405,
+        "change_deg": -3.5055250268075575
+      }
+    },
+    "angle_change_uncertainty_deg": 10,
+    "rim_displacement_px": [
+      14,
+      -12
+    ],
+    "interpretation": "Image directions, not calibrated physical yaw. Small changes do not distinguish yaw from rolling/tipping or ordinary rocking. Contact supported by jaw-wall proximity and rim displacement during final step; exact contact patch occluded.",
+    "background_table_edge_shift_px": [
+      0,
+      0
+    ],
+    "background_match_score": 0.9876849055290222,
+    "after_sequence": "tools/pose_match_1790200758986254690",
+    "home_observation": "tools/mug_observations/1790200754489798578.json",
+    "tool_paths": [
+      "tools/mug_motion.py",
+      "tools/shoulder_descent_probe.py"
+    ],
+    "approach_error": {
+      "requested_z_m": 0.065,
+      "measured_z_m": 0.04489823959,
+      "action": "No further descent after discrepancy; lateral steps only, followed by retraction."
+    }
+  },
+  "status": {
+    "blocker": "Near-rim opposite-side contact mainly translated mug; small apparent rotation did not establish better handle insertion. Exact wall contact patch and 3D yaw versus roll remain uncertain.",
+    "transferable_discovery": "Rim-end approach reached measured tool pose (0.29336,0.00223,0.04467)m. A 7.81 mm lateral step supported contact but yielded no clearly useful reorientation; clear landmark comparison is essential after removing arm occlusion.",
+    "next_hypothesis": "Use newly localized mug pose for a handle approach matching own successful wrist reference in multiple features; preserve measured-height checks and shoulder-only retention. Further pushing requires a visibly different contact patch, not repeated translation.",
+    "turn_boundary": "Home verified open, zero fault bits, torque retained. Unsuccessful experiment closed.",
+    "operator_queue_policy": "Historical SQLite rows are not pending guidance. Do not reread them every turn. Handle new live conversation instructions; leave historical rows intact."
+  }
+}

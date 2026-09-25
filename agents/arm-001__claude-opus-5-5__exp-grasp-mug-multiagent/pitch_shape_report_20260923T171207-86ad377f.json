@@ -1,0 +1,136 @@
+{
+  "success": false,
+  "notes": "Clearance rim-shape/pitch experiment completed without grasp. Two +2deg wrist-goal probes produced measured +1.846,+2.022deg; a second clearance viewpoint -2deg probe produced -2.022deg. Rim center moved predictably but rim remained nearly edge-on, so minor/major ratio response could not be reliably measured. No closure/lift/home retention. Returned home open, torque retained.",
+  "episode_details": {
+    "grasp_location_m": null,
+    "table_contact_location": {
+      "status": "uncertified, no coverage credit"
+    },
+    "probe_reports": [
+      "tools/clearance_increment_1790201581673278470.json",
+      "tools/clearance_increment_1790201602366775431.json",
+      "tools/clearance_increment_1790201629553501151.json",
+      "tools/clearance_increment_1790201635772904228.json",
+      "tools/clearance_increment_1790201682158744008.json"
+    ],
+    "probe_initial_tool_location_m": {
+      "x": 0.2805566111342213,
+      "y": 0.06286033320858024,
+      "z": 0.11928004408913288
+    },
+    "location_frame": "Measured base_link diagnostic tool FK; not mug footprint",
+    "features": [
+      {
+        "label": "baseline",
+        "wrist_image": "tools/mug_observations/1790201581673278470_before_wrist.jpg",
+        "rim_visible_endpoints_px": [
+          [
+            718,
+            323
+          ],
+          [
+            989,
+            258
+          ]
+        ],
+        "rim_endpoint_midpoint_px": [
+          853.5,
+          290.5
+        ],
+        "visible_major_chord_px": 278.6862034618865,
+        "minor_major_ratio": null,
+        "ratio_status": "Front/rear arcs not reliably separable; no valid full ellipse fit",
+        "upper_handle_attachment_px": [
+          746,
+          383
+        ],
+        "outer_handle_bar_px": [
+          715,
+          440
+        ],
+        "lower_attachment_px": null,
+        "lower_status": "Occluded by fixed jaw",
+        "manual_uncertainty_px": 10
+      },
+      {
+        "label": "positive_two_steps",
+        "wrist_image": "tools/mug_observations/1790201602366775431_wrist.jpg",
+        "rim_visible_endpoints_px": [
+          [
+            680,
+            269
+          ],
+          [
+            958,
+            203
+          ]
+        ],
+        "rim_endpoint_midpoint_px": [
+          819.0,
+          236.0
+        ],
+        "visible_major_chord_px": 285.72714256787015,
+        "minor_major_ratio": null,
+        "ratio_status": "Front/rear arcs not reliably separable; no valid full ellipse fit",
+        "upper_handle_attachment_px": [
+          703,
+          327
+        ],
+        "outer_handle_bar_px": [
+          677,
+          391
+        ],
+        "lower_attachment_px": null,
+        "lower_status": "Occluded by fixed jaw",
+        "manual_uncertainty_px": 10
+      },
+      {
+        "label": "negative_probe",
+        "wrist_image": "tools/mug_observations/1790201682158744008_wrist.jpg",
+        "rim_visible_endpoints_px": [
+          [
+            744,
+            360
+          ],
+          [
+            1018,
+            293
+          ]
+        ],
+        "rim_endpoint_midpoint_px": [
+          881.0,
+          326.5
+        ],
+        "visible_major_chord_px": 282.07268566807386,
+        "minor_major_ratio": null,
+        "ratio_status": "Front/rear arcs not reliably separable; no valid full ellipse fit",
+        "upper_handle_attachment_px": [
+          772,
+          416
+        ],
+        "outer_handle_bar_px": [
+          736,
+          470
+        ],
+        "lower_attachment_px": null,
+        "lower_status": "Occluded by fixed jaw",
+        "manual_uncertainty_px": 10
+      }
+    ],
+    "all_other_raw_goals_unchanged": true,
+    "all_first_raw_match": true,
+    "reference": "tools/supervisor_evidence/arm001-rim-shape-comparison.json",
+    "interpretation": "Wrist-only flex changes camera orientation and position, not pure viewpoint pitch. Positive two-step total moved tool about -9.64mm x,-2.34mm y,-4.17mm z; image center translation is not proof of improving contact geometry. No ellipse-ratio correction direction claimed.",
+    "restore_guard_issue": "Final saved-goal restoration rejected before writing: actual normalized goal span2.021978deg exceeds2.01deg. Normal recovery followed. Tool patched to allow one encoder tick beyond2deg ONLY for restoration; compile and arithmetic-bound checks passed; patched restoration not yet exercised on hardware.",
+    "tools": [
+      "tools/clearance_goal_increment.py",
+      "tools/mug_motion.py"
+    ]
+  },
+  "status": {
+    "blocker": "At tested clearance viewpoints rim arcs are nearly edge-on; ellipticity response unobservable. No verified insertion or retention.",
+    "transferable_discovery": "Goal-preserving wrist increments at task-side clearance measured+1.846,+2.022,-2.022deg with other raw goals unchanged. They shifted rim image position but did not establish a ratio correction sign. Restoration guard exposed encoder quantization and was corrected explicitly.",
+    "next_hypothesis": "Select a visually clear viewpoint with both front and rear rim arcs measurable before further ellipse-feature probing. Track center, chord, ratio and handle attachments separately; compare against own success. Do not descend merely to match scale or interpret wrist command as pure camera pitch.",
+    "turn_boundary": "Completed short alignment experiment; home open, torque retained. No grasp success."
+  }
+}

@@ -1,0 +1,138 @@
+{
+  "before": {
+    "q": {
+      "shoulder_pan": -11.648351648351648,
+      "shoulder_lift": 13.45054945054945,
+      "elbow_flex": -19.208791208791208,
+      "wrist_flex": 84.61538461538461,
+      "wrist_roll": -24.747252747252748,
+      "gripper": 20.3778677462888
+    },
+    "xyz": {
+      "x": 0.2745159978766807,
+      "y": 0.05193740540639243,
+      "z": 0.08067929338006403
+    },
+    "load": {
+      "shoulder_pan": 32,
+      "shoulder_lift": 28,
+      "elbow_flex": 152,
+      "wrist_flex": -32,
+      "wrist_roll": 24,
+      "gripper": -48
+    },
+    "temperature": {
+      "shoulder_pan": 41,
+      "shoulder_lift": 43,
+      "elbow_flex": 42,
+      "wrist_flex": 41,
+      "wrist_roll": 41,
+      "gripper": 46
+    }
+  },
+  "frames": [
+    {
+      "top": {
+        "cam": "top",
+        "seq": 677832,
+        "t_wall": 1790198638.1331565,
+        "t_mono": 418223.381588706,
+        "w": 1280,
+        "h": 720,
+        "fps": 27.2,
+        "raw": true,
+        "age": 0.01110330899246037
+      },
+      "wrist": {
+        "cam": "wrist",
+        "seq": 734576,
+        "t_wall": 1790198638.130745,
+        "t_mono": 418223.379177239,
+        "w": 1280,
+        "h": 720,
+        "fps": 29.5,
+        "raw": true,
+        "age": 0.013804697955492884
+      }
+    },
+    {
+      "top": {
+        "cam": "top",
+        "seq": 677841,
+        "t_wall": 1790198638.4611495,
+        "t_mono": 418223.709581581,
+        "w": 1280,
+        "h": 720,
+        "fps": 27.2,
+        "raw": true,
+        "age": 0.03376027202466503
+      },
+      "wrist": {
+        "cam": "wrist",
+        "seq": 734586,
+        "t_wall": 1790198638.470748,
+        "t_mono": 418223.719180078,
+        "w": 1280,
+        "h": 720,
+        "fps": 29.5,
+        "raw": true,
+        "age": 0.024460733984597027
+      }
+    },
+    {
+      "top": {
+        "cam": "top",
+        "seq": 677851,
+        "t_wall": 1790198638.8292055,
+        "t_mono": 418224.077637623,
+        "w": 1280,
+        "h": 720,
+        "fps": 27.2,
+        "raw": true,
+        "age": 0.01636290200985968
+      },
+      "wrist": {
+        "cam": "wrist",
+        "seq": 734597,
+        "t_wall": 1790198638.8427715,
+        "t_mono": 418224.091203583,
+        "w": 1280,
+        "h": 720,
+        "fps": 29.5,
+        "raw": true,
+        "age": 0.003075808985158801
+      }
+    }
+  ],
+  "after": {
+    "q": {
+      "shoulder_pan": -11.648351648351648,
+      "shoulder_lift": 13.45054945054945,
+      "elbow_flex": -19.208791208791208,
+      "wrist_flex": 84.61538461538461,
+      "wrist_roll": -24.747252747252748,
+      "gripper": 20.3778677462888
+    },
+    "xyz": {
+      "x": 0.2745159978766807,
+      "y": 0.05193740540639243,
+      "z": 0.08067929338006403
+    },
+    "load": {
+      "shoulder_pan": 32,
+      "shoulder_lift": 28,
+      "elbow_flex": 152,
+      "wrist_flex": -32,
+      "wrist_roll": 24,
+      "gripper": -48
+    },
+    "temperature": {
+      "shoulder_pan": 41,
+      "shoulder_lift": 43,
+      "elbow_flex": 43,
+      "wrist_flex": 41,
+      "wrist_roll": 41,
+      "gripper": 46
+    }
+  }
+}

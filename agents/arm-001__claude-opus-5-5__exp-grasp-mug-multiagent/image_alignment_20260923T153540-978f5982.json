@@ -1,0 +1,104 @@
+{
+  "episode_id": "20260923T153540-978f5982",
+  "hypothesis": "Small measured motions at verified clearance yield local image-relative correction before descent.",
+  "measurements": [
+    {
+      "state": "tools/mug_observations/1790195873964954130.json",
+      "top": "tools/mug_observations/1790195873964954130_top.jpg",
+      "fixed_jaw_tip_px": [
+        625,
+        281
+      ],
+      "handle_opening_target_px": [
+        650,
+        392
+      ],
+      "error_px": [
+        25,
+        111
+      ],
+      "error_norm_px": 113.78049041905207,
+      "manual_pixel_uncertainty": 6,
+      "q": {
+        "shoulder_pan": -7.956043956043956,
+        "shoulder_lift": 4.483516483516484,
+        "elbow_flex": -49.0989010989011,
+        "wrist_flex": 94.72527472527473,
+        "wrist_roll": -24.747252747252748,
+        "gripper": 21.3225371120108
+      },
+      "xyz": {
+        "x": 0.29206665484130684,
+        "y": 0.03870571382933412,
+        "z": 0.19835676945496394
+      }
+    },
+    {
+      "state": "tools/mug_observations/1790195906142568121.json",
+      "top": "tools/mug_observations/1790195906142568121_top.jpg",
+      "fixed_jaw_tip_px": [
+        643,
+        282
+      ],
+      "handle_opening_target_px": [
+        645,
+        389
+      ],
+      "error_px": [
+        2,
+        107
+      ],
+      "error_norm_px": 107.01868995647442,
+      "manual_pixel_uncertainty": 6,
+      "q": {
+        "shoulder_pan": -9.626373626373626,
+        "shoulder_lift": 4.483516483516484,
+        "elbow_flex": -49.0989010989011,
+        "wrist_flex": 94.72527472527473,
+        "wrist_roll": -24.747252747252748,
+        "gripper": 21.3225371120108
+      },
+      "xyz": {
+        "x": 0.2908308249120679,
+        "y": 0.04607061249589854,
+        "z": 0.19835678899839254
+      }
+    },
+    {
+      "state": "tools/mug_observations/1790195920525383460.json",
+      "top": "tools/mug_observations/1790195920525383460_top.jpg",
+      "fixed_jaw_tip_px": [
+        640,
+        302
+      ],
+      "handle_opening_target_px": [
+        637,
+        386
+      ],
+      "error_px": [
+        -3,
+        84
+      ],
+      "error_norm_px": 84.0535543567314,
+      "manual_pixel_uncertainty": 6,
+      "q": {
+        "shoulder_pan": -9.538461538461538,
+        "shoulder_lift": 6.769230769230769,
+        "elbow_flex": -49.0989010989011,
+        "wrist_flex": 93.84615384615384,
+        "wrist_roll": -24.747252747252748,
+        "gripper": 21.3225371120108
+      },
+      "xyz": {
+        "x": 0.295903353955876,
+        "y": 0.0465244833827939,
+        "z": 0.19070788289715374
+      }
+    }
+  ],
+  "fit_valid": false,
+  "bounded_correction_applied": false,
+  "reason": "Target moved ~13 px between baseline and second probe; cause unresolved. Pitch changed ~1.4 degrees on coordinated probe, commanded cancellation was imperfect. Initial low probes also changed target pose. No descent based on contaminated fit.",
+  "method_deviation": "At first pose fixed top-view jaw hidden by camera mount. Opening gripper at clearance identified visible top right jaw as moving; after higher retraction fixed top left jaw visible.",
+  "next": "First verify stationary target with repeated no-motion snapshots and stable background features. Use clear configuration away from wrist-flex solver bound and monitor measured pitch before fitting local response. Do not infer clearance from FK alone."
+}

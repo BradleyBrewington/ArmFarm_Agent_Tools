@@ -1,0 +1,1685 @@
+{
+  "time": 1790275374.8054047,
+  "action": {
+    "op": "delta",
+    "delta": {
+      "shoulder_lift": -2
+    },
+    "seconds": 4
+  },
+  "before": {
+    "joints": {
+      "shoulder_pan": -20.87912087912088,
+      "shoulder_lift": 12.219780219780219,
+      "elbow_flex": -9.626373626373626,
+      "wrist_flex": 75.12087912087912,
+      "wrist_roll": -29.494505494505493,
+      "gripper": 3.3063427800269904
+    },
+    "goals": {
+      "shoulder_pan": -21.318681318681318,
+      "shoulder_lift": 9.934065934065934,
+      "elbow_flex": -11.912087912087912,
+      "wrist_flex": 75.2967032967033,
+      "wrist_roll": -30.021978021978022,
+      "gripper": 0.0
+    },
+    "torque": {
+      "shoulder_pan": 1,
+      "shoulder_lift": 1,
+      "elbow_flex": 1,
+      "wrist_flex": 1,
+      "wrist_roll": 1,
+      "gripper": 1
+    },
+    "faults": {
+      "shoulder_pan": 0,
+      "shoulder_lift": 0,
+      "elbow_flex": 0,
+      "wrist_flex": 0,
+      "wrist_roll": 0,
+      "gripper": 0
+    },
+    "load": {
+      "shoulder_pan": 32,
+      "shoulder_lift": 116,
+      "elbow_flex": 116,
+      "wrist_flex": -20,
+      "wrist_roll": 36,
+      "gripper": 208
+    }
+  },
+  "samples": [
+    {
+      "time": 1790275376.7860942,
+      "command": {
+        "shoulder_lift": 9.934065934065826
+      },
+      "state": {
+        "joints": {
+          "shoulder_pan": -20.87912087912088,
+          "shoulder_lift": 12.219780219780219,
+          "elbow_flex": -9.626373626373626,
+          "wrist_flex": 75.12087912087912,
+          "wrist_roll": -29.494505494505493,
+          "gripper": 3.3063427800269904
+        },
+        "goals": {
+          "shoulder_pan": -21.318681318681318,
+          "shoulder_lift": 9.934065934065934,
+          "elbow_flex": -11.912087912087912,
+          "wrist_flex": 75.2967032967033,
+          "wrist_roll": -30.021978021978022,
+          "gripper": 0.0
+        },
+        "torque": {
+          "shoulder_pan": 1,
+          "shoulder_lift": 1,
+          "elbow_flex": 1,
+          "wrist_flex": 1,
+          "wrist_roll": 1,
+          "gripper": 1
+        },
+        "faults": {
+          "shoulder_pan": 0,
+          "shoulder_lift": 0,
+          "elbow_flex": 0,
+          "wrist_flex": 0,
+          "wrist_roll": 0,
+          "gripper": 0
+        },
+        "load": {
+          "shoulder_pan": 32,
+          "shoulder_lift": 116,
+          "elbow_flex": 116,
+          "wrist_flex": -20,
+          "wrist_roll": 36,
+          "gripper": 208
+        }
+      }
+    },
+    {
+      "time": 1790275376.9110484,
+      "command": {
+        "shoulder_lift": 9.928015261767534
+      },
+      "state": {
+        "joints": {
+          "shoulder_pan": -20.87912087912088,
+          "shoulder_lift": 12.219780219780219,
+          "elbow_flex": -9.626373626373626,
+          "wrist_flex": 75.12087912087912,
+          "wrist_roll": -29.494505494505493,
+          "gripper": 3.3063427800269904
+        },
+        "goals": {
+          "shoulder_pan": -21.318681318681318,
+          "shoulder_lift": 9.846153846153847,
+          "elbow_flex": -11.912087912087912,
+          "wrist_flex": 75.2967032967033,
+          "wrist_roll": -30.021978021978022,
+          "gripper": 0.0
+        },
+        "torque": {
+          "shoulder_pan": 1,
+          "shoulder_lift": 1,
+          "elbow_flex": 1,
+          "wrist_flex": 1,
+          "wrist_roll": 1,
+          "gripper": 1
+        },
+        "faults": {
+          "shoulder_pan": 0,
+          "shoulder_lift": 0,
+          "elbow_flex": 0,
+          "wrist_flex": 0,
+          "wrist_roll": 0,
+          "gripper": 0
+        },
+        "load": {
+          "shoulder_pan": 32,
+          "shoulder_lift": 120,
+          "elbow_flex": 116,
+          "wrist_flex": -20,
+          "wrist_roll": 36,
+          "gripper": 208
+        }
+      }
+    },
+    {
+      "time": 1790275377.0390022,
+      "command": {
+        "shoulder_lift": 9.911021763623063
+      },
+      "state": {
+        "joints": {
+          "shoulder_pan": -20.87912087912088,
+          "shoulder_lift": 12.219780219780219,
+          "elbow_flex": -9.626373626373626,
+          "wrist_flex": 75.12087912087912,
+          "wrist_roll": -29.494505494505493,
+          "gripper": 3.3063427800269904
+        },
+        "goals": {
+          "shoulder_pan": -21.318681318681318,
+          "shoulder_lift": 9.846153846153847,
+          "elbow_flex": -11.912087912087912,
+          "wrist_flex": 75.2967032967033,
+          "wrist_roll": -30.021978021978022,
+          "gripper": 0.0
+        },
+        "torque": {
+          "shoulder_pan": 1,
+          "shoulder_lift": 1,
+          "elbow_flex": 1,
+          "wrist_flex": 1,
+          "wrist_roll": 1,
+          "gripper": 1
+        },
+        "faults": {
+          "shoulder_pan": 0,
+          "shoulder_lift": 0,
+          "elbow_flex": 0,
+          "wrist_flex": 0,
+          "wrist_roll": 0,
+          "gripper": 0
+        },
+        "load": {
+          "shoulder_pan": 32,
+          "shoulder_lift": 120,
+          "elbow_flex": 116,
+          "wrist_flex": -20,
+          "wrist_roll": 36,
+          "gripper": 208
+        }
+      }
+    },
+    {
+      "time": 1790275377.167006,
+      "command": {
+        "shoulder_lift": 9.8830216412141
+      },
+      "state": {
+        "joints": {
+          "shoulder_pan": -20.87912087912088,
+          "shoulder_lift": 12.219780219780219,
+          "elbow_flex": -9.626373626373626,
+          "wrist_flex": 75.12087912087912,
+          "wrist_roll": -29.494505494505493,
+          "gripper": 3.3063427800269904
+        },
+        "goals": {
+          "shoulder_pan": -21.318681318681318,
+          "shoulder_lift": 9.846153846153847,
+          "elbow_flex": -11.912087912087912,
+          "wrist_flex": 75.2967032967033,
+          "wrist_roll": -30.021978021978022,
+          "gripper": 0.0
+        },
+        "torque": {
+          "shoulder_pan": 1,
+          "shoulder_lift": 1,
+          "elbow_flex": 1,
+          "wrist_flex": 1,
+          "wrist_roll": 1,
+          "gripper": 1
+        },
+        "faults": {
+          "shoulder_pan": 0,
+          "shoulder_lift": 0,
+          "elbow_flex": 0,
+          "wrist_flex": 0,
+          "wrist_roll": 0,
+          "gripper": 0
+        },
+        "load": {
+          "shoulder_pan": 32,
+          "shoulder_lift": 120,
+          "elbow_flex": 116,
+          "wrist_flex": -20,
+          "wrist_roll": 36,
+          "gripper": 208
+        }
+      }
+    },
+    {
+      "time": 1790275377.2960303,
+      "command": {
+        "shoulder_lift": 9.845065922688356
+      },
+      "state": {
+        "joints": {
+          "shoulder_pan": -20.87912087912088,
+          "shoulder_lift": 12.219780219780219,
+          "elbow_flex": -9.626373626373626,
+          "wrist_flex": 75.12087912087912,
+          "wrist_roll": -29.494505494505493,
+          "gripper": 3.3063427800269904
+        },
+        "goals": {
+          "shoulder_pan": -21.318681318681318,
+          "shoulder_lift": 9.846153846153847,
+          "elbow_flex": -11.912087912087912,
+          "wrist_flex": 75.2967032967033,
+          "wrist_roll": -30.021978021978022,
+          "gripper": 0.0
+        },
+        "torque": {
+          "shoulder_pan": 1,
+          "shoulder_lift": 1,
+          "elbow_flex": 1,
+          "wrist_flex": 1,
+          "wrist_roll": 1,
+          "gripper": 1
+        },
+        "faults": {
+          "shoulder_pan": 0,
+          "shoulder_lift": 0,
+          "elbow_flex": 0,
+          "wrist_flex": 0,
+          "wrist_roll": 0,
+          "gripper": 0
+        },
+        "load": {
+          "shoulder_pan": 32,
+          "shoulder_lift": 120,
+          "elbow_flex": 116,
+          "wrist_flex": -20,
+          "wrist_roll": 36,
+          "gripper": 208
+        }
+      }
+    },
+    {
+      "time": 1790275377.423997,
+      "command": {
+        "shoulder_lift": 9.797542710726287
+      },
+      "state": {
+        "joints": {
+          "shoulder_pan": -20.87912087912088,
+          "shoulder_lift": 12.219780219780219,
+          "elbow_flex": -9.626373626373626,
+          "wrist_flex": 75.12087912087912,
+          "wrist_roll": -29.494505494505493,
+          "gripper": 3.3063427800269904
+        },
+        "goals": {
+          "shoulder_pan": -21.318681318681318,
+          "shoulder_lift": 9.758241758241759,
+          "elbow_flex": -11.912087912087912,
+          "wrist_flex": 75.2967032967033,
+          "wrist_roll": -30.021978021978022,
+          "gripper": 0.0
+        },
+        "torque": {
+          "shoulder_pan": 1,
+          "shoulder_lift": 1,
+          "elbow_flex": 1,
+          "wrist_flex": 1,
+          "wrist_roll": 1,
+          "gripper": 1
+        },
+        "faults": {
+          "shoulder_pan": 0,
+          "shoulder_lift": 0,
+          "elbow_flex": 0,
+          "wrist_flex": 0,
+          "wrist_roll": 0,
+          "gripper": 0
+        },
+        "load": {
+          "shoulder_pan": 32,
+          "shoulder_lift": 124,
+          "elbow_flex": 116,
+          "wrist_flex": -20,
+          "wrist_roll": 36,
+          "gripper": 208
+        }
+      }
+    },
+    {
+      "time": 1790275377.5460315,
+      "command": {
+        "shoulder_lift": 9.742005400626226
+      },
+      "state": {
+        "joints": {
+          "shoulder_pan": -20.87912087912088,
+          "shoulder_lift": 12.219780219780219,
+          "elbow_flex": -9.626373626373626,
+          "wrist_flex": 75.12087912087912,
+          "wrist_roll": -29.494505494505493,
+          "gripper": 3.3063427800269904
+        },
+        "goals": {
+          "shoulder_pan": -21.318681318681318,
+          "shoulder_lift": 9.758241758241759,
+          "elbow_flex": -11.912087912087912,
+          "wrist_flex": 75.2967032967033,
+          "wrist_roll": -30.021978021978022,
+          "gripper": 0.0
+        },
+        "torque": {
+          "shoulder_pan": 1,
+          "shoulder_lift": 1,
+          "elbow_flex": 1,
+          "wrist_flex": 1,
+          "wrist_roll": 1,
+          "gripper": 1
+        },
+        "faults": {
+          "shoulder_pan": 0,
+          "shoulder_lift": 0,
+          "elbow_flex": 0,
+          "wrist_flex": 0,
+          "wrist_roll": 0,
+          "gripper": 0
+        },
+        "load": {
+          "shoulder_pan": 32,
+          "shoulder_lift": 124,
+          "elbow_flex": 116,
+          "wrist_flex": -20,
+          "wrist_roll": 36,
+          "gripper": 208
+        }
+      }
+    },
+    {
+      "time": 1790275377.6710236,
+      "command": {
+        "shoulder_lift": 9.681977730562071
+      },
+      "state": {
+        "joints": {
+          "shoulder_pan": -20.87912087912088,
+          "shoulder_lift": 12.219780219780219,
+          "elbow_flex": -9.626373626373626,
+          "wrist_flex": 75.12087912087912,
+          "wrist_roll": -29.494505494505493,
+          "gripper": 3.3063427800269904
+        },
+        "goals": {
+          "shoulder_pan": -21.318681318681318,
+          "shoulder_lift": 9.67032967032967,
+          "elbow_flex": -11.912087912087912,
+          "wrist_flex": 75.2967032967033,
+          "wrist_roll": -30.021978021978022,
+          "gripper": 0.0
+        },
+        "torque": {
+          "shoulder_pan": 1,
+          "shoulder_lift": 1,
+          "elbow_flex": 1,
+          "wrist_flex": 1,
+          "wrist_roll": 1,
+          "gripper": 1
+        },
+        "faults": {
+          "shoulder_pan": 0,
+          "shoulder_lift": 0,
+          "elbow_flex": 0,
+          "wrist_flex": 0,
+          "wrist_roll": 0,
+          "gripper": 0
+        },
+        "load": {
+          "shoulder_pan": 32,
+          "shoulder_lift": 128,
+          "elbow_flex": 116,
+          "wrist_flex": -20,
+          "wrist_roll": 36,
+          "gripper": 208
+        }
+      }
+    },
+    {
+      "time": 1790275377.7950258,
+      "command": {
+        "shoulder_lift": 9.6140674188988
+      },
+      "state": {
+        "joints": {
+          "shoulder_pan": -20.87912087912088,
+          "shoulder_lift": 12.219780219780219,
+          "elbow_flex": -9.626373626373626,
+          "wrist_flex": 75.12087912087912,
+          "wrist_roll": -29.494505494505493,
+          "gripper": 3.3063427800269904
+        },
+        "goals": {
+          "shoulder_pan": -21.318681318681318,
+          "shoulder_lift": 9.67032967032967,
+          "elbow_flex": -11.912087912087912,
+          "wrist_flex": 75.2967032967033,
+          "wrist_roll": -30.021978021978022,
+          "gripper": 0.0
+        },
+        "torque": {
+          "shoulder_pan": 1,
+          "shoulder_lift": 1,
+          "elbow_flex": 1,
+          "wrist_flex": 1,
+          "wrist_roll": 1,
+          "gripper": 1
+        },
+        "faults": {
+          "shoulder_pan": 0,
+          "shoulder_lift": 0,
+          "elbow_flex": 0,
+          "wrist_flex": 0,
+          "wrist_roll": 0,
+          "gripper": 0
+        },
+        "load": {
+          "shoulder_pan": 32,
+          "shoulder_lift": 128,
+          "elbow_flex": 116,
+          "wrist_flex": -20,
+          "wrist_roll": 36,
+          "gripper": 208
+        }
+      }
+    },
+    {
+      "time": 1790275377.922021,
+      "command": {
+        "shoulder_lift": 9.540975305636318
+      },
+      "state": {
+        "joints": {
+          "shoulder_pan": -20.87912087912088,
+          "shoulder_lift": 12.219780219780219,
+          "elbow_flex": -9.626373626373626,
+          "wrist_flex": 75.12087912087912,
+          "wrist_roll": -29.494505494505493,
+          "gripper": 3.3063427800269904
+        },
+        "goals": {
+          "shoulder_pan": -21.318681318681318,
+          "shoulder_lift": 9.582417582417582,
+          "elbow_flex": -11.912087912087912,
+          "wrist_flex": 75.2967032967033,
+          "wrist_roll": -30.021978021978022,
+          "gripper": 0.0
+        },
+        "torque": {
+          "shoulder_pan": 1,
+          "shoulder_lift": 1,
+          "elbow_flex": 1,
+          "wrist_flex": 1,
+          "wrist_roll": 1,
+          "gripper": 1
+        },
+        "faults": {
+          "shoulder_pan": 0,
+          "shoulder_lift": 0,
+          "elbow_flex": 0,
+          "wrist_flex": 0,
+          "wrist_roll": 0,
+          "gripper": 0
+        },
+        "load": {
+          "shoulder_pan": 32,
+          "shoulder_lift": 132,
+          "elbow_flex": 116,
+          "wrist_flex": -20,
+          "wrist_roll": 36,
+          "gripper": 208
+        }
+      }
+    },
+    {
+      "time": 1790275378.0440383,
+      "command": {
+        "shoulder_lift": 9.460971876124244
+      },
+      "state": {
+        "joints": {
+          "shoulder_pan": -20.87912087912088,
+          "shoulder_lift": 12.219780219780219,
+          "elbow_flex": -9.626373626373626,
+          "wrist_flex": 75.12087912087912,
+          "wrist_roll": -29.494505494505493,
+          "gripper": 3.3063427800269904
+        },
+        "goals": {
+          "shoulder_pan": -21.318681318681318,
+          "shoulder_lift": 9.494505494505495,
+          "elbow_flex": -11.912087912087912,
+          "wrist_flex": 75.2967032967033,
+          "wrist_roll": -30.021978021978022,
+          "gripper": 0.0
+        },
+        "torque": {
+          "shoulder_pan": 1,
+          "shoulder_lift": 1,
+          "elbow_flex": 1,
+          "wrist_flex": 1,
+          "wrist_roll": 1,
+          "gripper": 1
+        },
+        "faults": {
+          "shoulder_pan": 0,
+          "shoulder_lift": 0,
+          "elbow_flex": 0,
+          "wrist_flex": 0,
+          "wrist_roll": 0,
+          "gripper": 0
+        },
+        "load": {
+          "shoulder_pan": 32,
+          "shoulder_lift": 136,
+          "elbow_flex": 116,
+          "wrist_flex": -20,
+          "wrist_roll": 36,
+          "gripper": 208
+        }
+      }
+    },
+    {
+      "time": 1790275378.1680334,
+      "command": {
+        "shoulder_lift": 9.37990324833913
+      },
+      "state": {
+        "joints": {
+          "shoulder_pan": -20.87912087912088,
+          "shoulder_lift": 12.219780219780219,
+          "elbow_flex": -9.626373626373626,
+          "wrist_flex": 75.12087912087912,
+          "wrist_roll": -29.494505494505493,
+          "gripper": 3.3063427800269904
+        },
+        "goals": {
+          "shoulder_pan": -21.318681318681318,
+          "shoulder_lift": 9.406593406593407,
+          "elbow_flex": -11.912087912087912,
+          "wrist_flex": 75.2967032967033,
+          "wrist_roll": -30.021978021978022,
+          "gripper": 0.0
+        },
+        "torque": {
+          "shoulder_pan": 1,
+          "shoulder_lift": 1,
+          "elbow_flex": 1,
+          "wrist_flex": 1,
+          "wrist_roll": 1,
+          "gripper": 1
+        },
+        "faults": {
+          "shoulder_pan": 0,
+          "shoulder_lift": 0,
+          "elbow_flex": 0,
+          "wrist_flex": 0,
+          "wrist_roll": 0,
+          "gripper": 0
+        },
+        "load": {
+          "shoulder_pan": 32,
+          "shoulder_lift": 140,
+          "elbow_flex": 116,
+          "wrist_flex": -20,
+          "wrist_roll": 36,
+          "gripper": 208
+        }
+      }
+    },
+    {
+      "time": 1790275378.2940614,
+      "command": {
+        "shoulder_lift": 9.29400971514388
+      },
+      "state": {
+        "joints": {
+          "shoulder_pan": -20.87912087912088,
+          "shoulder_lift": 12.219780219780219,
+          "elbow_flex": -9.626373626373626,
+          "wrist_flex": 75.12087912087912,
+          "wrist_roll": -29.494505494505493,
+          "gripper": 3.3063427800269904
+        },
+        "goals": {
+          "shoulder_pan": -21.318681318681318,
+          "shoulder_lift": 9.31868131868132,
+          "elbow_flex": -11.912087912087912,
+          "wrist_flex": 75.2967032967033,
+          "wrist_roll": -30.021978021978022,
+          "gripper": 0.0
+        },
+        "torque": {
+          "shoulder_pan": 1,
+          "shoulder_lift": 1,
+          "elbow_flex": 1,
+          "wrist_flex": 1,
+          "wrist_roll": 1,
+          "gripper": 1
+        },
+        "faults": {
+          "shoulder_pan": 0,
+          "shoulder_lift": 0,
+          "elbow_flex": 0,
+          "wrist_flex": 0,
+          "wrist_roll": 0,
+          "gripper": 0
+        },
+        "load": {
+          "shoulder_pan": 32,
+          "shoulder_lift": 144,
+          "elbow_flex": 116,
+          "wrist_flex": -20,
+          "wrist_roll": 36,
+          "gripper": 208
+        }
+      }
+    },
+    {
+      "time": 1790275378.421088,
+      "command": {
+        "shoulder_lift": 9.203825429991591
+      },
+      "state": {
+        "joints": {
+          "shoulder_pan": -20.87912087912088,
+          "shoulder_lift": 12.219780219780219,
+          "elbow_flex": -9.626373626373626,
+          "wrist_flex": 75.12087912087912,
+          "wrist_roll": -29.494505494505493,
+          "gripper": 3.3063427800269904
+        },
+        "goals": {
+          "shoulder_pan": -21.318681318681318,
+          "shoulder_lift": 9.23076923076923,
+          "elbow_flex": -11.912087912087912,
+          "wrist_flex": 75.2967032967033,
+          "wrist_roll": -30.021978021978022,
+          "gripper": 0.0
+        },
+        "torque": {
+          "shoulder_pan": 1,
+          "shoulder_lift": 1,
+          "elbow_flex": 1,
+          "wrist_flex": 1,
+          "wrist_roll": 1,
+          "gripper": 1
+        },
+        "faults": {
+          "shoulder_pan": 0,
+          "shoulder_lift": 0,
+          "elbow_flex": 0,
+          "wrist_flex": 0,
+          "wrist_roll": 0,
+          "gripper": 0
+        },
+        "load": {
+          "shoulder_pan": 32,
+          "shoulder_lift": 148,
+          "elbow_flex": 116,
+          "wrist_flex": -20,
+          "wrist_roll": 36,
+          "gripper": 208
+        }
+      }
+    },
+    {
+      "time": 1790275378.5440779,
+      "command": {
+        "shoulder_lift": 9.110732238695372
+      },
+      "state": {
+        "joints": {
+          "shoulder_pan": -20.87912087912088,
+          "shoulder_lift": 12.219780219780219,
+          "elbow_flex": -9.626373626373626,
+          "wrist_flex": 75.12087912087912,
+          "wrist_roll": -29.494505494505493,
+          "gripper": 3.3063427800269904
+        },
+        "goals": {
+          "shoulder_pan": -21.318681318681318,
+          "shoulder_lift": 9.142857142857142,
+          "elbow_flex": -11.912087912087912,
+          "wrist_flex": 75.2967032967033,
+          "wrist_roll": -30.021978021978022,
+          "gripper": 0.0
+        },
+        "torque": {
+          "shoulder_pan": 1,
+          "shoulder_lift": 1,
+          "elbow_flex": 1,
+          "wrist_flex": 1,
+          "wrist_roll": 1,
+          "gripper": 1
+        },
+        "faults": {
+          "shoulder_pan": 0,
+          "shoulder_lift": 0,
+          "elbow_flex": 0,
+          "wrist_flex": 0,
+          "wrist_roll": 0,
+          "gripper": 0
+        },
+        "load": {
+          "shoulder_pan": 32,
+          "shoulder_lift": 152,
+          "elbow_flex": 116,
+          "wrist_flex": -20,
+          "wrist_roll": 36,
+          "gripper": 208
+        }
+      }
+    },
+    {
+      "time": 1790275378.6680567,
+      "command": {
+        "shoulder_lift": 9.01922869299554
+      },
+      "state": {
+        "joints": {
+          "shoulder_pan": -20.87912087912088,
+          "shoulder_lift": 12.219780219780219,
+          "elbow_flex": -9.626373626373626,
+          "wrist_flex": 75.12087912087912,
+          "wrist_roll": -29.494505494505493,
+          "gripper": 3.3063427800269904
+        },
+        "goals": {
+          "shoulder_pan": -21.318681318681318,
+          "shoulder_lift": 9.054945054945055,
+          "elbow_flex": -11.912087912087912,
+          "wrist_flex": 75.2967032967033,
+          "wrist_roll": -30.021978021978022,
+          "gripper": 0.0
+        },
+        "torque": {
+          "shoulder_pan": 1,
+          "shoulder_lift": 1,
+          "elbow_flex": 1,
+          "wrist_flex": 1,
+          "wrist_roll": 1,
+          "gripper": 1
+        },
+        "faults": {
+          "shoulder_pan": 0,
+          "shoulder_lift": 0,
+          "elbow_flex": 0,
+          "wrist_flex": 0,
+          "wrist_roll": 0,
+          "gripper": 0
+        },
+        "load": {
+          "shoulder_pan": 32,
+          "shoulder_lift": 156,
+          "elbow_flex": 116,
+          "wrist_flex": -20,
+          "wrist_roll": 36,
+          "gripper": 208
+        }
+      }
+    },
+    {
+      "time": 1790275378.795057,
+      "command": {
+        "shoulder_lift": 8.92633572101176
+      },
+      "state": {
+        "joints": {
+          "shoulder_pan": -20.87912087912088,
+          "shoulder_lift": 12.219780219780219,
+          "elbow_flex": -9.626373626373626,
+          "wrist_flex": 75.12087912087912,
+          "wrist_roll": -29.494505494505493,
+          "gripper": 3.3063427800269904
+        },
+        "goals": {
+          "shoulder_pan": -21.318681318681318,
+          "shoulder_lift": 8.967032967032967,
+          "elbow_flex": -11.912087912087912,
+          "wrist_flex": 75.2967032967033,
+          "wrist_roll": -30.021978021978022,
+          "gripper": 0.0
+        },
+        "torque": {
+          "shoulder_pan": 1,
+          "shoulder_lift": 1,
+          "elbow_flex": 1,
+          "wrist_flex": 1,
+          "wrist_roll": 1,
+          "gripper": 1
+        },
+        "faults": {
+          "shoulder_pan": 0,
+          "shoulder_lift": 0,
+          "elbow_flex": 0,
+          "wrist_flex": 0,
+          "wrist_roll": 0,
+          "gripper": 0
+        },
+        "load": {
+          "shoulder_pan": 32,
+          "shoulder_lift": 160,
+          "elbow_flex": 116,
+          "wrist_flex": -20,
+          "wrist_roll": 36,
+          "gripper": 208
+        }
+      }
+    },
+    {
+      "time": 1790275378.9210982,
+      "command": {
+        "shoulder_lift": 8.831247207749199
+      },
+      "state": {
+        "joints": {
+          "shoulder_pan": -20.87912087912088,
+          "shoulder_lift": 12.219780219780219,
+          "elbow_flex": -9.626373626373626,
+          "wrist_flex": 75.12087912087912,
+          "wrist_roll": -29.494505494505493,
+          "gripper": 3.3063427800269904
+        },
+        "goals": {
+          "shoulder_pan": -21.318681318681318,
+          "shoulder_lift": 8.87912087912088,
+          "elbow_flex": -11.912087912087912,
+          "wrist_flex": 75.2967032967033,
+          "wrist_roll": -30.021978021978022,
+          "gripper": 0.0
+        },
+        "torque": {
+          "shoulder_pan": 1,
+          "shoulder_lift": 1,
+          "elbow_flex": 1,
+          "wrist_flex": 1,
+          "wrist_roll": 1,
+          "gripper": 1
+        },
+        "faults": {
+          "shoulder_pan": 0,
+          "shoulder_lift": 0,
+          "elbow_flex": 0,
+          "wrist_flex": 0,
+          "wrist_roll": 0,
+          "gripper": 0
+        },
+        "load": {
+          "shoulder_pan": 32,
+          "shoulder_lift": 164,
+          "elbow_flex": 116,
+          "wrist_flex": -20,
+          "wrist_roll": 36,
+          "gripper": 208
+        }
+      }
+    },
+    {
+      "time": 1790275379.0441654,
+      "command": {
+        "shoulder_lift": 8.737696881628107
+      },
+      "state": {
+        "joints": {
+          "shoulder_pan": -20.87912087912088,
+          "shoulder_lift": 11.956043956043956,
+          "elbow_flex": -9.626373626373626,
+          "wrist_flex": 75.12087912087912,
+          "wrist_roll": -29.494505494505493,
+          "gripper": 3.3063427800269904
+        },
+        "goals": {
+          "shoulder_pan": -21.318681318681318,
+          "shoulder_lift": 8.791208791208792,
+          "elbow_flex": -11.912087912087912,
+          "wrist_flex": 75.2967032967033,
+          "wrist_roll": -30.021978021978022,
+          "gripper": 0.0
+        },
+        "torque": {
+          "shoulder_pan": 1,
+          "shoulder_lift": 1,
+          "elbow_flex": 1,
+          "wrist_flex": 1,
+          "wrist_roll": 1,
+          "gripper": 1
+        },
+        "faults": {
+          "shoulder_pan": 0,
+          "shoulder_lift": 0,
+          "elbow_flex": 0,
+          "wrist_flex": 0,
+          "wrist_roll": 0,
+          "gripper": 0
+        },
+        "load": {
+          "shoulder_pan": 32,
+          "shoulder_lift": 152,
+          "elbow_flex": 116,
+          "wrist_flex": -20,
+          "wrist_roll": 36,
+          "gripper": 208
+        }
+      }
+    },
+    {
+      "time": 1790275379.1734037,
+      "command": {
+        "shoulder_lift": 8.647853035631412
+      },
+      "state": {
+        "joints": {
+          "shoulder_pan": -20.87912087912088,
+          "shoulder_lift": 11.868131868131869,
+          "elbow_flex": -9.626373626373626,
+          "wrist_flex": 75.12087912087912,
+          "wrist_roll": -29.494505494505493,
+          "gripper": 3.3063427800269904
+        },
+        "goals": {
+          "shoulder_pan": -21.318681318681318,
+          "shoulder_lift": 8.703296703296703,
+          "elbow_flex": -11.912087912087912,
+          "wrist_flex": 75.2967032967033,
+          "wrist_roll": -30.021978021978022,
+          "gripper": 0.0
+        },
+        "torque": {
+          "shoulder_pan": 1,
+          "shoulder_lift": 1,
+          "elbow_flex": 1,
+          "wrist_flex": 1,
+          "wrist_roll": 1,
+          "gripper": 1
+        },
+        "faults": {
+          "shoulder_pan": 0,
+          "shoulder_lift": 0,
+          "elbow_flex": 0,
+          "wrist_flex": 0,
+          "wrist_roll": 0,
+          "gripper": 0
+        },
+        "load": {
+          "shoulder_pan": 32,
+          "shoulder_lift": 156,
+          "elbow_flex": 116,
+          "wrist_flex": -20,
+          "wrist_roll": 36,
+          "gripper": 208
+        }
+      }
+    },
+    {
+      "time": 1790275379.3031723,
+      "command": {
+        "shoulder_lift": 8.555892046519425
+      },
+      "state": {
+        "joints": {
+          "shoulder_pan": -20.87912087912088,
+          "shoulder_lift": 11.868131868131869,
+          "elbow_flex": -9.626373626373626,
+          "wrist_flex": 75.12087912087912,
+          "wrist_roll": -29.494505494505493,
+          "gripper": 3.2388663967611335
+        },
+        "goals": {
+          "shoulder_pan": -21.318681318681318,
+          "shoulder_lift": 8.615384615384615,
+          "elbow_flex": -11.912087912087912,
+          "wrist_flex": 75.2967032967033,
+          "wrist_roll": -30.021978021978022,
+          "gripper": 0.0
+        },
+        "torque": {
+          "shoulder_pan": 1,
+          "shoulder_lift": 1,
+          "elbow_flex": 1,
+          "wrist_flex": 1,
+          "wrist_roll": 1,
+          "gripper": 1
+        },
+        "faults": {
+          "shoulder_pan": 0,
+          "shoulder_lift": 0,
+          "elbow_flex": 0,
+          "wrist_flex": 0,
+          "wrist_roll": 0,
+          "gripper": 0
+        },
+        "load": {
+          "shoulder_pan": 32,
+          "shoulder_lift": 160,
+          "elbow_flex": 116,
+          "wrist_flex": -20,
+          "wrist_roll": 36,
+          "gripper": 204
+        }
+      }
+    },
+    {
+      "time": 1790275379.4282174,
+      "command": {
+        "shoulder_lift": 8.466801600887184
+      },
+      "state": {
+        "joints": {
+          "shoulder_pan": -20.87912087912088,
+          "shoulder_lift": 11.868131868131869,
+          "elbow_flex": -9.626373626373626,
+          "wrist_flex": 75.12087912087912,
+          "wrist_roll": -29.494505494505493,
+          "gripper": 3.2388663967611335
+        },
+        "goals": {
+          "shoulder_pan": -21.318681318681318,
+          "shoulder_lift": 8.527472527472527,
+          "elbow_flex": -11.912087912087912,
+          "wrist_flex": 75.2967032967033,
+          "wrist_roll": -30.021978021978022,
+          "gripper": 0.0
+        },
+        "torque": {
+          "shoulder_pan": 1,
+          "shoulder_lift": 1,
+          "elbow_flex": 1,
+          "wrist_flex": 1,
+          "wrist_roll": 1,
+          "gripper": 1
+        },
+        "faults": {
+          "shoulder_pan": 0,
+          "shoulder_lift": 0,
+          "elbow_flex": 0,
+          "wrist_flex": 0,
+          "wrist_roll": 0,
+          "gripper": 0
+        },
+        "load": {
+          "shoulder_pan": 32,
+          "shoulder_lift": 164,
+          "elbow_flex": 116,
+          "wrist_flex": -20,
+          "wrist_roll": 36,
+          "gripper": 204
+        }
+      }
+    },
+    {
+      "time": 1790275379.5552485,
+      "command": {
+        "shoulder_lift": 8.384798564113561
+      },
+      "state": {
+        "joints": {
+          "shoulder_pan": -20.87912087912088,
+          "shoulder_lift": 11.868131868131869,
+          "elbow_flex": -9.626373626373626,
+          "wrist_flex": 75.12087912087912,
+          "wrist_roll": -29.494505494505493,
+          "gripper": 3.2388663967611335
+        },
+        "goals": {
+          "shoulder_pan": -21.318681318681318,
+          "shoulder_lift": 8.43956043956044,
+          "elbow_flex": -11.912087912087912,
+          "wrist_flex": 75.2967032967033,
+          "wrist_roll": -30.021978021978022,
+          "gripper": 0.0
+        },
+        "torque": {
+          "shoulder_pan": 1,
+          "shoulder_lift": 1,
+          "elbow_flex": 1,
+          "wrist_flex": 1,
+          "wrist_roll": 1,
+          "gripper": 1
+        },
+        "faults": {
+          "shoulder_pan": 0,
+          "shoulder_lift": 0,
+          "elbow_flex": 0,
+          "wrist_flex": 0,
+          "wrist_roll": 0,
+          "gripper": 0
+        },
+        "load": {
+          "shoulder_pan": 32,
+          "shoulder_lift": 168,
+          "elbow_flex": 116,
+          "wrist_flex": -20,
+          "wrist_roll": 36,
+          "gripper": 204
+        }
+      }
+    },
+    {
+      "time": 1790275379.6741376,
+      "command": {
+        "shoulder_lift": 8.306123875483815
+      },
+      "state": {
+        "joints": {
+          "shoulder_pan": -20.87912087912088,
+          "shoulder_lift": 11.868131868131869,
+          "elbow_flex": -9.626373626373626,
+          "wrist_flex": 75.12087912087912,
+          "wrist_roll": -29.494505494505493,
+          "gripper": 3.2388663967611335
+        },
+        "goals": {
+          "shoulder_pan": -21.318681318681318,
+          "shoulder_lift": 8.351648351648352,
+          "elbow_flex": -11.912087912087912,
+          "wrist_flex": 75.2967032967033,
+          "wrist_roll": -30.021978021978022,
+          "gripper": 0.0
+        },
+        "torque": {
+          "shoulder_pan": 1,
+          "shoulder_lift": 1,
+          "elbow_flex": 1,
+          "wrist_flex": 1,
+          "wrist_roll": 1,
+          "gripper": 1
+        },
+        "faults": {
+          "shoulder_pan": 0,
+          "shoulder_lift": 0,
+          "elbow_flex": 0,
+          "wrist_flex": 0,
+          "wrist_roll": 0,
+          "gripper": 0
+        },
+        "load": {
+          "shoulder_pan": 32,
+          "shoulder_lift": 172,
+          "elbow_flex": 116,
+          "wrist_flex": -20,
+          "wrist_roll": 36,
+          "gripper": 204
+        }
+      }
+    },
+    {
+      "time": 1790275379.8001475,
+      "command": {
+        "shoulder_lift": 8.237397002517476
+      },
+      "state": {
+        "joints": {
+          "shoulder_pan": -20.87912087912088,
+          "shoulder_lift": 11.868131868131869,
+          "elbow_flex": -9.626373626373626,
+          "wrist_flex": 75.12087912087912,
+          "wrist_roll": -29.494505494505493,
+          "gripper": 3.2388663967611335
+        },
+        "goals": {
+          "shoulder_pan": -21.318681318681318,
+          "shoulder_lift": 8.263736263736265,
+          "elbow_flex": -11.912087912087912,
+          "wrist_flex": 75.2967032967033,
+          "wrist_roll": -30.021978021978022,
+          "gripper": 0.0
+        },
+        "torque": {
+          "shoulder_pan": 1,
+          "shoulder_lift": 1,
+          "elbow_flex": 1,
+          "wrist_flex": 1,
+          "wrist_roll": 1,
+          "gripper": 1
+        },
+        "faults": {
+          "shoulder_pan": 0,
+          "shoulder_lift": 0,
+          "elbow_flex": 0,
+          "wrist_flex": 0,
+          "wrist_roll": 0,
+          "gripper": 0
+        },
+        "load": {
+          "shoulder_pan": 32,
+          "shoulder_lift": 176,
+          "elbow_flex": 116,
+          "wrist_flex": -20,
+          "wrist_roll": 36,
+          "gripper": 204
+        }
+      }
+    },
+    {
+      "time": 1790275379.926168,
+      "command": {
+        "shoulder_lift": 8.170449561406054
+      },
+      "state": {
+        "joints": {
+          "shoulder_pan": -20.87912087912088,
+          "shoulder_lift": 11.780219780219781,
+          "elbow_flex": -9.626373626373626,
+          "wrist_flex": 75.12087912087912,
+          "wrist_roll": -29.494505494505493,
+          "gripper": 3.2388663967611335
+        },
+        "goals": {
+          "shoulder_pan": -21.318681318681318,
+          "shoulder_lift": 8.175824175824175,
+          "elbow_flex": -11.912087912087912,
+          "wrist_flex": 75.2967032967033,
+          "wrist_roll": -30.021978021978022,
+          "gripper": 0.0
+        },
+        "torque": {
+          "shoulder_pan": 1,
+          "shoulder_lift": 1,
+          "elbow_flex": 1,
+          "wrist_flex": 1,
+          "wrist_roll": 1,
+          "gripper": 1
+        },
+        "faults": {
+          "shoulder_pan": 0,
+          "shoulder_lift": 0,
+          "elbow_flex": 0,
+          "wrist_flex": 0,
+          "wrist_roll": 0,
+          "gripper": 0
+        },
+        "load": {
+          "shoulder_pan": 32,
+          "shoulder_lift": 176,
+          "elbow_flex": 116,
+          "wrist_flex": -20,
+          "wrist_roll": 36,
+          "gripper": 204
+        }
+      }
+    },
+    {
+      "time": 1790275380.0531952,
+      "command": {
+        "shoulder_lift": 8.110293918518868
+      },
+      "state": {
+        "joints": {
+          "shoulder_pan": -20.87912087912088,
+          "shoulder_lift": 11.780219780219781,
+          "elbow_flex": -9.626373626373626,
+          "wrist_flex": 75.12087912087912,
+          "wrist_roll": -29.494505494505493,
+          "gripper": 3.2388663967611335
+        },
+        "goals": {
+          "shoulder_pan": -21.318681318681318,
+          "shoulder_lift": 8.087912087912088,
+          "elbow_flex": -11.912087912087912,
+          "wrist_flex": 75.2967032967033,
+          "wrist_roll": -30.021978021978022,
+          "gripper": 0.0
+        },
+        "torque": {
+          "shoulder_pan": 1,
+          "shoulder_lift": 1,
+          "elbow_flex": 1,
+          "wrist_flex": 1,
+          "wrist_roll": 1,
+          "gripper": 1
+        },
+        "faults": {
+          "shoulder_pan": 0,
+          "shoulder_lift": 0,
+          "elbow_flex": 0,
+          "wrist_flex": 0,
+          "wrist_roll": 0,
+          "gripper": 0
+        },
+        "load": {
+          "shoulder_pan": 32,
+          "shoulder_lift": 180,
+          "elbow_flex": 116,
+          "wrist_flex": -20,
+          "wrist_roll": 36,
+          "gripper": 204
+        }
+      }
+    },
+    {
+      "time": 1790275380.1763768,
+      "command": {
+        "shoulder_lift": 8.057310918944818
+      },
+      "state": {
+        "joints": {
+          "shoulder_pan": -20.87912087912088,
+          "shoulder_lift": 11.780219780219781,
+          "elbow_flex": -9.626373626373626,
+          "wrist_flex": 75.12087912087912,
+          "wrist_roll": -29.494505494505493,
+          "gripper": 3.1713900134952766
+        },
+        "goals": {
+          "shoulder_pan": -21.318681318681318,
+          "shoulder_lift": 8.087912087912088,
+          "elbow_flex": -11.912087912087912,
+          "wrist_flex": 75.2967032967033,
+          "wrist_roll": -30.021978021978022,
+          "gripper": 0.0
+        },
+        "torque": {
+          "shoulder_pan": 1,
+          "shoulder_lift": 1,
+          "elbow_flex": 1,
+          "wrist_flex": 1,
+          "wrist_roll": 1,
+          "gripper": 1
+        },
+        "faults": {
+          "shoulder_pan": 0,
+          "shoulder_lift": 0,
+          "elbow_flex": 0,
+          "wrist_flex": 0,
+          "wrist_roll": 0,
+          "gripper": 0
+        },
+        "load": {
+          "shoulder_pan": 32,
+          "shoulder_lift": 180,
+          "elbow_flex": 116,
+          "wrist_flex": -20,
+          "wrist_roll": 36,
+          "gripper": 200
+        }
+      }
+    },
+    {
+      "time": 1790275380.3022459,
+      "command": {
+        "shoulder_lift": 8.01398477457277
+      },
+      "state": {
+        "joints": {
+          "shoulder_pan": -20.87912087912088,
+          "shoulder_lift": 11.516483516483516,
+          "elbow_flex": -9.626373626373626,
+          "wrist_flex": 75.12087912087912,
+          "wrist_roll": -29.494505494505493,
+          "gripper": 3.1713900134952766
+        },
+        "goals": {
+          "shoulder_pan": -21.318681318681318,
+          "shoulder_lift": 8.0,
+          "elbow_flex": -11.912087912087912,
+          "wrist_flex": 75.2967032967033,
+          "wrist_roll": -30.021978021978022,
+          "gripper": 0.0
+        },
+        "torque": {
+          "shoulder_pan": 1,
+          "shoulder_lift": 1,
+          "elbow_flex": 1,
+          "wrist_flex": 1,
+          "wrist_roll": 1,
+          "gripper": 1
+        },
+        "faults": {
+          "shoulder_pan": 0,
+          "shoulder_lift": 0,
+          "elbow_flex": 0,
+          "wrist_flex": 0,
+          "wrist_roll": 0,
+          "gripper": 0
+        },
+        "load": {
+          "shoulder_pan": 32,
+          "shoulder_lift": 172,
+          "elbow_flex": 116,
+          "wrist_flex": -20,
+          "wrist_roll": 36,
+          "gripper": 200
+        }
+      }
+    },
+    {
+      "time": 1790275380.4281805,
+      "command": {
+        "shoulder_lift": 7.978650055084694
+      },
+      "state": {
+        "joints": {
+          "shoulder_pan": -20.87912087912088,
+          "shoulder_lift": 11.516483516483516,
+          "elbow_flex": -9.626373626373626,
+          "wrist_flex": 75.12087912087912,
+          "wrist_roll": -29.494505494505493,
+          "gripper": 3.1713900134952766
+        },
+        "goals": {
+          "shoulder_pan": -21.318681318681318,
+          "shoulder_lift": 8.0,
+          "elbow_flex": -11.912087912087912,
+          "wrist_flex": 75.2967032967033,
+          "wrist_roll": -30.021978021978022,
+          "gripper": 0.0
+        },
+        "torque": {
+          "shoulder_pan": 1,
+          "shoulder_lift": 1,
+          "elbow_flex": 1,
+          "wrist_flex": 1,
+          "wrist_roll": 1,
+          "gripper": 1
+        },
+        "faults": {
+          "shoulder_pan": 0,
+          "shoulder_lift": 0,
+          "elbow_flex": 0,
+          "wrist_flex": 0,
+          "wrist_roll": 0,
+          "gripper": 0
+        },
+        "load": {
+          "shoulder_pan": 32,
+          "shoulder_lift": 172,
+          "elbow_flex": 116,
+          "wrist_flex": -20,
+          "wrist_roll": 36,
+          "gripper": 200
+        }
+      }
+    },
+    {
+      "time": 1790275380.554183,
+      "command": {
+        "shoulder_lift": 7.953072410860134
+      },
+      "state": {
+        "joints": {
+          "shoulder_pan": -20.87912087912088,
+          "shoulder_lift": 11.516483516483516,
+          "elbow_flex": -9.626373626373626,
+          "wrist_flex": 75.12087912087912,
+          "wrist_roll": -29.494505494505493,
+          "gripper": 3.1713900134952766
+        },
+        "goals": {
+          "shoulder_pan": -21.318681318681318,
+          "shoulder_lift": 7.912087912087912,
+          "elbow_flex": -11.912087912087912,
+          "wrist_flex": 75.2967032967033,
+          "wrist_roll": -30.021978021978022,
+          "gripper": 0.0
+        },
+        "torque": {
+          "shoulder_pan": 1,
+          "shoulder_lift": 1,
+          "elbow_flex": 1,
+          "wrist_flex": 1,
+          "wrist_roll": 1,
+          "gripper": 1
+        },
+        "faults": {
+          "shoulder_pan": 0,
+          "shoulder_lift": 0,
+          "elbow_flex": 0,
+          "wrist_flex": 0,
+          "wrist_roll": 0,
+          "gripper": 0
+        },
+        "load": {
+          "shoulder_pan": 32,
+          "shoulder_lift": 176,
+          "elbow_flex": 116,
+          "wrist_flex": -20,
+          "wrist_roll": 36,
+          "gripper": 200
+        }
+      }
+    },
+    {
+      "time": 1790275380.6762025,
+      "command": {
+        "shoulder_lift": 7.93801852770699
+      },
+      "state": {
+        "joints": {
+          "shoulder_pan": -20.87912087912088,
+          "shoulder_lift": 11.516483516483516,
+          "elbow_flex": -9.626373626373626,
+          "wrist_flex": 75.12087912087912,
+          "wrist_roll": -29.494505494505493,
+          "gripper": 3.1713900134952766
+        },
+        "goals": {
+          "shoulder_pan": -21.318681318681318,
+          "shoulder_lift": 7.912087912087912,
+          "elbow_flex": -11.912087912087912,
+          "wrist_flex": 75.2967032967033,
+          "wrist_roll": -30.021978021978022,
+          "gripper": 0.0
+        },
+        "torque": {
+          "shoulder_pan": 1,
+          "shoulder_lift": 1,
+          "elbow_flex": 1,
+          "wrist_flex": 1,
+          "wrist_roll": 1,
+          "gripper": 1
+        },
+        "faults": {
+          "shoulder_pan": 0,
+          "shoulder_lift": 0,
+          "elbow_flex": 0,
+          "wrist_flex": 0,
+          "wrist_roll": 0,
+          "gripper": 0
+        },
+        "load": {
+          "shoulder_pan": 32,
+          "shoulder_lift": 176,
+          "elbow_flex": 116,
+          "wrist_flex": -20,
+          "wrist_roll": 36,
+          "gripper": 200
+        }
+      }
+    },
+    {
+      "time": 1790275380.8021967,
+      "command": {
+        "shoulder_lift": 7.934065934065934
+      },
+      "state": {
+        "joints": {
+          "shoulder_pan": -20.87912087912088,
+          "shoulder_lift": 11.516483516483516,
+          "elbow_flex": -9.626373626373626,
+          "wrist_flex": 75.12087912087912,
+          "wrist_roll": -29.494505494505493,
+          "gripper": 3.1713900134952766
+        },
+        "goals": {
+          "shoulder_pan": -21.318681318681318,
+          "shoulder_lift": 7.912087912087912,
+          "elbow_flex": -11.912087912087912,
+          "wrist_flex": 75.2967032967033,
+          "wrist_roll": -30.021978021978022,
+          "gripper": 0.0
+        },
+        "torque": {
+          "shoulder_pan": 1,
+          "shoulder_lift": 1,
+          "elbow_flex": 1,
+          "wrist_flex": 1,
+          "wrist_roll": 1,
+          "gripper": 1
+        },
+        "faults": {
+          "shoulder_pan": 0,
+          "shoulder_lift": 0,
+          "elbow_flex": 0,
+          "wrist_flex": 0,
+          "wrist_roll": 0,
+          "gripper": 0
+        },
+        "load": {
+          "shoulder_pan": 32,
+          "shoulder_lift": 176,
+          "elbow_flex": 116,
+          "wrist_flex": -20,
+          "wrist_roll": 36,
+          "gripper": 200
+        }
+      }
+    }
+  ],
+  "after": {
+    "joints": {
+      "shoulder_pan": -20.87912087912088,
+      "shoulder_lift": 11.516483516483516,
+      "elbow_flex": -9.626373626373626,
+      "wrist_flex": 75.12087912087912,
+      "wrist_roll": -29.494505494505493,
+      "gripper": 3.1713900134952766
+    },
+    "goals": {
+      "shoulder_pan": -21.318681318681318,
+      "shoulder_lift": 7.912087912087912,
+      "elbow_flex": -11.912087912087912,
+      "wrist_flex": 75.2967032967033,
+      "wrist_roll": -30.021978021978022,
+      "gripper": 0.0
+    },
+    "torque": {
+      "shoulder_pan": 1,
+      "shoulder_lift": 1,
+      "elbow_flex": 1,
+      "wrist_flex": 1,
+      "wrist_roll": 1,
+      "gripper": 1
+    },
+    "faults": {
+      "shoulder_pan": 0,
+      "shoulder_lift": 0,
+      "elbow_flex": 0,
+      "wrist_flex": 0,
+      "wrist_roll": 0,
+      "gripper": 0
+    },
+    "load": {
+      "shoulder_pan": 32,
+      "shoulder_lift": 176,
+      "elbow_flex": 116,
+      "wrist_flex": -20,
+      "wrist_roll": 36,
+      "gripper": 200
+    }
+  },
+  "diagnostic_xyz": [
+    0.26588205433847456,
+    0.09073620449817776,
+    0.06538125362899368
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "episode": "20260923T162302-520f612b",
+  "reference": "tools/mug_observations/1790194356873441986_wrist.jpg",
+  "retention_reference": "tools/mug_observations/1790194398886596021_wrist.jpg",
+  "hypothesis": "Converge orientation with opposite small roll probes and lateral feedback before closure, using several features and both views.",
+  "snapshots": [
+    "tools/pose_match_1790198638134182372",
+    "tools/pose_match_1790198667675518983",
+    "tools/pose_match_1790198697816880418",
+    "tools/pose_match_1790198729880370080",
+    "tools/pose_match_1790198763775901659",
+    "tools/pose_match_1790198833275103627",
+    "tools/pose_match_1790198922271189050"
+  ],
+  "steps": [
+    {
+      "roll_measured": -24.747,
+      "rim_angle_approx_deg": -4,
+      "uncertainty_deg": 3
+    },
+    {
+      "roll_measured": -27.473,
+      "rim_angle_approx_deg": -6,
+      "uncertainty_deg": 3
+    },
+    {
+      "roll_measured": -30.549,
+      "rim_angle_approx_deg": -11,
+      "uncertainty_deg": 3
+    },
+    {
+      "pan_measured": -9.451,
+      "result": "Target shifted left, worsening lateral mismatch. Reversed pan toward -13 goal."
+    },
+    {
+      "pan_measured": -12.352,
+      "upper_attachment_px": [
+        660,
+        267
+      ],
+      "outer_bar_px": [
+        617,
+        369
+      ],
+      "lower_attachment_visible_edge_px": [
+        701,
+        469
+      ],
+      "fixed_tip_px": [
+        680,
+        476
+      ],
+      "rim_angle_approx_deg": -9,
+      "result": "Lateral target moved back toward reference; clearance scale remains smaller."
+    }
+  ],
+  "limitations": [
+    "Mug rocks/changes handle visibility in stationary three-frame bursts; do not fit exact Jacobian from a single image.",
+    "Span depends on foreshortening as well as distance.",
+    "No motor calibration or force limits changed."
+  ],
+  "preclosure": {
+    "state": "tools/mug_observations/1790198958740843459.json",
+    "upper_attachment_px": [
+      716,
+      320
+    ],
+    "outer_bar_px": [
+      660,
+      430
+    ],
+    "lower_attachment": "Occluded by fixed jaw",
+    "fixed_tip_px": [
+      680,
+      476
+    ],
+    "rim_left_px": [
+      670,
+      205
+    ],
+    "rim_right_px": [
+      1220,
+      140
+    ],
+    "uncertainty_px": 15,
+    "reference_upper_attachment_px": [
+      707,
+      333
+    ],
+    "reference_outer_bar_px": [
+      630,
+      475
+    ],
+    "interpretation": "Upper attachment close to reference; outer bar remains offset and lower attachment occluded. Combined views support one bounded retention test, not proof of insertion.",
+    "motion_discrepancy": "Final requested z .036 gave measured .019826, delta -22.803mm rather than nominal -9mm. Shoulder stayed19.956 while elbow/wrist changed. No further descent; actual pose governs retention."
+  },
+  "retention": {
+    "probe": "tools/shoulder_probe_1790199035966460463.json",
+    "actual_rise_mm": 6.532856,
+    "delta_xy_mm": [
+      2.878196,
+      0.359098
+    ],
+    "pitch_delta_deg": -1.758242,
+    "gripper_goal_unchanged": 0,
+    "outcome": "Moving jaw separated from handle after first observed rise; no stable mug-jaw relation. Stopped immediately, no need to reach nominal1-2cm after visible slip."
+  }
+}

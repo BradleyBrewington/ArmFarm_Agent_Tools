@@ -1,0 +1,111 @@
+{
+  "success": false,
+  "notes": "Handle reference-matching attempt failed retention. Roll/pan and observed single-shoulder descents led to closure at measured tool FK (0.279921,0.065841,0.035536)m. Gripper goal0, aperture1.417%, load96 were inconclusive alone. Four goal-preserving -2-degree shoulder increments produced rises 0,0.337,6.095,9.593mm; total16.025mm. Mug remained table-supported and separated from moving jaw. Grip goal unchanged during test; no home retention. Recovered home open with torque retained.",
+  "episode_details": {
+    "grasp_location_m": [
+      0.2799205429319673,
+      0.06584086395985778,
+      0.03553580493968456
+    ],
+    "grasp_location_frame": "Measured base_link diagnostic tool FK, not mug footprint.",
+    "table_contact_location": {
+      "status": "uncertified, no coverage credit",
+      "evidence": "tools/mug_observations/1790201088201749494_top.jpg"
+    },
+    "reference": "tools/mug_observations/1790194356873441986_wrist.jpg",
+    "preclosure": "tools/mug_observations/1790201088201749494_wrist.jpg",
+    "multi_feature_review": {
+      "fixed_tip_px": [
+        680,
+        476
+      ],
+      "reference_upper_attachment_px": [
+        707,
+        333
+      ],
+      "current_upper_attachment_px": [
+        701,
+        386
+      ],
+      "reference_outer_bar_px": [
+        630,
+        475
+      ],
+      "current_outer_bar_px": [
+        654,
+        475
+      ],
+      "reference_lower_attachment_px": [
+        702,
+        621
+      ],
+      "current_lower_attachment_px": [
+        697,
+        591
+      ],
+      "manual_uncertainty_px": 15,
+      "assessment": "Fixed tip projected within opening but upper attachment and span mismatch remained. Bounded retention disproved support; image overlap was insufficient."
+    },
+    "retention_probes": [
+      {
+        "path": "tools/shoulder_probe_1790201137209583898.json",
+        "delta_xyz_m": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "measured_shoulder_delta_deg": 0.0,
+        "other_goals_unchanged": true,
+        "evidence": "tools/mug_observations/1790201137209583898"
+      },
+      {
+        "path": "tools/shoulder_probe_1790201150908709257.json",
+        "delta_xyz_m": {
+          "x": 0.00012023758808243912,
+          "y": 3.081269446332524e-05,
+          "z": 0.00033686207065738993
+        },
+        "measured_shoulder_delta_deg": -0.0879120879120876,
+        "other_goals_unchanged": true,
+        "evidence": "tools/mug_observations/1790201150908709257"
+      },
+      {
+        "path": "tools/shoulder_probe_1790201167884954930.json",
+        "delta_xyz_m": {
+          "x": 0.002078366537395515,
+          "y": 0.0005326120325893219,
+          "z": 0.006095245565725521
+        },
+        "measured_shoulder_delta_deg": -1.582417582417584,
+        "other_goals_unchanged": true,
+        "evidence": "tools/mug_observations/1790201167884954930"
+      },
+      {
+        "path": "tools/shoulder_probe_1790201184826215360.json",
+        "delta_xyz_m": {
+          "x": 0.0029068087113884866,
+          "y": 0.0007449097056037302,
+          "z": 0.009592912717709859
+        },
+        "measured_shoulder_delta_deg": -2.46153846153846,
+        "other_goals_unchanged": true,
+        "evidence": "tools/mug_observations/1790201184826215360"
+      }
+    ],
+    "retention_total_rise_m": 0.01602502035409277,
+    "tools": [
+      "tools/mug_motion.py",
+      "tools/mug_grip.py",
+      "tools/shoulder_increment_probe.py",
+      "tools/shoulder_descent_probe.py"
+    ],
+    "control_audit": "General move starts from measured position and resets commanded joints goal on first interpolation write. Dedicated shoulder probes preserved goals; do not infer correction of absolute FK error."
+  },
+  "status": {
+    "blocker": "Handle projection overlap did not produce supported contact; measured16.025mm retention rise left mug on table. Multi-feature pose mismatch persisted.",
+    "transferable_discovery": "Goal-preserving shoulder reversal showed deadband: measured rises0,0.337,6.095,9.593mm for four -2-degree goal increments, with other goals unchanged. Retention evidence, not aperture/load, established failure.",
+    "next_hypothesis": "At empty-gripper clearance extend goal-preserving increment pattern to pan or wrist with explicit increment semantics. Log old goal, measured start, first written goal, finish and all other raw goals; check actual response before using for alignment. Do not assume this fixes absolute pose error.",
+    "peer_control_evidence": "tools/supervisor_evidence/arm002-goal-increment-summary.json",
+    "turn_boundary": "Recovered home open with torque retained; failed episode finalized."
+  }
+}

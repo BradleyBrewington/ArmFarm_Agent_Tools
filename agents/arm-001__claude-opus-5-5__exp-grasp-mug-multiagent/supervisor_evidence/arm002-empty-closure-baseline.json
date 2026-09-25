@@ -1,0 +1,50 @@
+{
+  "timestamp": 1790202803.5641747,
+  "kind": "empty_gripper_closure_baseline",
+  "episode_id": null,
+  "task_id": "exp-grasp-mug-multiagent",
+  "prior_images_inspected": [
+    "1790196608571423589",
+    "1790196679375339098"
+  ],
+  "reason_for_new_baseline": "Saved top images show overlapping edge-on jaws; use current roll -15.25 at clear home for visible profile in both views.",
+  "observations": {
+    "before": "1790202728306690352",
+    "closed": "1790202754603000552",
+    "reopened": "1790202772737775972",
+    "failed_rim_comparison": "1790202340877157851"
+  },
+  "commands": [
+    {
+      "gripper": 0,
+      "duration_s": 5
+    },
+    {
+      "gripper": 24,
+      "duration_s": 5
+    }
+  ],
+  "closed_measured_percent": 1.8815331010452963,
+  "closed_load": 120,
+  "closed_joints": {
+    "shoulder_pan": 12.483516483516484,
+    "shoulder_lift": -91.20879120879121,
+    "elbow_flex": 80.04395604395604,
+    "wrist_flex": 26.813186813186814,
+    "wrist_roll": -15.252747252747254,
+    "gripper": 1.8815331010452963
+  },
+  "findings": [
+    "Empty closure leaves a visible projected gap between distal inner faces in wrist and top views. Profile is not parallel: separation varies along the fingers and near pad steps.",
+    "Wrist distal gap approximately 30-40 pixels around y570-610, manual uncertainty about 5 pixels; this is image separation, not metric jaw clearance. Top confirms narrow distal slit and wider proximal opening.",
+    "Failed rim observation shows a rim strip projected in the same jaw gap. Its visible strip is compatible with the empty silhouette; opposed pressure and insertion depth are not resolved.",
+    "New empty reading 1.8815 percent/load120 equals initial failed rim closure observation1790202313737628960, supporting that those numbers alone do not establish engagement.",
+    "Residual-gap/unsuitable-profile hypothesis remains plausible; cannot distinguish it from above/beside-rim miss or establish wall thickness versus physical clearance from these projections."
+  ],
+  "next_hypothesis": "Select a thicker rolled-lip segment or handle support with resolved opposing contact at the narrow pad region; do not repeat identical thin-wall closure or increase force/depth blindly.",
+  "accepted_calibration_modified": false,
+  "force_limits_changed": false,
+  "full_task_success": false,
+  "episode_ledger_changed": false,
+  "boundary_check": "tools/empty_closure_boundary_check.json"
+}

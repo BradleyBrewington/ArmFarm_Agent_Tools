@@ -1,0 +1,79 @@
+{
+  "success": false,
+  "notes": "Offset shallow-view experiment did not establish handle insertion; no closure or lift attempted. Pan probes measured +1.143 and +1.582 degrees with other goals preserved. Final approach FK(.285158,.064371,.069856) exposed upper handle but lower contour remained behind fixed jaw. Recovered home open. Initial approach began before recording due preflight register-name exception; recording gap explicitly retained.",
+  "episode_details": {
+    "hypothesis": "Offset shallower view resolves jaw versus front/back handle boundary",
+    "grasp_location": null,
+    "closest_observed_tool_fk_m": [
+      0.285158288,
+      0.064371068,
+      0.069855869
+    ],
+    "contact_established": false,
+    "recording_issue": "Initial clearance approach launched after preflight register-name exception prevented recorder start; recording started during approach. Preserve missing initial recording interval.",
+    "probe_reports": [
+      "tools/clearance_increment_1790202893327194374.json",
+      "tools/clearance_increment_1790202908913085750.json"
+    ],
+    "image_landmarks_approx_px": {
+      "initial_wrist_fixed_tip": [
+        680,
+        476
+      ],
+      "initial_handle_upper": [
+        850,
+        490
+      ],
+      "after_pan_handle_upper": [
+        810,
+        510
+      ],
+      "near_view_handle_upper": [
+        737,
+        425
+      ],
+      "uncertainty_px": 15
+    },
+    "hardware_end": {
+      "torque": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "fault_bits": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "state_raw": [
+        2241,
+        1018,
+        2820,
+        2353,
+        1702,
+        1532
+      ],
+      "action_raw": [
+        2246,
+        1010,
+        2816,
+        2337,
+        1706,
+        1541
+      ]
+    }
+  },
+  "status": {
+    "blocker": "Lower handle contour occluded by fixed jaw; no verified through-loop insertion at shallower approach.",
+    "transferable_discovery": "Goal-preserving pan +2deg probes produced actual +1.143,+1.582deg and shifted handle left but increased occlusion. Shallower view exposes upper attachment, not lower boundary.",
+    "next_hypothesis": "At clearance test opposite-side lateral viewpoint that exposes lower handle contour, selecting direction by fresh two-view occlusion rather than targeting silhouette overlap.",
+    "turn_boundary": "Episode completed unsuccessfully; home open, torque on, faults zero.",
+    "recording_guard": "tools/mug_motion.py now rejects task motion unless recorder active and healthy; added after initial approach recording gap."
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "success": false,
+  "notes": "Supported reorientation experiment unsuccessful. Open-jaw lateral probes and one measured 3.703 mm descent did not establish broad-wall contact or lasting improvement in handle insertion geometry. Transient image displacement returned near initial pose after retraction; contact causation unresolved because mug rocks without commands. No closure or retained lift; mug remained table-supported. Returned home open, torque retained.",
+  "episode_details": {
+    "experiment": "supported reorientation contact acquisition",
+    "grasp_location_m": null,
+    "contact_probe_tool_location_m": {
+      "x": 0.2841061886873029,
+      "y": 0.04446943126813054,
+      "z": 0.046722581935238996
+    },
+    "grasp_location_frame": "No grasp attempted; probe coordinates are measured base_link diagnostic tool FK, not table-contact footprint.",
+    "table_contact_location": {
+      "status": "uncertified; no coverage credit",
+      "before_top": "tools/mug_observations/1790200040009151364_top.jpg",
+      "after_top": "tools/mug_observations/1790200402945474094_top.jpg",
+      "manual_landmarks_px": {
+        "before_rim_center": [
+          580,
+          423
+        ],
+        "before_outer_handle": [
+          668,
+          383
+        ],
+        "after_rim_center": [
+          579,
+          423
+        ],
+        "after_outer_handle": [
+          667,
+          383
+        ]
+      },
+      "manual_uncertainty_px": 10,
+      "interpretation": "No resolved lasting change between clear pre/post frames. Elevated handle landmarks are image orientation evidence only, not flat-plane metric positions."
+    },
+    "last_lateral_probe": {
+      "before": "1790200318953458900",
+      "after": "1790200335701250238",
+      "delta_xyz_m": {
+        "x": 0.0008603097241348667,
+        "y": -0.004508199746631268,
+        "z": -1.1962918891605945e-08
+      },
+      "actual_pan_delta_deg": 1.0549450549450547
+    },
+    "tool_paths": [
+      "tools/mug_motion.py",
+      "tools/shoulder_descent_probe.py"
+    ],
+    "peer_evidence": "tools/supervisor_evidence/arm002-yaw-wall-contact-result.json",
+    "home_observation": "tools/mug_observations/1790200402945474094.json"
+  },
+  "status": {
+    "blocker": "Broad-wall contact not established; top occlusion and wrist projection do not resolve depth. Side-lying mug has transient rocking; final pose essentially unchanged.",
+    "transferable_discovery": "A 1-degree shoulder goal increment produced 3.703 mm measured descent with other goals unchanged. Subsequent 1.055-degree measured pan change moved tool 4.59 mm laterally but did not establish persistent mug reorientation.",
+    "next_hypothesis": "At clearance choose a jaw approach to the unobstructed body side opposite the handle, with both contact and rim/handle landmarks visible, rather than using the handle-adjacent approach as a wall pusher. Establish contact before one small tangential probe.",
+    "turn_boundary": "Home verified, gripper open, torque retained; completed unsuccessful short experiment."
+  }
+}

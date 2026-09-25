@@ -1,0 +1,62 @@
+{
+  "before": "1790198429429964056",
+  "after": "1790198778036871173",
+  "method": "Top-image dark silhouette Euclidean fit; perspective limits true yaw interpretation",
+  "correlation": 0.9447148683099109,
+  "image_rotation_deg": 3.4578866958618164,
+  "silhouette_centers_px": [
+    [
+      666.0599819214876,
+      481.0600464876033
+    ],
+    [
+      670.557838262235,
+      448.5463229521068
+    ]
+  ],
+  "centroid_shift_px": [
+    4.497856340747376,
+    -32.513723535496524
+  ],
+  "warp": [
+    [
+      0.9981793761253357,
+      -0.060314882546663284,
+      13.410808563232422
+    ],
+    [
+      0.060314882546663284,
+      0.9981793761253357,
+      -37.98659133911133
+    ]
+  ],
+  "uncertainty": "Image silhouette rotation/centroid translation; not metric physical yaw or table-footprint center. Manual estimate about30deg rotation; perspective and lighting uncertainty.",
+  "contact_observations": [
+    "1790198675703718871",
+    "1790198692230324616",
+    "1790198715031284121"
+  ],
+  "retracted_observation": "1790198739675756877",
+  "silhouette_rotation_rejected": "Round body dominates Euclidean fit; 3.46deg fit does not track handle yaw. Use explicit handle-to-rim landmarks.",
+  "manual_handle_landmarks": {
+    "before_rim_center_px": [
+      666,
+      470
+    ],
+    "before_handle_px": [
+      702,
+      551
+    ],
+    "after_rim_center_px": [
+      671,
+      438
+    ],
+    "after_handle_px": [
+      660,
+      526
+    ],
+    "projected_direction_change_deg": 31.087505323479974,
+    "estimated_uncertainty_deg": 10,
+    "note": "Projected handle direction change only; not calibrated physical yaw."
+  }
+}

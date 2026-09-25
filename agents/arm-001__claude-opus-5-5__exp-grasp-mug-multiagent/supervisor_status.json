@@ -1,0 +1,224 @@
+{
+  "updated_utc": "2026-09-23T22:46:06.645909+00:00",
+  "agent_id": "arm-001__gpt-6-astra__exp-grasp-mug-multiagent",
+  "task": "exp-grasp-mug-multiagent",
+  "received_instruction_ids": [
+    {
+      "id": "e252366d-5cb5-48d7-a607-55bbc40e3934",
+      "created": 1790194360.9894388
+    },
+    {
+      "id": "e9280ec6-0d63-4e48-a04c-4c01f45aef5e",
+      "created": 1790194491.404674
+    }
+  ],
+  "episode_ledger": "tools/mug_episode_ledger.json",
+  "grid_ledger": "tools/mug_table_grid.json",
+  "successes": 1,
+  "unsuccessful_episodes": 19,
+  "success_to_failure_ratio": 0.05263157894736842,
+  "verified_successes_trailing_hour": 0,
+  "coverage_complete": false,
+  "calibration": {
+    "source": "calibration/ready.json",
+    "robot_alignment": "not_calibrated",
+    "height": "not_measured",
+    "consequence": "2D table grid is available without robot registration. Need pre-lift footprint localization and height/parallax uncertainty; current FK contact estimates are not mug table-contact locations.",
+    "historical_local_contact_fk_extent_m": {
+      "x": [
+        0.0589509645,
+        0.3166617889
+      ],
+      "y": [
+        -0.202533442,
+        0.1983361962
+      ]
+    },
+    "current_session_observed_fk_contact_x_max_m": 0.3844547702
+  },
+  "coverage_proposal": {
+    "frame": "checkerboard_table",
+    "bounds_m": {
+      "x": [
+        -0.35,
+        0.6
+      ],
+      "y": [
+        -0.3,
+        0.3
+      ]
+    },
+    "cell_size_m": 0.05,
+    "candidate_cells": 228,
+    "accepted_usable_mask": null,
+    "verified_cells": [],
+    "untested_or_uncertified_cells": "All 228 cells in tools/mug_table_grid.json; geometry, reach and obstacles pending.",
+    "status": "Broad calibrated visible-table survey envelope, not accepted usable workspace. No coverage claim."
+  },
+  "transferable_discovery": "Goal-preserving positive wrist probes measured+2.110,+1.670,+1.758deg with about5.73mm total tool lowering; raised upper attachment in image. Negative pitch/positive roll moved attachment down. Shoulder+1deg yielded actual+1.231deg and5.473mm descent. Other goals preserved.",
+  "blocker": "Wrist nearing calibrated range limit while upper attachment remains about120px right of tip and lower arc becomes occluded. No through-loop support established.",
+  "next_hypothesis": "Reconfigure at clearance to a posture with more wrist pitch room, using measured FK and both views. Retain positive-pitch local response as a hypothesis to remeasure, then combine attachment height and lateral alignment before contact.",
+  "tools": [
+    "tools/mug_motion.py",
+    "tools/mug_grip.py",
+    "tools/episode_motion.py"
+  ],
+  "safety_note": "Accepted calibration and force limits unchanged. Incremental clearance roll probes observed normal tracking through -33.8 degrees. Cartesian command residual is not arrival evidence; final approach discrepancy retained in ledger.",
+  "turn_boundary": "Bounded multi-probe experiment completed unsuccessfully; recovered home open with torque retained.",
+  "operator_correction": "Table-plane homography can define grid before robot registration. Use pre-lift table-contact footprint with uncertainty; never flat-project elevated handle. Ledger must retain uploaded episodes append-only by episode_id. Dashboard crosscheck 2026-09-23T20:24Z: arm-001 3 completed, 1 success.",
+  "history_reconciliation": "Prior history retained by episode_id, including uploaded records. Appended one completed episode; no denominator reset.",
+  "latest_episode_id": "20260923T174152-99173cc0",
+  "latest_result": "Measured multi-probe handle alignment batch, no closure or lift. Positive wrist pitch raised upper handle attachment; negative pitch and positive roll moved it down. Pan reduced lateral offset but increasingly occluded lower arc. Wrist approached calibrated range limit before sufficient registration. Recovered home open; no grasp claimed.",
+  "experiment_ledger": "tools/alignment_response_report_20260923T174152-99173cc0.json",
+  "diagnostics": [
+    {
+      "id": "no_motion_1790196095155360337",
+      "type": "read_only_stationarity_experiment",
+      "evidence": "tools/no_motion_1790196095155360337/result.json",
+      "result": "Mug top-view translation spans 23 px horizontally and 10 px vertically across 12 frames. Table edge and home-arm template translations remain (0,0). Every measured joint unchanged before/after. Both streams fresh (maximum frame age 36 ms) with advancing sequence numbers; wrist images also show mug image change. Cause of object-image motion is unresolved.",
+      "episode_started": false,
+      "motor_commands_sent": false
+    },
+    {
+      "diagnostic": "Peer quiet-window stationary observation",
+      "path": "tools/quiet_window_1790199236399921742",
+      "capture_start_epoch": 1790199236.509602,
+      "capture_end_epoch": 1790199242.2236357,
+      "all_frames_before_window_end": true,
+      "frame_pairs": 20,
+      "goals_unchanged": true,
+      "joint_delta": {
+        "shoulder_pan": 0.0,
+        "shoulder_lift": 0.0,
+        "elbow_flex": 0.0,
+        "wrist_flex": 0.0,
+        "wrist_roll": 0.0,
+        "gripper": 0.0
+      },
+      "quiet_centroid_range_xy_px": [
+        27.210273661836254,
+        6.255368736181822
+      ],
+      "earlier_centroid_range_xy_px": [
+        23.558664331095883,
+        10.95255250756503
+      ],
+      "interpretation": "Visible silhouette and handle-pose changes persist during operator-reported peer quiet window with own goals/joints unchanged. This weakens an explanation requiring concurrent commanded peer motion; it does not exclude residual vibration, other sources or establish causation. Wrist view independently shows mug changing relative to stationary jaw/background.",
+      "episode_started": false,
+      "motor_commands_sent": false,
+      "background_template_shifts_px": {
+        "table_edge": [
+          [
+            0,
+            0
+          ]
+        ],
+        "arm": [
+          [
+            0,
+            0
+          ]
+        ]
+      },
+      "camera_max_age_seconds": 0.03575954999541864,
+      "camera_capture_range_epoch": {
+        "top": [
+          1790199236.5006216,
+          1790199242.1968927
+        ],
+        "wrist": [
+          1790199236.4822452,
+          1790199242.2105067
+        ]
+      },
+      "camera_sequences_strictly_advancing": {
+        "top": true,
+        "wrist": true
+      }
+    },
+    {
+      "type": "empty-gripper clearance control diagnostic",
+      "path": "tools/clearance_increment_summary_1790201373968023197.json",
+      "episode_started": false,
+      "grasp_success": false
+    },
+    {
+      "path": "tools/lift_guard_validation_1790202366279511053.json",
+      "type": "empty-gripper cumulative lift guard validation",
+      "episode_started": false
+    },
+    {
+      "type": "read-only recorded closure tracking",
+      "path": "tools/closure_review_20260923T171728-eb3ce7d2/result.json",
+      "episode_started": false,
+      "motion_commands_sent": false
+    }
+  ],
+  "evidence_correction": "Earlier target drift cannot be attributed solely to contact or insufficient clearance: comparable mug-image changes occur with arm stationary. Earlier failed episode labels and observations remain unchanged.",
+  "operator_evidence_updates": [
+    {
+      "received_utc": "2026-09-23T20:48:35.147834+00:00",
+      "source": "Operator diagnostic evidence for arm-001 verified successful episode",
+      "successful_support_observations": [
+        {
+          "phase": "short lift",
+          "observation": "1790194398886596021",
+          "measured_gripper_percent": 3.171,
+          "load": 64
+        },
+        {
+          "phase": "inward carry",
+          "measured_gripper_percent": 2.024,
+          "load": 80
+        },
+        {
+          "phase": "intermediate",
+          "measured_gripper_percent": 1.822,
+          "load": 104
+        },
+        {
+          "phase": "verified held home",
+          "observation": "1790194488249069867",
+          "measured_gripper_percent": 1.754,
+          "load": 100
+        }
+      ],
+      "failed_empty_closure_reference": {
+        "measured_gripper_percent": 1.417,
+        "load": 96
+      },
+      "interpretation": "Near-closed aperture and load alone weakly distinguish thin-handle support from empty closure. These arm-001 observations are not thresholds or portable targets.",
+      "decision_rule": "Combine actual jaw/handle arrangement, both views, and clearance to justify bounded 1-2 cm retention test. Verify mug follows with stable relation to jaws, preserving grip command. Do not increase force limits or descend blindly. Only verified held home counts as success.",
+      "historical_outcomes": "Preserve every recorded failed outcome; prior aperture/load-only reasoning is insufficient to establish absence of contact, but no missing retention/home evidence is invented."
+    },
+    {
+      "received_utc": "2026-09-23T20:56:40.253557+00:00",
+      "source": "Operator-verified arm-002 diagnostic: tools/fixed_tip_local_response.json; calibration_checks/live-alignment-20260922/README.md",
+      "technique": "At a clear empty-gripper pose, hold arm joints fixed and compare open versus nearly closed images. The rigid tip remains stationary; moving tip moves. Distinguish fixed fingertip from nearly closed midpoint.",
+      "portability": "Transfer only comparison method; do not copy labels, pixels, offsets, joint targets or calibration. This is not a new grasp success."
+    },
+    {
+      "received_utc": "2026-09-23T21:05:16.603729+00:00",
+      "source": "Operator peer comparison: arm-002 run20260923T155523-adbb35cd; observations1790197129201181722 and1790197146996405720; tools/mug_control.py",
+      "result": "Peer single-shoulder-goal increments yielded19.73mm measured diagnostic rise over two stages, including -2deg goal /-2.02deg measured response despite ~5.57deg absolute error. Mug stayed on table; grasp failed.",
+      "interpretation": "Incremental response can be useful despite static absolute error. Transfer method only; no portable angles, force changes or success credit."
+    }
+  ],
+  "operator_refinement_acknowledged": "Short boundaries are for coordination, not a one-probe limit or requirement to close with known pose mismatch. Current failure preserved; recovery completed.",
+  "latest_diagnostic": "tools/closure_review_20260923T171728-eb3ce7d2/result.json",
+  "operator_camera_clarification": "Operator independently verified deployed camd hashes and fresh raw MJPEG passthrough without warping/stabilization. No known disturbance. Cause remains unresolved; no further quiet-window experiment.",
+  "operator_queue_policy": "Historical SQLite rows are not pending guidance. Do not reread them every turn. Handle new live conversation instructions; leave historical rows intact.",
+  "peer_control_evidence": "tools/supervisor_evidence/arm002-goal-increment-summary.json",
+  "rim_shape_evidence": "tools/supervisor_evidence/arm001-rim-shape-comparison.json",
+  "peer_evidence_inspected": "tools/supervisor_evidence/arm002-depth-view-wrist.jpg",
+  "closure_timing_evidence": {
+    "source": "Operator independent timing audit",
+    "interval_utc": [
+      "2026-09-23T22:20:51.236Z",
+      "2026-09-23T22:21:13.781Z"
+    ],
+    "duration_seconds": 22.545,
+    "interpretation": "mug_grip.py checks load/camera availability but not target alignment during gradual closure. No failure causation established."
+  },
+  "recording_guard": "tools/mug_motion.py now rejects task motion unless recorder active and healthy; added after initial approach recording gap."
+}

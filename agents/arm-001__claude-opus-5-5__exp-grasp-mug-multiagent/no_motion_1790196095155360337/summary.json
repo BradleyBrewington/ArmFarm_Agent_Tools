@@ -1,0 +1,8 @@
+{
+  "id": "no_motion_1790196095155360337",
+  "type": "read_only_stationarity_experiment",
+  "evidence": "tools/no_motion_1790196095155360337/result.json",
+  "result": "Mug top-view translation spans 23 px horizontally and 10 px vertically across 12 frames. Table edge and home-arm template translations remain (0,0). Every measured joint unchanged before/after. Both streams fresh (maximum frame age 36 ms) with advancing sequence numbers; wrist images also show mug image change. Cause of object-image motion is unresolved.",
+  "episode_started": false,
+  "motor_commands_sent": false
+}

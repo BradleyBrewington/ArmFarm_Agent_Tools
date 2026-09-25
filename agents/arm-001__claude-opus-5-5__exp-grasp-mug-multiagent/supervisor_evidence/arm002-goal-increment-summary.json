@@ -1,0 +1,87 @@
+{
+  "arm": "arm-002",
+  "condition": "Clear empty-gripper home vicinity; not grasp pose",
+  "grasp_success": false,
+  "experiments": [
+    {
+      "source": "tools/goal_increment_1790200883042362007.json",
+      "requested_increment_deg": 1.0,
+      "measured_delta_deg": 0.0,
+      "delta_xyz_m": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "old_raw_goal": 1009,
+      "new_raw_goal": 1020,
+      "old_goal_deg": -92.7032967032967,
+      "first_command_deg": -92.7032967032967,
+      "other_raw_goals_unchanged": true,
+      "error": null
+    },
+    {
+      "source": "tools/goal_increment_1790200919608764553.json",
+      "requested_increment_deg": 1.0,
+      "measured_delta_deg": 0.0,
+      "delta_xyz_m": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "old_raw_goal": 1020,
+      "new_raw_goal": 1031,
+      "old_goal_deg": -91.73626373626374,
+      "first_command_deg": -91.73626373626374,
+      "other_raw_goals_unchanged": true,
+      "error": null
+    },
+    {
+      "source": "tools/goal_increment_1790200939091337260.json",
+      "requested_increment_deg": 1.0,
+      "measured_delta_deg": 0.8791208791208902,
+      "delta_xyz_m": [
+        -5.108372262421779e-05,
+        1.1316200229399831e-05,
+        -0.0026260028359197524
+      ],
+      "old_raw_goal": 1031,
+      "new_raw_goal": 1042,
+      "old_goal_deg": -90.76923076923077,
+      "first_command_deg": -90.76923076923077,
+      "other_raw_goals_unchanged": true,
+      "error": null
+    },
+    {
+      "source": "tools/goal_increment_1790200953416839208.json",
+      "requested_increment_deg": -1.934065934065934,
+      "measured_delta_deg": -0.4395604395604522,
+      "delta_xyz_m": [
+        3.045934698006625e-05,
+        -6.746763381554333e-06,
+        0.0013129010665810653
+      ],
+      "old_raw_goal": 1042,
+      "new_raw_goal": 1020,
+      "old_goal_deg": -89.8021978021978,
+      "first_command_deg": -89.8021978021978,
+      "other_raw_goals_unchanged": true,
+      "error": null
+    },
+    {
+      "source": "tools/goal_increment_1790200972900230359.json",
+      "requested_increment_deg": -0.9670329670329636,
+      "measured_delta_deg": -0.439560439560438,
+      "delta_xyz_m": [
+        2.0624375644151538e-05,
+        -4.569436847845498e-06,
+        0.001313101769338687
+      ],
+      "old_raw_goal": 1020,
+      "new_raw_goal": 1009,
+      "old_goal_deg": -91.73626373626374,
+      "first_command_deg": -91.73626373626374,
+      "other_raw_goals_unchanged": true,
+      "error": null
+    }
+  ]
+}

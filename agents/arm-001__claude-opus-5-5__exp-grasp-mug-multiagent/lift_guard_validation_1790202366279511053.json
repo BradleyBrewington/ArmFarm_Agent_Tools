@@ -1,0 +1,11 @@
+{
+  "type": "empty-gripper cumulative lift guard validation",
+  "preflight_tests": "tools/lift_guard_preflight_1790202359688082643.json",
+  "normal_motion": "tools/shoulder_probe_1790202366279511053.json",
+  "tool": "tools/shoulder_increment_probe.py",
+  "episode_started": false,
+  "grasp_success": false,
+  "results": "Both synthetic preflight limit cases rejected before any goal change. Normal -0.5deg shoulder goal increment measured -0.527deg and1.563mm rise; other goals unchanged.",
+  "limits": "In-motion18mm hold branch has not been deliberately triggered on hardware. Preflight17mm prediction margin and required original baseline do not prove a physical hard stop.",
+  "changes": "Retained required prelift baseline, cumulative ramp/hold checks; added motor/recorder health checks and abort evidence logging. Calibration and force settings unchanged."
+}

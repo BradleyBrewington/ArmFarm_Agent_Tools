@@ -1,0 +1,50 @@
+{
+  "episode_id": "20260923T154321-c4857933",
+  "hypothesis": "Fingertip response measured against static background remains usable despite mug rocking; bounded correction then refreshed contact approach.",
+  "prior_jacobian_px_per_degree": [
+    [
+      -10.78,
+      -1.31
+    ],
+    [
+      -0.6,
+      8.75
+    ]
+  ],
+  "command_delta_deg": {
+    "shoulder_pan": -2,
+    "shoulder_lift": 3,
+    "wrist_flex": -3
+  },
+  "before": {
+    "state": "tools/mug_observations/1790196220816854406.json",
+    "fixed_tip_px": [
+      614,
+      285
+    ],
+    "target_px": [
+      642,
+      388
+    ],
+    "error_norm_px": 106.7379969832674
+  },
+  "after": {
+    "state": "tools/mug_observations/1790196239970503598.json",
+    "fixed_tip_px": [
+      635,
+      310
+    ],
+    "target_px": [
+      650,
+      392
+    ],
+    "error_norm_px": 83.3606621854697
+  },
+  "pixel_uncertainty": 6,
+  "target_motion_uncertainty_px": 23,
+  "interpretation": "Observed fixed-tip motion (+21,+25) px approximately agrees with bounded model (+17.6,+27.5). Relative image error improved but target rocking and depth prevent a verified grasp.",
+  "stability_check": "tools/precontact_1790196294906242866/measurements.json",
+  "stability_caveat": "Wrist dark-region centroid varied ~16 px across six frames and includes jaw occlusion; no stable-target claim.",
+  "operator_evidence": "Independent 12-frame silhouette analysis supports real back-and-forth mug pose change, possibly rocking/settling. Cause unknown; no permanent offset applied.",
+  "next": "Preserve measured pitch and explicitly align fixed jaw with handle opening at contact depth; image-plane error alone does not establish depth. Compare final geometry to verified side-handle baseline before another retention test."
+}

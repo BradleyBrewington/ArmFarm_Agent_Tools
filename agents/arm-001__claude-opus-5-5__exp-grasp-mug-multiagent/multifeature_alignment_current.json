@@ -1,0 +1,106 @@
+{
+  "reference": "tools/mug_observations/1790194356873441986_wrist.jpg",
+  "retention_reference": "tools/mug_observations/1790194398886596021_wrist.jpg",
+  "baseline_state": "tools/mug_observations/1790198236920837568.json",
+  "hypothesis": "Match multiple handle/rim features relative to fixed tip; test roll at clearance before descent.",
+  "reference_features_px": {
+    "fixed_tip": [
+      680,
+      476
+    ],
+    "upper_attachment": [
+      707,
+      333
+    ],
+    "lower_attachment_visible_edge": [
+      702,
+      621
+    ],
+    "outer_bar": [
+      630,
+      475
+    ],
+    "rim_left": [
+      649,
+      201
+    ],
+    "rim_right": [
+      1165,
+      83
+    ]
+  },
+  "clearance_features_px": {
+    "fixed_tip": [
+      680,
+      476
+    ],
+    "upper_attachment": [
+      681,
+      252
+    ],
+    "lower_attachment": [
+      705,
+      459
+    ],
+    "outer_bar": [
+      624,
+      359
+    ],
+    "rim_left": [
+      664,
+      169
+    ],
+    "rim_right": [
+      1025,
+      151
+    ]
+  },
+  "annotation_uncertainty_px": 10,
+  "lower_attachment_reference": "Partially occluded; visible edge only, not exact attachment.",
+  "baseline_rim_angle_deg": -2.85,
+  "desired_rim_angle_deg": -12.88,
+  "baseline_attachment_span_px": 208,
+  "desired_attachment_span_px": 288,
+  "interpretation": "Scale differs as expected at clearance; orientation mismatch cannot be corrected by single point overlap.",
+  "roll_probe": {
+    "measured_roll_before_deg": -24.74725,
+    "measured_roll_after_deg": -17.45055,
+    "rim_angle_after_approx_deg": 3.3,
+    "response_deg_per_deg": 0.84,
+    "decision": "Probe worsened rim orientation error; restored -25 goal. No expanded wrist travel or deeper blind step."
+  },
+  "preclosure": {
+    "state": "tools/mug_observations/1790198318597555179.json",
+    "features_px": {
+      "fixed_tip": [
+        680,
+        476
+      ],
+      "upper_attachment": [
+        686,
+        336
+      ],
+      "lower_attachment_visible_edge": [
+        682,
+        553
+      ],
+      "outer_bar": [
+        631,
+        445
+      ],
+      "rim_left": [
+        653,
+        246
+      ],
+      "rim_right": [
+        1092,
+        223
+      ]
+    },
+    "rim_angle_deg": -3.0,
+    "reference_rim_error_deg": 9.9,
+    "attachment_span_px": 217,
+    "reference_span_ratio": 0.753,
+    "interpretation": "Fixed tip overlaps opening; upper attachment near reference but lower edge is about68px higher and handle scale smaller. Not a full pose match. Test this shallower plausible support without deeper descent; verify measured retention."
+  }
+}

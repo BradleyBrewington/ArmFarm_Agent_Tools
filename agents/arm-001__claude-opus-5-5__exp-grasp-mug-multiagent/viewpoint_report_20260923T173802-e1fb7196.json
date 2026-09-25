@@ -1,0 +1,82 @@
+{
+  "success": false,
+  "notes": "Two-sided viewpoint comparison, no closure or lift. Body-side view hid loop behind mug; farther handle-side view exposed full loop and both attachments but jaw remained outside opening. Requested20mm lowering produced35.388mm actual tool descent; stopped approach and retracted, then home open. No contact or success claimed.",
+  "episode_details": {
+    "hypothesis": "Select viewpoint exposing handle front/back contour rather than silhouette overlap",
+    "grasp_location": null,
+    "contact_established": false,
+    "evidence_body_side": "tools/mug_observations/1790203127646656016",
+    "evidence_handle_side": "tools/mug_observations/1790203164284842363",
+    "evidence_lowered": "tools/mug_observations/1790203193220380477",
+    "measured_near_pose_m": [
+      0.31730390291877536,
+      0.10554974910854069,
+      0.0838070175112458
+    ],
+    "measured_descent_m": 0.03538820660508576,
+    "manual_wrist_features_px": {
+      "fixed_tip": [
+        680,
+        476
+      ],
+      "upper_attachment": [
+        945,
+        483
+      ],
+      "lower_attachment": [
+        944,
+        665
+      ],
+      "outer_bar": [
+        886,
+        575
+      ],
+      "opening_center": [
+        918,
+        574
+      ],
+      "uncertainty_px": 15
+    },
+    "feature_interpretation": "Entire loop exposed beside fixed jaw; opening center about238px right and98px below fixed tip. Pixel displacement is not metric insertion depth.",
+    "hardware_end": {
+      "torque": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "fault_bits": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "state_raw": [
+        2242,
+        1018,
+        2820,
+        2351,
+        1702,
+        1532
+      ],
+      "action_raw": [
+        2246,
+        1010,
+        2816,
+        2337,
+        1706,
+        1541
+      ]
+    }
+  },
+  "status": {
+    "blocker": "Handle-side view resolves loop contour but jaw is visibly outside opening; coupled absolute correction produced larger-than-requested descent.",
+    "transferable_discovery": "At measured FK(.31855,.10600,.11920), wrist view exposes full handle, unlike body-side y=.0178 view. Two attachments and outer bar can now be tracked independently.",
+    "next_hypothesis": "Use exposed-loop clearance view as reference for bounded goal-preserving pan/roll corrections, track both attachments and outer bar, and use shoulder-only measured descent rather than another20mm absolute coupled lowering. Recheck top-view collision clearance at every correction.",
+    "turn_boundary": "Completed unsuccessful viewpoint experiment, recovered home open with torque retained."
+  }
+}

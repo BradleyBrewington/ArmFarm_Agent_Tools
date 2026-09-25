@@ -1,0 +1,90 @@
+{
+  "before": {
+    "q": {
+      "shoulder_pan": -12.263736263736265,
+      "shoulder_lift": 3.6923076923076925,
+      "elbow_flex": 12.703296703296703,
+      "wrist_flex": 52.7032967032967,
+      "wrist_roll": -30.197802197802197,
+      "gripper": 1.417004048582996
+    },
+    "xyz": {
+      "x": 0.2793387957043803,
+      "y": 0.05631310085078086,
+      "z": 0.04288809056858153
+    },
+    "load": {
+      "shoulder_pan": -24,
+      "shoulder_lift": 152,
+      "elbow_flex": 28,
+      "wrist_flex": 52,
+      "wrist_roll": -20,
+      "gripper": 96
+    },
+    "temperature": {
+      "shoulder_pan": 43,
+      "shoulder_lift": 46,
+      "elbow_flex": 47,
+      "wrist_flex": 43,
+      "wrist_roll": 43,
+      "gripper": 48
+    }
+  },
+  "after": {
+    "q": {
+      "shoulder_pan": -12.263736263736265,
+      "shoulder_lift": 2.4615384615384617,
+      "elbow_flex": 12.703296703296703,
+      "wrist_flex": 52.7032967032967,
+      "wrist_roll": -30.197802197802197,
+      "gripper": 1.417004048582996
+    },
+    "xyz": {
+      "x": 0.28083712272267175,
+      "y": 0.05663879324124726,
+      "z": 0.047557040134372716
+    },
+    "load": {
+      "shoulder_pan": -24,
+      "shoulder_lift": 188,
+      "elbow_flex": 28,
+      "wrist_flex": 52,
+      "wrist_roll": -20,
+      "gripper": 96
+    },
+    "temperature": {
+      "shoulder_pan": 43,
+      "shoulder_lift": 46,
+      "elbow_flex": 47,
+      "wrist_flex": 43,
+      "wrist_roll": 43,
+      "gripper": 48
+    }
+  },
+  "goals_before": {
+    "shoulder_pan": -12.0,
+    "shoulder_lift": 0.6153846153846154,
+    "elbow_flex": 12.351648351648352,
+    "wrist_flex": 51.824175824175825,
+    "wrist_roll": -30.021978021978022,
+    "gripper": 0.0
+  },
+  "goals_after": {
+    "shoulder_pan": -12.0,
+    "shoulder_lift": -1.4065934065934067,
+    "elbow_flex": 12.351648351648352,
+    "wrist_flex": 51.824175824175825,
+    "wrist_roll": -30.021978021978022,
+    "gripper": 0.0
+  },
+  "commanded_increment_deg": -2.0,
+  "measured_shoulder_delta_deg": -1.2307692307692308,
+  "delta_xyz_m": {
+    "x": 0.0014983270182914454,
+    "y": 0.00032569239046639775,
+    "z": 0.004668949565791183
+  },
+  "pitch_delta_deg": -1.2307692307692308,
+  "other_goals_unchanged": true,
+  "evidence": "tools/mug_observations/1790202093185235058"
+}

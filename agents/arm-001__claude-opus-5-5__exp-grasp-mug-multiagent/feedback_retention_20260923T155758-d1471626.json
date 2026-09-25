@@ -1,0 +1,45 @@
+{
+  "success": false,
+  "notes": "Unsuccessful mug episode. At clearance, three bounded goal-relative feedback steps achieved measured +11.25mm z with <0.1mm lateral drift and ~0.1deg pitch change. After approach and closure at FK (.268317,.052134,.036951), preserved grip goal0 despite aperture1.417/load96. Two feedback steps at near-contact pose instead lowered measured z to .032460 (-4.49mm) and moved inward8.4mm. No verified retention or home delivery. Stopped near-contact probing, released on table, retracted and returned home. No calibration or force settings changed.",
+  "episode_details": {
+    "grasp_location_m": [
+      0.268316572,
+      0.052133936,
+      0.036951381
+    ],
+    "grasp_location_frame": "Measured base_link FK at attempted grasp; not table footprint",
+    "table_contact_location": {
+      "status": "Uncertain, no coverage credit",
+      "preapproach_body_support_pixel_estimate": [
+        575,
+        360
+      ],
+      "uncertainty_m": 0.03,
+      "method": "Approximate body-support location before contact; no elevated handle projection."
+    },
+    "probe_ledgers": [
+      "tools/lift_probe_1790197137266329471.json",
+      "tools/lift_probe_1790197153105893125.json",
+      "tools/lift_probe_1790197172605660508.json",
+      "tools/lift_probe_1790197356411189619.json",
+      "tools/lift_probe_1790197377925056920.json"
+    ],
+    "clearance_probe": {
+      "net_dz_m": 0.0112455447,
+      "net_dx_m": -5.42412e-05,
+      "orientation_pitch_change_deg": -0.0879121
+    },
+    "near_contact_probe": {
+      "net_dz_m": -0.0044909607,
+      "net_dx_m": -0.0084081916,
+      "retention_verified": false,
+      "gripper_goal_unchanged": 0
+    }
+  },
+  "status": {
+    "blocker": "Feedback lift worked in clear pose but not near-contact configuration: measured downward/inward motion instead of rise; no verified retention.",
+    "transferable_discovery": "Preserving existing loaded motor goals while adding bounded measured-joint corrections gave +11.25mm actual lift at clearance, <0.1mm lateral drift. This result is configuration-specific: near-contact direction reversal and changing joint errors caused downward/inward motion.",
+    "next_hypothesis": "Validate a fixed Cartesian target AND fixed measured pitch in the same arm configuration over empty table space before contact. Current probe recomputes pitch from each measured pose, allowing orientation error to accumulate; compare that with a fixed reference while preserving calibration, force limits and command-to-measured bounds. Stop on wrong-direction motion.",
+    "turn_boundary": "Recorder stopped; four-joint home reached, gripper open, mug on table, torque retained."
+  }
+}

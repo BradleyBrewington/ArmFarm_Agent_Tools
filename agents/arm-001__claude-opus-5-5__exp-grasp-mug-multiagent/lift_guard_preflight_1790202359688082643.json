@@ -1,0 +1,57 @@
+{
+  "before": {
+    "q": {
+      "shoulder_pan": 12.615384615384615,
+      "shoulder_lift": -91.95604395604396,
+      "elbow_flex": 80.3076923076923,
+      "wrist_flex": 26.417582417582416,
+      "wrist_roll": -30.285714285714285,
+      "gripper": 20.3778677462888
+    },
+    "xyz": {
+      "x": 0.23512352283872634,
+      "y": -0.03988112296152667,
+      "z": 0.1259639449187824
+    },
+    "load": {
+      "shoulder_pan": -32,
+      "shoulder_lift": 44,
+      "elbow_flex": 28,
+      "wrist_flex": 68,
+      "wrist_roll": -24,
+      "gripper": -48
+    },
+    "temperature": {
+      "shoulder_pan": 43,
+      "shoulder_lift": 47,
+      "elbow_flex": 46,
+      "wrist_flex": 44,
+      "wrist_roll": 43,
+      "gripper": 48
+    }
+  },
+  "raw_goals": {
+    "shoulder_pan": 2246,
+    "shoulder_lift": 1010,
+    "elbow_flex": 2816,
+    "wrist_flex": 2337,
+    "wrist_roll": 1706,
+    "gripper": 1541
+  },
+  "tests": [
+    {
+      "case": "already_at_margin",
+      "synthetic_baseline_z": 0.1069639449187824,
+      "exit_code": 1,
+      "stderr": "Traceback (most recent call last):\n  File \"/var/lib/armfarm/stations/armfarm/workspace/tools/shoulder_increment_probe.py\", line 16, in <module>\n    if not math.isfinite(baseline_z) or before['xyz']['z']-baseline_z>=.018:raise RuntimeError('Cumulative retention rise margin reached')\n                                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: Cumulative retention rise margin reached\n",
+      "raw_goals_unchanged": true
+    },
+    {
+      "case": "predicted_margin",
+      "synthetic_baseline_z": 0.10916394491878241,
+      "exit_code": 1,
+      "stderr": "Traceback (most recent call last):\n  File \"/var/lib/armfarm/stations/armfarm/workspace/tools/shoulder_increment_probe.py\", line 19, in <module>\n    if pred['z']-baseline_z>.017:raise RuntimeError('Predicted cumulative rise leaves insufficient response margin')\n                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: Predicted cumulative rise leaves insufficient response margin\n",
+      "raw_goals_unchanged": true
+    }
+  ]
+}

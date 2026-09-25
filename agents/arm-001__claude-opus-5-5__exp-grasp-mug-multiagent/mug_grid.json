@@ -1,0 +1,1745 @@
+{
+  "cell_size_m": 0.05,
+  "frame": "nominal URDF base_link",
+  "proposed_survey_envelope_m": {
+    "x": [
+      0,
+      0.45
+    ],
+    "y": [
+      -0.4,
+      0.4
+    ]
+  },
+  "accepted_usable_bounds": null,
+  "cells": [
+    {
+      "id": "x00_y00",
+      "x_bounds_m": [
+        0.0,
+        0.05
+      ],
+      "y_bounds_m": [
+        -0.4,
+        -0.35
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x00_y01",
+      "x_bounds_m": [
+        0.0,
+        0.05
+      ],
+      "y_bounds_m": [
+        -0.35,
+        -0.3
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x00_y02",
+      "x_bounds_m": [
+        0.0,
+        0.05
+      ],
+      "y_bounds_m": [
+        -0.3,
+        -0.25
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x00_y03",
+      "x_bounds_m": [
+        0.0,
+        0.05
+      ],
+      "y_bounds_m": [
+        -0.25,
+        -0.2
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x00_y04",
+      "x_bounds_m": [
+        0.0,
+        0.05
+      ],
+      "y_bounds_m": [
+        -0.2,
+        -0.15
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x00_y05",
+      "x_bounds_m": [
+        0.0,
+        0.05
+      ],
+      "y_bounds_m": [
+        -0.15,
+        -0.1
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x00_y06",
+      "x_bounds_m": [
+        0.0,
+        0.05
+      ],
+      "y_bounds_m": [
+        -0.1,
+        -0.05
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x00_y07",
+      "x_bounds_m": [
+        0.0,
+        0.05
+      ],
+      "y_bounds_m": [
+        -0.05,
+        0.0
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x00_y08",
+      "x_bounds_m": [
+        0.0,
+        0.05
+      ],
+      "y_bounds_m": [
+        0.0,
+        0.05
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x00_y09",
+      "x_bounds_m": [
+        0.0,
+        0.05
+      ],
+      "y_bounds_m": [
+        0.05,
+        0.1
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x00_y10",
+      "x_bounds_m": [
+        0.0,
+        0.05
+      ],
+      "y_bounds_m": [
+        0.1,
+        0.15
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x00_y11",
+      "x_bounds_m": [
+        0.0,
+        0.05
+      ],
+      "y_bounds_m": [
+        0.15,
+        0.2
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x00_y12",
+      "x_bounds_m": [
+        0.0,
+        0.05
+      ],
+      "y_bounds_m": [
+        0.2,
+        0.25
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x00_y13",
+      "x_bounds_m": [
+        0.0,
+        0.05
+      ],
+      "y_bounds_m": [
+        0.25,
+        0.3
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x00_y14",
+      "x_bounds_m": [
+        0.0,
+        0.05
+      ],
+      "y_bounds_m": [
+        0.3,
+        0.35
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x00_y15",
+      "x_bounds_m": [
+        0.0,
+        0.05
+      ],
+      "y_bounds_m": [
+        0.35,
+        0.4
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x01_y00",
+      "x_bounds_m": [
+        0.05,
+        0.1
+      ],
+      "y_bounds_m": [
+        -0.4,
+        -0.35
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x01_y01",
+      "x_bounds_m": [
+        0.05,
+        0.1
+      ],
+      "y_bounds_m": [
+        -0.35,
+        -0.3
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x01_y02",
+      "x_bounds_m": [
+        0.05,
+        0.1
+      ],
+      "y_bounds_m": [
+        -0.3,
+        -0.25
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x01_y03",
+      "x_bounds_m": [
+        0.05,
+        0.1
+      ],
+      "y_bounds_m": [
+        -0.25,
+        -0.2
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x01_y04",
+      "x_bounds_m": [
+        0.05,
+        0.1
+      ],
+      "y_bounds_m": [
+        -0.2,
+        -0.15
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x01_y05",
+      "x_bounds_m": [
+        0.05,
+        0.1
+      ],
+      "y_bounds_m": [
+        -0.15,
+        -0.1
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x01_y06",
+      "x_bounds_m": [
+        0.05,
+        0.1
+      ],
+      "y_bounds_m": [
+        -0.1,
+        -0.05
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x01_y07",
+      "x_bounds_m": [
+        0.05,
+        0.1
+      ],
+      "y_bounds_m": [
+        -0.05,
+        0.0
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x01_y08",
+      "x_bounds_m": [
+        0.05,
+        0.1
+      ],
+      "y_bounds_m": [
+        0.0,
+        0.05
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x01_y09",
+      "x_bounds_m": [
+        0.05,
+        0.1
+      ],
+      "y_bounds_m": [
+        0.05,
+        0.1
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x01_y10",
+      "x_bounds_m": [
+        0.05,
+        0.1
+      ],
+      "y_bounds_m": [
+        0.1,
+        0.15
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x01_y11",
+      "x_bounds_m": [
+        0.05,
+        0.1
+      ],
+      "y_bounds_m": [
+        0.15,
+        0.2
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x01_y12",
+      "x_bounds_m": [
+        0.05,
+        0.1
+      ],
+      "y_bounds_m": [
+        0.2,
+        0.25
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x01_y13",
+      "x_bounds_m": [
+        0.05,
+        0.1
+      ],
+      "y_bounds_m": [
+        0.25,
+        0.3
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x01_y14",
+      "x_bounds_m": [
+        0.05,
+        0.1
+      ],
+      "y_bounds_m": [
+        0.3,
+        0.35
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x01_y15",
+      "x_bounds_m": [
+        0.05,
+        0.1
+      ],
+      "y_bounds_m": [
+        0.35,
+        0.4
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x02_y00",
+      "x_bounds_m": [
+        0.1,
+        0.15
+      ],
+      "y_bounds_m": [
+        -0.4,
+        -0.35
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x02_y01",
+      "x_bounds_m": [
+        0.1,
+        0.15
+      ],
+      "y_bounds_m": [
+        -0.35,
+        -0.3
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x02_y02",
+      "x_bounds_m": [
+        0.1,
+        0.15
+      ],
+      "y_bounds_m": [
+        -0.3,
+        -0.25
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x02_y03",
+      "x_bounds_m": [
+        0.1,
+        0.15
+      ],
+      "y_bounds_m": [
+        -0.25,
+        -0.2
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x02_y04",
+      "x_bounds_m": [
+        0.1,
+        0.15
+      ],
+      "y_bounds_m": [
+        -0.2,
+        -0.15
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x02_y05",
+      "x_bounds_m": [
+        0.1,
+        0.15
+      ],
+      "y_bounds_m": [
+        -0.15,
+        -0.1
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x02_y06",
+      "x_bounds_m": [
+        0.1,
+        0.15
+      ],
+      "y_bounds_m": [
+        -0.1,
+        -0.05
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x02_y07",
+      "x_bounds_m": [
+        0.1,
+        0.15
+      ],
+      "y_bounds_m": [
+        -0.05,
+        0.0
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x02_y08",
+      "x_bounds_m": [
+        0.1,
+        0.15
+      ],
+      "y_bounds_m": [
+        0.0,
+        0.05
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x02_y09",
+      "x_bounds_m": [
+        0.1,
+        0.15
+      ],
+      "y_bounds_m": [
+        0.05,
+        0.1
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x02_y10",
+      "x_bounds_m": [
+        0.1,
+        0.15
+      ],
+      "y_bounds_m": [
+        0.1,
+        0.15
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x02_y11",
+      "x_bounds_m": [
+        0.1,
+        0.15
+      ],
+      "y_bounds_m": [
+        0.15,
+        0.2
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x02_y12",
+      "x_bounds_m": [
+        0.1,
+        0.15
+      ],
+      "y_bounds_m": [
+        0.2,
+        0.25
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x02_y13",
+      "x_bounds_m": [
+        0.1,
+        0.15
+      ],
+      "y_bounds_m": [
+        0.25,
+        0.3
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x02_y14",
+      "x_bounds_m": [
+        0.1,
+        0.15
+      ],
+      "y_bounds_m": [
+        0.3,
+        0.35
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x02_y15",
+      "x_bounds_m": [
+        0.1,
+        0.15
+      ],
+      "y_bounds_m": [
+        0.35,
+        0.4
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x03_y00",
+      "x_bounds_m": [
+        0.15,
+        0.2
+      ],
+      "y_bounds_m": [
+        -0.4,
+        -0.35
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x03_y01",
+      "x_bounds_m": [
+        0.15,
+        0.2
+      ],
+      "y_bounds_m": [
+        -0.35,
+        -0.3
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x03_y02",
+      "x_bounds_m": [
+        0.15,
+        0.2
+      ],
+      "y_bounds_m": [
+        -0.3,
+        -0.25
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x03_y03",
+      "x_bounds_m": [
+        0.15,
+        0.2
+      ],
+      "y_bounds_m": [
+        -0.25,
+        -0.2
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x03_y04",
+      "x_bounds_m": [
+        0.15,
+        0.2
+      ],
+      "y_bounds_m": [
+        -0.2,
+        -0.15
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x03_y05",
+      "x_bounds_m": [
+        0.15,
+        0.2
+      ],
+      "y_bounds_m": [
+        -0.15,
+        -0.1
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x03_y06",
+      "x_bounds_m": [
+        0.15,
+        0.2
+      ],
+      "y_bounds_m": [
+        -0.1,
+        -0.05
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x03_y07",
+      "x_bounds_m": [
+        0.15,
+        0.2
+      ],
+      "y_bounds_m": [
+        -0.05,
+        0.0
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x03_y08",
+      "x_bounds_m": [
+        0.15,
+        0.2
+      ],
+      "y_bounds_m": [
+        0.0,
+        0.05
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x03_y09",
+      "x_bounds_m": [
+        0.15,
+        0.2
+      ],
+      "y_bounds_m": [
+        0.05,
+        0.1
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x03_y10",
+      "x_bounds_m": [
+        0.15,
+        0.2
+      ],
+      "y_bounds_m": [
+        0.1,
+        0.15
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x03_y11",
+      "x_bounds_m": [
+        0.15,
+        0.2
+      ],
+      "y_bounds_m": [
+        0.15,
+        0.2
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x03_y12",
+      "x_bounds_m": [
+        0.15,
+        0.2
+      ],
+      "y_bounds_m": [
+        0.2,
+        0.25
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x03_y13",
+      "x_bounds_m": [
+        0.15,
+        0.2
+      ],
+      "y_bounds_m": [
+        0.25,
+        0.3
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x03_y14",
+      "x_bounds_m": [
+        0.15,
+        0.2
+      ],
+      "y_bounds_m": [
+        0.3,
+        0.35
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x03_y15",
+      "x_bounds_m": [
+        0.15,
+        0.2
+      ],
+      "y_bounds_m": [
+        0.35,
+        0.4
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x04_y00",
+      "x_bounds_m": [
+        0.2,
+        0.25
+      ],
+      "y_bounds_m": [
+        -0.4,
+        -0.35
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x04_y01",
+      "x_bounds_m": [
+        0.2,
+        0.25
+      ],
+      "y_bounds_m": [
+        -0.35,
+        -0.3
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x04_y02",
+      "x_bounds_m": [
+        0.2,
+        0.25
+      ],
+      "y_bounds_m": [
+        -0.3,
+        -0.25
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x04_y03",
+      "x_bounds_m": [
+        0.2,
+        0.25
+      ],
+      "y_bounds_m": [
+        -0.25,
+        -0.2
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x04_y04",
+      "x_bounds_m": [
+        0.2,
+        0.25
+      ],
+      "y_bounds_m": [
+        -0.2,
+        -0.15
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x04_y05",
+      "x_bounds_m": [
+        0.2,
+        0.25
+      ],
+      "y_bounds_m": [
+        -0.15,
+        -0.1
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x04_y06",
+      "x_bounds_m": [
+        0.2,
+        0.25
+      ],
+      "y_bounds_m": [
+        -0.1,
+        -0.05
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x04_y07",
+      "x_bounds_m": [
+        0.2,
+        0.25
+      ],
+      "y_bounds_m": [
+        -0.05,
+        0.0
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x04_y08",
+      "x_bounds_m": [
+        0.2,
+        0.25
+      ],
+      "y_bounds_m": [
+        0.0,
+        0.05
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x04_y09",
+      "x_bounds_m": [
+        0.2,
+        0.25
+      ],
+      "y_bounds_m": [
+        0.05,
+        0.1
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x04_y10",
+      "x_bounds_m": [
+        0.2,
+        0.25
+      ],
+      "y_bounds_m": [
+        0.1,
+        0.15
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x04_y11",
+      "x_bounds_m": [
+        0.2,
+        0.25
+      ],
+      "y_bounds_m": [
+        0.15,
+        0.2
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x04_y12",
+      "x_bounds_m": [
+        0.2,
+        0.25
+      ],
+      "y_bounds_m": [
+        0.2,
+        0.25
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x04_y13",
+      "x_bounds_m": [
+        0.2,
+        0.25
+      ],
+      "y_bounds_m": [
+        0.25,
+        0.3
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x04_y14",
+      "x_bounds_m": [
+        0.2,
+        0.25
+      ],
+      "y_bounds_m": [
+        0.3,
+        0.35
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x04_y15",
+      "x_bounds_m": [
+        0.2,
+        0.25
+      ],
+      "y_bounds_m": [
+        0.35,
+        0.4
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x05_y00",
+      "x_bounds_m": [
+        0.25,
+        0.3
+      ],
+      "y_bounds_m": [
+        -0.4,
+        -0.35
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x05_y01",
+      "x_bounds_m": [
+        0.25,
+        0.3
+      ],
+      "y_bounds_m": [
+        -0.35,
+        -0.3
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x05_y02",
+      "x_bounds_m": [
+        0.25,
+        0.3
+      ],
+      "y_bounds_m": [
+        -0.3,
+        -0.25
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x05_y03",
+      "x_bounds_m": [
+        0.25,
+        0.3
+      ],
+      "y_bounds_m": [
+        -0.25,
+        -0.2
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x05_y04",
+      "x_bounds_m": [
+        0.25,
+        0.3
+      ],
+      "y_bounds_m": [
+        -0.2,
+        -0.15
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x05_y05",
+      "x_bounds_m": [
+        0.25,
+        0.3
+      ],
+      "y_bounds_m": [
+        -0.15,
+        -0.1
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x05_y06",
+      "x_bounds_m": [
+        0.25,
+        0.3
+      ],
+      "y_bounds_m": [
+        -0.1,
+        -0.05
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x05_y07",
+      "x_bounds_m": [
+        0.25,
+        0.3
+      ],
+      "y_bounds_m": [
+        -0.05,
+        0.0
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x05_y08",
+      "x_bounds_m": [
+        0.25,
+        0.3
+      ],
+      "y_bounds_m": [
+        0.0,
+        0.05
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x05_y09",
+      "x_bounds_m": [
+        0.25,
+        0.3
+      ],
+      "y_bounds_m": [
+        0.05,
+        0.1
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x05_y10",
+      "x_bounds_m": [
+        0.25,
+        0.3
+      ],
+      "y_bounds_m": [
+        0.1,
+        0.15
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x05_y11",
+      "x_bounds_m": [
+        0.25,
+        0.3
+      ],
+      "y_bounds_m": [
+        0.15,
+        0.2
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x05_y12",
+      "x_bounds_m": [
+        0.25,
+        0.3
+      ],
+      "y_bounds_m": [
+        0.2,
+        0.25
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x05_y13",
+      "x_bounds_m": [
+        0.25,
+        0.3
+      ],
+      "y_bounds_m": [
+        0.25,
+        0.3
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x05_y14",
+      "x_bounds_m": [
+        0.25,
+        0.3
+      ],
+      "y_bounds_m": [
+        0.3,
+        0.35
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x05_y15",
+      "x_bounds_m": [
+        0.25,
+        0.3
+      ],
+      "y_bounds_m": [
+        0.35,
+        0.4
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x06_y00",
+      "x_bounds_m": [
+        0.3,
+        0.35
+      ],
+      "y_bounds_m": [
+        -0.4,
+        -0.35
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x06_y01",
+      "x_bounds_m": [
+        0.3,
+        0.35
+      ],
+      "y_bounds_m": [
+        -0.35,
+        -0.3
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x06_y02",
+      "x_bounds_m": [
+        0.3,
+        0.35
+      ],
+      "y_bounds_m": [
+        -0.3,
+        -0.25
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x06_y03",
+      "x_bounds_m": [
+        0.3,
+        0.35
+      ],
+      "y_bounds_m": [
+        -0.25,
+        -0.2
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x06_y04",
+      "x_bounds_m": [
+        0.3,
+        0.35
+      ],
+      "y_bounds_m": [
+        -0.2,
+        -0.15
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x06_y05",
+      "x_bounds_m": [
+        0.3,
+        0.35
+      ],
+      "y_bounds_m": [
+        -0.15,
+        -0.1
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x06_y06",
+      "x_bounds_m": [
+        0.3,
+        0.35
+      ],
+      "y_bounds_m": [
+        -0.1,
+        -0.05
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x06_y07",
+      "x_bounds_m": [
+        0.3,
+        0.35
+      ],
+      "y_bounds_m": [
+        -0.05,
+        0.0
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x06_y08",
+      "x_bounds_m": [
+        0.3,
+        0.35
+      ],
+      "y_bounds_m": [
+        0.0,
+        0.05
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x06_y09",
+      "x_bounds_m": [
+        0.3,
+        0.35
+      ],
+      "y_bounds_m": [
+        0.05,
+        0.1
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x06_y10",
+      "x_bounds_m": [
+        0.3,
+        0.35
+      ],
+      "y_bounds_m": [
+        0.1,
+        0.15
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x06_y11",
+      "x_bounds_m": [
+        0.3,
+        0.35
+      ],
+      "y_bounds_m": [
+        0.15,
+        0.2
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x06_y12",
+      "x_bounds_m": [
+        0.3,
+        0.35
+      ],
+      "y_bounds_m": [
+        0.2,
+        0.25
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x06_y13",
+      "x_bounds_m": [
+        0.3,
+        0.35
+      ],
+      "y_bounds_m": [
+        0.25,
+        0.3
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x06_y14",
+      "x_bounds_m": [
+        0.3,
+        0.35
+      ],
+      "y_bounds_m": [
+        0.3,
+        0.35
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x06_y15",
+      "x_bounds_m": [
+        0.3,
+        0.35
+      ],
+      "y_bounds_m": [
+        0.35,
+        0.4
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x07_y00",
+      "x_bounds_m": [
+        0.35,
+        0.4
+      ],
+      "y_bounds_m": [
+        -0.4,
+        -0.35
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x07_y01",
+      "x_bounds_m": [
+        0.35,
+        0.4
+      ],
+      "y_bounds_m": [
+        -0.35,
+        -0.3
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x07_y02",
+      "x_bounds_m": [
+        0.35,
+        0.4
+      ],
+      "y_bounds_m": [
+        -0.3,
+        -0.25
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x07_y03",
+      "x_bounds_m": [
+        0.35,
+        0.4
+      ],
+      "y_bounds_m": [
+        -0.25,
+        -0.2
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x07_y04",
+      "x_bounds_m": [
+        0.35,
+        0.4
+      ],
+      "y_bounds_m": [
+        -0.2,
+        -0.15
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x07_y05",
+      "x_bounds_m": [
+        0.35,
+        0.4
+      ],
+      "y_bounds_m": [
+        -0.15,
+        -0.1
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x07_y06",
+      "x_bounds_m": [
+        0.35,
+        0.4
+      ],
+      "y_bounds_m": [
+        -0.1,
+        -0.05
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x07_y07",
+      "x_bounds_m": [
+        0.35,
+        0.4
+      ],
+      "y_bounds_m": [
+        -0.05,
+        0.0
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x07_y08",
+      "x_bounds_m": [
+        0.35,
+        0.4
+      ],
+      "y_bounds_m": [
+        0.0,
+        0.05
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x07_y09",
+      "x_bounds_m": [
+        0.35,
+        0.4
+      ],
+      "y_bounds_m": [
+        0.05,
+        0.1
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x07_y10",
+      "x_bounds_m": [
+        0.35,
+        0.4
+      ],
+      "y_bounds_m": [
+        0.1,
+        0.15
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x07_y11",
+      "x_bounds_m": [
+        0.35,
+        0.4
+      ],
+      "y_bounds_m": [
+        0.15,
+        0.2
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x07_y12",
+      "x_bounds_m": [
+        0.35,
+        0.4
+      ],
+      "y_bounds_m": [
+        0.2,
+        0.25
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x07_y13",
+      "x_bounds_m": [
+        0.35,
+        0.4
+      ],
+      "y_bounds_m": [
+        0.25,
+        0.3
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x07_y14",
+      "x_bounds_m": [
+        0.35,
+        0.4
+      ],
+      "y_bounds_m": [
+        0.3,
+        0.35
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x07_y15",
+      "x_bounds_m": [
+        0.35,
+        0.4
+      ],
+      "y_bounds_m": [
+        0.35,
+        0.4
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x08_y00",
+      "x_bounds_m": [
+        0.4,
+        0.45
+      ],
+      "y_bounds_m": [
+        -0.4,
+        -0.35
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x08_y01",
+      "x_bounds_m": [
+        0.4,
+        0.45
+      ],
+      "y_bounds_m": [
+        -0.35,
+        -0.3
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x08_y02",
+      "x_bounds_m": [
+        0.4,
+        0.45
+      ],
+      "y_bounds_m": [
+        -0.3,
+        -0.25
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x08_y03",
+      "x_bounds_m": [
+        0.4,
+        0.45
+      ],
+      "y_bounds_m": [
+        -0.25,
+        -0.2
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x08_y04",
+      "x_bounds_m": [
+        0.4,
+        0.45
+      ],
+      "y_bounds_m": [
+        -0.2,
+        -0.15
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x08_y05",
+      "x_bounds_m": [
+        0.4,
+        0.45
+      ],
+      "y_bounds_m": [
+        -0.15,
+        -0.1
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x08_y06",
+      "x_bounds_m": [
+        0.4,
+        0.45
+      ],
+      "y_bounds_m": [
+        -0.1,
+        -0.05
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x08_y07",
+      "x_bounds_m": [
+        0.4,
+        0.45
+      ],
+      "y_bounds_m": [
+        -0.05,
+        0.0
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x08_y08",
+      "x_bounds_m": [
+        0.4,
+        0.45
+      ],
+      "y_bounds_m": [
+        0.0,
+        0.05
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x08_y09",
+      "x_bounds_m": [
+        0.4,
+        0.45
+      ],
+      "y_bounds_m": [
+        0.05,
+        0.1
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x08_y10",
+      "x_bounds_m": [
+        0.4,
+        0.45
+      ],
+      "y_bounds_m": [
+        0.1,
+        0.15
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x08_y11",
+      "x_bounds_m": [
+        0.4,
+        0.45
+      ],
+      "y_bounds_m": [
+        0.15,
+        0.2
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x08_y12",
+      "x_bounds_m": [
+        0.4,
+        0.45
+      ],
+      "y_bounds_m": [
+        0.2,
+        0.25
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x08_y13",
+      "x_bounds_m": [
+        0.4,
+        0.45
+      ],
+      "y_bounds_m": [
+        0.25,
+        0.3
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x08_y14",
+      "x_bounds_m": [
+        0.4,
+        0.45
+      ],
+      "y_bounds_m": [
+        0.3,
+        0.35
+      ],
+      "status": "unverified; usability and registration pending"
+    },
+    {
+      "id": "x08_y15",
+      "x_bounds_m": [
+        0.4,
+        0.45
+      ],
+      "y_bounds_m": [
+        0.35,
+        0.4
+      ],
+      "status": "unverified; usability and registration pending"
+    }
+  ]
+}

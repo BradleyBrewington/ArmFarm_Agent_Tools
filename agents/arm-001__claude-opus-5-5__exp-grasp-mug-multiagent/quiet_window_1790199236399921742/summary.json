@@ -1,0 +1,57 @@
+{
+  "diagnostic": "Peer quiet-window stationary observation",
+  "path": "tools/quiet_window_1790199236399921742",
+  "capture_start_epoch": 1790199236.509602,
+  "capture_end_epoch": 1790199242.2236357,
+  "all_frames_before_window_end": true,
+  "frame_pairs": 20,
+  "goals_unchanged": true,
+  "joint_delta": {
+    "shoulder_pan": 0.0,
+    "shoulder_lift": 0.0,
+    "elbow_flex": 0.0,
+    "wrist_flex": 0.0,
+    "wrist_roll": 0.0,
+    "gripper": 0.0
+  },
+  "quiet_centroid_range_xy_px": [
+    27.210273661836254,
+    6.255368736181822
+  ],
+  "earlier_centroid_range_xy_px": [
+    23.558664331095883,
+    10.95255250756503
+  ],
+  "interpretation": "Visible silhouette and handle-pose changes persist during operator-reported peer quiet window with own goals/joints unchanged. This weakens an explanation requiring concurrent commanded peer motion; it does not exclude residual vibration, other sources or establish causation. Wrist view independently shows mug changing relative to stationary jaw/background.",
+  "episode_started": false,
+  "motor_commands_sent": false,
+  "background_template_shifts_px": {
+    "table_edge": [
+      [
+        0,
+        0
+      ]
+    ],
+    "arm": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "camera_max_age_seconds": 0.03575954999541864,
+  "camera_capture_range_epoch": {
+    "top": [
+      1790199236.5006216,
+      1790199242.1968927
+    ],
+    "wrist": [
+      1790199236.4822452,
+      1790199242.2105067
+    ]
+  },
+  "camera_sequences_strictly_advancing": {
+    "top": true,
+    "wrist": true
+  }
+}

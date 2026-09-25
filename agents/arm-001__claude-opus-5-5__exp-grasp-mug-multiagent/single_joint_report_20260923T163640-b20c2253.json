@@ -1,0 +1,37 @@
+{
+  "success": false,
+  "notes": "Four shoulder-only1deg descent increments produced3.24,3.87,3.85,3.19mm actual drops with other goals unchanged. Separate wrist/pan corrections followed. Closure then9.43mm actual shoulder-only rise did not retain mug; mug remained on table. Opened and returned home.",
+  "episode_details": {
+    "experiment_ledger": "tools/single_joint_approach_20260923T163640-b20c2253.json",
+    "grasp_location_m": [
+      0.2887750019863846,
+      0.05838698022751843,
+      0.045916194500466814
+    ],
+    "grasp_location_frame": "base_link tool FK, not mug table-contact footprint",
+    "table_contact_location": {
+      "status": "Partially occluded side-lying footprint uncertified; no coverage credit",
+      "top_body_center_approx_px": [
+        590,
+        360
+      ],
+      "uncertainty": "Body centroid is not a certified contact location; no elevated handle plane projection."
+    },
+    "probe_ledgers": [
+      "tools/descent_probe_1790199465909213998.json",
+      "tools/descent_probe_1790199478368734520.json",
+      "tools/descent_probe_1790199497604660464.json",
+      "tools/descent_probe_1790199557475492166.json",
+      "tools/shoulder_probe_1790199761449950446.json",
+      "tools/shoulder_probe_1790199775740624632.json",
+      "tools/shoulder_probe_1790199790732425769.json"
+    ]
+  },
+  "status": {
+    "blocker": "Approach increments predictable, but opposing support through handle opening not established.",
+    "transferable_discovery": "Four existing-goal shoulder-only +1deg commands measured +0.879,+1.055,+1.055,+0.879deg and3.24,3.87,3.85,3.19mm descent. Other motor goals unchanged. Wrist-flex decreases raised/advanced tool and moved target downward in wrist view; handle retention still failed after9.43mm observed rise.",
+    "next_hypothesis": "Use a distinct supported mug yaw reorientation or substantially different verified camera-relative handle topology rather than another near-identical closure; keep measured single-joint approach increments.",
+    "turn_boundary": "Failed episode stopped after verified saved four-joint home; gripper open and torque retained.",
+    "operator_camera_clarification": "Operator independently verified deployed camd hashes and fresh raw MJPEG passthrough without warping/stabilization. No known disturbance. Cause remains unresolved; no further quiet-window experiment."
+  }
+}

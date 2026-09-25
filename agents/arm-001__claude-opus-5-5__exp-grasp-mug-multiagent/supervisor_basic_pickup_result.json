@@ -1,0 +1,18 @@
+{
+  "scope": "user basic simulation to real pickup test",
+  "pickup_success": true,
+  "original_full_task_success": false,
+  "notes": "USER BASIC SIM-TO-REAL TEST SUCCESS on arm001, reassigned from occupied arm002. PLA mug lip grip: real wall contact, controlled lift, about 31.9 mm diagnostic TOOL rise (not measured mug clearance), stable five-second paired-camera hold with 26 fresh frame pairs and unchanged encoders. Then lowered, opened jaws, and withdrew; mug remained on table. No faults, force/calibration unchanged. Evidence tools/supervisor_hold_1790275654263499662 and tools/supervisor_lip_*. This is pickup-only success for the latest user test; held-home, workspace coverage, 2:1 ratio and six/hour NOT demonstrated.",
+  "recording": {
+    "episode": "20260924T133201-4b68126c",
+    "folder": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260924T133201-4b68126c",
+    "frames": 2556,
+    "quality_flags": [
+      "feedback_gap",
+      "queue_overflow"
+    ],
+    "training_ready": false,
+    "success": true,
+    "notes": "USER BASIC SIM-TO-REAL TEST SUCCESS on arm001, reassigned from occupied arm002. PLA mug lip grip: real wall contact, controlled lift, about 31.9 mm diagnostic TOOL rise (not measured mug clearance), stable five-second paired-camera hold with 26 fresh frame pairs and unchanged encoders. Then lowered, opened jaws, and withdrew; mug remained on table. No faults, force/calibration unchanged. Evidence tools/supervisor_hold_1790275654263499662 and tools/supervisor_lip_*. This is pickup-only success for the latest user test; held-home, workspace coverage, 2:1 ratio and six/hour NOT demonstrated."
+  }
+}

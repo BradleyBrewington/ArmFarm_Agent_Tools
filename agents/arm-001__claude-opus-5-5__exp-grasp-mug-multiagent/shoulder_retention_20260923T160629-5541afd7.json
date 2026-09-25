@@ -1,0 +1,50 @@
+{
+  "success": false,
+  "notes": "Shoulder-only increments produced 14.507 mm actual tool rise at the handle, but mug moved relative to jaws and remained on table. No retained home grasp. Opened and retracted; returned home.",
+  "episode_details": {
+    "hypothesis": "Preserve all other existing motor goals and change shoulder goal only to obtain measurable bounded rise without coupled-joint reversal.",
+    "grasp_location_m": [
+      0.2707422331786323,
+      0.051904067536819885,
+      0.02815427479511398
+    ],
+    "grasp_location_frame": "Measured base_link FK at closure; not mug table-contact location",
+    "table_contact_location": {
+      "status": "Uncertain/partially occluded side-lying footprint; no coverage credit",
+      "top_body_approx_pixel": [
+        554,
+        354
+      ],
+      "uncertainty": "Image body centroid is not a certified table-contact point. Elevated handle not projected."
+    },
+    "probe_ledgers": [
+      "tools/shoulder_probe_1790197658242044104.json",
+      "tools/shoulder_probe_1790197675198858844.json",
+      "tools/shoulder_probe_1790197690098480826.json",
+      "tools/shoulder_probe_1790197988875818274.json",
+      "tools/shoulder_probe_1790198007441500540.json",
+      "tools/shoulder_probe_1790198019249088112.json"
+    ],
+    "clear_test": {
+      "rise_mm": 10.07657,
+      "lateral_mm": 4.1978,
+      "pitch_delta_deg": -2.9011
+    },
+    "retention_test": {
+      "rise_mm": 14.50726898,
+      "delta_x_mm": 5.48921816,
+      "delta_y_mm": 1.14917264,
+      "pitch_delta_deg": -3.95604396,
+      "gripper_goal_unchanged": 0,
+      "other_goals_unchanged": true,
+      "visual_outcome": "Wrist handle shifted away from moving jaw as tool rose; top mug remained at table. Retention failed."
+    },
+    "motion_tool": "tools/shoulder_increment_probe.py"
+  },
+  "status": {
+    "blocker": "Handle contact did not retain mug during a measured 14.5 mm tool rise.",
+    "transferable_discovery": "Shoulder-only existing-goal increments overcame initial reversal deadband in both clear and contact poses, without changing other goals. At contact: -2 degree steps produced actual shoulder changes -0.088, -1.670, -2.110 degrees; total rise14.5mm with lateral5.6mm and pitch-3.956deg. This validates incremental motion, not grasp geometry.",
+    "next_hypothesis": "Confirm fixed tip independently with open/close at clearance, then measure bounded local image correction toward inside handle before descent; retain shoulder-only bounded retention test.",
+    "turn_boundary": "Recorder stopped after failed attempt; arm at saved four-joint home, gripper open, torque retained."
+  }
+}

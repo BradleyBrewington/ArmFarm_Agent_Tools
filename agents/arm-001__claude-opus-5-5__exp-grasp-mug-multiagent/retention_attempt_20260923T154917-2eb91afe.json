@@ -1,0 +1,38 @@
+{
+  "success": false,
+  "notes": "Unsuccessful home-delivery episode. Closed at FK (.285161,.046279,.034092), goal0, measured aperture1.417/load96. Per operator guidance preserved grip and attempted short observed retention test despite near-empty readings. Cartesian and small joint lift commands produced only ~4.9mm total measured rise; shoulder goal16.5 measured21.011 caused settle-check failure. Mug/table separation and retained grasp not verified; support remained inconclusive, not ruled out from aperture/load. Opened on table, retracted, returned home.",
+  "episode_details": {
+    "grasp_location_m": [
+      0.285160986,
+      0.046279375,
+      0.03409223
+    ],
+    "grasp_location_frame": "Measured base_link FK at closure; not mug footprint",
+    "table_contact_location": {
+      "status": "Uncertain; no grid credit",
+      "preapproach_body_support_pixel_estimate": [
+        542,
+        344
+      ],
+      "uncertainty_m": 0.03,
+      "evidence": "tools/mug_observations/1790196577555853371_top.jpg"
+    },
+    "retention_test": {
+      "grip_command_preserved": 0,
+      "closure_z_m": 0.03409223,
+      "final_probe_z_m": 0.03895143,
+      "measured_rise_m": 0.0048592,
+      "completed_1_to_2_cm_test": false,
+      "contact_assessment": "inconclusive",
+      "shoulder_goal_deg": 16.5,
+      "shoulder_measured_deg": 21.010989,
+      "settle_check_failed": true
+    }
+  },
+  "status": {
+    "blocker": "Short lift arrival failed: only ~4.9mm measured rise; shoulder21.011 vs16.5 goal. No verified mug clearance or held home.",
+    "transferable_discovery": "Near-empty aperture/load was not used as a contact veto. The observed retention test instead exposed poor upward joint tracking; repeated IK-small-residual commands did not achieve a 1-2cm lift.",
+    "next_hypothesis": "Before next contact, measure an actual 1cm upward motion at clearance with current configuration and unchanged motor calibration/force limits; establish measured arrival and orientation rather than trusting IK or applying a fixed Cartesian offset. Then reuse supported handle geometry for a single observed retention test.",
+    "turn_boundary": "Recorder stopped, arm at saved four-joint home, gripper open, mug on table, torque retained."
+  }
+}

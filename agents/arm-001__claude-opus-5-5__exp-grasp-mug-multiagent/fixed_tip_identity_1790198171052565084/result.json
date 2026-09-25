@@ -1,0 +1,112 @@
+{
+  "before": {
+    "q": {
+      "shoulder_pan": 12.615384615384615,
+      "shoulder_lift": -91.95604395604396,
+      "elbow_flex": 80.3076923076923,
+      "wrist_flex": 26.417582417582416,
+      "wrist_roll": -24.747252747252748,
+      "gripper": 20.3778677462888
+    },
+    "xyz": {
+      "x": 0.23488597211699874,
+      "y": -0.0405141956826407,
+      "z": 0.12560906726321686
+    },
+    "load": {
+      "shoulder_pan": -32,
+      "shoulder_lift": 44,
+      "elbow_flex": 28,
+      "wrist_flex": 68,
+      "wrist_roll": 24,
+      "gripper": -48
+    },
+    "temperature": {
+      "shoulder_pan": 41,
+      "shoulder_lift": 43,
+      "elbow_flex": 42,
+      "wrist_flex": 41,
+      "wrist_roll": 41,
+      "gripper": 46
+    }
+  },
+  "closed": {
+    "q": {
+      "shoulder_pan": 12.615384615384615,
+      "shoulder_lift": -91.95604395604396,
+      "elbow_flex": 80.3076923076923,
+      "wrist_flex": 26.417582417582416,
+      "wrist_roll": -24.835164835164836,
+      "gripper": 2.766531713900135
+    },
+    "xyz": {
+      "x": 0.23488967470174676,
+      "y": -0.04050385581592934,
+      "z": 0.12561420715837343
+    },
+    "load": {
+      "shoulder_pan": -32,
+      "shoulder_lift": 44,
+      "elbow_flex": 28,
+      "wrist_flex": 68,
+      "wrist_roll": 20,
+      "gripper": 60
+    },
+    "temperature": {
+      "shoulder_pan": 41,
+      "shoulder_lift": 43,
+      "elbow_flex": 42,
+      "wrist_flex": 41,
+      "wrist_roll": 41,
+      "gripper": 46
+    }
+  },
+  "goals_before": {
+    "shoulder_pan": 13.054945054945055,
+    "shoulder_lift": -92.65934065934066,
+    "elbow_flex": 79.95604395604396,
+    "wrist_flex": 25.186813186813186,
+    "wrist_roll": -25.01098901098901,
+    "gripper": 20.98515519568151
+  },
+  "goals_closed": {
+    "shoulder_pan": 13.054945054945055,
+    "shoulder_lift": -92.65934065934066,
+    "elbow_flex": 79.95604395604396,
+    "wrist_flex": 25.186813186813186,
+    "wrist_roll": -25.01098901098901,
+    "gripper": 1.9568151147098516
+  },
+  "interpretation": {
+    "fixed_tip_top_approx_px": [
+      455,
+      195
+    ],
+    "fixed_tip_wrist_approx_px": [
+      680,
+      476
+    ],
+    "moving_tip_top_open_closed_approx_px": [
+      [
+        517,
+        204
+      ],
+      [
+        468,
+        193
+      ]
+    ],
+    "moving_tip_wrist_open_closed_approx_px": [
+      [
+        400,
+        451
+      ],
+      [
+        625,
+        475
+      ]
+    ],
+    "uncertainty_px": 6,
+    "all_non_gripper_goals_unchanged": true
+  }
+}

@@ -1,0 +1,204 @@
+{
+  "success": false,
+  "notes": "Measured multi-probe handle alignment batch, no closure or lift. Positive wrist pitch raised upper handle attachment; negative pitch and positive roll moved it down. Pan reduced lateral offset but increasingly occluded lower arc. Wrist approached calibrated range limit before sufficient registration. Recovered home open; no grasp claimed.",
+  "episode_details": {
+    "grasp_location": null,
+    "contact_established": false,
+    "hypothesis": "Track upper attachment relative to fixed tip alongside loop size and occlusion; identify local correction signs",
+    "probes": [
+      {
+        "path": "tools/clearance_increment_1790203349719539406.json",
+        "joint": "wrist_roll",
+        "requested": 2.0,
+        "measured": 1.670329670329668,
+        "xyz_delta": {
+          "x": -3.0372842108328246e-05,
+          "y": -0.0002219585171003291,
+          "z": -5.3756661076487244e-05
+        },
+        "others_unchanged": true,
+        "first_matches_old": true
+      },
+      {
+        "path": "tools/clearance_increment_1790203364177612562.json",
+        "joint": "wrist_roll",
+        "requested": -1.9340659340659343,
+        "measured": -1.0549450549450547,
+        "xyz_delta": {
+          "x": 1.8485045017002655e-05,
+          "y": 0.0001403552891071358,
+          "z": 3.364422474864959e-05
+        },
+        "others_unchanged": true,
+        "first_matches_old": true
+      },
+      {
+        "path": "tools/clearance_increment_1790203374353937582.json",
+        "joint": "shoulder_pan",
+        "requested": 2.0,
+        "measured": 0.7032967032967044,
+        "xyz_delta": {
+          "x": 0.0012828705659804762,
+          "y": -0.0034514713507632355,
+          "z": -9.158798219832676e-09
+        },
+        "others_unchanged": true,
+        "first_matches_old": true
+      },
+      {
+        "path": "tools/clearance_increment_1790203390465711869.json",
+        "joint": "wrist_flex",
+        "requested": -2.0,
+        "measured": -0.703296703296715,
+        "xyz_delta": {
+          "x": 0.00167139766761093,
+          "y": 0.0005852168431403765,
+          "z": 0.0008311865599560236
+        },
+        "others_unchanged": true,
+        "first_matches_old": true
+      },
+      {
+        "path": "tools/clearance_increment_1790203407470964301.json",
+        "joint": "wrist_flex",
+        "requested": 2.021978021978029,
+        "measured": 0.8791208791208902,
+        "xyz_delta": {
+          "x": -0.0020907418442354664,
+          "y": -0.0007320444344261628,
+          "z": -0.0010355818543038436
+        },
+        "others_unchanged": true,
+        "first_matches_old": true
+      },
+      {
+        "path": "tools/clearance_increment_1790203413671050038.json",
+        "joint": "wrist_flex",
+        "requested": 2.0,
+        "measured": 2.1098901098901024,
+        "xyz_delta": {
+          "x": -0.00507701635383534,
+          "y": -0.001777647734422863,
+          "z": -0.0023457821895355307
+        },
+        "others_unchanged": true,
+        "first_matches_old": true
+      },
+      {
+        "path": "tools/clearance_increment_1790203427136815933.json",
+        "joint": "wrist_flex",
+        "requested": 2.0,
+        "measured": 1.6703296703296786,
+        "xyz_delta": {
+          "x": -0.00407501375656788,
+          "y": -0.001426810693415409,
+          "z": -0.00171564480098918
+        },
+        "others_unchanged": true,
+        "first_matches_old": true
+      },
+      {
+        "path": "tools/clearance_increment_1790203443694175571.json",
+        "joint": "shoulder_pan",
+        "requested": 2.0,
+        "measured": 2.021978021978022,
+        "xyz_delta": {
+          "x": 0.0033387974794556463,
+          "y": -0.009667633169045425,
+          "z": -2.565395623710387e-08
+        },
+        "others_unchanged": true,
+        "first_matches_old": true
+      },
+      {
+        "path": "tools/clearance_increment_1790203458634658660.json",
+        "joint": "wrist_flex",
+        "requested": 2.0,
+        "measured": 1.758241758241752,
+        "xyz_delta": {
+          "x": -0.004389438311965199,
+          "y": -0.0013650599676975766,
+          "z": -0.0016691662744960367
+        },
+        "others_unchanged": true,
+        "first_matches_old": true
+      },
+      {
+        "path": "tools/clearance_increment_1790203490460593234.json",
+        "joint": "shoulder_pan",
+        "requested": 2.0,
+        "measured": 1.9340659340659325,
+        "xyz_delta": {
+          "x": 0.0028278336806840665,
+          "y": -0.00919918876069653,
+          "z": -2.4410893265103262e-08
+        },
+        "others_unchanged": true,
+        "first_matches_old": true
+      }
+    ],
+    "descent_report": "tools/descent_probe_1790203480954926674.json",
+    "manual_landmarks": {
+      "fixed_tip_px": [
+        680,
+        476
+      ],
+      "initial_upper_attachment_px": [
+        930,
+        480
+      ],
+      "after_positive_pitch_upper_px": [
+        840,
+        425
+      ],
+      "final_upper_px": [
+        805,
+        443
+      ],
+      "uncertainty_px": 15
+    },
+    "final_alignment_observation": "tools/mug_observations/1790203490460593234",
+    "peer_review_read": "tools/supervisor_evidence/arm002-peer-arm001-geometry-review.json",
+    "interpretation": "Positive pitch improves vertical attachment relation at this clearance pose. Pan reduces lateral separation but does not establish insertion. Apparent pixel error is not metric depth.",
+    "hardware_end": {
+      "torque": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "fault_bits": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "state_raw": [
+        2241,
+        1018,
+        2818,
+        2351,
+        1708,
+        1532
+      ],
+      "action_raw": [
+        2246,
+        1010,
+        2816,
+        2337,
+        1706,
+        1541
+      ]
+    }
+  },
+  "status": {
+    "blocker": "Wrist nearing calibrated range limit while upper attachment remains about120px right of tip and lower arc becomes occluded. No through-loop support established.",
+    "transferable_discovery": "Goal-preserving positive wrist probes measured+2.110,+1.670,+1.758deg with about5.73mm total tool lowering; raised upper attachment in image. Negative pitch/positive roll moved attachment down. Shoulder+1deg yielded actual+1.231deg and5.473mm descent. Other goals preserved.",
+    "next_hypothesis": "Reconfigure at clearance to a posture with more wrist pitch room, using measured FK and both views. Retain positive-pitch local response as a hypothesis to remeasure, then combine attachment height and lateral alignment before contact.",
+    "turn_boundary": "Bounded multi-probe experiment completed unsuccessfully; recovered home open with torque retained."
+  }
+}

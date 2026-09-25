@@ -1,0 +1,9 @@
+{
+  "episode": "20260923T174152-99173cc0",
+  "folder": "/var/lib/armfarm/stations/armfarm/episodes/completed/20260923T174152-99173cc0",
+  "frames": 1683,
+  "quality_flags": [],
+  "training_ready": true,
+  "success": false,
+  "notes": "Measured multi-probe handle alignment batch, no closure or lift. Positive wrist pitch raised upper handle attachment; negative pitch and positive roll moved it down. Pan reduced lateral offset but increasingly occluded lower arc. Wrist approached calibrated range limit before sufficient registration. Recovered home open; no grasp claimed."
+}

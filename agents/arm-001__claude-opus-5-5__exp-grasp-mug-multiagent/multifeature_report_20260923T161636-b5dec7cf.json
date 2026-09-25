@@ -1,0 +1,34 @@
+{
+  "success": false,
+  "notes": "Compared own successful wrist reference with multiple handle/rim features. Roll +7.3deg worsened rim tilt and was undone. Shallower closure at FK z48.1mm followed by11.9mm measured shoulder-only rise did not retain mug. Returned home open.",
+  "episode_details": {
+    "alignment_ledger": "tools/multifeature_alignment_20260923T161636-b5dec7cf.json",
+    "grasp_location_m": [
+      0.277369403258348,
+      0.0532914649133353,
+      0.04811627328282786
+    ],
+    "grasp_location_frame": "Measured base_link tool FK, not mug table-contact location",
+    "table_contact_location": {
+      "status": "Partially occluded side-lying footprint; no coverage credit",
+      "image_body_center_approx_px": [
+        568,
+        355
+      ],
+      "uncertainty": "Elevated handle not projected; contact footprint not certified."
+    },
+    "probe_ledgers": [
+      "tools/shoulder_probe_1790198379932379322.json",
+      "tools/shoulder_probe_1790198393815985870.json",
+      "tools/shoulder_probe_1790198405208553021.json",
+      "tools/shoulder_probe_1790198419369200025.json"
+    ]
+  },
+  "status": {
+    "blocker": "Handle orientation and depth differ from successful image; fingertip overlap alone did not produce support.",
+    "transferable_discovery": "Own open/close test independently confirms fixed tip left in top and right in wrist. Clearance roll increase7.3deg rotated rim in wrong direction, from approx-2.85deg to+3.3deg; restored. Preclosure handle visible span approx75% of successful reference and rim difference~10deg. A shallower closure failed despite11.9mm measured rise. Roll response remains provisional because known mug rocking was not independently excluded during probe.",
+    "next_hypothesis": "At verified clearance, test opposite small roll probe with hardware checks; compare multi-frame stable upper/lower attachments, outer bar, rigid tip and rim in wrist plus top topology. Continue bounded observed corrections while multi-feature error decreases; no arbitrary one-probe limit. Handle span combines depth and foreshortening, not a literal depth offset. Close after converging toward contact geometry, then measured retention.",
+    "turn_boundary": "Recorder stopped after failed episode; saved four-joint home verified, gripper open, torque retained.",
+    "operator_refinement_acknowledged": "Short boundaries are for coordination, not a one-probe limit or requirement to close with known pose mismatch. Current failure preserved; recovery completed."
+  }
+}

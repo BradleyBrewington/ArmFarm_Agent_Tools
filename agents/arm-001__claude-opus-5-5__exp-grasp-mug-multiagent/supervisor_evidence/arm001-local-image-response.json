@@ -1,0 +1,159 @@
+{
+  "scope": "Historical local image response only; no suggested motor commands.",
+  "rows": [
+    {
+      "before": "1790203413671050038",
+      "after": "1790203427136815933",
+      "joint": "wrist_flex",
+      "measured_delta_deg": 1.6703296703296786,
+      "other_goals_unchanged": true,
+      "wrist_upper_attachment_patch": {
+        "from_roi": [
+          870,
+          422,
+          45,
+          65
+        ],
+        "to_roi": [
+          857,
+          399,
+          45,
+          65
+        ],
+        "shift_px": [
+          -13,
+          -23
+        ],
+        "ncc": 0.9978034496307373
+      },
+      "top_mug_body_patch": {
+        "from_roi": [
+          540,
+          280,
+          90,
+          95
+        ],
+        "to_roi": [
+          540,
+          280,
+          90,
+          95
+        ],
+        "shift_px": [
+          0,
+          0
+        ],
+        "ncc": 0.9993938207626343
+      },
+      "patch_response_px_per_measured_degree": [
+        -7.782894736842067,
+        -13.769736842105194
+      ]
+    },
+    {
+      "before": "1790203427136815933",
+      "after": "1790203443694175571",
+      "joint": "shoulder_pan",
+      "measured_delta_deg": 2.021978021978022,
+      "other_goals_unchanged": true,
+      "wrist_upper_attachment_patch": {
+        "from_roi": [
+          857,
+          399,
+          45,
+          65
+        ],
+        "to_roi": [
+          824,
+          418,
+          45,
+          65
+        ],
+        "shift_px": [
+          -33,
+          19
+        ],
+        "ncc": 0.9904411435127258
+      },
+      "top_mug_body_patch": {
+        "from_roi": [
+          540,
+          280,
+          90,
+          95
+        ],
+        "to_roi": [
+          540,
+          280,
+          90,
+          95
+        ],
+        "shift_px": [
+          0,
+          0
+        ],
+        "ncc": 0.9993499517440796
+      },
+      "patch_response_px_per_measured_degree": [
+        -16.320652173913043,
+        9.396739130434783
+      ]
+    },
+    {
+      "before": "1790203443694175571",
+      "after": "1790203458634658660",
+      "joint": "wrist_flex",
+      "measured_delta_deg": 1.758241758241752,
+      "other_goals_unchanged": true,
+      "wrist_upper_attachment_patch": {
+        "from_roi": [
+          824,
+          418,
+          45,
+          65
+        ],
+        "to_roi": [
+          810,
+          396,
+          45,
+          65
+        ],
+        "shift_px": [
+          -14,
+          -22
+        ],
+        "ncc": 0.9969567060470581
+      },
+      "top_mug_body_patch": {
+        "from_roi": [
+          540,
+          280,
+          90,
+          95
+        ],
+        "to_roi": [
+          540,
+          280,
+          90,
+          95
+        ],
+        "shift_px": [
+          0,
+          0
+        ],
+        "ncc": 0.9992551803588867
+      },
+      "patch_response_px_per_measured_degree": [
+        -7.962500000000028,
+        -12.512500000000044
+      ]
+    }
+  ],
+  "limitations": [
+    "Template translation approximates a deforming projection and is not a 3D landmark or insertion measurement.",
+    "Only one pan increment and two pitch increments; insufficient validation for a control model.",
+    "Do not reuse these derivatives after changing posture, object pose, visibility, or camera geometry.",
+    "Measured joint response differs from commanded increments; this is not a goal-to-image model.",
+    "Top patch checks only the visible body region and cannot rule out small rotations."
+  ]
+}

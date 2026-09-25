@@ -1,0 +1,31 @@
+{
+  "success": false,
+  "notes": "Multiple bounded negative roll and lateral corrections improved visual reference alignment. Final coupled approach gave22.8mm actual descent versus9mm requested. No further descent. Closure and6.5mm shoulder-only measured rise did not retain mug; visible jaw-handle separation. Released and returned home.",
+  "episode_details": {
+    "alignment_ledger": "tools/convergent_pose_20260923T162302-520f612b.json",
+    "grasp_location_m": [
+      0.2718187059361432,
+      0.06497074085973274,
+      0.019825830674353534
+    ],
+    "grasp_location_frame": "Measured base_link tool FK at closure, not mug base",
+    "table_contact_location": {
+      "status": "Uncertified partly occluded side-lying contact footprint; no coverage credit",
+      "body_center_top_approx_px": [
+        574,
+        359
+      ],
+      "uncertainty": "Do not interpret elevated handle projection as table-contact coordinates."
+    },
+    "probe_ledgers": [
+      "tools/shoulder_probe_1790199035966460463.json"
+    ]
+  },
+  "status": {
+    "blocker": "Stable opposing handle contact not obtained despite improved image orientation; coupled final approach also showed excess measured descent.",
+    "transferable_discovery": "Opposite roll probes progressed -24.747 to-27.473,-30.549,-33.714 measured degrees with normal tracking and roll loads24-36. Rim tilt approached own success reference; multiple-feature alignment remains necessary. Three-frame bursts show target rocking and visibility changes. Final shoulder-only6.533mm rise exposed jaw-handle separation, so no further lift.",
+    "next_hypothesis": "Use a fixed actual-pose anchor and smaller measured single-joint approach increments to preserve orientation; resolve outer-bar depth/topology with both views after roll convergence. Consider supported mug yaw reorientation if handle remains behind fixed tip.",
+    "turn_boundary": "Failed episode closed after saved four-joint home; gripper open, torque retained.",
+    "safety_note": "Accepted calibration and force limits unchanged. Incremental clearance roll probes observed normal tracking through -33.8 degrees. Cartesian command residual is not arrival evidence; final approach discrepancy retained in ledger."
+  }
+}

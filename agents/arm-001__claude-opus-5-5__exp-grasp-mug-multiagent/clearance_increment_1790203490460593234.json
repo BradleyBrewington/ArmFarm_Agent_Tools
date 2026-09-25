@@ -1,0 +1,111 @@
+{
+  "joint": "shoulder_pan",
+  "requested_increment_deg": 2.0,
+  "before": {
+    "q": {
+      "shoulder_pan": -17.274725274725274,
+      "shoulder_lift": 38.76923076923077,
+      "elbow_flex": -69.31868131868131,
+      "wrist_flex": 100.26373626373626,
+      "wrist_roll": -29.67032967032967,
+      "gripper": 20.3778677462888
+    },
+    "xyz": {
+      "x": 0.30991707864303836,
+      "y": 0.08836473123273442,
+      "z": 0.10817799676512548
+    },
+    "load": {
+      "shoulder_pan": -36,
+      "shoulder_lift": 48,
+      "elbow_flex": 140,
+      "wrist_flex": -36,
+      "wrist_roll": 28,
+      "gripper": -48
+    },
+    "temperature": {
+      "shoulder_pan": 44,
+      "shoulder_lift": 46,
+      "elbow_flex": 46,
+      "wrist_flex": 44,
+      "wrist_roll": 44,
+      "gripper": 47
+    }
+  },
+  "goals_before": {
+    "shoulder_pan": -16.747252747252748,
+    "shoulder_lift": 37.97802197802198,
+    "elbow_flex": -72.13186813186813,
+    "wrist_flex": 100.79120879120879,
+    "wrist_roll": -30.021978021978022,
+    "gripper": 20.98515519568151
+  },
+  "raw_goals_before": {
+    "shoulder_pan": 1907,
+    "shoulder_lift": 2496,
+    "elbow_flex": 1086,
+    "wrist_flex": 3197,
+    "wrist_roll": 1706,
+    "gripper": 1541
+  },
+  "target_deg": -14.747252747252748,
+  "first_command_deg": -16.747252747252748,
+  "evidence": "tools/mug_observations/1790203490460593234",
+  "error": null,
+  "first_written_raw_goal": 1907,
+  "after": {
+    "q": {
+      "shoulder_pan": -15.340659340659341,
+      "shoulder_lift": 38.76923076923077,
+      "elbow_flex": -69.31868131868131,
+      "wrist_flex": 100.26373626373626,
+      "wrist_roll": -29.67032967032967,
+      "gripper": 20.3778677462888
+    },
+    "xyz": {
+      "x": 0.3127449123237224,
+      "y": 0.07916554247203789,
+      "z": 0.10817797235423221
+    },
+    "load": {
+      "shoulder_pan": -36,
+      "shoulder_lift": 48,
+      "elbow_flex": 140,
+      "wrist_flex": -36,
+      "wrist_roll": 28,
+      "gripper": -48
+    },
+    "temperature": {
+      "shoulder_pan": 43,
+      "shoulder_lift": 45,
+      "elbow_flex": 46,
+      "wrist_flex": 44,
+      "wrist_roll": 44,
+      "gripper": 48
+    }
+  },
+  "goals_after": {
+    "shoulder_pan": -14.813186813186814,
+    "shoulder_lift": 37.97802197802198,
+    "elbow_flex": -72.13186813186813,
+    "wrist_flex": 100.79120879120879,
+    "wrist_roll": -30.021978021978022,
+    "gripper": 20.98515519568151
+  },
+  "raw_goals_after": {
+    "shoulder_pan": 1929,
+    "shoulder_lift": 2496,
+    "elbow_flex": 1086,
+    "wrist_flex": 3197,
+    "wrist_roll": 1706,
+    "gripper": 1541
+  },
+  "other_raw_goals_unchanged": true,
+  "first_raw_matches_old": true,
+  "measured_delta_deg": 1.9340659340659325,
+  "delta_xyz_m": {
+    "x": 0.0028278336806840665,
+    "y": -0.00919918876069653,
+    "z": -2.4410893265103262e-08
+  }
+}

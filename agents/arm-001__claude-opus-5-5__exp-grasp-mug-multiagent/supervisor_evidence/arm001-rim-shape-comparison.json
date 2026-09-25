@@ -1,0 +1,129 @@
+{
+  "method": "Exploratory manually selected visible outer-rim points, OpenCV ellipse fit; approximate visual measurements, not metric pose or uncertainty-certified fit. Systematic point-selection error possible.",
+  "comparisons": {
+    "success": {
+      "image": "arm001-success-approach-wrist.jpg",
+      "observation": "1790194356873441986",
+      "points": [
+        [
+          623,
+          204
+        ],
+        [
+          669,
+          174
+        ],
+        [
+          809,
+          126
+        ],
+        [
+          971,
+          92
+        ],
+        [
+          1110,
+          82
+        ],
+        [
+          1166,
+          98
+        ],
+        [
+          1127,
+          137
+        ],
+        [
+          981,
+          186
+        ],
+        [
+          801,
+          231
+        ],
+        [
+          689,
+          243
+        ],
+        [
+          637,
+          230
+        ]
+      ],
+      "ellipse": {
+        "center_px": [
+          887.025634765625,
+          160.32647705078125
+        ],
+        "minor_diameter_px": 103.65664672851562,
+        "major_diameter_px": 564.840087890625,
+        "minor_major_ratio": 0.18351503186612983,
+        "major_axis_angle_deg": 167.25148010253906
+      }
+    },
+    "failed_preclosure": {
+      "image": "arm001-failed15-preclosure-wrist.jpg",
+      "observation": "1790201088201749494",
+      "points": [
+        [
+          661,
+          309
+        ],
+        [
+          693,
+          261
+        ],
+        [
+          790,
+          217
+        ],
+        [
+          927,
+          191
+        ],
+        [
+          1054,
+          199
+        ],
+        [
+          1137,
+          238
+        ],
+        [
+          1141,
+          285
+        ],
+        [
+          1076,
+          336
+        ],
+        [
+          959,
+          372
+        ],
+        [
+          819,
+          383
+        ],
+        [
+          708,
+          363
+        ],
+        [
+          668,
+          337
+        ]
+      ],
+      "ellipse": {
+        "center_px": [
+          903.4567260742188,
+          287.16400146484375
+        ],
+        "minor_diameter_px": 185.39511108398438,
+        "major_diameter_px": 490.4717102050781,
+        "minor_major_ratio": 0.37799348510124303,
+        "major_axis_angle_deg": 173.22689819335938
+      }
+    }
+  }
+}

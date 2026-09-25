@@ -1,0 +1,28 @@
+{
+  "episode": "20260923T163640-b20c2253",
+  "hypothesis": "Single-shoulder goal increments yield predictable measured descent; then independent observed wrist/pan corrections align handle before retention.",
+  "tool": "tools/shoulder_descent_probe.py",
+  "descent_probes": [
+    "tools/descent_probe_1790199465909213998.json",
+    "tools/descent_probe_1790199478368734520.json",
+    "tools/descent_probe_1790199497604660464.json",
+    "tools/descent_probe_1790199557475492166.json"
+  ],
+  "total_measured_descent_mm": 14.142877778067858,
+  "grasp_location_m": [
+    0.2887750019863846,
+    0.05838698022751843,
+    0.045916194500466814
+  ],
+  "grasp_location_frame": "base_link tool FK, not mug table-contact footprint",
+  "preclosure_stationary_views": "tools/pose_match_1790199704481280058",
+  "quiet_window_followup": "Operator confirmed peer goals unchanged/no motion or torque commands/no faults. Cause of mug movement remains unresolved; no additional hold requested.",
+  "retention_probes": [
+    "tools/shoulder_probe_1790199761449950446.json",
+    "tools/shoulder_probe_1790199775740624632.json",
+    "tools/shoulder_probe_1790199790732425769.json"
+  ],
+  "retention_actual_rise_mm": 9.43024557,
+  "retention_outcome": "Mug stayed table-supported; moving jaw separated from handle; stopped rather than continuing transfer.",
+  "operator_camera_clarification": "Operator independently verified deployed camd hashes and fresh raw MJPEG passthrough without warping/stabilization. No known disturbance. Cause remains unresolved; no further quiet-window experiment."
+}

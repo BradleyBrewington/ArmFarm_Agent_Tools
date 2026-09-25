@@ -1,0 +1,48 @@
+{
+  "timestamp": 1790203334.1084256,
+  "scope": "Offline comparison of supplied historical snapshots only; no live arm-001 state inferred.",
+  "inputs": {
+    "success": "tools/supervisor_evidence/arm001-success-approach-wrist.jpg",
+    "failed_preclosure": "tools/supervisor_evidence/arm001-shape-match-preclosure-wrist.jpg",
+    "wider_wrist_snapshot": "tools/supervisor_evidence/arm001-current-wrist.jpg",
+    "wider_top_snapshot": "tools/supervisor_evidence/arm001-current-top.jpg",
+    "retention_report": "tools/supervisor_evidence/arm001-shape-retention-report.json"
+  },
+  "observations": [
+    {
+      "topic": "Jaw/handle occlusion ordering",
+      "finding": "In both preclosure images, fixed right jaw projects across lower loop/body; moving left jaw remains outside the handle silhouette. Successful reference exposes a larger triangular opening above the fixed tip, bounded by handle inner arc and body. In failed frame, the upper attachment lies closer to the fixed tip and jaw/body overlap obscures more of the opening. Lower attachment and dark jaw/handle interfaces are not fully resolved in either image.",
+      "qualification": "Successful topology is corroborated by the supplied verified outcome, not proved by this single approach frame. Failed image could be a foreground overlap or inadequate insertion; it does not uniquely establish which."
+    },
+    {
+      "topic": "Scale and registration",
+      "finding": "Report gives rim major diameter565px in success versus465px in failed approach: failed apparent span is about82% of reference despite ratios0.184 and0.190. Rim vertical position and handle attachment locations also differ while wrist-mounted jaw tips occupy similar image positions.",
+      "qualification": "Apparent scale is a registration cue, not metric distance; perspective and pose confound a distance inference. Ellipse ratio alone does not match the handle plane or finger penetration."
+    },
+    {
+      "topic": "Handle attachments",
+      "finding": "Approximate upper attachment is around(705,330) in reference versus(684,420) in failed image; fixed tip is around(680,470) in both. Thus the reference exposes roughly140px of vertical opening above the tip versus roughly50px in failure, beyond what the rim-scale difference alone accounts for.",
+      "qualification": "Manual qualitative landmarks, roughly15px uncertainty; boundaries dark/soft, no metric depth or calibrated pose inference. Lower attachments are too occluded for an equivalent comparison."
+    },
+    {
+      "topic": "Wider snapshots",
+      "finding": "Wider wrist snapshot shows distal fixed tip clearly left of the handle opening, with the finger shaft approaching/overlapping the lower-left handle region in projection. It better exposes outer/inner arc and upper attachment. Paired top snapshot shows a side-lying mug with handle on the gripper-facing side; the wrist appearance should not be read as an upright mug.",
+      "qualification": "Historical snapshots, not current live geometry; this visible separation supplies a contour reference but does not establish insertion."
+    },
+    {
+      "topic": "Outcome evidence",
+      "finding": "Supplied report records failed retention: mug stayed table-supported through22.272mm reported diagnostic rise. This rejects effective retention for that attempt; it does not by itself identify whether the jaw missed the loop, inserted insufficiently, or lacked opposed support."
+    }
+  ],
+  "one_discriminating_observation": {
+    "proposal": "At a future locally authorized preclosure pause, with mug table-supported and jaws stationary at their existing aperture, obtain a second independent oblique view that exposes both the near handle bar and distal fixed fingertip. Use the existing top camera only if it resolves those boundaries; otherwise a separately positioned camera can change viewpoint without advancing the jaw.",
+    "insertion_supporting_evidence": "Trace the same fixed finger continuously: a segment passes behind the identified near handle bar, while its distal portion is visible beyond the opening on the other side of the local handle plane. Cross-check the body-side attachment and arc identities against the wrist view. This would support plane crossing, not yet load-bearing retention.",
+    "foreground_alternative": "If the jaw stays entirely camera-side of the near bar and only overlays/masks the opening, the view supports foreground overlap rather than demonstrated insertion.",
+    "inconclusive_condition": "If dark edges, body or jaw obscure the far boundary/tip, depth remains unresolved. Do not interpret absent visibility as proof of failure or insertion.",
+    "limits": "Observation proposal only: no metric depth, portable pixel/joint targets, insertion command, force/range/calibration or closure-speed change. Retention, if later justified, still requires local clearance checks and the arm-001 cumulative measured-motion guard."
+  },
+  "hold_preserved": true,
+  "motion_commands_issued": false,
+  "torque_commands_issued": false,
+  "episode_started": false
+}

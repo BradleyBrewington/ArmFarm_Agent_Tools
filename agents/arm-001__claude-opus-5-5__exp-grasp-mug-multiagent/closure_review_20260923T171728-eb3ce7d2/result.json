@@ -1,0 +1,170 @@
+{
+  "episode_id": "20260923T171728-eb3ce7d2",
+  "operator_call_interval_epoch": [
+    1790202051.236,
+    1790202073.781
+  ],
+  "saved_interval_epoch": [
+    1790202052.6959643,
+    1790202069.8957698
+  ],
+  "uncovered_call_edges_seconds": [
+    1.4599642753601074,
+    3.88523006439209
+  ],
+  "frame_count": 517,
+  "max_saved_interval_gap_seconds": 0.043805599212646484,
+  "frame_dimensions": [
+    640,
+    360
+  ],
+  "coordinates": "Recorded640x360 pixels, half the saved standalone1280x720 views.",
+  "feature_summary": {
+    "wrist_upper_handle": {
+      "shift_min_px": [
+        0,
+        -1
+      ],
+      "shift_max_px": [
+        1,
+        0
+      ],
+      "range_px": [
+        1,
+        1
+      ],
+      "minimum_score": 0.9934504628181458,
+      "roi": [
+        315,
+        203,
+        32,
+        29
+      ]
+    },
+    "wrist_rim": {
+      "shift_min_px": [
+        0,
+        0
+      ],
+      "shift_max_px": [
+        1,
+        0
+      ],
+      "range_px": [
+        1,
+        0
+      ],
+      "minimum_score": 0.9972830414772034,
+      "roi": [
+        315,
+        104,
+        231,
+        75
+      ]
+    },
+    "wrist_fixed_tip": {
+      "shift_min_px": [
+        -1,
+        0
+      ],
+      "shift_max_px": [
+        0,
+        1
+      ],
+      "range_px": [
+        1,
+        1
+      ],
+      "minimum_score": 0.7846544981002808,
+      "roi": [
+        334,
+        233,
+        15,
+        20
+      ]
+    },
+    "top_body_edge": {
+      "shift_min_px": [
+        0,
+        0
+      ],
+      "shift_max_px": [
+        0,
+        0
+      ],
+      "range_px": [
+        0,
+        0
+      ],
+      "minimum_score": 0.9982455968856812,
+      "roi": [
+        258,
+        136,
+        29,
+        63
+      ]
+    },
+    "top_arm": {
+      "shift_min_px": [
+        0,
+        0
+      ],
+      "shift_max_px": [
+        0,
+        0
+      ],
+      "range_px": [
+        0,
+        0
+      ],
+      "minimum_score": 0.9963515400886536,
+      "roi": [
+        302,
+        39,
+        30,
+        49
+      ]
+    }
+  },
+  "handle_relative_to_tip_range_px": [
+    1,
+    1
+  ],
+  "arm_measured_range_deg": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "arm_goal_range_deg": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "gripper_start_end": [
+    20.3778677462888,
+    1.417004048582996
+  ],
+  "camera_unique_sequences": {
+    "top": 464,
+    "wrist": 493
+  },
+  "camera_unique_hashes": {
+    "top": 464,
+    "wrist": 493
+  },
+  "limitations": "Template shifts measure visible projected features, not 3D insertion. Jaw occlusion can contaminate fixed-tip/handle matching; inspect correlation and representative frames. Unrecorded call-edge intervals are unknown.",
+  "reviewed_representative_frames": [
+    "00_wrist.jpg",
+    "03_wrist.jpg",
+    "06_wrist.jpg",
+    "weakest_handle.jpg",
+    "weakest_fixed_tip.jpg"
+  ],
+  "interpretation": "No substantial projected handle motion during observed closure: upper handle range1x1 recorded pixels, rim1x0, top mug edge0x0; arm goals and measured joints constant. Minimum upper-handle NCC0.993 supports stability. Fixed-tip NCC falls to0.785 as closing jaw occludes it. This weakens capture-window-loss hypothesis for this observed closure, not all attempts. Missing call-edge frames remain unknown; stable projection does not prove3D through-loop insertion.",
+  "motion_commands_sent": false,
+  "episode_started": false
+}

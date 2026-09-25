@@ -1,0 +1,101 @@
+{
+  "before": {
+    "q": {
+      "shoulder_pan": 0.3956043956043956,
+      "shoulder_lift": -39.38461538461539,
+      "elbow_flex": 21.582417582417584,
+      "wrist_flex": 60.967032967032964,
+      "wrist_roll": -24.747252747252748,
+      "gripper": 21.3225371120108
+    },
+    "xyz": {
+      "x": 0.2575935239911683,
+      "y": 0.0017720493390896157,
+      "z": 0.15345674303648182
+    },
+    "load": {
+      "shoulder_pan": 32,
+      "shoulder_lift": 0,
+      "elbow_flex": 176,
+      "wrist_flex": -28,
+      "wrist_roll": 24,
+      "gripper": -52
+    },
+    "temperature": {
+      "shoulder_pan": 41,
+      "shoulder_lift": 43,
+      "elbow_flex": 43,
+      "wrist_flex": 41,
+      "wrist_roll": 42,
+      "gripper": 46
+    }
+  },
+  "old_goals": {
+    "shoulder_pan": -0.04395604395604396,
+    "shoulder_lift": -39.38461538461539,
+    "elbow_flex": 17.978021978021978,
+    "wrist_flex": 61.31868131868132,
+    "wrist_roll": -25.01098901098901,
+    "gripper": 21.997300944669366
+  },
+  "target_xyz": [
+    0.2575935239911683,
+    0.0017720493390896157,
+    0.16345674303648183
+  ],
+  "desired_measured_delta_deg": {
+    "shoulder_pan": -6.950468625088746e-06,
+    "shoulder_lift": 1.847649264820781,
+    "elbow_flex": -5.714415161933093,
+    "wrist_flex": 3.8667658971122307
+  },
+  "scale": 0.34999207151120476,
+  "command": {
+    "shoulder_lift": -38.737952790994605,
+    "elbow_flex": 15.978021978021978,
+    "wrist_flex": 62.67201872506051
+  },
+  "predicted_desired_residual": [
+    3.1086244689504383e-13,
+    -5.811323644522304e-15,
+    -4.579669976578771e-13,
+    -3.907985046680551e-14
+  ],
+  "after": {
+    "q": {
+      "shoulder_pan": 0.3956043956043956,
+      "shoulder_lift": -38.76923076923077,
+      "elbow_flex": 19.47252747252747,
+      "wrist_flex": 62.46153846153846,
+      "wrist_roll": -24.747252747252748,
+      "gripper": 21.3225371120108
+    },
+    "xyz": {
+      "x": 0.25747373555620906,
+      "y": 0.0017728655451311843,
+      "z": 0.1572781240859426
+    },
+    "load": {
+      "shoulder_pan": 32,
+      "shoulder_lift": 0,
+      "elbow_flex": 172,
+      "wrist_flex": -20,
+      "wrist_roll": 24,
+      "gripper": -52
+    },
+    "temperature": {
+      "shoulder_pan": 41,
+      "shoulder_lift": 43,
+      "elbow_flex": 43,
+      "wrist_flex": 41,
+      "wrist_roll": 42,
+      "gripper": 46
+    }
+  },
+  "evidence": "tools/mug_observations/1790197153105893125",
+  "actual_delta_xyz": {
+    "x": -0.00011978843495924485,
+    "y": 8.162060415686269e-07,
+    "z": 0.0038213810494607814
+  }
+}

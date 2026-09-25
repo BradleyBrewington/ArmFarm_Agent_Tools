@@ -1,0 +1,67 @@
+{
+  "type": "empty-gripper clearance control diagnostic",
+  "episode_started": false,
+  "grasp_success": false,
+  "tool": "tools/clearance_goal_increment.py",
+  "reports": [
+    "tools/clearance_increment_1790201373968023197.json",
+    "tools/clearance_increment_1790201393672595690.json",
+    "tools/clearance_increment_1790201408579463884.json",
+    "tools/clearance_increment_1790201421410438393.json",
+    "tools/clearance_increment_1790201432259387796.json"
+  ],
+  "all_first_raw_writes_match_old_goal": true,
+  "all_other_raw_goals_unchanged": true,
+  "final_all_raw_goals_equal_initial": true,
+  "measured_pan_residual_deg": 0.791208791208792,
+  "measured_wrist_residual_deg": 0.0,
+  "final_state": {
+    "q": {
+      "shoulder_pan": 13.494505494505495,
+      "shoulder_lift": -91.95604395604396,
+      "elbow_flex": 80.3076923076923,
+      "wrist_flex": 26.417582417582416,
+      "wrist_roll": -30.285714285714285,
+      "gripper": 20.3778677462888
+    },
+    "xyz": {
+      "x": 0.23448852632659856,
+      "y": -0.04288806932252043,
+      "z": 0.1259639369395847
+    },
+    "load": {
+      "shoulder_pan": 32,
+      "shoulder_lift": 44,
+      "elbow_flex": 28,
+      "wrist_flex": 68,
+      "wrist_roll": -24,
+      "gripper": -48
+    },
+    "temperature": {
+      "shoulder_pan": 43,
+      "shoulder_lift": 45,
+      "elbow_flex": 48,
+      "wrist_flex": 43,
+      "wrist_roll": 43,
+      "gripper": 48
+    }
+  },
+  "fault_bits": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "torque": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "recording": false,
+  "interpretation": "Control-path property validated locally at empty-jaw home clearance. Deadband/hysteresis persists. Not validated near contact; not a solution to absolute FK/IK error. Existing absolute-target motion helper unchanged."
+}

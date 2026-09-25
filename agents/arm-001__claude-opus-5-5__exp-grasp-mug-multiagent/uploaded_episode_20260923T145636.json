@@ -1,0 +1,43 @@
+{
+  "artifact_id": "933f46a8df50bf181691c9ba93fc64d04001050b3d55ea18eac3964d88853fd2",
+  "agent_id": "arm-001__gpt-6-astra__exp-grasp-mug-multiagent",
+  "kind": "episode",
+  "source_id": "20260923T145636-1f26e417",
+  "metadata": {
+    "model": "gpt-6-astra",
+    "notes": "Rim grasp retained in short lift but slipped during home transfer; mug visible on table on its side. Home reached, no grasp at home.",
+    "frames": 3177,
+    "run_id": "20260923T145517-6d60541d",
+    "started": 1790193396.1081755,
+    "success": false,
+    "task_id": "exp-grasp-mug-multiagent",
+    "agent_id": "arm-001__gpt-6-astra__exp-grasp-mug-multiagent",
+    "finished": 1790193687.4626355,
+    "provider": "codex",
+    "session_id": "01a0cfd6-39f8-7982-887d-a37de38ad6e3",
+    "designation": "arm-001",
+    "task_sha256": "c08d90ab0c230ffb0f5b0dbb9a649a0544952fcf4e70c2181639c2490bcf00ea",
+    "task_version": 9,
+    "tools_sha256": "f5fa2cfda57881325925dca0a9d4b03b6aa25042211cff3d49686da789b1b6d5",
+    "quality_flags": [],
+    "training_ready": true,
+    "task_definition": {
+      "id": "exp-grasp-mug-multiagent",
+      "version": 9,
+      "description": "Start episode, pickup the black mug, bring black mug to home position, confirm successful grasp, stop episode, return object to new position, return to home position, repeat.  If the target object is visible, successful grasp is possible. This is an axiom of this environment. \n",
+      "success_criteria": [
+        "successful episode coverage across the entire workspace",
+        "2:1 ratio of successful episodes to unsuccessful episodes",
+        "achieve at least 6 successful episodes an hour"
+      ]
+    }
+  },
+  "passages": [
+    {
+      "ordinal": 0,
+      "text": "{\"agent_id\": \"arm-001__gpt-6-astra__exp-grasp-mug-multiagent\", \"designation\": \"arm-001\", \"provider\": \"codex\", \"model\": \"gpt-6-astra\", \"task_id\": \"exp-grasp-mug-multiagent\", \"task_version\": 9, \"task_sha256\": \"c08d90ab0c230ffb0f5b0dbb9a649a0544952fcf4e70c2181639c2490bcf00ea\", \"tools_sha256\": \"f5fa2cfda57881325925dca0a9d4b03b6aa25042211cff3d49686da789b1b6d5\", \"run_id\": \"20260923T145517-6d60541d\", \"session_id\": \"01a0cfd6-39f8-7982-887d-a37de38ad6e3\", \"started\": 1790193396.1081755, \"finished\": 1790193687.4626355, \"success\": false, \"notes\": \"Rim grasp retained in short lift but slipped during home transfer; mug visible on table on its side. Home reached, no grasp at home.\", \"frames\": 3177, \"training_ready\": true, \"quality_flags\": [], \"task_definition\": {\"id\": \"exp-grasp-mug-multiagent\", \"version\": 9, \"description\": \"Start episode, pickup the black mug, bring black mug to home position, confirm successful grasp, stop episode, return object to new position, return to home position, repeat.  If the target object is visible, successful grasp is possible. This is an axiom of this environment. \\n\", \"success_criteria\": [\"successful episode coverage across the entire workspace\", \"2:1 ratio of successful episodes to unsuccessful episodes\", \"achieve at least 6 successful episodes an hour\"]}}\n"
+    }
+  ],
+  "has_previous": false,
+  "has_next": false
+}

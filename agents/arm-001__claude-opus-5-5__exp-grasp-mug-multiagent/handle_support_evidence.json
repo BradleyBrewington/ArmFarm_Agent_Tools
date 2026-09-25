@@ -1,0 +1,35 @@
+{
+  "received_utc": "2026-09-23T20:48:35.147834+00:00",
+  "source": "Operator diagnostic evidence for arm-001 verified successful episode",
+  "successful_support_observations": [
+    {
+      "phase": "short lift",
+      "observation": "1790194398886596021",
+      "measured_gripper_percent": 3.171,
+      "load": 64
+    },
+    {
+      "phase": "inward carry",
+      "measured_gripper_percent": 2.024,
+      "load": 80
+    },
+    {
+      "phase": "intermediate",
+      "measured_gripper_percent": 1.822,
+      "load": 104
+    },
+    {
+      "phase": "verified held home",
+      "observation": "1790194488249069867",
+      "measured_gripper_percent": 1.754,
+      "load": 100
+    }
+  ],
+  "failed_empty_closure_reference": {
+    "measured_gripper_percent": 1.417,
+    "load": 96
+  },
+  "interpretation": "Near-closed aperture and load alone weakly distinguish thin-handle support from empty closure. These arm-001 observations are not thresholds or portable targets.",
+  "decision_rule": "Combine actual jaw/handle arrangement, both views, and clearance to justify bounded 1-2 cm retention test. Verify mug follows with stable relation to jaws, preserving grip command. Do not increase force limits or descend blindly. Only verified held home counts as success.",
+  "historical_outcomes": "Preserve every recorded failed outcome; prior aperture/load-only reasoning is insufficient to establish absence of contact, but no missing retention/home evidence is invented."
+}

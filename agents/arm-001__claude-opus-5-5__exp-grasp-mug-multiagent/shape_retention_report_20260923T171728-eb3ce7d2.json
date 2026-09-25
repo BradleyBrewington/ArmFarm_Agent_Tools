@@ -1,0 +1,57 @@
+{
+  "success": false,
+  "notes": "Shape-guided handle attempt failed retention. Preclosure fitted rim ratio0.190 approached successful reference0.184, but mug remained table-supported. Three measured lift stages4.669,3.691,13.913mm totaled22.272mm; final response exceeded intended20mm total and lift was stopped. Grip goal0 unchanged throughout; jaws separated from handle. Recovered home open with torque retained.",
+  "episode_details": {
+    "grasp_location_m": [
+      0.2793387957043803,
+      0.05631310085078086,
+      0.04288809056858153
+    ],
+    "grasp_location_frame": "Measured base_link diagnostic tool FK, not mug footprint",
+    "table_contact_location": {
+      "status": "uncertified; no coverage credit",
+      "evidence": "tools/mug_observations/1790202040137027681_top.jpg"
+    },
+    "shape_measurement": "tools/rim_probe_1790201907937021377.json",
+    "retention_probes": [
+      {
+        "path": "tools/shoulder_probe_1790202093185235058.json",
+        "rise_m": 0.004668949565791183,
+        "delta_deg": -1.2307692307692308,
+        "evidence": "tools/mug_observations/1790202093185235058",
+        "other_goals_unchanged": true
+      },
+      {
+        "path": "tools/shoulder_probe_1790202106534975301.json",
+        "rise_m": 0.0036909178153132355,
+        "delta_deg": -0.9670329670329672,
+        "evidence": "tools/mug_observations/1790202106534975301",
+        "other_goals_unchanged": true
+      },
+      {
+        "path": "tools/shoulder_probe_1790202120850884678.json",
+        "rise_m": 0.013912582549101882,
+        "delta_deg": -3.6043956043956045,
+        "evidence": "tools/mug_observations/1790202120850884678",
+        "other_goals_unchanged": true
+      }
+    ],
+    "total_measured_rise_m": 0.0222724499302063,
+    "retention_overshoot": "Actual22.272mm exceeded intended20mm total. Per-step predicted checks did not bound cumulative actual response; no more lift commands after observation.",
+    "guard_change": "shoulder_increment_probe.py now requires --baseline-z from prelift FK, rejects predicted cumulative rise>17mm and holds measured shoulder at18mm cumulative during ramp/hold. Checks downward deviation too. Compiled; new guards not yet hardware validated. Existing force/calibration unchanged.",
+    "tools": [
+      "tools/mug_motion.py",
+      "tools/clearance_goal_increment.py",
+      "tools/mug_grip.py",
+      "tools/shoulder_increment_probe.py"
+    ],
+    "image_interpretation": "Approximate manual ratio match is not proof of through-loop insertion. Reference major diameter565px versus current465px; rim center and handle attachments still differ."
+  },
+  "status": {
+    "blocker": "Rim ratio matched approximately but through-loop depth remained unresolved; retention failed. Nonlinear shoulder response exceeded total intended lift bound.",
+    "transferable_discovery": "Preclosure ellipse ratio0.190 versus reference0.184 did not ensure support. Need view resolving fingertip and front/back handle contours. Goal-preserving increments can still yield larger measured motion than prediction.",
+    "next_hypothesis": "Choose a second near-side view separating fixed fingertip from handle front/back contour, following peer visibility criterion without copying posture. Validate insertion boundary before closure. Any next retention call must supply original prelift --baseline-z to cumulative guard.",
+    "peer_evidence_inspected": "tools/supervisor_evidence/arm002-depth-view-wrist.jpg",
+    "turn_boundary": "Failed episode ended at verified open home with torque retained."
+  }
+}
