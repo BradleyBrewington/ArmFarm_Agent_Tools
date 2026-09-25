@@ -5,6 +5,8 @@ from pathlib import Path
 import tarfile
 import tempfile
 import unittest
+import runpy
+import sys
 from unittest.mock import patch
 
 from run_act_policy import ChunkPlayback,clamp_action,JOINTS
@@ -61,6 +63,10 @@ class Benchmark(unittest.TestCase):
             self.assertEqual(outcome['git_commit'],'a'*40)
             self.assertEqual((a/'workspace/tools/benchmark/current/run_act_policy.py').read_bytes(),files['run_act_policy.py'])
             self.assertEqual(len(list((a/'state/benchmark-backups').glob('*/run_act_policy.py'))),1)
+            with patch.object(sys,'path',sys.path[:]):
+                imported=runpy.run_path(str(a/'workspace/tools/run_act_policy.py'),run_name='import_only')
+            self.assertEqual(imported['GRIPPER_TORQUE_LIMIT'],240)
+            self.assertTrue(callable(imported['clamp_action']))
 
     def test_archive_cannot_escape_benchmark(self):
         with self.assertRaises(ValueError):unpack(archive({'benchmark/../../unexpected':b'x'}))
