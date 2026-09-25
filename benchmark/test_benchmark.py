@@ -9,7 +9,7 @@ from unittest.mock import patch
 
 from run_act_policy import ChunkPlayback,clamp_action,JOINTS
 from provenance import select_policy
-from sync_benchmark import unpack,install,REQUIRED,main as sync_main
+from sync_benchmark import unpack,install,REQUIRED,main as sync_main,download_bundle
 
 HERE=Path(__file__).resolve().parent
 
@@ -66,6 +66,18 @@ class Benchmark(unittest.TestCase):
         with self.assertRaises(ValueError):unpack(archive({'benchmark/../../unexpected':b'x'}))
         with self.assertRaises(ValueError):unpack(archive({'benchmark/run_act_policy.py':b'print(1)'}))
 
+    def test_download_requests_only_benchmark_blobs(self):
+        blobs={str(i).zfill(40):(name,(HERE/name).read_bytes()) for i,name in enumerate(sorted(REQUIRED),1)}
+        def fake_git(repo,*args,data=None):
+            if args[0]=='ls-tree':return b''.join(f'100644 blob {oid}\tbenchmark/{name}\0'.encode() for oid,(name,_) in blobs.items())
+            if args[0]=='-c':
+                self.assertEqual(set(data.decode().splitlines()),set(blobs));return b''
+            if args[0]=='cat-file':return blobs[args[2]][1]
+            self.fail('Unexpected Git operation: '+str(args))
+        with patch('sync_benchmark.git',side_effect=fake_git):
+            files,_,_=download_bundle(Path('/repo'),'revision')
+        self.assertEqual(set(files),REQUIRED)
+
     def test_sync_defers_without_touching_an_active_run(self):
         data=archive({'benchmark/'+name:(HERE/name).read_bytes() for name in REQUIRED})
         def fake_git(repo,*args):
@@ -76,7 +88,7 @@ class Benchmark(unittest.TestCase):
             station=Path(temp);(station/'state').mkdir()
             with (station/'state/act-benchmark.lock').open('a') as lock:
                 fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
-                with patch('sys.argv',['sync','--station',temp]),patch('sync_benchmark.git',side_effect=fake_git),patch('builtins.print'):
+                with patch('sys.argv',['sync','--station',temp]),patch('sync_benchmark.git',side_effect=fake_git),patch('sync_benchmark.download_bundle',return_value=unpack(data)),patch('builtins.print'):
                     sync_main()
             result=json.loads((station/'state/benchmark-sync.json').read_text())
             self.assertEqual(result['status'],'deferred_active_run')

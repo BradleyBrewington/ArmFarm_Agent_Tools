@@ -6,6 +6,7 @@ import io
 import json
 import os
 from pathlib import Path
+import signal
 import subprocess
 import tarfile
 import time
@@ -41,9 +42,42 @@ def unpack(data):
     return files,hashes,digest(json.dumps(hashes,sort_keys=True).encode())
 
 
-def git(repo,*args):
-    return subprocess.run(['git','-C',str(repo),*args],check=True,capture_output=True,
-                          timeout=90,env={**os.environ,'GIT_TERMINAL_PROMPT':'0'}).stdout
+def git(repo,*args,data=None):
+    process=subprocess.Popen(['git','-C',str(repo),*args],stdin=subprocess.PIPE,
+                             stdout=subprocess.PIPE,stderr=subprocess.PIPE,start_new_session=True,
+                             env={**os.environ,'GIT_TERMINAL_PROMPT':'0'})
+    try:
+        stdout,stderr=process.communicate(data,timeout=90)
+        if process.returncode:raise RuntimeError(stderr.decode(errors='replace')[-1500:])
+        return stdout
+    finally:
+        # Git's lazy-fetch helpers must not survive a timeout.
+        try:os.killpg(process.pid,signal.SIGKILL)
+        except ProcessLookupError:pass
+        process.communicate()
+
+
+def download_bundle(repo,commit):
+    entries=[]
+    for row in git(repo,'ls-tree','-r','-z',commit,'--','benchmark').split(b'\0'):
+        if not row:continue
+        metadata,name=row.split(b'\t',1);mode,kind,oid=metadata.split()
+        parts=Path(name.decode()).parts
+        if kind!=b'blob' or mode not in (b'100644',b'100755') or len(parts)!=2:
+            raise ValueError('Unexpected benchmark tree entry: '+name.decode())
+        entries.append((name.decode(),oid.decode()))
+    if not entries:raise ValueError('Git revision has no benchmark folder')
+    # Fetch these blobs explicitly. `git archive` on a partial clone can fetch
+    # every missing blob in the fleet repository, even with a path argument.
+    git(repo,'-c','fetch.negotiationAlgorithm=noop','fetch','--no-tags','--no-write-fetch-head',
+        '--filter=blob:none','origin','--stdin',data=('\n'.join(oid for _,oid in entries)+'\n').encode())
+    stream=io.BytesIO()
+    with tarfile.open(fileobj=stream,mode='w') as archive:
+        for name,oid in entries:
+            payload=git(repo,'cat-file','blob',oid)
+            member=tarfile.TarInfo(name);member.size=len(payload)
+            archive.addfile(member,io.BytesIO(payload))
+    return unpack(stream.getvalue())
 
 
 def install(station,files,hashes,bundle,commit):
@@ -91,7 +125,7 @@ def main():
                 git(repo,'config','remote.origin.partialclonefilter','blob:none')
             git(repo,'fetch','--depth=1','--filter=blob:none','--no-tags','origin',a.revision)
             commit=git(repo,'rev-parse','FETCH_HEAD').decode().strip()
-            files,hashes,bundle=unpack(git(repo,'archive','--format=tar',commit,'benchmark'))
+            files,hashes,bundle=download_bundle(repo,commit)
             with (state/'act-benchmark.lock').open('a') as policy_lock:
                 try:fcntl.flock(policy_lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
                 except BlockingIOError:
