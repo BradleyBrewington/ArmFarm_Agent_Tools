@@ -1226,7 +1226,16 @@ def connected_bus(port, joints=JOINTS):
         j: Motor(i + 1, "sts3215", MotorNormMode.RANGE_0_100 if j == "gripper" else MotorNormMode.DEGREES)
         for i, j in enumerate(JOINTS) if j in joints})
     try:
-        bus.connect()
+        # The driver's handshake treats a motor reporting a fault (for example
+        # overload after leaning on a physical stop) as missing. Check presence
+        # ourselves so a faulted motor can still be recovered by the routine.
+        bus.connect(handshake=False)
+        for j in joints:
+            found, faults = read_register(bus, "ID", j)
+            if found != bus.motors[j].id:
+                raise RuntimeError(f"{j}: motor id {bus.motors[j].id} answered as id {found}")
+            if faults:
+                print(f"[fault] {j}: status bits {faults} at connect", flush=True)
         bus.calibration = bus.read_calibration()
         for j in joints:
             c = bus.calibration[j]
