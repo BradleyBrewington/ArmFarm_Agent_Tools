@@ -13,5 +13,9 @@
     "source": "ArmFarm_Config/deliverables/calibrate_workspace.py",
     "sha256": "a23f45e88e60b1535c50b262cb725d96d81091417cef5b384e3d02784b9182ff",
     "crlf_count": 2391
+  },
+  "home_pose.json": {
+    "source": "ArmFarm_Config/deliverables/home_pose.json",
+    "sha256": "c7ee6b2a8437acf098064dab53d19338211857925966a93aea1f135eaf72d390"
   }
 }
