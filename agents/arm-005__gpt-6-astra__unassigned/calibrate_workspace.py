@@ -1482,13 +1482,40 @@ def detect_board(image, pattern, thorough=False):
     return corners.reshape(-1, 2) if ok else None
 
 
-def wait_for_board(reader, pattern, camera="top"):
+def verify_board_pose(bus, target):
+    """Read-only interlock: never claim the insertion pose after losing motor state."""
+    target = clamp_target(target, bus.calibration)
+    for joint in target:
+        for register, expected in (("Operating_Mode", 0), ("Torque_Enable", 1)):
+            value, faults = read_register(bus, register, joint)
+            if faults:
+                raise RuntimeError(f"{joint}: motor fault {faults} while waiting for checkerboard")
+            if value != expected:
+                raise RuntimeError(f"{joint}: {register} is {value}, expected {expected}; checkerboard wait stopped")
+        status = fault_bits(bus, joint)
+        if status:
+            raise RuntimeError(f"{joint}: motor fault {status} while waiting for checkerboard")
+    measured = bus.sync_read("Present_Position", list(target))
+    errors = {j: abs(finite_number(measured[j], j) - goal) for j, goal in target.items()}
+    missed = {j: error for j, error in errors.items() if error > (5 if j == "gripper" else 4)}
+    if missed:
+        raise RuntimeError("Arm is not at checkerboard insertion pose (degrees; gripper percent): "
+                           + json.dumps(missed, sort_keys=True))
+    return {"measured": measured, "errors": errors, "verified_at_utc": utc()}
+
+
+def wait_for_board(reader, pattern, camera="top", *, check_pose):
     import numpy as np
+    check_pose()
     print("At pose 1, gripper open. Move the checkerboard into the jaws, then hold it steady.", flush=True)
     previous, count = None, 0
     baseline, initialized, placement_changed = None, False, False
     last_notice = time.monotonic()
+    next_check = last_notice + .5
     while True:
+        if time.monotonic() >= next_check:
+            check_pose()
+            next_check = time.monotonic() + .5
         try:
             image, _ = reader.read(camera)
         except RuntimeError:
@@ -1512,6 +1539,7 @@ def wait_for_board(reader, pattern, camera="top"):
             # A board left on the tabletop from the last attempt must not
             # immediately trigger another grasp of empty air.
             if count >= 5 and placement_changed:
+                check_pose()  # Detection can be slow; verify again before any grip command.
                 print("Checkerboard detected. Closing the gripper.", flush=True)
                 return
         if time.monotonic() - last_notice > 10:
@@ -2094,12 +2122,14 @@ def return_to_pose_one(bus, args, retry=False):
     else:
         move(bus, opened, args.duration)
     settle(bus, opened, 2)
+    return verify_board_pose(bus, opened)
 
 
 def run_attempt(bus, reader, args, output, times, values, report):
     """One complete top-camera attempt; never accept a missing held-board photo."""
     cfg = map_config(args)
-    wait_for_board(reader, tuple(args.pattern), "top")
+    wait_for_board(reader, tuple(args.pattern), "top",
+                   check_pose=lambda: verify_board_pose(bus, {**POSES[0], "gripper": args.gripper_open}))
     move(bus, POSES[0], 1.5)
     settle(bus, POSES[0], 2)
     optics = freeze_focus(["top"])
@@ -2198,7 +2228,7 @@ def run_local(args, output):
                               active_attempt=str(folder.relative_to(output)))
                 write_json(output / "report.json", report)
                 print(f"Attempt {attempt}: returning to pose 1 and opening the gripper.", flush=True)
-                return_to_pose_one(bus, args, retry=attempt > 1)
+                report["pose_1_verified"] = return_to_pose_one(bus, args, retry=attempt > 1)
                 report["state"] = "waiting_for_checkerboard"
                 write_json(output / "report.json", report)
                 current = {"attempt": attempt, "started_at_utc": utc(), "state": "waiting_for_checkerboard"}
