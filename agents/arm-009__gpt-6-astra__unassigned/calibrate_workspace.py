@@ -1321,6 +1321,19 @@ def recover_overload(bus, joint):
 
 def relieve_gripper_overload(bus):
     """One contact-hold recovery; reduce squeeze without commanding an opening."""
+    try:
+        return _relieve_gripper_overload(bus)
+    except Exception as error:
+        # A failed reset must not trigger the commissioning loop's automatic
+        # restart, which would open the gripper to accept a new checkerboard.
+        settings = os.environ.get("ARMFARM_SETTINGS")
+        if settings:
+            write_json(Path(settings).parent / "state/PAUSED",
+                       {"reason": "Gripper contact recovery needs inspection", "error": str(error), "time": time.time()})
+        raise
+
+
+def _relieve_gripper_overload(bus):
     joint = "gripper"
     status = fault_bits(bus, joint)
     if status != OVERLOAD:
