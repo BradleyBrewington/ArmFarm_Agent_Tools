@@ -36,11 +36,23 @@ HOME_JOINTS = ("shoulder_pan", "shoulder_lift", "elbow_flex", "wrist_flex")
 JOINTS = (*ARM_JOINTS, "gripper")
 CLOSED_GRIPPER = 0.0  # Fully closed calibrated target, verified on this arm.
 # The three recorded poses: calibrated hardware degrees, gripper 0..100.
-POSES = [dict(zip(JOINTS, values)) for values in (
+BASE_POSES = [dict(zip(JOINTS, values)) for values in (
     (68.96703296703296, 13.89010989010989, 92.87912087912088, -85.71428571428571, 63.42857142857143, CLOSED_GRIPPER),
     (13.054945054945055, -92.65934065934066, 97.0989010989011, 25.23076923076923, 55.86813186813187, CLOSED_GRIPPER),
     (-38.72527472527472, -95.12087912087912, 97.18681318681318, 32.527472527472526, 55.86813186813187, CLOSED_GRIPPER),
 )]
+POSES = [dict(pose) for pose in BASE_POSES]
+
+
+def offset_calibration_poses(offset):
+    """Apply the station's wrist adjustment to each camera capture pose."""
+    offset = finite_number(offset, "wrist_roll offset")
+    poses = [{**pose, "wrist_roll": pose["wrist_roll"] + offset} for pose in BASE_POSES]
+    if any(not -180 <= pose["wrist_roll"] <= 180 for pose in poses):
+        raise ValueError("Wrist adjustment puts a calibration pose outside -180..180 degrees")
+    return poses
+
+
 HERE = Path(__file__).resolve().parent
 UNITS = {"arm": "degrees", "gripper": "percent"}
 PORT = "/dev/serial/by-id/usb-1a86_USB_Single_Serial_5B61036318-if00"
@@ -2317,7 +2329,8 @@ def run_local(args, output):
     cfg = map_config(args)
     home = load_home(args.home)
     times, values, trace = load_trajectory(args.trajectory, cfg)
-    report = {"state": "checking", "started_at_utc": utc(), "mode": "top_camera_intrinsics_and_2d_table_map", "trajectory": trace}
+    report = {"state": "checking", "started_at_utc": utc(), "mode": "top_camera_intrinsics_and_2d_table_map", "trajectory": trace,
+              "calibration_poses": POSES, "wrist_roll_offset_degrees": getattr(args, "wrist_roll_offset", 0.)}
     write_json(output / "report.json", report)
     reader = FrameReader(args.frames_directory)
     opened = {**POSES[0], "gripper": args.gripper_open}
@@ -2485,11 +2498,20 @@ def parse_args(argv=None):
 
 def main(argv=None):
     args = parse_args(argv)
+    args.wrist_roll_offset = 0.
     if os.environ.get("ARMFARM_SETTINGS"):
-        settings = read_json(Path(os.environ["ARMFARM_SETTINGS"]))
+        settings_path = Path(os.environ["ARMFARM_SETTINGS"])
+        settings = read_json(settings_path)
+        offsets_path = settings_path.parent / "calibration_pose_offsets.json"
+        if offsets_path.exists():
+            offsets = read_json(offsets_path)
+            if offsets.get("schema_version") != 1:
+                raise ValueError("Unsupported calibration pose offsets schema")
+            args.wrist_roll_offset = finite_number(offsets["wrist_roll_degrees"], "wrist_roll offset")
         top = settings.get("cameras", {}).get("top")
         if isinstance(top, str) and top != "auto":
             CAMERAS["top"] = top
+    POSES[:] = offset_calibration_poses(args.wrist_roll_offset)
     output = (args.output or HERE.parent / "calibration_runs" / datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S_%fZ")).resolve()
     if output.exists() and any(output.iterdir()):
         raise ValueError("Output directory must be new or empty")
