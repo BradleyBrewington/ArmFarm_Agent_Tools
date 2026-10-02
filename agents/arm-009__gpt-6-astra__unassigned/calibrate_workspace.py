@@ -1319,6 +1319,49 @@ def recover_overload(bus, joint):
     return cleared
 
 
+def relieve_gripper_overload(bus):
+    """One contact-hold recovery; reduce squeeze without commanding an opening."""
+    joint = "gripper"
+    status = fault_bits(bus, joint)
+    if status != OVERLOAD:
+        raise RuntimeError(f"gripper: motor fault {status}; only a pure closing overload can be recovered")
+    if getattr(bus, "gripper_relief_used", False):
+        raise RuntimeError("gripper: overload returned after contact recovery; operator inspection required")
+    if read_register(bus, "Operating_Mode", joint)[0] != 0:
+        raise RuntimeError("gripper: position mode required for contact recovery")
+    current, _ = read_register(bus, "Present_Position", joint)
+    old_goal, _ = read_register(bus, "Goal_Position", joint)
+    c = bus.calibration[joint]; motor_id = bus.motors[joint].id
+    if not c.range_min <= current <= c.range_max:
+        raise RuntimeError("gripper: contact position outside calibrated range")
+    normalize = lambda value: bus._normalize({motor_id: value})[motor_id]
+    if normalize(old_goal) >= normalize(current):
+        raise RuntimeError("gripper: motor fault is not from a closing target; refusing automatic recovery")
+    closing_direction = 1 if getattr(bus, 'apply_drive_mode', False) and c.drive_mode else -1
+    held = max(c.range_min, min(c.range_max, current + closing_direction * 2))
+    bus.gripper_relief_used = True
+    # Replace the straining goal before resetting protection; no other motor is written.
+    response = write_register(bus, "Goal_Position", joint, held)
+    if response & ~OVERLOAD: raise RuntimeError(f"gripper: unexpected motor fault {response}")
+    if not recover_overload(bus, joint): raise RuntimeError("gripper: overload did not clear")
+    for _ in range(20):
+        time.sleep(.1)
+        status = fault_bits(bus, joint)
+        if status: raise RuntimeError(f"gripper: motor fault {status} returned after contact recovery")
+        if read_register(bus, "Torque_Enable", joint)[0] != 1:
+            raise RuntimeError("gripper: torque lost during contact recovery")
+        measured, _ = read_register(bus, "Present_Position", joint)
+        if (measured - current) * -closing_direction > 4:
+            raise RuntimeError("gripper: opened beyond the contact-hold tolerance; recovery stopped")
+    # Later poses/replay must retain the contact target instead of squeezing to 0% again.
+    low, high = stops(bus).get(joint, (-math.inf, math.inf))
+    stops(bus)[joint] = (max(low, normalize(held)), high)
+    result = {'contact_raw': current, 'previous_goal_raw': old_goal, 'hold_goal_raw': held,
+              'closing_bias_ticks': 2, 'measured_raw': measured, 'fault_bits': status}
+    print("[grip] Firm contact hold after overload: " + json.dumps(result), flush=True)
+    return result
+
+
 def hold_at_stop(bus, joint, present, direction):
     """Freeze a joint at the obstruction it reached and remember that limit."""
     low, high = stops(bus).get(joint, (-math.inf, math.inf))
@@ -1450,6 +1493,8 @@ def settle(bus, target, seconds):
     deadline = time.monotonic() + seconds
     while True:
         time.sleep(min(.1, max(0., deadline - time.monotonic())))
+        if "gripper" in target and fault_bits(bus, "gripper"):
+            relieve_gripper_overload(bus)
         measured = bus.sync_read("Present_Position", list(target))
         guard.observe(within_stops(target, bus), measured)
         if time.monotonic() >= deadline:
@@ -1460,6 +1505,8 @@ def settle(bus, target, seconds):
         status = fault_bits(bus, j)
         if status == OVERLOAD and j != "gripper":
             hold_at_stop(bus, j, measured[j], 1 if target[j] >= measured[j] else -1)
+        elif status and j == "gripper":
+            relieve_gripper_overload(bus)
         elif status:
             raise RuntimeError(f"{j}: motor fault {status} while settling")
     errors = {j: abs(finite_number(measured[j], j) - target[j])
@@ -1482,13 +1529,40 @@ def detect_board(image, pattern, thorough=False):
     return corners.reshape(-1, 2) if ok else None
 
 
-def wait_for_board(reader, pattern, camera="top"):
+def verify_board_pose(bus, target):
+    """Read-only interlock: never claim the insertion pose after losing motor state."""
+    target = clamp_target(target, bus.calibration)
+    for joint in target:
+        for register, expected in (("Operating_Mode", 0), ("Torque_Enable", 1)):
+            value, faults = read_register(bus, register, joint)
+            if faults:
+                raise RuntimeError(f"{joint}: motor fault {faults} while waiting for checkerboard")
+            if value != expected:
+                raise RuntimeError(f"{joint}: {register} is {value}, expected {expected}; checkerboard wait stopped")
+        status = fault_bits(bus, joint)
+        if status:
+            raise RuntimeError(f"{joint}: motor fault {status} while waiting for checkerboard")
+    measured = bus.sync_read("Present_Position", list(target))
+    errors = {j: abs(finite_number(measured[j], j) - goal) for j, goal in target.items()}
+    missed = {j: error for j, error in errors.items() if error > (5 if j == "gripper" else 4)}
+    if missed:
+        raise RuntimeError("Arm is not at checkerboard insertion pose (degrees; gripper percent): "
+                           + json.dumps(missed, sort_keys=True))
+    return {"measured": measured, "errors": errors, "verified_at_utc": utc()}
+
+
+def wait_for_board(reader, pattern, camera="top", *, check_pose):
     import numpy as np
+    check_pose()
     print("At pose 1, gripper open. Move the checkerboard into the jaws, then hold it steady.", flush=True)
     previous, count = None, 0
     baseline, initialized, placement_changed = None, False, False
     last_notice = time.monotonic()
+    next_check = last_notice + .5
     while True:
+        if time.monotonic() >= next_check:
+            check_pose()
+            next_check = time.monotonic() + .5
         try:
             image, _ = reader.read(camera)
         except RuntimeError:
@@ -1512,6 +1586,7 @@ def wait_for_board(reader, pattern, camera="top"):
             # A board left on the tabletop from the last attempt must not
             # immediately trigger another grasp of empty air.
             if count >= 5 and placement_changed:
+                check_pose()  # Detection can be slow; verify again before any grip command.
                 print("Checkerboard detected. Closing the gripper.", flush=True)
                 return
         if time.monotonic() - last_notice > 10:
@@ -2094,12 +2169,14 @@ def return_to_pose_one(bus, args, retry=False):
     else:
         move(bus, opened, args.duration)
     settle(bus, opened, 2)
+    return verify_board_pose(bus, opened)
 
 
 def run_attempt(bus, reader, args, output, times, values, report):
     """One complete top-camera attempt; never accept a missing held-board photo."""
     cfg = map_config(args)
-    wait_for_board(reader, tuple(args.pattern), "top")
+    wait_for_board(reader, tuple(args.pattern), "top",
+                   check_pose=lambda: verify_board_pose(bus, {**POSES[0], "gripper": args.gripper_open}))
     move(bus, POSES[0], 1.5)
     settle(bus, POSES[0], 2)
     optics = freeze_focus(["top"])
@@ -2198,7 +2275,7 @@ def run_local(args, output):
                               active_attempt=str(folder.relative_to(output)))
                 write_json(output / "report.json", report)
                 print(f"Attempt {attempt}: returning to pose 1 and opening the gripper.", flush=True)
-                return_to_pose_one(bus, args, retry=attempt > 1)
+                report["pose_1_verified"] = return_to_pose_one(bus, args, retry=attempt > 1)
                 report["state"] = "waiting_for_checkerboard"
                 write_json(output / "report.json", report)
                 current = {"attempt": attempt, "started_at_utc": utc(), "state": "waiting_for_checkerboard"}
