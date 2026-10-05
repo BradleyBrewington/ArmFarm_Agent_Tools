@@ -31,7 +31,7 @@ EXCLUDE = [(1080, 0, 1280, 720), (0, 0, 260, 720), (0, 0, 1280, 120)]  # outside
 # component that touches the top image border within this u-range is treated as the arm.
 ARM_TOP_U = (380, 950)
 DARK = 70            # grey level below which a pixel counts as "black"
-MIN_AREA = 1500      # px^2  (cube ~ 65x75 px)
+MIN_AREA = 1200      # px^2  (cube ~ 65x75 px; partially masked by the arm still counts)
 MAX_AREA = 12000
 
 
@@ -40,12 +40,18 @@ def undistort_pts(pts):
     return cv2.undistortPoints(pts, K, D, P=K).reshape(-1, 2)
 
 
+ARM_MASK_PATH = HERE / "arm_home_mask.png"   # dilated silhouette of the arm parked at home
+_arm_mask = cv2.imread(str(ARM_MASK_PATH), cv2.IMREAD_GRAYSCALE) if ARM_MASK_PATH.exists() else None
+
+
 def detect_cube(img, exclude=EXCLUDE, debug=None):
     """Return the most cube-like dark blob in the raw top image, or None."""
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     mask = (gray < DARK).astype(np.uint8) * 255
     for x0, y0, x1, y1 in exclude:
         mask[y0:y1, x0:x1] = 0
+    if _arm_mask is not None and _arm_mask.shape == mask.shape:
+        mask[_arm_mask > 0] = 0   # a cube touching the parked arm keeps its own pixels
     mask = cv2.morphologyEx(mask, cv2.MORPH_OPEN, np.ones((5, 5), np.uint8))
     mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, np.ones((9, 9), np.uint8))
     n, labels, stats, cents = cv2.connectedComponentsWithStats(mask, 8)
