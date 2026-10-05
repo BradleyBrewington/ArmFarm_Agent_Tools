@@ -61,7 +61,8 @@ def pick(arm, x, y, roll, fast=1.0):
     arm.move(down, 0.6 * fast)
     arm.wait(down, tol=3, timeout=0.6)
     arm.move({"gripper": CLOSED}, 0.35)
-    time.sleep(0.35)
+    time.sleep(0.3)
+    arm.hold()
     arm.move(above, 0.6 * fast)
     return arm.gripper_pos()
 

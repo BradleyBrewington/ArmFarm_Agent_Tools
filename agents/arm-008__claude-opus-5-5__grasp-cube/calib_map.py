@@ -58,10 +58,12 @@ def main():
             with open(vision.SAMPLES_FILE, "a") as f:
                 f.write(json.dumps(s) + "\n")
             pred = vision.px_to_robot(d["px"]) if vision.load_map() is not None else (math.nan, math.nan)
-            H, err = vision.fit_map([(s["u"], s["v"], s["x"], s["y"]) for s in samples])
+            fit = ""
+            if len(samples) >= 4:   # until then keep the rough bootstrap map
+                H, err = vision.fit_map([(s["u"], s["v"], s["x"], s["y"]) for s in samples])
+                fit = f"; fit rms {1000*np.sqrt((err**2).mean()):.1f} max {1000*err.max():.1f} mm"
             print(f"placed ({cx:.3f},{cy:.3f}) px=({s['u']:.0f},{s['v']:.0f}) old-map err "
-                  f"{1000*math.hypot(pred[0]-cx, pred[1]-cy):.1f} mm; fit rms {1000*np.sqrt((err**2).mean()):.1f} max {1000*err.max():.1f} mm",
-                  flush=True)
+                  f"{1000*math.hypot(pred[0]-cx, pred[1]-cy):.1f} mm{fit}", flush=True)
             for attempt in range(3):
                 d = detect()
                 px, py, yaw = task.cube_pose(d)

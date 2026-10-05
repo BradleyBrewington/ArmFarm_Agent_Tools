@@ -34,14 +34,45 @@ class Arm:
         self.home_pose = cw.load_home(HOME_FILE)
 
     def __enter__(self):
-        self._ctx = cw.connected_bus(self.port, ALL)
-        self.bus = self._ctx.__enter__()
+        from lerobot.motors import Motor, MotorCalibration, MotorNormMode
+        from lerobot.motors.feetech import FeetechMotorsBus
+        self.bus = FeetechMotorsBus(port=self.port, motors={
+            j: Motor(i + 1, "sts3215", MotorNormMode.RANGE_0_100 if j == "gripper" else MotorNormMode.DEGREES)
+            for i, j in enumerate(ALL)})
+        # handshake=False and the exported calibration file: a motor reporting overload
+        # (e.g. the gripper squeezing the cube) must not stop us from connecting.
+        self.bus.connect(handshake=False)
+        cal = json.loads(Path(os.environ.get("ARMFARM_MOTOR_CALIBRATION",
+                                             HERE.parent / "config/motors/arm-008.json")).read_text())
+        self.bus.calibration = {j: MotorCalibration(**cal[j]) for j in ALL}
+        for j in ALL:
+            if cw.fault_bits(self.bus, j) & cw.OVERLOAD:
+                if j == "gripper":
+                    self.relax_gripper()
+                else:
+                    cw.recover_overload(self.bus, j)
         cw.preflight(self.bus, [self.joints()])
         cw.enable_at_current_position(self.bus, ALL)
         return self
 
     def __exit__(self, *exc):
-        return self._ctx.__exit__(*exc)
+        if self.bus.is_connected:
+            self.bus.disconnect(disable_torque=False)
+
+    def relax_gripper(self, ticks=40):
+        """Clear a gripper overload by retargeting just inside the current position (keeps the grip).
+        Raw position decreases as the gripper closes on this arm."""
+        raw, _ = cw.read_register(self.bus, "Present_Position", "gripper")
+        cw.write_register(self.bus, "Goal_Position", "gripper", raw - ticks)
+        cw.recover_overload(self.bus, "gripper")
+
+    def hold(self, margin=4.0):
+        """After closing on the cube, set the gripper goal a little inside the contact point so the
+        motor holds the cube without straining into overload."""
+        time.sleep(0.05)
+        pos = self.gripper_pos()
+        cw.command_goal(self.bus, {"gripper": max(0.0, pos - margin)})
+        return pos
 
     def joints(self):
         return dict(self.bus.sync_read("Present_Position", list(ALL)))
