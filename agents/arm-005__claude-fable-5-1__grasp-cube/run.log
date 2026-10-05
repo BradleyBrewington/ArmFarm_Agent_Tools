@@ -7,3 +7,17 @@ ep 4 success=True 8.3s (+reset 6.2s) rate=4/4 notes={'grip_home': 23.0, 'spot_da
 {"t": 1791216056.1989267, "event": "grasp", "target": [0.15242015391792874, -0.2964299180905516], "frame": [0.14347495447620973, -0.27308503850186666], "grip_closed": 19.82044198895028, "grip_lifted": 0.2762430939226519, "held": false}
 ep 5 success=False 34.2s (+reset 2.5s) rate=4/5 notes={'grip_home': 69.6, 'spot_dark_fraction': 0.99, 'cube_px': [491, 268], 'cube_xy': [0.1524, -0.2965], 'attempts': 3, 'episode': '20261005T110027-e7325284'}
 {"t": 1791216072.4146624, "event": "grasp", "target": [0.15212047707894866, -0.2965319920194231], "frame": [0.14319854790201408, -0.27317820911763296], "grip_closed": 20.027624309392262, "grip_lifted": 0.2762430939226519, "held": false}
+55 coverage targets; map affine n=10
+Traceback (most recent call last):
+  File "/var/lib/armfarm/stations/armfarm/fresh-starts/101de55c-b376-41b2-8509-05d029245fca/workspace/tools/run_episodes.py", line 209, in <module>
+    main()
+    ~~~~^^
+  File "/var/lib/armfarm/stations/armfarm/fresh-starts/101de55c-b376-41b2-8509-05d029245fca/workspace/tools/run_episodes.py", line 138, in main
+    recording.start_recording(TASK)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/var/lib/armfarm/stations/armfarm/fresh-starts/101de55c-b376-41b2-8509-05d029245fca/workspace/tools/recording.py", line 26, in start_recording
+    return request('start_recording', task=task, context=context)
+  File "/var/lib/armfarm/stations/armfarm/fresh-starts/101de55c-b376-41b2-8509-05d029245fca/workspace/tools/recording.py", line 15, in request
+    if not response.pop('ok'): raise RuntimeError(response['error'])
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: ValueError: an episode is already open
