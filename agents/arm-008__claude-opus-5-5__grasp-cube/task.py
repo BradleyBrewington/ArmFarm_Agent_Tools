@@ -125,8 +125,10 @@ def pick(arm, x, y, yaw, fast=1.0, servo=True, record=None):
             roll = max(-90.0, min(90.0, roll - 1.3 * yaw_err))
     if record is not None:
         record.update({"servo_px": seen, "x": float(x), "y": float(y), "roll": float(roll)})
+    mid, _ = grasp_plan(x, y, (HOVER_Z + GRASP_Z) / 2, yaw, roll_hint=roll)
     down, _ = grasp_plan(x, y, GRASP_Z, yaw, roll_hint=roll)
-    arm.move(down, 0.6 * fast)
+    arm.move(mid, 0.35 * fast)          # waypoint keeps the descent close to straight down
+    arm.move(down, 0.4 * fast)
     arm.wait(down, tol=3, timeout=0.6)
     arm.hold()                       # torque-capped close; jaws need ~0.5 s to reach the cube
     t0 = time.monotonic()
@@ -206,7 +208,7 @@ def push(arm, start, end, z=0.016, roll=0.0, step=0.01, speed=0.06):
     arm.move(q, 0.6)
 
 
-RETRY_OFFSETS = [(0.0, 0.0), (0.010, 0.0), (-0.008, 0.0), (0.018, 0.0), (0.0, 0.008), (0.0, -0.008)]
+RETRY_OFFSETS = [(0.0, 0.0)] * 6   # the wrist servo corrects the estimate; retries just re-look
 
 
 def pick_robust(arm, attempts=6, log=print):

@@ -1,5 +1,5 @@
 {
- "comment": "Wrist-image servo at the pre-grasp hover (task.HOVER_Z, task.PITCH). J: px change per metre of gripper shift along (u = closing axis toward fixed jaw, w = u rotated +90 deg). target: cube centroid px for a good grasp.",
+ "comment": "Wrist-image servo at the pre-grasp hover (task.HOVER_Z, task.PITCH). J: px change per metre of gripper shift along (u = closing axis toward fixed jaw, w = u rotated +90 deg). target: cube centroid px for a good grasp. Released (contact) cube appears at ~(801, 388); target adds ~3 mm clearance from the fixed jaw.",
  "J": [
   [
    5331.0,
@@ -11,7 +11,7 @@
   ]
  ],
  "target": [
-  790,
-  372.0
+  815.0,
+  380.0
  ]
 }
