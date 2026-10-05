@@ -155,3 +155,19 @@ def detect_robot(use_mask, tries=4):
             return d, cube_pose(d)
         time.sleep(0.15)
     return None, None
+
+
+def push(arm, start, end, z=0.016, roll=0.0, step=0.01, speed=0.06):
+    """Closed-gripper straight-line sweep along the table from start to end (for nudging the cube)."""
+    q = plan(start[0], start[1], z + 0.03, roll)
+    arm.move({**q, "gripper": CLOSED}, 1.2); arm.wait(q, tol=3, timeout=1)
+    q = plan(start[0], start[1], z, roll)
+    arm.move(q, 0.6); arm.wait(q, tol=3, timeout=1)
+    n = max(1, int(math.hypot(end[0] - start[0], end[1] - start[1]) / step))
+    for i in range(1, n + 1):
+        f = i / n
+        q = plan(start[0] + f * (end[0] - start[0]), start[1] + f * (end[1] - start[1]), z, roll)
+        arm.move(q, step / speed)
+    arm.wait(q, tol=3, timeout=1)
+    q = plan(end[0], end[1], z + 0.03, roll)
+    arm.move(q, 0.6)
