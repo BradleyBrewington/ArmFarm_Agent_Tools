@@ -16,7 +16,7 @@ HOVER_Z = 0.07
 GRASP_Z = 0.014
 OPEN = 80.0
 CLOSED = 0.0
-GRIP_EMPTY = 6.0       # gripper % at/below which the jaws closed on nothing
+GRIP_EMPTY = 12.0      # gripper % at/below which the jaws closed on nothing
 JAW_OFFSET = 0.026     # FK tip is on the fixed jaw; cube centre sits this far toward the moving jaw
 
 

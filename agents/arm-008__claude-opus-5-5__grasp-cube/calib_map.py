@@ -17,7 +17,7 @@ from camd_client import read_frame
 import task
 import vision
 
-
+GRID = [(x, y) for x in (0.21, 0.25, 0.29, 0.33) for y in (-0.16, -0.08, 0.0, 0.08, 0.16)]
 
 def load_samples():
     if not vision.SAMPLES_FILE.exists():
@@ -47,7 +47,7 @@ def main():
                 print("skip", x, y, e); continue
             # cube centre = measured fixed-jaw tip minus the jaw offset (roll 0 -> +y)
             cx, cy = tip["x"], tip["y"] - task.JAW_OFFSET
-            a.home()
+            task.go_look(a)
             time.sleep(0.3)
             d = detect()
             if d is None:
@@ -69,7 +69,7 @@ def main():
                 g = task.pick(a, px, py, task.roll_for(yaw))
                 if g > task.GRIP_EMPTY:
                     break
-                a.home()
+                task.go_look(a)
                 time.sleep(0.3)
             else:
                 print("re-pick failed"); return 1
