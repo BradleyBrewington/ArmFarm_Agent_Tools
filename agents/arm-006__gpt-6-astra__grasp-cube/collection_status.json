@@ -1,0 +1,9 @@
+{
+  "successful_episodes": 9,
+  "clean_successful_episodes": 5,
+  "elapsed_minutes": 23.440025238196053,
+  "overall_successes_per_hour": 23.037517810413586,
+  "automated_cycle_seconds_mean": 33.97624707221985,
+  "automated_cycles": 3,
+  "last_evidence": "cube_1791216010_held"
+}
