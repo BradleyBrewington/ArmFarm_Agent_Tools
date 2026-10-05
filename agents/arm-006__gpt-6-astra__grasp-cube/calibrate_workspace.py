@@ -1421,7 +1421,7 @@ class AdaptiveGrip:
         self.limit = min(self.original_limit, self.get('Max_Torque_Limit'), int(threshold * .88))
         self.effort = min(threshold * .8, self.limit * .9)
         self.current_limit = self.get('Protection_Current')
-        self.temp_limit = min(70, self.get('Max_Temperature_Limit'))
+        self.temp_limit = min(65, self.get('Max_Temperature_Limit') - 5)
         # STS protection time uses 10 ms units. Verify for longer than two windows.
         self.stable_seconds = max(5., self.get('Protection_Time') * .02 + 1.)
         self.active = False
