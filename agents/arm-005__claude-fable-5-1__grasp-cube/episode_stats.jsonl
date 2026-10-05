@@ -258,3 +258,14 @@
 {"t": 1791220021.5578942, "event": "episode", "success": false, "seconds": 8.2, "total": 10.8, "notes": {"grip_home": 23.0, "spot_dark_fraction": 0.44, "cube_px": [533, 242], "cube_xy": [0.1891, -0.0883], "attempts": 1, "episode": "20261005T120650-e3225ab1"}, "map_n": 80, "map_resid": 0.0043}
 {"t": 1791220022.1380212, "event": "no_cube"}
 {"t": 1791220025.735947, "event": "no_cube"}
+{"t": 1791220029.316046, "event": "no_cube"}
+{"t": 1791220032.9155297, "event": "no_cube"}
+{"t": 1791220036.5158243, "event": "no_cube"}
+{"t": 1791220040.1157143, "event": "no_cube"}
+{"t": 1791220043.7149658, "event": "no_cube"}
+{"t": 1791220047.313184, "event": "no_cube"}
+{"t": 1791220050.912493, "event": "no_cube"}
+{"t": 1791220054.5110023, "event": "no_cube"}
+{"t": 1791220058.1123345, "event": "no_cube"}
+{"t": 1791220061.711599, "event": "no_cube"}
+{"t": 1791220089.606863, "event": "episode", "success": true, "seconds": 18.2, "total": 24.9, "notes": {"grip_home": 23.3, "spot_dark_fraction": 0.0, "cube_px": [403, 359], "cube_xy": [0.2751, -0.1685], "attempts": 2, "episode": "20261005T120744-57781b06"}, "map_n": 80, "map_resid": 0.0043}

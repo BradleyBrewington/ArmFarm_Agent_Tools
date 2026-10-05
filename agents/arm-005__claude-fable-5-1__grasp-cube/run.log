@@ -696,3 +696,18 @@ ep 212 success=True 8.3s (+reset 6.2s) rate=211/212 notes={'grip_home': 23.0, 's
 ep 213 success=False 8.2s (+reset 2.5s) rate=211/213 notes={'grip_home': 23.0, 'spot_dark_fraction': 0.44, 'cube_px': [533, 242], 'cube_xy': [0.1891, -0.0883], 'attempts': 1, 'episode': '20261005T120650-e3225ab1'}
 cube not visible; waiting
 cube not visible; waiting
+cube not visible; waiting
+cube not visible; waiting
+cube not visible; waiting
+cube not visible; waiting
+cube not visible; waiting
+cube not visible; waiting
+cube not visible; waiting
+cube not visible; waiting
+cube not visible; waiting
+cube not visible; waiting
+{"t": 1791220071.2791252, "event": "grasp", "target": [0.24296001547183457, -0.18661160462413992], "frame": [0.22450854319464772, -0.169743197281283], "grip_closed": 19.26795580110497, "grip_lifted": 0.3453038674033149, "held": false}
+{"t": 1791220080.1795418, "event": "grasp", "target": [0.275091884374645, -0.168485146931371], "frame": [0.2547375695351376, -0.15396957380777246], "grip_closed": 24.171270718232044, "grip_lifted": 23.273480662983424, "held": true}
+{"t": 1791220087.6659865, "event": "place", "target": [0.2023, 0.2335], "frame": [0.1908300609048692, 0.21711584624256466]}
+ep 214 success=True 18.2s (+reset 6.7s) rate=212/214 notes={'grip_home': 23.3, 'spot_dark_fraction': 0.0, 'cube_px': [403, 359], 'cube_xy': [0.2751, -0.1685], 'attempts': 2, 'episode': '20261005T120744-57781b06'}
+{"t": 1791220095.923459, "event": "grasp", "target": [0.19872148522099942, 0.23113693167077587], "frame": [0.18449915568850728, 0.210576646210171], "grip_closed": 23.480662983425415, "grip_lifted": 23.204419889502763, "held": true}
