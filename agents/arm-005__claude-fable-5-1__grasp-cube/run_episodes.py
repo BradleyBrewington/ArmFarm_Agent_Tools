@@ -35,6 +35,8 @@ STATS = HERE / "episode_stats.jsonl"
 # Top-image region where a placed cube is fully visible and detectable.
 IMG_U = (200, 1100)
 IMG_V = (270, 680)
+MAP_OUTLIER_M = 0.03     # placement seen > 3 cm from prediction: cube tumbled, do not learn from it
+MAP_MAX_POINTS = 80
 # Polar coverage grid around the pan axis (metres, degrees).
 RADII = (0.17, 0.20, 0.23, 0.26, 0.285)
 ANGLES = tuple(range(-55, 56, 11))
@@ -163,8 +165,14 @@ def main():
                 seen, _ = g.see_cube(retries=5)
                 if seen is not None:
                     px, py = np.array([fx, fy]) + G.HELD_FORWARD * G.radial(tx, ty)
-                    g.map.add(seen["u"], seen["v"], px, py)
-                    g.map.save()
+                    pred = g.map.pixel_to_robot(seen["u"], seen["v"])
+                    err = math.hypot(pred[0] - px, pred[1] - py)
+                    if len(g.map.points) < 6 or err < MAP_OUTLIER_M:
+                        g.map.add(seen["u"], seen["v"], px, py)
+                        g.map.points = g.map.points[-MAP_MAX_POINTS:]
+                        g.map.save()
+                    else:
+                        record_stats(event="map_outlier", err=round(err, 4), px=[seen["u"], seen["v"]], xy=[px, py])
                     state["visited"].append([tx, ty, r, ang])
                     if len(g.map.points) in (4, 6, 10, 20) or len(g.map.points) % 25 == 0:
                         targets = coverage_targets(g.map, g.arm.bounds)

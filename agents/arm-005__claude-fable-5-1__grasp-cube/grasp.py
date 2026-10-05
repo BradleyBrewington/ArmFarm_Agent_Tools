@@ -113,7 +113,7 @@ class Grasper:
         A.cw.recover_overload(self.arm.bus, "gripper")
         return goal
 
-    def place(self, cx, cy, release_z=Z_GRASP + 0.012):
+    def place(self, cx, cy, release_z=Z_GRASP + 0.005):
         """Put the held cube down so that its centre lands near robot (cx, cy)."""
         r = radial(cx, cy)
         fx, fy = np.array([cx, cy]) - HELD_FORWARD * r
