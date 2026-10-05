@@ -17,6 +17,13 @@ GRASP_Z = 0.014
 OPEN = 65.0
 CLOSED = 0.0
 GRIP_EMPTY = 6.0       # gripper % at/below which the jaws closed on nothing
+JAW_OFFSET = 0.020     # FK tip is on the fixed jaw; cube centre sits this far toward the moving jaw
+
+
+def jaw_target(x, y, roll):
+    """Tip XY that puts the cube centre (x, y) between the jaws."""
+    r = math.radians(roll)
+    return x - JAW_OFFSET * math.sin(r), y + JAW_OFFSET * math.cos(r)
 
 
 def plan(x, y, z, roll):
@@ -46,6 +53,7 @@ def cube_pose(det, H=None):
 
 
 def pick(arm, x, y, roll, fast=1.0):
+    x, y = jaw_target(x, y, roll)
     above = plan(x, y, HOVER_Z, roll)
     down = plan(x, y, GRASP_Z, roll)
     arm.move({**above, "gripper": OPEN}, 1.3 * fast)
@@ -59,6 +67,7 @@ def pick(arm, x, y, roll, fast=1.0):
 
 
 def place(arm, x, y, roll, fast=1.0, z=None):
+    x, y = jaw_target(x, y, roll)
     above = plan(x, y, HOVER_Z, roll)
     down = plan(x, y, GRASP_Z + 0.004 if z is None else z, roll)
     arm.move(above, 1.3 * fast)
