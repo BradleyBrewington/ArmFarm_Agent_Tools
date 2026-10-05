@@ -25,7 +25,7 @@ def verify(b,g,tag,held):
    s=g.sample()
    if not 12<p['gripper']<45 or not 90<s['load']<240 or s['fault'] or dark<.85:
     raise RuntimeError('Held-object verification failed '+str((p['gripper'],s,dark)))
-  elif dark>.15:raise RuntimeError('Empty-home image not clear')
+  elif float((gray[400:500,700:850]<65).mean())>.15 or p['gripper']<50:raise RuntimeError('Empty-home image or open-jaw check failed')
   checks.append({'dark_fraction':dark,'wrist_seq':meta['seq'],'top_seq':tm['seq'],'home_errors':errors,'gripper':p['gripper']})
   if i==2:
    cv2.imwrite(str(ROOT/f'{tag}_wrist.jpg'),im);cv2.imwrite(str(ROOT/f'{tag}_top.jpg'),top)
