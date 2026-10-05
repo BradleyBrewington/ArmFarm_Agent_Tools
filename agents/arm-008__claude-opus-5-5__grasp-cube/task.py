@@ -134,3 +134,24 @@ def servo(arm, x, y, roll, iters=3, tol=0.004):
 
 
 ROLL_SIGN = 1.0   # how a cube image-angle error maps to a wrist-roll correction (checked on arm)
+
+
+CLEAR_XY = (0.24, 0.17)   # hover spot that keeps the arm off the near-base table area in the top view
+
+
+def clear_view(arm, seconds=1.0):
+    q = plan(CLEAR_XY[0], CLEAR_XY[1], 0.10, 0.0)
+    arm.move({**q, "gripper": OPEN}, seconds)
+    arm.wait(q, tol=4, timeout=0.8)
+
+
+def detect_robot(use_mask, tries=4):
+    from camd_client import read_frame
+    for _ in range(tries):
+        img, _ = read_frame("top")
+        c = vision.candidates(img, use_mask)
+        if c:
+            d = max(c, key=lambda e: e["fill"] * min(e["area"], 7000))
+            return d, cube_pose(d)
+        time.sleep(0.15)
+    return None, None
