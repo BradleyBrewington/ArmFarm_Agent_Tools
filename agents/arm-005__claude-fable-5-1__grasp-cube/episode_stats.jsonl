@@ -83,3 +83,7 @@
 {"t": 1791216973.1533368, "event": "bad_detection", "px": [722.9999389648438, 143.5], "xy": [0.11378578637935546, 0.025957196005783445]}
 {"t": 1791216975.177764, "event": "bad_detection", "px": [722.9999389648438, 143.5], "xy": [0.11378578637935546, 0.025957196005783445]}
 {"t": 1791216977.199497, "event": "bad_detection", "px": [722.9999389648438, 143.5], "xy": [0.11378578637935546, 0.025957196005783445]}
+{"t": 1791217485.217566, "event": "episode", "success": true, "seconds": 8.3, "total": 14.6, "notes": {"grip_home": 23.0, "spot_dark_fraction": 0.21, "cube_px": [563, 262], "cube_xy": [0.2012, -0.0701], "attempts": 1, "episode": "20261005T112430-7098218c"}, "map_n": 43, "map_resid": 0.006}
+{"t": 1791217499.783864, "event": "episode", "success": true, "seconds": 8.3, "total": 14.6, "notes": {"grip_home": 23.1, "spot_dark_fraction": 0.0, "cube_px": [753, 398], "cube_xy": [0.2906, 0.0554], "attempts": 1, "episode": "20261005T112445-0e1c712c"}, "map_n": 44, "map_resid": 0.0059}
+{"t": 1791217514.2308247, "event": "episode", "success": true, "seconds": 8.2, "total": 14.4, "notes": {"grip_home": 23.1, "spot_dark_fraction": 0.0, "cube_px": [860, 321], "cube_xy": [0.2348, 0.1224], "attempts": 1, "episode": "20261005T112459-1199a72e"}, "map_n": 45, "map_resid": 0.0059}
+{"t": 1791217528.7124128, "event": "episode", "success": true, "seconds": 8.3, "total": 14.5, "notes": {"grip_home": 23.1, "spot_dark_fraction": 0.0, "cube_px": [728, 315], "cube_xy": [0.2342, 0.0362], "attempts": 1, "episode": "20261005T112514-7f5b005b"}, "map_n": 46, "map_resid": 0.0057}
