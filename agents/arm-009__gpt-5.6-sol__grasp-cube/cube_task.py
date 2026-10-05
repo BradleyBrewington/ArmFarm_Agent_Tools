@@ -105,8 +105,8 @@ def run_once(place_xyz=None):
         # initial cube is 60 mm farther in base X and 10 mm lower in base Y
         # than the home tool projection.
         pick_xy = start_T[:2, 3] + np.array([.060, -.010])
-        approach = pose_ik(np.r_[pick_xy, .085], reference, bus.calibration)
-        grasp = pose_ik(np.r_[pick_xy, .042], reference, bus.calibration)
+        approach = pose_ik(np.r_[pick_xy, .080], reference, bus.calibration)
+        grasp = pose_ik(np.r_[pick_xy, .020], reference, bus.calibration)
         cube_before = find_cube()
         episode = recording.start_recording("Pick up black cube, bring it to home, and confirm grasp")
         success = False; notes = ""
@@ -132,7 +132,7 @@ def run_once(place_xyz=None):
             cw.move(bus, {"gripper": 65.0}, .5)
             raise RuntimeError("grasp validation failed: " + notes)
         if place_xyz is None:
-            place_xyz = np.r_[pick_xy, .042]
+            place_xyz = np.r_[pick_xy, .020]
         place_xyz = np.asarray(place_xyz, dtype=float)
         place_approach = pose_ik(np.r_[place_xyz[:2], .085], reference, bus.calibration)
         place = pose_ik(place_xyz, reference, bus.calibration)
@@ -140,7 +140,7 @@ def run_once(place_xyz=None):
         cw.move(bus, {"gripper": 65.0}, .5)
         cw.move(bus, place_approach, .7)
         home(bus, home_target, 1.2)
-        return {"success": True, "gripper_contact_percent": held, "pick_xyz": [*pick_xy, .042], "place_xyz": place_xyz.tolist()}
+        return {"success": True, "gripper_contact_percent": held, "pick_xyz": [*pick_xy, .020], "place_xyz": place_xyz.tolist()}
 
 
 if __name__ == "__main__":
