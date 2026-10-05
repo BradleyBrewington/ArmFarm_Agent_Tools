@@ -3,7 +3,11 @@ from pathlib import Path
 import calibrate_workspace as c,recording
 from task_motion import snap
 home=c.load_home(Path('home_pose.json'))
-pick=json.loads(sys.argv[2]);mode=sys.argv[1]
+mode=sys.argv[1]
+if len(sys.argv)==5:
+ from cube_pose import pose
+ pick=pose(*map(float,sys.argv[2:]))
+else: pick=json.loads(sys.argv[2])
 with c.connected_bus(recording.serial_port()) as b:
  g=c.AdaptiveGrip(b);b.adaptive_grip=g
  def go(p,t=2):
