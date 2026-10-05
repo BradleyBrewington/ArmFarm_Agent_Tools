@@ -38,5 +38,10 @@
     "episode": "20261005T171839-820310b6",
     "success": true,
     "reason": "Cube visibly retained at home in both cameras after a 23-percent seated closure; all motor faults zero."
+  },
+  {
+    "episode": "20261005T172218-e07449a2",
+    "success": false,
+    "reason": "Cube slipped during home return; visible on table after return."
   }
 ]
