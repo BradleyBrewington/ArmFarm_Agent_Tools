@@ -136,3 +136,6 @@
 [136] OK  12.5s tries=1 start=(0.193, -0.01) success 136/136 ~180/h
 [137] OK  23.2s tries=1 start=(0.192, 0.071) success 137/137 ~179/h
 [138] OK  20.9s tries=1 flags=camera_error start=(0.298, -0.105) success 138/138 ~179/h
+[139] OK  14.6s tries=1 start=(0.236, -0.148) success 139/139 ~179/h
+[140] OK  19.4s tries=1 start=(0.3, -0.143) success 140/140 ~178/h
+[141] OK  12.8s tries=1 flags=camera_error start=(0.312, 0.057) success 141/141 ~179/h
