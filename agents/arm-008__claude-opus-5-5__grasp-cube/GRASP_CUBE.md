@@ -1,13 +1,13 @@
 # Grasp-cube episode tooling (arm-008)
 
 Run: `setsid nohup /opt/armfarm/venv/bin/python -u tools/run_episodes.py N [--minutes M] > tools/run_log.txt &`
-(detached so it survives the agent session; `touch tools/STOP` ends it cleanly between episodes)
+(an agent-session restart can still kill it mid-episode; on startup the loop closes any episode left open as unconfirmed. `touch tools/STOP` ends it cleanly between episodes)
 (look -> record -> pick -> home -> confirm -> stop -> place at a new coverage cell -> repeat).
 Logs: `episodes_log.jsonl`, coverage per 4 cm cell: `coverage.json`, console: `run_log.txt`.
 
 | File | Role |
 |---|---|
-| `arm.py` | Bus connection (exported calibration file, fault-tolerant connect, retrying sync I/O), gripper torque cap, moves via `calibrate_workspace.move`. |
+| `arm.py` | Bus connection (exported calibration file, fault-tolerant connect, retrying sync I/O), gripper torque cap, smooth stall-guarded moves with light bus traffic (recorder shares the relay). |
 | `kin.py` | Full FK (`fk_T`) and IK with a fixed approach tilt (`ik_down`). |
 | `task.py` | `grasp_plan` (FK-solved wrist roll + jaw offset), `pick` (wrist-camera servo), `place`, `pick_robust`, `push`. |
 | `vision.py` | Top-camera cube detection (arm mask at the look pose) and pixel -> base_link maps. |
