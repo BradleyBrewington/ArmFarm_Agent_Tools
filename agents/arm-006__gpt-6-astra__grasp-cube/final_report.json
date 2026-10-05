@@ -1,8 +1,10 @@
 {
-  "successful_episodes": 38,
-  "clean_successful_episodes": 31,
-  "unsuccessful_episodes": 10,
-  "added_this_run": 8,
+  "successful_episodes": 51,
+  "clean_successful_episodes": 43,
+  "unsuccessful_episodes": 11,
+  "added_this_run": 13,
+  "this_run_elapsed_minutes": 13.456756238142649,
+  "this_run_successes_per_hour": 57.96344870906709,
   "recording": false,
   "fault_bits": [
     0,
@@ -20,9 +22,9 @@
     1,
     0
   ],
-  "next_grid_index": 29,
-  "stop_reason": "Temperature guard observed71C versus60C threshold; subsequent20reads50C; unresolved intermittent reading",
-  "final_cube": "Visually confirmed ontable",
-  "final_arm": "Fourjoint home maximum error1.275deg",
-  "final_gripper": "Open torqueoff"
+  "next_grid_index": 41,
+  "stop_reason": "Temperature guard observed62C. Idle torqueoff trace1783samples ranged47\u201365C with abrupt spikes; unresolved temperature feedback discrepancy.",
+  "final_cube": "Visually on table",
+  "final_arm": "Home maxerror1.10deg",
+  "coverage": "Grid0\u201340 completed with some earlier position corrections;41\u201344 remain"
 }

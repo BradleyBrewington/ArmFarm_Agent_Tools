@@ -1,9 +1,11 @@
-Collection stopped after another temperature guard trip.
+Collection paused for inconsistent temperature feedback.
 
-38 successful episodes cumulatively, 31 without recording quality flags; 10 unsuccessful episodes. This resumed run added eight successes (seven clean recordings) and one unsuccessful episode. Full-workspace coverage remains incomplete. The earlier full-run rate was 34.4/hour; no sustained one-hour run at the target rate has been established.
+51 cumulative successful episodes; 43 recordings without quality flags; 11 unsuccessful episodes. This run added 13 successes. Elapsed 13.5 minutes including alignment, recovery and temperature diagnosis; equivalent rate 58.0 successes/hour over this interval, not a sustained one-hour validation.
 
-The guard captured gripper temperature71C against a60C threshold during episode20261005T113703-f2c29c00. Twenty readings after release were50C with no faults. This discrepancy remains unresolved; safeguards were not relaxed. Detailed guard diagnostics were added to calibrate_workspace.py.
+Coverage: planned grid indices0–40 completed, with some earlier corrected pickup positions. Indices41–44 remain. Entire-workspace coverage is not complete.
 
-Cube placed on tabletop and visually confirmed. Arm home within1.275deg; gripper open and torque disabled for cooling. Recording stopped; all motor fault bits zero.
+Temperature guard captured62C against the unchanged60C threshold. Subsequent idle trace with gripper torque disabled contained1783 readings ranging47–65C, with abrupt spikes and zero motor fault bits. Physical heating versus temperature feedback error remains unresolved. Further collection should wait for diagnosis. Trace: temperature_idle_trace.json.
 
-Coverage now includes grid indices0–28, with some corrected pickup positions and initial exploratory positions. Index29 failed; indices30–44 remain uncollected. Logs: initial_results.json, collection_log.jsonl, temperature_after_stop.json.
+Cube visually confirmed on table, arm home within1.10deg, gripper open with torque off. Recorder inactive; all motor fault bits zero.
+
+The empty-hand camera check was updated to a higher image region after a cube on the table triggered the lower region; saved evidence distinguishes held images (dark fraction at least0.54) from released images (0.0). The check additionally requires open jaws. Held-object checks remain unchanged.
