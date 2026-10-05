@@ -1,1 +1,15 @@
 [grip] Adaptive grasp: effort 198/1000, output ceiling 220/1000, stable hold 5.0s
+{"event": "stopped", "error": "Could not establish a stable grip within 35 seconds", "time": 1791238677.891666}
+{"event": "episode", "success": false, "receipt": {"episode": "20261005T171718-0f773439", "folder": "/var/lib/armfarm/stations/armfarm/episodes/completed/20261005T171718-0f773439", "frames": 338, "quality_flags": ["control_settings_changed"], "training_ready": false, "success": false, "notes": "Could not establish a stable grip within 35 seconds", "coverage_pending": true}, "evidence": {"error": "Could not establish a stable grip within 35 seconds"}, "time": 1791238678.1623209}
+Traceback (most recent call last):
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/cube_cycles.py", line 82, in <module>
+    if __name__=='__main__':run(int(sys.argv[1]) if len(sys.argv)>1 else 1)
+                            ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/cube_cycles.py", line 61, in run
+    contact=grip(b)
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/cube_cycles.py", line 34, in grip
+    g.acquire()
+    ~~~~~~~~~^^
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/calibrate_workspace.py", line 1570, in acquire
+    raise CalibrationRetry('Could not establish a stable grip within 35 seconds')
+calibrate_workspace.CalibrationRetry: Could not establish a stable grip within 35 seconds
