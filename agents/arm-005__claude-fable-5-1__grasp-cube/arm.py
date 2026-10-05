@@ -85,19 +85,12 @@ def fk_xyz(joints):
 
 
 def tool_axis(joints):
-    """Unit vector from the wrist_roll joint toward the fingertip (approach direction)."""
-    T = np.eye(4)
-    wrist = None
-    for name, fixed, axis in _STEPS:
-        T = T @ fixed
-        if name == "wrist_roll":
-            wrist = T[:3, 3].copy()
-        if axis is not None:
-            moving = np.eye(4)
-            moving[:3, :3] = _rot(axis, math.radians(float(joints[name])))
-            T = T @ moving
-    v = T[:3, 3] - wrist
-    return v / np.linalg.norm(v)
+    """Approach direction: the wrist-roll axis pointing from wrist toward fingertip.
+
+    gripper_frame_link is gripper_link flipped by pi about y, and the fingertip sits
+    at -z of gripper_link, so +z of gripper_frame_link points wrist -> tip.
+    """
+    return fk_T(joints)[:3, 2]
 
 
 def ik_topdown(x, y, z, wrist_roll=0.0, pitch_deg=0.0, seed=None, bounds=None):
