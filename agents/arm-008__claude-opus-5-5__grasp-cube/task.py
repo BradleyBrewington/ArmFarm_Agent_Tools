@@ -9,7 +9,7 @@ import time
 
 import numpy as np
 
-from kin import ik_down
+from kin import fk_T, ik_down
 import vision
 
 HOVER_Z = 0.07
@@ -20,10 +20,49 @@ GRIP_EMPTY = 12.0      # gripper % at/below which the jaws closed on nothing
 JAW_OFFSET = 0.026     # FK tip is on the fixed jaw; cube centre sits this far toward the moving jaw
 
 
+PITCH = 20.0           # fixed outward approach tilt: reaches x 0.14-0.32 at every height used
+
+
+def plan(x, y, z, roll, pitch=None):
+    """Tip at (x, y, z), approach tilted `pitch` from vertical (fixed PITCH by default)."""
+    for p in ((PITCH, 0, 30, 40, -15) if pitch is None else (pitch,)):
+        q, pe, ae = ik_down(x, y, z, pitch=p, roll=roll)
+        if pe < 0.002 and ae < 1.0:
+            return {**q, "wrist_roll": roll}
+    raise ValueError(f"unreachable ({x:.3f}, {y:.3f}, {z:.3f})")
+
+
+def closing_axis(q):
+    """Horizontal unit vector from the moving jaw toward the fixed jaw (gripper_link +y)."""
+    T = fk_T(q)
+    v = np.array([T[0, 1], T[1, 1]])
+    return v / np.linalg.norm(v)
+
+
+def grasp_plan(cx, cy, z, yaw, roll_hint=None):
+    """Joints that put the cube centre (cx, cy) between the jaws with the closing axis parallel
+    to a cube face (cube yaw `yaw` deg, 90-deg symmetric). Returns (joints, roll)."""
+    roll = 0.0 if roll_hint is None else roll_hint
+    tx, ty = cx, cy
+    for _ in range(4):
+        q = plan(tx, ty, z, roll)
+        u = closing_axis(q)
+        ang = math.degrees(math.atan2(u[1], u[0]))
+        if roll_hint is None:
+            d = (yaw - ang) % 90.0
+            d = d - 90.0 if d >= 45 else d
+            roll = roll + d
+            roll = roll - 90.0 if roll > 60 else roll + 90.0 if roll < -60 else roll
+        tx, ty = cx + JAW_OFFSET * u[0], cy + JAW_OFFSET * u[1]
+    q = plan(tx, ty, z, roll)
+    return q, roll
+
+
 def jaw_target(x, y, roll):
-    """Tip XY that puts the cube centre (x, y) between the jaws."""
-    r = math.radians(roll)
-    return x - JAW_OFFSET * math.sin(r), y + JAW_OFFSET * math.cos(r)
+    """Tip XY that puts the cube centre (x, y) between the jaws, for a given roll."""
+    q = plan(x, y, GRASP_Z, roll)
+    u = closing_axis(q)
+    return x + JAW_OFFSET * u[0], y + JAW_OFFSET * u[1]
 
 
 def go_look(arm, seconds=1.2):
@@ -65,12 +104,12 @@ def wrist_yaw_error():
     return None if d is None else wrist.fold90(d["angle"])
 
 
-def pick(arm, x, y, roll, fast=1.0, yaw_fix=True):
+def pick(arm, x, y, yaw, fast=1.0, yaw_fix=True):
     """Open above the cube, square the jaws to it with the wrist camera, descend, close, lift.
-    Returns (gripper % after lifting, roll used)."""
+    yaw: cube face angle in base_link degrees. Returns gripper % after lifting."""
+    _, roll = grasp_plan(x, y, GRASP_Z, yaw)
     for i in range(3 if yaw_fix else 1):
-        tx, ty = jaw_target(x, y, roll)
-        above = plan(tx, ty, HOVER_Z, roll)
+        above, _ = grasp_plan(x, y, HOVER_Z, yaw, roll_hint=roll)
         arm.move({**above, "gripper": OPEN}, (1.3 if i == 0 else 0.4) * fast)
         arm.wait(above, tol=2.5, timeout=0.8)
         if not yaw_fix:
@@ -79,8 +118,8 @@ def pick(arm, x, y, roll, fast=1.0, yaw_fix=True):
         err = wrist_yaw_error()
         if err is None or abs(err) < 5:
             break
-        roll = max(-85.0, min(85.0, roll - 1.3 * err))
-    down = plan(tx, ty, GRASP_Z, roll)
+        roll = max(-90.0, min(90.0, roll - 1.3 * err))
+    down, _ = grasp_plan(x, y, GRASP_Z, yaw, roll_hint=roll)
     arm.move(down, 0.6 * fast)
     arm.wait(down, tol=3, timeout=0.6)
     arm.hold()                       # torque-capped close; jaws need ~0.5 s to reach the cube
@@ -96,20 +135,27 @@ def pick(arm, x, y, roll, fast=1.0, yaw_fix=True):
     return arm.gripper_pos()
 
 
-def place(arm, x, y, roll, fast=1.0, z=None):
-    x, y = jaw_target(x, y, roll)
-    above = plan(x, y, HOVER_Z, roll)
-    down = plan(x, y, GRASP_Z + 0.004 if z is None else z, roll)
+def place(arm, x, y, yaw=None, fast=1.0, z=None):
+    """Lower the held cube so its centre lands at (x, y), open, retreat. Returns the cube
+    centre implied by the measured tip (fixed jaw) and closing axis."""
+    roll = arm.joints()["wrist_roll"] if yaw is None else None
+    if yaw is None:
+        q, _ = grasp_plan(x, y, GRASP_Z, 0.0, roll_hint=roll)
+    else:
+        q, roll = grasp_plan(x, y, GRASP_Z, yaw)
+    above, _ = grasp_plan(x, y, HOVER_Z, 0.0, roll_hint=roll)
+    down, _ = grasp_plan(x, y, GRASP_Z + 0.004 if z is None else z, 0.0, roll_hint=roll)
     arm.move(above, 1.3 * fast)
     arm.wait(above, tol=4, timeout=0.6)
     arm.move(down, 0.6 * fast)
     arm.wait(down, tol=3, timeout=0.6)
     j = arm.joints()
-    tip = arm.tip(j)
+    t = fk_T(j)
+    u = closing_axis(j)
     arm.move({"gripper": OPEN}, 0.3)
-    time.sleep(0.15)
+    time.sleep(0.2)
     arm.move(above, 0.5 * fast)
-    return tip
+    return float(t[0, 3] - JAW_OFFSET * u[0]), float(t[1, 3] - JAW_OFFSET * u[1])
 
 
 def _rot(v, roll):
@@ -216,7 +262,7 @@ def pick_robust(arm, attempts=6, log=print):
         x, y, yaw = p
         ox, oy = RETRY_OFFSETS[i % len(RETRY_OFFSETS)]
         try:
-            g = pick(arm, x + ox, y + oy, roll_for(yaw))
+            g = pick(arm, x + ox, y + oy, yaw)
         except ValueError as e:
             log(f"unreachable cube estimate {x:.3f},{y:.3f}: {e}")
             return False, {"reason": "unreachable", "x": x, "y": y}

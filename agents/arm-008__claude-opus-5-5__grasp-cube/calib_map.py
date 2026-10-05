@@ -42,11 +42,9 @@ def main():
             if a.gripper_pos() < task.GRIP_EMPTY:
                 print("not holding the cube; stopping"); return 1
             try:
-                tip = task.place(a, x, y, 0.0)
+                cx, cy = task.place(a, x, y, 0.0)
             except ValueError as e:
                 print("skip", x, y, e); continue
-            # cube centre = measured fixed-jaw tip minus the jaw offset (roll 0 -> +y)
-            cx, cy = tip["x"], tip["y"] - task.JAW_OFFSET
             task.go_look(a)
             time.sleep(0.3)
             d = detect()
