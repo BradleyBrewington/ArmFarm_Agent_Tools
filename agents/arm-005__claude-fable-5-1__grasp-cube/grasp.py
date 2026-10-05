@@ -92,7 +92,13 @@ class Grasper:
         r = radial(cx, cy)
         fx, fy = np.array([cx, cy]) - GRASP_BACK * r
         self.arm.gripper(OPEN, seconds=0.5, settle=0.1)
-        self.arm.goto_xyz(fx, fy, Z_HOVER, seconds=1.2, settle=0.1)
+        for zh in (Z_HOVER, 0.055, Z_GRASP + 0.02):   # far targets cannot hover high at full reach
+            try:
+                self.arm.goto_xyz(fx, fy, zh, seconds=1.2, settle=0.1)
+                break
+            except ValueError:
+                if zh == Z_GRASP + 0.02:
+                    raise
         self.arm.goto_xyz(fx, fy, Z_GRASP + 0.02, seconds=0.6, settle=0.1)
         self.arm.goto_xyz(fx, fy, Z_GRASP, seconds=0.5, settle=0.2)
         if snapshots:

@@ -877,3 +877,17 @@ episode error: ValueError('unreachable top-down pose (0.369,-0.062,0.090): pos e
 {"t": 1791222764.8668547, "event": "place", "target": [0.1536, 0.1638], "frame": [0.14212372750008676, 0.14742028188558165]}
 ep 238 success=False 9.6s (+reset 6.2s) rate=234/238 notes={'error': "ValueError('unreachable top-down pose (0.369,-0.062,0.090): pos err 2.0 mm, axis err 0.089')", 'episode': '20261005T125231-bc5ac26a'}
 {"t": 1791222772.7333045, "event": "grasp", "target": [0.15260107490563293, 0.1624769064576026], "frame": [0.1382618145952606, 0.14199800005493346], "grip_closed": 23.204419889502763, "grip_lifted": 23.066298342541437, "held": true}
+{"t": 1791222779.6307368, "event": "place", "target": [0.188, 0.213], "frame": [0.1765274136502566, 0.19661769981439747]}
+ep 239 success=True 8.4s (+reset 6.4s) rate=235/239 notes={'grip_home': 23.0, 'spot_dark_fraction': 0.0, 'cube_px': [921, 209], 'cube_xy': [0.1526, 0.1625], 'attempts': 1, 'episode': '20261005T125246-52b00174'}
+{"t": 1791222787.6260624, "event": "grasp", "target": [0.18420092366011262, 0.21052070048967797], "frame": [0.16999575264576883, 0.18994855642136965], "grip_closed": 23.34254143646409, "grip_lifted": 22.997237569060776, "held": true}
+{"t": 1791222794.3215494, "event": "place", "target": [0.2388, 0.0], "frame": [0.21880000010001766, 0.0]}
+ep 240 success=True 8.5s (+reset 6.2s) rate=236/240 notes={'grip_home': 23.0, 'spot_dark_fraction': 0.0, 'cube_px': [985, 255], 'cube_xy': [0.1842, 0.2105], 'attempts': 1, 'episode': '20261005T125301-c3f74121'}
+{"t": 1791222802.1669242, "event": "grasp", "target": [0.24224903666879066, -0.0034040823798848763], "frame": [0.2172525367137207, -0.002985771667691455], "grip_closed": 23.273480662983424, "grip_lifted": 23.066298342541437, "held": true}
+{"t": 1791222808.8553493, "event": "place", "target": [0.2317, -0.1253], "frame": [0.21492866240455263, -0.11440402680889995]}
+ep 241 success=True 8.3s (+reset 6.2s) rate=237/241 notes={'grip_home': 23.1, 'spot_dark_fraction': 0.0, 'cube_px': [663, 321], 'cube_xy': [0.2422, -0.0034], 'attempts': 1, 'episode': '20261005T125316-0d1eeb8b'}
+stop file seen; exiting at home
+55 coverage targets; map affine n=80
+{"t": 1791222822.977184, "event": "place", "target": [0.25, 0.0], "frame": [0.2300000000947128, 0.0]}
+{"t": 1791222831.5346224, "event": "grasp", "target": [0.23036993696651475, -0.12666612581516118], "frame": [0.2095173872001438, -0.11287586973351145], "grip_closed": 23.1353591160221, "grip_lifted": 23.1353591160221, "held": true}
+{"t": 1791222838.4010663, "event": "place", "target": [0.2569, 0.1416], "frame": [0.24012613645447567, 0.1307079157789122]}
+ep 242 success=True 8.3s (+reset 6.4s) rate=238/242 notes={'grip_home': 23.1, 'spot_dark_fraction': 0.0, 'cube_px': [470, 299], 'cube_xy': [0.2304, -0.1267], 'attempts': 1, 'episode': '20261005T125345-4422ce7d'}
