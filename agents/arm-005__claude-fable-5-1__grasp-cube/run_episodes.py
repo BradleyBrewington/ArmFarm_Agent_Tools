@@ -31,6 +31,7 @@ import vision as V  # noqa: E402
 TASK = "Start episode, pickup the black cube, bring black cube to home position, confirm successful grasp, stop episode"
 STATE = HERE / "episode_state.json"
 STATS = HERE / "episode_stats.jsonl"
+STOP_FILE = HERE / "STOP"      # touch to make the loop exit cleanly between episodes
 
 # Top-image region where a placed cube is fully visible and detectable.
 IMG_U = (200, 1100)
@@ -118,10 +119,18 @@ def main():
     with G.Grasper() as g:
         targets = coverage_targets(g.map, g.arm.bounds)
         print(f"{len(targets)} coverage targets; map {g.map.kind} n={len(g.map.points)}", flush=True)
+        if g.arm.read()["gripper"] > G.HELD_MIN:
+            # a previous run was stopped while holding the cube: set it down safely first
+            g.home()
+            g.place(0.25, 0.0)
         g.arm.gripper(G.OPEN, seconds=0.6, settle=0.1)
         g.home()
         consecutive_failures = 0
         for ep in range(a.episodes):
+            if STOP_FILE.exists():
+                STOP_FILE.unlink()
+                print("stop file seen; exiting at home", flush=True)
+                break
             t0 = time.time()
             # ---- locate the cube from home (arm parked out of the detection region)
             cube, img = g.see_cube(retries=5)

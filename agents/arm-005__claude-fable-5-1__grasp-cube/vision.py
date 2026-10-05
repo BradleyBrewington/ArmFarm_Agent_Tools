@@ -26,7 +26,7 @@ D = np.array(_cal["dist_coeffs"], dtype=np.float64)
 # Regions of the raw 1280x720 top image that can never hold the cube:
 # the robot's own parking area at the top centre, the neighbouring station's arm at the
 # top right, and the clamp at the bottom-left table edge.
-EXCLUDE = [(1150, 0, 1280, 720), (0, 0, 110, 720)]
+EXCLUDE = [(1080, 0, 1280, 720), (0, 0, 260, 720), (0, 0, 1280, 120)]  # outside the arm's reach / clutter at the table edges
 # The parked arm hangs into the top-centre of the image; instead of a fixed box, any dark
 # component that touches the top image border within this u-range is treated as the arm.
 ARM_TOP_U = (380, 950)
