@@ -1,0 +1,1 @@
+{"n": 0, "t": 1791219058.882435, "error": "ConnectionError(\"Failed to sync read 'Present_Position' on ids=[1, 2, 3, 4, 5, 6] after 1 tries. [TxRxResult] There is no status packet!\")"}
