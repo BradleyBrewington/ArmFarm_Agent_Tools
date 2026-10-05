@@ -1317,7 +1317,7 @@ def command_goal(bus, target):
     if "gripper" in target and fault_bits(bus, "gripper"):
         relieve_gripper_overload(bus)
     grip = getattr(bus, 'adaptive_grip', None)
-    if grip and 'gripper' in target:
+    if isinstance(grip, AdaptiveGrip) and 'gripper' in target:
         if target['gripper'] > CLOSED_GRIPPER + .1:
             grip.release()
         elif grip.active:
@@ -1345,7 +1345,7 @@ def relieve_gripper_overload(bus):
     started = time.monotonic()
     try:
         grip = getattr(bus, 'adaptive_grip', None)
-        if grip and grip.active:
+        if isinstance(grip, AdaptiveGrip) and grip.active:
             grip.recover()
             return grip.verify_hold()
         return recover_gripper_contact(bus)
@@ -1405,7 +1405,8 @@ class GripperOverloadRetry(RuntimeError):
 class AdaptiveGrip:
     """Position-mode grip using drive effort as a proxy, never as measured jaw force.
 
-    Pilot only: ARMFARM_ADAPTIVE_GRIP=1. No EEPROM or protection writes.
+    Enabled by default; ARMFARM_ADAPTIVE_GRIP=0 is an explicit rollback.
+    No EEPROM or protection writes.
     The volatile output ceiling also limits effort while image processing blocks.
     """
     def __init__(self, bus):
@@ -1450,7 +1451,7 @@ class AdaptiveGrip:
         if not self.c.range_min <= sample['position'] <= self.c.range_max:
             raise RuntimeError('gripper: feedback outside calibrated range')
         if sample['temperature'] >= self.temp_limit:
-            raise RuntimeError(f'gripper: temperature margin exhausted; sample={sample}; limit={self.temp_limit}')
+            raise RuntimeError('gripper: temperature margin exhausted')
         if self.current_limit and sample['current'] >= self.current_limit * .8:
             raise RuntimeError('gripper: current margin exhausted')
         if sample['fault'] & ~OVERLOAD:
@@ -1606,7 +1607,7 @@ class AdaptiveGrip:
 
 def monitor_adaptive_grip(bus):
     grip = getattr(bus, 'adaptive_grip', None)
-    if grip and grip.active:
+    if isinstance(grip, AdaptiveGrip) and grip.active:
         grip.tick()
         if grip.recovery_pending:
             started = time.monotonic()
@@ -1614,6 +1615,10 @@ def monitor_adaptive_grip(bus):
                 grip.verify_hold()
             finally:
                 bus.recovery_seconds = getattr(bus, 'recovery_seconds', 0.) + time.monotonic() - started
+
+
+def adaptive_grip_enabled():
+    return os.environ.get('ARMFARM_ADAPTIVE_GRIP', '1') != '0'
 
 
 def _relieve_gripper_overload(bus):
@@ -1781,7 +1786,7 @@ def move(bus, target, seconds):
         fraction = min((time.monotonic() - started - (getattr(bus, "recovery_seconds", 0.) - recovered)) / seconds, 1.)
         alpha = fraction * fraction * (3 - 2 * fraction)
         command = dict(target) if fraction == 1 else {j: start[j] + alpha * (target[j] - start[j]) for j in target}
-        if getattr(bus, 'adaptive_grip', None) and bus.adaptive_grip.active and target.get('gripper') == CLOSED_GRIPPER:
+        if isinstance(getattr(bus, 'adaptive_grip', None), AdaptiveGrip) and bus.adaptive_grip.active and target.get('gripper') == CLOSED_GRIPPER:
             command['gripper'] = CLOSED_GRIPPER
         goal = command_goal(bus, command)
         if fraction == 1:
@@ -2476,7 +2481,7 @@ def return_to_pose_one(bus, args, retry=False):
         # Retain the current grip during the return; open only at pose 1.
         current = bus.sync_read("Present_Position", list(JOINTS))
         returning = {**POSES[0], "gripper": current["gripper"]}
-        if getattr(bus, 'adaptive_grip', None) and bus.adaptive_grip.active:
+        if isinstance(getattr(bus, 'adaptive_grip', None), AdaptiveGrip) and bus.adaptive_grip.active:
             returning['gripper'] = CLOSED_GRIPPER
         move(bus, returning, args.duration)
         settle(bus, returning, 2)
@@ -2494,7 +2499,7 @@ def run_attempt(bus, reader, args, output, times, values, report):
         wait_for_board(reader, tuple(args.pattern), "top",
                        check_pose=lambda: verify_board_pose(bus, {**POSES[0], "gripper": args.gripper_open}))
         calibration_notice(bus, "closing_gripper", "Checkerboard detected; closing and checking the grip.")
-        if os.environ.get('ARMFARM_ADAPTIVE_GRIP') == '1':
+        if adaptive_grip_enabled():
             bus.adaptive_grip = AdaptiveGrip(bus)
             report['adaptive_grip'] = bus.adaptive_grip.acquire()
         else:
