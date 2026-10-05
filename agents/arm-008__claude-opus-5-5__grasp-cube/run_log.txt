@@ -65,3 +65,7 @@
 [65] OK  15.5s tries=1 flags=camera_error start=(0.19, -0.054) success 65/65 ~179/h
 [66] OK  16.2s tries=1 start=(0.26, -0.134) success 66/66 ~179/h
 [67] OK  12.5s tries=1 start=(0.3, 0.014) success 67/67 ~179/h
+[68] OK  13.2s tries=1 flags=feedback_gap,queue_overflow start=(0.189, 0.098) success 68/68 ~179/h
+[69] OK  14.3s tries=1 start=(0.186, 0.042) success 69/69 ~179/h
+[70] OK  12.2s tries=1 start=(0.177, 0.04) success 70/70 ~179/h
+[71] OK  19.3s tries=1 start=(0.259, 0.002) success 71/71 ~179/h
