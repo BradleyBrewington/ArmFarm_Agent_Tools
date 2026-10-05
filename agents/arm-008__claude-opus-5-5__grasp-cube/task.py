@@ -36,10 +36,13 @@ def plan(x, y, z, roll, pitch=None):
     raise ValueError(f"unreachable ({x:.3f}, {y:.3f}, {z:.3f})")
 
 
-def wrap45(roll):
-    """Equivalent wrist roll for a 90-degree-symmetric cube, kept in [-45, 45): the wrist-servo
-    target pixel was calibrated near roll 0 and drifts at large rolls with the tilted approach."""
-    return (roll + 45.0) % 90.0 - 45.0
+ROLL_MIN, ROLL_MAX = -65.0, 25.0   # grasps at roll > ~25 deg all failed (logged rolls 27..42);
+                                   # -53..24 succeeded. The cube is 90-deg symmetric, so stay inside.
+
+
+def wrap_roll(roll):
+    """Equivalent wrist roll for a 90-degree-symmetric cube inside [ROLL_MIN, ROLL_MAX)."""
+    return (roll - ROLL_MIN) % 90.0 + ROLL_MIN
 
 
 def closing_axis(q):
@@ -61,7 +64,7 @@ def grasp_plan(cx, cy, z, yaw, roll_hint=None):
         if roll_hint is None:
             d = (yaw - ang) % 90.0
             d = d - 90.0 if d >= 45 else d
-            roll = wrap45(roll + d)
+            roll = wrap_roll(roll + d)
         tx, ty = cx + JAW_OFFSET * u[0], cy + JAW_OFFSET * u[1]
     q = plan(tx, ty, z, roll)
     return q, roll
@@ -144,8 +147,8 @@ def pick(arm, x, y, yaw, fast=1.0, servo=True, record=None):
         x, y = np.array([x, y]) + du * u + dw * w
         if abs(yaw_err) >= 5:
             r = roll - yaw_err
-            # hysteresis: only take the 90-degree-equivalent roll well past +-45 to avoid flip-flopping
-            roll = r - 90.0 if r > 60 else r + 90.0 if r < -60 else r
+            # small margin past the window before switching to the 90-degree equivalent (no flip-flop)
+            roll = r - 90.0 if r > ROLL_MAX + 3 else r + 90.0 if r < ROLL_MIN - 3 else r
     if record is not None:
         record.update({"servo_px": seen, "x": float(x), "y": float(y), "roll": float(roll), "trace": trace})
     down, _ = grasp_plan(x, y, GRASP_Z, yaw, roll_hint=roll)
