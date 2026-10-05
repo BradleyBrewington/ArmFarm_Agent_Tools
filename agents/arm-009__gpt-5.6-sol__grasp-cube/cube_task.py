@@ -105,7 +105,7 @@ def run_once(place_xyz=None):
         # Station alignment measured from low-height top-camera probes: the
         # Current cube alignment from low-height top-camera probes.
         # than the home tool projection.
-        pick_xy = start_T[:2, 3] + np.array([.125, .000])
+        pick_xy = start_T[:2, 3] + np.array([.165, .010])
         approach = pose_ik(np.r_[pick_xy, .080], reference, bus.calibration)
         grasp = pose_ik(np.r_[pick_xy, .020], reference, bus.calibration)
         cube_before = find_cube()
