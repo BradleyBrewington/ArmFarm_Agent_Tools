@@ -27,6 +27,23 @@ ALL = cw.JOINTS
 GRIP_TORQUE = 230      # gripper Torque_Limit (of 1000); Overload_Torque is 25%
 
 
+def _retry_bus(bus, tries=4):
+    """Retry sync reads/writes on transient 'no status packet' errors (the recorder shares
+    the serial relay and an occasional reply is lost)."""
+    for name in ("sync_read", "sync_write"):
+        fn = getattr(bus, name)
+
+        def wrapped(*a, _fn=fn, **k):
+            for i in range(tries):
+                try:
+                    return _fn(*a, **k)
+                except ConnectionError:
+                    if i == tries - 1:
+                        raise
+                    time.sleep(0.01)
+        setattr(bus, name, wrapped)
+
+
 class Arm:
     def __init__(self, port=None):
         self.port = port or os.environ.get("ARMFARM_SERIAL_PORT", "auto")
@@ -43,6 +60,7 @@ class Arm:
         # handshake=False and the exported calibration file: a motor reporting overload
         # (e.g. the gripper squeezing the cube) must not stop us from connecting.
         self.bus.connect(handshake=False)
+        _retry_bus(self.bus)
         cal = json.loads(Path(os.environ.get("ARMFARM_MOTOR_CALIBRATION",
                                              HERE.parent / "config/motors/arm-008.json")).read_text())
         self.bus.calibration = {j: MotorCalibration(**cal[j]) for j in ALL}
