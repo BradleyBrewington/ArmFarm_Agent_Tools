@@ -35,7 +35,7 @@ def verify(b,g,tag,held):
 
 def run(points):
  with c.connected_bus(recording.serial_port()) as b:
-  g=c.AdaptiveGrip(b);b.adaptive_grip=g
+  g=c.AdaptiveGrip(b);g.effort=min(g.effort,150);b.adaptive_grip=g
   def go(t,seconds):
    c.preflight(b,[t]);c.enable_at_current_position(b,list(t));c.move(b,t,seconds);r=c.settle(b,t,.25)
    if r['physical_stops']:raise RuntimeError('Physical stop discovered '+str(r))

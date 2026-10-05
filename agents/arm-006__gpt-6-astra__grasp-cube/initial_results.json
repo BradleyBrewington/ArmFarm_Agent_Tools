@@ -116,6 +116,14 @@
       "quality_flags": [],
       "x": 0.1855,
       "pan": 14
+    },
+    {
+      "episode": "20261005T145525-352afaaf",
+      "quality_flags": [
+        "camera_error"
+      ],
+      "x": 0.1855,
+      "pan": -14
     }
   ],
   "unsuccessful": [
