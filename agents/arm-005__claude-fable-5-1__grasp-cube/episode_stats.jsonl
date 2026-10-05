@@ -4,3 +4,18 @@
 {"t": 1791216027.87038, "event": "map_outlier", "err": 0.1954, "px": [491.4532775878906, 267.5368347167969], "xy": [0.2066, -0.1089]}
 {"t": 1791216027.875096, "event": "episode", "success": true, "seconds": 8.3, "total": 14.6, "notes": {"grip_home": 23.0, "spot_dark_fraction": 0.0, "cube_px": [733, 368], "cube_xy": [0.2635, 0.0445], "attempts": 1, "episode": "20261005T110013-ed601dab"}, "map_n": 7, "map_resid": 0.002}
 {"t": 1791216064.6130264, "event": "episode", "success": false, "seconds": 34.2, "total": 36.7, "notes": {"grip_home": 69.6, "spot_dark_fraction": 0.99, "cube_px": [491, 268], "cube_xy": [0.1524, -0.2965], "attempts": 3, "episode": "20261005T110027-e7325284"}, "map_n": 7, "map_resid": 0.002}
+{"t": 1791216269.4058986, "event": "episode", "success": true, "seconds": 8.5, "total": 14.7, "notes": {"grip_home": 23.0, "spot_dark_fraction": 0.0, "cube_px": [491, 268], "cube_xy": [0.2015, -0.1126], "attempts": 1, "episode": "20261005T110414-8f5b599c"}, "map_n": 11, "map_resid": 0.0041}
+{"t": 1791216284.4192014, "event": "episode", "success": true, "seconds": 8.3, "total": 15.0, "notes": {"grip_home": 23.0, "spot_dark_fraction": 0.0, "cube_px": [788, 275], "cube_xy": [0.1943, 0.0631], "attempts": 1, "episode": "20261005T110429-c0b7d965"}, "map_n": 12, "map_resid": 0.005}
+{"t": 1791216300.0380323, "event": "episode", "success": true, "seconds": 8.8, "total": 15.6, "notes": {"grip_home": 23.0, "spot_dark_fraction": 0.0, "cube_px": [671, 442], "cube_xy": [0.3241, 0.0081], "attempts": 1, "episode": "20261005T110444-6811d5de"}, "map_n": 12, "map_resid": 0.005}
+{"t": 1791216300.629295, "event": "no_cube"}
+{"t": 1791216304.217126, "event": "no_cube"}
+{"t": 1791216307.8089006, "event": "no_cube"}
+{"t": 1791216311.391226, "event": "no_cube"}
+{"t": 1791216314.9807856, "event": "no_cube"}
+{"t": 1791216318.5538034, "event": "no_cube"}
+{"t": 1791216322.13548, "event": "no_cube"}
+{"t": 1791216325.723686, "event": "no_cube"}
+{"t": 1791216329.3137438, "event": "no_cube"}
+{"t": 1791216332.9030063, "event": "no_cube"}
+{"t": 1791216336.0455108, "event": "bad_detection", "px": [250.3009796142578, 149.2568359375], "xy": [0.11286382336435381, -0.2810764631468212]}
+{"t": 1791216338.0639148, "event": "bad_detection", "px": [137.5, 680.0], "xy": [0.581385384442881, -0.34399806444952635]}

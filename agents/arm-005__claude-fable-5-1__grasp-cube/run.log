@@ -23,3 +23,23 @@ Traceback (most recent call last):
 RuntimeError: ValueError: an episode is already open
 55 coverage targets; map affine n=10
 {"t": 1791216260.7494078, "event": "grasp", "target": [0.2014981000571171, -0.11263749422049252], "frame": [0.18094476121239433, -0.0984051277266084], "grip_closed": 23.204419889502763, "grip_lifted": 22.997237569060776, "held": true}
+{"t": 1791216267.4555857, "event": "place", "target": [0.1965, 0.0637], "frame": [0.17795629549695482, 0.0562079362923725]}
+ep 6 success=True 8.5s (+reset 6.2s) rate=5/6 notes={'grip_home': 23.0, 'spot_dark_fraction': 0.0, 'cube_px': [491, 268], 'cube_xy': [0.2015, -0.1126], 'attempts': 1, 'episode': '20261005T110414-8f5b599c'}
+{"t": 1791216275.247901, "event": "grasp", "target": [0.1942854922269311, 0.06311937883551255], "frame": [0.17112215200803996, 0.05371407913515773], "grip_closed": 23.34254143646409, "grip_lifted": 22.997237569060776, "held": true}
+{"t": 1791216282.4485688, "event": "place", "target": [0.3238, 0.0], "frame": [0.3038000000701841, 0.0]}
+ep 7 success=True 8.3s (+reset 6.7s) rate=6/7 notes={'grip_home': 23.0, 'spot_dark_fraction': 0.0, 'cube_px': [788, 275], 'cube_xy': [0.1943, 0.0631], 'attempts': 1, 'episode': '20261005T110429-c0b7d965'}
+{"t": 1791216290.8126073, "event": "grasp", "target": [0.32407381931142454, 0.008127770247048194], "frame": [0.29908396253233765, 0.0074156931583808676], "grip_closed": 23.066298342541437, "grip_lifted": 22.997237569060776, "held": true}
+{"t": 1791216297.5110536, "event": "place", "target": [0.1611, -0.1181], "frame": [0.1467149886156193, -0.10420498496708076]}
+ep 8 success=True 8.8s (+reset 6.8s) rate=7/8 notes={'grip_home': 23.0, 'spot_dark_fraction': 0.0, 'cube_px': [671, 442], 'cube_xy': [0.3241, 0.0081], 'attempts': 1, 'episode': '20261005T110444-6811d5de'}
+cube not visible; waiting
+cube not visible; waiting
+cube not visible; waiting
+cube not visible; waiting
+cube not visible; waiting
+cube not visible; waiting
+cube not visible; waiting
+cube not visible; waiting
+cube not visible; waiting
+cube not visible; waiting
+detection maps outside the workspace (0.113,-0.281); ignoring
+detection maps outside the workspace (0.581,-0.344); ignoring
