@@ -104,14 +104,14 @@ def run_once(place_xyz=None):
         # Station alignment measured from low-height top-camera probes: the
         # Current cube alignment from low-height top-camera probes.
         # than the home tool projection.
-        pick_xy = start_T[:2, 3] + np.array([.125, -.020])
+        pick_xy = start_T[:2, 3] + np.array([.116, .010])
         approach = pose_ik(np.r_[pick_xy, .080], reference, bus.calibration)
         grasp = pose_ik(np.r_[pick_xy, .020], reference, bus.calibration)
         cube_before = find_cube()
         episode = recording.start_recording("Pick up black cube, bring it to home, and confirm grasp")
         success = False; notes = ""
         try:
-            cw.move(bus, {"gripper": 65.0}, .5)
+            cw.move(bus, {"gripper": 100.0}, .5)
             cw.move(bus, approach, 1.0)
             cw.move(bus, grasp, .8); cw.settle(bus, grasp, .2)
             cw.move(bus, {"gripper": 0.0}, 2.0); cw.settle(bus, {"gripper": 0.0}, .3)
