@@ -34,7 +34,7 @@ def go_look(arm, seconds=1.2):
 
 def plan(x, y, z, roll):
     """Top-down if reachable, else the smallest outward pitch that is."""
-    for pitch in (0, 10, 20, 30, 40, 50):
+    for pitch in (0, 10, 20, 30, 40, 50, -15, -30):
         q, pe, ae = ik_down(x, y, z, pitch=pitch, roll=roll)
         if pe < 0.002 and ae < 1.0:
             return {**q, "wrist_roll": roll}
