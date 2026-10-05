@@ -160,3 +160,23 @@
 [160] OK  12.5s tries=1 start=(0.207, -0.07) success 160/160 ~178/h
 [161] OK  12.7s tries=1 start=(0.175, 0.068) success 161/161 ~178/h
 [162] OK  20.3s tries=1 start=(0.308, -0.101) success 162/162 ~178/h
+[163] OK  14.6s tries=1 start=(0.243, -0.129) success 163/163 ~178/h
+[164] OK  17.4s tries=1 flags=camera_error start=(0.291, -0.147) success 164/164 ~177/h
+[165] OK  20.2s tries=1 start=(0.247, 0.058) success 165/165 ~177/h
+Traceback (most recent call last):
+  File "/var/lib/armfarm/stations/armfarm/fresh-starts/715a127f-3a10-41c7-896b-9ad6a5c14131/workspace/tools/run_episodes.py", line 172, in main
+    good, info, entry = episode(arm, done)
+                        ~~~~~~~^^^^^^^^^^^
+  File "/var/lib/armfarm/stations/armfarm/fresh-starts/715a127f-3a10-41c7-896b-9ad6a5c14131/workspace/tools/run_episodes.py", line 122, in episode
+    ok, info = task.pick_robust(arm, attempts=PICK_TRIES, log=lambda m: attempts.append(m))
+               ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/lib/armfarm/stations/armfarm/fresh-starts/715a127f-3a10-41c7-896b-9ad6a5c14131/workspace/tools/task.py", line 247, in pick_robust
+    d, p = detect_robot(True)
+           ~~~~~~~~~~~~^^^^^^
+  File "/var/lib/armfarm/stations/armfarm/fresh-starts/715a127f-3a10-41c7-896b-9ad6a5c14131/workspace/tools/task.py", line 213, in detect_robot
+    img, _ = read_frame("top")
+             ~~~~~~~~~~^^^^^^^
+  File "/var/lib/armfarm/stations/armfarm/fresh-starts/715a127f-3a10-41c7-896b-9ad6a5c14131/workspace/tools/camd_client.py", line 69, in read_frame
+    raise CamdError(f"{cam}: JPEG decode failed")
+camd_client.CamdError: top: JPEG decode failed
+done: 165/165 successful in 56.1 min
