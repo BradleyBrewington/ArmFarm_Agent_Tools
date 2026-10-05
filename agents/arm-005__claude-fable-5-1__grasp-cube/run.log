@@ -4169,3 +4169,13 @@ ep 1266 success=True 8.8s (+reset 6.7s) rate=1251/1266 notes={'grip_home': 23.0,
 {"t": 1791239941.1765327, "event": "place", "target": [0.2023, -0.2335], "frame": [0.1908300609048692, -0.21711584624256466]}
 ep 1267 success=True 8.9s (+reset 6.7s) rate=1252/1267 notes={'grip_home': 22.9, 'spot_dark_fraction': 0.0, 'cube_px': [731, 437], 'cube_xy': [0.3211, 0.0551], 'attempts': 1, 'episode': '20261005T173847-e28e9a5e'}
 stop file seen; exiting at home
+52 coverage targets; map affine n=80
+{"t": 1791239956.1773229, "event": "place", "target": [0.25, 0.0], "frame": [0.2300000000947128, 0.0]}
+{"t": 1791239965.6238458, "event": "grasp", "target": [0.19986195651053337, -0.23304742350873817], "frame": [0.1856504385922674, -0.21247966344484154], "grip_closed": 0.4143646408839779, "grip_lifted": null, "held": false, "edge": true, "roll": 82.3}
+{"t": 1791239974.855441, "event": "grasp", "target": [0.18417652862770154, -0.21140062575297194], "frame": [0.1700130898461827, -0.19079972778687126], "grip_closed": 0.3453038674033149, "grip_lifted": null, "held": false, "edge": true, "roll": 125.0}
+{"t": 1791239983.5908444, "event": "grasp", "target": [0.16370095510433486, -0.224019116357583], "frame": [0.1515293097605547, -0.20218219705216497], "grip_closed": 22.997237569060776, "grip_lifted": 22.92817679558011, "held": true, "roll": 45.0}
+{"t": 1791239990.0882602, "event": "place", "target": [0.2352, -0.0382], "frame": [0.21556802908464026, -0.03438087523385445]}
+ep 1268 success=True 27.0s (+reset 6.2s) rate=1253/1268 notes={'grip_home': 22.9, 'spot_dark_fraction': 0.0, 'cube_px': [345, 204], 'cube_xy': [0.1739, -0.2177], 'attempts': 3, 'episode': '20261005T173918-216d98da'}
+{"t": 1791239998.1197186, "event": "grasp", "target": [0.23593734912314399, -0.020137502663851767], "frame": [0.2110668150755495, -0.0175965324006662], "grip_closed": 23.41160220994475, "grip_lifted": 22.85911602209945, "held": true, "roll": 73.7}
+{"t": 1791240004.8441858, "event": "place", "target": [0.2569, -0.1416], "frame": [0.24012613645447567, -0.1307079157789122]}
+ep 1269 success=True 8.3s (+reset 6.4s) rate=1254/1269 notes={'grip_home': 22.9, 'spot_dark_fraction': 0.0, 'cube_px': [621, 312], 'cube_xy': [0.2359, -0.0201], 'attempts': 1, 'episode': '20261005T173952-96fbbf36'}
