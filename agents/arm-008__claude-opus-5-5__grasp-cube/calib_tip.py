@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
-"""Fit table->robot (vision.RIGID_FILE) by touching the table with the closed fingertip.
+"""Fit top-camera pixel -> base_link XY homographies with the closed fingertip as a marker.
+
+python calib_tip.py [Z]: tip at height Z (0.004 = touching the table; 0.02 = cube centroid plane).
 
 With the approach tilted outward the fingertip is the arm silhouette's point farthest from
-the robot base in the top image. Each touch gives (table XY at h=0, FK tip XY).
+the robot base in the top image. Each touch gives (pixel, FK tip XY) at that height.
 """
 import json
 import math
@@ -17,16 +19,17 @@ from camd_client import read_frame
 import task
 import vision
 
-POINTS = [(x, y) for x in (0.17, 0.22, 0.27, 0.31) for y in (-0.15, -0.075, 0.0, 0.075, 0.15)]
+POINTS = [(x, y) for x in (0.17, 0.22, 0.27, 0.31) for y in (-0.15, -0.075, 0.0, 0.075, 0.13)]
+TOUCH_Z = float(sys.argv[1]) if len(sys.argv) > 1 else 0.004   # 0.02: plane of the cube's visible centroid
 BASE_PX = (700.0, -60.0)     # rough image position of the shoulder pan axis
-OUT = vision.HERE / "tip_samples.jsonl"
+OUT = vision.HERE / f"tip_samples_z{int(round(TOUCH_Z * 1000)):02d}.jsonl"
 
 
 def fingertip_px(img):
     m = vision.dark_mask(img)
     n, lab, st, cen = cv2.connectedComponentsWithStats(m)
-    # the arm blob touches the top border; take the largest such component
-    arm = [i for i in range(1, n) if st[i, 1] <= 2]
+    # the arm blob touches the top border; take the largest such component (not a right-edge object)
+    arm = [i for i in range(1, n) if st[i, 1] <= 2 and st[i, 0] + st[i, 2] < m.shape[1] - 2]
     if not arm:
         return None
     i = max(arm, key=lambda k: st[k, 4])
@@ -42,20 +45,19 @@ def main():
         for x, y in POINTS:
             q = task.plan(x, y, 0.04, 0.0, pitch=35)
             a.move({**q, "gripper": 0.0}, 1.0); a.wait(q, tol=2, timeout=1)
-            q = task.plan(x, y, 0.004, 0.0, pitch=35)
+            q = task.plan(x, y, TOUCH_Z, 0.0, pitch=35)
             a.move(q, 0.6); a.wait(q, tol=1.5, timeout=1); time.sleep(0.35)
             t = a.tip()
             px = fingertip_px(read_frame("top")[0])
             q = task.plan(x, y, 0.04, 0.0, pitch=35); a.move(q, 0.4)
             if px is None:
                 continue
-            tx, ty = vision.px_to_table(px, h=0.0)
-            s = {"u": px[0], "v": px[1], "tx": tx, "ty": ty, "x": t["x"], "y": t["y"], "z": t["z"]}
+            s = {"u": px[0], "v": px[1], "x": t["x"], "y": t["y"], "z": t["z"]}
             samples.append(s)
             print(json.dumps(s), flush=True)
         task.go_look(a)
     OUT.write_text("".join(json.dumps(s) + "\n" for s in samples))
-    R, b, err = vision.fit_rigid([(s["tx"], s["ty"]) for s in samples], [(s["x"], s["y"]) for s in samples])
+    H, err = vision.fit_plane_map([(s["u"], s["v"], s["x"], s["y"]) for s in samples], TOUCH_Z)
     print("rms mm", 1000 * np.sqrt((err ** 2).mean()), "max mm", 1000 * err.max())
     print("per point mm", np.round(1000 * err, 1).tolist())
 
