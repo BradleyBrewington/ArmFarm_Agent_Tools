@@ -1,9 +1,9 @@
 {
-  "successful_episodes": 14,
-  "clean_successful_episodes": 9,
-  "elapsed_minutes": 28.04465121825536,
-  "overall_successes_per_hour": 29.952235548576716,
-  "automated_cycle_seconds_mean": 33.71761080196926,
-  "automated_cycles": 7,
-  "last_evidence": "cube_1791216319_held"
+  "successful_episodes": 17,
+  "clean_successful_episodes": 12,
+  "elapsed_minutes": 29.38842228651047,
+  "overall_successes_per_hour": 34.707545346546084,
+  "automated_cycle_seconds_mean": 33.541598963737485,
+  "automated_cycles": 10,
+  "last_evidence": "cube_1791216418_held"
 }
