@@ -15,3 +15,5 @@ The supplied adaptive gripper controller applies a volatile torque limit and mon
 `coverage_plan.json` contains the nominal grid; `collection_log.jsonl` contains completed automated cycles and recorder results. `initial_results.json` records manually verified cycles and unsuccessful episodes before/around automated collection. `collection_status.py` calculates success count, clean recording count, and rates including setup time. Successful motion and clean recording quality remain separate. Intermittent recorder `camera_error` flags are preserved.
 
 No background service is installed. Never start a second motion client while a collection process is running. On any failure, inspect the current cameras and motor state before recovery. The collection loop stops on its first failure and marks an active episode unsuccessful.
+
+Collection now includes a10-second gripper torque-off rest after placement and home verification, before episode start. Temperature/fault checks remain active during rest. The operator-authorized software temperature guard is65C; hardware protection remains70C. Recurrent stops at65–66C remain unresolved.

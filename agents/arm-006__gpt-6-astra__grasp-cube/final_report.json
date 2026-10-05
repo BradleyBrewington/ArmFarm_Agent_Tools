@@ -1,13 +1,11 @@
 {
-  "successful_episodes": 68,
-  "clean_successful_episodes": 59,
-  "unsuccessful_episodes": 12,
-  "added_operator_resumed_run": 17,
-  "resumed_elapsed_minutes": 13.501768354574839,
-  "resumed_successes_per_hour": 75.54565988790577,
+  "successful_episodes": 70,
+  "clean_successful_episodes": 61,
+  "unsuccessful_episodes": 13,
+  "added_latest_turn": 2,
   "software_guard_C": 65,
   "hardware_limit_C": 70,
-  "stop_temperature_C": 66,
+  "stop_temperature_C": 65,
   "recording": false,
   "fault_bits": [
     0,
@@ -25,8 +23,8 @@
     1,
     0
   ],
-  "coverage": "All45 nominal grid locations sampled, with earlier position corrections; continuous full-workspace coverage not certified",
-  "repeat_pass_next_index": 12,
-  "root_cause": "Temperature spike root cause unconfirmed",
-  "final_state": "Cube on table; arm home maxerror1.275deg; gripper open torqueoff"
+  "repeat_pass_next_index": 14,
+  "coverage": "All45 nominal grid locations sampled, some earlier corrections; continuous full-workspace coverage not certified",
+  "stop_reason": "65C guard trip despite added10second torqueoff rest between cycles; root cause unconfirmed",
+  "final_state": "Cube ontable, arm home, gripper open torqueoff"
 }

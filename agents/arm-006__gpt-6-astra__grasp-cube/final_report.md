@@ -1,3 +1,9 @@
+Latest continuation:2 additional successes,70 cumulative (61 clean recordings),13 unsuccessful episodes. The next grasp stopped at65C under the unchanged65C software guard and70C hardware protection. A10-second torque-off rest was added between cycles, outside recording, with temperature and fault checks; it did not prevent recurrence. No protections were relaxed.
+
+Cube visually confirmed on table; arm home within1.275deg; gripper open and torque off; recorder inactive; all motor fault bits zero. Temperature after release49C.
+
+All45 nominal grid locations have sampled successful coverage, with earlier position corrections. Repeat pass completed indices0–13;14 failed. Continuous entire-workspace coverage and sustained50/hour remain unverified.
+
 Operator-authorized resumption completed17 successful episodes before the updated temperature guard tripped.
 
 68 successful episodes cumulatively; 59 without recording quality flags; 12 unsuccessful episodes. This resumed run:17 successes,16 clean recordings,1 unsuccessful episode. Elapsed 13.5 minutes including setup and recovery; interval rate 75.5 successes/hour. The planned50-success resumed run was interrupted; this is not a sustained one-hour validation.
