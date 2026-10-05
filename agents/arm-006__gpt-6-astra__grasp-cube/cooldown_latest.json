@@ -4,603 +4,603 @@
   "required_stable_seconds": 30,
   "samples": [
     {
-      "time": 1791229581.3156815,
+      "time": 1791229704.4415298,
       "temperature": 46,
       "fault": 0
     },
     {
-      "time": 1791229582.3189323,
+      "time": 1791229705.444773,
       "temperature": 46,
       "fault": 0
     },
     {
-      "time": 1791229583.3219812,
+      "time": 1791229706.4478302,
       "temperature": 46,
       "fault": 0
     },
     {
-      "time": 1791229584.3258355,
+      "time": 1791229707.4537003,
       "temperature": 46,
       "fault": 0
     },
     {
-      "time": 1791229585.3290744,
+      "time": 1791229708.461719,
       "temperature": 46,
       "fault": 0
     },
     {
-      "time": 1791229586.3321302,
+      "time": 1791229709.4689758,
       "temperature": 46,
       "fault": 0
     },
     {
-      "time": 1791229587.3351772,
+      "time": 1791229710.4768164,
       "temperature": 46,
       "fault": 0
     },
     {
-      "time": 1791229588.3442283,
+      "time": 1791229711.481063,
       "temperature": 46,
       "fault": 0
     },
     {
-      "time": 1791229589.3472998,
+      "time": 1791229712.4851582,
       "temperature": 46,
       "fault": 0
     },
     {
-      "time": 1791229590.3503113,
+      "time": 1791229713.4881854,
       "temperature": 46,
       "fault": 0
     },
     {
-      "time": 1791229591.3533847,
+      "time": 1791229714.493248,
       "temperature": 46,
       "fault": 0
     },
     {
-      "time": 1791229592.3572311,
+      "time": 1791229715.4972982,
       "temperature": 46,
       "fault": 0
     },
     {
-      "time": 1791229593.3604755,
+      "time": 1791229716.500327,
       "temperature": 46,
       "fault": 0
     },
     {
-      "time": 1791229594.363546,
+      "time": 1791229717.5081854,
       "temperature": 46,
       "fault": 0
     },
     {
-      "time": 1791229595.3665757,
+      "time": 1791229718.5114272,
+      "temperature": 46,
+      "fault": 0
+    },
+    {
+      "time": 1791229719.5144672,
+      "temperature": 46,
+      "fault": 0
+    },
+    {
+      "time": 1791229720.5175147,
+      "temperature": 46,
+      "fault": 0
+    },
+    {
+      "time": 1791229721.5205648,
+      "temperature": 46,
+      "fault": 0
+    },
+    {
+      "time": 1791229722.5246413,
+      "temperature": 46,
+      "fault": 0
+    },
+    {
+      "time": 1791229723.5286725,
+      "temperature": 46,
+      "fault": 0
+    },
+    {
+      "time": 1791229724.5317247,
+      "temperature": 46,
+      "fault": 0
+    },
+    {
+      "time": 1791229725.534768,
+      "temperature": 46,
+      "fault": 0
+    },
+    {
+      "time": 1791229726.541582,
+      "temperature": 46,
+      "fault": 0
+    },
+    {
+      "time": 1791229727.5448356,
+      "temperature": 46,
+      "fault": 0
+    },
+    {
+      "time": 1791229728.5517037,
+      "temperature": 46,
+      "fault": 0
+    },
+    {
+      "time": 1791229729.5579045,
+      "temperature": 46,
+      "fault": 0
+    },
+    {
+      "time": 1791229730.5619907,
+      "temperature": 46,
+      "fault": 0
+    },
+    {
+      "time": 1791229731.5650373,
+      "temperature": 46,
+      "fault": 0
+    },
+    {
+      "time": 1791229732.5680685,
+      "temperature": 46,
+      "fault": 0
+    },
+    {
+      "time": 1791229733.574963,
+      "temperature": 46,
+      "fault": 0
+    },
+    {
+      "time": 1791229734.5781734,
+      "temperature": 46,
+      "fault": 0
+    },
+    {
+      "time": 1791229735.5812132,
+      "temperature": 46,
+      "fault": 0
+    },
+    {
+      "time": 1791229736.5842884,
+      "temperature": 46,
+      "fault": 0
+    },
+    {
+      "time": 1791229737.5883386,
       "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229596.3696222,
+      "time": 1791229738.5921733,
       "temperature": 46,
       "fault": 0
     },
     {
-      "time": 1791229597.3764758,
+      "time": 1791229739.595422,
       "temperature": 46,
       "fault": 0
     },
     {
-      "time": 1791229598.3797238,
+      "time": 1791229740.5984738,
       "temperature": 46,
       "fault": 0
     },
     {
-      "time": 1791229599.3827672,
-      "temperature": 46,
-      "fault": 0
-    },
-    {
-      "time": 1791229600.385817,
-      "temperature": 46,
-      "fault": 0
-    },
-    {
-      "time": 1791229601.3896642,
-      "temperature": 46,
-      "fault": 0
-    },
-    {
-      "time": 1791229602.3939028,
-      "temperature": 46,
-      "fault": 0
-    },
-    {
-      "time": 1791229603.3969612,
-      "temperature": 46,
-      "fault": 0
-    },
-    {
-      "time": 1791229604.4000072,
-      "temperature": 46,
-      "fault": 0
-    },
-    {
-      "time": 1791229605.403056,
-      "temperature": 46,
-      "fault": 0
-    },
-    {
-      "time": 1791229606.4099016,
-      "temperature": 46,
-      "fault": 0
-    },
-    {
-      "time": 1791229607.4131439,
-      "temperature": 46,
-      "fault": 0
-    },
-    {
-      "time": 1791229608.4161932,
-      "temperature": 46,
-      "fault": 0
-    },
-    {
-      "time": 1791229609.4192443,
-      "temperature": 46,
-      "fault": 0
-    },
-    {
-      "time": 1791229610.423083,
-      "temperature": 46,
-      "fault": 0
-    },
-    {
-      "time": 1791229611.4293163,
-      "temperature": 46,
-      "fault": 0
-    },
-    {
-      "time": 1791229612.4323692,
-      "temperature": 46,
-      "fault": 0
-    },
-    {
-      "time": 1791229613.4354079,
-      "temperature": 46,
-      "fault": 0
-    },
-    {
-      "time": 1791229614.4432538,
-      "temperature": 46,
-      "fault": 0
-    },
-    {
-      "time": 1791229615.4465024,
-      "temperature": 46,
-      "fault": 0
-    },
-    {
-      "time": 1791229616.4495783,
-      "temperature": 46,
-      "fault": 0
-    },
-    {
-      "time": 1791229617.4526243,
-      "temperature": 46,
-      "fault": 0
-    },
-    {
-      "time": 1791229618.4564793,
-      "temperature": 46,
+      "time": 1791229741.6015322,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229619.4597323,
+      "time": 1791229742.608345,
       "temperature": 46,
       "fault": 0
     },
     {
-      "time": 1791229620.4627666,
-      "temperature": 46,
+      "time": 1791229743.6115956,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229621.4658155,
+      "time": 1791229744.6146436,
       "temperature": 46,
       "fault": 0
     },
     {
-      "time": 1791229622.4688642,
+      "time": 1791229745.6176865,
       "temperature": 46,
       "fault": 0
     },
     {
-      "time": 1791229623.4769099,
-      "temperature": 46,
+      "time": 1791229746.620738,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229624.479959,
-      "temperature": 46,
+      "time": 1791229747.6246006,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229625.483008,
-      "temperature": 46,
+      "time": 1791229748.6278539,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229626.4860537,
+      "time": 1791229749.630909,
       "temperature": 46,
       "fault": 0
     },
     {
-      "time": 1791229627.4891024,
+      "time": 1791229750.6339514,
       "temperature": 46,
       "fault": 0
     },
     {
-      "time": 1791229628.4931645,
-      "temperature": 46,
+      "time": 1791229751.641799,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229629.4962,
+      "time": 1791229752.6450503,
       "temperature": 46,
       "fault": 0
     },
     {
-      "time": 1791229630.499237,
-      "temperature": 46,
+      "time": 1791229753.6480937,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229631.5022607,
-      "temperature": 46,
+      "time": 1791229754.6511397,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229632.5101159,
+      "time": 1791229755.6541631,
       "temperature": 46,
       "fault": 0
     },
     {
-      "time": 1791229633.5133579,
-      "temperature": 46,
+      "time": 1791229756.658069,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229634.5164094,
-      "temperature": 46,
+      "time": 1791229757.6622694,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229635.5194561,
+      "time": 1791229758.6653051,
       "temperature": 46,
       "fault": 0
     },
     {
-      "time": 1791229636.5233233,
-      "temperature": 46,
+      "time": 1791229759.668355,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229637.5265725,
-      "temperature": 46,
+      "time": 1791229760.6764252,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229638.529641,
-      "temperature": 46,
+      "time": 1791229761.6794772,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229639.5326724,
-      "temperature": 46,
+      "time": 1791229762.6825268,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229640.5356953,
-      "temperature": 46,
+      "time": 1791229763.6855726,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229641.5435462,
+      "time": 1791229764.6896188,
       "temperature": 46,
       "fault": 0
     },
     {
-      "time": 1791229642.5467887,
-      "temperature": 46,
+      "time": 1791229765.6936648,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229643.5498374,
-      "temperature": 46,
+      "time": 1791229766.6967206,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229644.5529313,
-      "temperature": 46,
+      "time": 1791229767.6997657,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229645.5577564,
+      "time": 1791229768.7028112,
       "temperature": 46,
       "fault": 0
     },
     {
-      "time": 1791229646.5658073,
-      "temperature": 46,
+      "time": 1791229769.7096572,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229647.5768583,
-      "temperature": 46,
+      "time": 1791229770.7129056,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229648.581104,
-      "temperature": 46,
+      "time": 1791229771.7159605,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229649.585162,
-      "temperature": 46,
+      "time": 1791229772.7189982,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229650.5892024,
-      "temperature": 46,
+      "time": 1791229773.7220266,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229651.5932963,
-      "temperature": 46,
+      "time": 1791229774.7259135,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229652.5973034,
-      "temperature": 46,
+      "time": 1791229775.7291274,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229653.6013358,
-      "temperature": 46,
+      "time": 1791229776.732181,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229654.6091924,
-      "temperature": 46,
+      "time": 1791229777.7352161,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229655.613433,
-      "temperature": 46,
+      "time": 1791229778.7432952,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229656.6214898,
-      "temperature": 46,
+      "time": 1791229779.74633,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229657.6335347,
-      "temperature": 46,
+      "time": 1791229780.7493627,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229658.636594,
-      "temperature": 46,
+      "time": 1791229781.752407,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229659.6434321,
-      "temperature": 46,
+      "time": 1791229782.7554557,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229660.6466768,
-      "temperature": 46,
+      "time": 1791229783.7593088,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229661.6497047,
-      "temperature": 46,
+      "time": 1791229784.7625554,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229662.6527452,
-      "temperature": 46,
+      "time": 1791229785.7656193,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229663.6578093,
-      "temperature": 46,
+      "time": 1791229786.7686827,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229664.6618614,
-      "temperature": 46,
+      "time": 1791229787.7765238,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229665.665888,
-      "temperature": 46,
+      "time": 1791229788.7797704,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229666.6689706,
-      "temperature": 46,
+      "time": 1791229789.7828112,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229667.676779,
-      "temperature": 46,
+      "time": 1791229790.7858508,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229668.6800392,
-      "temperature": 46,
+      "time": 1791229791.7897065,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229669.683077,
-      "temperature": 46,
+      "time": 1791229792.7929807,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229670.6861236,
-      "temperature": 46,
+      "time": 1791229793.7969844,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229671.6891727,
-      "temperature": 46,
+      "time": 1791229794.8000245,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229672.693051,
-      "temperature": 46,
+      "time": 1791229795.8081079,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229673.6963272,
-      "temperature": 46,
+      "time": 1791229796.812168,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229674.6993368,
-      "temperature": 46,
+      "time": 1791229797.8151696,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229675.7023835,
-      "temperature": 46,
+      "time": 1791229798.8182416,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229676.7102385,
-      "temperature": 46,
+      "time": 1791229799.8212843,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229677.7134874,
-      "temperature": 46,
+      "time": 1791229800.8253565,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229678.716543,
-      "temperature": 46,
+      "time": 1791229801.8293753,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229679.7195911,
-      "temperature": 46,
+      "time": 1791229802.8324351,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229680.7234466,
-      "temperature": 46,
+      "time": 1791229803.8354714,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229681.7276857,
-      "temperature": 46,
+      "time": 1791229804.8432977,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229682.7307305,
-      "temperature": 46,
+      "time": 1791229805.8465457,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229683.7337692,
-      "temperature": 46,
+      "time": 1791229806.8495972,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229684.7416184,
-      "temperature": 46,
+      "time": 1791229807.8526456,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229685.7448843,
-      "temperature": 46,
+      "time": 1791229808.8556983,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229686.7479217,
-      "temperature": 46,
+      "time": 1791229809.859568,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229687.7510002,
-      "temperature": 46,
+      "time": 1791229810.862819,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229688.7548227,
-      "temperature": 46,
+      "time": 1791229811.8658555,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229689.7588859,
-      "temperature": 46,
+      "time": 1791229812.8689167,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229690.7621014,
+      "time": 1791229813.8767664,
       "temperature": 46,
       "fault": 0
     },
     {
-      "time": 1791229691.765153,
-      "temperature": 46,
+      "time": 1791229814.8800025,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229692.7682078,
-      "temperature": 46,
+      "time": 1791229815.8830452,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229693.7752638,
-      "temperature": 46,
+      "time": 1791229816.8860953,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229694.779329,
-      "temperature": 46,
+      "time": 1791229817.8899484,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229695.7823389,
-      "temperature": 46,
+      "time": 1791229818.894206,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229696.785395,
-      "temperature": 46,
+      "time": 1791229819.8972464,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229697.788442,
-      "temperature": 46,
+      "time": 1791229820.900293,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229698.7924857,
-      "temperature": 46,
+      "time": 1791229821.90814,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229699.7965426,
-      "temperature": 46,
+      "time": 1791229822.9113798,
+      "temperature": 45,
       "fault": 0
     },
     {
-      "time": 1791229700.799584,
-      "temperature": 46,
+      "time": 1791229823.914428,
+      "temperature": 45,
       "fault": 0
     }
   ]
