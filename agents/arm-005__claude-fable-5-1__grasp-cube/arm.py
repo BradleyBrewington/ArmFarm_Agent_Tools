@@ -93,6 +93,23 @@ def tool_axis(joints):
     return fk_T(joints)[:3, 2]
 
 
+MARGIN_DEG = 1.0
+
+
+def ik_reach(x, y, z, wrist_roll=0.0, seed=None, bounds=None, max_pitch=25.0, step=5.0):
+    """ik_topdown with vertical approach, falling back to a tilt toward the base when needed."""
+    last = None
+    pitch = 0.0
+    while pitch <= max_pitch + 1e-9:
+        try:
+            q = ik_topdown(x, y, z, wrist_roll=wrist_roll, pitch_deg=pitch, seed=seed, bounds=bounds)
+            return q, pitch
+        except ValueError as exc:
+            last = exc
+            pitch += step
+    raise ValueError(str(last))
+
+
 def ik_topdown(x, y, z, wrist_roll=0.0, pitch_deg=0.0, seed=None, bounds=None):
     """Joint degrees placing the fingertip at (x,y,z) with the tool pointing down.
 
@@ -108,8 +125,9 @@ def ik_topdown(x, y, z, wrist_roll=0.0, pitch_deg=0.0, seed=None, bounds=None):
     horiz = horiz / (np.linalg.norm(horiz) + 1e-9)
     want = np.array([0, 0, -1.0]) * math.cos(math.radians(pitch_deg)) + horiz * math.sin(math.radians(pitch_deg))
     names = ("shoulder_pan", "shoulder_lift", "elbow_flex", "wrist_flex")
-    lo = np.array([max(_LIMITS[j][0], (bounds or {}).get(j, (-1e9, 1e9))[0]) for j in names])
-    hi = np.array([min(_LIMITS[j][1], (bounds or {}).get(j, (-1e9, 1e9))[1]) for j in names])
+    # Motor calibration bounds (less a margin) are authoritative; the URDF limits are nominal.
+    lo = np.array([(bounds or _LIMITS)[j][0] + MARGIN_DEG for j in names])
+    hi = np.array([(bounds or _LIMITS)[j][1] - MARGIN_DEG for j in names])
 
     def joints_of(q):
         d = dict(zip(names, q))
@@ -191,10 +209,14 @@ class Arm:
         self.move({"gripper": float(percent)}, seconds, settle)
         return self.read()["gripper"]
 
-    def goto_xyz(self, x, y, z, wrist_roll=None, seconds=1.5, pitch_deg=0.0, settle=0.3):
+    def goto_xyz(self, x, y, z, wrist_roll=None, seconds=1.5, pitch_deg=None, settle=0.3):
         now = self.read()
         roll = now["wrist_roll"] if wrist_roll is None else wrist_roll
-        q = ik_topdown(x, y, z, wrist_roll=roll, pitch_deg=pitch_deg, seed=now, bounds=self.bounds)
+        if pitch_deg is None:
+            q, pitch_deg = ik_reach(x, y, z, wrist_roll=roll, seed=now, bounds=self.bounds)
+        else:
+            q = ik_topdown(x, y, z, wrist_roll=roll, pitch_deg=pitch_deg, seed=now, bounds=self.bounds)
+        self.last_pitch = pitch_deg
         target = {j: q[j] for j in ("shoulder_pan", "shoulder_lift", "elbow_flex", "wrist_flex")}
         if wrist_roll is not None:
             target["wrist_roll"] = roll
@@ -209,7 +231,7 @@ if __name__ == "__main__":
     sub.add_parser("home")
     g = sub.add_parser("grip"); g.add_argument("percent", type=float)
     m = sub.add_parser("xyz"); m.add_argument("x", type=float); m.add_argument("y", type=float); m.add_argument("z", type=float)
-    m.add_argument("--roll", type=float); m.add_argument("--seconds", type=float, default=2.0); m.add_argument("--pitch", type=float, default=0.0)
+    m.add_argument("--roll", type=float); m.add_argument("--seconds", type=float, default=2.0); m.add_argument("--pitch", type=float, default=None)
     i = sub.add_parser("ik"); i.add_argument("x", type=float); i.add_argument("y", type=float); i.add_argument("z", type=float); i.add_argument("--pitch", type=float, default=0.0)
     j = sub.add_parser("joints"); j.add_argument("spec", help='JSON like {"wrist_roll": 90}'); j.add_argument("--seconds", type=float, default=1.5)
     a = p.parse_args()
