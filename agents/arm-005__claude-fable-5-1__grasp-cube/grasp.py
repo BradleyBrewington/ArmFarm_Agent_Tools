@@ -38,6 +38,7 @@ Z_CARRY = 0.09
 OPEN = 70.0
 CLOSED = 0.0
 HELD_MIN = 6.0          # gripper % above which something is between the jaws (empty closes to ~0.3)
+HOLD_SQUEEZE = 6.0      # goal sits this many % below the measured contact position while holding
 LOG = HERE / "grasp_log.jsonl"
 
 
@@ -94,11 +95,20 @@ class Grasper:
             self._snap(snapshots + "_pre")
         self.arm.move({"gripper": CLOSED}, 0.8, settle=0.3)
         g0 = self.arm.read()["gripper"]
+        self.hold(g0)
         self.arm.goto_xyz(fx, fy, Z_CARRY, seconds=1.0, settle=0.2)
         g1 = self.arm.read()["gripper"]
         held = g1 > HELD_MIN
         log("grasp", target=[float(cx), float(cy)], frame=[float(fx), float(fy)], grip_closed=g0, grip_lifted=g1, held=held)
         return held, g1
+
+    def hold(self, measured, squeeze=HOLD_SQUEEZE):
+        """Relax the closing goal to a moderate squeeze so the servo never trips overload."""
+        goal = max(CLOSED, measured - squeeze)
+        self.arm.bus.sync_write("Goal_Position", {"gripper": goal}, normalize=True)
+        time.sleep(0.1)
+        A.cw.recover_overload(self.arm.bus, "gripper")
+        return goal
 
     def place(self, cx, cy, release_z=Z_GRASP + 0.012):
         """Put the held cube down so that its centre lands near robot (cx, cy)."""

@@ -186,9 +186,10 @@ def _tolerant_bus(port):
                 raise RuntimeError(f"{j}: motor id {bus.motors[j].id} answered as id {found}")
             if faults:
                 print(f"[fault] {j}: status bits {faults} at connect", flush=True)
+            raw_offset = cw.read_register(bus, "Homing_Offset", j)[0]
             cal[j] = MotorCalibration(
                 id=bus.motors[j].id, drive_mode=0,
-                homing_offset=cw.read_register(bus, "Homing_Offset", j)[0],
+                homing_offset=bus._decode_sign("Homing_Offset", {bus.motors[j].id: raw_offset})[bus.motors[j].id],
                 range_min=cw.read_register(bus, "Min_Position_Limit", j)[0],
                 range_max=cw.read_register(bus, "Max_Position_Limit", j)[0])
             if not 0 <= cal[j].range_min < cal[j].range_max <= 4095:
