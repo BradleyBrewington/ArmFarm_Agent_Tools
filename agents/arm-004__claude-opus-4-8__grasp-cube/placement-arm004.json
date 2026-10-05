@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "arm": "arm-004",
+  "table_z": -0.021,
+  "grasp_z": -0.008,
+  "place_z": -0.006,
+  "reset_roll": 83.4,
+  "top_affine": [
+    [
+      -0.0739640600850819,
+      0.8765411961967432,
+      0.22857849376728995
+    ],
+    [
+      0.8569577030413488,
+      0.05435277027666366,
+      0.011028242324892443
+    ]
+  ],
+  "pre_jacobian": [
+    [
+      2412.8739718363663,
+      -5225.160301242543
+    ],
+    [
+      3920.6614011647744,
+      834.4555754933265
+    ]
+  ],
+  "pre_target": [
+    627.0,
+    526.0
+  ],
+  "grasp_target": [
+    530.0,
+    100.0
+  ],
+  "score_roi": [
+    450,
+    150,
+    830,
+    370
+  ],
+  "provenance": {
+    "camera_map": "calibration/20260923T105734_870476479/workspace_map.json",
+    "cube_samples": 1031,
+    "fit_median_m": 0.007758535684589206,
+    "fit_p95_m": 0.017064439258054103,
+    "source": "Station arm-004 grasp.py, jpre.json, cube_cal.json; requires physical commissioning"
+  }
+}
