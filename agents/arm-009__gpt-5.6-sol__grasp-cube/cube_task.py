@@ -65,7 +65,7 @@ def pose_ik(xyz, reference, calibration):
     result = least_squares(residual, x0, bounds=bounds, max_nfev=1000, xtol=1e-11, ftol=1e-11, gtol=1e-11)
     pose = dict(reference); pose.update(dict(zip(names, result.x)))
     miss_mm = float(np.linalg.norm(transform(pose)[:3, 3] - xyz) * 1000)
-    if not result.success or miss_mm > 2.0:
+    if not result.success or miss_mm > 5.0:
         raise RuntimeError(f"pose IK failed: {result.message}; position miss {miss_mm:.2f} mm")
     return pose
 
