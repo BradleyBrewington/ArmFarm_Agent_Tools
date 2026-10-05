@@ -95,3 +95,7 @@
 [95] OK  14.4s tries=1 start=(0.192, -0.119) success 95/95 ~186/h
 [96] OK  18.1s tries=1 start=(0.194, -0.132) success 96/96 ~185/h
 [97] OK  14.4s tries=1 start=(0.273, 0.088) success 97/97 ~185/h
+[98] OK  39.9s tries=3 start=(0.22, 0.051) success 98/98 ~183/h
+[99] OK  10.9s tries=1 start=(0.294, -0.095) success 99/99 ~183/h
+[100] OK  12.4s tries=1 start=(0.262, 0.052) success 100/100 ~184/h
+[101] OK  14.1s tries=1 start=(0.269, -0.029) success 101/101 ~184/h
