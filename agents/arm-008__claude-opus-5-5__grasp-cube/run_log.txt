@@ -153,3 +153,6 @@
 [153] OK  12.2s tries=1 start=(0.232, 0.05) success 153/153 ~178/h
 [154] OK  14.1s tries=1 start=(0.27, 0.019) success 154/154 ~178/h
 [155] OK  28.7s tries=2 flags=camera_error start=(0.188, -0.003) success 155/155 ~177/h
+[156] OK  14.6s tries=1 start=(0.289, 0.003) success 156/156 ~177/h
+[157] OK  12.8s tries=1 start=(0.226, -0.05) success 157/157 ~177/h
+[158] OK  12.6s tries=1 start=(0.298, -0.025) success 158/158 ~177/h
