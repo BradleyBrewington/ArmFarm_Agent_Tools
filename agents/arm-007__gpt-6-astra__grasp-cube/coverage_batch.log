@@ -16,3 +16,13 @@
 {"event": "placed", "pose": {"shoulder_pan": -40, "shoulder_lift": 0.6245427272693257, "elbow_flex": 40, "wrist_flex": 24.37545727273067}, "time": 1791237636.3036945}
 {"event": "episode", "success": true, "receipt": {"episode": "20261005T170036-49f1fba1", "folder": "/var/lib/armfarm/stations/armfarm/episodes/completed/20261005T170036-49f1fba1", "frames": 340, "quality_flags": [], "training_ready": true, "success": true, "notes": "{\"source_pose\": {\"shoulder_pan\": -40, \"shoulder_lift\": 0.6245427272693257, \"elbow_flex\": 40, \"wrist_flex\": 24.37545727273067}, \"contact\": 24.383561643835616, \"home_confirm\": {\"gripper\": 24.383561643835616, \"wrist_dark\": 0.9997407407407407, \"frame_seq\": 13364556}}", "coverage_pending": true}, "evidence": {"gripper": 24.383561643835616, "wrist_dark": 0.9997407407407407, "frame_seq": 13364556}, "time": 1791237648.3217154}
 {"event": "placed", "pose": {"shoulder_pan": -25, "shoulder_lift": 0.6245427272693257, "elbow_flex": 40, "wrist_flex": 24.37545727273067}, "time": 1791237657.5205593}
+{"event": "stopped", "error": "No cube contact", "time": 1791237666.4899266}
+Traceback (most recent call last):
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/cube_cycles.py", line 74, in <module>
+    if __name__=='__main__':run(int(sys.argv[1]) if len(sys.argv)>1 else 1)
+                            ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/cube_cycles.py", line 58, in run
+    contact=grip(b)
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/cube_cycles.py", line 41, in grip
+    raise RuntimeError('No cube contact')
+RuntimeError: No cube contact
