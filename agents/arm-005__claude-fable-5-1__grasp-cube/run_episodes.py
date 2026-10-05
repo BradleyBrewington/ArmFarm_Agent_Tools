@@ -140,6 +140,13 @@ def main():
             t0 = time.time()
             # ---- locate the cube from home (arm parked out of the detection region)
             cube, img = g.see_cube(retries=5)
+            if cube is not None and V.touches_arm_mask(cube):
+                # the mask clips the cube's near side and biases the centroid outward: look from aside
+                better, _ = g.lookout_see()
+                if better is not None:
+                    record_stats(event="lookout_refine", before=[cube["u"], cube["v"]], after=[better["u"], better["v"]])
+                    cube = better
+                g.home()
             if cube is None:
                 # maybe it is hiding under the parked gripper: look from aside
                 cube, img = g.lookout_see()

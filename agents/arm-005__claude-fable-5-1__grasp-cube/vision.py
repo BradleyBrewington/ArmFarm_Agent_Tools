@@ -78,6 +78,15 @@ def detect_cube(img, exclude=EXCLUDE, debug=None, use_arm_mask=True):
     return best
 
 
+def touches_arm_mask(c, margin=4):
+    """True if a detection's bounding box touches the parked-arm mask (its centroid is then biased)."""
+    if _arm_mask is None or not c:
+        return False
+    x0 = max(0, int(c["u"] - c["w"] / 2) - margin); x1 = min(_arm_mask.shape[1], int(c["u"] + c["w"] / 2) + margin)
+    y0 = max(0, int(c["v"] - c["h"] / 2) - margin); y1 = min(_arm_mask.shape[0], int(c["v"] + c["h"] / 2) + margin)
+    return bool((_arm_mask[y0:y1, x0:x1] > 0).any())
+
+
 def cube_mask_dark_fraction(img, u, v, half=30):
     """Fraction of near-black pixels in a window: used to confirm the cube left its spot."""
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
