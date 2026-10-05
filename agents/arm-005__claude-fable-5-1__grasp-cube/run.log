@@ -1253,3 +1253,6 @@ ep 360 success=True 8.3s (+reset 6.2s) rate=355/360 notes={'grip_home': 23.0, 's
 {"t": 1791224620.7377899, "event": "grasp", "target": [0.17920406283912024, -0.05554645151953663], "frame": [0.1559579805974348, -0.04634755744837596], "grip_closed": 18.99171270718232, "grip_lifted": 0.3453038674033149, "held": false}
 {"t": 1791224631.1314566, "event": "place", "target": [0.2243, 0.0749], "frame": [0.20575519092531963, 0.06741067076541488]}
 ep 361 success=False 20.4s (+reset 6.8s) rate=355/361 notes={'grip_home': 69.6, 'spot_dark_fraction': 0.0, 'cube_px': None, 'cube_xy': [0.1792, -0.0555], 'attempts': 2, 'episode': '20261005T132326-c24b33ca'}
+stop file seen; exiting at home
+55 coverage targets; map affine n=80
+{"t": 1791224689.8556967, "event": "place", "target": [0.25, 0.0], "frame": [0.2300000000947128, 0.0]}

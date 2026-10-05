@@ -194,7 +194,8 @@ def main():
             consecutive_failures = 0 if success else consecutive_failures + 1
             dt_ep = time.time() - t0
             # ---- reset: carry the cube to a new coverage position (or recover if dropped)
-            if success or g.arm.read()["gripper"] > G.HELD_MIN:
+            grip_now = g.arm.read()["gripper"]
+            if success or (G.HELD_MIN < grip_now < G.OPEN - 15):   # something is actually between the jaws
                 # place whatever is held (even if the episode was judged failed) so the cube
                 # is never dropped from the home pose
                 tx, ty, r, ang = next_target(targets, state, (cx, cy), rng)
