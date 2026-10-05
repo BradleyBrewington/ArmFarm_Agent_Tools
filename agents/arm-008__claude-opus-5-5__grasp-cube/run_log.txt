@@ -59,3 +59,7 @@
 [59] OK  12.6s tries=1 start=(0.187, -0.076) success 59/59 ~177/h
 [60] OK  16.5s tries=1 start=(0.302, -0.008) success 60/60 ~177/h
 [61] OK  12.8s tries=1 start=(0.306, -0.052) success 61/61 ~177/h
+[62] OK  15.4s tries=1 start=(0.218, 0.07) success 62/62 ~177/h
+[63] OK  14.4s tries=1 start=(0.189, 0.039) success 63/63 ~177/h
+[64] OK  16.1s tries=1 flags=camera_error,queue_overflow start=(0.185, 0.103) success 64/64 ~177/h
+[65] OK  12.7s tries=1 start=(0.199, -0.083) success 65/65 ~177/h
