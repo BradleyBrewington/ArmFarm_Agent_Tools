@@ -146,3 +146,6 @@
 [146] OK  14.0s tries=1 start=(0.273, 0.031) success 146/146 ~185/h
 [147] OK  17.9s tries=1 start=(0.284, -0.051) success 147/147 ~185/h
 [148] OK  14.0s tries=1 start=(0.23, -0.086) success 148/148 ~185/h
+[149] OK  24.4s tries=2 start=(0.197, 0.104) success 149/149 ~184/h
+[150] OK  12.5s tries=1 start=(0.218, -0.075) success 150/150 ~185/h
+[151] OK  12.7s tries=1 start=(0.273, 0.072) success 151/151 ~185/h
