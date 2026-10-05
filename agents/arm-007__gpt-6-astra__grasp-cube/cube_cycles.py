@@ -35,7 +35,7 @@ def grip(b):
   c.move(b,{'gripper':goal},.05);time.sleep(.06)
   actual=b.read('Present_Position','gripper')
   if actual-goal>1.3:
-   b.write('Goal_Position','gripper',actual-.4)
+   b.write('Goal_Position','gripper',actual-1.2)
    time.sleep(.2)
    return actual
  raise RuntimeError('No cube contact')
