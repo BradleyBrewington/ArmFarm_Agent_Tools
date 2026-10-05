@@ -100,7 +100,11 @@ def run_once(place_xyz=None):
         current = bus.sync_read("Present_Position", list(cw.JOINTS))
         home(bus, home_target)
         reference = bus.sync_read("Present_Position", list(ARM))
-        start_T = transform(reference); pick_xy = start_T[:2, 3]
+        start_T = transform(reference)
+        # Station alignment measured from low-height top-camera probes: the
+        # initial cube is 60 mm farther in base X and 10 mm lower in base Y
+        # than the home tool projection.
+        pick_xy = start_T[:2, 3] + np.array([.060, -.010])
         approach = pose_ik(np.r_[pick_xy, .085], reference, bus.calibration)
         grasp = pose_ik(np.r_[pick_xy, .042], reference, bus.calibration)
         cube_before = find_cube()
