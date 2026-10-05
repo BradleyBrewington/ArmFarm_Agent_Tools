@@ -24,6 +24,7 @@ from fk import forward  # noqa: E402
 HOME_FILE = HERE.parent / "home_pose.json"
 ARM = cw.ARM_JOINTS
 ALL = cw.JOINTS
+GRIP_TORQUE = 230      # gripper Torque_Limit (of 1000); Overload_Torque is 25%
 
 
 class Arm:
@@ -51,6 +52,9 @@ class Arm:
                     self.relax_gripper()
                 else:
                     cw.recover_overload(self.bus, j)
+        # Gripper overload protection trips above Overload_Torque (25%) for ~2 s, dropping the cube.
+        # Cap the (RAM) torque limit below it so a sustained squeeze is safe.
+        cw.write_register(self.bus, "Torque_Limit", "gripper", GRIP_TORQUE)
         cw.preflight(self.bus, [self.joints()])
         cw.enable_at_current_position(self.bus, ALL)
         if self.gripper_pos() < 50:   # may be holding the cube: keep squeezing so it does not slip
@@ -68,13 +72,11 @@ class Arm:
         cw.write_register(self.bus, "Goal_Position", "gripper", raw - ticks)
         cw.recover_overload(self.bus, "gripper")
 
-    def hold(self, margin=10.0):
-        """After closing on the cube, set the gripper goal a little inside the contact point so the
-        motor holds the cube without straining into overload."""
-        time.sleep(0.05)
-        pos = self.gripper_pos()
-        cw.command_goal(self.bus, {"gripper": max(0.0, pos - margin)})
-        return pos
+    def hold(self):
+        """Keep squeezing (goal fully closed); the torque cap keeps this below overload."""
+        cw.stops(self.bus).pop("gripper", None)
+        self.bus.sync_write("Goal_Position", {"gripper": 0.0}, normalize=True)
+        return self.gripper_pos()
 
     def joints(self):
         return dict(self.bus.sync_read("Present_Position", list(ALL)))
@@ -84,6 +86,9 @@ class Arm:
         return forward({k: j[k] for k in ARM})
 
     def move(self, target, seconds):
+        # calibrate_workspace treats gripper contact as a physical stop; that would keep the
+        # gripper from ever closing past the last contact point, so forget it every move.
+        cw.stops(self.bus).pop("gripper", None)
         cw.move(self.bus, target, seconds)
 
     def wait(self, target, tol=3.0, timeout=1.5, joints=None):
