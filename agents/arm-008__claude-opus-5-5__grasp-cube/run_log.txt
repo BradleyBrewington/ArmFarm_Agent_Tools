@@ -120,3 +120,7 @@
 [120] OK  16.3s tries=1 start=(0.214, -0.122) success 120/120 ~180/h
 [121] OK  20.8s tries=1 start=(0.311, 0.11) success 121/121 ~179/h
 [122] OK  14.4s tries=1 start=(0.19, -0.014) success 122/122 ~179/h
+[123] OK  12.5s tries=1 start=(0.255, -0.019) success 123/123 ~179/h
+[124] OK  14.4s tries=1 start=(0.221, -0.096) success 124/124 ~180/h
+[125] OK  14.4s tries=1 flags=camera_error start=(0.202, -0.127) success 125/125 ~180/h
+[126] OK  11.0s tries=1 start=(0.237, 0.096) success 126/126 ~180/h
