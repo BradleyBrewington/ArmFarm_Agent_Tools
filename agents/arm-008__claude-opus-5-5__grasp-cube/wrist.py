@@ -1,10 +1,4 @@
-"""Wrist-camera cube localisation for the final grasp alignment.
-
-At a top-down hover (tip z = HOVER_Z_SERVO, gripper OPEN) the wrist camera's view of the
-table is fixed in the gripper frame. wrist_map.json holds an affine map from the cube's
-wrist-image centroid to the cube centre offset from the FK tip, in the gripper frame
-(equal to base_link axes at wrist_roll 0), plus the cube image angle when aligned.
-"""
+"""Wrist-camera cube detection (used to square the jaws to the cube before descending)."""
 import json
 import math
 from pathlib import Path
@@ -13,9 +7,6 @@ import cv2
 import numpy as np
 
 HERE = Path(__file__).resolve().parent
-MAP_FILE = HERE / "wrist_map.json"
-SAMPLES_FILE = HERE / "wrist_samples.jsonl"
-HOVER_Z_SERVO = 0.12
 DARK = 60
 
 
@@ -49,27 +40,3 @@ def detect(img):
 def fold90(a):
     a = a % 90.0
     return a - 90.0 if a >= 45 else a
-
-
-def load():
-    return json.loads(MAP_FILE.read_text())
-
-
-def offset(px, wm=None):
-    """Cube centre minus FK tip, gripper frame metres."""
-    wm = wm or load()
-    A = np.array(wm["A"])
-    return A @ np.array([px[0], px[1], 1.0])
-
-
-def fit(samples):
-    """samples: list of dicts with u, v, ox, oy (and angle when aligned)."""
-    s = np.array([[d["u"], d["v"], d["ox"], d["oy"]] for d in samples], float)
-    X = np.hstack([s[:, :2], np.ones((len(s), 1))])
-    A = np.linalg.lstsq(X, s[:, 2:], rcond=None)[0].T
-    err = np.linalg.norm((X @ A.T) - s[:, 2:], axis=1)
-    angles = [d["angle"] for d in samples if d.get("aligned")]
-    ref = float(np.median([fold90(a) for a in angles])) if angles else 0.0
-    wm = {"A": A.tolist(), "n": len(s), "rms_m": float(np.sqrt((err ** 2).mean())), "angle_ref": ref}
-    MAP_FILE.write_text(json.dumps(wm, indent=1))
-    return wm, err

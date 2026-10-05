@@ -1,8 +1,11 @@
 """Pick/place primitives for the black-cube task (robot venv).
 
 Conventions found on arm-008 (2026-10-05):
-  * top camera: robot +x is image down, robot +y is image right.
-  * jaws close along robot +y at wrist_roll 0; closing axis angle = roll + 90 deg.
+  * top camera: robot +x is image down, robot +y is image right (mirrored view).
+  * the FK tip (gripper_frame_link) is on the fixed jaw. The jaws close along gripper_link y;
+    the fixed jaw is on its +y side. Its horizontal angle is ~87 + roll - pan degrees, so roll
+    for a given cube yaw is solved with FK (grasp_plan), never as a world angle.
+  * the gripper Torque_Limit is capped (arm.GRIP_TORQUE) so a held cube never trips overload.
 """
 import math
 import time
@@ -58,32 +61,10 @@ def grasp_plan(cx, cy, z, yaw, roll_hint=None):
     return q, roll
 
 
-def jaw_target(x, y, roll):
-    """Tip XY that puts the cube centre (x, y) between the jaws, for a given roll."""
-    q = plan(x, y, GRASP_Z, roll)
-    u = closing_axis(q)
-    return x + JAW_OFFSET * u[0], y + JAW_OFFSET * u[1]
-
-
 def go_look(arm, seconds=1.2):
     """Home with wrist roll 0 and gripper open: the fixed pose the arm mask was captured in."""
     arm.move({**arm.home_pose, "wrist_roll": 0.0, "gripper": OPEN}, seconds)
     arm.wait(arm.home_pose, tol=4.0, timeout=1.5)
-
-
-def plan(x, y, z, roll):
-    """Top-down if reachable, else the smallest outward pitch that is."""
-    for pitch in (0, 10, 20, 30, 40, 50, -15, -30):
-        q, pe, ae = ik_down(x, y, z, pitch=pitch, roll=roll)
-        if pe < 0.002 and ae < 1.0:
-            return {**q, "wrist_roll": roll}
-    raise ValueError(f"unreachable ({x:.3f}, {y:.3f}, {z:.3f})")
-
-
-def roll_for(yaw_robot):
-    """Wrist roll in [-45, 45) whose closing axis is parallel to a cube face normal."""
-    r = (yaw_robot - 90.0) % 90.0
-    return r - 90.0 if r >= 45 else r
 
 
 def cube_pose(det):
@@ -156,54 +137,6 @@ def place(arm, x, y, yaw=None, fast=1.0, z=None):
     time.sleep(0.2)
     arm.move(above, 0.5 * fast)
     return float(t[0, 3] - JAW_OFFSET * u[0]), float(t[1, 3] - JAW_OFFSET * u[1])
-
-
-def _rot(v, roll):
-    r = math.radians(roll)
-    return np.array([math.cos(r) * v[0] - math.sin(r) * v[1], math.sin(r) * v[0] + math.cos(r) * v[1]])
-
-
-def wrist_look(arm, x, y, roll, seconds=1.0):
-    """Hover top-down over (x, y) and locate the cube with the wrist camera.
-    Returns (cube_x, cube_y, cube_image_angle, detection) or None if not seen."""
-    import wrist
-    from camd_client import read_frame
-    q = plan(x, y, wrist.HOVER_Z_SERVO, roll)
-    arm.move({**q, "gripper": OPEN}, seconds)
-    arm.wait(q, tol=1.5, timeout=1.0)
-    time.sleep(0.15)
-    tip = arm.tip()
-    d = None
-    for _ in range(3):
-        d = wrist.detect(read_frame("wrist")[0])
-        if d:
-            break
-        time.sleep(0.1)
-    if not d:
-        return None
-    o = _rot(wrist.offset(d["px"]), roll)
-    return tip["x"] + o[0], tip["y"] + o[1], d["angle"], d, tip
-
-
-def servo(arm, x, y, roll, iters=3, tol=0.004):
-    """Refine a cube estimate with the wrist camera. Returns (x, y, roll) or None."""
-    import wrist
-    ref = wrist.load().get("angle_ref", 0.0)
-    for i in range(iters):
-        r = wrist_look(arm, x, y, roll, seconds=1.0 if i == 0 else 0.5)
-        if r is None:
-            return None
-        nx, ny, ang = r[0], r[1], r[2]
-        moved = math.hypot(nx - x, ny - y)
-        x, y = nx, ny
-        droll = wrist.fold90(ang - ref)
-        roll = max(-80.0, min(80.0, roll - droll * ROLL_SIGN))
-        if moved < tol and abs(droll) < 6:
-            break
-    return x, y, roll
-
-
-ROLL_SIGN = 1.0   # how a cube image-angle error maps to a wrist-roll correction (checked on arm)
 
 
 CLEAR_XY = (0.24, 0.17)   # hover spot that keeps the arm off the near-base table area in the top view
