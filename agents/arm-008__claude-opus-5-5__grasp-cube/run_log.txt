@@ -135,3 +135,6 @@
 [135] OK  10.8s tries=1 start=(0.305, 0.011) success 135/135 ~185/h
 [136] OK  14.3s tries=1 start=(0.184, 0.109) success 136/136 ~185/h
 [137] OK  14.6s tries=1 start=(0.281, -0.091) success 137/137 ~185/h
+[138] OK  16.6s tries=1 start=(0.315, 0.051) success 138/138 ~185/h
+[139] OK  12.7s tries=1 start=(0.3, 0.112) success 139/139 ~185/h
+[140] OK  16.1s tries=1 start=(0.274, -0.144) success 140/140 ~185/h
