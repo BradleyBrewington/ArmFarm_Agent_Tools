@@ -155,6 +155,7 @@ def main():
     start = time.monotonic()
     done = success = 0
     last_cell = None
+    errors = 0
     if recording.request("status").get("recording"):   # left open by a killed predecessor
         recording.stop_recording(success=False, notes="aborted: controlling process ended mid-episode; "
                                  "grasp not confirmed")
@@ -196,6 +197,7 @@ def main():
                 if placed is None:
                     print("reset failed: cube not recovered", flush=True)
                     break
+                errors = 0
             except Exception as e:
                 traceback.print_exc()
                 log({"n": done, "t": time.time(), "error": repr(e)})
@@ -204,7 +206,12 @@ def main():
                         recording.stop_recording(success=False, notes=f"aborted: {e!r}")
                 except Exception:
                     pass
-                break
+                errors += 1
+                if errors >= 3:          # isolated glitches are retried; repeated ones stop the loop
+                    break
+                time.sleep(2.0)
+                if arm.gripper_pos() > task.GRIP_EMPTY and arm.gripper_pos() < 50:
+                    reset(arm, cov, last_cell, holding=True)   # put a held cube back down first
     print(f"done: {success}/{done} successful in {(time.monotonic() - start) / 60:.1f} min")
 
 
