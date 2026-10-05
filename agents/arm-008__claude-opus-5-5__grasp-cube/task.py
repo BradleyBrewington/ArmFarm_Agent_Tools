@@ -226,12 +226,15 @@ def pick_robust(arm, attempts=6, log=print):
             return False, {"reason": "not_visible"}
         x, y, yaw = p
         ox, oy = RETRY_OFFSETS[i % len(RETRY_OFFSETS)]
+        rec = {}
         try:
-            g = pick(arm, x + ox, y + oy, yaw)
+            g = pick(arm, x + ox, y + oy, yaw, record=rec)
         except ValueError as e:
             log(f"unreachable cube estimate {x:.3f},{y:.3f}: {e}")
             return False, {"reason": "unreachable", "x": x, "y": y}
-        log(f"pick try {i}: est ({x:.3f},{y:.3f}) yaw {yaw:.0f} offset ({ox},{oy}) grip {g:.1f}")
+        sp = rec.get("servo_px")
+        log(f"pick try {i}: est ({x:.3f},{y:.3f}) yaw {yaw:.0f} -> servo ({rec.get('x', 0):.3f},{rec.get('y', 0):.3f}) "
+            f"roll {rec.get('roll', 0):.0f} last px {sp and tuple(round(v) for v in sp)} grip {g:.1f}")
         if g > GRIP_EMPTY:
-            return True, {"x": x, "y": y, "px": d["px"], "attempts": i + 1, "offset": (ox, oy), "grip": g}
+            return True, {"x": x, "y": y, "px": d["px"], "attempts": i + 1, "grip": g, "servo": rec}
     return False, {"reason": "missed"}
