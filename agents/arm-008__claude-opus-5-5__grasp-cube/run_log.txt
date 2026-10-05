@@ -79,3 +79,6 @@
 [79] OK  12.6s tries=1 start=(0.194, -0.069) success 79/79 ~181/h
 [80] OK  14.7s tries=1 start=(0.259, 0.098) success 80/80 ~181/h
 [81] OK  10.7s tries=1 start=(0.268, -0.023) success 81/81 ~182/h
+[82] OK  20.9s tries=1 start=(0.289, -0.138) success 82/82 ~181/h
+[83] OK  18.3s tries=1 start=(0.317, -0.021) success 83/83 ~181/h
+[84] OK  28.2s tries=1 flags=camera_error start=(0.229, 0.085) success 84/84 ~179/h
