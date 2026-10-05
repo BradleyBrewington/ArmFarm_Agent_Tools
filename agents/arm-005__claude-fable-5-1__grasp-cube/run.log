@@ -858,3 +858,22 @@ detection maps outside the workspace (0.394,-0.067); ignoring
 detection maps outside the workspace (0.394,-0.067); ignoring
 detection maps outside the workspace (0.394,-0.067); ignoring
 detection maps outside the workspace (0.394,-0.067); ignoring
+detection maps outside the workspace (0.394,-0.067); ignoring
+detection maps outside the workspace (0.394,-0.067); ignoring
+detection maps outside the workspace (0.394,-0.067); ignoring
+detection maps outside the workspace (0.394,-0.067); ignoring
+detection maps outside the workspace (0.394,-0.067); ignoring
+detection maps outside the workspace (0.394,-0.067); ignoring
+detection maps outside the workspace (0.394,-0.067); ignoring
+detection maps outside the workspace (0.394,-0.067); ignoring
+detection maps outside the workspace (0.394,-0.067); ignoring
+detection maps outside the workspace (0.394,-0.067); ignoring
+detection maps outside the workspace (0.394,-0.067); ignoring
+detection maps outside the workspace (0.394,-0.067); ignoring
+stop file seen; exiting at home
+55 coverage targets; map affine n=80
+{"t": 1791222748.342839, "event": "place", "target": [0.25, 0.0], "frame": [0.2300000000947128, 0.0]}
+episode error: ValueError('unreachable top-down pose (0.369,-0.062,0.090): pos err 2.0 mm, axis err 0.089')
+{"t": 1791222764.8668547, "event": "place", "target": [0.1536, 0.1638], "frame": [0.14212372750008676, 0.14742028188558165]}
+ep 238 success=False 9.6s (+reset 6.2s) rate=234/238 notes={'error': "ValueError('unreachable top-down pose (0.369,-0.062,0.090): pos err 2.0 mm, axis err 0.089')", 'episode': '20261005T125231-bc5ac26a'}
+{"t": 1791222772.7333045, "event": "grasp", "target": [0.15260107490563293, 0.1624769064576026], "frame": [0.1382618145952606, 0.14199800005493346], "grip_closed": 23.204419889502763, "grip_lifted": 23.066298342541437, "held": true}

@@ -78,7 +78,7 @@ def start_episode():
 
 def in_workspace(x, y):
     r = math.hypot(x - G.PAN_AXIS[0], y)
-    return 0.12 <= r <= 0.32 and abs(math.degrees(math.atan2(y, x - G.PAN_AXIS[0]))) <= 62
+    return 0.12 <= r <= 0.37 and abs(math.degrees(math.atan2(y, x - G.PAN_AXIS[0]))) <= 62
 
 
 def load_state():
