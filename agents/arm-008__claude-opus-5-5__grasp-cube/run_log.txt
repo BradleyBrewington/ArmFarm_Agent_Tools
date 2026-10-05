@@ -70,3 +70,7 @@
 [70] OK  15.8s tries=1 start=(0.198, 0.004) success 70/70 ~183/h
 [71] OK  14.5s tries=1 start=(0.278, -0.131) success 71/71 ~183/h
 [72] OK  14.4s tries=1 start=(0.233, -0.144) success 72/72 ~183/h
+[73] OK  14.6s tries=1 start=(0.292, -0.103) success 73/73 ~183/h
+[74] OK  17.0s tries=1 flags=queue_overflow start=(0.191, -0.068) success 74/74 ~183/h
+[75] OK  14.5s tries=1 flags=camera_error start=(0.24, 0.027) success 75/75 ~183/h
+[76] OK  10.9s tries=1 start=(0.194, -0.146) success 76/76 ~183/h
