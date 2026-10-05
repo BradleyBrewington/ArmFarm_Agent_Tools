@@ -137,8 +137,8 @@ class Grasper:
         self.arm.goto_xyz(fx, fy, Z_GRASP, wrist_roll=roll, seconds=0.5, settle=0.2)
         if snapshots:
             self._snap(snapshots + "_pre")
-        self.arm.move({"gripper": CLOSED}, 0.8, settle=0.3)
-        g0 = self.arm.read()["gripper"]
+        self.arm.move({"gripper": CLOSED}, 0.8, settle=0.1)
+        g0 = self.settle_gripper()
         if g0 < EDGE_MIN:
             # jaws closed further than a squarely-held cube allows: we caught an edge/corner.
             # Let go in place rather than lifting and flinging it; the caller retries with an offset.
@@ -151,6 +151,18 @@ class Grasper:
         held = g1 > HELD_MIN
         log("grasp", target=[float(cx), float(cy)], frame=[float(fx), float(fy)], grip_closed=g0, grip_lifted=g1, held=held, roll=round(roll, 1))
         return held, g1
+
+    def settle_gripper(self, timeout=1.5):
+        """Wait until the (torque-limited) gripper stops moving; return its position %."""
+        last = self.arm.read()["gripper"]
+        t_end = time.monotonic() + timeout
+        while time.monotonic() < t_end:
+            time.sleep(0.12)
+            now = self.arm.read()["gripper"]
+            if abs(now - last) < 0.4:
+                return now
+            last = now
+        return last
 
     def hold(self, measured, squeeze=HOLD_SQUEEZE):
         """Relax the closing goal to a moderate squeeze so the servo never trips overload."""
