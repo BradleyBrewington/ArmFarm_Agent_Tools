@@ -1,7 +1,0 @@
-[1] FAIL 24.6s tries=None start=(0.219, 0.06) success 0/1 ~0/h
-pick try 0: est (0.219,0.060) yaw 152 -> servo (0.219,0.060) roll 40 last px None grip 0.7
-pick try 1: est (0.219,0.060) yaw 152 -> servo (0.219,0.060) roll 40 last px None grip 0.7
-pick try 2: est (0.219,0.060) yaw 152 -> servo (0.219,0.060) roll 40 last px None grip 0.7
-pick try 3: est (0.219,0.059) yaw 152 -> servo (0.219,0.059) roll 40 last px None grip 1.0
-reset failed: cube not recovered
-done: 0/1 successful in 0.9 min

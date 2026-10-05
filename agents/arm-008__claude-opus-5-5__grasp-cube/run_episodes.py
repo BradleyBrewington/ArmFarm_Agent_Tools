@@ -162,6 +162,10 @@ def main():
                       f"start={start_xy and tuple(round(v, 3) for v in start_xy)} "
                       f"success {success}/{done} ~{rate:.0f}/h", flush=True)
                 placed = reset(arm, cov, last_cell, holding=good)
+                for _ in range(2):           # a missed reset pick usually only nudged the cube
+                    if placed is not None:
+                        break
+                    placed = reset(arm, cov, last_cell, holding=False)
                 if placed is None:
                     print("reset failed: cube not recovered", flush=True)
                     break

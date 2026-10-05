@@ -33,7 +33,7 @@ def detect(img):
     jm = jaw_mask()
     if jm is not None:
         m[jm > 0] = 0
-    m = cv2.morphologyEx(m, cv2.MORPH_OPEN, np.ones((7, 7), np.uint8))
+    m = cv2.morphologyEx(m, cv2.MORPH_OPEN, np.ones((15, 15), np.uint8))   # drops cables / thin edges
     n, lab, st, cen = cv2.connectedComponentsWithStats(m)
     h, w = m.shape
     best = None
@@ -49,7 +49,8 @@ def detect(img):
         cnt = cv2.findContours((lab == i).astype(np.uint8), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)[0][0]
         rect = cv2.minAreaRect(cnt)
         fill = area / max(rect[1][0] * rect[1][1], 1)
-        if fill < 0.7:
+        solidity = area / max(cv2.contourArea(cv2.convexHull(cnt)), 1)
+        if fill < 0.5 or solidity < 0.85:   # an obliquely seen cube is a convex hexagon
             continue
         d = {"px": (float(cen[i][0]), float(cen[i][1])), "area": int(area), "angle": float(rect[2]), "fill": fill,
              "partial": partial}
