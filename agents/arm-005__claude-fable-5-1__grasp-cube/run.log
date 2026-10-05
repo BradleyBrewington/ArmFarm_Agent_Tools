@@ -378,3 +378,17 @@ ep 106 success=True 8.7s (+reset 6.2s) rate=105/106 notes={'grip_home': 23.1, 's
 {"t": 1791218459.9106083, "event": "place", "target": [0.2043, -0.1598], "frame": [0.18991375133527655, -0.14590626594903439]}
 ep 107 success=True 8.2s (+reset 6.3s) rate=106/107 notes={'grip_home': 23.0, 'spot_dark_fraction': 0.0, 'cube_px': [891, 247], 'cube_xy': [0.1825, 0.1414], 'attempts': 1, 'episode': '20261005T114047-e3324d01'}
 {"t": 1791218467.7790096, "event": "grasp", "target": [0.20239835998017644, -0.1602237652881262], "frame": [0.18453932603763137, -0.14272934042819865], "grip_closed": 23.34254143646409, "grip_lifted": 22.997237569060776, "held": true}
+{"t": 1791218474.8444045, "event": "place", "target": [0.2023, -0.2335], "frame": [0.1908300609048692, -0.21711584624256466]}
+ep 108 success=True 8.2s (+reset 6.7s) rate=107/108 notes={'grip_home': 23.0, 'spot_dark_fraction': 0.0, 'cube_px': [422, 259], 'cube_xy': [0.2024, -0.1602], 'attempts': 1, 'episode': '20261005T114101-a8a589fa'}
+{"t": 1791218483.0348332, "event": "grasp", "target": [0.20028683134098513, -0.22481484154809128], "frame": [0.18570392001739916, -0.20450871703324996], "grip_closed": 23.41160220994475, "grip_lifted": 23.066298342541437, "held": true}
+{"t": 1791218489.6442766, "event": "place", "target": [0.1965, 0.0637], "frame": [0.17795629549695482, 0.0562079362923725]}
+ep 109 success=True 8.6s (+reset 6.2s) rate=108/109 notes={'grip_home': 23.1, 'spot_dark_fraction': 0.0, 'cube_px': [329, 255], 'cube_xy': [0.2003, -0.2248], 'attempts': 1, 'episode': '20261005T114116-d3f87ca5'}
+{"t": 1791218497.490662, "event": "grasp", "target": [0.19999971117976414, 0.06331087111858946], "frame": [0.1767307412422498, 0.0541700270203654], "grip_closed": 23.273480662983424, "grip_lifted": 23.066298342541437, "held": true}
+{"t": 1791218504.0890558, "event": "place", "target": [0.2243, -0.0749], "frame": [0.20575519092531963, -0.06741067076541488]}
+ep 110 success=True 8.2s (+reset 6.2s) rate=109/110 notes={'grip_home': 23.1, 'spot_dark_fraction': 0.0, 'cube_px': [772, 265], 'cube_xy': [0.2, 0.0633], 'attempts': 1, 'episode': '20261005T114131-1f1b9e1b'}
+{"t": 1791218511.9465027, "event": "grasp", "target": [0.22873477288093058, -0.07527547490161113], "frame": [0.20549408896463664, -0.06606295054703226], "grip_closed": 23.34254143646409, "grip_lifted": 23.066298342541437, "held": true}
+{"t": 1791218518.6889417, "event": "place", "target": [0.2988, 0.0], "frame": [0.2788000000769335, 0.0]}
+ep 111 success=True 8.2s (+reset 6.4s) rate=110/111 notes={'grip_home': 23.0, 'spot_dark_fraction': 0.0, 'cube_px': [551, 299], 'cube_xy': [0.2287, -0.0753], 'attempts': 1, 'episode': '20261005T114146-59126edc'}
+{"t": 1791218526.65731, "event": "grasp", "target": [0.30210790083079764, -0.003912941745885468], "frame": [0.27711066171657794, -0.003541415274261576], "grip_closed": 23.34254143646409, "grip_lifted": 23.066298342541437, "held": true}
+{"t": 1791218533.2107675, "event": "place", "target": [0.2646, -0.0439], "frame": [0.24496771360857922, -0.0400824972080074]}
+ep 112 success=True 8.3s (+reset 6.3s) rate=111/112 notes={'grip_home': 23.0, 'spot_dark_fraction': 0.0, 'cube_px': [658, 406], 'cube_xy': [0.3021, -0.0039], 'attempts': 1, 'episode': '20261005T114200-eaad9335'}
