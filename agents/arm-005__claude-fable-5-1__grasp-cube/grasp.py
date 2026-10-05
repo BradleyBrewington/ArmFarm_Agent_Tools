@@ -50,6 +50,7 @@ def radial(x, y):
 
 
 BASE_ROLL = 83.3        # wrist_roll at which the jaws open exactly along the radial direction
+ROLL_MIN, ROLL_MAX = 45.0, 125.0
 
 
 def roll_for_cube(cx, cy, rect_angle_deg):
@@ -65,7 +66,8 @@ def roll_for_cube(cx, cy, rect_angle_deg):
     radial_angle = math.degrees(math.atan2(cy, cx - PAN_AXIS[0]))
     edge_angle = 90.0 - float(rect_angle_deg)
     delta = ((edge_angle - radial_angle + 45.0) % 90.0) - 45.0
-    return BASE_ROLL + delta
+    # wrist roll has undocumented physical stops; 48..118 was verified safe on arm-005
+    return min(ROLL_MAX, max(ROLL_MIN, BASE_ROLL + delta))
 
 
 def log(event, **kw):
