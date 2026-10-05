@@ -150,3 +150,6 @@
 [150] OK  20.0s tries=1 flags=queue_overflow start=(0.184, -0.126) success 150/150 ~177/h
 [151] OK  12.7s tries=1 start=(0.279, -0.096) success 151/151 ~177/h
 [152] OK  12.2s tries=1 start=(0.195, -0.104) success 152/152 ~178/h
+[153] OK  12.2s tries=1 start=(0.232, 0.05) success 153/153 ~178/h
+[154] OK  14.1s tries=1 start=(0.27, 0.019) success 154/154 ~178/h
+[155] OK  28.7s tries=2 flags=camera_error start=(0.188, -0.003) success 155/155 ~177/h
