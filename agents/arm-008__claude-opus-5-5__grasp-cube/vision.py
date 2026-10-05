@@ -7,6 +7,7 @@ for horizontal planes at given heights, fitted with the fingertip as a marker (c
 """
 import json
 import math
+import time
 from pathlib import Path
 
 import cv2
@@ -17,6 +18,19 @@ ARM_MASK_FILE = HERE / "arm_home_mask.png"   # dark pixels of the arm at the det
 
 DARK = 70
 MIN_AREA, MAX_AREA = 1800, 14000
+
+
+def grab(cam, tries=5):
+    """camd_client.read_frame, retrying transient errors (a torn shared-memory read shows up as
+    'JPEG decode failed'; a momentarily stale slot as CamdStale)."""
+    from camd_client import CamdError, read_frame
+    for i in range(tries):
+        try:
+            return read_frame(cam)
+        except CamdError:
+            if i == tries - 1:
+                raise
+            time.sleep(0.03)
 
 
 def dark_mask(img):

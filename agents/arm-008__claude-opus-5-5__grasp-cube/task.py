@@ -101,9 +101,8 @@ SERVO_FILE = vision.HERE / "wrist_servo.json"
 
 def wrist_cube():
     import wrist
-    from camd_client import read_frame
     for _ in range(3):
-        d = wrist.detect(read_frame("wrist")[0])
+        d = wrist.detect(vision.grab("wrist")[0])
         if d:
             return d
         time.sleep(0.05)
@@ -208,9 +207,8 @@ def clear_view(arm, seconds=1.0):
 
 
 def detect_robot(use_mask, tries=4):
-    from camd_client import read_frame
     for _ in range(tries):
-        img, _ = read_frame("top")
+        img, _ = vision.grab("top")
         c = vision.candidates(img, use_mask)
         if c:
             d = max(c, key=lambda e: e["fill"] * min(e["area"], 7000))

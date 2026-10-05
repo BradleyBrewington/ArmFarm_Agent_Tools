@@ -20,7 +20,6 @@ from pathlib import Path
 import numpy as np
 
 from arm import Arm
-from camd_client import read_frame
 import recording
 import task
 import vision
@@ -67,7 +66,7 @@ def next_target(cov, last):
 
 def cube_on_table(arm):
     """A cube-like blob on the table away from the gripper (the held cube hangs at the tip)."""
-    img, _ = read_frame("top")
+    img, _ = vision.grab("top")
     tip = arm.tip()
     for c in vision.candidates(img, use_arm_mask=False):
         x, y = vision.cube_robot(c["px"])
