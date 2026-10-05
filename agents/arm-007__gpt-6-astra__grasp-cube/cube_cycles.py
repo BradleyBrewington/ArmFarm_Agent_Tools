@@ -60,12 +60,22 @@ def run(n):
    for i in range(n):
     ep=recording.start_recording('Pick black cube, bring to home, visually confirm retained grasp');active=True
     move(b,above(current));move(b,current,1.5)
-    contact=grip(b)
-    move(b,above(current),3)
+    pickup=current
+    try:contact=grip(b)
+    except RuntimeError:
+     p=b.read('Present_Position','gripper')
+     img,_=read_frame('wrist')
+     forward_dark=float(np.mean(cv2.cvtColor(img[200:450,700:1000],cv2.COLOR_BGR2GRAY)<65))
+     if not (p<10 and forward_dark>.7 and os.environ.get('CUBE_PITCH')=='35'):raise
+     if any(c.fault_bits(b,j) for j in c.JOINTS):raise
+     move(b,{'gripper':55},1.3);move(b,above(current),2)
+     pickup=pose(current['shoulder_pan'],current['elbow_flex']-10)
+     move(b,above(pickup));move(b,pickup,2);contact=grip(b)
+    move(b,above(pickup),3)
     # Retain the seated closing target through lift and home.
     home(b)
     ok,evidence=held(b);snapshot()
-    receipt=recording.stop_recording(ok,json.dumps(dict(source_pose=current,contact=contact,home_confirm=evidence)));active=False
+    receipt=recording.stop_recording(ok,json.dumps(dict(source_pose=pickup,contact=contact,home_confirm=evidence)));active=False
     emit(event='episode',success=ok,receipt=receipt,evidence=evidence)
     if not ok:raise RuntimeError('Grasp not verified at home')
     target=pose(*grid[i%len(grid)])
