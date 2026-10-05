@@ -1,5 +1,5 @@
 """Recorded cube cycles, with fresh camera and contact checks and bounded placement grid."""
-import json,time,sys,signal
+import json,time,sys,signal,os
 from pathlib import Path
 import cv2,numpy as np
 import calibrate_workspace as c, recording
@@ -48,6 +48,8 @@ def held(b):
 def run(n):
  current=json.loads(STATE.read_text()) if STATE.exists() else pose(17)
  grid=[(pan,e) for e in (20,40,60,80,10) for pan in (-40,-25,-10,5,20,35,40)]
+ offset=int(os.environ.get("CUBE_GRID_OFFSET","0"))
+ grid=grid[offset:]+grid[:offset]
  active=False
  with c.connected_bus(recording.serial_port()) as b:
   try:
