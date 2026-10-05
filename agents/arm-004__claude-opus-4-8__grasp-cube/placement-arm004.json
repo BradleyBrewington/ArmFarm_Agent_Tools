@@ -73,7 +73,45 @@
       ],
       "roll": 126.02197802197803,
       "at": 1791230571.8787215
+    },
+    "cube_offset_commissioning": {
+      "status": "candidate_requires_physical_validation",
+      "method": "mean of two observed releases transformed into tool XY",
+      "samples": [
+        {
+          "command": [
+            0.25,
+            0.2
+          ],
+          "observed": [
+            0.20944607682852034,
+            0.19988627873107348
+          ],
+          "offset_tool": [
+            -0.0497575,
+            0.0388825
+          ]
+        },
+        {
+          "command": [
+            0.29048691098405655,
+            0.2001568457792818
+          ],
+          "observed": [
+            0.2346577409528136,
+            0.2209341397860997
+          ],
+          "offset_tool": [
+            -0.0720237,
+            0.0467921
+          ]
+        }
+      ]
     }
   },
-  "alignment_z": 0.06
+  "alignment_z": 0.06,
+  "cube_offset_tool": [
+    -0.06089057702297714,
+    0.04283730068790622
+  ]
 }
