@@ -1,15 +1,15 @@
 {
-  "updated_utc": "2026-10-05T20:43:47.157088+00:00",
-  "successful_episodes": 110,
-  "clean_successful_episodes": 93,
-  "unsuccessful_episodes": 17,
-  "added_latest_resumption": 15,
-  "successful_episode_starts_in_last_hour": 40,
+  "updated_utc": "2026-10-05T20:48:10.856943+00:00",
+  "successful_episodes": 112,
+  "clean_successful_episodes": 94,
+  "unsuccessful_episodes": 18,
+  "added_latest_resumption": 2,
+  "successful_episode_starts_in_last_hour": 42,
   "episode_id_timezone": "America/Chicago",
   "hourly_target_demonstrated": false,
   "software_guard_C": 65,
   "hardware_limit_C": 70,
-  "stop_temperature_C": 65,
+  "stop_temperature_C": 67,
   "latest_temperature_and_fault": [
     48,
     0
@@ -33,15 +33,15 @@
   ],
   "home_errors_degrees": {
     "shoulder_pan": 0.5274725274725274,
-    "shoulder_lift": 0.5274725274725256,
+    "shoulder_lift": 0.6153846153846132,
     "elbow_flex": 0.2637362637362628,
     "wrist_flex": 1.2747252747252773
   },
-  "repeat_pass_next_index": 9,
+  "repeat_pass_next_index": 11,
   "cube_position_nominal": {
-    "x": 0.1256,
+    "x": 0.1723,
     "z": 0.005,
-    "pan": 55
+    "pan": 28
   },
   "coverage": "All45 nominal grid locations sampled; repeat pass completed; continuous workspace coverage unverified",
   "stop_reason": "Recurrent temperature guard trip; sensor spike root cause unconfirmed",

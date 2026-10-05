@@ -1,9 +1,9 @@
 # Cube collection status
 
-110 verified successes, including 93 recordings without quality flags; 17 unsuccessful episodes. Latest resumption added 15 successes.
+112 verified successes, 94 without recording-quality flags; 18 failed episodes. Latest resumption added 2 successes.
 
-40 successful episode starts occurred in the preceding 60 minutes. The 50-per-hour requirement has not been demonstrated. All 45 nominal grid positions have been sampled and a repeat pass completed; continuous workspace coverage remains unverified.
+42 successful episode starts in the preceding 60 minutes; the 50/hour requirement remains unmet. All 45 nominal grid locations have been sampled, including a completed repeat pass. Continuous workspace coverage is unverified.
 
-Stopped on a 65 C sample under the authorized 65 C software guard. Hardware protection remains 70 C. The sensor-spike cause is unconfirmed. No protection thresholds were increased. Pickup preflight checks both limits before motion.
+Collection stopped on a 67 C reading under the unchanged 65 C software guard. Hardware protection remains 70 C. Root cause is unconfirmed.
 
-Cube released at nominal x=.1256 m, pan=55 degrees. Arm returned home; maximum home error 1.27 degrees. Recorder stopped; gripper open with torque off; fault bits zero. Next grid pickup is position 9.
+Cube released at nominal x=.1723 m, pan=28 degrees. Arm home (maximum error 1.27 degrees), gripper open and torque off, recorder stopped, all fault bits zero. Next pickup: grid index 11.
