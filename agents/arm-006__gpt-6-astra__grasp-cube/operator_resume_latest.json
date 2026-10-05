@@ -1,0 +1,4 @@
+{
+  "message": "1b19a1e8-8357-477e-834f-fd37dffdf6cb",
+  "instruction": "Recheck live state then one monitored grasp under existing protections; resume with cooldown checks only on success; stop on recurrent trip"
+}
