@@ -2209,3 +2209,15 @@ ep 654 success=True 8.7s (+reset 6.2s) rate=641/654 notes={'grip_home': 22.9, 's
 ep 655 success=True 8.7s (+reset 6.3s) rate=642/655 notes={'grip_home': 22.9, 'spot_dark_fraction': 0.0, 'cube_px': [851, 219], 'cube_xy': [0.1608, 0.1193], 'attempts': 1, 'episode': '20261005T144724-d303d713'}
 stop file seen; exiting at home
 55 coverage targets; map affine n=80
+{"t": 1791229672.8446124, "event": "place", "target": [0.25, 0.0], "frame": [0.2300000000947128, 0.0]}
+{"t": 1791229681.5460844, "event": "grasp", "target": [0.26435923879975665, -0.047822520360080056], "frame": [0.23990303603806284, -0.04263656422289233], "grip_closed": 23.273480662983424, "grip_lifted": 23.273480662983424, "held": true, "roll": 83.7}
+{"t": 1791229688.476631, "event": "place", "target": [0.2569, 0.1416], "frame": [0.24012613645447567, 0.1307079157789122]}
+ep 656 success=True 8.5s (+reset 6.4s) rate=643/656 notes={'grip_home': 23.3, 'spot_dark_fraction': 0.0, 'cube_px': [582, 349], 'cube_xy': [0.2644, -0.0478], 'attempts': 1, 'episode': '20261005T144755-2bdbc466'}
+{"t": 1791229696.585764, "event": "grasp", "target": [0.25159849511463256, 0.14758396823408426], "frame": [0.23105663844580376, 0.13333503424694354], "grip_closed": 23.61878453038674, "grip_lifted": 22.92817679558011, "held": true, "roll": 82.2}
+{"t": 1791229703.700198, "event": "place", "target": [0.3238, 0.0], "frame": [0.3038000000701841, 0.0]}
+ep 657 success=True 8.5s (+reset 6.7s) rate=644/657 notes={'grip_home': 22.9, 'spot_dark_fraction': 0.0, 'cube_px': [884, 348], 'cube_xy': [0.2516, 0.1476], 'attempts': 1, 'episode': '20261005T144810-388984b5'}
+{"t": 1791229712.2235465, "event": "grasp", "target": [0.3274002974580002, -0.004619445999684724], "frame": [0.30240350026511215, -0.004219288822567552], "grip_closed": 23.480662983425415, "grip_lifted": 22.92817679558011, "held": true, "roll": 87.5}
+{"t": 1791229719.0300539, "event": "place", "target": [0.2259, 0.1806], "frame": [0.21151142533999912, 0.16670867478687237]}
+ep 658 success=True 8.9s (+reset 6.4s) rate=645/658 notes={'grip_home': 22.9, 'spot_dark_fraction': 0.0, 'cube_px': [642, 443], 'cube_xy': [0.3274, -0.0046], 'attempts': 1, 'episode': '20261005T144825-0301c882'}
+{"t": 1791229727.6885824, "event": "grasp", "target": [0.22536806346138488, 0.18318201240725596], "frame": [0.20753091258591405, 0.16566527629962302], "grip_closed": 0.3453038674033149, "grip_lifted": null, "held": false, "edge": true, "roll": 88.2}
+{"t": 1791229736.8908222, "event": "grasp", "target": [0.21189223489586267, 0.16953744835269785], "frame": [0.19403390431366127, 0.15204230549368863], "grip_closed": 0.3453038674033149, "grip_lifted": null, "held": false, "edge": true, "roll": 50.9}
