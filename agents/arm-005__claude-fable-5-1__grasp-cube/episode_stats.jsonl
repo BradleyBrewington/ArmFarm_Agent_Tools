@@ -28,3 +28,8 @@
 {"t": 1791216361.617183, "event": "bad_detection", "px": [197.64801025390625, 631.0632934570312], "xy": [0.5187983257709148, -0.29009809298146544]}
 {"t": 1791216363.6409645, "event": "bad_detection", "px": [165.17205810546875, 621.0570678710938], "xy": [0.5158265742510411, -0.3172504669486132]}
 {"t": 1791216366.2382352, "event": "no_cube"}
+{"t": 1791216421.0061827, "event": "episode", "success": true, "seconds": 8.4, "total": 14.7, "notes": {"grip_home": 23.1, "spot_dark_fraction": 0.0, "cube_px": [477, 204], "cube_xy": [0.1535, -0.1248], "attempts": 1, "episode": "20261005T110646-81b3457e"}, "map_n": 13, "map_resid": 0.0053}
+{"t": 1791216436.1834126, "event": "episode", "success": true, "seconds": 8.5, "total": 15.2, "notes": {"grip_home": 23.1, "spot_dark_fraction": 0.0, "cube_px": [815, 339], "cube_xy": [0.2432, 0.0862], "attempts": 1, "episode": "20261005T110701-60da0987"}, "map_n": 14, "map_resid": 0.0056}
+{"t": 1791216451.8642488, "event": "episode", "success": true, "seconds": 9.0, "total": 15.7, "notes": {"grip_home": 23.1, "spot_dark_fraction": 0.0, "cube_px": [422, 364], "cube_xy": [0.2763, -0.149], "attempts": 1, "episode": "20261005T110716-134e4141"}, "map_n": 15, "map_resid": 0.0054}
+{"t": 1791216466.8098154, "event": "map_outlier", "err": 0.259, "px": [154.0, 255.5], "xy": [0.1814, -0.0926]}
+{"t": 1791216466.810588, "event": "episode", "success": true, "seconds": 8.7, "total": 14.9, "notes": {"grip_home": 23.0, "spot_dark_fraction": 0.0, "cube_px": [747, 433], "cube_xy": [0.3169, 0.0526], "attempts": 1, "episode": "20261005T110731-73746ff9"}, "map_n": 15, "map_resid": 0.0054}
