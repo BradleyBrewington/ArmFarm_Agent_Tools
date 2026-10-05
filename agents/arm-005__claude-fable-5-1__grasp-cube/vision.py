@@ -76,13 +76,15 @@ def cube_mask_dark_fraction(img, u, v, half=30):
 
 
 def _similarity(src, dst):
-    """Least-squares similarity (Umeyama) src->dst as a 3x3 matrix; allows reflection."""
+    """Least-squares similarity (Umeyama) src->dst as a 3x3 matrix, reflection enforced."""
     mu_s, mu_d = src.mean(0), dst.mean(0)
     S, Dd = src - mu_s, dst - mu_d
     cov = Dd.T @ S / len(src)
     U, sig, Vt = np.linalg.svd(cov)
+    # The top camera looks down with image-down = robot +x and image-right = robot +y,
+    # which is a reflection (det < 0); force that chirality so two points suffice.
     Sgn = np.eye(2)
-    if np.linalg.det(U @ Vt) < 0:
+    if np.linalg.det(U @ Vt) > 0:
         Sgn[1, 1] = -1
     R = U @ Sgn @ Vt
     var_s = (S ** 2).sum() / len(src)
