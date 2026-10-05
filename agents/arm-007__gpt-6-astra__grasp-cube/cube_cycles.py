@@ -35,13 +35,14 @@ def grip(b):
   c.move(b,{'gripper':goal},.05);time.sleep(.06)
   actual=b.read('Present_Position','gripper')
   if actual-goal>1.3:
-   b.write('Goal_Position','gripper',actual-1.2)
-   time.sleep(.2)
+   if not 18<actual<35:raise RuntimeError('Unexpected contact width: '+str(actual))
+   b.write('Goal_Position','gripper',min(24.,actual-1.2))
+   time.sleep(.15)
    return actual
  raise RuntimeError('No cube contact')
 def held(b):
  img,meta=read_frame('wrist')
- dark=float(np.mean(cv2.cvtColor(img[280:580,720:1080],cv2.COLOR_BGR2GRAY)<65))
+ dark=float(np.mean(cv2.cvtColor(img[500:650,730:1030],cv2.COLOR_BGR2GRAY)<65))
  p=b.read('Present_Position','gripper')
  ok=15<p<35 and dark>.85
  return ok,dict(gripper=p,wrist_dark=dark,frame_seq=meta['seq'])
@@ -49,7 +50,7 @@ def run(n):
  if Path('tools/cube_recovery_required.json').exists():
   raise RuntimeError('Re-localize cube and validate pickup before clearing tools/cube_recovery_required.json')
  current=json.loads(STATE.read_text()) if STATE.exists() else pose(17)
- grid=[(pan,e) for e in (20,40,60,80,10) for pan in (-40,-25,-10,5,20,35,40)]
+ grid=[(pan,e) for e in (20,30,40,50,60) for pan in (-35,-20,-5,10,25,40)]
  offset=int(os.environ.get("CUBE_GRID_OFFSET","0"))
  grid=grid[offset:]+grid[:offset]
  active=False
@@ -60,7 +61,9 @@ def run(n):
     ep=recording.start_recording('Pick black cube, bring to home, visually confirm retained grasp');active=True
     move(b,above(current));move(b,current,1.5)
     contact=grip(b)
-    move(b,above(current),1.5);home(b)
+    move(b,above(current),1.5)
+    p=b.read('Present_Position','gripper');b.write('Goal_Position','gripper',p-.8)
+    home(b)
     ok,evidence=held(b);snapshot()
     receipt=recording.stop_recording(ok,json.dumps(dict(source_pose=current,contact=contact,home_confirm=evidence)));active=False
     emit(event='episode',success=ok,receipt=receipt,evidence=evidence)

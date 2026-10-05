@@ -28,5 +28,10 @@
     "episode": "20261005T170939-3eb7025e",
     "success": false,
     "reason": "No contact; recorder stopped by exception"
+  },
+  {
+    "episode": "20261005T171130-c8d514e1",
+    "success": true,
+    "reason": "Cube retained after seated closure, lift and home; verified in both cameras, home within 1.4 degrees; all motors fault-free."
   }
 ]
