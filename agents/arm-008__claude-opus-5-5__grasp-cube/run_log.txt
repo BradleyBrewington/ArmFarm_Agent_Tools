@@ -98,3 +98,6 @@
 [98] OK  18.0s tries=1 start=(0.31, 0.014) success 98/98 ~180/h
 [99] OK  14.7s tries=1 start=(0.215, -0.14) success 99/99 ~180/h
 [100] OK  20.8s tries=1 start=(0.316, 0.062) success 100/100 ~180/h
+[101] OK  22.0s tries=1 start=(0.255, -0.146) success 101/101 ~179/h
+[102] OK  13.5s tries=1 flags=camera_error start=(0.321, -0.101) success 102/102 ~179/h
+[103] OK  12.3s tries=1 start=(0.266, -0.062) success 103/103 ~179/h
