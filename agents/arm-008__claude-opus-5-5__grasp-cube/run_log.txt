@@ -22,3 +22,7 @@
 [22] OK  12.6s tries=1 start=(0.278, -0.017) success 22/22 ~183/h
 [23] OK  12.6s tries=1 start=(0.214, -0.053) success 23/23 ~184/h
 [24] OK  14.3s tries=1 start=(0.187, -0.127) success 24/24 ~184/h
+[25] OK  18.4s tries=1 flags=feedback_gap,queue_overflow start=(0.19, 0.024) success 25/25 ~183/h
+[26] OK  12.4s tries=1 start=(0.247, 0.116) success 26/26 ~182/h
+[27] OK  20.1s tries=1 start=(0.301, 0.099) success 27/27 ~180/h
+[28] OK  12.3s tries=1 start=(0.282, 0.031) success 28/28 ~181/h
