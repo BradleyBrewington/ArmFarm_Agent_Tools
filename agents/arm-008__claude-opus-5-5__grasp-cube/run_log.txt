@@ -128,3 +128,6 @@
 [128] OK  14.4s tries=1 start=(0.264, -0.009) success 128/128 ~184/h
 [129] OK  10.8s tries=1 start=(0.182, -0.147) success 129/129 ~184/h
 [130] OK  12.5s tries=1 start=(0.238, -0.134) success 130/130 ~184/h
+[131] OK  12.5s tries=1 start=(0.24, 0.063) success 131/131 ~185/h
+[132] OK  14.5s tries=1 start=(0.233, -0.097) success 132/132 ~185/h
+[133] OK  12.5s tries=1 start=(0.192, -0.071) success 133/133 ~185/h
