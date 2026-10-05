@@ -28,28 +28,12 @@
   "final_arm": "Home maxerror1.10deg",
   "coverage": "Grid0\u201340 completed with some earlier position corrections;41\u201344 remain",
   "latest_diagnostic": {
-    "time": 1791224772.899724,
+    "time": 1791224904.0987859,
     "new_episodes": 0,
-    "samples": 3256,
-    "single_read_max_C": 66,
-    "paired_read_max_C": 50,
-    "status": "Unresolved temperature read discrepancy; motion remains stopped",
-    "recording": false,
-    "fault_bits": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ],
-    "torque": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      0
-    ]
+    "samples": 2054,
+    "single_read_max_C": 62,
+    "paired_read_max_C": 48,
+    "status": "Fault reproduced at idle; torque remains off; recorder inactive",
+    "evidence": "temperature_recheck.json"
   }
 }

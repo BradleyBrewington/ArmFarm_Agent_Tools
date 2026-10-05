@@ -9,3 +9,5 @@ The reads address the same temperature register63: single-byte read at63 versus 
 The discrepancy is reproducible at idle and remains unresolved. Do not discard high readings, change the60C guard, or switch read methods solely to avoid the guard. Sensor/controller and serial feedback diagnosis is required before sustained collection resumes.
 
 Evidence: temperature_crosscheck.json and temperature_crosscheck_extended.json. Collection remains51 successful episodes,43 clean recordings; planned grid indices41–44 incomplete.
+
+Latest recheck: 2,054 paired samples while stationary with gripper torque off. Single-register readings reached 62 C; immediately following paired reads were 46 C. Recorder inactive. Fault remains reproducible. Evidence: temperature_recheck.json.
