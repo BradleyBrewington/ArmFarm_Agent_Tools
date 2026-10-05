@@ -170,7 +170,11 @@ def main():
             grip = 0.0
             try:
                 for attempt in range(3):
-                    held, grip = g.grasp(cx, cy)
+                    # lateral (tangential) nudges on retries: local map/arm error is ~1 cm here and there
+                    rad = G.radial(cx, cy)
+                    tang = np.array([-rad[1], rad[0]])
+                    off = (0.0, 0.012, -0.012)[attempt] * tang
+                    held, grip = g.grasp(cx + off[0], cy + off[1])
                     if held:
                         break
                     # failed: re-detect (cube may have been nudged) and try again

@@ -37,6 +37,7 @@ Z_HOVER = 0.075
 Z_CARRY = 0.09
 OPEN = 70.0
 CLOSED = 0.0
+EDGE_MIN = 21.0         # a squarely held 40 mm cube reads ~23%; less means an edge/corner grab
 HELD_MIN = 6.0          # gripper % above which something is between the jaws (empty closes to ~0.3)
 HOLD_SQUEEZE = 6.0      # (fallback) goal this many % below contact when not torque-limited
 GRIP_TORQUE_LIMIT = 220 # RAM register, 0..1000 = 0..100% of max torque
@@ -113,6 +114,13 @@ class Grasper:
             self._snap(snapshots + "_pre")
         self.arm.move({"gripper": CLOSED}, 0.8, settle=0.3)
         g0 = self.arm.read()["gripper"]
+        if g0 < EDGE_MIN:
+            # jaws closed further than a squarely-held cube allows: we caught an edge/corner.
+            # Let go in place rather than lifting and flinging it; the caller retries with an offset.
+            self.arm.gripper(OPEN, seconds=0.5, settle=0.1)
+            self.arm.goto_xyz(fx, fy, Z_GRASP + 0.04, seconds=0.6, settle=0.1)
+            log("grasp", target=[float(cx), float(cy)], frame=[float(fx), float(fy)], grip_closed=g0, grip_lifted=None, held=False, edge=True)
+            return False, g0
         self.arm.goto_xyz(fx, fy, Z_CARRY, seconds=1.0, settle=0.2)
         g1 = self.arm.read()["gripper"]
         held = g1 > HELD_MIN
