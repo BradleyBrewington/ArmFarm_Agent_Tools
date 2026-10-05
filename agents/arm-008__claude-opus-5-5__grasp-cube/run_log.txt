@@ -38,3 +38,7 @@
 [38] OK  12.9s tries=1 start=(0.292, -0.025) success 38/38 ~179/h
 [39] OK  25.3s tries=1 flags=feedback_gap,queue_overflow start=(0.259, -0.027) success 39/39 ~177/h
 [40] OK  12.7s tries=1 start=(0.279, 0.012) success 40/40 ~177/h
+[41] OK  17.8s tries=1 flags=camera_error start=(0.29, 0.082) success 41/41 ~176/h
+[42] OK  12.4s tries=1 start=(0.287, 0.088) success 42/42 ~176/h
+[43] OK  14.8s tries=1 start=(0.235, 0.023) success 43/43 ~176/h
+[44] OK  12.8s tries=1 flags=camera_error start=(0.248, 0.103) success 44/44 ~177/h
