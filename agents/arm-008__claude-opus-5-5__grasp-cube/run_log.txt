@@ -1,0 +1,2 @@
+[1] OK  16.3s tries=1 start=(0.297, -0.037) success 1/1 ~198/h
+[2] OK  14.3s tries=1 start=(0.21, -0.037) success 2/2 ~193/h
