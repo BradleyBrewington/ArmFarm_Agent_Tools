@@ -87,3 +87,7 @@
 [87] OK  14.5s tries=1 flags=camera_error start=(0.261, 0.028) success 87/87 ~180/h
 [88] OK  14.5s tries=1 start=(0.256, -0.063) success 88/88 ~180/h
 [89] OK  12.5s tries=1 start=(0.227, 0.09) success 89/89 ~180/h
+[90] OK  12.7s tries=1 flags=camera_error start=(0.281, 0.093) success 90/90 ~180/h
+[91] OK  12.6s tries=1 start=(0.211, 0.066) success 91/91 ~180/h
+[92] OK  14.3s tries=1 start=(0.186, -0.021) success 92/92 ~180/h
+[93] OK  12.7s tries=1 start=(0.255, 0.099) success 93/93 ~181/h
