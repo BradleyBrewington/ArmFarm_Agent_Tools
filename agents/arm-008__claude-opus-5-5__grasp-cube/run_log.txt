@@ -1,3 +1,6 @@
 [1] OK  12.5s tries=1 start=(0.163, -0.079) success 1/1 ~186/h
 [2] OK  12.6s tries=1 start=(0.225, -0.13) success 2/2 ~195/h
 [3] OK  18.1s tries=1 start=(0.284, -0.05) success 3/3 ~182/h
+[4] OK  18.8s tries=1 start=(0.295, -0.12) success 4/4 ~171/h
+[5] OK  14.8s tries=1 start=(0.314, -0.034) success 5/5 ~173/h
+[6] OK  14.6s tries=1 start=(0.264, -0.03) success 6/6 ~175/h
