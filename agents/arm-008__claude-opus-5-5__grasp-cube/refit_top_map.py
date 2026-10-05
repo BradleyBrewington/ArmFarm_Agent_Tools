@@ -3,7 +3,8 @@
 
 Every successful pick logs the cube's top-camera pixel (before the pick) and the cube
 position the wrist servo converged to, which is far more accurate than the fingertip
-calibration. Fits the CUBE_PLANE_Z homography in top_plane_maps.json (robust, RANSAC).
+calibration. Refits the CUBE_PLANE_Z homography in top_plane_maps.json (read live by
+vision.cube_robot, so a running episode loop uses it from its next look).
 """
 import json
 import sys
@@ -13,6 +14,7 @@ import numpy as np
 import vision
 
 LOG = vision.HERE / "episodes_log.jsonl"
+SINCE = 1791221156.5945666   # servo geometry (on-axis hover, current target) in use from this time
 
 
 def samples():
@@ -22,7 +24,7 @@ def samples():
         p = e.get("pick") or {}
         s = p.get("servo") or {}
         # only first-try picks: the logged pixel is from the same look as the servo result
-        if e.get("success") and p.get("attempts") == 1 and p.get("px") and "x" in s:
+        if e.get("t", 0) >= SINCE and e.get("success") and p.get("attempts") == 1 and p.get("px") and "x" in s:
             out.append((p["px"][0], p["px"][1], s["x"], s["y"]))
     return out
 

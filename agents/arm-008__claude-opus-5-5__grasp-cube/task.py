@@ -135,13 +135,17 @@ def pick(arm, x, y, yaw, fast=1.0, servo=True, record=None):
         yaw_err = 0.0 if d.get("partial") else wrist_fold(d["angle"])
         if np.hypot(*err_px) < 12 and abs(yaw_err) < 5 and not d.get("partial"):
             break
+        if i == (6 if servo else 1) - 1:
+            break                       # no unverified correction right before descending
         du, dw = Jinv @ err_px
         du, dw = np.clip([du, dw], -0.025, 0.025)
         u = closing_axis(above)
         w = np.array([-u[1], u[0]])
         x, y = np.array([x, y]) + du * u + dw * w
         if abs(yaw_err) >= 5:
-            roll = wrap45(roll - 1.3 * yaw_err)
+            r = roll - yaw_err
+            # hysteresis: only take the 90-degree-equivalent roll well past +-45 to avoid flip-flopping
+            roll = r - 90.0 if r > 60 else r + 90.0 if r < -60 else r
     if record is not None:
         record.update({"servo_px": seen, "x": float(x), "y": float(y), "roll": float(roll), "trace": trace})
     down, _ = grasp_plan(x, y, GRASP_Z, yaw, roll_hint=roll)
