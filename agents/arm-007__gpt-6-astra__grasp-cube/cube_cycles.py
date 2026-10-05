@@ -51,6 +51,7 @@ def run(n):
   raise RuntimeError('Re-localize cube and validate pickup before clearing tools/cube_recovery_required.json')
  current=json.loads(STATE.read_text()) if STATE.exists() else pose(17)
  grid=[(pan,e) for e in ((60,70,80) if os.environ.get('CUBE_PITCH')=='35' else (20,30,40)) for pan in (-20,0,20)]
+ if os.environ.get('CUBE_GRID'):grid=json.loads(os.environ['CUBE_GRID'])
  offset=int(os.environ.get("CUBE_GRID_OFFSET","0"))
  grid=grid[offset:]+grid[:offset]
  active=False
