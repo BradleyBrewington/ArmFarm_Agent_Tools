@@ -46,6 +46,8 @@ def held(b):
  ok=15<p<35 and dark>.85
  return ok,dict(gripper=p,wrist_dark=dark,frame_seq=meta['seq'])
 def run(n):
+ if Path('tools/cube_recovery_required.json').exists():
+  raise RuntimeError('Re-localize cube and validate pickup before clearing tools/cube_recovery_required.json')
  current=json.loads(STATE.read_text()) if STATE.exists() else pose(17)
  grid=[(pan,e) for e in (20,40,60,80,10) for pan in (-40,-25,-10,5,20,35,40)]
  offset=int(os.environ.get("CUBE_GRID_OFFSET","0"))
@@ -71,6 +73,8 @@ def run(n):
     snapshot();emit(event='placed',pose=current)
   except BaseException as e:
    emit(event='stopped',error=str(e))
-   if active:recording.stop_recording(False,str(e))
+   if active:
+    receipt=recording.stop_recording(False,str(e))
+    emit(event='episode',success=False,receipt=receipt,evidence={'error':str(e)})
    raise
 if __name__=='__main__':run(int(sys.argv[1]) if len(sys.argv)>1 else 1)

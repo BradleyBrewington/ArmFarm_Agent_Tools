@@ -18,5 +18,15 @@
     "episode": "20261005T170317-cb64f854",
     "success": false,
     "reason": "Manual recovery missed; returned home"
+  },
+  {
+    "episode": "20261005T170702-34b530b7",
+    "success": false,
+    "reason": "No contact; recorder stopped by exception"
+  },
+  {
+    "episode": "20261005T170939-3eb7025e",
+    "success": false,
+    "reason": "No contact; recorder stopped by exception"
   }
 ]

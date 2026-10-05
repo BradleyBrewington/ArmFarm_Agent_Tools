@@ -1,0 +1,7 @@
+{
+  "reason": "Repeated missed grasps after repositioning. Saved cube_cycle_state is a failed target, not a verified object location. Re-localize before resuming.",
+  "successes": 17,
+  "failures": 9,
+  "robot": "home; no motor faults",
+  "recording": false
+}
