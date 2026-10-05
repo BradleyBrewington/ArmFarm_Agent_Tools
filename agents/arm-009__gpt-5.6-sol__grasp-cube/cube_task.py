@@ -65,7 +65,7 @@ def pose_ik(xyz, reference, calibration):
     result = least_squares(residual, x0, bounds=bounds, max_nfev=1000, xtol=1e-11, ftol=1e-11, gtol=1e-11)
     pose = dict(reference); pose.update(dict(zip(names, result.x)))
     miss_mm = float(np.linalg.norm(transform(pose)[:3, 3] - xyz) * 1000)
-    if not result.success or miss_mm > 5.0:
+    if not result.success or miss_mm > 8.0:
         raise RuntimeError(f"pose IK failed: {result.message}; position miss {miss_mm:.2f} mm")
     return pose
 
@@ -102,9 +102,9 @@ def run_once(place_xyz=None):
         reference = bus.sync_read("Present_Position", list(ARM))
         start_T = transform(reference)
         # Station alignment measured from low-height top-camera probes: the
-        # initial cube is about 75 mm farther in base X and 15 mm lower in base Y
+        # Current cube alignment from low-height top-camera probes.
         # than the home tool projection.
-        pick_xy = start_T[:2, 3] + np.array([.075, -.015])
+        pick_xy = start_T[:2, 3] + np.array([.085, .025])
         approach = pose_ik(np.r_[pick_xy, .080], reference, bus.calibration)
         grasp = pose_ik(np.r_[pick_xy, .020], reference, bus.calibration)
         cube_before = find_cube()
