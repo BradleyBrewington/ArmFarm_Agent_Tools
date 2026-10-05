@@ -26,3 +26,6 @@
 [26] OK  12.4s tries=1 start=(0.247, 0.116) success 26/26 ~182/h
 [27] OK  20.1s tries=1 start=(0.301, 0.099) success 27/27 ~180/h
 [28] OK  12.3s tries=1 start=(0.282, 0.031) success 28/28 ~181/h
+[29] OK  10.5s tries=1 start=(0.276, -0.053) success 29/29 ~183/h
+[30] OK  16.2s tries=1 start=(0.201, 0.063) success 30/30 ~182/h
+[31] OK  14.7s tries=1 start=(0.275, 0.019) success 31/31 ~182/h
