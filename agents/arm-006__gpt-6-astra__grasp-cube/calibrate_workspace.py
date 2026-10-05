@@ -1450,7 +1450,7 @@ class AdaptiveGrip:
         if not self.c.range_min <= sample['position'] <= self.c.range_max:
             raise RuntimeError('gripper: feedback outside calibrated range')
         if sample['temperature'] >= self.temp_limit:
-            raise RuntimeError('gripper: temperature margin exhausted')
+            raise RuntimeError(f'gripper: temperature margin exhausted; sample={sample}; limit={self.temp_limit}')
         if self.current_limit and sample['current'] >= self.current_limit * .8:
             raise RuntimeError('gripper: current margin exhausted')
         if sample['fault'] & ~OVERLOAD:
