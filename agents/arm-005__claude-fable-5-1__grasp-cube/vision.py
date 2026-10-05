@@ -128,8 +128,8 @@ class TableMap:
             if M is not None:
                 self.H, self.kind = np.vstack([M, [0, 0, 1]]), "similarity"
                 return
-        # one point: assume 0.5 mm/px, image-down = +x, image-right = +y
-        s = 0.0005
+        # one point: assume 0.42 mm/px, image-down = +x, image-right = +y
+        s = 0.00042
         p = self.points[0]
         su, sv = src[0]
         self.H = np.array([[0, s, p["x"] - s * sv], [s, 0, p["y"] - s * su], [0, 0, 1]], dtype=np.float64)
