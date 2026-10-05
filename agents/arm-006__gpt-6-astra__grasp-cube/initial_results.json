@@ -1,0 +1,51 @@
+{
+  "successful": [
+    {
+      "episode": "20261005T104735-9fad0bb0",
+      "quality_flags": [
+        "control_settings_changed",
+        "torque_disabled"
+      ],
+      "x": 0.26,
+      "pan": -10
+    },
+    {
+      "episode": "20261005T105427-3a521062",
+      "quality_flags": [],
+      "x": 0.235,
+      "pan": 7
+    },
+    {
+      "episode": "20261005T105537-73f8283e",
+      "quality_flags": [
+        "camera_error"
+      ],
+      "x": 0.235,
+      "pan": 25
+    },
+    {
+      "episode": "20261005T105630-637fb366",
+      "quality_flags": [],
+      "x": 0.2,
+      "pan": -25
+    },
+    {
+      "episode": "20261005T105733-db6d8a8a",
+      "quality_flags": [
+        "camera_error"
+      ],
+      "x": 0.2,
+      "pan": 40
+    },
+    {
+      "episode": "20261005T105827-86765ac9",
+      "quality_flags": [],
+      "x": 0.2,
+      "pan": -40
+    }
+  ],
+  "unsuccessful": [
+    "20261005T104129-424860c5",
+    "20261005T105336-ed8ee1a5"
+  ]
+}
