@@ -8,3 +8,10 @@
 [8] OK  15.0s tries=1 start=(0.244, -0.139) success 8/8 ~172/h
 [9] OK  23.9s tries=1 start=(0.296, 0.094) success 9/9 ~165/h
 [10] OK  21.9s tries=1 start=(0.295, -0.136) success 10/10 ~160/h
+[11] OK  14.5s tries=1 start=(0.213, -0.127) success 11/11 ~162/h
+[12] OK  14.5s tries=1 start=(0.204, 0.109) success 12/12 ~164/h
+[13] OK  14.4s tries=1 start=(0.179, -0.086) success 13/13 ~165/h
+[14] OK  14.3s tries=1 start=(0.261, 0.022) success 14/14 ~167/h
+[15] FAIL 33.2s tries=None start=(0.172, 0.103) success 14/15 ~148/h
+pick try 0: est (0.152,0.081) yaw 156 -> servo (0.162,0.081) roll 23 last px (812, 339) grip 6.5 trace [[0.1523, 0.0807, 23.4, 827, 332, False], [0.158, 0.0817, 23.4, 820, 339, False], [0.1617, 0.0808, 23.4, 812, 339, False]]
+pick try 1: est (0.148,0.068) yaw 151 -> servo (0.159,0.067) roll 21 last px (804, 338) grip 4.2 trace [[0.1482, 0.0678, 20.5, 831, 326, False], [0.1556, 0.0698, 20.5, 822, 345, False], [0.1587, 0.0667, 20.5, 804, 338, False]]
