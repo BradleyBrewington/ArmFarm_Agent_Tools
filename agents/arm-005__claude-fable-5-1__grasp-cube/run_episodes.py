@@ -174,7 +174,7 @@ def main():
                     rad = G.radial(cx, cy)
                     tang = np.array([-rad[1], rad[0]])
                     off = (0.0, 0.012, -0.012)[attempt] * tang
-                    held, grip = g.grasp(cx + off[0], cy + off[1])
+                    held, grip = g.grasp(cx + off[0], cy + off[1], rect_angle=cube.get("angle") if cube else None)
                     if held:
                         break
                     # failed: re-detect (cube may have been nudged) and try again

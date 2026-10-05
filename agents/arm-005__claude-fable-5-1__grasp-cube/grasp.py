@@ -49,6 +49,25 @@ def radial(x, y):
     return v / (np.linalg.norm(v) + 1e-9)
 
 
+BASE_ROLL = 83.3        # wrist_roll at which the jaws open exactly along the radial direction
+
+
+def roll_for_cube(cx, cy, rect_angle_deg):
+    """Wrist roll that squares the jaws to a cube whose minAreaRect side angle is given.
+
+    Image angles are measured from image-down (+x robot) toward image-right (+y robot):
+    the jaw direction is radial_angle + (roll - BASE_ROLL) (verified 2026-10-05 by snapshots at
+    roll 48/83/118), and a square's side direction is 90 - rect_angle. Wrap the needed
+    offset into [-45, 45] since the cube has 4-fold symmetry.
+    """
+    if rect_angle_deg is None:
+        return BASE_ROLL
+    radial_angle = math.degrees(math.atan2(cy, cx - PAN_AXIS[0]))
+    edge_angle = 90.0 - float(rect_angle_deg)
+    delta = ((edge_angle - radial_angle + 45.0) % 90.0) - 45.0
+    return BASE_ROLL + delta
+
+
 def log(event, **kw):
     rec = {"t": time.time(), "event": event, **kw}
     with LOG.open("a") as f:
@@ -96,20 +115,24 @@ class Grasper:
     def hover(self, x, y, z=Z_HOVER, seconds=1.2):
         return self.arm.goto_xyz(x, y, z, seconds=seconds)
 
-    def grasp(self, cx, cy, snapshots=None):
-        """Grasp a cube centred at robot (cx, cy). Returns (held: bool, gripper %)."""
+    def grasp(self, cx, cy, snapshots=None, rect_angle=None):
+        """Grasp a cube centred at robot (cx, cy). Returns (held: bool, gripper %).
+
+        rect_angle (deg, from vision.detect_cube) squares the jaws to the cube via wrist roll.
+        """
         r = radial(cx, cy)
         fx, fy = np.array([cx, cy]) - GRASP_BACK * r
+        roll = roll_for_cube(cx, cy, rect_angle)
         self.arm.gripper(OPEN, seconds=0.5, settle=0.1)
         for zh in (Z_HOVER, 0.055, Z_GRASP + 0.02):   # far targets cannot hover high at full reach
             try:
-                self.arm.goto_xyz(fx, fy, zh, seconds=1.2, settle=0.1)
+                self.arm.goto_xyz(fx, fy, zh, wrist_roll=roll, seconds=1.2, settle=0.1)
                 break
             except ValueError:
                 if zh == Z_GRASP + 0.02:
                     raise
-        self.arm.goto_xyz(fx, fy, Z_GRASP + 0.02, seconds=0.6, settle=0.1)
-        self.arm.goto_xyz(fx, fy, Z_GRASP, seconds=0.5, settle=0.2)
+        self.arm.goto_xyz(fx, fy, Z_GRASP + 0.02, wrist_roll=roll, seconds=0.6, settle=0.1)
+        self.arm.goto_xyz(fx, fy, Z_GRASP, wrist_roll=roll, seconds=0.5, settle=0.2)
         if snapshots:
             self._snap(snapshots + "_pre")
         self.arm.move({"gripper": CLOSED}, 0.8, settle=0.3)
@@ -119,12 +142,12 @@ class Grasper:
             # Let go in place rather than lifting and flinging it; the caller retries with an offset.
             self.arm.gripper(OPEN, seconds=0.5, settle=0.1)
             self.arm.goto_xyz(fx, fy, Z_GRASP + 0.04, seconds=0.6, settle=0.1)
-            log("grasp", target=[float(cx), float(cy)], frame=[float(fx), float(fy)], grip_closed=g0, grip_lifted=None, held=False, edge=True)
+            log("grasp", target=[float(cx), float(cy)], frame=[float(fx), float(fy)], grip_closed=g0, grip_lifted=None, held=False, edge=True, roll=round(roll, 1))
             return False, g0
         self.arm.goto_xyz(fx, fy, Z_CARRY, seconds=1.0, settle=0.2)
         g1 = self.arm.read()["gripper"]
         held = g1 > HELD_MIN
-        log("grasp", target=[float(cx), float(cy)], frame=[float(fx), float(fy)], grip_closed=g0, grip_lifted=g1, held=held)
+        log("grasp", target=[float(cx), float(cy)], frame=[float(fx), float(fy)], grip_closed=g0, grip_lifted=g1, held=held, roll=round(roll, 1))
         return held, g1
 
     def hold(self, measured, squeeze=HOLD_SQUEEZE):
@@ -139,7 +162,7 @@ class Grasper:
         """Put the held cube down so that its centre lands near robot (cx, cy)."""
         r = radial(cx, cy)
         fx, fy = np.array([cx, cy]) - HELD_FORWARD * r
-        self.arm.goto_xyz(fx, fy, Z_CARRY, seconds=1.3, settle=0.1)
+        self.arm.goto_xyz(fx, fy, Z_CARRY, wrist_roll=BASE_ROLL, seconds=1.3, settle=0.1)
         self.arm.goto_xyz(fx, fy, release_z, seconds=0.9, settle=0.2)
         self.arm.gripper(OPEN, seconds=0.5, settle=0.2)
         self.arm.goto_xyz(fx, fy, Z_HOVER, seconds=0.8, settle=0.1)
