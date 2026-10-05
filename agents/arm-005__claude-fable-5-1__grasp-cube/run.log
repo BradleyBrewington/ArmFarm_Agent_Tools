@@ -801,3 +801,5 @@ cube not visible; waiting
 cube not visible; waiting
 cube not visible; waiting
 giving up: cube not visible
+55 coverage targets; map affine n=80
+{"t": 1791220714.843833, "event": "place", "target": [0.25, 0.0], "frame": [0.2300000000947128, 0.0]}
