@@ -8,6 +8,7 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
+import numpy as np  # noqa: E402
 import calibrate_workspace as cw  # noqa: E402
 import kin  # noqa: E402
 
@@ -53,12 +54,34 @@ def pose(x, y, z, roll=0.0, tilt=0.0):
     return J
 
 
-def goto(b, x, y, z, roll=0.0, speed=120.0, tilt=0.0, settle=True):
+SAG = {}  # cached joint-space correction near recent targets: key -> (cmd - measured)
+
+
+def goto(b, x, y, z, roll=0.0, speed=120.0, tilt=0.0, settle=True, correct=1):
+    """Move tip to (x,y,z); `correct` closed-loop passes remove gravity sag measured by FK."""
+    want = np.array([x, y, z])
     J = pose(x, y, z, roll, tilt)
     move(b, J, speed=speed)
-    if settle:
-        wait(b, J)
+    if not settle:
+        return J
+    cur = wait(b, J)
+    aim = want.copy()
+    for _ in range(correct):
+        time.sleep(0.15)
+        cur = joints(b)
+        got = kin.fk_T(cur)[:3, 3]
+        err = want - got
+        if np.linalg.norm(err) < 0.0025:
+            break
+        aim = aim + err
+        J = pose(*aim, roll, tilt)
+        move(b, J, speed=speed, min_s=0.15)
+        cur = wait(b, J, tol=1.0, timeout=0.6)
     return J
+
+
+def tip(b):
+    return kin.fk_T(joints(b))[:3, 3]
 
 
 def gripper(b, value, seconds=0.35):
