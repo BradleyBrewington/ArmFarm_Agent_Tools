@@ -106,3 +106,7 @@
 [106] OK  12.1s tries=1 start=(0.232, -0.017) success 106/106 ~184/h
 [107] OK  10.4s tries=1 start=(0.262, -0.052) success 107/107 ~184/h
 [108] OK  14.8s tries=1 start=(0.283, -0.14) success 108/108 ~184/h
+[109] OK  14.3s tries=1 start=(0.233, 0.02) success 109/109 ~184/h
+[110] OK  12.5s tries=1 start=(0.307, -0.058) success 110/110 ~185/h
+[111] OK  20.1s tries=1 start=(0.278, 0.009) success 111/111 ~184/h
+[112] OK  12.8s tries=1 start=(0.252, -0.131) success 112/112 ~184/h
