@@ -43,7 +43,7 @@ def run(points):
    return r
   for n,(x,pan) in enumerate(points):
    started=time.time();tag=f'cube_{int(started)}';episode=None
-   release=pose(x,.025,pan);pick=pose(x,.005,pan)
+   release=pose(x,.015,pan);pick=pose(x,.005,pan)
    approach=pose(x,.060,pan)
    for t in (release,pick,approach,HOME):
     clipped=c.clamp_target(t,b.calibration)
