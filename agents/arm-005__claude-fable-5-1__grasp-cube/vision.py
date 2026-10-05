@@ -115,6 +115,9 @@ def _similarity(src, dst):
 
 
 AFFINE_MIN_POINTS = 8
+LOCAL_MIN_POINTS = 20
+LOCAL_SIGMA_M = 0.03      # kernel width of the local residual correction
+LOCAL_PRIOR_W = 0.5       # shrinks the correction toward zero where few neighbours exist
 TRIM_M = 0.03
 
 
@@ -188,12 +191,35 @@ class TableMap:
         self.H = np.array([[0, s, p["x"] - s * sv], [s, 0, p["y"] - s * su], [0, 0, 1]], dtype=np.float64)
         self.kind = "prior"
 
-    def pixel_to_robot(self, u, v):
-        if self.H is None:
-            raise RuntimeError("table map has no points yet")
+    def _global(self, u, v):
         su, sv = undistort_pts([[u, v]])[0]
         p = self.H @ np.array([su, sv, 1.0])
-        return float(p[0] / p[2]), float(p[1] / p[2])
+        return np.array([p[0] / p[2], p[1] / p[2]])
+
+    def _residual_table(self):
+        if getattr(self, "_res_cache_n", -1) != len(self.points):
+            preds = np.array([self._global(p["u"], p["v"]) for p in self.points]) if self.points else np.zeros((0, 2))
+            trues = np.array([[p["x"], p["y"]] for p in self.points]) if self.points else np.zeros((0, 2))
+            self._res_preds, self._res_vecs = preds, trues - preds
+            self._res_cache_n = len(self.points)
+        return self._res_preds, self._res_vecs
+
+    def pixel_to_robot(self, u, v, local=True):
+        """Global fit plus a kernel-weighted local correction from nearby placement residuals.
+
+        The arm has repeatable ~1.5 cm positioning bias in places (e.g. near the base) that
+        no planar model captures; the residuals of past placements fix it locally.
+        """
+        if self.H is None:
+            raise RuntimeError("table map has no points yet")
+        g = self._global(u, v)
+        if local and len(self.points) >= LOCAL_MIN_POINTS:
+            preds, vecs = self._residual_table()
+            d2 = ((preds - g) ** 2).sum(1)
+            w = np.exp(-d2 / (2 * LOCAL_SIGMA_M ** 2))
+            w[np.linalg.norm(vecs, axis=1) > TRIM_M] = 0.0     # ignore tumbled-cube outliers
+            g = g + (w[:, None] * vecs).sum(0) / (w.sum() + LOCAL_PRIOR_W)
+        return float(g[0]), float(g[1])
 
     def robot_to_pixel(self, x, y):
         """Approximate inverse (undistorted pixel), for sanity checks."""
@@ -204,7 +230,7 @@ class TableMap:
     def residuals(self):
         out = []
         for p in self.points:
-            x, y = self.pixel_to_robot(p["u"], p["v"])
+            x, y = self.pixel_to_robot(p["u"], p["v"], local=False)
             out.append(math.hypot(x - p["x"], y - p["y"]))
         return out
 
