@@ -36,6 +36,12 @@ def plan(x, y, z, roll, pitch=None):
     raise ValueError(f"unreachable ({x:.3f}, {y:.3f}, {z:.3f})")
 
 
+def wrap45(roll):
+    """Equivalent wrist roll for a 90-degree-symmetric cube, kept in [-45, 45): the wrist-servo
+    target pixel was calibrated near roll 0 and drifts at large rolls with the tilted approach."""
+    return (roll + 45.0) % 90.0 - 45.0
+
+
 def closing_axis(q):
     """Horizontal unit vector from the moving jaw toward the fixed jaw (gripper_link +y)."""
     T = fk_T(q)
@@ -55,8 +61,7 @@ def grasp_plan(cx, cy, z, yaw, roll_hint=None):
         if roll_hint is None:
             d = (yaw - ang) % 90.0
             d = d - 90.0 if d >= 45 else d
-            roll = roll + d
-            roll = roll - 90.0 if roll > 60 else roll + 90.0 if roll < -60 else roll
+            roll = wrap45(roll + d)
         tx, ty = cx + JAW_OFFSET * u[0], cy + JAW_OFFSET * u[1]
     q = plan(tx, ty, z, roll)
     return q, roll
@@ -122,7 +127,7 @@ def pick(arm, x, y, yaw, fast=1.0, servo=True, record=None):
         w = np.array([-u[1], u[0]])
         x, y = np.array([x, y]) + du * u + dw * w
         if abs(yaw_err) >= 5:
-            roll = max(-90.0, min(90.0, roll - 1.3 * yaw_err))
+            roll = wrap45(roll - 1.3 * yaw_err)
     if record is not None:
         record.update({"servo_px": seen, "x": float(x), "y": float(y), "roll": float(roll)})
     mid, _ = grasp_plan(x, y, (HOVER_Z + GRASP_Z) / 2, yaw, roll_hint=roll)
