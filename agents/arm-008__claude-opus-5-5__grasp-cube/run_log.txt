@@ -103,3 +103,7 @@
 [103] OK  12.7s tries=1 flags=camera_error start=(0.3, -0.086) success 103/103 ~184/h
 [104] OK  12.6s tries=1 start=(0.202, 0.102) success 104/104 ~184/h
 [105] OK  12.8s tries=1 start=(0.299, -0.074) success 105/105 ~184/h
+[106] OK  14.6s tries=1 start=(0.278, 0.111) success 106/106 ~184/h
+[107] OK  12.7s tries=1 flags=camera_error start=(0.229, -0.032) success 107/107 ~185/h
+[108] OK  14.5s tries=1 start=(0.241, -0.135) success 108/108 ~184/h
+[109] OK  14.2s tries=1 start=(0.184, 0.099) success 109/109 ~184/h
