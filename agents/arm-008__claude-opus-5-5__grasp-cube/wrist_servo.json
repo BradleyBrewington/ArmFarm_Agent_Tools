@@ -1,0 +1,17 @@
+{
+ "comment": "Wrist-image servo at the pre-grasp hover (task.HOVER_Z, task.PITCH). J: px change per metre of gripper shift along (u = closing axis toward fixed jaw, w = u rotated +90 deg). target: cube centroid px for a good grasp.",
+ "J": [
+  [
+   5331.0,
+   378.0
+  ],
+  [
+   266.0,
+   -3095.0
+  ]
+ ],
+ "target": [
+  790,
+  372.0
+ ]
+}

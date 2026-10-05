@@ -7,6 +7,7 @@ Conventions found on arm-008 (2026-10-05):
     for a given cube yaw is solved with FK (grasp_plan), never as a world angle.
   * the gripper Torque_Limit is capped (arm.GRIP_TORQUE) so a held cube never trips overload.
 """
+import json
 import math
 import time
 
@@ -77,29 +78,53 @@ def cube_pose(det):
     return x, y, yaw
 
 
-def wrist_yaw_error():
-    """Cube edge angle relative to the jaws in the wrist image (deg, folded), or None."""
+SERVO_FILE = vision.HERE / "wrist_servo.json"
+
+
+def wrist_cube():
     import wrist
     from camd_client import read_frame
-    d = wrist.detect(read_frame("wrist")[0])
-    return None if d is None else wrist.fold90(d["angle"])
+    for _ in range(3):
+        d = wrist.detect(read_frame("wrist")[0])
+        if d:
+            return d
+        time.sleep(0.05)
+    return None
 
 
-def pick(arm, x, y, yaw, fast=1.0, yaw_fix=True):
-    """Open above the cube, square the jaws to it with the wrist camera, descend, close, lift.
+def pick(arm, x, y, yaw, fast=1.0, servo=True, record=None):
+    """Hover above the cube estimate, then use the wrist camera to square the jaws (roll) and
+    centre the cube (shift along the closing axis u and across it w), descend, close, lift.
     yaw: cube face angle in base_link degrees. Returns gripper % after lifting."""
+    sv = json.loads(SERVO_FILE.read_text())
+    Jinv = np.linalg.inv(np.array(sv["J"]).T)        # px error -> (du, dw) metres
+    target = np.array(sv["target"])
     _, roll = grasp_plan(x, y, GRASP_Z, yaw)
-    for i in range(3 if yaw_fix else 1):
+    seen = None
+    for i in range(4 if servo else 1):
         above, _ = grasp_plan(x, y, HOVER_Z, yaw, roll_hint=roll)
-        arm.move({**above, "gripper": OPEN}, (1.3 if i == 0 else 0.4) * fast)
-        arm.wait(above, tol=2.5, timeout=0.8)
-        if not yaw_fix:
+        arm.move({**above, "gripper": OPEN}, (1.3 if i == 0 else 0.45) * fast)
+        arm.wait(above, tol=1.5, timeout=0.8)
+        if not servo:
             break
-        time.sleep(0.12)
-        err = wrist_yaw_error()
-        if err is None or abs(err) < 5:
+        time.sleep(0.1)
+        d = wrist_cube()
+        if d is None:
             break
-        roll = max(-90.0, min(90.0, roll - 1.3 * err))
+        seen = d["px"]
+        err_px = target - np.array(d["px"])
+        yaw_err = wrist_fold(d["angle"])
+        if np.hypot(*err_px) < 12 and abs(yaw_err) < 5:
+            break
+        du, dw = Jinv @ err_px
+        du, dw = np.clip([du, dw], -0.025, 0.025)
+        u = closing_axis(above)
+        w = np.array([-u[1], u[0]])
+        x, y = np.array([x, y]) + du * u + dw * w
+        if abs(yaw_err) >= 5:
+            roll = max(-90.0, min(90.0, roll - 1.3 * yaw_err))
+    if record is not None:
+        record.update({"servo_px": seen, "x": float(x), "y": float(y), "roll": float(roll)})
     down, _ = grasp_plan(x, y, GRASP_Z, yaw, roll_hint=roll)
     arm.move(down, 0.6 * fast)
     arm.wait(down, tol=3, timeout=0.6)
@@ -114,6 +139,11 @@ def pick(arm, x, y, yaw, fast=1.0, yaw_fix=True):
         prev = g
     arm.move(above, 0.6 * fast)
     return arm.gripper_pos()
+
+
+def wrist_fold(a):
+    a = a % 90.0
+    return a - 90.0 if a >= 45 else a
 
 
 def place(arm, x, y, yaw=None, fast=1.0, z=None):
