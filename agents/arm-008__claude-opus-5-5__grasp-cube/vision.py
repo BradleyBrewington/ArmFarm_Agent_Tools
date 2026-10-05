@@ -160,12 +160,13 @@ def px_to_table(px, h=CUBE_H):
 
 
 def fit_rigid(table_xy, robot_xy, save=True):
-    """2D rotation(+reflection) + translation table -> robot (Procrustes); picks the better handedness."""
+    """2D reflection-rotation + translation table -> robot (Procrustes). Handedness is fixed:
+    with nearly collinear samples the free choice was ambiguous and picked the wrong one."""
     P = np.asarray(table_xy, float); Q = np.asarray(robot_xy, float)
     pc, qc = P.mean(0), Q.mean(0)
     U, S, Vt = np.linalg.svd((P - pc).T @ (Q - qc))
     best = None
-    for flip in (1, -1):
+    for flip in (-1,):   # table frame (z down, toward the floor) is mirrored w.r.t. base_link
         D = np.diag([1, flip])
         R = (U @ D @ Vt).T
         b = qc - R @ pc
