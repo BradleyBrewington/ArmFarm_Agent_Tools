@@ -81,3 +81,7 @@
 [81] OK  15.7s tries=1 start=(0.229, 0.017) success 81/81 ~183/h
 [82] OK  12.7s tries=1 start=(0.247, 0.076) success 82/82 ~183/h
 [83] OK  12.6s tries=1 start=(0.188, -0.093) success 83/83 ~183/h
+[84] OK  12.8s tries=1 start=(0.304, 0.044) success 84/84 ~183/h
+[85] OK  14.6s tries=1 start=(0.182, -0.134) success 85/85 ~183/h
+[86] OK  10.7s tries=1 start=(0.263, -0.044) success 86/86 ~184/h
+[87] OK  14.4s tries=1 start=(0.235, 0.108) success 87/87 ~184/h
