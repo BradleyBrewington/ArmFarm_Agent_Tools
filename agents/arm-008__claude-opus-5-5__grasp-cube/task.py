@@ -113,8 +113,8 @@ def pick(arm, x, y, yaw, fast=1.0, servo=True, record=None):
             break
         seen = d["px"]
         err_px = target - np.array(d["px"])
-        yaw_err = wrist_fold(d["angle"])
-        if np.hypot(*err_px) < 12 and abs(yaw_err) < 5:
+        yaw_err = 0.0 if d.get("partial") else wrist_fold(d["angle"])
+        if np.hypot(*err_px) < 12 and abs(yaw_err) < 5 and not d.get("partial"):
             break
         du, dw = Jinv @ err_px
         du, dw = np.clip([du, dw], -0.025, 0.025)

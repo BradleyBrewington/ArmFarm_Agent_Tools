@@ -43,14 +43,16 @@ def detect(img):
             continue
         if jm is None and y + bh >= h - 3:   # without a jaw mask, bottom blobs are jaws
             continue
-        if x <= 2 or x + bw >= w - 3 or y <= 2:   # border blobs: table edge / other objects
+        if x <= 2 or x + bw >= w - 3:      # side-border blobs: table edge / other objects
             continue
+        partial = y <= 2                   # cut by the top edge: centroid only good for a coarse move
         cnt = cv2.findContours((lab == i).astype(np.uint8), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)[0][0]
         rect = cv2.minAreaRect(cnt)
         fill = area / max(rect[1][0] * rect[1][1], 1)
         if fill < 0.7:
             continue
-        d = {"px": (float(cen[i][0]), float(cen[i][1])), "area": int(area), "angle": float(rect[2]), "fill": fill}
+        d = {"px": (float(cen[i][0]), float(cen[i][1])), "area": int(area), "angle": float(rect[2]), "fill": fill,
+             "partial": partial}
         if best is None or area > best["area"]:
             best = d
     return best
