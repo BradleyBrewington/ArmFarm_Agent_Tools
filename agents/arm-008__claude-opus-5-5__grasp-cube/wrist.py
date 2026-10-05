@@ -8,12 +8,31 @@ import numpy as np
 
 HERE = Path(__file__).resolve().parent
 DARK = 60
+JAW_MASK_FILE = HERE / "wrist_jaw_mask.png"   # fixed jaw (dilated) with the gripper OPEN
+_JAW = None
+
+
+def jaw_mask():
+    global _JAW
+    if _JAW is None and JAW_MASK_FILE.exists():
+        _JAW = cv2.imread(str(JAW_MASK_FILE), cv2.IMREAD_GRAYSCALE)
+    return _JAW
+
+
+def save_jaw_mask(img):
+    hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
+    m = (hsv[..., 2] < DARK).astype(np.uint8) * 255
+    m = cv2.dilate(m, np.ones((21, 21), np.uint8))
+    cv2.imwrite(str(JAW_MASK_FILE), m)
 
 
 def detect(img):
     """Cube blob in the wrist image (jaws at the bottom are excluded). Returns dict or None."""
     hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
     m = (hsv[..., 2] < DARK).astype(np.uint8)
+    jm = jaw_mask()
+    if jm is not None:
+        m[jm > 0] = 0
     m = cv2.morphologyEx(m, cv2.MORPH_OPEN, np.ones((7, 7), np.uint8))
     n, lab, st, cen = cv2.connectedComponentsWithStats(m)
     h, w = m.shape
@@ -22,9 +41,9 @@ def detect(img):
         x, y, bw, bh, area = st[i]
         if area < 4000 or area > 120000:
             continue
-        if y + bh >= h - 3:            # touches the bottom: a jaw (or cube merged with one)
+        if jm is None and y + bh >= h - 3:   # without a jaw mask, bottom blobs are jaws
             continue
-        if x <= 2 or x + bw >= w - 3 or y <= 2:
+        if x <= 2 or x + bw >= w - 3 or y <= 2:   # border blobs: table edge / other objects
             continue
         cnt = cv2.findContours((lab == i).astype(np.uint8), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)[0][0]
         rect = cv2.minAreaRect(cnt)
