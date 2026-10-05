@@ -9,3 +9,5 @@ Temperature guard captured62C against the unchanged60C threshold. Subsequent idl
 Cube visually confirmed on table, arm home within1.10deg, gripper open with torque off. Recorder inactive; all motor fault bits zero.
 
 The empty-hand camera check was updated to a higher image region after a cube on the table triggered the lower region; saved evidence distinguishes held images (dark fraction at least0.54) from released images (0.0). The check additionally requires open jaws. Held-object checks remain unchanged.
+
+Latest read-only diagnostic: no new episodes. Reproduced single-register spikes to66C with gripper torque off; immediately following paired-register reads returned47C. See temperature_diagnosis.md and temperature_crosscheck_extended.json. Motion remains stopped pending diagnosis.
