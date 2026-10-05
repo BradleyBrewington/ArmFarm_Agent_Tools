@@ -65,9 +65,15 @@ def pick(arm, x, y, roll, fast=1.0):
     arm.wait(above, tol=4, timeout=0.6)
     arm.move(down, 0.6 * fast)
     arm.wait(down, tol=3, timeout=0.6)
-    arm.move({"gripper": CLOSED}, 0.35)
-    time.sleep(0.3)
-    arm.hold()
+    arm.hold()                       # torque-capped close; jaws need ~0.5 s to reach the cube
+    t0 = time.monotonic()
+    prev = arm.gripper_pos()
+    while time.monotonic() - t0 < 1.0:
+        time.sleep(0.08)
+        g = arm.gripper_pos()
+        if abs(g - prev) < 0.3 and time.monotonic() - t0 > 0.25:
+            break
+        prev = g
     arm.move(above, 0.6 * fast)
     return arm.gripper_pos()
 
