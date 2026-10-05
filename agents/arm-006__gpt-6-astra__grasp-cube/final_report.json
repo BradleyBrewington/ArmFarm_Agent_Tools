@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-05T20:50:12.549662+00:00",
+  "updated_utc": "2026-10-05T20:53:00.412676+00:00",
   "successful_episodes": 112,
   "clean_successful_episodes": 94,
   "unsuccessful_episodes": 18,
@@ -47,17 +47,15 @@
   "stop_reason": "Recurrent collection guard trips; idle read discrepancy persists under randomized read order; temperature feedback requires investigation",
   "final_state": "Cube on table, arm home, gripper open and torque off",
   "latest_diagnostic": {
-    "samples": 1474,
-    "single_read_range_C": [
-      47,
-      68
+    "samples": 1672,
+    "temperature_range_C": [
+      46,
+      57
     ],
-    "paired_read_range_C": [
-      47,
-      61
-    ],
+    "checksum_mismatches": 0,
+    "spike_reproduced_in_this_capture": false,
     "gripper_torque_off": true,
     "root_cause": "unconfirmed",
-    "evidence": "temperature_order_check.json"
+    "evidence": "temperature_packet_trace.json"
   }
 }
