@@ -62,9 +62,6 @@ def pose(x, y, z, roll=0.0, tilt=0.0):
     return J
 
 
-SAG = {}  # cached joint-space correction near recent targets: key -> (cmd - measured)
-
-
 def goto(b, x, y, z, roll=0.0, speed=120.0, tilt=0.0, settle=True, correct=1):
     """Move tip to (x,y,z); `correct` closed-loop passes remove gravity sag measured by FK."""
     want = np.array([x, y, z])
