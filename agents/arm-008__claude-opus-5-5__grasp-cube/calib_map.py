@@ -17,7 +17,6 @@ from camd_client import read_frame
 import task
 import vision
 
-GRID = [(x, y) for x in (0.20, 0.25, 0.30, 0.34) for y in (-0.16, -0.08, 0.0, 0.08, 0.16)]
 
 
 def load_samples():

@@ -15,6 +15,7 @@ import numpy as np
 
 HERE = Path(__file__).resolve().parent
 MAP_FILE = HERE / "cube_map.json"
+ARM_MASK_FILE = HERE / "arm_home_mask.png"   # dark pixels of the arm at the detection pose
 SAMPLES_FILE = HERE / "cube_map_samples.jsonl"
 
 DARK = 70
@@ -29,8 +30,35 @@ def dark_mask(img):
     return m
 
 
-def candidates(img):
+_ARM = None
+
+
+def arm_mask():
+    global _ARM
+    if _ARM is None and ARM_MASK_FILE.exists():
+        _ARM = cv2.imread(str(ARM_MASK_FILE), cv2.IMREAD_GRAYSCALE)
+    return _ARM
+
+
+def save_arm_mask(img, exclude=None):
+    """Store the arm's dark silhouette at the detection pose (cube blob `exclude` removed)."""
+    global _ARM
     m = dark_mask(img)
+    if exclude is not None:
+        n, lab, stats, cent = cv2.connectedComponentsWithStats(m)
+        u, v = map(int, exclude["px"])
+        m[lab == lab[v, u]] = 0
+    m = cv2.dilate(m, np.ones((15, 15), np.uint8))
+    cv2.imwrite(str(ARM_MASK_FILE), m)
+    _ARM = m
+
+
+def candidates(img, use_arm_mask=True):
+    m = dark_mask(img)
+    am = arm_mask() if use_arm_mask else None
+    if am is not None:
+        m[am > 0] = 0
+        m = cv2.morphologyEx(m, cv2.MORPH_OPEN, np.ones((7, 7), np.uint8))
     n, lab, stats, cent = cv2.connectedComponentsWithStats(m)
     h, w = m.shape
     out = []
@@ -39,6 +67,8 @@ def candidates(img):
         if not MIN_AREA <= area <= MAX_AREA:
             continue
         if y <= 2 or x <= 2 or x + bw >= w - 2:   # touches border: arm or table edge
+            continue
+        if area < MIN_AREA:
             continue
         aspect = bw / bh
         fill = area / float(bw * bh)

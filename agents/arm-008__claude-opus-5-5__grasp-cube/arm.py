@@ -53,6 +53,8 @@ class Arm:
                     cw.recover_overload(self.bus, j)
         cw.preflight(self.bus, [self.joints()])
         cw.enable_at_current_position(self.bus, ALL)
+        if self.gripper_pos() < 50:   # may be holding the cube: keep squeezing so it does not slip
+            self.hold()
         return self
 
     def __exit__(self, *exc):
