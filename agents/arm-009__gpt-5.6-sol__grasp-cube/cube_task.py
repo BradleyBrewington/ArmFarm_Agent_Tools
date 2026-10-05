@@ -104,9 +104,9 @@ def run_once(place_xyz=None):
         # Station alignment measured from low-height top-camera probes: the
         # Current cube alignment from low-height top-camera probes.
         # than the home tool projection.
-        pick_xy = start_T[:2, 3] + np.array([.116, .010])
+        pick_xy = start_T[:2, 3] + np.array([.125, .016])
         approach = pose_ik(np.r_[pick_xy, .080], reference, bus.calibration)
-        grasp = pose_ik(np.r_[pick_xy, .020], reference, bus.calibration)
+        grasp = pose_ik(np.r_[pick_xy, .035], reference, bus.calibration)
         cube_before = find_cube()
         episode = recording.start_recording("Pick up black cube, bring it to home, and confirm grasp")
         success = False; notes = ""
@@ -140,7 +140,7 @@ def run_once(place_xyz=None):
         cw.move(bus, {"gripper": 65.0}, .5)
         cw.move(bus, place_approach, .7)
         home(bus, home_target, 1.2)
-        return {"success": True, "gripper_contact_percent": held, "pick_xyz": [*pick_xy, .020], "place_xyz": place_xyz.tolist()}
+        return {"success": True, "gripper_contact_percent": held, "pick_xyz": [*pick_xy, .035], "place_xyz": place_xyz.tolist()}
 
 
 if __name__ == "__main__":
