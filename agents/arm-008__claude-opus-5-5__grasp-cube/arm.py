@@ -20,6 +20,14 @@ GRIP_CLOSED = 0.0
 @contextmanager
 def bus():
     with cw.connected_bus(os.environ["ARMFARM_SERIAL_PORT"]) as b:
+        # The relay occasionally drops a status packet; retry reads/writes instead of aborting mid-motion.
+        for name in ("sync_read", "sync_write"):
+            orig = getattr(b, name)
+
+            def retrying(*a, _orig=orig, **k):
+                k.setdefault("num_retry", 4)
+                return _orig(*a, **k)
+            setattr(b, name, retrying)
         cw.enable_at_current_position(b, cw.JOINTS)
         yield b
 
