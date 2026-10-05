@@ -8,8 +8,8 @@ with c.connected_bus(recording.serial_port()) as b:
   time.sleep(.1)
   actual=b.read('Present_Position','gripper')
   if actual-goal>1.3:
-   b.write('Goal_Position','gripper',actual-.35)
-   print('contact',actual,'hold',actual-.35,flush=True)
+   b.write('Goal_Position','gripper',actual-1.0)
+   print('contact',actual,'hold',actual-1.0,flush=True)
    break
  else:print('no contact',flush=True)
  time.sleep(.3)
