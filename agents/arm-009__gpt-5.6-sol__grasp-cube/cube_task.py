@@ -102,9 +102,9 @@ def run_once(place_xyz=None):
         reference = bus.sync_read("Present_Position", list(ARM))
         start_T = transform(reference)
         # Station alignment measured from low-height top-camera probes: the
-        # initial cube is 60 mm farther in base X and 10 mm lower in base Y
+        # initial cube is about 75 mm farther in base X and 15 mm lower in base Y
         # than the home tool projection.
-        pick_xy = start_T[:2, 3] + np.array([.060, -.010])
+        pick_xy = start_T[:2, 3] + np.array([.075, -.015])
         approach = pose_ik(np.r_[pick_xy, .080], reference, bus.calibration)
         grasp = pose_ik(np.r_[pick_xy, .020], reference, bus.calibration)
         cube_before = find_cube()
@@ -114,7 +114,7 @@ def run_once(place_xyz=None):
             cw.move(bus, {"gripper": 65.0}, .5)
             cw.move(bus, approach, 1.0)
             cw.move(bus, grasp, .8); cw.settle(bus, grasp, .2)
-            cw.move(bus, {"gripper": 0.0}, .7); cw.settle(bus, {"gripper": 0.0}, .3)
+            cw.move(bus, {"gripper": 0.0}, 2.0); cw.settle(bus, {"gripper": 0.0}, .3)
             held = bus.sync_read("Present_Position", ["gripper"])["gripper"]
             fault = cw.fault_bits(bus, "gripper")
             cw.move(bus, approach, .7)
