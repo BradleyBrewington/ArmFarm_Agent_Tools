@@ -100,13 +100,14 @@ def run_once(place_xyz=None):
         current = bus.sync_read("Present_Position", list(cw.JOINTS))
         home(bus, home_target)
         reference = bus.sync_read("Present_Position", list(ARM))
+        reference["wrist_roll"] = 83.0
         start_T = transform(reference)
         # Station alignment measured from low-height top-camera probes: the
         # Current cube alignment from low-height top-camera probes.
         # than the home tool projection.
-        pick_xy = start_T[:2, 3] + np.array([.190, .045])
+        pick_xy = start_T[:2, 3] + np.array([.125, .000])
         approach = pose_ik(np.r_[pick_xy, .080], reference, bus.calibration)
-        grasp = pose_ik(np.r_[pick_xy, .035], reference, bus.calibration)
+        grasp = pose_ik(np.r_[pick_xy, .000], reference, bus.calibration)
         cube_before = find_cube()
         episode = recording.start_recording("Pick up black cube, bring it to home, and confirm grasp")
         success = False; notes = ""
