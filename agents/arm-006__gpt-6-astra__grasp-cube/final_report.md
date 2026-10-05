@@ -1,13 +1,11 @@
-Collection paused for inconsistent temperature feedback.
+Operator-authorized resumption completed17 successful episodes before the updated temperature guard tripped.
 
-51 cumulative successful episodes; 43 recordings without quality flags; 11 unsuccessful episodes. This run added 13 successes. Elapsed 13.5 minutes including alignment, recovery and temperature diagnosis; equivalent rate 58.0 successes/hour over this interval, not a sustained one-hour validation.
+68 successful episodes cumulatively; 59 without recording quality flags; 12 unsuccessful episodes. This resumed run:17 successes,16 clean recordings,1 unsuccessful episode. Elapsed 13.5 minutes including setup and recovery; interval rate 75.5 successes/hour. The planned50-success resumed run was interrupted; this is not a sustained one-hour validation.
 
-Coverage: planned grid indices0–40 completed, with some earlier corrected pickup positions. Indices41–44 remain. Entire-workspace coverage is not complete.
+Coverage: all45 nominal grid locations have now had successful pickup coverage, with earlier position corrections. This is sampled coverage, not certification of every point in the physical workspace. Repeat pass completed indices0–11; index12 failed.
 
-Temperature guard captured62C against the unchanged60C threshold. Subsequent idle trace with gripper torque disabled contained1783 readings ranging47–65C, with abrupt spikes and zero motor fault bits. Physical heating versus temperature feedback error remains unresolved. Further collection should wait for diagnosis. Trace: temperature_idle_trace.json.
+Operator instruction a4b8b931-c9fb-42cd-a0e8-88e8353a0eb8 authorized resumption under the updated65C software guard with70C hardware protection unchanged. Both were verified before motion. The guard tripped on66C during episode20261005T143258-860c6f8a. That episode was marked unsuccessful. No protections were relaxed further. Root cause remains unconfirmed.
 
-Cube visually confirmed on table, arm home within1.10deg, gripper open with torque off. Recorder inactive; all motor fault bits zero.
+A collection process also receivedSIGTERM between episodes after178.6seconds. Arm and cube state were inspected; recorder was inactive with no faults. The placed cube was recovered in a separately recorded successful episode; later commands used shorter batches.
 
-The empty-hand camera check was updated to a higher image region after a cube on the table triggered the lower region; saved evidence distinguishes held images (dark fraction at least0.54) from released images (0.0). The check additionally requires open jaws. Held-object checks remain unchanged.
-
-Latest read-only diagnostic: no new episodes. Reproduced single-register spikes to66C with gripper torque off; immediately following paired-register reads returned47C. See temperature_diagnosis.md and temperature_crosscheck_extended.json. Motion remains stopped pending diagnosis.
+Final state: cube visually confirmed on tabletop; arm home within1.275deg; gripper open with torque off; recording inactive; all motor fault bits zero. Post-release temperature49C, hardware protection70C.

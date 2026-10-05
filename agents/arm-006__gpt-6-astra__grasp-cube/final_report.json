@@ -1,10 +1,13 @@
 {
-  "successful_episodes": 51,
-  "clean_successful_episodes": 43,
-  "unsuccessful_episodes": 11,
-  "added_this_run": 13,
-  "this_run_elapsed_minutes": 13.456756238142649,
-  "this_run_successes_per_hour": 57.96344870906709,
+  "successful_episodes": 68,
+  "clean_successful_episodes": 59,
+  "unsuccessful_episodes": 12,
+  "added_operator_resumed_run": 17,
+  "resumed_elapsed_minutes": 13.501768354574839,
+  "resumed_successes_per_hour": 75.54565988790577,
+  "software_guard_C": 65,
+  "hardware_limit_C": 70,
+  "stop_temperature_C": 66,
   "recording": false,
   "fault_bits": [
     0,
@@ -22,18 +25,8 @@
     1,
     0
   ],
-  "next_grid_index": 41,
-  "stop_reason": "Temperature guard observed62C. Idle torqueoff trace1783samples ranged47\u201365C with abrupt spikes; unresolved temperature feedback discrepancy.",
-  "final_cube": "Visually on table",
-  "final_arm": "Home maxerror1.10deg",
-  "coverage": "Grid0\u201340 completed with some earlier position corrections;41\u201344 remain",
-  "latest_diagnostic": {
-    "time": 1791224904.0987859,
-    "new_episodes": 0,
-    "samples": 2054,
-    "single_read_max_C": 62,
-    "paired_read_max_C": 48,
-    "status": "Fault reproduced at idle; torque remains off; recorder inactive",
-    "evidence": "temperature_recheck.json"
-  }
+  "coverage": "All45 nominal grid locations sampled, with earlier position corrections; continuous full-workspace coverage not certified",
+  "repeat_pass_next_index": 12,
+  "root_cause": "Temperature spike root cause unconfirmed",
+  "final_state": "Cube on table; arm home maxerror1.275deg; gripper open torqueoff"
 }
