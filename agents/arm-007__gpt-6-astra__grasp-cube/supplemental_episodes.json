@@ -33,5 +33,10 @@
     "episode": "20261005T171130-c8d514e1",
     "success": true,
     "reason": "Cube retained after seated closure, lift and home; verified in both cameras, home within 1.4 degrees; all motors fault-free."
+  },
+  {
+    "episode": "20261005T171839-820310b6",
+    "success": true,
+    "reason": "Cube visibly retained at home in both cameras after a 23-percent seated closure; all motor faults zero."
   }
 ]
