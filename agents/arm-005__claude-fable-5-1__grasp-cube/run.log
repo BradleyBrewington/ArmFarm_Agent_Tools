@@ -21,3 +21,5 @@ Traceback (most recent call last):
     if not response.pop('ok'): raise RuntimeError(response['error'])
                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 RuntimeError: ValueError: an episode is already open
+55 coverage targets; map affine n=10
+{"t": 1791216260.7494078, "event": "grasp", "target": [0.2014981000571171, -0.11263749422049252], "frame": [0.18094476121239433, -0.0984051277266084], "grip_closed": 23.204419889502763, "grip_lifted": 22.997237569060776, "held": true}

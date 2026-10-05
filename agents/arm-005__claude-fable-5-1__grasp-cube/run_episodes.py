@@ -64,6 +64,17 @@ def coverage_targets(tmap, bounds):
     return out
 
 
+def start_episode():
+    """Open a recording; a stale episode left open by a killed run is closed as failed first."""
+    try:
+        return recording.start_recording(TASK)
+    except RuntimeError as exc:
+        if "already open" not in str(exc):
+            raise
+        recording.stop_recording(False, json.dumps({"error": "stale episode closed on restart"}))
+        return recording.start_recording(TASK)
+
+
 def in_workspace(x, y):
     r = math.hypot(x - G.PAN_AXIS[0], y)
     return 0.12 <= r <= 0.32 and abs(math.degrees(math.atan2(y, x - G.PAN_AXIS[0]))) <= 62
@@ -135,7 +146,7 @@ def main():
             # ---- episode
             notes = {}
             if not a.dry:
-                recording.start_recording(TASK)
+                start_episode()
             held = False
             grip = 0.0
             try:
