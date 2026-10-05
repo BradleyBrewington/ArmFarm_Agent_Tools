@@ -33,3 +33,6 @@
 [33] OK  27.1s tries=2 start=(0.178, -0.118) success 33/33 ~181/h
 [34] OK  12.8s tries=1 start=(0.254, 0.021) success 34/34 ~181/h
 [35] OK  12.7s tries=1 start=(0.228, -0.101) success 35/35 ~182/h
+[36] OK  23.3s tries=2 start=(0.166, -0.113) success 36/36 ~180/h
+[37] FAIL 42.4s tries=None start=(0.182, 0.118) success 36/37 ~169/h
+pick try 0: est (0.164,0.113) yaw 143 -> servo (0.176,0.112) roll 5 last px (805, 339) grip 22.7
