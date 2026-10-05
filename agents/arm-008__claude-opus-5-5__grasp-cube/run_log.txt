@@ -108,3 +108,7 @@
 [108] OK  14.1s tries=1 start=(0.259, -0.087) success 108/108 ~179/h
 [109] OK  14.1s tries=1 start=(0.184, -0.13) success 109/109 ~179/h
 [110] OK  12.3s tries=1 start=(0.26, 0.001) success 110/110 ~180/h
+[111] OK  12.6s tries=1 start=(0.198, 0.007) success 111/111 ~180/h
+[112] OK  12.6s tries=1 start=(0.244, -0.056) success 112/112 ~180/h
+[113] OK  12.4s tries=1 start=(0.232, -0.081) success 113/113 ~180/h
+[114] OK  16.0s tries=1 flags=camera_error start=(0.205, 0.062) success 114/114 ~180/h
