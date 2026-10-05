@@ -1,0 +1,104 @@
+"""Black-cube detection in the top camera and pixel -> robot table mapping.
+
+detect_cube(img) -> dict(px=(u, v), area, angle, box) or None. (u, v) is the
+centroid of the dark cube blob in raw 1280x720 pixels.
+Mapping: cube_map.json holds a homography from cube centroid pixels to the
+base_link XY where the cube's centre sits on the table. It is fitted from
+placements (place cube with the gripper at known FK XY, then detect it).
+"""
+import json
+import math
+from pathlib import Path
+
+import cv2
+import numpy as np
+
+HERE = Path(__file__).resolve().parent
+MAP_FILE = HERE / "cube_map.json"
+SAMPLES_FILE = HERE / "cube_map_samples.jsonl"
+
+DARK = 70
+MIN_AREA, MAX_AREA = 1800, 14000
+
+
+def dark_mask(img):
+    hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
+    m = ((hsv[..., 2] < DARK)).astype(np.uint8) * 255
+    m = cv2.morphologyEx(m, cv2.MORPH_OPEN, np.ones((5, 5), np.uint8))
+    m = cv2.morphologyEx(m, cv2.MORPH_CLOSE, np.ones((9, 9), np.uint8))
+    return m
+
+
+def candidates(img):
+    m = dark_mask(img)
+    n, lab, stats, cent = cv2.connectedComponentsWithStats(m)
+    h, w = m.shape
+    out = []
+    for i in range(1, n):
+        x, y, bw, bh, area = stats[i]
+        if not MIN_AREA <= area <= MAX_AREA:
+            continue
+        if y <= 2 or x <= 2 or x + bw >= w - 2:   # touches border: arm or table edge
+            continue
+        aspect = bw / bh
+        fill = area / float(bw * bh)
+        if not 0.5 <= aspect <= 2.0:
+            continue
+        cnt = cv2.findContours((lab == i).astype(np.uint8), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)[0][0]
+        rect = cv2.minAreaRect(cnt)
+        rw, rh = rect[1]
+        rfill = area / max(rw * rh, 1)
+        if rfill < 0.75 or not 0.55 <= rw / max(rh, 1) <= 1.8:
+            continue
+        out.append({"px": (float(cent[i][0]), float(cent[i][1])), "area": int(area),
+                    "angle": float(rect[2]), "rect": rect, "fill": rfill})
+    return out
+
+
+def detect_cube(img):
+    c = candidates(img)
+    if not c:
+        return None
+    return max(c, key=lambda d: d["fill"] * min(d["area"], 7000))
+
+
+def load_map():
+    if not MAP_FILE.exists():
+        return None
+    return np.array(json.loads(MAP_FILE.read_text())["H"], float)
+
+
+def px_to_robot(px, H=None):
+    H = load_map() if H is None else H
+    p = H @ np.array([px[0], px[1], 1.0])
+    return float(p[0] / p[2]), float(p[1] / p[2])
+
+
+def robot_to_px(xy, H=None):
+    H = load_map() if H is None else H
+    p = np.linalg.inv(H) @ np.array([xy[0], xy[1], 1.0])
+    return float(p[0] / p[2]), float(p[1] / p[2])
+
+
+def fit_map(samples, save=True):
+    """samples: list of (u, v, x, y). Homography if >=6 samples, else affine."""
+    s = np.array(samples, float)
+    src, dst = np.ascontiguousarray(s[:, :2]), np.ascontiguousarray(s[:, 2:])
+    if len(s) >= 6:
+        H, _ = cv2.findHomography(src, dst, cv2.RANSAC, 0.008)
+    else:
+        X = np.hstack([src, np.ones((len(s), 1))])
+        A = np.linalg.lstsq(X, dst, rcond=None)[0].T
+        H = np.vstack([A, [0, 0, 1]])
+    pred = np.array([px_to_robot(p, H) for p in src])
+    err = np.linalg.norm(pred - dst, axis=1)
+    if save:
+        MAP_FILE.write_text(json.dumps({"H": H.tolist(), "n": len(s), "rms_m": float(np.sqrt((err ** 2).mean())),
+                                        "max_m": float(err.max())}, indent=1))
+    return H, err
+
+
+def cube_yaw(det):
+    """Cube edge angle in image, folded to [-45, 45) degrees."""
+    a = det["angle"] % 90.0
+    return a - 90.0 if a >= 45 else a
