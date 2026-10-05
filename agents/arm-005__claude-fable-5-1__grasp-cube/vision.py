@@ -26,7 +26,10 @@ D = np.array(_cal["dist_coeffs"], dtype=np.float64)
 # Regions of the raw 1280x720 top image that can never hold the cube:
 # the robot's own parking area at the top centre, the neighbouring station's arm at the
 # top right, and the clamp at the bottom-left table edge.
-EXCLUDE = [(430, 0, 900, 240), (1150, 0, 1280, 720), (0, 0, 110, 720)]
+EXCLUDE = [(1150, 0, 1280, 720), (0, 0, 110, 720)]
+# The parked arm hangs into the top-centre of the image; instead of a fixed box, any dark
+# component that touches the top image border within this u-range is treated as the arm.
+ARM_TOP_U = (380, 950)
 DARK = 70            # grey level below which a pixel counts as "black"
 MIN_AREA = 1500      # px^2  (cube ~ 65x75 px)
 MAX_AREA = 12000
@@ -49,6 +52,8 @@ def detect_cube(img, exclude=EXCLUDE, debug=None):
     best = None
     for i in range(1, n):
         x, y, w, h, area = stats[i]
+        if y <= 2 and ARM_TOP_U[0] <= x + w / 2 <= ARM_TOP_U[1] + w:
+            continue  # the robot arm itself (or whatever hangs in from the top edge)
         if not MIN_AREA <= area <= MAX_AREA:
             continue
         fill = area / float(w * h)
