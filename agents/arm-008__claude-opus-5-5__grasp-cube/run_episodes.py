@@ -135,6 +135,9 @@ def main():
     start = time.monotonic()
     done = success = 0
     last_cell = None
+    if recording.request("status").get("recording"):   # left open by a killed predecessor
+        recording.stop_recording(success=False, notes="aborted: controlling process ended mid-episode; "
+                                 "grasp not confirmed")
     with Arm() as arm:
         if arm.gripper_pos() > task.GRIP_EMPTY and arm.gripper_pos() < 50:   # still holding from before
             reset(arm, cov, None, holding=True)

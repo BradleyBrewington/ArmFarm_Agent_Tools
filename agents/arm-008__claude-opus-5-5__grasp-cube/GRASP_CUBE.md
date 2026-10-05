@@ -1,6 +1,7 @@
 # Grasp-cube episode tooling (arm-008)
 
-Run: `/opt/armfarm/venv/bin/python tools/run_episodes.py N [--minutes M]`
+Run: `setsid nohup /opt/armfarm/venv/bin/python -u tools/run_episodes.py N [--minutes M] > tools/run_log.txt &`
+(detached so it survives the agent session; `touch tools/STOP` ends it cleanly between episodes)
 (look -> record -> pick -> home -> confirm -> stop -> place at a new coverage cell -> repeat).
 Logs: `episodes_log.jsonl`, coverage per 4 cm cell: `coverage.json`, console: `run_log.txt`.
 
