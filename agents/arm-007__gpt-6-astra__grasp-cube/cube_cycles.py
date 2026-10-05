@@ -25,7 +25,7 @@ def pose(pan,elbow=20):
  from scipy.optimize import brentq
  from fk import forward
  def height(s):return forward(dict(shoulder_pan=2,shoulder_lift=s,elbow_flex=elbow,wrist_flex=65-s-elbow,wrist_roll=-30))['z']+.002193685765342651
- s=brentq(height,-40,35)
+ s=brentq(height,-80,35)
  return dict(shoulder_pan=pan,shoulder_lift=s,elbow_flex=elbow,wrist_flex=65-s-elbow)
 def above(q):return {**q,'shoulder_lift':q['shoulder_lift']-30,'wrist_flex':q['wrist_flex']+30}
 def home(b):move(b,HOME,2.3)
@@ -47,7 +47,7 @@ def held(b):
  return ok,dict(gripper=p,wrist_dark=dark,frame_seq=meta['seq'])
 def run(n):
  current=json.loads(STATE.read_text()) if STATE.exists() else pose(17)
- grid=[(5,40),(-15,60),(25,40)]+[(pan,e) for e in (20,30,40,50,60) for pan in (-30,-15,0,15,30)]
+ grid=[(pan,e) for e in (20,40,60,80,10) for pan in (-40,-25,-10,5,20,35,40)]
  active=False
  with c.connected_bus(recording.serial_port()) as b:
   try:
