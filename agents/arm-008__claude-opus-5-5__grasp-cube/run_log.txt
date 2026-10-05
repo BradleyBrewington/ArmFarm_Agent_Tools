@@ -2,3 +2,9 @@
 [2] OK  10.8s tries=1 start=(0.217, -0.14) success 2/2 ~185/h
 [3] OK  12.5s tries=1 start=(0.2, 0.068) success 3/3 ~192/h
 [4] OK  18.4s tries=1 flags=feedback_gap,queue_overflow start=(0.187, -0.127) success 4/4 ~182/h
+[5] OK  12.6s tries=1 flags=queue_overflow start=(0.209, 0.074) success 5/5 ~181/h
+[6] OK  12.5s tries=1 start=(0.214, 0.035) success 6/6 ~180/h
+[7] OK  12.6s tries=1 start=(0.232, -0.093) success 7/7 ~183/h
+[8] OK  12.7s tries=1 start=(0.301, -0.049) success 8/8 ~186/h
+stop file found; ending
+done: 8/8 successful in 2.7 min
