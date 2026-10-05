@@ -102,3 +102,7 @@
 [102] OK  10.9s tries=1 start=(0.263, 0.097) success 102/102 ~184/h
 [103] OK  11.5s tries=1 start=(0.227, -0.098) success 103/103 ~184/h
 [104] OK  13.9s tries=1 start=(0.185, -0.126) success 104/104 ~184/h
+[105] OK  19.5s tries=1 start=(0.298, 0.03) success 105/105 ~184/h
+[106] OK  12.1s tries=1 start=(0.232, -0.017) success 106/106 ~184/h
+[107] OK  10.4s tries=1 start=(0.262, -0.052) success 107/107 ~184/h
+[108] OK  14.8s tries=1 start=(0.283, -0.14) success 108/108 ~184/h
