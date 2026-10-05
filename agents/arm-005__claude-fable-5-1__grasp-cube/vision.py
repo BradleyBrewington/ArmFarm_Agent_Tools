@@ -75,6 +75,25 @@ def cube_mask_dark_fraction(img, u, v, half=30):
     return float((win < DARK).mean()) if win.size else 0.0
 
 
+def _similarity(src, dst):
+    """Least-squares similarity (Umeyama) src->dst as a 3x3 matrix; allows reflection."""
+    mu_s, mu_d = src.mean(0), dst.mean(0)
+    S, Dd = src - mu_s, dst - mu_d
+    cov = Dd.T @ S / len(src)
+    U, sig, Vt = np.linalg.svd(cov)
+    Sgn = np.eye(2)
+    if np.linalg.det(U @ Vt) < 0:
+        Sgn[1, 1] = -1
+    R = U @ Sgn @ Vt
+    var_s = (S ** 2).sum() / len(src)
+    c = (sig * np.diag(Sgn)).sum() / var_s
+    t = mu_d - c * R @ mu_s
+    H = np.eye(3)
+    H[:2, :2] = c * R
+    H[:2, 2] = t
+    return H
+
+
 class TableMap:
     """Undistorted pixel -> robot (x, y) on the table plane.
 
@@ -113,21 +132,14 @@ class TableMap:
             return
         src = undistort_pts([[p["u"], p["v"]] for p in self.points])
         dst = np.array([[p["x"], p["y"]] for p in self.points], dtype=np.float64)
-        if n >= 5:
-            H, inl = cv2.findHomography(src, dst, cv2.RANSAC, 0.012)
-            if H is not None and inl is not None and inl.sum() >= 4:
-                self.H, self.kind = H, "homography"
-                return
-        if n >= 4:
-            H, _ = cv2.findHomography(src, dst, 0)
-            if H is not None:
+        if n >= 6:
+            H, inl = cv2.findHomography(src, dst, cv2.RANSAC, 0.015)
+            if H is not None and inl is not None and inl.sum() >= max(5, 0.7 * n):
                 self.H, self.kind = H, "homography"
                 return
         if n >= 2:
-            M, _ = cv2.estimateAffinePartial2D(src.reshape(-1, 1, 2), dst.reshape(-1, 1, 2), method=cv2.LMEDS)
-            if M is not None:
-                self.H, self.kind = np.vstack([M, [0, 0, 1]]), "similarity"
-                return
+            self.H, self.kind = _similarity(src, dst), "similarity"
+            return
         # one point: assume 0.42 mm/px, image-down = +x, image-right = +y
         s = 0.00042
         p = self.points[0]
