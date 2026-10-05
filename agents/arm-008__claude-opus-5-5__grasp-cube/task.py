@@ -47,13 +47,12 @@ def roll_for(yaw_robot):
     return r - 90.0 if r >= 45 else r
 
 
-def cube_pose(det, H=None):
-    """Cube detection -> (x, y, yaw_deg) in base_link using the cube map."""
-    H = vision.load_map() if H is None else H
+def cube_pose(det):
+    """Cube detection -> (x, y, yaw_deg) in base_link via the metric table model."""
     (cx, cy), (w, h), a = det["rect"]
-    x, y = vision.px_to_robot(det["px"], H)
+    x, y = vision.cube_robot(det["px"])
     d = (math.cos(math.radians(a)) * 20, math.sin(math.radians(a)) * 20)
-    x2, y2 = vision.px_to_robot((det["px"][0] + d[0], det["px"][1] + d[1]), H)
+    x2, y2 = vision.cube_robot((det["px"][0] + d[0], det["px"][1] + d[1]))
     yaw = math.degrees(math.atan2(y2 - y, x2 - x))
     return x, y, yaw
 
