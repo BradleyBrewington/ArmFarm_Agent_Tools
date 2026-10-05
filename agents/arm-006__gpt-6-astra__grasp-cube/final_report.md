@@ -1,19 +1,9 @@
-Latest check: no new episodes. Two-minute torque-off cooldown observation ended at48C with zero motor faults. Added supervised-retry criterion is30seconds at or below43C; it has not been met. This is a cooldown criterion, not a change to the operator-authorized65C software guard or70C hardware protection. Evidence: cooldown_latest.json.
+Latest continuation:13 additional successes;83 cumulative successes,72 recordings without quality flags,15 unsuccessful episodes.
 
-Latest continuation:2 additional successes,70 cumulative (61 clean recordings),13 unsuccessful episodes. The next grasp stopped at65C under the unchanged65C software guard and70C hardware protection. A10-second torque-off rest was added between cycles, outside recording, with temperature and fault checks; it did not prevent recurrence. No protections were relaxed.
+Collection stopped on71C in episode20261005T150752-703b7694. The error reported a70C software limit, and source inspection confirmed min(70, hardware_limit), differing from the last received operator instruction of65C software/70C hardware. File modification time was14:48:27 during cooldown. This agent did not make that limit change; its source and authorization are unconfirmed. Hardware limit was verified70C. The shared source change was left untouched pending clarification. Pickup helpers now refuse motion if software/hardware limits differ from the last received65C/70C instruction.
 
-Cube visually confirmed on table; arm home within1.275deg; gripper open and torque off; recorder inactive; all motor fault bits zero. Temperature after release49C.
+Long torque-off cooldown reduced readings from49C to44–45C. The additional43C restart target introduced by this agent was not reached; after stable45C readings the agent explicitly revised that precaution and resumed under the believed operator configuration. Actual software configuration change was detected later as described above. Requested grip effort was lowered to150/1000, preserving220/1000 output ceiling and all checks; successful holds showed136–140 load units. Ten-second torque-off rests remain between episodes.
 
-All45 nominal grid locations have sampled successful coverage, with earlier position corrections. Repeat pass completed indices0–13;14 failed. Continuous entire-workspace coverage and sustained50/hour remain unverified.
+A separate episode20261005T150208-6aa4fb48 was marked unsuccessful after processSIGTERM. Subsequent work used one cycle per process.
 
-Operator-authorized resumption completed17 successful episodes before the updated temperature guard tripped.
-
-68 successful episodes cumulatively; 59 without recording quality flags; 12 unsuccessful episodes. This resumed run:17 successes,16 clean recordings,1 unsuccessful episode. Elapsed 13.5 minutes including setup and recovery; interval rate 75.5 successes/hour. The planned50-success resumed run was interrupted; this is not a sustained one-hour validation.
-
-Coverage: all45 nominal grid locations have now had successful pickup coverage, with earlier position corrections. This is sampled coverage, not certification of every point in the physical workspace. Repeat pass completed indices0–11; index12 failed.
-
-Operator instruction a4b8b931-c9fb-42cd-a0e8-88e8353a0eb8 authorized resumption under the updated65C software guard with70C hardware protection unchanged. Both were verified before motion. The guard tripped on66C during episode20261005T143258-860c6f8a. That episode was marked unsuccessful. No protections were relaxed further. Root cause remains unconfirmed.
-
-A collection process also receivedSIGTERM between episodes after178.6seconds. Arm and cube state were inspected; recorder was inactive with no faults. The placed cube was recovered in a separately recorded successful episode; later commands used shorter batches.
-
-Final state: cube visually confirmed on tabletop; arm home within1.275deg; gripper open with torque off; recording inactive; all motor fault bits zero. Post-release temperature49C, hardware protection70C.
+Final state: cube ontable visually confirmed; arm home within1.275deg; gripper open torqueoff; recorder inactive; all motor fault bits zero. Planned nominal grid has sampled successful coverage, with earlier corrections. Repeat pass complete through26;27 failed. Sustained50successful episodes/hour remains unverified.

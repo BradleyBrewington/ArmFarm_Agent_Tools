@@ -10,6 +10,8 @@ if len(sys.argv)==5:
 else: pick=json.loads(sys.argv[2])
 with c.connected_bus(recording.serial_port()) as b:
  g=c.AdaptiveGrip(b);g.effort=min(g.effort,150);b.adaptive_grip=g
+ if mode=='pick' and (g.temp_limit!=65 or g.get('Max_Temperature_Limit')!=70):
+  raise RuntimeError('Temperature configuration differs from received operator instruction: expected software65C hardware70C')
  def go(p,t=2):
   c.preflight(b,[p]);c.enable_at_current_position(b,list(p));c.move(b,p,t);return c.settle(b,p,.3)
  approach={**pick,'shoulder_lift':pick['shoulder_lift']-5,'elbow_flex':pick['elbow_flex']-12,'wrist_flex':pick['wrist_flex']+17}

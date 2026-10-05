@@ -1,11 +1,12 @@
 {
-  "successful_episodes": 70,
-  "clean_successful_episodes": 61,
-  "unsuccessful_episodes": 13,
-  "added_latest_turn": 2,
-  "software_guard_C": 65,
+  "successful_episodes": 83,
+  "clean_successful_episodes": 72,
+  "unsuccessful_episodes": 15,
+  "added_latest_turn": 13,
+  "software_guard_observed_C": 70,
+  "software_guard_last_received_instruction_C": 65,
   "hardware_limit_C": 70,
-  "stop_temperature_C": 65,
+  "stop_temperature_C": 71,
   "recording": false,
   "fault_bits": [
     0,
@@ -23,15 +24,8 @@
     1,
     0
   ],
-  "repeat_pass_next_index": 14,
-  "coverage": "All45 nominal grid locations sampled, some earlier corrections; continuous full-workspace coverage not certified",
-  "stop_reason": "65C guard trip despite added10second torqueoff rest between cycles; root cause unconfirmed",
-  "final_state": "Cube ontable, arm home, gripper open torqueoff",
-  "latest_cooldown": {
-    "samples": 120,
-    "last_temperature_C": 48,
-    "ready": false,
-    "restart_target_C": 43,
-    "required_stable_seconds": 30
-  }
+  "repeat_pass_next_index": 27,
+  "coverage": "All45 nominal grid locations sampled with earlier corrections; exact continuous workspace coverage unverified",
+  "stop_reason": "71C guard trip and unannounced software limit change detected; clarification pending",
+  "final_state": "Cube ontable, arm home, gripper open torqueoff"
 }
