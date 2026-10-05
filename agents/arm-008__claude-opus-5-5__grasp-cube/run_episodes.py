@@ -15,6 +15,7 @@ import math
 import random
 import time
 import traceback
+from pathlib import Path
 
 import numpy as np
 
@@ -87,6 +88,26 @@ def confirm_grasp(arm):
     return ok, {"grip": round(g2, 1), "cube_on_table": None if on_table is None else on_table["px"]}
 
 
+def stop_episode(success, notes, tries=6):
+    """stop_recording, retrying while the recorder's writer queue is momentarily full."""
+    for i in range(tries):
+        try:
+            return recording.stop_recording(success=success, notes=notes)
+        except RuntimeError as e:
+            if "Full" not in str(e) or i == tries - 1:
+                raise
+            time.sleep(1.0 + i)
+
+
+def quality_flags(stop):
+    """Recorder quality flags of the finished episode (camera/queue problems), or None."""
+    try:
+        folder = stop.get("folder")
+        return json.loads((Path(folder) / "episode.json").read_text()).get("quality_flags") if folder else None
+    except (OSError, ValueError):
+        return None
+
+
 def log(entry):
     with open(LOG, "a") as f:
         f.write(json.dumps(entry, default=float) + "\n")
@@ -107,10 +128,10 @@ def episode(arm, n):
         good, conf = False, {"pick": info}
     notes = (f"grasp confirmed at home: gripper {conf.get('grip')}%, no cube on table"
              if good else f"failed: {json.dumps(conf, default=float)}")
-    stop = recording.stop_recording(success=bool(good), notes=notes)
+    stop = stop_episode(bool(good), notes)
     entry = {"n": n, "t": time.time(), "success": bool(good), "pick": info, "confirm": conf,
              "attempt_log": attempts, "seconds": round(time.monotonic() - t0, 1),
-             "folder": stop.get("folder") or stop.get("path") or stop}
+             "folder": stop.get("folder"), "quality_flags": quality_flags(stop)}
     return good, info, entry
 
 
@@ -161,9 +182,13 @@ def main():
                         last_cell = k
                 log(entry)
                 rate = success / max((time.monotonic() - start) / 3600, 1e-6)
+                flags = entry.get("quality_flags")
                 print(f"[{done}] {'OK ' if good else 'FAIL'} {entry['seconds']}s tries={info.get('attempts')} "
+                      f"{'flags=' + ','.join(flags) + ' ' if flags else ''}"
                       f"start={start_xy and tuple(round(v, 3) for v in start_xy)} "
                       f"success {success}/{done} ~{rate:.0f}/h", flush=True)
+                if flags:
+                    time.sleep(3.0)          # let the recorder's writer catch up before the next episode
                 placed = reset(arm, cov, last_cell, holding=good)
                 for _ in range(2):           # a missed reset pick usually only nudged the cube
                     if placed is not None:

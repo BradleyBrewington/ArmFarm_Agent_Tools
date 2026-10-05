@@ -1,0 +1,89 @@
+[1] OK  14.6s tries=1 start=(0.227, -0.125) success 1/1 ~169/h
+[2] OK  16.2s tries=1 start=(0.241, -0.083) success 2/2 ~170/h
+[3] OK  12.4s tries=1 start=(0.232, -0.042) success 3/3 ~181/h
+[4] OK  20.3s tries=1 start=(0.2, -0.106) success 4/4 ~170/h
+[5] OK  16.1s tries=1 start=(0.183, -0.145) success 5/5 ~170/h
+[6] OK  12.4s tries=1 start=(0.225, -0.019) success 6/6 ~176/h
+[7] OK  12.5s tries=1 start=(0.211, 0.116) success 7/7 ~180/h
+[8] OK  18.1s tries=1 start=(0.303, 0.016) success 8/8 ~177/h
+[9] OK  12.5s tries=1 start=(0.189, -0.073) success 9/9 ~180/h
+[10] OK  12.8s tries=1 start=(0.265, -0.139) success 10/10 ~182/h
+[11] OK  19.3s tries=1 start=(0.244, -0.113) success 11/11 ~178/h
+[12] OK  12.5s tries=1 start=(0.269, -0.044) success 12/12 ~180/h
+[13] OK  14.7s tries=1 start=(0.301, 0.088) success 13/13 ~180/h
+[14] OK  12.5s tries=1 start=(0.225, 0.065) success 14/14 ~182/h
+[15] OK  12.6s tries=1 start=(0.288, 0.064) success 15/15 ~183/h
+[16] OK  19.9s tries=1 start=(0.266, 0.107) success 16/16 ~180/h
+[17] OK  14.1s tries=1 start=(0.234, -0.096) success 17/17 ~181/h
+[18] OK  14.1s tries=1 start=(0.26, 0.007) success 18/18 ~181/h
+[19] OK  12.2s tries=1 start=(0.196, 0.067) success 19/19 ~183/h
+[20] OK  12.1s tries=1 start=(0.189, 0.041) success 20/20 ~184/h
+[21] OK  12.4s tries=1 start=(0.19, -0.028) success 21/21 ~185/h
+[22] OK  11.8s tries=1 start=(0.201, 0.034) success 22/22 ~186/h
+[23] OK  12.7s tries=1 start=(0.278, -0.136) success 23/23 ~187/h
+[24] OK  18.7s tries=1 start=(0.301, 0.056) success 24/24 ~185/h
+[25] OK  21.2s tries=1 start=(0.297, -0.141) success 25/25 ~182/h
+[26] OK  14.4s tries=1 start=(0.29, 0.065) success 26/26 ~182/h
+[27] OK  12.4s tries=1 start=(0.192, 0.025) success 27/27 ~183/h
+[28] OK  19.9s tries=1 start=(0.268, 0.062) success 28/28 ~181/h
+[29] OK  16.4s tries=1 start=(0.308, 0.026) success 29/29 ~181/h
+[30] OK  14.3s tries=1 start=(0.247, 0.097) success 30/30 ~181/h
+[31] OK  14.2s tries=1 start=(0.186, -0.13) success 31/31 ~181/h
+[32] OK  27.4s tries=1 start=(0.188, -0.027) success 32/32 ~178/h
+[33] OK  12.5s tries=1 start=(0.265, -0.03) success 33/33 ~179/h
+[34] OK  12.4s tries=1 start=(0.186, -0.101) success 34/34 ~179/h
+[35] OK  12.6s tries=1 start=(0.229, -0.005) success 35/35 ~180/h
+[36] OK  12.5s tries=1 start=(0.187, 0.108) success 36/36 ~181/h
+[37] OK  32.9s tries=3 start=(0.156, -0.045) success 37/37 ~176/h
+[38] OK  14.3s tries=1 start=(0.21, -0.132) success 38/38 ~177/h
+[39] OK  12.7s tries=1 start=(0.263, 0.025) success 39/39 ~177/h
+[40] OK  14.3s tries=1 start=(0.182, 0.01) success 40/40 ~178/h
+[41] OK  18.5s tries=1 start=(0.286, -0.068) success 41/41 ~177/h
+[42] OK  21.3s tries=1 start=(0.309, -0.096) success 42/42 ~176/h
+[43] OK  16.2s tries=1 start=(0.235, -0.082) success 43/43 ~176/h
+[44] OK  14.4s tries=1 start=(0.277, -0.077) success 44/44 ~176/h
+[45] OK  10.8s tries=1 start=(0.236, -0.044) success 45/45 ~177/h
+[46] OK  10.7s tries=1 start=(0.259, 0.052) success 46/46 ~178/h
+[47] OK  12.5s tries=1 start=(0.207, -0.059) success 47/47 ~178/h
+[48] OK  12.7s tries=1 start=(0.295, 0.089) success 48/48 ~179/h
+[49] OK  12.5s tries=1 start=(0.203, -0.068) success 49/49 ~179/h
+[50] OK  12.4s tries=1 start=(0.213, 0.099) success 50/50 ~180/h
+[51] OK  19.6s tries=1 start=(0.294, -0.129) success 51/51 ~179/h
+[52] OK  31.1s tries=1 start=(0.208, -0.058) success 52/52 ~176/h
+[53] OK  12.5s tries=1 start=(0.197, -0.069) success 53/53 ~177/h
+[54] OK  12.4s tries=1 start=(0.247, 0.071) success 54/54 ~177/h
+[55] OK  10.8s tries=1 start=(0.291, -0.089) success 55/55 ~178/h
+[56] OK  14.6s tries=1 start=(0.223, -0.025) success 56/56 ~178/h
+[57] OK  12.5s tries=1 start=(0.195, -0.038) success 57/57 ~178/h
+[58] OK  12.8s tries=1 start=(0.304, -0.028) success 58/58 ~179/h
+[59] OK  12.6s tries=1 start=(0.194, 0.003) success 59/59 ~179/h
+[60] OK  14.4s tries=1 start=(0.243, 0.022) success 60/60 ~179/h
+[61] OK  16.8s tries=1 start=(0.206, -0.098) success 61/61 ~179/h
+[62] OK  20.3s tries=1 start=(0.294, -0.078) success 62/62 ~178/h
+[63] OK  16.3s tries=1 start=(0.248, -0.121) success 63/63 ~178/h
+[64] OK  30.6s tries=1 start=(0.255, 0.105) success 64/64 ~176/h
+[65] OK  13.0s tries=1 start=(0.304, 0.09) success 65/65 ~176/h
+[66] OK  14.2s tries=1 start=(0.21, 0.117) success 66/66 ~177/h
+[67] OK  12.5s tries=1 start=(0.183, -0.106) success 67/67 ~177/h
+[68] OK  12.6s tries=1 start=(0.305, 0.005) success 68/68 ~177/h
+[69] OK  14.5s tries=1 start=(0.278, -0.098) success 69/69 ~177/h
+[70] OK  14.6s tries=1 start=(0.252, 0.015) success 70/70 ~178/h
+[71] OK  15.7s tries=1 start=(0.196, -0.068) success 71/71 ~177/h
+[72] OK  14.4s tries=1 start=(0.264, -0.001) success 72/72 ~178/h
+[73] OK  12.7s tries=1 start=(0.278, -0.07) success 73/73 ~178/h
+[74] OK  10.7s tries=1 start=(0.201, 0.082) success 74/74 ~179/h
+[75] OK  18.3s tries=1 start=(0.289, -0.131) success 75/75 ~178/h
+[76] OK  10.7s tries=1 start=(0.187, 0.082) success 76/76 ~179/h
+Traceback (most recent call last):
+  File "/var/lib/armfarm/stations/armfarm/fresh-starts/715a127f-3a10-41c7-896b-9ad6a5c14131/workspace/tools/run_episodes.py", line 148, in main
+    break
+    
+  File "/var/lib/armfarm/stations/armfarm/fresh-starts/715a127f-3a10-41c7-896b-9ad6a5c14131/workspace/tools/run_episodes.py", line 110, in episode
+    stop = recording.stop_recording(success=bool(good), notes=notes)
+  File "/var/lib/armfarm/stations/armfarm/fresh-starts/715a127f-3a10-41c7-896b-9ad6a5c14131/workspace/tools/recording.py", line 30, in stop_recording
+    return request('stop_recording', success=success, notes=notes)
+  File "/var/lib/armfarm/stations/armfarm/fresh-starts/715a127f-3a10-41c7-896b-9ad6a5c14131/workspace/tools/recording.py", line 15, in request
+    if not response.pop('ok'): raise RuntimeError(response['error'])
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Full: 
+done: 76/76 successful in 26.0 min
