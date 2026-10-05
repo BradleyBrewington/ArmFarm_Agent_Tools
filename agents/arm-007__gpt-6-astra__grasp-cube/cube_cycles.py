@@ -30,16 +30,14 @@ def pose(pan,elbow=20):
 def above(q):return {**q,'shoulder_lift':q['shoulder_lift']-30,'wrist_flex':q['wrist_flex']+30}
 def home(b):move(b,HOME,2.3)
 def grip(b):
- p=b.read('Present_Position','gripper')
- for goal in range(int(p)-1,5,-1):
-  c.move(b,{'gripper':goal},.05);time.sleep(.06)
-  actual=b.read('Present_Position','gripper')
-  if actual-goal>1.3:
-   if not 18<actual<35:raise RuntimeError('Unexpected contact width: '+str(actual))
-   b.write('Goal_Position','gripper',23.)
-   time.sleep(.15)
-   return actual
- raise RuntimeError('No cube contact')
+ limit,_=c.read_register(b,'Torque_Limit','gripper')
+ if limit!=220:raise RuntimeError('Expected bounded gripper output 220, got '+str(limit))
+ c.move(b,{'gripper':0},1.2)
+ time.sleep(.5)
+ actual=b.read('Present_Position','gripper')
+ if c.fault_bits(b,'gripper'):raise RuntimeError('Gripper fault')
+ if not 18<actual<35:raise RuntimeError('Unexpected contact width: '+str(actual))
+ return actual
 def held(b):
  img,meta=read_frame('wrist')
  dark=float(np.mean(cv2.cvtColor(img[500:650,730:1030],cv2.COLOR_BGR2GRAY)<65))
@@ -70,7 +68,7 @@ def run(n):
     if not ok:raise RuntimeError('Grasp not verified at home')
     target=pose(*grid[i%len(grid)])
     move(b,above(target));move(b,target,1.5)
-    move(b,{'gripper':45},.5)
+    move(b,{'gripper':50},1.3)
     current=target;STATE.write_text(json.dumps(current))
     move(b,above(current),1.5);home(b)
     snapshot();emit(event='placed',pose=current)
