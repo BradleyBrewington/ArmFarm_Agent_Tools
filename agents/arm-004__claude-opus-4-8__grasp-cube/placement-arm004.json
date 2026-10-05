@@ -38,8 +38,8 @@
     ]
   ],
   "hover_target": [
-    863.0,
-    394.0
+    718.7976963463946,
+    524.2527985158636
   ],
   "pre_target": [
     627.0,
@@ -60,6 +60,20 @@
     "cube_samples": 1031,
     "fit_median_m": 0.007758535684589206,
     "fit_p95_m": 0.017064439258054103,
-    "source": "Station arm-004 grasp.py, jpre.json, cube_cal.json; requires physical commissioning"
-  }
+    "source": "Station arm-004 grasp.py, jpre.json, cube_cal.json; requires physical commissioning",
+    "hover_commissioning": {
+      "center": [
+        718.7976963463946,
+        524.2527985158636
+      ],
+      "xyz": [
+        0.3219002675260766,
+        -0.02339966646708268,
+        0.06
+      ],
+      "roll": 126.02197802197803,
+      "at": 1791230571.8787215
+    }
+  },
+  "alignment_z": 0.06
 }
