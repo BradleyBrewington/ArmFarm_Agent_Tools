@@ -51,6 +51,13 @@ def run(points):
    try:
     go(approach,2.5);go(release,1.2);go({'gripper':60},.7);go(approach,1.2);go(HOME,2.5)
     verify(b,g,tag+'_placed',False)
+    b.disable_torque(['gripper'])
+    for rest in range(10):
+     temperature,reply_fault=c.read_register(b,'Present_Temperature','gripper')
+     if reply_fault or c.fault_bits(b,'gripper') or temperature>=g.temp_limit:
+      raise RuntimeError(f'Gripper rest check failed: temperature={temperature}, limit={g.temp_limit}, reply_fault={reply_fault}')
+     time.sleep(1)
+    go({'gripper':60},.3)
     episode=recording.start_recording('Black cube pickup to home; visual and motor-contact verification')['episode']
     print(json.dumps({'phase':'picking','episode':episode,'x':x,'pan':pan}),flush=True)
     go(approach,2.5);go(pick,1.2);grip=g.acquire()
