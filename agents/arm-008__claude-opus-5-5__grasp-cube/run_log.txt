@@ -44,3 +44,7 @@
 [44] OK  12.4s tries=1 start=(0.307, -0.053) success 44/44 ~186/h
 [45] OK  19.8s tries=1 start=(0.266, -0.14) success 45/45 ~185/h
 [46] OK  12.3s tries=1 start=(0.254, 0.02) success 46/46 ~185/h
+[47] OK  17.8s tries=1 start=(0.3, 0.07) success 47/47 ~184/h
+[48] OK  12.5s tries=1 flags=camera_error start=(0.275, -0.088) success 48/48 ~185/h
+[49] OK  13.9s tries=1 start=(0.186, 0.078) success 49/49 ~184/h
+[50] OK  12.8s tries=1 start=(0.177, 0.097) success 50/50 ~185/h
