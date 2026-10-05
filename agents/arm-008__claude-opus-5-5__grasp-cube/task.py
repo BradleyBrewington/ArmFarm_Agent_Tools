@@ -67,6 +67,16 @@ def grasp_plan(cx, cy, z, yaw, roll_hint=None):
     return q, roll
 
 
+def on_axis(down, z, roll):
+    """Joints for a point on the approach axis of grasp pose `down` at height z, same pitch and
+    roll: hover and waypoints lie on the descent line, so the wrist view of the grasp target is
+    the same for every roll and position."""
+    T = fk_T(down)
+    a, tip = T[:3, 2], T[:3, 3]
+    p = tip - a * (z - tip[2]) / (-a[2])
+    return plan(float(p[0]), float(p[1]), z, roll)
+
+
 def go_look(arm, seconds=1.2):
     """Home with wrist roll 0 and gripper open: the fixed pose the arm mask was captured in."""
     arm.move({**arm.home_pose, "wrist_roll": 0.0, "gripper": OPEN}, seconds)
@@ -108,7 +118,8 @@ def pick(arm, x, y, yaw, fast=1.0, servo=True, record=None):
     seen = None
     trace = []
     for i in range(6 if servo else 1):
-        above, _ = grasp_plan(x, y, HOVER_Z, yaw, roll_hint=roll)
+        down, _ = grasp_plan(x, y, GRASP_Z, yaw, roll_hint=roll)
+        above = on_axis(down, HOVER_Z, roll)
         arm.move({**above, "gripper": OPEN}, (1.3 if i == 0 else 0.45) * fast)
         arm.wait(above, tol=1.5, timeout=0.8)
         if not servo:
@@ -133,9 +144,10 @@ def pick(arm, x, y, yaw, fast=1.0, servo=True, record=None):
             roll = wrap45(roll - 1.3 * yaw_err)
     if record is not None:
         record.update({"servo_px": seen, "x": float(x), "y": float(y), "roll": float(roll), "trace": trace})
-    mid, _ = grasp_plan(x, y, (HOVER_Z + GRASP_Z) / 2, yaw, roll_hint=roll)
     down, _ = grasp_plan(x, y, GRASP_Z, yaw, roll_hint=roll)
-    arm.move(mid, 0.35 * fast)          # waypoint keeps the descent close to straight down
+    above = on_axis(down, HOVER_Z, roll)
+    mid = on_axis(down, (HOVER_Z + GRASP_Z) / 2, roll)
+    arm.move(mid, 0.35 * fast)          # waypoint keeps the descent on the approach axis
     arm.move(down, 0.4 * fast)
     arm.wait(down, tol=3, timeout=0.6)
     arm.hold()                       # torque-capped close; jaws need ~0.5 s to reach the cube
