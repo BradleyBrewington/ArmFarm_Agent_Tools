@@ -67,3 +67,7 @@
 [67] OK  12.3s tries=1 start=(0.221, -0.106) success 67/67 ~182/h
 [68] OK  15.9s tries=1 start=(0.203, -0.069) success 68/68 ~182/h
 [69] OK  14.5s tries=1 start=(0.23, -0.015) success 69/69 ~182/h
+[70] OK  20.1s tries=1 start=(0.269, -0.141) success 70/70 ~181/h
+[71] OK  18.4s tries=1 start=(0.28, 0.106) success 71/71 ~181/h
+[72] OK  14.7s tries=1 start=(0.281, 0.023) success 72/72 ~181/h
+[73] OK  17.0s tries=1 start=(0.2, 0.005) success 73/73 ~181/h
