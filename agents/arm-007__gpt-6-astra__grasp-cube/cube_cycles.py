@@ -33,7 +33,7 @@ def home(b):move(b,HOME,4)
 def grip(b):
  limit,_=c.read_register(b,'Torque_Limit','gripper')
  if limit!=220:raise RuntimeError('Expected bounded gripper output 220, got '+str(limit))
- c.move(b,{'gripper':0},1.2)
+ c.move(b,{'gripper':0},1.8)
  time.sleep(.5)
  actual=b.read('Present_Position','gripper')
  if c.fault_bits(b,'gripper'):raise RuntimeError('Gripper fault')
@@ -59,8 +59,10 @@ def run(n):
    move(b,above(current));home(b)
    for i in range(n):
     ep=recording.start_recording('Pick black cube, bring to home, visually confirm retained grasp');active=True
-    move(b,above(current));move(b,current,1.5)
-    pickup=current
+    pickup=dict(current)
+    depth=float(os.environ.get('CUBE_PICK_DEPTH','0'))
+    pickup['shoulder_lift']+=depth;pickup['wrist_flex']-=depth
+    move(b,above(pickup));move(b,pickup,2)
     try:contact=grip(b)
     except RuntimeError:
      p=b.read('Present_Position','gripper')
@@ -80,7 +82,7 @@ def run(n):
     if not ok:raise RuntimeError('Grasp not verified at home')
     target=pose(*grid[i%len(grid)])
     move(b,above(target));move(b,target,1.5)
-    move(b,{'gripper':50},1.3)
+    move(b,{'gripper':65},1.5)
     current=target;STATE.write_text(json.dumps(current))
     move(b,above(current),3);home(b)
     snapshot();emit(event='placed',pose=current)
