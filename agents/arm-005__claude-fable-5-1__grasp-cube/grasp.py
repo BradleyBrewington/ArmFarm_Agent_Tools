@@ -29,13 +29,13 @@ from camd_client import read_frame  # noqa: E402
 
 PAN_AXIS = np.array([0.0388353, 0.0])
 CUBE = 0.040            # cube edge, metres
-GRASP_BACK = 0.030      # static jaw this far inside (toward base) of the cube centre (1 cm margin to the near face)
+GRASP_BACK = 0.025      # static jaw this far inside (toward base) of the cube centre (0.030/OPEN 85 caused misses)
 HELD_FORWARD = 0.020    # held cube centre sits this far radially out from the frame
 Z_TABLE = -0.008
 Z_GRASP = Z_TABLE + 0.018
 Z_HOVER = 0.075
 Z_CARRY = 0.09
-OPEN = 85.0             # wider opening keeps the moving jaw clear of the far face with the larger margin
+OPEN = 70.0             # wider (85) made the moving jaw land on the cube and shove it: keep 70
 CLOSED = 0.0
 EDGE_MIN = 21.0         # a squarely held 40 mm cube reads ~23%; less means an edge/corner grab
 HELD_MIN = 6.0          # gripper % above which something is between the jaws (empty closes to ~0.3)
