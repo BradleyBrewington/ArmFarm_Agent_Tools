@@ -1,0 +1,25 @@
+{
+  "successful_episodes": 30,
+  "clean_successful_episodes": 24,
+  "elapsed_minutes": 52.40067563056946,
+  "overall_successes_per_hour": 34.35070210922888,
+  "automated_cycle_seconds_mean": 33.23067053159078,
+  "automated_cycles": 18,
+  "last_evidence": "cube_1791217323_held",
+  "unsuccessful_episodes": 9,
+  "stopped_reason": "Repeated adaptive gripper temperature-margin guard",
+  "final_recording": false,
+  "final_fault_bits": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "cube": "On tabletop, visually confirmed",
+  "arm": "At four-joint home, maximum error 1.275 degrees",
+  "gripper": "Open, torque disabled for cooling",
+  "coverage": "Partial: near rows and part of middle row; outer rows uncollected",
+  "next_grid_index": 21
+}
