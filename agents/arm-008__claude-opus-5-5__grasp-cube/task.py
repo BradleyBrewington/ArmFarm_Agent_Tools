@@ -87,3 +87,51 @@ def place(arm, x, y, roll, fast=1.0, z=None):
     time.sleep(0.15)
     arm.move(above, 0.5 * fast)
     return tip
+
+
+def _rot(v, roll):
+    r = math.radians(roll)
+    return np.array([math.cos(r) * v[0] - math.sin(r) * v[1], math.sin(r) * v[0] + math.cos(r) * v[1]])
+
+
+def wrist_look(arm, x, y, roll, seconds=1.0):
+    """Hover top-down over (x, y) and locate the cube with the wrist camera.
+    Returns (cube_x, cube_y, cube_image_angle, detection) or None if not seen."""
+    import wrist
+    from camd_client import read_frame
+    q = plan(x, y, wrist.HOVER_Z_SERVO, roll)
+    arm.move({**q, "gripper": OPEN}, seconds)
+    arm.wait(q, tol=1.5, timeout=1.0)
+    time.sleep(0.15)
+    tip = arm.tip()
+    d = None
+    for _ in range(3):
+        d = wrist.detect(read_frame("wrist")[0])
+        if d:
+            break
+        time.sleep(0.1)
+    if not d:
+        return None
+    o = _rot(wrist.offset(d["px"]), roll)
+    return tip["x"] + o[0], tip["y"] + o[1], d["angle"], d, tip
+
+
+def servo(arm, x, y, roll, iters=3, tol=0.004):
+    """Refine a cube estimate with the wrist camera. Returns (x, y, roll) or None."""
+    import wrist
+    ref = wrist.load().get("angle_ref", 0.0)
+    for i in range(iters):
+        r = wrist_look(arm, x, y, roll, seconds=1.0 if i == 0 else 0.5)
+        if r is None:
+            return None
+        nx, ny, ang = r[0], r[1], r[2]
+        moved = math.hypot(nx - x, ny - y)
+        x, y = nx, ny
+        droll = wrist.fold90(ang - ref)
+        roll = max(-80.0, min(80.0, roll - droll * ROLL_SIGN))
+        if moved < tol and abs(droll) < 6:
+            break
+    return x, y, roll
+
+
+ROLL_SIGN = 1.0   # how a cube image-angle error maps to a wrist-roll correction (checked on arm)
