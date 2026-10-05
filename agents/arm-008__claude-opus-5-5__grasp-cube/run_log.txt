@@ -52,3 +52,7 @@
 [52] OK  11.7s tries=1 start=(0.301, -0.086) success 52/52 ~184/h
 [53] OK  12.7s tries=1 start=(0.28, 0.093) success 53/53 ~185/h
 [54] OK  20.4s tries=1 start=(0.309, 0.103) success 54/54 ~183/h
+[55] OK  12.6s tries=1 start=(0.201, 0.036) success 55/55 ~184/h
+[56] OK  17.0s tries=1 start=(0.287, -0.133) success 56/56 ~183/h
+[57] OK  12.6s tries=1 start=(0.216, -0.104) success 57/57 ~184/h
+[58] OK  16.8s tries=1 start=(0.315, -0.072) success 58/58 ~183/h
