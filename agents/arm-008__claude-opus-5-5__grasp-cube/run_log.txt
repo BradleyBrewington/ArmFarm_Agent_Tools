@@ -11,3 +11,6 @@
 [11] OK  10.7s tries=1 start=(0.191, -0.022) success 11/11 ~200/h
 [12] OK  14.7s tries=1 start=(0.299, -0.105) success 12/12 ~198/h
 [13] OK  10.7s tries=1 flags=camera_error start=(0.192, -0.001) success 13/13 ~200/h
+[14] OK  12.7s tries=1 start=(0.3, 0.055) success 14/14 ~198/h
+[15] OK  16.1s tries=1 start=(0.246, 0.065) success 15/15 ~196/h
+[16] OK  14.5s tries=1 start=(0.215, 0.075) success 16/16 ~196/h
