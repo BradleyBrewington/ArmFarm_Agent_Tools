@@ -26,5 +26,12 @@
   "repeat_pass_next_index": 14,
   "coverage": "All45 nominal grid locations sampled, some earlier corrections; continuous full-workspace coverage not certified",
   "stop_reason": "65C guard trip despite added10second torqueoff rest between cycles; root cause unconfirmed",
-  "final_state": "Cube ontable, arm home, gripper open torqueoff"
+  "final_state": "Cube ontable, arm home, gripper open torqueoff",
+  "latest_cooldown": {
+    "samples": 120,
+    "last_temperature_C": 48,
+    "ready": false,
+    "restart_target_C": 43,
+    "required_stable_seconds": 30
+  }
 }

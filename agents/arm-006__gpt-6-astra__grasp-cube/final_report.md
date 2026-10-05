@@ -1,3 +1,5 @@
+Latest check: no new episodes. Two-minute torque-off cooldown observation ended at48C with zero motor faults. Added supervised-retry criterion is30seconds at or below43C; it has not been met. This is a cooldown criterion, not a change to the operator-authorized65C software guard or70C hardware protection. Evidence: cooldown_latest.json.
+
 Latest continuation:2 additional successes,70 cumulative (61 clean recordings),13 unsuccessful episodes. The next grasp stopped at65C under the unchanged65C software guard and70C hardware protection. A10-second torque-off rest was added between cycles, outside recording, with temperature and fault checks; it did not prevent recurrence. No protections were relaxed.
 
 Cube visually confirmed on table; arm home within1.275deg; gripper open and torque off; recorder inactive; all motor fault bits zero. Temperature after release49C.
