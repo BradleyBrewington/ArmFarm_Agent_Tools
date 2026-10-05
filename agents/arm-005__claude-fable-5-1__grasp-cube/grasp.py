@@ -38,7 +38,8 @@ Z_CARRY = 0.09
 OPEN = 70.0
 CLOSED = 0.0
 HELD_MIN = 6.0          # gripper % above which something is between the jaws (empty closes to ~0.3)
-HOLD_SQUEEZE = 6.0      # goal sits this many % below the measured contact position while holding
+HOLD_SQUEEZE = 6.0      # (fallback) goal this many % below contact when not torque-limited
+GRIP_TORQUE_LIMIT = 220 # RAM register, 0..1000 = 0..100% of max torque
 LOG = HERE / "grasp_log.jsonl"
 
 
@@ -61,6 +62,9 @@ class Grasper:
 
     def __enter__(self):
         self.arm.__enter__()
+        # Cap gripper output below the servo's 25% overload threshold (Overload_Torque=25)
+        # so a fully-closed goal can hold the cube indefinitely without tripping protection.
+        A.cw.write_register(self.arm.bus, "Torque_Limit", "gripper", GRIP_TORQUE_LIMIT)
         return self
 
     def __exit__(self, *exc):
@@ -95,7 +99,6 @@ class Grasper:
             self._snap(snapshots + "_pre")
         self.arm.move({"gripper": CLOSED}, 0.8, settle=0.3)
         g0 = self.arm.read()["gripper"]
-        self.hold(g0)
         self.arm.goto_xyz(fx, fy, Z_CARRY, seconds=1.0, settle=0.2)
         g1 = self.arm.read()["gripper"]
         held = g1 > HELD_MIN
