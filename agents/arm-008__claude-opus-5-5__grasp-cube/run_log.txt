@@ -1,1 +1,4 @@
 [1] OK  12.7s tries=1 start=(0.195, -0.07) success 1/1 ~243/h
+[2] OK  17.8s tries=1 start=(0.192, 0.011) success 2/2 ~192/h
+[3] OK  14.7s tries=1 start=(0.255, -0.121) success 3/3 ~189/h
+[4] OK  12.5s tries=1 start=(0.184, -0.112) success 4/4 ~193/h
