@@ -89,3 +89,6 @@
 [89] OK  12.6s tries=1 start=(0.308, 0.017) success 89/89 ~186/h
 [90] OK  19.6s tries=1 start=(0.318, 0.087) success 90/90 ~185/h
 [91] OK  14.7s tries=1 start=(0.282, -0.144) success 91/91 ~185/h
+[92] OK  12.6s tries=1 start=(0.256, -0.135) success 92/92 ~185/h
+[93] OK  11.0s tries=1 start=(0.269, 0.074) success 93/93 ~185/h
+[94] OK  12.5s tries=1 start=(0.19, -0.058) success 94/94 ~186/h
