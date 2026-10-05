@@ -11,3 +11,5 @@ The discrepancy is reproducible at idle and remains unresolved. Do not discard h
 Evidence: temperature_crosscheck.json and temperature_crosscheck_extended.json. Collection remains51 successful episodes,43 clean recordings; planned grid indices41–44 incomplete.
 
 Latest recheck: 2,054 paired samples while stationary with gripper torque off. Single-register readings reached 62 C; immediately following paired reads were 46 C. Recorder inactive. Fault remains reproducible. Evidence: temperature_recheck.json.
+
+Operator subsequently authorized resumption (message a4b8b931-c9fb-42cd-a0e8-88e8353a0eb8) under an updated65C software guard and unchanged70C hardware protection. Verified both before motion. Earlier pause recommendation is superseded by this operator instruction; root cause remains unconfirmed.
