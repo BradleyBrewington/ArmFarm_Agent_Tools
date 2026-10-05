@@ -77,3 +77,7 @@
 [77] OK  12.7s tries=1 start=(0.197, -0.034) success 77/77 ~178/h
 [78] OK  11.9s tries=1 flags=feedback_gap,queue_overflow start=(0.216, 0.037) success 78/78 ~178/h
 [79] OK  12.6s tries=1 start=(0.248, 0.069) success 79/79 ~178/h
+[80] OK  20.6s tries=1 start=(0.269, -0.141) success 80/80 ~178/h
+[81] OK  12.8s tries=1 start=(0.301, -0.067) success 81/81 ~178/h
+[82] OK  20.7s tries=1 flags=camera_error start=(0.29, -0.134) success 82/82 ~177/h
+[83] OK  12.9s tries=1 start=(0.321, 0.016) success 83/83 ~177/h
