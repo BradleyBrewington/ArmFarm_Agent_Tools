@@ -39,6 +39,9 @@ IMG_U = (200, 1100)
 IMG_V = (270, 680)
 MAP_OUTLIER_M = 0.03     # placement seen > 3 cm from prediction: cube tumbled, do not learn from it
 MAP_MAX_POINTS = 80
+# Placement spots where the cube repeatedly lands ~13 mm off and grasps catch an edge
+# (a local arm/table quirk the camera map cannot model). Not used as place targets.
+BAD_PLACE_SPOTS = [(0.1965, -0.0637), (0.181, -0.093)]
 # Polar coverage grid around the pan axis (metres, degrees).
 RADII = (0.17, 0.20, 0.23, 0.26, 0.285)
 ANGLES = tuple(range(-55, 56, 11))
@@ -62,6 +65,8 @@ def coverage_targets(tmap, bounds):
                 u, v = tmap.robot_to_pixel(x, y)
                 if not (IMG_U[0] <= u <= IMG_U[1] and IMG_V[0] <= v <= IMG_V[1]):
                     continue
+            if any(math.hypot(x - bx, y - by) < 0.03 for bx, by in BAD_PLACE_SPOTS):
+                continue
             out.append((round(x, 4), round(y, 4), r, a))
     return out
 
