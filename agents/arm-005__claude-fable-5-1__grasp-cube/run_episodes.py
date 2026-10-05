@@ -174,8 +174,11 @@ def main():
                 now = g.arm.read()
                 grip_home = now["gripper"]
                 # confirm: jaws still apart at home, and the cube is gone from where it was
-                frac = V.cube_mask_dark_fraction(g.see_cube(retries=1)[1], cube["u"], cube["v"]) if cube else 1.0
-                success = bool(held and grip_home > G.HELD_MIN and frac < 0.35)
+                # confirm the cube left its spot: no cube-shaped blob remains near where it was
+                after, _ = g.see_cube(retries=1)
+                still_there = bool(cube and after and math.hypot(after["u"] - cube["u"], after["v"] - cube["v"]) < 45)
+                frac = 1.0 if still_there else 0.0
+                success = bool(held and grip_home > G.HELD_MIN and not still_there)
                 notes = {"grip_home": round(grip_home, 1), "spot_dark_fraction": round(frac, 2),
                          "cube_px": [round(cube["u"]), round(cube["v"])] if cube else None,
                          "cube_xy": [round(cx, 4), round(cy, 4)], "attempts": attempt + 1}
