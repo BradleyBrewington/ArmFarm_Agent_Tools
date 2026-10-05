@@ -1,0 +1,22 @@
+[
+  {
+    "episode": "20261005T164626-7f7a81c0",
+    "success": false,
+    "reason": "Initial alignment attempts; no retained grasp"
+  },
+  {
+    "episode": "20261005T165220-f8443412",
+    "success": true,
+    "reason": "Manual camera confirmation at home"
+  },
+  {
+    "episode": "20261005T170057-44693dc6",
+    "success": false,
+    "reason": "No contact; exception stopped recorder"
+  },
+  {
+    "episode": "20261005T170317-cb64f854",
+    "success": false,
+    "reason": "Manual recovery missed; returned home"
+  }
+]
