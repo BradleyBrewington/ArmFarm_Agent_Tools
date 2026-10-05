@@ -36,8 +36,8 @@ def plan(x, y, z, roll, pitch=None):
     raise ValueError(f"unreachable ({x:.3f}, {y:.3f}, {z:.3f})")
 
 
-ROLL_MIN, ROLL_MAX = -65.0, 25.0   # grasps at roll > ~25 deg all failed (logged rolls 27..42);
-                                   # -53..24 succeeded. The cube is 90-deg symmetric, so stay inside.
+ROLL_MIN, ROLL_MAX = -75.0, 15.0   # first-try misses only occur at roll >= 15 deg (0 misses in ~400
+                                   # grasps from -70 to 15; 16 misses in 15..30). Cube is 90-deg symmetric.
 
 
 def wrap_roll(roll):
