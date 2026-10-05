@@ -1,12 +1,18 @@
 {
-  "successful_episodes": 83,
-  "clean_successful_episodes": 72,
-  "unsuccessful_episodes": 15,
-  "added_latest_turn": 13,
-  "software_guard_observed_C": 70,
-  "software_guard_last_received_instruction_C": 65,
+  "updated_utc": "2026-10-05T20:28:50.990419+00:00",
+  "successful_episodes": 95,
+  "clean_successful_episodes": 83,
+  "unsuccessful_episodes": 16,
+  "added_latest_resumption": 12,
+  "successful_episode_starts_in_last_hour": 33,
+  "hourly_target_demonstrated": false,
+  "software_guard_C": 65,
   "hardware_limit_C": 70,
-  "stop_temperature_C": 71,
+  "stop_temperature_C": 66,
+  "latest_temperature_and_fault": [
+    48,
+    0
+  ],
   "recording": false,
   "fault_bits": [
     0,
@@ -24,8 +30,20 @@
     1,
     0
   ],
-  "repeat_pass_next_index": 27,
-  "coverage": "All45 nominal grid locations sampled with earlier corrections; exact continuous workspace coverage unverified",
-  "stop_reason": "71C guard trip and unannounced software limit change detected; clarification pending",
-  "final_state": "Cube ontable, arm home, gripper open torqueoff"
+  "home_errors_degrees": {
+    "shoulder_pan": 0.3516483516483522,
+    "shoulder_lift": 0.7032967032967008,
+    "elbow_flex": 0.2637362637362628,
+    "wrist_flex": 1.2747252747252773
+  },
+  "repeat_pass_next_index": 39,
+  "cube_position_nominal": {
+    "x": 0.2728,
+    "z": 0.005,
+    "pan": -14
+  },
+  "coverage": "All45 nominal grid locations sampled with earlier corrections; continuous workspace coverage unverified",
+  "stop_reason": "Recurrent temperature guard trip; sensor spike root cause unconfirmed",
+  "final_state": "Cube on table, arm home, gripper open and torque off",
+  "episode_id_timezone": "America/Chicago"
 }
