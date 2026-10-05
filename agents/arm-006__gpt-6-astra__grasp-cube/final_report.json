@@ -1,15 +1,23 @@
 {
-  "updated_utc": "2026-10-05T20:53:00.412676+00:00",
-  "successful_episodes": 112,
-  "clean_successful_episodes": 94,
-  "unsuccessful_episodes": 18,
-  "added_latest_resumption": 0,
-  "successful_episode_starts_in_last_hour": 42,
-  "episode_id_timezone": "America/Chicago",
+  "updated_utc": "2026-10-05T22:21:35.394707+00:00",
+  "successful_episodes": 144,
+  "clean_successful_episodes": 123,
+  "unsuccessful_episodes": 19,
+  "added_latest_resumption": 32,
+  "operator_message": "1b19a1e8-8357-477e-834f-fd37dffdf6cb",
+  "successful_episode_starts_in_last_hour": 32,
   "hourly_target_demonstrated": false,
-  "software_guard_C": 65,
-  "hardware_limit_C": 70,
-  "stop_temperature_C": 67,
+  "episode_id_timezone": "America/Chicago",
+  "stop_temperature_C": 66,
+  "trip_sample": {
+    "time_mono": 453139.195747151,
+    "position_raw": 2385,
+    "goal_raw": 2362,
+    "load_raw": 104,
+    "current_raw": 4,
+    "temperature_C": 66,
+    "fault_bits": 0
+  },
   "latest_temperature_and_fault": [
     48,
     0
@@ -34,28 +42,18 @@
   "home_errors_degrees": {
     "shoulder_pan": 0.5274725274725274,
     "shoulder_lift": 0.6153846153846132,
-    "elbow_flex": 0.2637362637362628,
+    "elbow_flex": 0.1758241758241752,
     "wrist_flex": 1.2747252747252773
   },
-  "repeat_pass_next_index": 11,
+  "repeat_pass_next_index": 43,
   "cube_position_nominal": {
-    "x": 0.1723,
+    "x": 0.2181,
     "z": 0.005,
-    "pan": 28
+    "pan": 42
   },
-  "coverage": "All45 nominal grid locations sampled; repeat pass completed; continuous workspace coverage unverified",
-  "stop_reason": "Recurrent collection guard trips; idle read discrepancy persists under randomized read order; temperature feedback requires investigation",
+  "coverage": "All45 nominal grid locations sampled in earlier passes; continuous workspace coverage unverified",
+  "stop_reason": "Temperature trip recurred; collection stopped without retry per latest operator instruction",
   "final_state": "Cube on table, arm home, gripper open and torque off",
-  "latest_diagnostic": {
-    "samples": 1672,
-    "temperature_range_C": [
-      46,
-      57
-    ],
-    "checksum_mismatches": 0,
-    "spike_reproduced_in_this_capture": false,
-    "gripper_torque_off": true,
-    "root_cause": "unconfirmed",
-    "evidence": "temperature_packet_trace.json"
-  }
+  "software_guard_C": 65,
+  "hardware_limit_C": 70
 }
