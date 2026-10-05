@@ -31,6 +31,7 @@ import vision as V  # noqa: E402
 TASK = "Start episode, pickup the black cube, bring black cube to home position, confirm successful grasp, stop episode"
 STATE = HERE / "episode_state.json"
 STATS = HERE / "episode_stats.jsonl"
+HOME_TIP_PX = (580, 205)       # where the parked gripper's jaws appear in the top image
 STOP_FILE = HERE / "STOP"      # touch to make the loop exit cleanly between episodes
 
 # Top-image region where a placed cube is fully visible and detectable.
@@ -187,7 +188,10 @@ def main():
                 # confirm: jaws still apart at home, and the cube is gone from where it was
                 # confirm the cube left its spot: no cube-shaped blob remains near where it was
                 after, _ = g.see_cube(retries=1)
-                still_there = bool(cube and after and math.hypot(after["u"] - cube["u"], after["v"] - cube["v"]) < 45)
+                # a blob near the parked gripper tip is the cube held in the jaws, not one left behind
+                in_jaws = bool(after and math.hypot(after["u"] - HOME_TIP_PX[0], after["v"] - HOME_TIP_PX[1]) < 90)
+                still_there = bool(cube and after and not in_jaws
+                                   and math.hypot(after["u"] - cube["u"], after["v"] - cube["v"]) < 45)
                 frac = 1.0 if still_there else 0.0
                 success = bool(held and grip_home > G.HELD_MIN and not still_there)
                 notes = {"grip_home": round(grip_home, 1), "spot_dark_fraction": round(frac, 2),
