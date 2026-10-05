@@ -9,3 +9,7 @@
 [9] OK  16.1s tries=1 start=(0.24, -0.087) success 9/9 ~162/h
 [10] OK  16.1s tries=1 start=(0.221, 0.064) success 10/10 ~163/h
 [11] FAIL 37.1s tries=None start=(0.203, 0.036) success 10/11 ~137/h
+pick try 0: est (0.203,0.036) yaw 179 -> servo (0.179,0.078) roll 44 last px (828, 379) grip 0.8
+pick try 1: est (0.201,0.037) yaw 180 -> servo (0.184,0.064) roll -42 last px (812, 387) grip 23.0
+[12] OK  16.5s tries=1 start=(0.28, -0.093) success 11/12 ~129/h
+[13] OK  14.2s tries=1 start=(0.283, -0.0) success 12/13 ~132/h

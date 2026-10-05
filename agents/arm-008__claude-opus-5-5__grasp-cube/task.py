@@ -106,7 +106,8 @@ def pick(arm, x, y, yaw, fast=1.0, servo=True, record=None):
     target = np.array(sv["target"])
     _, roll = grasp_plan(x, y, GRASP_Z, yaw)
     seen = None
-    for i in range(4 if servo else 1):
+    trace = []
+    for i in range(6 if servo else 1):
         above, _ = grasp_plan(x, y, HOVER_Z, yaw, roll_hint=roll)
         arm.move({**above, "gripper": OPEN}, (1.3 if i == 0 else 0.45) * fast)
         arm.wait(above, tol=1.5, timeout=0.8)
@@ -117,6 +118,8 @@ def pick(arm, x, y, yaw, fast=1.0, servo=True, record=None):
         if d is None:
             break
         seen = d["px"]
+        trace.append([round(float(x), 4), round(float(y), 4), round(roll, 1), round(d["px"][0]), round(d["px"][1]),
+                      bool(d.get("partial"))])
         err_px = target - np.array(d["px"])
         yaw_err = 0.0 if d.get("partial") else wrist_fold(d["angle"])
         if np.hypot(*err_px) < 12 and abs(yaw_err) < 5 and not d.get("partial"):
@@ -129,7 +132,7 @@ def pick(arm, x, y, yaw, fast=1.0, servo=True, record=None):
         if abs(yaw_err) >= 5:
             roll = wrap45(roll - 1.3 * yaw_err)
     if record is not None:
-        record.update({"servo_px": seen, "x": float(x), "y": float(y), "roll": float(roll)})
+        record.update({"servo_px": seen, "x": float(x), "y": float(y), "roll": float(roll), "trace": trace})
     mid, _ = grasp_plan(x, y, (HOVER_Z + GRASP_Z) / 2, yaw, roll_hint=roll)
     down, _ = grasp_plan(x, y, GRASP_Z, yaw, roll_hint=roll)
     arm.move(mid, 0.35 * fast)          # waypoint keeps the descent close to straight down
@@ -239,7 +242,8 @@ def pick_robust(arm, attempts=6, log=print):
             return False, {"reason": "unreachable", "x": x, "y": y}
         sp = rec.get("servo_px")
         log(f"pick try {i}: est ({x:.3f},{y:.3f}) yaw {yaw:.0f} -> servo ({rec.get('x', 0):.3f},{rec.get('y', 0):.3f}) "
-            f"roll {rec.get('roll', 0):.0f} last px {sp and tuple(round(v) for v in sp)} grip {g:.1f}")
+            f"roll {rec.get('roll', 0):.0f} last px {sp and tuple(round(v) for v in sp)} grip {g:.1f}"
+            + ("" if g > GRIP_EMPTY else f" trace {rec.get('trace')}"))
         if g > GRIP_EMPTY:
             return True, {"x": x, "y": y, "px": d["px"], "attempts": i + 1, "grip": g, "servo": rec}
     return False, {"reason": "missed"}
