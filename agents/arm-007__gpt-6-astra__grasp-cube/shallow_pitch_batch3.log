@@ -1,1 +1,26 @@
 {"event": "episode", "success": true, "receipt": {"episode": "20261005T173845-ce7aceed", "folder": "/var/lib/armfarm/stations/armfarm/episodes/completed/20261005T173845-ce7aceed", "frames": 382, "quality_flags": [], "training_ready": true, "success": true, "notes": "{\"source_pose\": {\"shoulder_pan\": 0, \"shoulder_lift\": 11.721622531554704, \"elbow_flex\": 60, \"wrist_flex\": -36.7216225315547}, \"contact\": 23.63013698630137, \"home_confirm\": {\"gripper\": 23.63013698630137, \"wrist_dark\": 0.3817333333333333, \"upper_dark\": 0.9999789473684211, \"frame_seq\": 13433353}}", "coverage_pending": true}, "evidence": {"gripper": 23.63013698630137, "wrist_dark": 0.3817333333333333, "upper_dark": 0.9999789473684211, "frame_seq": 13433353}, "time": 1791239939.761624}
+{"event": "placed", "pose": {"shoulder_pan": -20, "shoulder_lift": 11.721622531554704, "elbow_flex": 60, "wrist_flex": -36.7216225315547}, "time": 1791239953.9598997}
+{"event": "stopped", "error": "Unexpected contact width: 0.8904109589041096", "time": 1791239969.7635121}
+{"event": "episode", "success": false, "receipt": {"episode": "20261005T173913-92672228", "folder": "/var/lib/armfarm/stations/armfarm/episodes/completed/20261005T173913-92672228", "frames": 463, "quality_flags": [], "training_ready": true, "success": false, "notes": "Unexpected contact width: 0.8904109589041096", "coverage_pending": true}, "evidence": {"error": "Unexpected contact width: 0.8904109589041096"}, "time": 1791239970.475543}
+Traceback (most recent call last):
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/cube_cycles.py", line 64, in run
+    try:contact=grip(b)
+                ~~~~^^^
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/cube_cycles.py", line 40, in grip
+    if not 18<actual<35:raise RuntimeError('Unexpected contact width: '+str(actual))
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Unexpected contact width: 0.8904109589041096
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/cube_cycles.py", line 93, in <module>
+    if __name__=='__main__':run(int(sys.argv[1]) if len(sys.argv)>1 else 1)
+                            ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/cube_cycles.py", line 73, in run
+    move(b,above(pickup));move(b,pickup,2);contact=grip(b)
+                                                   ~~~~^^^
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/cube_cycles.py", line 40, in grip
+    if not 18<actual<35:raise RuntimeError('Unexpected contact width: '+str(actual))
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Unexpected contact width: 0.8904109589041096
