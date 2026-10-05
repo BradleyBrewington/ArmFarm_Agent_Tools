@@ -289,3 +289,15 @@
 {"t": 1791220355.2463353, "event": "episode", "success": true, "seconds": 8.3, "total": 14.7, "notes": {"grip_home": 23.0, "spot_dark_fraction": 0.0, "cube_px": [444, 223], "cube_xy": [0.1759, -0.1467], "attempts": 1, "episode": "20261005T121220-587fe1c0"}, "map_n": 80, "map_resid": 0.0043}
 {"t": 1791220369.9440596, "event": "episode", "success": true, "seconds": 8.5, "total": 14.7, "notes": {"grip_home": 23.1, "spot_dark_fraction": 0.0, "cube_px": [444, 330], "cube_xy": [0.2531, -0.1421], "attempts": 1, "episode": "20261005T121235-1eb471a7"}, "map_n": 80, "map_resid": 0.0044}
 {"t": 1791220384.5474133, "event": "episode", "success": true, "seconds": 8.4, "total": 14.6, "notes": {"grip_home": 23.1, "spot_dark_fraction": 0.0, "cube_px": [728, 276], "cube_xy": [0.2083, 0.0363], "attempts": 1, "episode": "20261005T121249-b3849009"}, "map_n": 80, "map_resid": 0.0044}
+{"t": 1791220399.0748615, "event": "episode", "success": true, "seconds": 8.3, "total": 14.5, "notes": {"grip_home": 23.0, "spot_dark_fraction": 0.0, "cube_px": [857, 218], "cube_xy": [0.1623, 0.1186], "attempts": 1, "episode": "20261005T121304-5a0fa5f8"}, "map_n": 80, "map_resid": 0.0044}
+{"t": 1791220413.5695245, "event": "episode", "success": true, "seconds": 8.3, "total": 14.5, "notes": {"grip_home": 23.0, "spot_dark_fraction": 0.03, "cube_px": [621, 271], "cube_xy": [0.2078, -0.0317], "attempts": 1, "episode": "20261005T121319-af8f287a"}, "map_n": 80, "map_resid": 0.0043}
+{"t": 1791220428.1040738, "event": "episode", "success": true, "seconds": 8.3, "total": 14.5, "notes": {"grip_home": 23.1, "spot_dark_fraction": 0.0, "cube_px": [423, 259], "cube_xy": [0.2025, -0.1593], "attempts": 1, "episode": "20261005T121333-51e156c3"}, "map_n": 80, "map_resid": 0.0044}
+{"t": 1791220438.9585986, "event": "episode", "success": false, "seconds": 8.3, "total": 10.9, "notes": {"grip_home": 23.0, "spot_dark_fraction": 0.64, "cube_px": [536, 239], "cube_xy": [0.1862, -0.0867], "attempts": 1, "episode": "20261005T121348-e4b21e99"}, "map_n": 80, "map_resid": 0.0044}
+{"t": 1791220439.552425, "event": "no_cube"}
+{"t": 1791220443.146177, "event": "no_cube"}
+{"t": 1791220446.7409863, "event": "no_cube"}
+{"t": 1791220450.3373575, "event": "no_cube"}
+{"t": 1791220453.9347696, "event": "no_cube"}
+{"t": 1791220457.535092, "event": "no_cube"}
+{"t": 1791220461.1129723, "event": "no_cube"}
+{"t": 1791220464.7087054, "event": "no_cube"}
