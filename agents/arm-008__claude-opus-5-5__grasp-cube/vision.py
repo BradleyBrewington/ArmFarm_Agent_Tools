@@ -68,8 +68,6 @@ def candidates(img, use_arm_mask=True):
             continue
         if y <= 2 or x <= 2 or x + bw >= w - 2:   # touches border: arm or table edge
             continue
-        if area < MIN_AREA:
-            continue
         aspect = bw / bh
         fill = area / float(bw * bh)
         if not 0.5 <= aspect <= 2.0:

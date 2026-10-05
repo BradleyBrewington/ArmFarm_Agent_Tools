@@ -26,6 +26,12 @@ def jaw_target(x, y, roll):
     return x - JAW_OFFSET * math.sin(r), y + JAW_OFFSET * math.cos(r)
 
 
+def go_look(arm, seconds=1.2):
+    """Home with wrist roll 0 and gripper open: the fixed pose the arm mask was captured in."""
+    arm.move({**arm.home_pose, "wrist_roll": 0.0, "gripper": OPEN}, seconds)
+    arm.wait(arm.home_pose, tol=4.0, timeout=1.5)
+
+
 def plan(x, y, z, roll):
     """Top-down if reachable, else the smallest outward pitch that is."""
     for pitch in (0, 10, 20, 30, 40, 50):
