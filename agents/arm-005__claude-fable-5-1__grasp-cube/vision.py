@@ -96,6 +96,27 @@ def _similarity(src, dst):
     return H
 
 
+AFFINE_MIN_POINTS = 8
+TRIM_M = 0.03
+
+
+def _affine_trimmed(src, dst):
+    """Least-squares affine (6 dof) with one pass of outlier trimming at TRIM_M."""
+    def fit(S, Dd):
+        Aeq = np.hstack([S, np.ones((len(S), 1))])
+        M, *_ = np.linalg.lstsq(Aeq, Dd, rcond=None)   # 3x2
+        H = np.eye(3)
+        H[:2, :3] = M.T
+        return H
+    H = fit(src, dst)
+    pred = (H @ np.hstack([src, np.ones((len(src), 1))]).T).T[:, :2]
+    err = np.linalg.norm(pred - dst, axis=1)
+    keep = err < TRIM_M
+    if keep.sum() >= 6 and keep.sum() < len(src):
+        H = fit(src[keep], dst[keep])
+    return H
+
+
 class TableMap:
     """Undistorted pixel -> robot (x, y) on the table plane.
 
@@ -134,11 +155,11 @@ class TableMap:
             return
         src = undistort_pts([[p["u"], p["v"]] for p in self.points])
         dst = np.array([[p["x"], p["y"]] for p in self.points], dtype=np.float64)
-        if n >= 6:
-            H, inl = cv2.findHomography(src, dst, cv2.RANSAC, 0.015)
-            if H is not None and inl is not None and inl.sum() >= max(5, 0.7 * n):
-                self.H, self.kind = H, "homography"
-                return
+        # A homography from a handful of clustered points extrapolates wildly, so stay
+        # with a similarity until there are enough well-spread points for a trimmed affine.
+        if n >= AFFINE_MIN_POINTS:
+            self.H, self.kind = _affine_trimmed(src, dst), "affine"
+            return
         if n >= 2:
             self.H, self.kind = _similarity(src, dst), "similarity"
             return

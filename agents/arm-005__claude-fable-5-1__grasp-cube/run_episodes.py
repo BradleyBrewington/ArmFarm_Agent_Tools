@@ -64,6 +64,11 @@ def coverage_targets(tmap, bounds):
     return out
 
 
+def in_workspace(x, y):
+    r = math.hypot(x - G.PAN_AXIS[0], y)
+    return 0.12 <= r <= 0.32 and abs(math.degrees(math.atan2(y, x - G.PAN_AXIS[0]))) <= 62
+
+
 def load_state():
     if STATE.exists():
         return json.loads(STATE.read_text())
@@ -119,6 +124,14 @@ def main():
                     break
                 continue
             cx, cy = g.cube_xy(cube)
+            if not in_workspace(cx, cy):
+                print(f"detection maps outside the workspace ({cx:.3f},{cy:.3f}); ignoring", flush=True)
+                record_stats(event="bad_detection", px=[cube["u"], cube["v"]], xy=[cx, cy])
+                time.sleep(2)
+                consecutive_failures += 1
+                if consecutive_failures > 20:
+                    break
+                continue
             # ---- episode
             notes = {}
             if not a.dry:
@@ -137,6 +150,8 @@ def main():
                     if cube is None:
                         break
                     cx, cy = g.cube_xy(cube)
+                    if not in_workspace(cx, cy):
+                        break
                 g.home()
                 now = g.arm.read()
                 grip_home = now["gripper"]
