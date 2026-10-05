@@ -4,7 +4,7 @@
     from arm import Arm
     with Arm() as a:
         a.joints()                 # calibrated degrees / gripper percent
-        a.move({...}, seconds)     # smooth, clamped, stall-guarded (calibrate_workspace.move)
+        a.move({...}, seconds)     # smooth, clamped, stall-guarded, light bus traffic
         a.home()                   # four home joints only
         a.gripper(60)
 
@@ -25,6 +25,7 @@ HOME_FILE = HERE.parent / "home_pose.json"
 ARM = cw.ARM_JOINTS
 ALL = cw.JOINTS
 GRIP_TORQUE = 230      # gripper Torque_Limit (of 1000); Overload_Torque is 25%
+STEP_S = 0.03         # control period of Arm.move (bus shared with the recorder)
 
 
 def _retry_bus(bus, tries=4):
@@ -104,10 +105,29 @@ class Arm:
         return forward({k: j[k] for k in ARM})
 
     def move(self, target, seconds):
+        """Smooth (smoothstep) move with light bus traffic: the episode recorder shares this serial
+        relay, and calibrate_workspace.move (write + read + fault reads every 20 ms) caused
+        recorder feedback gaps. Goals are clipped to calibration and known stops; arm joints are
+        stall-checked every few steps (held at a physical stop like calibrate_workspace does)."""
         # calibrate_workspace treats gripper contact as a physical stop; that would keep the
         # gripper from ever closing past the last contact point, so forget it every move.
         cw.stops(self.bus).pop("gripper", None)
-        cw.move(self.bus, target, seconds)
+        target = cw.clamp_target(target, self.bus.calibration)
+        start = cw.clamp_target(self.bus.sync_read("Present_Position", list(target)), self.bus.calibration)
+        guard = cw.StallGuard(self.bus, target)
+        t0 = time.monotonic()
+        step = 0
+        while True:
+            f = min((time.monotonic() - t0) / max(seconds, 1e-3), 1.0)
+            a = f * f * (3 - 2 * f)
+            goal = cw.within_stops({j: start[j] + a * (target[j] - start[j]) for j in target}, self.bus)
+            self.bus.sync_write("Goal_Position", goal, normalize=True)
+            if f >= 1.0:
+                break
+            step += 1
+            if step % 5 == 0 and len(guard.joints):
+                guard.observe(goal, self.bus.sync_read("Present_Position", list(target)))
+            time.sleep(STEP_S)
 
     def wait(self, target, tol=3.0, timeout=1.5, joints=None):
         """Wait until the listed joints are within tol of target. Returns final error dict."""
@@ -119,7 +139,7 @@ class Arm:
             err = {j: abs(now[j] - goal[j]) for j in joints}
             if max(err.values()) <= tol or time.monotonic() > deadline:
                 return err
-            time.sleep(0.02)
+            time.sleep(0.04)
 
     def home(self, seconds=1.2):
         self.move(self.home_pose, seconds)
