@@ -805,3 +805,4 @@ giving up: cube not visible
 {"t": 1791220714.843833, "event": "place", "target": [0.25, 0.0], "frame": [0.2300000000947128, 0.0]}
 cube not visible; waiting (60s)
 cube not visible; waiting (120s)
+cube not visible; waiting (180s)
