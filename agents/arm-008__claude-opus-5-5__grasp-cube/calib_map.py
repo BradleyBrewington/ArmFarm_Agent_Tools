@@ -17,7 +17,7 @@ from camd_client import read_frame
 import task
 import vision
 
-GRID = [(x, y) for x in (0.21, 0.25, 0.29, 0.33) for y in (-0.16, -0.08, 0.0, 0.08, 0.16)]
+GRID = [(x, y) for x in (0.23, 0.27, 0.31) for y in (-0.16, -0.08, 0.0, 0.08, 0.16)]
 
 def load_samples():
     if not vision.SAMPLES_FILE.exists():
@@ -52,19 +52,22 @@ def main():
             d = detect()
             if d is None:
                 print("cube not seen after placing at", x, y); return 1
-            s = {"u": d["px"][0], "v": d["px"][1], "x": cx, "y": cy, "angle": d["angle"]}
+            tx, ty = vision.px_to_table(d["px"])
+            s = {"u": d["px"][0], "v": d["px"][1], "tx": tx, "ty": ty, "x": cx, "y": cy, "angle": d["angle"]}
             samples.append(s)
             with open(vision.SAMPLES_FILE, "a") as f:
                 f.write(json.dumps(s) + "\n")
-            pred = vision.px_to_robot(d["px"]) if vision.load_map() is not None else (math.nan, math.nan)
+            pred = vision.table_to_robot((tx, ty))
             fit = ""
-            if len(samples) >= 4:   # until then keep the rough bootstrap map
-                H, err = vision.fit_map([(s["u"], s["v"], s["x"], s["y"]) for s in samples])
+            if len(samples) >= 3:   # until then keep the bootstrap rigid fit
+                R, b, err = vision.fit_rigid([(s["tx"], s["ty"]) for s in samples], [(s["x"], s["y"]) for s in samples])
                 fit = f"; fit rms {1000*np.sqrt((err**2).mean()):.1f} max {1000*err.max():.1f} mm"
             print(f"placed ({cx:.3f},{cy:.3f}) px=({s['u']:.0f},{s['v']:.0f}) old-map err "
                   f"{1000*math.hypot(pred[0]-cx, pred[1]-cy):.1f} mm{fit}", flush=True)
             for attempt in range(3):
                 d = detect()
+                if d is None:
+                    print("cube lost"); return 1
                 px, py, yaw = task.cube_pose(d)
                 g = task.pick(a, px, py, task.roll_for(yaw))
                 if g > task.GRIP_EMPTY:
