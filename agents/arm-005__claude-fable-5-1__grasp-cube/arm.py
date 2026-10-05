@@ -160,6 +160,50 @@ def ik_topdown(x, y, z, wrist_roll=0.0, pitch_deg=0.0, seed=None, bounds=None):
     return joints_of(r.x)
 
 
+from contextlib import contextmanager  # noqa: E402
+
+
+@contextmanager
+def _tolerant_bus(port):
+    """Like calibrate_workspace.connected_bus, but survives a gripper overload flag.
+
+    Holding the cube with a fully-closed goal trips the servo's overload bit; the stock
+    read_calibration raises on it. Calibration is read register-by-register with the
+    fault-tolerant reader, then the gripper goal is relaxed to its present position so
+    protection can clear without opening the jaws.
+    """
+    from lerobot.motors import Motor, MotorCalibration, MotorNormMode
+    from lerobot.motors.feetech import FeetechMotorsBus
+    bus = FeetechMotorsBus(port=port, motors={
+        j: Motor(i + 1, "sts3215", MotorNormMode.RANGE_0_100 if j == "gripper" else MotorNormMode.DEGREES)
+        for i, j in enumerate(JOINTS)})
+    try:
+        bus.connect(handshake=False)
+        cal = {}
+        for j in JOINTS:
+            found, faults = cw.read_register(bus, "ID", j)
+            if found != bus.motors[j].id:
+                raise RuntimeError(f"{j}: motor id {bus.motors[j].id} answered as id {found}")
+            if faults:
+                print(f"[fault] {j}: status bits {faults} at connect", flush=True)
+            cal[j] = MotorCalibration(
+                id=bus.motors[j].id, drive_mode=0,
+                homing_offset=cw.read_register(bus, "Homing_Offset", j)[0],
+                range_min=cw.read_register(bus, "Min_Position_Limit", j)[0],
+                range_max=cw.read_register(bus, "Max_Position_Limit", j)[0])
+            if not 0 <= cal[j].range_min < cal[j].range_max <= 4095:
+                raise ValueError(f"Invalid live motor calibration for {j}")
+        bus.calibration = cal
+        if cw.fault_bits(bus, "gripper") & cw.OVERLOAD:
+            present, _ = cw.read_register(bus, "Present_Position", "gripper")
+            cw.write_register(bus, "Goal_Position", "gripper", present)
+            cw.recover_overload(bus, "gripper")
+        yield bus
+    finally:
+        if bus.is_connected:
+            bus.disconnect(disable_torque=False)
+
+
 class Arm:
     def __init__(self, port=None):
         self.port = port or os.environ.get("ARMFARM_SERIAL_PORT") or cw.PORT
@@ -167,7 +211,7 @@ class Arm:
         self.bus = None
 
     def __enter__(self):
-        self._cm = cw.connected_bus(self.port)
+        self._cm = _tolerant_bus(self.port)
         self.bus = self._cm.__enter__()
         self.bounds = {}
         for j in ARM_JOINTS:
