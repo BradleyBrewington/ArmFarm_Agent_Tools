@@ -18,3 +18,10 @@ pick try 1: est (0.201,0.037) yaw 180 -> servo (0.184,0.064) roll -42 last px (8
 pick try 0: est (0.213,-0.005) yaw 131 -> servo (0.191,0.009) roll 20 last px (819, 378) grip 0.8
 pick try 1: est (0.213,-0.005) yaw 129 -> servo (0.190,0.009) roll 19 last px (821, 374) grip 0.8
 pick try 2: est (0.213,-0.005) yaw 129 -> servo (0.191,0.009) roll 21 last px (818, 379) grip 0.9
+pick try 3: est (0.213,-0.005) yaw 129 -> servo (0.190,0.009) roll 20 last px (820, 378) grip 0.8
+pick try 0: est (0.213,-0.005) yaw 129 -> servo (0.190,0.009) roll 21 last px (818, 375) grip 0.8
+pick try 1: est (0.213,-0.005) yaw 129 -> servo (0.191,0.009) roll 19 last px (820, 381) grip 0.8
+pick try 2: est (0.213,-0.005) yaw 130 -> servo (0.190,0.009) roll 20 last px (820, 378) grip 0.8
+pick try 3: est (0.213,-0.005) yaw 130 -> servo (0.190,0.009) roll 19 last px (823, 375) grip 0.8
+pick try 0: est (0.213,-0.005) yaw 129 -> servo (0.191,0.009) roll 22 last px (817, 377) grip 0.8
+pick try 1: est (0.213,-0.005) yaw 129 -> servo (0.191,0.009) roll 19 last px (819, 381) grip 0.7
