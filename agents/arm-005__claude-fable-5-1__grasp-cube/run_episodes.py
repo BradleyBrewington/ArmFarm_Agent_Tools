@@ -135,6 +135,17 @@ def main():
             # ---- locate the cube from home (arm parked out of the detection region)
             cube, img = g.see_cube(retries=5)
             if cube is None:
+                # maybe it is hiding under the parked gripper: look from aside
+                cube, img = g.lookout_see()
+                if cube is not None:
+                    cx, cy = g.cube_xy(cube)
+                    if not in_workspace(cx, cy):
+                        cube = None
+                    else:
+                        record_stats(event="lookout_found", px=[cube["u"], cube["v"]], xy=[cx, cy])
+                if cube is None:
+                    g.home()
+            if cube is None:
                 # Someone may have moved the cube out of view/reach; wait for it to come back.
                 waited = getattr(main, "_waited", 0) + 3
                 main._waited = waited

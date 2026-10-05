@@ -44,13 +44,13 @@ ARM_MASK_PATH = HERE / "arm_home_mask.png"   # dilated silhouette of the arm par
 _arm_mask = cv2.imread(str(ARM_MASK_PATH), cv2.IMREAD_GRAYSCALE) if ARM_MASK_PATH.exists() else None
 
 
-def detect_cube(img, exclude=EXCLUDE, debug=None):
+def detect_cube(img, exclude=EXCLUDE, debug=None, use_arm_mask=True):
     """Return the most cube-like dark blob in the raw top image, or None."""
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     mask = (gray < DARK).astype(np.uint8) * 255
     for x0, y0, x1, y1 in exclude:
         mask[y0:y1, x0:x1] = 0
-    if _arm_mask is not None and _arm_mask.shape == mask.shape:
+    if use_arm_mask and _arm_mask is not None and _arm_mask.shape == mask.shape:
         mask[_arm_mask > 0] = 0   # a cube touching the parked arm keeps its own pixels
     mask = cv2.morphologyEx(mask, cv2.MORPH_OPEN, np.ones((5, 5), np.uint8))
     mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, np.ones((9, 9), np.uint8))

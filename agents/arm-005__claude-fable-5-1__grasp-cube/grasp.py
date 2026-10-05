@@ -80,6 +80,14 @@ class Grasper:
             time.sleep(0.1)
         return None, img
 
+    def lookout_see(self):
+        """Move the arm aside so the top camera can see the base area, then detect without the
+        home-silhouette mask (used when the cube is hiding under the parked gripper)."""
+        self.arm.goto_xyz(0.16, 0.20, 0.12, seconds=1.5, settle=0.4)
+        img, _ = read_frame("top")
+        c = V.detect_cube(img, use_arm_mask=False)
+        return c, img
+
     def cube_xy(self, c):
         return self.map.pixel_to_robot(c["u"], c["v"])
 
