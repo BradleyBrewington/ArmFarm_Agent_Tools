@@ -79,3 +79,12 @@ ep 15 success=True 8.2s (+reset 6.2s) rate=14/15 notes={'grip_home': 23.1, 'spot
 {"t": 1791216523.0888004, "event": "place", "target": [0.2352, -0.0382], "frame": [0.21556802908464026, -0.03438087523385445]}
 ep 16 success=True 8.2s (+reset 6.3s) rate=15/16 notes={'grip_home': 23.1, 'spot_dark_fraction': 0.0, 'cube_px': [384, 209], 'cube_xy': [0.165, -0.1862], 'attempts': 1, 'episode': '20261005T110830-b5933571'}
 {"t": 1791216530.9260807, "event": "grasp", "target": [0.23128735030345038, -0.045924638872435086], "frame": [0.20697012271027163, -0.040121843350980846], "grip_closed": 23.273480662983424, "grip_lifted": 23.066298342541437, "held": true}
+55 coverage targets; map affine n=19
+{"t": 1791216576.5443854, "event": "place", "target": [0.25, 0.0], "frame": [0.2300000000947128, 0.0]}
+{"t": 1791216585.0837598, "event": "grasp", "target": [0.24914950015795212, 0.0033700062831965027], "frame": [0.22415270913567967, 0.0029694658406512926], "grip_closed": 23.273480662983424, "grip_lifted": 23.066298342541437, "held": true}
+{"t": 1791216591.6771598, "event": "place", "target": [0.1827, 0.1389], "frame": [0.16831177854218418, 0.1250083089841315]}
+ep 17 success=True 8.2s (+reset 8.1s) rate=16/17 notes={'grip_home': 23.1, 'spot_dark_fraction': 0.0, 'cube_px': [676, 338], 'cube_xy': [0.2491, 0.0034], 'attempts': 1, 'episode': '20261005T110939-b65976f0'}
+{"t": 1791216601.312556, "event": "grasp", "target": [0.17550479239058558, 0.1331910630472204], "frame": [0.15760074986340902, 0.11574270339265891], "grip_closed": 23.273480662983424, "grip_lifted": 23.066298342541437, "held": true}
+{"t": 1791216608.0108612, "event": "place", "target": [0.2688, 0.0], "frame": [0.24880000008696984, 0.0]}
+ep 18 success=True 8.3s (+reset 6.2s) rate=17/18 notes={'grip_home': 23.1, 'spot_dark_fraction': 0.0, 'cube_px': [887, 244], 'cube_xy': [0.1755, 0.1332], 'attempts': 1, 'episode': '20261005T110955-86ca7f74'}
+{"t": 1791216615.8322384, "event": "grasp", "target": [0.26851756247019043, -0.001471337051027588], "frame": [0.24351807551845006, -0.0013111911563764927], "grip_closed": 23.273480662983424, "grip_lifted": 23.066298342541437, "held": true}
