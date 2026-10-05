@@ -106,3 +106,6 @@
 [106] OK  12.7s tries=1 start=(0.249, -0.064) success 106/106 ~180/h
 [107] OK  12.6s tries=1 start=(0.192, -0.064) success 107/107 ~180/h
 [108] OK  24.2s tries=1 flags=queue_overflow start=(0.274, -0.029) success 108/108 ~179/h
+[109] OK  12.5s tries=1 start=(0.202, 0.03) success 109/109 ~179/h
+[110] OK  14.5s tries=1 start=(0.281, -0.003) success 110/110 ~179/h
+[111] OK  16.3s tries=1 start=(0.274, 0.028) success 111/111 ~179/h
