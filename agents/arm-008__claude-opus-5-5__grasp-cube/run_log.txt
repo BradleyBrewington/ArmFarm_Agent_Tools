@@ -122,3 +122,6 @@
 [122] OK  12.2s tries=1 start=(0.194, -0.086) success 122/122 ~185/h
 [123] OK  13.9s tries=1 start=(0.221, 0.037) success 123/123 ~185/h
 [124] OK  17.8s tries=1 start=(0.266, -0.103) success 124/124 ~185/h
+[125] OK  14.4s tries=1 start=(0.264, 0.04) success 125/125 ~185/h
+[126] OK  12.6s tries=1 start=(0.22, 0.049) success 126/126 ~185/h
+[127] OK  18.6s tries=1 start=(0.303, -0.111) success 127/127 ~184/h
