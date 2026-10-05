@@ -27,6 +27,7 @@ import vision
 HERE = vision.HERE
 LOG = HERE / "episodes_log.jsonl"
 COVERAGE = HERE / "coverage.json"
+STOP_FILE = HERE / "STOP"
 TASK = "Pick up the black cube and bring it to the home position"
 
 # Placement workspace (cube centre, base_link metres): reachable at the fixed grasp pitch,
@@ -138,6 +139,10 @@ def main():
         if arm.gripper_pos() > task.GRIP_EMPTY and arm.gripper_pos() < 50:   # still holding from before
             reset(arm, cov, None, holding=True)
         while done < a.n and (a.minutes is None or time.monotonic() - start < a.minutes * 60):
+            if STOP_FILE.exists():       # touch tools/STOP to end cleanly between episodes
+                STOP_FILE.unlink()
+                print("stop file found; ending", flush=True)
+                break
             try:
                 _, p0 = task.detect_robot(True)
                 good, info, entry = episode(arm, done)
