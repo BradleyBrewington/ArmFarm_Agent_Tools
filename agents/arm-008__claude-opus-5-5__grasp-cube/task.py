@@ -195,3 +195,32 @@ def push(arm, start, end, z=0.016, roll=0.0, step=0.01, speed=0.06):
     arm.wait(q, tol=3, timeout=1)
     q = plan(end[0], end[1], z + 0.03, roll)
     arm.move(q, 0.6)
+
+
+RETRY_OFFSETS = [(0.0, 0.0), (0.010, 0.0), (-0.008, 0.0), (0.018, 0.0), (0.0, 0.008), (0.0, -0.008)]
+
+
+def pick_robust(arm, attempts=6, log=print):
+    """Look, pick, verify by gripper opening; on a miss re-look and try a nudged estimate.
+    Returns (ok, info dict)."""
+    for i in range(attempts):
+        go_look(arm, 1.0 if i == 0 else 0.8)
+        time.sleep(0.25)
+        d, p = detect_robot(True)
+        if p is None:
+            clear_view(arm); time.sleep(0.25)
+            d, p = detect_robot(False)
+        if p is None:
+            log("cube not visible")
+            return False, {"reason": "not_visible"}
+        x, y, yaw = p
+        ox, oy = RETRY_OFFSETS[i % len(RETRY_OFFSETS)]
+        try:
+            g = pick(arm, x + ox, y + oy, roll_for(yaw))
+        except ValueError as e:
+            log(f"unreachable cube estimate {x:.3f},{y:.3f}: {e}")
+            return False, {"reason": "unreachable", "x": x, "y": y}
+        log(f"pick try {i}: est ({x:.3f},{y:.3f}) yaw {yaw:.0f} offset ({ox},{oy}) grip {g:.1f}")
+        if g > GRIP_EMPTY:
+            return True, {"x": x, "y": y, "px": d["px"], "attempts": i + 1, "offset": (ox, oy), "grip": g}
+    return False, {"reason": "missed"}

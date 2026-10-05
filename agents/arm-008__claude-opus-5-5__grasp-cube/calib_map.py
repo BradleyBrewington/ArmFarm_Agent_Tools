@@ -64,18 +64,12 @@ def main():
                 fit = f"; fit rms {1000*np.sqrt((err**2).mean()):.1f} max {1000*err.max():.1f} mm"
             print(f"placed ({cx:.3f},{cy:.3f}) px=({s['u']:.0f},{s['v']:.0f}) old-map err "
                   f"{1000*math.hypot(pred[0]-cx, pred[1]-cy):.1f} mm{fit}", flush=True)
-            for attempt in range(3):
-                d = detect()
-                if d is None:
-                    print("cube lost"); return 1
-                px, py, yaw = task.cube_pose(d)
-                g = task.pick(a, px, py, task.roll_for(yaw))
-                if g > task.GRIP_EMPTY:
-                    break
-                task.go_look(a)
-                time.sleep(0.3)
-            else:
-                print("re-pick failed"); return 1
+            ok, info = task.pick_robust(a)
+            if not ok:
+                print("re-pick failed", info); return 1
+            if info["attempts"] > 1:
+                with open(vision.HERE / "pick_misses.jsonl", "a") as f:
+                    f.write(json.dumps(info) + "\n")
     return 0
 
 
