@@ -68,7 +68,7 @@ class Arm:
         cw.write_register(self.bus, "Goal_Position", "gripper", raw - ticks)
         cw.recover_overload(self.bus, "gripper")
 
-    def hold(self, margin=4.0):
+    def hold(self, margin=10.0):
         """After closing on the cube, set the gripper goal a little inside the contact point so the
         motor holds the cube without straining into overload."""
         time.sleep(0.05)
