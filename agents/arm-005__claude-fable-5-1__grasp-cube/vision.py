@@ -83,7 +83,14 @@ def cube_mask_dark_fraction(img, u, v, half=30):
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     u0, v0 = int(max(0, u - half)), int(max(0, v - half))
     win = gray[v0:int(v + half), u0:int(u + half)]
-    return float((win < DARK).mean()) if win.size else 0.0
+    if win.size == 0:
+        return 0.0
+    valid = np.ones(win.shape, bool)
+    if _arm_mask is not None and _arm_mask.shape == gray.shape:
+        valid = _arm_mask[v0:int(v + half), u0:int(u + half)] == 0   # ignore the parked arm's own pixels
+    if valid.sum() < 0.25 * win.size:
+        return 0.0   # spot is mostly under the arm's silhouette: cannot judge, assume clear
+    return float((win[valid] < DARK).mean())
 
 
 def _similarity(src, dst):

@@ -135,22 +135,20 @@ def main():
             # ---- locate the cube from home (arm parked out of the detection region)
             cube, img = g.see_cube(retries=5)
             if cube is None:
-                print("cube not visible; waiting", flush=True)
-                record_stats(event="no_cube")
+                # Someone may have moved the cube out of view/reach; wait for it to come back.
+                waited = getattr(main, "_waited", 0) + 3
+                main._waited = waited
+                if waited % 60 < 3:
+                    print(f"cube not visible; waiting ({waited}s)", flush=True)
+                    record_stats(event="no_cube", waited=waited)
                 time.sleep(3)
-                consecutive_failures += 1
-                if consecutive_failures > 20:
-                    print("giving up: cube not visible", flush=True)
-                    break
                 continue
+            main._waited = 0
             cx, cy = g.cube_xy(cube)
             if not in_workspace(cx, cy):
                 print(f"detection maps outside the workspace ({cx:.3f},{cy:.3f}); ignoring", flush=True)
                 record_stats(event="bad_detection", px=[cube["u"], cube["v"]], xy=[cx, cy])
                 time.sleep(2)
-                consecutive_failures += 1
-                if consecutive_failures > 20:
-                    break
                 continue
             # ---- episode
             notes = {}
@@ -193,7 +191,9 @@ def main():
             consecutive_failures = 0 if success else consecutive_failures + 1
             dt_ep = time.time() - t0
             # ---- reset: carry the cube to a new coverage position (or recover if dropped)
-            if success:
+            if success or g.arm.read()["gripper"] > G.HELD_MIN:
+                # place whatever is held (even if the episode was judged failed) so the cube
+                # is never dropped from the home pose
                 tx, ty, r, ang = next_target(targets, state, (cx, cy), rng)
                 fx, fy = g.place(tx, ty)
                 g.home()
