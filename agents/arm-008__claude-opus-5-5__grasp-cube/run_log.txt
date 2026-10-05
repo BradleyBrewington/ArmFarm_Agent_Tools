@@ -73,3 +73,17 @@
 [73] OK  12.7s tries=1 start=(0.278, -0.07) success 73/73 ~178/h
 [74] OK  10.7s tries=1 start=(0.201, 0.082) success 74/74 ~179/h
 [75] OK  18.3s tries=1 start=(0.289, -0.131) success 75/75 ~178/h
+[76] OK  10.7s tries=1 start=(0.187, 0.082) success 76/76 ~179/h
+Traceback (most recent call last):
+  File "/var/lib/armfarm/stations/armfarm/fresh-starts/715a127f-3a10-41c7-896b-9ad6a5c14131/workspace/tools/run_episodes.py", line 148, in main
+    break
+    
+  File "/var/lib/armfarm/stations/armfarm/fresh-starts/715a127f-3a10-41c7-896b-9ad6a5c14131/workspace/tools/run_episodes.py", line 110, in episode
+    stop = recording.stop_recording(success=bool(good), notes=notes)
+  File "/var/lib/armfarm/stations/armfarm/fresh-starts/715a127f-3a10-41c7-896b-9ad6a5c14131/workspace/tools/recording.py", line 30, in stop_recording
+    return request('stop_recording', success=success, notes=notes)
+  File "/var/lib/armfarm/stations/armfarm/fresh-starts/715a127f-3a10-41c7-896b-9ad6a5c14131/workspace/tools/recording.py", line 15, in request
+    if not response.pop('ok'): raise RuntimeError(response['error'])
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Full: 
+done: 76/76 successful in 26.0 min
