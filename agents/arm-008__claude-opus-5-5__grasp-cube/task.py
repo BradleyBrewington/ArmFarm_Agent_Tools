@@ -57,12 +57,30 @@ def cube_pose(det):
     return x, y, yaw
 
 
-def pick(arm, x, y, roll, fast=1.0):
-    x, y = jaw_target(x, y, roll)
-    above = plan(x, y, HOVER_Z, roll)
-    down = plan(x, y, GRASP_Z, roll)
-    arm.move({**above, "gripper": OPEN}, 1.3 * fast)
-    arm.wait(above, tol=4, timeout=0.6)
+def wrist_yaw_error():
+    """Cube edge angle relative to the jaws in the wrist image (deg, folded), or None."""
+    import wrist
+    from camd_client import read_frame
+    d = wrist.detect(read_frame("wrist")[0])
+    return None if d is None else wrist.fold90(d["angle"])
+
+
+def pick(arm, x, y, roll, fast=1.0, yaw_fix=True):
+    """Open above the cube, square the jaws to it with the wrist camera, descend, close, lift.
+    Returns (gripper % after lifting, roll used)."""
+    for i in range(3 if yaw_fix else 1):
+        tx, ty = jaw_target(x, y, roll)
+        above = plan(tx, ty, HOVER_Z, roll)
+        arm.move({**above, "gripper": OPEN}, (1.3 if i == 0 else 0.4) * fast)
+        arm.wait(above, tol=2.5, timeout=0.8)
+        if not yaw_fix:
+            break
+        time.sleep(0.12)
+        err = wrist_yaw_error()
+        if err is None or abs(err) < 5:
+            break
+        roll = max(-85.0, min(85.0, roll - 1.3 * err))
+    down = plan(tx, ty, GRASP_Z, roll)
     arm.move(down, 0.6 * fast)
     arm.wait(down, tol=3, timeout=0.6)
     arm.hold()                       # torque-capped close; jaws need ~0.5 s to reach the cube
