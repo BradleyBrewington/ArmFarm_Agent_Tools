@@ -22,13 +22,14 @@ def move(b,q,t=1.8):
  for j in c.JOINTS:
   if c.fault_bits(b,j):raise RuntimeError('Motor fault '+j)
 def pose(pan,elbow=20):
+ pitch=float(os.environ.get("CUBE_PITCH","65"))
  from scipy.optimize import brentq
  from fk import forward
- def height(s):return forward(dict(shoulder_pan=2,shoulder_lift=s,elbow_flex=elbow,wrist_flex=65-s-elbow,wrist_roll=-30))['z']+.002193685765342651
- s=brentq(height,-80,35)
- return dict(shoulder_pan=pan,shoulder_lift=s,elbow_flex=elbow,wrist_flex=65-s-elbow)
+ def height(s):return forward(dict(shoulder_pan=2,shoulder_lift=s,elbow_flex=elbow,wrist_flex=pitch-s-elbow,wrist_roll=-30))['z']+.002193685765342651
+ s=brentq(height,-80,80)
+ return dict(shoulder_pan=pan,shoulder_lift=s,elbow_flex=elbow,wrist_flex=pitch-s-elbow)
 def above(q):return {**q,'shoulder_lift':q['shoulder_lift']-30,'wrist_flex':q['wrist_flex']+30}
-def home(b):move(b,HOME,2.3)
+def home(b):move(b,HOME,4)
 def grip(b):
  limit,_=c.read_register(b,'Torque_Limit','gripper')
  if limit!=220:raise RuntimeError('Expected bounded gripper output 220, got '+str(limit))
@@ -48,7 +49,7 @@ def run(n):
  if Path('tools/cube_recovery_required.json').exists():
   raise RuntimeError('Re-localize cube and validate pickup before clearing tools/cube_recovery_required.json')
  current=json.loads(STATE.read_text()) if STATE.exists() else pose(17)
- grid=[(pan,e) for e in (20,30,40) for pan in (-20,-5,10,25)]
+ grid=[(pan,e) for e in ((60,70,80) if os.environ.get('CUBE_PITCH')=='35' else (20,30,40)) for pan in (-20,0,20)]
  offset=int(os.environ.get("CUBE_GRID_OFFSET","0"))
  grid=grid[offset:]+grid[:offset]
  active=False
@@ -59,7 +60,7 @@ def run(n):
     ep=recording.start_recording('Pick black cube, bring to home, visually confirm retained grasp');active=True
     move(b,above(current));move(b,current,1.5)
     contact=grip(b)
-    move(b,above(current),1.5)
+    move(b,above(current),3)
     # Retain the seated closing target through lift and home.
     home(b)
     ok,evidence=held(b);snapshot()
@@ -70,7 +71,7 @@ def run(n):
     move(b,above(target));move(b,target,1.5)
     move(b,{'gripper':50},1.3)
     current=target;STATE.write_text(json.dumps(current))
-    move(b,above(current),1.5);home(b)
+    move(b,above(current),3);home(b)
     snapshot();emit(event='placed',pose=current)
   except BaseException as e:
    emit(event='stopped',error=str(e))
