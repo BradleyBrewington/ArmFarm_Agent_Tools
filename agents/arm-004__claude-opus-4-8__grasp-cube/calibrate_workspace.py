@@ -2671,8 +2671,15 @@ def reuse_attempt(source, args, output):
         raise ValueError("Saved calibration belongs to a different top camera")
     views, checked = [], {}
     for name in ("pose_1", "pose_2", "pose_3", "workspace"):
+        if name != "workspace" and not (source / "captures" / f"{name}.json").exists():
+            continue
         capture = read_json(source / "captures" / f"{name}.json")
-        checked[name] = require_board(capture, args, name)
+        try:
+            checked[name] = require_board(capture, args, name)
+        except CalibrationRetry:
+            if name == "workspace":
+                raise
+            continue
         view = capture["cameras"]["top"]
         image = cv2.imread(str(source / view["image"]))
         if image is None or list(image.shape[1::-1]) != view["image_size"]:
@@ -2793,8 +2800,70 @@ def return_to_pose_one(bus, args, retry=False):
             retry = True
 
 
+def approach_photo_pose(bus, target, args, name):
+    """Try a preferred viewpoint three times; a safe actual pose is sufficient.
+
+    Each retry goes through home without opening the gripper. A guarded stall
+    on that retreat also consumes the retry; it never causes an unbounded loop.
+    Faults and missing feedback propagate instead of being treated as stalls.
+    """
+    failures = []
+    for attempt in range(1, MAX_MOTION_RECOVERIES + 2):
+        for joint in ARM_JOINTS:
+            stops(bus).pop(joint, None)
+        try:
+            if attempt > 1:
+                calibration_notice(bus, 'recovering',
+                    f'{name}: retry {attempt - 1}/2 through home; keeping the checkerboard held.')
+                home = load_home(args.home)
+                move(bus, home, args.duration)
+                settle(bus, home, 2, trim=True)
+                verify_board_pose(bus, home)
+            move(bus, target, args.duration)
+            settle(bus, target, 2)
+            return {'reached': True, 'attempts': attempt, 'failures': failures}
+        except MotionStalled as exc:
+            hold_arm(bus)
+            actual = bus.sync_read('Present_Position', list(JOINTS))
+            verify_board_pose(bus, actual)
+            failures.append(str(exc))
+    calibration_notice(bus, 'capturing_alternate_view',
+        f'{name}: skipped the saved position after two retries. Taking a photo here, then continuing.')
+    return {'reached': False, 'attempts': attempt, 'failures': failures,
+            'actual_joints': actual}
+
+
+def collect_photo_views(bus, reader, args, output, report):
+    """Keep any usable stationary board image, regardless of the requested pose."""
+    captures, checked, positions = [], {}, {}
+    for index, pose in enumerate(POSES, 1):
+        name = f'pose_{index}'
+        calibration_notice(bus, name, f'Collecting checkerboard view {index}/{len(POSES)}.')
+        positions[name] = (approach_photo_pose(bus, pose, args, name) if index > 1
+                           else {'reached': True, 'attempts': 0, 'failures': []})
+        # capture_pose records measured angles, not the preferred target.
+        try:
+            capture = capture_pose(bus, reader, output, name, tuple(args.pattern), ['top'], args.capture_timeout)
+        except RuntimeError as exc:
+            # A camera timeout is recoverable; motor/feedback faults must not
+            # be hidden as a bad photo.
+            if str(exc) != f'{name}: no stable camera/joint snapshot':
+                raise
+            positions[name]['photo_error'] = str(exc)
+        else:
+            try:
+                checked[name] = require_board(capture, args, name)
+            except CalibrationRetry as exc:
+                positions[name]['photo_error'] = str(exc)
+            else:
+                captures.append(capture)
+        report.update(state=f'captured_{name}', photos=checked, photo_positions=positions)
+        write_json(output / 'report.json', report)
+    return captures, checked
+
+
 def run_attempt(bus, reader, args, output, times, values, report):
-    """One complete top-camera attempt; never accept a missing held-board photo."""
+    """Fit usable views; preferred photo positions are not acceptance criteria."""
     cfg = map_config(args)
     if not getattr(bus, "resume_held_board", False):
         wait_for_board(reader, tuple(args.pattern), "top",
@@ -2809,25 +2878,11 @@ def run_attempt(bus, reader, args, output, times, values, report):
     bus.resume_held_board = False
     calibration_notice(bus, "checking_grip", "Checking the held checkerboard before moving to pose 2.")
     optics = freeze_focus(["top"])
-    captures, checked = [], {}
     with ExtraViews(args, output) as extras:
-        for index, pose in enumerate(POSES, 1):
-            calibration_notice(bus, f"pose_{index}", f"Capturing calibration pose {index}/3.")
-            if index > 1:
-                print(f"Moving to calibration pose {index}/3.", flush=True)
-                move(bus, pose, args.duration)
-                settle(bus, pose, 2)
-            name = f"pose_{index}"
-            try:
-                capture = capture_pose(bus, reader, output, name, tuple(args.pattern), ["top"], args.capture_timeout)
-            except RuntimeError as exc:
-                raise CalibrationRetry(str(exc)) from exc
-            # Fail immediately: do not continue to a later pose or release path.
-            checked[name] = require_board(capture, args, name)
-            captures.append(capture)
-            report.update(state=f"captured_{name}", photos=checked)
-            write_json(output / "report.json", report)
-        print("All three top-camera photos contain the full checkerboard.", flush=True)
+        captures, checked = collect_photo_views(bus, reader, args, output, report)
+        print(f"Collected {len(captures)} usable stationary checkerboard photos, plus automatic views.", flush=True)
+        for joint in ARM_JOINTS:
+            stops(bus).pop(joint, None)
         print("Moving to the recorded path's start, then replaying checkerboard placement.", flush=True)
         calibration_notice(bus, "placing_checkerboard", "Replaying checkerboard placement.")
         first = dict(zip(JOINTS, values[0]))
