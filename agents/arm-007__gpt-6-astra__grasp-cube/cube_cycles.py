@@ -1,5 +1,5 @@
 """Recorded cube cycles, with fresh camera and contact checks and bounded placement grid."""
-import json,time,sys,signal,os
+import json,time,sys,signal,os,subprocess
 from pathlib import Path
 import cv2,numpy as np
 import calibrate_workspace as c, recording
@@ -12,6 +12,12 @@ def emit(**d):
  d['time']=time.time()
  print(json.dumps(d),flush=True)
  with LOG.open('a') as f:f.write(json.dumps(d)+'\n')
+def coverage():
+ result=subprocess.run([sys.executable,'tools/grasp_coverage.py'],capture_output=True,text=True,timeout=25)
+ if result.returncode:raise RuntimeError('Coverage read failed: '+result.stderr)
+ data=json.loads(result.stdout)
+ Path('tools/latest_cube_coverage.json').write_text(json.dumps(data,indent=2))
+ emit(event='coverage',status=data.get('status'),generated_at=data.get('generated_at'),map_version=data.get('map_version'),metrics=data.get('metrics'),next_targets=data.get('next_targets',[])[:3])
 def move(b,q,t=1.8):
  for role in ('top','wrist'):read_frame(role)
  q=c.clamp_target(q,b.calibration)
@@ -80,6 +86,7 @@ def run(n):
     ok,evidence=held(b);snapshot()
     receipt=recording.stop_recording(ok,json.dumps(dict(source_pose=pickup,contact=contact,home_confirm=evidence)));active=False
     emit(event='episode',success=ok,receipt=receipt,evidence=evidence)
+    coverage()
     if not ok:raise RuntimeError('Grasp not verified at home')
     target=pose(*grid[i%len(grid)])
     move(b,above(target));move(b,target,1.5)
@@ -92,5 +99,6 @@ def run(n):
    if active:
     receipt=recording.stop_recording(False,str(e))
     emit(event='episode',success=False,receipt=receipt,evidence={'error':str(e)})
+    coverage()
    raise
 if __name__=='__main__':run(int(sys.argv[1]) if len(sys.argv)>1 else 1)
