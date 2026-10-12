@@ -43,7 +43,9 @@ def grip(b):
  time.sleep(.5)
  actual=b.read('Present_Position','gripper')
  if c.fault_bits(b,'gripper'):raise RuntimeError('Gripper fault')
- if not 18<actual<35:raise RuntimeError('Unexpected contact width: '+str(actual))
+ if not 18<actual<35:
+  snapshot()
+  raise RuntimeError('Unexpected contact width: '+str(actual))
  return actual
 def held(b):
  img,meta=read_frame('wrist')
