@@ -1,0 +1,232 @@
+{
+  "ready_for_supervised_retry": false,
+  "restart_target_C": 43,
+  "required_stable_seconds": 30,
+  "samples": [
+    {
+      "time": 1791233058.8766825,
+      "temperature": 48,
+      "fault": 0
+    },
+    {
+      "time": 1791233059.8799338,
+      "temperature": 48,
+      "fault": 0
+    },
+    {
+      "time": 1791233060.88298,
+      "temperature": 48,
+      "fault": 0
+    },
+    {
+      "time": 1791233061.8860288,
+      "temperature": 48,
+      "fault": 0
+    },
+    {
+      "time": 1791233062.8899071,
+      "temperature": 48,
+      "fault": 0
+    },
+    {
+      "time": 1791233063.8941615,
+      "temperature": 48,
+      "fault": 0
+    },
+    {
+      "time": 1791233064.8972228,
+      "temperature": 48,
+      "fault": 0
+    },
+    {
+      "time": 1791233065.900264,
+      "temperature": 48,
+      "fault": 0
+    },
+    {
+      "time": 1791233066.9081173,
+      "temperature": 48,
+      "fault": 0
+    },
+    {
+      "time": 1791233067.9113524,
+      "temperature": 48,
+      "fault": 0
+    },
+    {
+      "time": 1791233068.9144187,
+      "temperature": 48,
+      "fault": 0
+    },
+    {
+      "time": 1791233069.9184558,
+      "temperature": 48,
+      "fault": 0
+    },
+    {
+      "time": 1791233070.921507,
+      "temperature": 48,
+      "fault": 0
+    },
+    {
+      "time": 1791233071.925382,
+      "temperature": 48,
+      "fault": 0
+    },
+    {
+      "time": 1791233072.928612,
+      "temperature": 48,
+      "fault": 0
+    },
+    {
+      "time": 1791233073.9316766,
+      "temperature": 48,
+      "fault": 0
+    },
+    {
+      "time": 1791233074.9347308,
+      "temperature": 48,
+      "fault": 0
+    },
+    {
+      "time": 1791233075.941565,
+      "temperature": 48,
+      "fault": 0
+    },
+    {
+      "time": 1791233076.9448225,
+      "temperature": 48,
+      "fault": 0
+    },
+    {
+      "time": 1791233077.949879,
+      "temperature": 48,
+      "fault": 0
+    },
+    {
+      "time": 1791233078.9577029,
+      "temperature": 48,
+      "fault": 0
+    },
+    {
+      "time": 1791233079.9649704,
+      "temperature": 48,
+      "fault": 0
+    },
+    {
+      "time": 1791233080.9690278,
+      "temperature": 48,
+      "fault": 0
+    },
+    {
+      "time": 1791233081.9770813,
+      "temperature": 48,
+      "fault": 0
+    },
+    {
+      "time": 1791233082.9811308,
+      "temperature": 48,
+      "fault": 0
+    },
+    {
+      "time": 1791233083.9851604,
+      "temperature": 48,
+      "fault": 0
+    },
+    {
+      "time": 1791233084.989208,
+      "temperature": 48,
+      "fault": 0
+    },
+    {
+      "time": 1791233085.9932632,
+      "temperature": 48,
+      "fault": 0
+    },
+    {
+      "time": 1791233086.9973135,
+      "temperature": 48,
+      "fault": 0
+    },
+    {
+      "time": 1791233088.0015783,
+      "temperature": 48,
+      "fault": 0
+    },
+    {
+      "time": 1791233089.0084538,
+      "temperature": 48,
+      "fault": 0
+    },
+    {
+      "time": 1791233090.012492,
+      "temperature": 48,
+      "fault": 0
+    },
+    {
+      "time": 1791233091.0155547,
+      "temperature": 48,
+      "fault": 0
+    },
+    {
+      "time": 1791233092.0185966,
+      "temperature": 48,
+      "fault": 0
+    },
+    {
+      "time": 1791233093.0216503,
+      "temperature": 48,
+      "fault": 0
+    },
+    {
+      "time": 1791233094.025706,
+      "temperature": 48,
+      "fault": 0
+    },
+    {
+      "time": 1791233095.0297513,
+      "temperature": 48,
+      "fault": 0
+    },
+    {
+      "time": 1791233096.0328112,
+      "temperature": 48,
+      "fault": 0
+    },
+    {
+      "time": 1791233097.0358574,
+      "temperature": 48,
+      "fault": 0
+    },
+    {
+      "time": 1791233098.0436897,
+      "temperature": 48,
+      "fault": 0
+    },
+    {
+      "time": 1791233099.046929,
+      "temperature": 48,
+      "fault": 0
+    },
+    {
+      "time": 1791233100.0499794,
+      "temperature": 48,
+      "fault": 0
+    },
+    {
+      "time": 1791233101.0530343,
+      "temperature": 48,
+      "fault": 0
+    },
+    {
+      "time": 1791233102.056893,
+      "temperature": 48,
+      "fault": 0
+    },
+    {
+      "time": 1791233103.0601702,
+      "temperature": 48,
+      "fault": 0
+    }
+  ]
+}

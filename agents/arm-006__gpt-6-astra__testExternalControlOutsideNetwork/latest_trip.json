@@ -1,0 +1,17 @@
+{
+  "episode": "20261005T172014-0fec2545",
+  "software_guard_C": 65,
+  "hardware_limit_C": 70,
+  "sample": {
+    "time_mono": 453139.195747151,
+    "position_raw": 2385,
+    "goal_raw": 2362,
+    "load_raw": 104,
+    "current_raw": 4,
+    "temperature_C": 66,
+    "fault_bits": 0
+  },
+  "x": 0.2181,
+  "pan": 42,
+  "successes_since_operator_resumption": 32
+}

@@ -1,0 +1,182 @@
+{
+  "successful": [
+    {
+      "episode": "20261005T104735-9fad0bb0",
+      "quality_flags": [
+        "control_settings_changed",
+        "torque_disabled"
+      ],
+      "x": 0.26,
+      "pan": -10
+    },
+    {
+      "episode": "20261005T105427-3a521062",
+      "quality_flags": [],
+      "x": 0.235,
+      "pan": 7
+    },
+    {
+      "episode": "20261005T105537-73f8283e",
+      "quality_flags": [
+        "camera_error"
+      ],
+      "x": 0.235,
+      "pan": 25
+    },
+    {
+      "episode": "20261005T105630-637fb366",
+      "quality_flags": [],
+      "x": 0.2,
+      "pan": -25
+    },
+    {
+      "episode": "20261005T105733-db6d8a8a",
+      "quality_flags": [
+        "camera_error"
+      ],
+      "x": 0.2,
+      "pan": 40
+    },
+    {
+      "episode": "20261005T105827-86765ac9",
+      "quality_flags": [],
+      "x": 0.2,
+      "pan": -40
+    },
+    {
+      "episode": "20261005T110321-6d78f3ab",
+      "quality_flags": [],
+      "x": 0.15,
+      "pan": -42
+    },
+    {
+      "episode": "20261005T110921-2bf3dc36",
+      "quality_flags": [
+        "camera_error"
+      ],
+      "x": 0.1256,
+      "pan": 55
+    },
+    {
+      "episode": "20261005T111248-af44505c",
+      "quality_flags": [],
+      "x": 0.1723,
+      "pan": 28
+    },
+    {
+      "episode": "20261005T111527-c28ec54e",
+      "quality_flags": [],
+      "x": 0.215,
+      "pan": -1
+    },
+    {
+      "episode": "20261005T111912-1180879c",
+      "quality_flags": [],
+      "x": 0.1973,
+      "pan": -29
+    },
+    {
+      "episode": "20261005T112454-14bc7691",
+      "quality_flags": [],
+      "x": 0.1988,
+      "pan": -28
+    },
+    {
+      "episode": "20261005T113151-5af4776e",
+      "quality_flags": [],
+      "x": 0.2146,
+      "pan": -14
+    },
+    {
+      "episode": "20261005T131131-bdbdfa39",
+      "quality_flags": [],
+      "x": 0.28,
+      "pan": 8
+    },
+    {
+      "episode": "20261005T131331-da0295cb",
+      "quality_flags": [],
+      "x": 0.2437,
+      "pan": 14
+    },
+    {
+      "episode": "20261005T142120-18c5a248",
+      "quality_flags": [],
+      "x": 0.28,
+      "pan": 5
+    },
+    {
+      "episode": "20261005T142819-c59d9c17",
+      "quality_flags": [],
+      "x": 0.1564,
+      "pan": 14
+    },
+    {
+      "episode": "20261005T143521-0c0c5db2",
+      "quality_flags": [],
+      "x": 0.1855,
+      "pan": 14
+    },
+    {
+      "episode": "20261005T145525-352afaaf",
+      "quality_flags": [
+        "camera_error"
+      ],
+      "x": 0.1855,
+      "pan": -14
+    },
+    {
+      "episode": "20261005T150341-17900e09",
+      "quality_flags": [],
+      "x": 0.22,
+      "pan": 0
+    },
+    {
+      "episode": "20261005T151502-babf144d",
+      "quality_flags": [],
+      "x": 0.16,
+      "pan": 55
+    },
+    {
+      "episode": "20261005T153035-f8b0cb63",
+      "quality_flags": [],
+      "x": 0.2728,
+      "pan": -14
+    },
+    {
+      "episode": "20261005T154516-88c51aa5",
+      "quality_flags": [
+        "camera_error"
+      ],
+      "x": 0.1256,
+      "pan": 55
+    },
+    {
+      "episode": "20261005T165444-36c391dc",
+      "quality_flags": [],
+      "x": 0.1723,
+      "pan": 28
+    }
+  ],
+  "unsuccessful": [
+    "20261005T104129-424860c5",
+    "20261005T105336-ed8ee1a5",
+    "20261005T110204-2ea26278",
+    "20261005T110815-b3a168c4",
+    "20261005T111046-e37837dc",
+    "20261005T111433-526885ce",
+    "20261005T111657-a0baa076",
+    "20261005T112255-f15039c0",
+    "20261005T112606-7f3ce36a",
+    "20261005T113703-f2c29c00",
+    "20261005T132031-e49014f6",
+    "20261005T143258-860c6f8a",
+    "20261005T143707-b58e4480",
+    "20261005T150208-6aa4fb48",
+    "20261005T150752-703b7694",
+    "20261005T152727-a1b0803d",
+    "20261005T154242-64a4574b",
+    "20261005T154702-fd09b923",
+    "20261005T172014-0fec2545"
+  ]
+}
