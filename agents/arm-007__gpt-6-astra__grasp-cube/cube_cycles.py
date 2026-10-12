@@ -100,5 +100,9 @@ def run(n):
     receipt=recording.stop_recording(False,str(e))
     emit(event='episode',success=False,receipt=receipt,evidence={'error':str(e)})
     coverage()
+   Path('tools/cube_recovery_required.json').write_text(json.dumps({'time':time.time(),'reason':str(e),'last_placement':current,'requires':'Fresh camera localization and validated pickup before restart'},indent=2))
+   if not any(c.fault_bits(b,j) for j in c.JOINTS) and b.read('Present_Position','gripper')<10:
+    if 'Unexpected contact width' in str(e) or 'No cube contact' in str(e):
+     move(b,above(locals().get('pickup',current)),3);home(b);snapshot()
    raise
 if __name__=='__main__':run(int(sys.argv[1]) if len(sys.argv)>1 else 1)
