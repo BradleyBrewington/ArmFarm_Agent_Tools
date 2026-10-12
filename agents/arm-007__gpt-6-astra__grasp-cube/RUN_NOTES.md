@@ -1,3 +1,15 @@
+# Current run: 2026-10-12
+
+Read AGENTS.md and TOOLS.md. The latter now requires grasp_coverage.py after every completed episode. cube_cycles.py does this and saves a read-only snapshot copy in tools/latest_cube_coverage.json; never edit station-owned grasp_coverage files.
+
+Current working configuration: CUBE_PICK_DEPTH=2, pitch65, gripper Torque_Limit220 and closing goal0; open65 for1.5 seconds. Pickup AND placement now apply the same depth offset to avoid progressive changes in cube seating. cube_cycle_state.json stores the canonical placement pose without depth. Home changes only its four joints. Motion uses supplied stall guard and live calibration. Wrist roll approximately -30. Wider grid pan +/-45 with elbows20..60 has been visually checked; near-row placements can shift and require localization. A single forward retry is allowed only on an empty grasp and positive wrist-camera cube evidence, with fault checks. A failure creates cube_recovery_required.json and stops; empty misses return home if fault-free.
+
+Held detection checks three wrist regions plus non-empty gripper width. The bottom region was tested with a held cube (true) and empty jaws at the same26-percent opening (false). Two Oct12 episodes were falsely marked failed by earlier image checks; manual_review events annotate the actual successful grasps without changing recorder outcomes. Count recorded successes separately from reviewed task successes.
+
+At checkpoint following episode20261012T130629-afa2974a:25 recorder-success episodes this run, plus2 visually reviewed successes originally recorded false. The run is continuing toward a50-success checkpoint and broader coverage. The async stopping-condition question has not received an answer. The exact current process and recorder state MUST be inspected on resumption; do not assume old status. Current logs:oct12_batch1.log,oct12_batch2.log,oct12_dense_batch*.log and cube_cycles.jsonl.
+
+Older notes below are historical and may not describe current state.
+
 # Cube run, 2026-10-05
 
 Read AGENTS.md and TOOLS.md first. Cumulative totals: 28 successful episodes and 15 failures, including 11 additional successes in the resumed run. Successful automatic receipts contain 17 distinct commanded source positions; manual recovery positions add samples, but full workspace coverage was not achieved. The best automated sequence ran about 21–23 seconds per cycle, but recovery failures prevented achievement of the overall hourly target.
