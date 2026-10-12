@@ -1270,6 +1270,7 @@ GRIPPER_TORQUE_LIMIT = 500
 MAX_MOTION_RECOVERIES = 2  # Initial approach plus two home-and-retry attempts.
 STOP_BACKOFF = .5         # degrees to ease off a discovered stop so the motor stops straining
 OVERLOAD = 32             # Feetech status bit
+OVERHEAT = 4              # Hardware protection always takes precedence over filtering.
 RANGE_RECOVERY_INSET = 32  # encoder ticks inside the limit, beyond normal servo settling error
 
 
@@ -1316,7 +1317,7 @@ def within_stops(target, bus):
 
 def command_goal(bus, target):
     """Clip to live calibration and known physical stops, then command. Returns the goal sent."""
-    monitor_opening_grip(bus)
+    monitor_adaptive_grip(bus)
     check_opening_fault(bus, target)
     if "gripper" in target and fault_bits(bus, "gripper"):
         relieve_gripper_overload(bus)
@@ -1325,7 +1326,6 @@ def command_goal(bus, target):
         if target['gripper'] > CLOSED_GRIPPER + .1:
             grip.release()
         elif grip.active:
-            monitor_adaptive_grip(bus)
             target = {**target, 'gripper': grip.normalized_goal()}
     goal = within_stops(clamp_target(target, bus.calibration), bus)
     opening = getattr(bus, 'opening_grip', None)
@@ -1367,6 +1367,7 @@ def relieve_gripper_overload(bus):
                 if normalized(goal) >= normalized(position):
                     raise RuntimeError('gripper: clear the motor fault before calibration opening')
     started = time.monotonic()
+    recovered = getattr(bus, 'recovery_seconds', 0.)
     try:
         grip = getattr(bus, 'adaptive_grip', None)
         if isinstance(grip, AdaptiveGrip) and grip.active:
@@ -1374,7 +1375,7 @@ def relieve_gripper_overload(bus):
             return grip.verify_hold()
         return recover_gripper_contact(bus)
     finally:
-        bus.recovery_seconds = getattr(bus, "recovery_seconds", 0.) + time.monotonic() - started
+        bus.recovery_seconds = recovered + time.monotonic() - started
 
 
 def recover_gripper_contact(bus):
@@ -1416,6 +1417,7 @@ def recover_gripper_contact(bus):
 
 
 def calibration_notice(bus, phase, message):
+    bus.calibration_phase, bus.calibration_message = phase, message
     callback = getattr(bus, "calibration_progress", None)
     if callable(callback):
         callback(phase, message)
@@ -1443,6 +1445,122 @@ def configure_gripper_torque(bus):
     return actual
 
 
+def motion_time(bus):
+    """Time spent doing the task, excluding automatic recovery waits."""
+    return time.monotonic() - getattr(bus, 'recovery_seconds', 0.)
+
+
+class GripperTemperature:
+    """Confirm noisy readings, cool in place, and resume the interrupted step."""
+    def __init__(self, bus):
+        self.bus = bus
+        self.limit = self.read('Max_Temperature_Limit')
+        if not 10 < self.limit <= 100:
+            raise RuntimeError('gripper: invalid hardware temperature limit')
+        self.resume = self.limit - 10
+
+    def read(self, name):
+        value, faults = read_register(self.bus, name, 'gripper')
+        if faults & ~OVERHEAT:
+            raise RuntimeError(f'gripper: motor fault {faults} during temperature monitoring')
+        return value
+
+    def check_pause(self):
+        settings = os.environ.get('ARMFARM_SETTINGS')
+        if settings and (Path(settings).parent / 'state/PAUSED').exists():
+            raise InterruptedError('Calibration paused by operator during temperature monitoring')
+
+    def exclude_wait(self, elapsed):
+        self.bus.recovery_seconds = getattr(self.bus, 'recovery_seconds', 0.) + elapsed
+        opening = getattr(self.bus, 'opening_grip', None)
+        if isinstance(opening, OpeningGrip) and hasattr(opening, 'started'):
+            opening.started += elapsed
+            opening.progress_at += elapsed
+            if opening.reached_at is not None:
+                opening.reached_at += elapsed
+
+    def check(self, temperature, hardware_hot=False):
+        if temperature < self.limit and not hardware_hot:
+            return False
+        confirmation_started = time.monotonic()
+        # Five independent readings, 100 ms apart. A single good reading resets
+        # confirmation. Do not accumulate unrelated spikes across the run.
+        readings = [temperature]
+        for _ in range(0 if hardware_hot else 4):
+            self.check_pause()
+            time.sleep(.1)
+            temperature = self.read('Present_Temperature')
+            readings.append(temperature)
+            if fault_bits(self.bus, 'gripper') == OVERHEAT:
+                break
+            if temperature < self.limit:
+                self.exclude_wait(time.monotonic() - confirmation_started)
+                print('[temperature] Ignored isolated hot readings: ' + json.dumps(readings), flush=True)
+                return False
+        self.exclude_wait(time.monotonic() - confirmation_started)
+        print('[temperature] Confirmed overheating: ' + json.dumps({
+            'readings_c': readings, 'pause_at_c': self.limit, 'resume_at_c': self.resume}), flush=True)
+        bus = self.bus
+        previous = (getattr(bus, 'calibration_phase', 'calibrating'),
+                    getattr(bus, 'calibration_message', 'Continuing calibration.'))
+        started = time.monotonic()
+        recovered = getattr(bus, 'recovery_seconds', 0.)
+        goals = {j: read_register(bus, 'Goal_Position', j)[0] for j in JOINTS}
+        present = {j: read_register(bus, 'Present_Position', j)[0] for j in JOINTS}
+        if any(not bus.calibration[j].range_min <= present[j] <= bus.calibration[j].range_max for j in JOINTS):
+            raise RuntimeError('Cannot establish cooling hold: invalid joint feedback')
+        # Cancel motion and remove gripper compression, retaining position mode
+        # and torque. Do not disable a gravity-loaded arm or change its limits.
+        bus.sync_write('Goal_Position', present, normalize=False)
+        cool = 0
+        try:
+            while cool < 5:
+                self.check_pause()
+                calibration_notice(bus, 'cooling_down',
+                    f'Gripper cooling: {temperature} C. Calibration will resume automatically after '
+                    f'5 readings at or below {self.resume} C ({cool}/5).')
+                time.sleep(.5)
+                temperature = self.read('Present_Temperature')
+                thermal_fault = False
+                for joint in JOINTS:
+                    status = fault_bits(bus, joint)
+                    if joint == 'gripper' and status == OVERHEAT:
+                        thermal_fault = True
+                    elif status:
+                        raise RuntimeError(f'{joint}: motor fault during cooling')
+                if self.read('Operating_Mode') != 0:
+                    raise RuntimeError('gripper: position mode required during cooling')
+                current_limit = self.read('Protection_Current')
+                if current_limit and self.read('Present_Current') >= current_limit * .8:
+                    raise RuntimeError('gripper: current margin exhausted during cooling')
+                cool = cool + 1 if temperature <= self.resume and not thermal_fault else 0
+            self.check_pause()
+            if self.read('Torque_Enable') != 1:
+                raise RuntimeError('gripper cooled but hardware torque remains disabled; inspect before enabling')
+            # Restore only the most recent incremental command, never jump to
+            # the end of the trajectory. The task clock excludes this wait.
+            bus.sync_write('Goal_Position', goals, normalize=False)
+            grip = getattr(bus, 'adaptive_grip', None)
+            if isinstance(grip, AdaptiveGrip) and grip.active:
+                grip.history.clear()
+                grip.stable_since = None
+                grip.recovery_pending = True
+            calibration_notice(bus, *previous)
+            print(f'[temperature] Cooled to {temperature} C; continuing calibration.', flush=True)
+        finally:
+            elapsed = time.monotonic() - started
+            bus.recovery_seconds = recovered
+            self.exclude_wait(elapsed)
+        return True
+
+
+def check_gripper_temperature(bus, temperature, hardware_hot=False):
+    guard = getattr(bus, 'temperature_guard', None)
+    if guard is None:
+        guard = bus.temperature_guard = GripperTemperature(bus)
+    return guard.check(temperature, hardware_hot=hardware_hot)
+
+
 class OpeningGrip:
     """Scoped calibration opening effort; task tools may leave a low grip limit.
 
@@ -1456,7 +1574,7 @@ class OpeningGrip:
 
     def get(self, name):
         value, faults = read_register(self.bus, name, 'gripper')
-        if faults:
+        if faults & ~OVERHEAT:
             raise RuntimeError(f'gripper: motor fault {faults} while opening')
         return value
 
@@ -1485,7 +1603,6 @@ class OpeningGrip:
             maximum = self.get('Max_Torque_Limit')
             if not 0 < original <= 1000 or not 0 < maximum <= 1000:
                 raise RuntimeError('gripper: unsupported opening effort configuration')
-            self.temp_limit = min(60, self.get('Max_Temperature_Limit') - 10)
             self.current_limit = self.get('Protection_Current')
             self.started = self.progress_at = time.monotonic()
             self.anchor = position
@@ -1501,10 +1618,10 @@ class OpeningGrip:
         self.target = target
 
     def check_safety(self):
+        check_gripper_temperature(self.bus, self.get('Present_Temperature'),
+                                  hardware_hot=fault_bits(self.bus, 'gripper') == OVERHEAT)
         if self.get('Status') or self.get('Operating_Mode') != 0 or self.get('Torque_Enable') != 1:
             raise RuntimeError('gripper: healthy position mode with enabled torque required for opening')
-        if self.get('Present_Temperature') >= self.temp_limit:
-            raise RuntimeError('gripper: temperature margin exhausted while opening')
         if self.current_limit and self.get('Present_Current') >= self.current_limit * .8:
             raise RuntimeError('gripper: current margin exhausted while opening')
 
@@ -1578,6 +1695,8 @@ def monitor_opening_grip(bus):
 
 def check_opening_fault(bus, target):
     if isinstance(getattr(bus, 'opening_grip', None), OpeningGrip) and 'gripper' in target:
+        if fault_bits(bus, 'gripper') == OVERHEAT:
+            check_gripper_temperature(bus, read_register(bus, 'Present_Temperature', 'gripper')[0], hardware_hot=True)
         if fault_bits(bus, 'gripper'):
             raw = read_register(bus, 'Present_Position', 'gripper')[0]
             motor_id = bus.motors['gripper'].id
@@ -1615,7 +1734,6 @@ class AdaptiveGrip:
         self.limit = GRIPPER_TORQUE_LIMIT
         self.effort = min(threshold * .8, self.limit * .9)
         self.current_limit = self.get('Protection_Current')
-        self.temp_limit = min(60, self.get('Max_Temperature_Limit') - 10)
         # STS protection time uses 10 ms units. Verify for longer than two windows.
         self.stable_seconds = max(5., self.get('Protection_Time') * .02 + 1.)
         self.active = False
@@ -1626,7 +1744,7 @@ class AdaptiveGrip:
 
     def get(self, name):
         value, faults = read_register(self.bus, name, 'gripper')
-        if faults & ~OVERLOAD:
+        if faults & ~(OVERLOAD | OVERHEAT):
             raise RuntimeError(f'gripper: motor fault {faults}; adaptive squeeze stopped')
         return value
 
@@ -1640,16 +1758,19 @@ class AdaptiveGrip:
                   'goal': self.get('Goal_Position'), 'load': self.get('Present_Load') & 1023,
                   'current': self.get('Present_Current'), 'temperature': self.get('Present_Temperature'),
                   'fault': self.get('Status')}
+        if sample['fault'] == OVERHEAT:
+            check_gripper_temperature(self.bus, sample['temperature'], hardware_hot=True)
+            return self.sample()
         if self.get('Operating_Mode') != 0 or self.get('Torque_Enable') != 1:
             raise RuntimeError('gripper: position mode and enabled torque required')
         if not self.c.range_min <= sample['position'] <= self.c.range_max:
             raise RuntimeError('gripper: feedback outside calibrated range')
-        if sample['temperature'] >= self.temp_limit:
-            raise RuntimeError('gripper: temperature margin exhausted')
         if self.current_limit and sample['current'] >= self.current_limit * .8:
             raise RuntimeError('gripper: current margin exhausted')
         if sample['fault'] & ~OVERLOAD:
             raise RuntimeError(f"gripper: motor fault {sample['fault']}")
+        if check_gripper_temperature(self.bus, sample['temperature']):
+            return self.sample()  # Feedback captured before cooling is stale.
         self.history.append(sample)
         self.history = self.history[-1200:]
         return sample
@@ -1747,8 +1868,8 @@ class AdaptiveGrip:
     def acquire(self):
         try:
             self.begin()
-            started = time.monotonic()
-            while time.monotonic() - started < 35:
+            started = motion_time(self.bus)
+            while motion_time(self.bus) - started < 35:
                 self.tick()
                 if self.stable_since is not None and time.monotonic() - self.stable_since >= self.stable_seconds:
                     result = {'goal_raw': self.goal, 'measured_raw': self.history[-1]['position'],
@@ -1757,7 +1878,7 @@ class AdaptiveGrip:
                     print('[grip] Stable adaptive hold: ' + json.dumps(result), flush=True)
                     self.recovery_pending = False
                     return result
-                if (time.monotonic() - started > 3 and abs(self.goal - self.closed) <= 2
+                if (motion_time(self.bus) - started > 3 and abs(self.goal - self.closed) <= 2
                         and abs(self.history[-1]['position'] - self.closed) <= 12 and not self.contact):
                     raise CalibrationRetry('Gripper reached closed limit without establishing object contact')
                 time.sleep(.05)
@@ -1767,9 +1888,9 @@ class AdaptiveGrip:
             raise
 
     def verify_hold(self):
-        started = time.monotonic()
+        started = motion_time(self.bus)
         try:
-            while time.monotonic() - started < 30:
+            while motion_time(self.bus) - started < 30:
                 self.tick()
                 if self.stable_since is not None and time.monotonic() - self.stable_since >= self.stable_seconds:
                     self.recovery_pending = False
@@ -1806,10 +1927,11 @@ def monitor_adaptive_grip(bus):
         grip.tick()
         if grip.recovery_pending:
             started = time.monotonic()
+            recovered = getattr(bus, 'recovery_seconds', 0.)
             try:
                 grip.verify_hold()
             finally:
-                bus.recovery_seconds = getattr(bus, 'recovery_seconds', 0.) + time.monotonic() - started
+                bus.recovery_seconds = recovered + time.monotonic() - started
 
 
 def adaptive_grip_enabled():
@@ -1933,7 +2055,7 @@ class StallGuard:
         self.anchor, self.since = {}, {}
 
     def observe(self, command, present, now=None):
-        now = time.monotonic() if now is None else now
+        now = motion_time(self.bus) if now is None else now
         stalled = []
         for j in self.joints:
             gap = command[j] - present[j]
@@ -2056,15 +2178,15 @@ def settle(bus, target, seconds, trim=False):
     """Require the commanded arm pose before accepting captures or continuing."""
     target = clamp_target(target, bus.calibration)
     guard = StallGuard(bus, target)
-    deadline = time.monotonic() + seconds
+    deadline = motion_time(bus) + seconds
     while True:
-        time.sleep(min(.1, max(0., deadline - time.monotonic())))
+        time.sleep(min(.1, max(0., deadline - motion_time(bus))))
         monitor_adaptive_grip(bus)
         if "gripper" in target and fault_bits(bus, "gripper"):
             relieve_gripper_overload(bus)
         measured = bus.sync_read("Present_Position", list(target))
         guard.observe(within_stops(target, bus), measured)
-        if time.monotonic() >= deadline:
+        if motion_time(bus) >= deadline:
             break
     # Device faults and communication failures still stop the routine. An arm
     # joint straining against a physical stop is held there instead.
@@ -2086,8 +2208,8 @@ def settle(bus, target, seconds, trim=False):
         # The existing Home control uses the same +/-3 degree, two-second
         # correction for servo/load bias. The measured acceptance target stays
         # unchanged. Large errors and detected stalls never enter this path.
-        deadline = time.monotonic() + 2.
-        while missed and time.monotonic() < deadline:
+        deadline = motion_time(bus) + 2.
+        while missed and motion_time(bus) < deadline:
             for j in errors:
                 status = fault_bits(bus, j)
                 if status:
@@ -2187,8 +2309,8 @@ def wait_for_board(reader, pattern, camera="top", *, check_pose):
 def capture_pose(bus, reader, output, name, pattern, cameras, timeout):
     """Save a stationary top-camera photo and its measured joint angles."""
     import cv2
-    deadline, best = time.monotonic() + timeout, {}
-    while time.monotonic() < deadline:
+    deadline, best = motion_time(bus) + timeout, {}
+    while motion_time(bus) < deadline:
         monitor_adaptive_grip(bus)
         before = bus.sync_read("Present_Position", list(JOINTS))
         after_time = time.monotonic()
@@ -3005,14 +3127,18 @@ def run_local(args, output):
                 return finish_at_home(bus, args, output, report, home)
     except BaseException as exc:
         interrupted = isinstance(exc, (KeyboardInterrupt, InterruptedError))
-        if not args.check and not interrupted and isinstance(exc, (RuntimeError, ConnectionError)):
-            settings = os.environ.get('ARMFARM_SETTINGS')
-            if settings:
-                write_json(Path(settings).parent / 'state/PAUSED', {
-                    'reason': str(exc) + '. Check the arm, then use Recalibrate to try again.', 'time': utc()})
         report.update(state="stopped" if interrupted else "failed",
                       error=str(exc) or type(exc).__name__, finished_at_utc=utc())
         write_json(output / "report.json", report)
+        if not args.check and not interrupted and isinstance(exc, (RuntimeError, ConnectionError)):
+            settings = os.environ.get('ARMFARM_SETTINGS')
+            if settings:
+                progress_path = Path(settings).parent / 'state/calibration-progress.json'
+                progress = read_json(progress_path) if progress_path.exists() else {}
+                progress.update(phase='failed', message=report['error'], needs_operator=True)
+                write_json(progress_path, progress)
+                write_json(Path(settings).parent / 'state/PAUSED', {
+                    'reason': str(exc) + '. Check the arm, then use Recalibrate to try again.', 'time': utc()})
         raise
 
 
