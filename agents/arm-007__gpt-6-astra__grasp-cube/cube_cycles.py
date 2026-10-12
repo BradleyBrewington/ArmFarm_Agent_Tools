@@ -91,7 +91,9 @@ def run(n):
     coverage()
     if not ok:raise RuntimeError('Grasp not verified at home')
     target=pose(*grid[i%len(grid)])
-    move(b,above(target));move(b,target,1.5)
+    placement=dict(target)
+    placement['shoulder_lift']+=depth;placement['wrist_flex']-=depth
+    move(b,above(placement));move(b,placement,2)
     move(b,{'gripper':65},1.5)
     current=target;STATE.write_text(json.dumps(current))
     move(b,above(current),3);home(b)
