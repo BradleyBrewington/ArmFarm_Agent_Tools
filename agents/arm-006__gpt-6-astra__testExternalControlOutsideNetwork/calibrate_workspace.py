@@ -3081,7 +3081,8 @@ def run_local(args, output):
                 enable_at_current_position(bus, joints=home)
                 return finish_at_home(bus, args, output, report, home)
             resumed = resume_held_board(bus)
-            if not resumed:
+            insertion_ready = not resumed and resume_insertion_pose(bus, args)
+            if not (resumed or insertion_ready):
                 enable_at_current_position(bus)
             configure_gripper_torque(bus)
             attempt = 0
@@ -3093,7 +3094,7 @@ def run_local(args, output):
                               active_attempt=str(folder.relative_to(output)))
                 write_json(output / "report.json", report)
                 print(f"Attempt {attempt}: returning to pose 1 and opening the gripper.", flush=True)
-                if not (resumed and attempt == 1):
+                if not ((resumed or insertion_ready) and attempt == 1):
                     report["pose_1_verified"] = return_to_pose_one(bus, args, retry=attempt > 1)
                 report.update(state="checking_grip" if resumed and attempt == 1 else "waiting_for_checkerboard",
                               message="Checking the held checkerboard." if resumed and attempt == 1 else
@@ -3140,6 +3141,26 @@ def run_local(args, output):
                 write_json(Path(settings).parent / 'state/PAUSED', {
                     'reason': str(exc) + '. Check the arm, then use Recalibrate to try again.', 'time': utc()})
         raise
+
+
+def resume_insertion_pose(bus, args):
+    """Consume a fresh request to start detection at an already verified open pose."""
+    settings = os.environ.get('ARMFARM_SETTINGS')
+    if not settings:
+        return False
+    path = Path(settings).parent / 'state/calibration-insertion-ready.json'
+    if not path.exists():
+        return False
+    request = read_json(path)
+    path.unlink()  # One use, including invalid/stale requests.
+    if not 0 <= time.time() - request['time'] <= 120:
+        raise RuntimeError('Insertion-pose restart request expired')
+    verify_board_pose(bus, {**POSES[0], 'gripper': args.gripper_open})
+    if read_register(bus, 'Goal_Position', 'gripper')[0] != request['goal_raw']:
+        raise RuntimeError('Gripper target changed since insertion-pose restart request')
+    calibration_notice(bus, 'waiting_for_checkerboard',
+        'Already at the verified insertion pose. Watching for the checkerboard without moving away.')
+    return True
 
 
 def resume_held_board(bus):
