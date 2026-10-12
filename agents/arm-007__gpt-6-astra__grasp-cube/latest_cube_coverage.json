@@ -1,0 +1,204 @@
+{
+  "schema_version": 1,
+  "status": "ready",
+  "generated_at": 1791827365.6146245,
+  "map_version": "780498de52542b48130e6e55198e074593a5d1368991acb7216e792fc22e93fc",
+  "designation": "arm-007",
+  "task_id": "grasp-cube",
+  "task_version": 2,
+  "experiment_id": null,
+  "scope": "current",
+  "layer": "kinematic",
+  "frame": "base_link",
+  "units": "metres",
+  "cell_m": 0.02,
+  "grasp_z_m": -0.008123,
+  "height_tolerance_m": 0.02,
+  "geometry_source": "estimated_from_recorded_successes",
+  "assumptions": [
+    "Grasp height is the median of clean successful pickups; it is not a measured table height.",
+    "Tool-axis cones are inferred from up to three observed orientations; other orientations may reach more cells.",
+    "The full modeled horizontal plane is considered; physical table boundary and collision geometry are unknown.",
+    "Joint coordinates use the existing calibrated SO101 model; physical zero/alignment uncertainty remains."
+  ],
+  "denominator_policy": "frozen per map version; failures never change reachability; unknown cells excluded",
+  "cell_counts": {
+    "unreachable": 730,
+    "unknown": 1312,
+    "reachable": 458
+  },
+  "metrics": {
+    "attempt_coverage": {
+      "covered_cells": 33,
+      "reachable_cells": 458,
+      "percent": 7.21
+    },
+    "successful_coverage": {
+      "covered_cells": 23,
+      "reachable_cells": 458,
+      "percent": 5.02
+    },
+    "repeat_tested_coverage": {
+      "covered_cells": 1,
+      "reachable_cells": 458,
+      "percent": 0.22
+    }
+  },
+  "episodes": {
+    "in_scope": 59,
+    "counted": 51,
+    "with_quality_flags": 3,
+    "not_counted": {
+      "different_or_unverified_calibration_model": 1,
+      "unlocated:multiple_pickup_locations": 5,
+      "outside_orientation_constraints": 2
+    },
+    "latest_finished": 1791827364.5236044
+  },
+  "repeat_threshold": {
+    "minimum_attempts": 5,
+    "minimum_successes": 3,
+    "minimum_success_rate": 0.8
+  },
+  "ranking": "distance from attempted/previously suggested cells (metres) * sqrt(untried region cells)",
+  "next_targets": [
+    {
+      "cell_id": "27:41",
+      "xyz_m": [
+        0.05,
+        0.33,
+        -0.008123
+      ],
+      "unexplored_region_cells": 416,
+      "priority_score": 4.912026,
+      "task_feasibility": "unknown"
+    },
+    {
+      "cell_id": "29:9",
+      "xyz_m": [
+        0.09,
+        -0.31,
+        -0.008123
+      ],
+      "unexplored_region_cells": 416,
+      "priority_score": 4.336266,
+      "task_feasibility": "unknown"
+    },
+    {
+      "cell_id": "27:22",
+      "xyz_m": [
+        0.05,
+        -0.05,
+        -0.008123
+      ],
+      "unexplored_region_cells": 416,
+      "priority_score": 3.760851,
+      "task_feasibility": "unknown"
+    },
+    {
+      "cell_id": "34:40",
+      "xyz_m": [
+        0.19,
+        0.31,
+        -0.008123
+      ],
+      "unexplored_region_cells": 416,
+      "priority_score": 2.884441,
+      "task_feasibility": "unknown"
+    },
+    {
+      "cell_id": "28:34",
+      "xyz_m": [
+        0.07,
+        0.19,
+        -0.008123
+      ],
+      "unexplored_region_cells": 416,
+      "priority_score": 2.884441,
+      "task_feasibility": "unknown"
+    },
+    {
+      "cell_id": "29:16",
+      "xyz_m": [
+        0.09,
+        -0.17,
+        -0.008123
+      ],
+      "unexplored_region_cells": 416,
+      "priority_score": 2.579922,
+      "task_feasibility": "unknown"
+    },
+    {
+      "cell_id": "35:11",
+      "xyz_m": [
+        0.21,
+        -0.27,
+        -0.008123
+      ],
+      "unexplored_region_cells": 416,
+      "priority_score": 2.48129,
+      "task_feasibility": "unknown"
+    },
+    {
+      "cell_id": "42:12",
+      "xyz_m": [
+        0.35,
+        -0.25,
+        -0.008123
+      ],
+      "unexplored_region_cells": 416,
+      "priority_score": 2.378571,
+      "task_feasibility": "unknown"
+    },
+    {
+      "cell_id": "30:29",
+      "xyz_m": [
+        0.11,
+        0.09,
+        -0.008123
+      ],
+      "unexplored_region_cells": 416,
+      "priority_score": 2.196725,
+      "task_feasibility": "unknown"
+    },
+    {
+      "cell_id": "46:22",
+      "xyz_m": [
+        0.43,
+        -0.05,
+        -0.008123
+      ],
+      "unexplored_region_cells": 416,
+      "priority_score": 2.08,
+      "task_feasibility": "unknown"
+    },
+    {
+      "cell_id": "32:23",
+      "xyz_m": [
+        0.15,
+        -0.03,
+        -0.008123
+      ],
+      "unexplored_region_cells": 416,
+      "priority_score": 2.039608,
+      "task_feasibility": "unknown"
+    },
+    {
+      "cell_id": "38:38",
+      "xyz_m": [
+        0.27,
+        0.27,
+        -0.008123
+      ],
+      "unexplored_region_cells": 416,
+      "priority_score": 1.824281,
+      "task_feasibility": "unknown"
+    }
+  ],
+  "motion_notice": "Targets are exploration suggestions, not motion commands. Check live scene and plan approach/lift before moving.",
+  "image": "/var/lib/armfarm/stations/armfarm/workspace/grasp_coverage/9d74969c71b5ec53818e20f8/current-kinematic.png",
+  "cells": "/var/lib/armfarm/stations/armfarm/workspace/grasp_coverage/9d74969c71b5ec53818e20f8/current-kinematic-cells.json",
+  "grid": "/var/lib/armfarm/stations/armfarm/workspace/grasp_coverage/9d74969c71b5ec53818e20f8/grid.json",
+  "image_sha256": "4d06807794719ab4362de5e959ebf3dadadbe46dc2ffe197a18fd81d43365545",
+  "snapshot_age_seconds": 2.2
+}
