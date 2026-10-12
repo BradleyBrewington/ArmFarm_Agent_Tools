@@ -47,9 +47,9 @@ def grip(b):
  return actual
 def held(b):
  img,meta=read_frame('wrist')
- dark=float(np.mean(cv2.cvtColor(img[500:650,730:1030],cv2.COLOR_BGR2GRAY)<65))
+ dark=float(np.mean(cv2.cvtColor(img[500:650,730:1030],cv2.COLOR_BGR2GRAY)<100))
  p=b.read('Present_Position','gripper')
- upper_dark=float(np.mean(cv2.cvtColor(img[300:490,750:1000],cv2.COLOR_BGR2GRAY)<65))
+ upper_dark=float(np.mean(cv2.cvtColor(img[300:490,750:1000],cv2.COLOR_BGR2GRAY)<100))
  ok=15<p<35 and (dark>.85 or upper_dark>.95)
  return ok,dict(gripper=p,wrist_dark=dark,upper_dark=upper_dark,frame_seq=meta['seq'])
 def run(n):
