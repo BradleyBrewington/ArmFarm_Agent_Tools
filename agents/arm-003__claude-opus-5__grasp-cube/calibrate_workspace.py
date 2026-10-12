@@ -1454,7 +1454,7 @@ class OpeningGrip:
                     self.reached_at = None
                 self.target = target
                 return
-            self.restore()
+            self.restore(hold=True)
         if target <= position + .3:
             self.restore()
             return
