@@ -1268,7 +1268,7 @@ STALL_SECONDS = .5        # seconds without motion at that distance before it is
 STALL_PROGRESS = .3       # degrees of motion that reset the stall timer
 STOP_BACKOFF = .5         # degrees to ease off a discovered stop so the motor stops straining
 OVERLOAD = 32             # Feetech status bit
-RANGE_RECOVERY_FRACTION = .25  # excursions beyond this share of the range mean bad calibration, not drift
+RANGE_RECOVERY_INSET = 32  # encoder ticks inside the limit, beyond normal servo settling error
 
 
 def read_register(bus, name, joint):
@@ -1912,7 +1912,7 @@ def preflight(bus, targets):
 
 
 def enable_at_current_position(bus, joints=JOINTS):
-    """Hold position under torque; a joint resting just past its range is eased back inside."""
+    """Hold position; automatically return out-of-range joints inside their limits."""
     joints = list(joints)
     if not joints or not set(joints).issubset(JOINTS):
         raise ValueError("Specify one or more known joints")
@@ -1920,12 +1920,15 @@ def enable_at_current_position(bus, joints=JOINTS):
     goal = {}
     for j, value in raw.items():
         c = bus.calibration[j]
-        inside = min(c.range_max, max(c.range_min, value))
+        if not 0 <= value <= 4095:
+            raise ValueError(f"{j}: invalid single-turn encoder feedback {value}")
+        # A goal exactly on the boundary can settle a few ticks outside it.
+        # Command a small distance inward instead of demanding exact tracking.
+        margin = min(RANGE_RECOVERY_INSET, (c.range_max - c.range_min) // 4)
+        inside = (c.range_min + margin if value < c.range_min else
+                  c.range_max - margin if value > c.range_max else value)
         if inside != value:
-            if abs(value - inside) > (c.range_max - c.range_min) * RANGE_RECOVERY_FRACTION:
-                raise ValueError(f"{j} is far outside its calibrated range ({value} vs {c.range_min}..{c.range_max}); "
-                                 "check the motor calibration before moving")
-            print(f"[range] {j}: {value} is outside {c.range_min}..{c.range_max}; moving it back inside.", flush=True)
+            print(f"[range] {j}: {value} is outside {c.range_min}..{c.range_max}; moving inward to {inside}.", flush=True)
         goal[j] = inside
     torque = bus.sync_read("Torque_Enable", joints, normalize=False)
     bus.sync_write("Goal_Position", goal, normalize=False)
@@ -1935,13 +1938,21 @@ def enable_at_current_position(bus, joints=JOINTS):
         recover_overload(bus, j)
     moved = [j for j in joints if goal[j] != raw[j]]
     if moved:
-        deadline = time.monotonic() + 2.
+        # Larger valid excursions get time to return, rather than being rejected
+        # simply for exceeding an arbitrary fraction of the saved range.
+        deadline = time.monotonic() + 2. + max(abs(goal[j] - raw[j]) for j in moved) / 128.
         while True:
             now = bus.sync_read("Present_Position", moved, normalize=False)
+            for j in moved:
+                status = fault_bits(bus, j)
+                if status:
+                    raise RuntimeError(f"{j}: motor fault {status} during inward range recovery")
             if all(bus.calibration[j].range_min <= now[j] <= bus.calibration[j].range_max for j in moved):
                 break
             if time.monotonic() >= deadline:
-                raise ValueError(f"{', '.join(moved)}: could not move back into the calibrated range")
+                remaining = {j: {'measured': now[j], 'inward_goal': goal[j]}
+                             for j in moved if not bus.calibration[j].range_min <= now[j] <= bus.calibration[j].range_max}
+                raise RuntimeError(f"Motor did not reach its inward recovery target: {remaining}")
             time.sleep(.05)
 
 
