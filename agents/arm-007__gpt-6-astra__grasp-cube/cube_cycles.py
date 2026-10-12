@@ -31,7 +31,7 @@ def pose(pan,elbow=20):
  pitch=float(os.environ.get("CUBE_PITCH","65"))
  from scipy.optimize import brentq
  from fk import forward
- def height(s):return forward(dict(shoulder_pan=2,shoulder_lift=s,elbow_flex=elbow,wrist_flex=pitch-s-elbow,wrist_roll=-30))['z']+.002193685765342651
+ def height(s):return forward(dict(shoulder_pan=2,shoulder_lift=s,elbow_flex=elbow,wrist_flex=pitch-s-elbow,wrist_roll=float(os.environ.get("CUBE_ROLL","-30"))))['z']+.002193685765342651
  s=brentq(height,-80,80)
  return dict(shoulder_pan=pan,shoulder_lift=s,elbow_flex=elbow,wrist_flex=pitch-s-elbow)
 def above(q):return {**q,'shoulder_lift':q['shoulder_lift']-30,'wrist_flex':q['wrist_flex']+30}
