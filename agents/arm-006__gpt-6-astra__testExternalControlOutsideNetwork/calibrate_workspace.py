@@ -1421,7 +1421,7 @@ class AdaptiveGrip:
         self.limit = min(self.original_limit, self.get('Max_Torque_Limit'), int(threshold * .88))
         self.effort = min(threshold * .8, self.limit * .9)
         self.current_limit = self.get('Protection_Current')
-        self.temp_limit = min(65, self.get('Max_Temperature_Limit') - 5)
+        self.temp_limit = min(60, self.get('Max_Temperature_Limit') - 10)
         # STS protection time uses 10 ms units. Verify for longer than two windows.
         self.stable_seconds = max(5., self.get('Protection_Time') * .02 + 1.)
         self.active = False
@@ -1451,7 +1451,7 @@ class AdaptiveGrip:
         if not self.c.range_min <= sample['position'] <= self.c.range_max:
             raise RuntimeError('gripper: feedback outside calibrated range')
         if sample['temperature'] >= self.temp_limit:
-            raise RuntimeError(f'gripper: temperature margin exhausted; sample={sample}; limit={self.temp_limit}')
+            raise RuntimeError('gripper: temperature margin exhausted')
         if self.current_limit and sample['current'] >= self.current_limit * .8:
             raise RuntimeError('gripper: current margin exhausted')
         if sample['fault'] & ~OVERLOAD:
