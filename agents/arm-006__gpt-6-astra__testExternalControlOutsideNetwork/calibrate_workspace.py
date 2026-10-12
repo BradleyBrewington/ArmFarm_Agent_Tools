@@ -2283,13 +2283,15 @@ def wait_for_board(reader, pattern, camera="top", *, check_pose, allow_existing=
             time.sleep(.2)
             continue
         corners = detect_board(image, pattern, thorough=True) if thorough_mode else detect_board(image, pattern)
-        if corners is None and not thorough_mode and time.monotonic() >= next_thorough:
+        baseline_checked = corners is not None or thorough_mode
+        if corners is None and not thorough_mode and (not initialized or time.monotonic() >= next_thorough):
             corners = detect_board(image, pattern, thorough=True)
+            baseline_checked = True
             next_thorough = time.monotonic() + 2.
             thorough_mode = corners is not None
             if thorough_mode:
                 print('Checkerboard found with tilted-board detection; checking that it stays steady.', flush=True)
-        if not initialized:
+        if not initialized and baseline_checked:
             baseline = corners
             initialized = True
         elif corners is not None and baseline is None:
@@ -2337,8 +2339,7 @@ def capture_pose(bus, reader, output, name, pattern, cameras, timeout):
     metadata = {"captured_at_utc": utc(), "cameras": {}}
     (output / "captures").mkdir(exist_ok=True)
     for camera, entry in best.items():
-        # Retry difficult, tilted grids only while stationary. Keep the live
-        # detector fast during motion and while waiting for the board.
+        # Retry difficult, tilted grids on the saved stationary frame.
         thorough = entry["corners"] is None
         if thorough:
             entry["corners"] = detect_board(entry["image"], pattern, thorough=True)
@@ -2601,10 +2602,15 @@ class ReleasedBoardPhoto:
                 return
             reader = FrameReader(self.args.frames_directory)
             deadline = self.released_at + self.args.capture_timeout
-            previous = None
+            previous, last_image = None, None
+            thorough_mode = False
             while not self.stop.is_set() and time.monotonic() < deadline:
                 image, frame = reader.read("top", after=self.released_at, timeout=1.)
-                corners = detect_board(image, tuple(self.args.pattern))
+                last_image = image
+                corners = detect_board(image, tuple(self.args.pattern), thorough=thorough_mode)
+                if corners is None and not thorough_mode:
+                    corners = detect_board(image, tuple(self.args.pattern), thorough=True)
+                    thorough_mode = corners is not None
                 if corners is None:
                     previous = None
                     continue
@@ -2624,7 +2630,10 @@ class ReleasedBoardPhoto:
                 print(f"Workspace photo saved {latency:.2f}s after the release command. You may remove the board; processing uses this saved photo.", flush=True)
                 return
             if not self.stop.is_set():
-                raise CalibrationRetry("No steady full checkerboard view immediately after release")
+                if last_image is not None:
+                    cv2.imwrite(str(self.output / "captures" / "workspace_failed.png"), last_image)
+                raise CalibrationRetry("No steady full checkerboard view after release. "
+                                       "Check that the entire grid stays inside the top camera image when placed on the table")
         except Exception as exc:
             self.error = exc
 
