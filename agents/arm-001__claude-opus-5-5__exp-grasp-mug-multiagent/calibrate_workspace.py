@@ -1900,6 +1900,12 @@ def motion_needs_attention(bus, reason):
     calibration_notice(bus, 'needs_attention', message)
     settings = os.environ.get('ARMFARM_SETTINGS')
     if settings:
+        # Publishing only the report races the runner terminating its child as
+        # soon as PAUSED appears. Publish the explanation before that signal.
+        progress_path = Path(settings).parent / 'state/calibration-progress.json'
+        progress = read_json(progress_path) if progress_path.exists() else {}
+        progress.update(phase='needs_attention', message=message, needs_operator=True)
+        write_json(progress_path, progress)
         # Persist across runner restarts; otherwise its five-second retry loop
         # would silently reset the motion retry budget.
         write_json(Path(settings).parent / 'state/PAUSED', {'reason': message, 'time': utc()})
@@ -2046,7 +2052,7 @@ def move(bus, target, seconds):
     finish_opening_grip(bus)
 
 
-def settle(bus, target, seconds):
+def settle(bus, target, seconds, trim=False):
     """Require the commanded arm pose before accepting captures or continuing."""
     target = clamp_target(target, bus.calibration)
     guard = StallGuard(bus, target)
@@ -2075,10 +2081,31 @@ def settle(bus, target, seconds):
     errors = {j: abs(finite_number(measured[j], j) - target[j])
               for j in target if j != "gripper"}
     missed = {j: error for j, error in errors.items() if error > 4}
+    correction = dict.fromkeys(errors, 0.)
+    if missed and trim and max(errors.values()) < STALL_DISTANCE:
+        # The existing Home control uses the same +/-3 degree, two-second
+        # correction for servo/load bias. The measured acceptance target stays
+        # unchanged. Large errors and detected stalls never enter this path.
+        deadline = time.monotonic() + 2.
+        while missed and time.monotonic() < deadline:
+            for j in errors:
+                status = fault_bits(bus, j)
+                if status:
+                    hold_arm(bus)
+                    raise RuntimeError(f'{j}: motor fault {status} during home settling')
+                correction[j] = max(-3., min(3., correction[j] +
+                    max(-.15, min(.15, (target[j] - measured[j]) * .1))))
+            goal = command_goal(bus, {j: target[j] + correction.get(j, 0.) for j in target})
+            time.sleep(.05)
+            measured = bus.sync_read('Present_Position', list(target))
+            guard.observe(goal, measured)
+            errors = {j: abs(finite_number(measured[j], j) - target[j]) for j in errors}
+            missed = {j: error for j, error in errors.items() if error > 4}
     if missed:
         hold_arm(bus)
         raise MotionStalled('Saved pose missed (degrees): ' + json.dumps(missed, sort_keys=True))
     return {"measured": measured, "error_degrees": errors, "within_tolerance": not missed,
+            "settling_trim_degrees": correction,
             "physical_stops": {j: [None if math.isinf(v) else v for v in limits] for j, limits in stops(bus).items()}}
 
 
@@ -2686,7 +2713,7 @@ def finish_at_home(bus, args, output, report, home):
     write_json(output / "report.json", report)
     print("2D table map accepted. Returning to the saved home pose.", flush=True)
     move(bus, home, args.duration)
-    settled = settle(bus, home, 2)
+    settled = settle(bus, home, 2, trim=True)
     report.update(state="complete", finished_at_utc=utc(),
                   message="Camera calibration complete.",
                   home_reached=settled["within_tolerance"], home_joints=list(home),
@@ -2741,7 +2768,7 @@ def return_to_pose_one(bus, args, retry=False):
             stops(bus).pop(joint, None)
         try:
             move(bus, home, args.duration)
-            settle(bus, home, 2)
+            settle(bus, home, 2, trim=True)
             verify_board_pose(bus, home)
         except MotionStalled as exc:
             motion_needs_attention(bus, f'Cannot reach home for recovery: {exc}')
