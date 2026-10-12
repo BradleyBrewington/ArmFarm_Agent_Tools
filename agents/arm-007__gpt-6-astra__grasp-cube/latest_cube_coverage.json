@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "status": "ready",
-  "generated_at": 1791828050.5944884,
+  "generated_at": 1791828166.3528776,
   "map_version": "780498de52542b48130e6e55198e074593a5d1368991acb7216e792fc22e93fc",
   "designation": "arm-007",
   "task_id": "grasp-cube",
@@ -29,14 +29,14 @@
   },
   "metrics": {
     "attempt_coverage": {
-      "covered_cells": 48,
+      "covered_cells": 50,
       "reachable_cells": 458,
-      "percent": 10.48
+      "percent": 10.92
     },
     "successful_coverage": {
-      "covered_cells": 39,
+      "covered_cells": 40,
       "reachable_cells": 458,
-      "percent": 8.52
+      "percent": 8.73
     },
     "repeat_tested_coverage": {
       "covered_cells": 1,
@@ -45,15 +45,15 @@
     }
   },
   "episodes": {
-    "in_scope": 80,
-    "counted": 72,
+    "in_scope": 82,
+    "counted": 74,
     "with_quality_flags": 3,
     "not_counted": {
       "different_or_unverified_calibration_model": 1,
       "unlocated:multiple_pickup_locations": 5,
       "outside_orientation_constraints": 2
     },
-    "latest_finished": 1791828046.4356782
+    "latest_finished": 1791828160.8172843
   },
   "repeat_threshold": {
     "minimum_attempts": 5,
@@ -69,8 +69,8 @@
         0.33,
         -0.008123
       ],
-      "unexplored_region_cells": 399,
-      "priority_score": 4.554997,
+      "unexplored_region_cells": 397,
+      "priority_score": 4.508481,
       "task_feasibility": "unknown"
     },
     {
@@ -80,8 +80,8 @@
         -0.31,
         -0.008123
       ],
-      "unexplored_region_cells": 399,
-      "priority_score": 3.768873,
+      "unexplored_region_cells": 397,
+      "priority_score": 3.759415,
       "task_feasibility": "unknown"
     },
     {
@@ -91,8 +91,8 @@
         -0.03,
         -0.008123
       ],
-      "unexplored_region_cells": 399,
-      "priority_score": 3.120192,
+      "unexplored_region_cells": 397,
+      "priority_score": 3.112362,
       "task_feasibility": "unknown"
     },
     {
@@ -102,8 +102,8 @@
         -0.17,
         -0.008123
       ],
-      "unexplored_region_cells": 399,
-      "priority_score": 2.526658,
+      "unexplored_region_cells": 397,
+      "priority_score": 2.520317,
       "task_feasibility": "unknown"
     },
     {
@@ -113,8 +113,8 @@
         0.31,
         -0.008123
       ],
-      "unexplored_region_cells": 399,
-      "priority_score": 2.526658,
+      "unexplored_region_cells": 397,
+      "priority_score": 2.520317,
       "task_feasibility": "unknown"
     },
     {
@@ -124,19 +124,19 @@
         0.21,
         -0.008123
       ],
-      "unexplored_region_cells": 399,
-      "priority_score": 2.430062,
+      "unexplored_region_cells": 397,
+      "priority_score": 2.423964,
       "task_feasibility": "unknown"
     },
     {
-      "cell_id": "35:11",
+      "cell_id": "35:10",
       "xyz_m": [
         0.21,
-        -0.27,
+        -0.29,
         -0.008123
       ],
-      "unexplored_region_cells": 399,
-      "priority_score": 2.430062,
+      "unexplored_region_cells": 397,
+      "priority_score": 2.423964,
       "task_feasibility": "unknown"
     },
     {
@@ -146,8 +146,8 @@
         -0.25,
         -0.008123
       ],
-      "unexplored_region_cells": 399,
-      "priority_score": 2.329463,
+      "unexplored_region_cells": 397,
+      "priority_score": 2.323618,
       "task_feasibility": "unknown"
     },
     {
@@ -157,8 +157,8 @@
         -0.05,
         -0.008123
       ],
-      "unexplored_region_cells": 399,
-      "priority_score": 2.037057,
+      "unexplored_region_cells": 397,
+      "priority_score": 2.031945,
       "task_feasibility": "unknown"
     },
     {
@@ -168,8 +168,8 @@
         -0.03,
         -0.008123
       ],
-      "unexplored_region_cells": 399,
-      "priority_score": 1.786617,
+      "unexplored_region_cells": 397,
+      "priority_score": 1.782134,
       "task_feasibility": "unknown"
     },
     {
@@ -179,8 +179,8 @@
         0.09,
         -0.008123
       ],
-      "unexplored_region_cells": 399,
-      "priority_score": 1.786617,
+      "unexplored_region_cells": 397,
+      "priority_score": 1.782134,
       "task_feasibility": "unknown"
     },
     {
@@ -190,15 +190,15 @@
         0.27,
         -0.008123
       ],
-      "unexplored_region_cells": 399,
-      "priority_score": 1.786617,
+      "unexplored_region_cells": 397,
+      "priority_score": 1.782134,
       "task_feasibility": "unknown"
     }
   ],
   "motion_notice": "Targets are exploration suggestions, not motion commands. Check live scene and plan approach/lift before moving.",
-  "image": "/var/lib/armfarm/stations/armfarm/workspace/grasp_coverage/b0939aab08fb48b524d628fb/current-kinematic.png",
-  "cells": "/var/lib/armfarm/stations/armfarm/workspace/grasp_coverage/b0939aab08fb48b524d628fb/current-kinematic-cells.json",
-  "grid": "/var/lib/armfarm/stations/armfarm/workspace/grasp_coverage/b0939aab08fb48b524d628fb/grid.json",
-  "image_sha256": "50fb3f75622109c6d0d9fb33c48fcae29a8d13d467c31c36a3027c103641db0e",
-  "snapshot_age_seconds": 4.3
+  "image": "/var/lib/armfarm/stations/armfarm/workspace/grasp_coverage/ead2f52c7771bdf2411b68da/current-kinematic.png",
+  "cells": "/var/lib/armfarm/stations/armfarm/workspace/grasp_coverage/ead2f52c7771bdf2411b68da/current-kinematic-cells.json",
+  "grid": "/var/lib/armfarm/stations/armfarm/workspace/grasp_coverage/ead2f52c7771bdf2411b68da/grid.json",
+  "image_sha256": "e811544a708b3c0532a3fcfba3ea1ab5e467cde5eb694284bf377937a455b053",
+  "snapshot_age_seconds": 3.3
 }
