@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "status": "ready",
-  "generated_at": 1791828649.8697596,
+  "generated_at": 1791828961.8619065,
   "map_version": "780498de52542b48130e6e55198e074593a5d1368991acb7216e792fc22e93fc",
   "designation": "arm-007",
   "task_id": "grasp-cube",
@@ -45,15 +45,15 @@
     }
   },
   "episodes": {
-    "in_scope": 90,
+    "in_scope": 91,
     "counted": 79,
     "with_quality_flags": 3,
     "not_counted": {
       "different_or_unverified_calibration_model": 1,
-      "unlocated:multiple_pickup_locations": 8,
+      "unlocated:multiple_pickup_locations": 9,
       "outside_orientation_constraints": 2
     },
-    "latest_finished": 1791828644.2662108
+    "latest_finished": 1791828957.2415874
   },
   "repeat_threshold": {
     "minimum_attempts": 5,
@@ -196,9 +196,9 @@
     }
   ],
   "motion_notice": "Targets are exploration suggestions, not motion commands. Check live scene and plan approach/lift before moving.",
-  "image": "/var/lib/armfarm/stations/armfarm/workspace/grasp_coverage/044d4bdf501d90296602d10b/current-kinematic.png",
-  "cells": "/var/lib/armfarm/stations/armfarm/workspace/grasp_coverage/044d4bdf501d90296602d10b/current-kinematic-cells.json",
-  "grid": "/var/lib/armfarm/stations/armfarm/workspace/grasp_coverage/044d4bdf501d90296602d10b/grid.json",
+  "image": "/var/lib/armfarm/stations/armfarm/workspace/grasp_coverage/6043385c5733a6a2aba4d8a4/current-kinematic.png",
+  "cells": "/var/lib/armfarm/stations/armfarm/workspace/grasp_coverage/6043385c5733a6a2aba4d8a4/current-kinematic-cells.json",
+  "grid": "/var/lib/armfarm/stations/armfarm/workspace/grasp_coverage/6043385c5733a6a2aba4d8a4/grid.json",
   "image_sha256": "e37c19e3416d7a02ad4e94d05997f9ad830f6fa96cec0e18c2ae55ee9a6b25c0",
-  "snapshot_age_seconds": 0.7
+  "snapshot_age_seconds": 3.4
 }

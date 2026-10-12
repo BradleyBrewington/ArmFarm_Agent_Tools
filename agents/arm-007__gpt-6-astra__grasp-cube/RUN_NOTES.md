@@ -1,3 +1,13 @@
+# Paused state, 2026-10-12
+
+Run paused after27 recorder-success episodes and2 additional visually reviewed successful grasps originally labeled false. See oct12_run_summary.json for exact recorded failure count. Latest coverage:42/458 modeled reachable cells successful (9.17%); full workspace coverage not achieved. The50-success checkpoint was not reached. Collection started around12:48 and stopped around13:18 local.
+
+Arm returned to four-joint home; recorder stopped; cube remains on table. cube_recovery_required.json prevents blind restart. Request central cube repositioning and fresh camera localization before continuing. Actual wrist roll now approximately-10 degrees after a recovery experiment; batch default modeling is-30, so DO NOT replay old commands without checking live pose. Gripper output limit remains220, protection unchanged, and final goal was set to present position. Final fault/position status is in cube_final_status.json.
+
+Repeated placement shifts defeated open-loop replay. Matching pickup/place heights improved geometric consistency but did not establish reliable long-run pickup. cube_vertical.py is an experimental FK-based vertical approach: it obtained one grasp at an extended pose but the lift stopped on a5.18-degree shoulder tracking miss; subsequent slow return lost the cube. No arm fault overrides or protection changes were used. This is NOT validated for unattended collection.
+
+Earlier run notes follow for history only.
+
 # Current run: 2026-10-12
 
 Read AGENTS.md and TOOLS.md. The latter now requires grasp_coverage.py after every completed episode. cube_cycles.py does this and saves a read-only snapshot copy in tools/latest_cube_coverage.json; never edit station-owned grasp_coverage files.
