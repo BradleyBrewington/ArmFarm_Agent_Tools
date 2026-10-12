@@ -75,10 +75,11 @@ def run(n):
      p=b.read('Present_Position','gripper')
      img,_=read_frame('wrist')
      forward_dark=float(np.mean(cv2.cvtColor(img[200:450,700:1000],cv2.COLOR_BGR2GRAY)<65))
-     if not (p<10 and forward_dark>.7 and os.environ.get('CUBE_PITCH')=='35'):raise
+     if not (p<10 and forward_dark>.7 and current['elbow_flex']>=20):raise
      if any(c.fault_bits(b,j) for j in c.JOINTS):raise
      move(b,{'gripper':55},1.3);move(b,above(current),2)
-     pickup=pose(current['shoulder_pan'],current['elbow_flex']-10)
+     pickup=pose(current['shoulder_pan'],current['elbow_flex']-15)
+     pickup['shoulder_lift']+=depth;pickup['wrist_flex']-=depth
      move(b,above(pickup));move(b,pickup,2);contact=grip(b)
     move(b,above(pickup),3)
     # Retain the seated closing target through lift and home.
