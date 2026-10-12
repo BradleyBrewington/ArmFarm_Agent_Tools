@@ -2263,13 +2263,14 @@ def verify_board_pose(bus, target):
     return {"measured": measured, "errors": errors, "verified_at_utc": utc()}
 
 
-def wait_for_board(reader, pattern, camera="top", *, check_pose):
+def wait_for_board(reader, pattern, camera="top", *, check_pose, allow_existing=False):
     import numpy as np
     check_pose()
     print("At pose 1, gripper open. Move the checkerboard into the jaws, then hold it steady.", flush=True)
     previous, count = None, 0
-    baseline, initialized, placement_changed = None, False, False
+    baseline, initialized, placement_changed = None, False, allow_existing
     last_notice = time.monotonic()
+    next_thorough, thorough_mode = last_notice + 2., False
     next_check = last_notice + .5
     while True:
         if time.monotonic() >= next_check:
@@ -2281,7 +2282,13 @@ def wait_for_board(reader, pattern, camera="top", *, check_pose):
             count, previous = 0, None
             time.sleep(.2)
             continue
-        corners = detect_board(image, pattern)
+        corners = detect_board(image, pattern, thorough=True) if thorough_mode else detect_board(image, pattern)
+        if corners is None and not thorough_mode and time.monotonic() >= next_thorough:
+            corners = detect_board(image, pattern, thorough=True)
+            next_thorough = time.monotonic() + 2.
+            thorough_mode = corners is not None
+            if thorough_mode:
+                print('Checkerboard found with tilted-board detection; checking that it stays steady.', flush=True)
         if not initialized:
             baseline = corners
             initialized = True
@@ -2989,7 +2996,9 @@ def run_attempt(bus, reader, args, output, times, values, report):
     cfg = map_config(args)
     if not getattr(bus, "resume_held_board", False):
         wait_for_board(reader, tuple(args.pattern), "top",
-                       check_pose=lambda: verify_board_pose(bus, {**POSES[0], "gripper": args.gripper_open}))
+                       check_pose=lambda: verify_board_pose(bus, {**POSES[0], "gripper": args.gripper_open}),
+                       allow_existing=bool(getattr(bus, 'insertion_board_ready', False)))
+        bus.insertion_board_ready = False
         calibration_notice(bus, "closing_gripper", "Checkerboard detected; closing and checking the grip.")
         if adaptive_grip_enabled():
             bus.adaptive_grip = AdaptiveGrip(bus)
@@ -3158,6 +3167,7 @@ def resume_insertion_pose(bus, args):
     verify_board_pose(bus, {**POSES[0], 'gripper': args.gripper_open})
     if read_register(bus, 'Goal_Position', 'gripper')[0] != request['goal_raw']:
         raise RuntimeError('Gripper target changed since insertion-pose restart request')
+    bus.insertion_board_ready = request.get('board_present') is True
     calibration_notice(bus, 'waiting_for_checkerboard',
         'Already at the verified insertion pose. Watching for the checkerboard without moving away.')
     return True
