@@ -1250,6 +1250,7 @@ def connected_bus(port, joints=JOINTS):
             if faults:
                 print(f"[fault] {j}: status bits {faults} at connect", flush=True)
         bus.calibration = bus.read_calibration()
+        install_feedback_retries(bus)
         for j in joints:
             c = bus.calibration[j]
             if not 0 <= c.range_min < c.range_max <= 4095:
@@ -1258,6 +1259,30 @@ def connected_bus(port, joints=JOINTS):
     finally:
         if bus.is_connected:
             bus.disconnect(disable_torque=False)
+
+
+def install_feedback_retries(bus):
+    """Retry dropped read packets without advancing the trajectory during recovery."""
+    original = bus.sync_read
+
+    def read(*args, **kwargs):
+        started = time.monotonic()
+        retried = False
+        try:
+            for attempt in range(3):
+                try:
+                    return original(*args, **kwargs)
+                except ConnectionError:
+                    if attempt == 2:
+                        raise
+                    retried = True
+                    print(f'[feedback] Motor response missing; retrying {attempt + 1}/2.', flush=True)
+                    time.sleep(.02)
+        finally:
+            if retried:
+                bus.recovery_seconds = getattr(bus, 'recovery_seconds', 0.) + time.monotonic() - started
+
+    bus.sync_read = read
 
 
 # Physical stops: a commanded pose is a goal, not a requirement. A joint that
@@ -2268,7 +2293,20 @@ def verify_board_pose(bus, target):
             if faults:
                 raise RuntimeError(f"{joint}: motor fault {faults} while waiting for checkerboard")
             if value != expected:
-                raise RuntimeError(f"{joint}: {register} is {value}, expected {expected}; checkerboard wait stopped")
+                readings, healthy = [value], 0
+                for _ in range(3):
+                    time.sleep(.02)
+                    value, faults = read_register(bus, register, joint)
+                    readings.append(value)
+                    if faults:
+                        raise RuntimeError(f"{joint}: motor fault {faults} while waiting for checkerboard")
+                    healthy = healthy + 1 if value == expected else 0
+                    if healthy == 2:
+                        print(f'[feedback] Rechecked {joint} {register}: {readings}', flush=True)
+                        break
+                else:
+                    raise RuntimeError(f"{joint}: {register} is not consistently {expected}: {readings}; "
+                                       "checkerboard wait stopped. Check motor power and mode")
         status = fault_bits(bus, joint)
         if status:
             raise RuntimeError(f"{joint}: motor fault {status} while waiting for checkerboard")
