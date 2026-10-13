@@ -2263,13 +2263,14 @@ def verify_board_pose(bus, target):
     return {"measured": measured, "errors": errors, "verified_at_utc": utc()}
 
 
-def wait_for_board(reader, pattern, camera="top", *, check_pose):
+def wait_for_board(reader, pattern, camera="top", *, check_pose, allow_existing=False):
     import numpy as np
     check_pose()
     print("At pose 1, gripper open. Move the checkerboard into the jaws, then hold it steady.", flush=True)
     previous, count = None, 0
-    baseline, initialized, placement_changed = None, False, False
+    baseline, initialized, placement_changed = None, False, allow_existing
     last_notice = time.monotonic()
+    next_thorough, thorough_mode = last_notice + 2., False
     next_check = last_notice + .5
     while True:
         if time.monotonic() >= next_check:
@@ -2281,8 +2282,16 @@ def wait_for_board(reader, pattern, camera="top", *, check_pose):
             count, previous = 0, None
             time.sleep(.2)
             continue
-        corners = detect_board(image, pattern)
-        if not initialized:
+        corners = detect_board(image, pattern, thorough=True) if thorough_mode else detect_board(image, pattern)
+        baseline_checked = corners is not None or thorough_mode
+        if corners is None and not thorough_mode and (not initialized or time.monotonic() >= next_thorough):
+            corners = detect_board(image, pattern, thorough=True)
+            baseline_checked = True
+            next_thorough = time.monotonic() + 2.
+            thorough_mode = corners is not None
+            if thorough_mode:
+                print('Checkerboard found with tilted-board detection; checking that it stays steady.', flush=True)
+        if not initialized and baseline_checked:
             baseline = corners
             initialized = True
         elif corners is not None and baseline is None:
@@ -2330,8 +2339,7 @@ def capture_pose(bus, reader, output, name, pattern, cameras, timeout):
     metadata = {"captured_at_utc": utc(), "cameras": {}}
     (output / "captures").mkdir(exist_ok=True)
     for camera, entry in best.items():
-        # Retry difficult, tilted grids only while stationary. Keep the live
-        # detector fast during motion and while waiting for the board.
+        # Retry difficult, tilted grids on the saved stationary frame.
         thorough = entry["corners"] is None
         if thorough:
             entry["corners"] = detect_board(entry["image"], pattern, thorough=True)
@@ -2594,10 +2602,15 @@ class ReleasedBoardPhoto:
                 return
             reader = FrameReader(self.args.frames_directory)
             deadline = self.released_at + self.args.capture_timeout
-            previous = None
+            previous, last_image = None, None
+            thorough_mode = False
             while not self.stop.is_set() and time.monotonic() < deadline:
                 image, frame = reader.read("top", after=self.released_at, timeout=1.)
-                corners = detect_board(image, tuple(self.args.pattern))
+                last_image = image
+                corners = detect_board(image, tuple(self.args.pattern), thorough=thorough_mode)
+                if corners is None and not thorough_mode:
+                    corners = detect_board(image, tuple(self.args.pattern), thorough=True)
+                    thorough_mode = corners is not None
                 if corners is None:
                     previous = None
                     continue
@@ -2617,7 +2630,10 @@ class ReleasedBoardPhoto:
                 print(f"Workspace photo saved {latency:.2f}s after the release command. You may remove the board; processing uses this saved photo.", flush=True)
                 return
             if not self.stop.is_set():
-                raise CalibrationRetry("No steady full checkerboard view immediately after release")
+                if last_image is not None:
+                    cv2.imwrite(str(self.output / "captures" / "workspace_failed.png"), last_image)
+                raise CalibrationRetry("No steady full checkerboard view after release. "
+                                       "Check that the entire grid stays inside the top camera image when placed on the table")
         except Exception as exc:
             self.error = exc
 
@@ -2989,7 +3005,9 @@ def run_attempt(bus, reader, args, output, times, values, report):
     cfg = map_config(args)
     if not getattr(bus, "resume_held_board", False):
         wait_for_board(reader, tuple(args.pattern), "top",
-                       check_pose=lambda: verify_board_pose(bus, {**POSES[0], "gripper": args.gripper_open}))
+                       check_pose=lambda: verify_board_pose(bus, {**POSES[0], "gripper": args.gripper_open}),
+                       allow_existing=bool(getattr(bus, 'insertion_board_ready', False)))
+        bus.insertion_board_ready = False
         calibration_notice(bus, "closing_gripper", "Checkerboard detected; closing and checking the grip.")
         if adaptive_grip_enabled():
             bus.adaptive_grip = AdaptiveGrip(bus)
@@ -3081,7 +3099,8 @@ def run_local(args, output):
                 enable_at_current_position(bus, joints=home)
                 return finish_at_home(bus, args, output, report, home)
             resumed = resume_held_board(bus)
-            if not resumed:
+            insertion_ready = not resumed and resume_insertion_pose(bus, args)
+            if not (resumed or insertion_ready):
                 enable_at_current_position(bus)
             configure_gripper_torque(bus)
             attempt = 0
@@ -3093,7 +3112,7 @@ def run_local(args, output):
                               active_attempt=str(folder.relative_to(output)))
                 write_json(output / "report.json", report)
                 print(f"Attempt {attempt}: returning to pose 1 and opening the gripper.", flush=True)
-                if not (resumed and attempt == 1):
+                if not ((resumed or insertion_ready) and attempt == 1):
                     report["pose_1_verified"] = return_to_pose_one(bus, args, retry=attempt > 1)
                 report.update(state="checking_grip" if resumed and attempt == 1 else "waiting_for_checkerboard",
                               message="Checking the held checkerboard." if resumed and attempt == 1 else
@@ -3140,6 +3159,27 @@ def run_local(args, output):
                 write_json(Path(settings).parent / 'state/PAUSED', {
                     'reason': str(exc) + '. Check the arm, then use Recalibrate to try again.', 'time': utc()})
         raise
+
+
+def resume_insertion_pose(bus, args):
+    """Consume a fresh request to start detection at an already verified open pose."""
+    settings = os.environ.get('ARMFARM_SETTINGS')
+    if not settings:
+        return False
+    path = Path(settings).parent / 'state/calibration-insertion-ready.json'
+    if not path.exists():
+        return False
+    request = read_json(path)
+    path.unlink()  # One use, including invalid/stale requests.
+    if not 0 <= time.time() - request['time'] <= 120:
+        raise RuntimeError('Insertion-pose restart request expired')
+    verify_board_pose(bus, {**POSES[0], 'gripper': args.gripper_open})
+    if read_register(bus, 'Goal_Position', 'gripper')[0] != request['goal_raw']:
+        raise RuntimeError('Gripper target changed since insertion-pose restart request')
+    bus.insertion_board_ready = request.get('board_present') is True
+    calibration_notice(bus, 'waiting_for_checkerboard',
+        'Already at the verified insertion pose. Watching for the checkerboard without moving away.')
+    return True
 
 
 def resume_held_board(bus):
