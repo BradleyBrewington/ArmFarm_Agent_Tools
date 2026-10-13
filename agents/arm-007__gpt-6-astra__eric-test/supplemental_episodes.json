@@ -1,0 +1,47 @@
+[
+  {
+    "episode": "20261005T164626-7f7a81c0",
+    "success": false,
+    "reason": "Initial alignment attempts; no retained grasp"
+  },
+  {
+    "episode": "20261005T165220-f8443412",
+    "success": true,
+    "reason": "Manual camera confirmation at home"
+  },
+  {
+    "episode": "20261005T170057-44693dc6",
+    "success": false,
+    "reason": "No contact; exception stopped recorder"
+  },
+  {
+    "episode": "20261005T170317-cb64f854",
+    "success": false,
+    "reason": "Manual recovery missed; returned home"
+  },
+  {
+    "episode": "20261005T170702-34b530b7",
+    "success": false,
+    "reason": "No contact; recorder stopped by exception"
+  },
+  {
+    "episode": "20261005T170939-3eb7025e",
+    "success": false,
+    "reason": "No contact; recorder stopped by exception"
+  },
+  {
+    "episode": "20261005T171130-c8d514e1",
+    "success": true,
+    "reason": "Cube retained after seated closure, lift and home; verified in both cameras, home within 1.4 degrees; all motors fault-free."
+  },
+  {
+    "episode": "20261005T171839-820310b6",
+    "success": true,
+    "reason": "Cube visibly retained at home in both cameras after a 23-percent seated closure; all motor faults zero."
+  },
+  {
+    "episode": "20261005T172218-e07449a2",
+    "success": false,
+    "reason": "Cube slipped during home return; visible on table after return."
+  }
+]

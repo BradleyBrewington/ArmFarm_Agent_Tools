@@ -1,0 +1,10 @@
+{"event": "episode", "success": false, "receipt": {"episode": "20261005T170523-5a2dcc5a", "folder": "/var/lib/armfarm/stations/armfarm/episodes/completed/20261005T170523-5a2dcc5a", "frames": 326, "quality_flags": [], "training_ready": true, "success": false, "notes": "{\"source_pose\": {\"shoulder_pan\": -25, \"shoulder_lift\": 30.787035274153098, \"elbow_flex\": -5, \"wrist_flex\": 39.2129647258469}, \"contact\": 32.465753424657535, \"home_confirm\": {\"gripper\": 31.986301369863014, \"wrist_dark\": 0.008472222222222223, \"frame_seq\": 13373174}}", "coverage_pending": true}, "evidence": {"gripper": 31.986301369863014, "wrist_dark": 0.008472222222222223, "frame_seq": 13373174}, "time": 1791237935.269398}
+{"event": "stopped", "error": "Grasp not verified at home", "time": 1791237935.2696772}
+Traceback (most recent call last):
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/cube_cycles.py", line 74, in <module>
+    if __name__=='__main__':run(int(sys.argv[1]) if len(sys.argv)>1 else 1)
+                            ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/cube_cycles.py", line 63, in run
+    if not ok:raise RuntimeError('Grasp not verified at home')
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Grasp not verified at home

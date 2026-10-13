@@ -1,0 +1,12 @@
+{"event": "stopped", "error": "Unexpected contact width: 0.8904109589041096", "time": 1791239842.0627313}
+{"event": "episode", "success": false, "receipt": {"episode": "20261005T173716-bd0bc368", "folder": "/var/lib/armfarm/stations/armfarm/episodes/completed/20261005T173716-bd0bc368", "frames": 165, "quality_flags": [], "training_ready": true, "success": false, "notes": "Unexpected contact width: 0.8904109589041096", "coverage_pending": true}, "evidence": {"error": "Unexpected contact width: 0.8904109589041096"}, "time": 1791239842.427953}
+Traceback (most recent call last):
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/cube_cycles.py", line 83, in <module>
+    if __name__=='__main__':run(int(sys.argv[1]) if len(sys.argv)>1 else 1)
+                            ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/cube_cycles.py", line 63, in run
+    contact=grip(b)
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/cube_cycles.py", line 40, in grip
+    if not 18<actual<35:raise RuntimeError('Unexpected contact width: '+str(actual))
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Unexpected contact width: 0.8904109589041096

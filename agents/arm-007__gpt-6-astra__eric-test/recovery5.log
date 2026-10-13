@@ -1,0 +1,10 @@
+{"event": "stopped", "error": "No cube contact", "time": 1791238189.3024826}
+Traceback (most recent call last):
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/cube_cycles.py", line 76, in <module>
+    emit(event='episode',success=False,receipt=receipt,evidence={'error':str(e)})
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/cube_cycles.py", line 60, in run
+    contact=grip(b)
+  File "/var/lib/armfarm/stations/armfarm/workspace/tools/cube_cycles.py", line 41, in grip
+    raise RuntimeError('No cube contact')
+RuntimeError: No cube contact

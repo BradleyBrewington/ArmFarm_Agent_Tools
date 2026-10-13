@@ -1,0 +1,22 @@
+{
+  "positions": {
+    "shoulder_pan": 12.703296703296703,
+    "shoulder_lift": -92.26373626373626,
+    "elbow_flex": 80.26373626373626,
+    "wrist_flex": 26.54945054945055,
+    "wrist_roll": -10.32967032967033,
+    "gripper": 1.7123287671232876
+  },
+  "faults": {
+    "shoulder_pan": 0,
+    "shoulder_lift": 0,
+    "elbow_flex": 0,
+    "wrist_flex": 0,
+    "wrist_roll": 0,
+    "gripper": 0
+  },
+  "gripper_output_limit": 220,
+  "recording": false,
+  "episode": null,
+  "time": 1791829104.0955253
+}

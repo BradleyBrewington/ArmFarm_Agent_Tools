@@ -1,0 +1,38 @@
+# Paused state, 2026-10-12
+
+Run paused after27 recorder-success episodes and2 additional visually reviewed successful grasps originally labeled false. See oct12_run_summary.json for exact recorded failure count. Latest coverage:42/458 modeled reachable cells successful (9.17%); full workspace coverage not achieved. The50-success checkpoint was not reached. Collection started around12:48 and stopped around13:18 local.
+
+Arm returned to four-joint home; recorder stopped; cube remains on table. cube_recovery_required.json prevents blind restart. Request central cube repositioning and fresh camera localization before continuing. Actual wrist roll now approximately-10 degrees after a recovery experiment; batch default modeling is-30, so DO NOT replay old commands without checking live pose. Gripper output limit remains220, protection unchanged, and final goal was set to present position. Final fault/position status is in cube_final_status.json.
+
+Repeated placement shifts defeated open-loop replay. Matching pickup/place heights improved geometric consistency but did not establish reliable long-run pickup. cube_vertical.py is an experimental FK-based vertical approach: it obtained one grasp at an extended pose but the lift stopped on a5.18-degree shoulder tracking miss; subsequent slow return lost the cube. No arm fault overrides or protection changes were used. This is NOT validated for unattended collection.
+
+Earlier run notes follow for history only.
+
+# Current run: 2026-10-12
+
+Read AGENTS.md and TOOLS.md. The latter now requires grasp_coverage.py after every completed episode. cube_cycles.py does this and saves a read-only snapshot copy in tools/latest_cube_coverage.json; never edit station-owned grasp_coverage files.
+
+Current working configuration: CUBE_PICK_DEPTH=2, pitch65, gripper Torque_Limit220 and closing goal0; open65 for1.5 seconds. Pickup AND placement now apply the same depth offset to avoid progressive changes in cube seating. cube_cycle_state.json stores the canonical placement pose without depth. Home changes only its four joints. Motion uses supplied stall guard and live calibration. Wrist roll approximately -30. Wider grid pan +/-45 with elbows20..60 has been visually checked; near-row placements can shift and require localization. A single forward retry is allowed only on an empty grasp and positive wrist-camera cube evidence, with fault checks. A failure creates cube_recovery_required.json and stops; empty misses return home if fault-free.
+
+Held detection checks three wrist regions plus non-empty gripper width. The bottom region was tested with a held cube (true) and empty jaws at the same26-percent opening (false). Two Oct12 episodes were falsely marked failed by earlier image checks; manual_review events annotate the actual successful grasps without changing recorder outcomes. Count recorded successes separately from reviewed task successes.
+
+At checkpoint following episode20261012T130629-afa2974a:25 recorder-success episodes this run, plus2 visually reviewed successes originally recorded false. The run is continuing toward a50-success checkpoint and broader coverage. The async stopping-condition question has not received an answer. The exact current process and recorder state MUST be inspected on resumption; do not assume old status. Current logs:oct12_batch1.log,oct12_batch2.log,oct12_dense_batch*.log and cube_cycles.jsonl.
+
+Older notes below are historical and may not describe current state.
+
+# Cube run, 2026-10-05
+
+Read AGENTS.md and TOOLS.md first. Cumulative totals: 28 successful episodes and 15 failures, including 11 additional successes in the resumed run. Successful automatic receipts contain 17 distinct commanded source positions; manual recovery positions add samples, but full workspace coverage was not achieved. The best automated sequence ran about 21–23 seconds per cycle, but recovery failures prevented achievement of the overall hourly target.
+
+Final state: arm at the four-joint home pose, all six motor fault values zero, cube resting near the front edge of the visible table around top-camera pixel (390,645), recorder stopped. The target in cube_cycle_state.json is NOT a verified cube position. cube_recovery_required.json blocks blind restart. Re-localize and validate a pickup before clearing it.
+
+Working central/far pickup: shoulder lift 15, elbow 20, wrist flex 30, wrist roll approximately -30 degrees; pan varies. Use live calibration and supplied move/settle; home must only command its four joints. Contact-stop gripper approach worked repeatedly near 24 percent; retain contact goal with modest closing bias. Mere contact is insufficient: verify retained cube at home with camera. Initial excessive squeezing triggered gripper overload; only the documented gripper recovery was used, never arm fault overrides.
+
+The grid uses FK to vary elbow while retaining nominal height/pitch, but this is NOT a calibrated robot-to-camera/table transform. Some closer placements led to repeated missed or slipping grasps. Open-loop replay of placement coordinates is unreliable after a release rotates or shifts the cube. Do not repeatedly chase the cube using those stale coordinates. Camera robot alignment and table height remain uncalibrated in calibration/ready.json.
+
+Episode receipts are in cube_cycles.jsonl and supplemental_episodes.json. Failed exception episodes are supplemented there so cube_status.py counts all outcomes. The recorder/upload service may remove completed episode files after upload. Source tools and recovery logs remain in tools/.
+
+
+Resumed run finding: fixed gripper goal23 still occasionally slipped. Gripper output Torque_Limit was reduced from500 to220 (below the existing overload threshold250), with protection unchanged. Goal0 then held four consecutive cycles before another slip. The current output limit remains220; final gripper goal was set to its present position. Batch grip() now checks that limit before closing, and open time is1.3 seconds. Gripper temperature reached51C, with no final motor faults. Do not infer grip reliability from contact width alone. cube_recovery_required.json blocks restart after the last unsuccessful recovery moved the cube near the table edge. Establish a secure grasp and placement before clearing it.
+
+Latest recorded recovery 20261005T172926-1de3d0b5 failed retained-home confirmation and is marked false. Recorder was explicitly checked stopped in cube_final_status.json. The cumulative 50-successes/hour target remains unmet despite short successful batches running about21 seconds per cycle.

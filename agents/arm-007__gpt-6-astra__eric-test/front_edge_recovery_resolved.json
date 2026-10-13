@@ -1,0 +1,10 @@
+{
+  "time": 1791239514.461883,
+  "reason": "Cube slipped to front edge of visible table around top-camera pixel (390,645). Saved placement pose is stale. Re-localize and establish secure pickup before restarting; avoid pushing toward table edge.",
+  "cube_top_pixel": [
+    390,
+    645
+  ],
+  "arm": "home",
+  "recording": "stopped"
+}

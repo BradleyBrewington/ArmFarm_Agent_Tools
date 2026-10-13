@@ -1,0 +1,11 @@
+{
+  "time": 1791828189.8153048,
+  "reason": "Grasp not verified at home",
+  "last_placement": {
+    "shoulder_pan": -30,
+    "shoulder_lift": 8.094058663714346,
+    "elbow_flex": 30,
+    "wrist_flex": 26.90594133628565
+  },
+  "requires": "Fresh camera localization and validated pickup before restart"
+}

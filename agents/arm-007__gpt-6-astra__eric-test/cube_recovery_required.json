@@ -1,0 +1,8 @@
+{
+  "time": 1791829104.0959065,
+  "reason": "Repeated empty grasps and shoulder tracking misses in extended recovery poses; cube remains on table, requires fresh localization after central repositioning.",
+  "arm": "home",
+  "recording": false,
+  "wrist_roll": -10.32967032967033,
+  "note": "Last placement pose is stale; do not restart cube_cycles blindly. CUBE_ROLL defaults -30 but actual roll changed to about-10 during recovery."
+}

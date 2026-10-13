@@ -1,0 +1,11 @@
+{
+  "time": 1791828343.370239,
+  "reason": "Unexpected contact width: 1.5753424657534247",
+  "last_placement": {
+    "shoulder_pan": 15,
+    "shoulder_lift": 8.094058663714346,
+    "elbow_flex": 30,
+    "wrist_flex": 26.90594133628565
+  },
+  "requires": "Fresh camera localization and validated pickup before restart"
+}
