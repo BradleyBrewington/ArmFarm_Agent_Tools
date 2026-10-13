@@ -1250,6 +1250,7 @@ def connected_bus(port, joints=JOINTS):
             if faults:
                 print(f"[fault] {j}: status bits {faults} at connect", flush=True)
         bus.calibration = bus.read_calibration()
+        install_feedback_retries(bus)
         for j in joints:
             c = bus.calibration[j]
             if not 0 <= c.range_min < c.range_max <= 4095:
@@ -1258,6 +1259,30 @@ def connected_bus(port, joints=JOINTS):
     finally:
         if bus.is_connected:
             bus.disconnect(disable_torque=False)
+
+
+def install_feedback_retries(bus):
+    """Retry dropped read packets without advancing the trajectory during recovery."""
+    original = bus.sync_read
+
+    def read(*args, **kwargs):
+        started = time.monotonic()
+        retried = False
+        try:
+            for attempt in range(3):
+                try:
+                    return original(*args, **kwargs)
+                except ConnectionError:
+                    if attempt == 2:
+                        raise
+                    retried = True
+                    print(f'[feedback] Motor response missing; retrying {attempt + 1}/2.', flush=True)
+                    time.sleep(.02)
+        finally:
+            if retried:
+                bus.recovery_seconds = getattr(bus, 'recovery_seconds', 0.) + time.monotonic() - started
+
+    bus.sync_read = read
 
 
 # Physical stops: a commanded pose is a goal, not a requirement. A joint that
@@ -1578,11 +1603,29 @@ class OpeningGrip:
             raise RuntimeError(f'gripper: motor fault {faults} while opening')
         return value
 
-    def position(self):
+    def raw_position(self):
         raw = self.get('Present_Position')
         c = self.bus.calibration['gripper']
         if not c.range_min <= raw <= c.range_max:
-            raise RuntimeError('gripper: opening feedback outside calibrated range')
+            # Do not issue another goal on an invalid sample. Confirm with two
+            # fresh, consistent in-range readings; persistent faults still stop.
+            readings, previous = [raw], None
+            for _ in range(3):
+                time.sleep(.02)
+                raw = self.get('Present_Position')
+                readings.append(raw)
+                if c.range_min <= raw <= c.range_max:
+                    if previous is not None and abs(raw - previous) <= 8:
+                        print(f'[feedback] Rechecked invalid gripper position: {readings}', flush=True)
+                        return raw
+                    previous = raw
+                else:
+                    previous = None
+            raise RuntimeError(f'gripper: opening feedback outside calibrated range or unstable: {readings}')
+        return raw
+
+    def position(self):
+        raw = self.raw_position()
         motor_id = self.bus.motors['gripper'].id
         return self.bus._normalize({motor_id: raw})[motor_id]
 
@@ -1620,8 +1663,10 @@ class OpeningGrip:
     def check_safety(self):
         check_gripper_temperature(self.bus, self.get('Present_Temperature'),
                                   hardware_hot=fault_bits(self.bus, 'gripper') == OVERHEAT)
-        if self.get('Status') or self.get('Operating_Mode') != 0 or self.get('Torque_Enable') != 1:
+        if self.get('Status'):
             raise RuntimeError('gripper: healthy position mode with enabled torque required for opening')
+        confirm_motor_state(self.get, 'Operating_Mode', 0)
+        confirm_motor_state(self.get, 'Torque_Enable', 1)
         if self.current_limit and self.get('Present_Current') >= self.current_limit * .8:
             raise RuntimeError('gripper: current margin exhausted while opening')
 
@@ -1713,6 +1758,22 @@ def finish_opening_grip(bus):
             time.sleep(.02)
 
 
+def confirm_motor_state(get, register, expected):
+    value = get(register)
+    if value == expected:
+        return
+    readings, healthy = [value], 0
+    for _ in range(3):
+        time.sleep(.02)
+        value = get(register)
+        readings.append(value)
+        healthy = healthy + 1 if value == expected else 0
+        if healthy == 2:
+            print(f'[feedback] Rechecked gripper {register}: {readings}', flush=True)
+            return
+    raise RuntimeError(f'gripper: {register} is not consistently {expected}: {readings}; check motor power and mode')
+
+
 class AdaptiveGrip:
     """Position-mode grip using drive effort as a proxy, never as measured jaw force.
 
@@ -1761,8 +1822,8 @@ class AdaptiveGrip:
         if sample['fault'] == OVERHEAT:
             check_gripper_temperature(self.bus, sample['temperature'], hardware_hot=True)
             return self.sample()
-        if self.get('Operating_Mode') != 0 or self.get('Torque_Enable') != 1:
-            raise RuntimeError('gripper: position mode and enabled torque required')
+        confirm_motor_state(self.get, 'Operating_Mode', 0)
+        confirm_motor_state(self.get, 'Torque_Enable', 1)
         if not self.c.range_min <= sample['position'] <= self.c.range_max:
             raise RuntimeError('gripper: feedback outside calibrated range')
         if self.current_limit and sample['current'] >= self.current_limit * .8:
@@ -2250,7 +2311,20 @@ def verify_board_pose(bus, target):
             if faults:
                 raise RuntimeError(f"{joint}: motor fault {faults} while waiting for checkerboard")
             if value != expected:
-                raise RuntimeError(f"{joint}: {register} is {value}, expected {expected}; checkerboard wait stopped")
+                readings, healthy = [value], 0
+                for _ in range(3):
+                    time.sleep(.02)
+                    value, faults = read_register(bus, register, joint)
+                    readings.append(value)
+                    if faults:
+                        raise RuntimeError(f"{joint}: motor fault {faults} while waiting for checkerboard")
+                    healthy = healthy + 1 if value == expected else 0
+                    if healthy == 2:
+                        print(f'[feedback] Rechecked {joint} {register}: {readings}', flush=True)
+                        break
+                else:
+                    raise RuntimeError(f"{joint}: {register} is not consistently {expected}: {readings}; "
+                                       "checkerboard wait stopped. Check motor power and mode")
         status = fault_bits(bus, joint)
         if status:
             raise RuntimeError(f"{joint}: motor fault {status} while waiting for checkerboard")
@@ -2652,7 +2726,20 @@ class ReleasedBoardPhoto:
 def replay_and_capture_workspace(bus, times, values, cfg, args, output):
     release_percent = float(values[-1, JOINTS.index("gripper")]) * .95
     with ReleasedBoardPhoto(args, output, release_percent) as photo:
-        final = replay(bus, times, values, cfg, on_target=photo.observe_target)
+        try:
+            final = replay(bus, times, values, cfg, on_target=photo.observe_target)
+        except MotionStalled:
+            if photo.result is None:
+                raise
+            # The board is released and its table photo is already saved.
+            # Retraction precision cannot invalidate those camera observations.
+            require_board(photo.result, args, 'workspace')
+            calibration_notice(bus, 'recovering', 'Table photo saved. Returning home after a retraction stall; keeping the calibration photos.')
+            final = load_home(args.home)
+            move(bus, final, args.duration)
+            settle(bus, final, 2, trim=True)
+            for joint in ARM_JOINTS:
+                stops(bus).pop(joint, None)
         # Usually already finished, since the photo is taken during retraction.
         photo.thread.join(timeout=args.capture_timeout + 1.)
         if photo.error is not None:
