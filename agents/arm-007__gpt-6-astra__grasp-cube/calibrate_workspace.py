@@ -2296,12 +2296,12 @@ def detect_board(image, pattern, thorough=False):
     import cv2
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     # Histogram equalization can erase otherwise clear corners (particularly
-    # a flat board under uneven room lighting). Try the original grayscale
-    # image first, retaining normalization as a fallback for low contrast.
+    # a flat board under uneven room lighting). Preserve the existing
+    # normalized detector, then fall back to the original grayscale image.
     flags = 0
     if thorough:
         flags |= cv2.CALIB_CB_EXHAUSTIVE | cv2.CALIB_CB_ACCURACY
-    for variant in (flags, flags | cv2.CALIB_CB_NORMALIZE_IMAGE):
+    for variant in (flags | cv2.CALIB_CB_NORMALIZE_IMAGE, flags):
         ok, corners = cv2.findChessboardCornersSB(gray, pattern, flags=variant)
         if ok:
             return corners.reshape(-1, 2)
