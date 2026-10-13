@@ -1578,11 +1578,29 @@ class OpeningGrip:
             raise RuntimeError(f'gripper: motor fault {faults} while opening')
         return value
 
-    def position(self):
+    def raw_position(self):
         raw = self.get('Present_Position')
         c = self.bus.calibration['gripper']
         if not c.range_min <= raw <= c.range_max:
-            raise RuntimeError('gripper: opening feedback outside calibrated range')
+            # Do not issue another goal on an invalid sample. Confirm with two
+            # fresh, consistent in-range readings; persistent faults still stop.
+            readings, previous = [raw], None
+            for _ in range(3):
+                time.sleep(.02)
+                raw = self.get('Present_Position')
+                readings.append(raw)
+                if c.range_min <= raw <= c.range_max:
+                    if previous is not None and abs(raw - previous) <= 8:
+                        print(f'[feedback] Rechecked invalid gripper position: {readings}', flush=True)
+                        return raw
+                    previous = raw
+                else:
+                    previous = None
+            raise RuntimeError(f'gripper: opening feedback outside calibrated range or unstable: {readings}')
+        return raw
+
+    def position(self):
+        raw = self.raw_position()
         motor_id = self.bus.motors['gripper'].id
         return self.bus._normalize({motor_id: raw})[motor_id]
 
